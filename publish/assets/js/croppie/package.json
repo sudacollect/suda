@@ -1,0 +1,66 @@
+{
+  "_from": "croppie@2.6.3",
+  "_id": "croppie@2.6.3",
+  "_inBundle": false,
+  "_integrity": "sha512-x0EGQF5GwUTzW7igxFu0eP9UM5JsK/3y0hIiFIVjV6zLd4EMsGZDIKhh7XwppQoZMDyEun3Ge7fWlu1jzp+iuA==",
+  "_location": "/croppie",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "croppie@2.6.3",
+    "name": "croppie",
+    "escapedName": "croppie",
+    "rawSpec": "2.6.3",
+    "saveSpec": null,
+    "fetchSpec": "2.6.3"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/croppie/-/croppie-2.6.3.tgz",
+  "_shasum": "fab2a47e7559c010e91b3d8681dc73b410a8aaba",
+  "_spec": "croppie@2.6.3",
+  "_where": "/Users/mengdoo/codes/www/zhilayun/blog/vendor/ecdo/zest",
+  "authors": [
+    "Dustin Smith <thedustinsmith@gmail.com>",
+    "Ethan Calvert <calvert1591@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/Foliotek/Croppie/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A simple javascript image cropper",
+  "devDependencies": {
+    "gh-pages": "^0.11.0",
+    "mocha": "2.4.5",
+    "uglify-js": "3.3.15"
+  },
+  "files": [
+    "croppie.css",
+    "croppie.js",
+    "croppie.min.js"
+  ],
+  "homepage": "http://foliotek.github.io/Croppie",
+  "keywords": [
+    "crop",
+    "cropper",
+    "image",
+    "cropping"
+  ],
+  "license": "MIT",
+  "main": "croppie.js",
+  "name": "croppie",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Foliotek/Croppie.git"
+  },
+  "scripts": {
+    "deploy": "node deploy.js",
+    "test": "mocha test/unit",
+    "uglify": "uglifyjs croppie.js -c -m -r '$,require,exports' -o croppie.min.js"
+  },
+  "version": "2.6.3"
+}

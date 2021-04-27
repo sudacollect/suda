@@ -1,0 +1,98 @@
+@import '../partials/vars';
+
+.input {
+    box-shadow: none !important;
+}
+
+.input,
+.select select {
+    background-color: $white;
+    border-color: darken($active_theme, 5%) !important;
+
+    &:hover {
+        border-color: darken($active_theme, 25%);
+    }
+}
+
+.card {
+    border-radius: 4px;
+    min-width: unset;
+    overflow: hidden;
+}
+
+.modal-card-head,
+.progress-bar,
+.icon {
+    &.is-warning {
+        background-color: $yellow;
+    }
+
+    &.is-danger {
+        background-color: $red;
+    }
+
+    &.is-link {
+        background-color: $blue;
+    }
+
+    &.is-success {
+        background-color: $green;
+    }
+
+    &.is-black {
+        background-color: $black;
+    }
+
+    &.is-danger,
+    &.is-link,
+    &.is-black,
+    &.is-success {
+        * {
+            color: $white;
+        }
+    }
+}
+
+.modal {
+    overflow: scroll;
+    position: fixed;
+
+    .modal-background {
+        background-color: rgba($dark, 0.98);
+        position: fixed;
+    }
+
+    .modal-card-title {
+        max-width: calc(100% - 20px);
+    }
+
+    .modal-card-foot {
+        background-color: $white;
+        justify-content: flex-end;
+    }
+
+    .modal-close {
+        height: 3rem;
+        max-height: 3rem;
+        max-width: 3rem;
+        top: 2rem;
+        width: 3rem;
+        z-index: 2;
+    }
+
+    &.is-active {
+        padding: 0.75rem 0.75rem 0;
+    }
+}
+
+.image {
+    display: block;
+    min-width: 100%;
+    width: 100%;
+}
+
+@include media('max', 768) {
+    .card {
+        min-width: 100%;
+    }
+}

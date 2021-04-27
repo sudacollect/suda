@@ -1,0 +1,19 @@
+{
+  "providers": [
+    "Gtd\\Suda\\SudaServiceProvider",
+    "Gtd\\Suda\\Providers\\ThemeServiceProvider",
+    "Gtd\\Suda\\Providers\\PowerServiceProvider",
+    "Gtd\\Suda\\Providers\\MetaServiceProvider",
+    "Gtd\\Suda\\Providers\\UploadImageServiceProvider",
+    "Gtd\\Suda\\Providers\\SudaEventServiceProvider",
+    "Gtd\\Suda\\Providers\\AuthServiceProvider",
+    "Gtd\\Suda\\Providers\\AuthSudaServiceProvider",
+    "Gtd\\MediaManager\\MediaManagerServiceProvider"
+  ],
+  "aliases": [
+    {
+      "alias": "Sudacore",
+      "facade": "Gtd\\Suda\\Facades\\Sudacore"
+    }
+  ]
+}

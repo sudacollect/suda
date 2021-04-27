@@ -1,0 +1,307 @@
+@import '~cropperjs/dist/cropper.css';
+@import '../partials/vars';
+
+.__modal-editor {
+    .__editor {
+        background: transparent;
+        box-shadow: none;
+        min-width: unset !important;
+        overflow: unset !important;
+        transform: translateX(-50px); // account for the presets width
+        transition: margin $anim-time $anim-ease;
+
+        .top,
+        .mid {
+            display: flex;
+        }
+
+        .__side-toolbar {
+            align-self: flex-start;
+            display: flex;
+        }
+
+        .top {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+
+            .__top-toolbar {
+                display: flex;
+                width: 100%;
+
+                .left,
+                .right {
+                    display: flex;
+                }
+
+                .__left-index {
+                    display: flex;
+                }
+
+                .right {
+                    margin-left: auto;
+                    padding-left: 2rem;
+                }
+            }
+        }
+
+        .mid {
+            .__side-toolbar {
+                flex-flow: column nowrap;
+            }
+
+            .__cropper {
+                margin: 1rem;
+                margin-right: 0;
+                position: relative;
+
+                .image {
+                    display: block;
+                    max-height: 50vh;
+                    max-width: 50vw;
+
+                    img {
+                        max-width: 100%;
+                    }
+                }
+
+                .__loader {
+                    align-items: center;
+                    display: flex;
+                    height: 100%;
+                    justify-content: center;
+                    left: 0;
+                    opacity: 0.5;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                }
+
+                .__diff {
+                    max-height: 75vh;
+                    overflow: hidden;
+                    position: absolute;
+                    top: 0;
+                    width: 100% !important;
+                    z-index: 10;
+
+                    .image-compare-handle {
+                        color: $blue;
+                    }
+
+                    .image-compare-wrapper {
+                        background-color: rgba($black, 0.5);
+                        box-shadow: 10px 0 40px 0 rgba($black, 0.5);
+                    }
+
+                    img,
+                    .image-compare-wrapper,
+                    .image-compare-handle {
+                        transition: all $anim-time $anim-ease;
+                    }
+
+                    &.is-draggable {
+                        .image-compare-wrapper {
+                            background-color: unset;
+                        }
+                    }
+                }
+
+                .__caman-presets {
+                    padding-left: 1rem;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    transform: translateX(100%);
+                    z-index: 1;
+
+                    h3 {
+                        background: $grad_1;
+                        border-radius: 3px;
+                        color: $white;
+                        font-weight: bold;
+                        margin: 0 0 0.5rem;
+                        padding: 0.75rem;
+                        text-align: center;
+                    }
+
+                    section {
+                        display: flex;
+                    }
+
+                    .col {
+                        display: flex;
+                        flex-flow: column nowrap;
+
+                        &:first-of-type {
+                            button {
+                                margin-left: 0;
+                            }
+                        }
+
+                        &:last-of-type {
+                            button {
+                                margin-right: 0;
+                            }
+                        }
+
+                        button {
+                            border-radius: 3px;
+                            margin: 0.25rem;
+
+                            &:first-of-type {
+                                margin-top: 0;
+                            }
+
+                            &:last-of-type {
+                                margin-bottom: 0;
+                            }
+
+                            &:hover,
+                            &.is-active {
+                                background: $audio;
+                            }
+
+                            &:disabled {
+                                background-color: rgba($black, 0.8);
+                            }
+                        }
+                    }
+                }
+
+                .__bottom-toolbar {
+                    bottom: 0;
+                    display: flex;
+                    position: absolute;
+                    right: 0;
+                    transform: translateY(calc(100% + 1rem));
+                    z-index: 1;
+                }
+            }
+        }
+    }
+
+    .btn-plain {
+        background-color: $editorBtns;
+        color: $white;
+        padding: 0.75rem;
+        transition: all $anim-time $anim-ease;
+
+        &:hover,
+        &.is-active {
+            background: $audio;
+        }
+
+        &:disabled {
+            background-color: rgba($black, 0.8);
+            opacity: 0.7;
+        }
+    }
+}
+
+@include media('max', 1023) {
+    .__modal-editor {
+        .image {
+            max-width: 75vw !important;
+        }
+    }
+}
+
+// crop styles
+.cropper-line {
+    background-color: transparent !important;
+}
+
+.cropper-point {
+    z-index: 1;
+
+    &.point-e,
+    &.point-w,
+    &.point-s,
+    &.point-n {
+        background-color: transparent !important;
+    }
+
+    &.point-ne,
+    &.point-se,
+    &.point-nw,
+    &.point-sw {
+        background-color: transparent !important;
+        border-color: $white;
+        border-style: solid;
+        height: 20px;
+        width: 20px;
+    }
+
+    &.point-ne {
+        border-width: 3px 3px 0 0;
+    }
+
+    &.point-nw {
+        border-width: 3px 0 0 3px;
+    }
+
+    &.point-se {
+        border-width: 0 3px 3px 0;
+    }
+
+    &.point-sw {
+        border-width: 0 0 3px 3px;
+    }
+}
+
+// filter slider
+#contentpopup2 {
+    .title,
+    .icon {
+        color: $range;
+    }
+
+    .range-neg {
+        background-image: linear-gradient(to right, $editorBtns var(--length), $range var(--length), $range 50%, $editorBtns 50%) !important;
+    }
+
+    .range-pos {
+        background-image: linear-gradient(to right, $editorBtns 50%, $range 50%, $range var(--length), $editorBtns var(--length)) !important;
+    }
+
+    input[type='range'] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: $editorBtns;
+        background-image: linear-gradient(to right, $range var(--length), $editorBtns var(--length));
+        border-radius: 100vw;
+        height: 0.5rem;
+        margin: 0.5rem 0;
+        width: 100%;
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: $white;
+            border-radius: 100vw;
+            cursor: pointer;
+            height: 1rem;
+            width: 1rem;
+        }
+
+        &::-moz-range-thumb {
+            background-color: $white;
+            border-radius: 100vw;
+            cursor: pointer;
+            height: 1rem;
+            width: 1rem;
+        }
+    }
+}
+
+// tippy theme
+.tippy-tooltip.mm-theme {
+    background-color: $black;
+    color: $white;
+}
+
+.tippy-popper[x-placement^=top] .tippy-tooltip.mm-theme .tippy-arrow {
+    border-top-color: $black;
+}

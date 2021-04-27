@@ -1,0 +1,726 @@
+/*
+  Icon Font: zlyicon
+*/
+
+@font-face {
+  font-family: "zlyicon";
+  src: url("../fonts/zlyicon.eot");
+  src: url("../fonts/zlyicon.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/zlyicon.woff2") format("woff2"),
+       url("../fonts/zlyicon.woff") format("woff"),
+       url("../fonts/zlyicon.ttf") format("truetype"),
+       url("../fonts/zlyicon.svg#zlyicon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "zlyicon";
+    src: url("../fonts/zlyicon.svg#zlyicon") format("svg");
+  }
+}
+
+[data-icon]:before { content: attr(data-icon); }
+
+[data-icon]:before,
+.zly-accessory:before,
+.zly-address-book:before,
+.zly-address-book-o:before,
+.zly-adjust:before,
+.zly-aim:before,
+.zly-alarmclock:before,
+.zly-alipay-square:before,
+.zly-angle-double-down:before,
+.zly-angle-double-up:before,
+.zly-angle-down:before,
+.zly-angle-up:before,
+.zly-angle-up-end:before,
+.zly-app:before,
+.zly-archive:before,
+.zly-array:before,
+.zly-array-o:before,
+.zly-arrow-left:before,
+.zly-arrow-right:before,
+.zly-authentication:before,
+.zly-authentication-o:before,
+.zly-backward:before,
+.zly-backward-o:before,
+.zly-badgel:before,
+.zly-badgel-o:before,
+.zly-bars:before,
+.zly-bell:before,
+.zly-bell-o:before,
+.zly-book:before,
+.zly-book-o:before,
+.zly-books:before,
+.zly-books-o:before,
+.zly-box:before,
+.zly-box-check:before,
+.zly-box-check-o:before,
+.zly-box-o:before,
+.zly-building:before,
+.zly-building-o:before,
+.zly-bulb:before,
+.zly-bulb-o:before,
+.zly-buoy:before,
+.zly-calendar-line:before,
+.zly-calendar-line-o:before,
+.zly-calender:before,
+.zly-calender-o:before,
+.zly-camera:before,
+.zly-camera-o:before,
+.zly-cancel:before,
+.zly-cancel-circle:before,
+.zly-cancel-circle-o:before,
+.zly-car:before,
+.zly-car-o:before,
+.zly-card:before,
+.zly-card-o:before,
+.zly-cart:before,
+.zly-cart-o:before,
+.zly-chart:before,
+.zly-chart-o:before,
+.zly-check-circle:before,
+.zly-check-circle-o:before,
+.zly-cloud:before,
+.zly-cloud-o:before,
+.zly-coffee-cup:before,
+.zly-coffee-cup-o:before,
+.zly-compass:before,
+.zly-compass-o:before,
+.zly-contrast:before,
+.zly-copy:before,
+.zly-copy-o:before,
+.zly-cry:before,
+.zly-cup:before,
+.zly-cup-o:before,
+.zly-details:before,
+.zly-details-circle:before,
+.zly-details-circle-o:before,
+.zly-details-o:before,
+.zly-dialog:before,
+.zly-dialog-o:before,
+.zly-diamond:before,
+.zly-disk:before,
+.zly-disk-o:before,
+.zly-display:before,
+.zly-display-o:before,
+.zly-doctoral-cap:before,
+.zly-doctoral-cap-o:before,
+.zly-donate:before,
+.zly-download:before,
+.zly-download-cloud:before,
+.zly-drink:before,
+.zly-electrombile:before,
+.zly-email:before,
+.zly-email-o:before,
+.zly-enlarge:before,
+.zly-exchange-guard:before,
+.zly-exchange-guard-o:before,
+.zly-eye-close:before,
+.zly-eye-o:before,
+.zly-female:before,
+.zly-fire:before,
+.zly-fire-o:before,
+.zly-flag:before,
+.zly-flag-o:before,
+.zly-folder:before,
+.zly-folder-o:before,
+.zly-footprint:before,
+.zly-form:before,
+.zly-forward:before,
+.zly-forward-o:before,
+.zly-full-screen:before,
+.zly-gallery:before,
+.zly-gallery-o:before,
+.zly-gear-s:before,
+.zly-gear-s-o:before,
+.zly-gift:before,
+.zly-gift-box:before,
+.zly-gift-box-o:before,
+.zly-gift-card:before,
+.zly-gift-o:before,
+.zly-glasses:before,
+.zly-glasses-legs:before,
+.zly-glasses-legs-o:before,
+.zly-glasses-o:before,
+.zly-globe:before,
+.zly-globe-o:before,
+.zly-group:before,
+.zly-guard:before,
+.zly-guard-o:before,
+.zly-hand-bag:before,
+.zly-hard-disk:before,
+.zly-headset:before,
+.zly-headset-o:before,
+.zly-heart:before,
+.zly-heart-o:before,
+.zly-history:before,
+.zly-home:before,
+.zly-home-o:before,
+.zly-html:before,
+.zly-image:before,
+.zly-integral:before,
+.zly-integral-o:before,
+.zly-key:before,
+.zly-knot:before,
+.zly-label:before,
+.zly-label-o:before,
+.zly-lbs:before,
+.zly-lbs-o:before,
+.zly-lightning:before,
+.zly-lightning-o:before,
+.zly-like:before,
+.zly-like-o:before,
+.zly-list:before,
+.zly-list-o:before,
+.zly-list-ul:before,
+.zly-live:before,
+.zly-live-o:before,
+.zly-location-arrow:before,
+.zly-location-arrow-o:before,
+.zly-lock:before,
+.zly-lock-o:before,
+.zly-male:before,
+.zly-manage:before,
+.zly-manage-o:before,
+.zly-map:before,
+.zly-map-o:before,
+.zly-medal:before,
+.zly-medal-o:before,
+.zly-medical-kit:before,
+.zly-medical-kit-o:before,
+.zly-member:before,
+.zly-member-o:before,
+.zly-message:before,
+.zly-message-o:before,
+.zly-microphone:before,
+.zly-microphone-o:before,
+.zly-minus:before,
+.zly-minus-circle:before,
+.zly-minus-circle-o:before,
+.zly-molecule:before,
+.zly-molecule-o:before,
+.zly-money-circle:before,
+.zly-money-circle-o:before,
+.zly-money-guard:before,
+.zly-money-guard-o:before,
+.zly-mouse:before,
+.zly-movie:before,
+.zly-movie-o:before,
+.zly-music:before,
+.zly-music-o:before,
+.zly-new:before,
+.zly-news-o:before,
+.zly-organization:before,
+.zly-organization-o:before,
+.zly-packet:before,
+.zly-packet-o:before,
+.zly-pant:before,
+.zly-pant-o:before,
+.zly-paper:before,
+.zly-paper-o:before,
+.zly-partake:before,
+.zly-partake-o:before,
+.zly-password:before,
+.zly-password-o:before,
+.zly-pause:before,
+.zly-pause-o:before,
+.zly-pencil:before,
+.zly-pencil-o:before,
+.zly-phone:before,
+.zly-phone-call:before,
+.zly-phone-call-o:before,
+.zly-phone-o:before,
+.zly-pile:before,
+.zly-pill:before,
+.zly-plan:before,
+.zly-play:before,
+.zly-play-o:before,
+.zly-plus:before,
+.zly-plus-circle:before,
+.zly-plus-circle-o:before,
+.zly-points-h:before,
+.zly-points-v:before,
+.zly-polyline:before,
+.zly-polyline-o:before,
+.zly-power-off:before,
+.zly-printer:before,
+.zly-printer-empty:before,
+.zly-progress:before,
+.zly-progress-o:before,
+.zly-purchase:before,
+.zly-push:before,
+.zly-qrcode:before,
+.zly-qrcode-o:before,
+.zly-rain:before,
+.zly-rain-o:before,
+.zly-rank:before,
+.zly-rank-o:before,
+.zly-recharge:before,
+.zly-recharge-o:before,
+.zly-restore:before,
+.zly-resycle:before,
+.zly-ring:before,
+.zly-ring-o:before,
+.zly-rss:before,
+.zly-scan:before,
+.zly-science:before,
+.zly-screen:before,
+.zly-search:before,
+.zly-search-o:before,
+.zly-seckill:before,
+.zly-send:before,
+.zly-send-o:before,
+.zly-service:before,
+.zly-setting:before,
+.zly-setting-o:before,
+.zly-share:before,
+.zly-shoe-high-heeled:before,
+.zly-shoe-high-heeled-o:before,
+.zly-shoe-sport:before,
+.zly-shoe-sport-o:before,
+.zly-shopping-bag:before,
+.zly-shopping-bag-o:before,
+.zly-shopping-bucket:before,
+.zly-shopping-bucket-o:before,
+.zly-shot-glass:before,
+.zly-shot-glass-o:before,
+.zly-shrink:before,
+.zly-skirt:before,
+.zly-skirt-o:before,
+.zly-smile:before,
+.zly-sofa:before,
+.zly-sofa-o:before,
+.zly-sound:before,
+.zly-sound-o:before,
+.zly-specie:before,
+.zly-stack:before,
+.zly-star:before,
+.zly-star-o:before,
+.zly-statistics:before,
+.zly-statistics-o:before,
+.zly-store:before,
+.zly-store-o:before,
+.zly-subway:before,
+.zly-sun:before,
+.zly-sun-o:before,
+.zly-t-shirt:before,
+.zly-t-shirt-o:before,
+.zly-tableware:before,
+.zly-tailor:before,
+.zly-task:before,
+.zly-task-o:before,
+.zly-telephone:before,
+.zly-telephone-o:before,
+.zly-text-square:before,
+.zly-th:before,
+.zly-th-o:before,
+.zly-ticket:before,
+.zly-ticket-o:before,
+.zly-tie:before,
+.zly-tie-o:before,
+.zly-time:before,
+.zly-time-o:before,
+.zly-trash:before,
+.zly-trash-o:before,
+.zly-trophy:before,
+.zly-trophy-o:before,
+.zly-trunk:before,
+.zly-trunk-o:before,
+.zly-umbrella:before,
+.zly-umbrella-o:before,
+.zly-undo:before,
+.zly-upload:before,
+.zly-upload-cloud:before,
+.zly-user:before,
+.zly-user-add:before,
+.zly-user-check:before,
+.zly-user-circle:before,
+.zly-user-circle-o:before,
+.zly-user-o:before,
+.zly-video:before,
+.zly-video-camera:before,
+.zly-video-camera-o:before,
+.zly-video-o:before,
+.zly-voice-tube:before,
+.zly-volume-off:before,
+.zly-volume-off-o:before,
+.zly-volume-up:before,
+.zly-volume-up-o:before,
+.zly-wallet:before,
+.zly-wallet-o:before,
+.zly-warning:before,
+.zly-warning-o:before,
+.zly-water-drop:before,
+.zly-water-drop-o:before,
+.zly-wechat-pay:before,
+.zly-weibo:before,
+.zly-weixin:before,
+.zly-wifi:before,
+.zly-wind:before,
+.zly-window:before,
+.zly-window-o:before,
+.zly-wine-glass:before,
+.zly-wine-glass-o:before,
+.zly-workbench:before,
+.zly-workbench-o:before,
+.zly-zhilacloud:before {
+  display: inline-block;
+  font-family: "zlyicon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.zly-accessory:before { content: "\f100"; }
+.zly-address-book:before { content: "\f101"; }
+.zly-address-book-o:before { content: "\f286"; }
+.zly-adjust:before { content: "\f103"; }
+.zly-aim:before { content: "\f104"; }
+.zly-alarmclock:before { content: "\f105"; }
+.zly-alipay-square:before { content: "\f107"; }
+.zly-angle-double-down:before { content: "\f108"; }
+.zly-angle-double-up:before { content: "\f109"; }
+.zly-angle-down:before { content: "\f10a"; }
+.zly-angle-up:before { content: "\f10b"; }
+.zly-angle-up-end:before { content: "\f10c"; }
+.zly-app:before { content: "\f287"; }
+.zly-archive:before { content: "\f10d"; }
+.zly-array:before { content: "\f10e"; }
+.zly-array-o:before { content: "\f10f"; }
+.zly-arrow-left:before { content: "\f110"; }
+.zly-arrow-right:before { content: "\f111"; }
+.zly-authentication:before { content: "\f112"; }
+.zly-authentication-o:before { content: "\f113"; }
+.zly-backward:before { content: "\f114"; }
+.zly-backward-o:before { content: "\f115"; }
+.zly-badgel:before { content: "\f27e"; }
+.zly-badgel-o:before { content: "\f27f"; }
+.zly-bars:before { content: "\f118"; }
+.zly-bell:before { content: "\f119"; }
+.zly-bell-o:before { content: "\f11a"; }
+.zly-book:before { content: "\f11d"; }
+.zly-book-o:before { content: "\f11e"; }
+.zly-books:before { content: "\f11f"; }
+.zly-books-o:before { content: "\f120"; }
+.zly-box:before { content: "\f121"; }
+.zly-box-check:before { content: "\f122"; }
+.zly-box-check-o:before { content: "\f123"; }
+.zly-box-o:before { content: "\f124"; }
+.zly-building:before { content: "\f125"; }
+.zly-building-o:before { content: "\f126"; }
+.zly-bulb:before { content: "\f127"; }
+.zly-bulb-o:before { content: "\f128"; }
+.zly-buoy:before { content: "\f129"; }
+.zly-calendar-line:before { content: "\f12b"; }
+.zly-calendar-line-o:before { content: "\f12c"; }
+.zly-calender:before { content: "\f12e"; }
+.zly-calender-o:before { content: "\f12f"; }
+.zly-camera:before { content: "\f130"; }
+.zly-camera-o:before { content: "\f131"; }
+.zly-cancel:before { content: "\f132"; }
+.zly-cancel-circle:before { content: "\f133"; }
+.zly-cancel-circle-o:before { content: "\f134"; }
+.zly-car:before { content: "\f135"; }
+.zly-car-o:before { content: "\f136"; }
+.zly-card:before { content: "\f137"; }
+.zly-card-o:before { content: "\f138"; }
+.zly-cart:before { content: "\f139"; }
+.zly-cart-o:before { content: "\f13a"; }
+.zly-chart:before { content: "\f13b"; }
+.zly-chart-o:before { content: "\f13e"; }
+.zly-check-circle:before { content: "\f140"; }
+.zly-check-circle-o:before { content: "\f141"; }
+.zly-cloud:before { content: "\f145"; }
+.zly-cloud-o:before { content: "\f146"; }
+.zly-coffee-cup:before { content: "\f149"; }
+.zly-coffee-cup-o:before { content: "\f14a"; }
+.zly-compass:before { content: "\f14c"; }
+.zly-compass-o:before { content: "\f14d"; }
+.zly-contrast:before { content: "\f14f"; }
+.zly-copy:before { content: "\f150"; }
+.zly-copy-o:before { content: "\f151"; }
+.zly-cry:before { content: "\f154"; }
+.zly-cup:before { content: "\f155"; }
+.zly-cup-o:before { content: "\f156"; }
+.zly-details:before { content: "\f159"; }
+.zly-details-circle:before { content: "\f15a"; }
+.zly-details-circle-o:before { content: "\f15b"; }
+.zly-details-o:before { content: "\f15c"; }
+.zly-dialog:before { content: "\f15d"; }
+.zly-dialog-o:before { content: "\f15e"; }
+.zly-diamond:before { content: "\f15f"; }
+.zly-disk:before { content: "\f160"; }
+.zly-disk-o:before { content: "\f161"; }
+.zly-display:before { content: "\f280"; }
+.zly-display-o:before { content: "\f281"; }
+.zly-doctoral-cap:before { content: "\f162"; }
+.zly-doctoral-cap-o:before { content: "\f163"; }
+.zly-donate:before { content: "\f164"; }
+.zly-download:before { content: "\f165"; }
+.zly-download-cloud:before { content: "\f166"; }
+.zly-drink:before { content: "\f167"; }
+.zly-electrombile:before { content: "\f169"; }
+.zly-email:before { content: "\f16a"; }
+.zly-email-o:before { content: "\f16b"; }
+.zly-enlarge:before { content: "\f16c"; }
+.zly-exchange-guard:before { content: "\f16e"; }
+.zly-exchange-guard-o:before { content: "\f16f"; }
+.zly-eye-close:before { content: "\f171"; }
+.zly-eye-o:before { content: "\f172"; }
+.zly-female:before { content: "\f173"; }
+.zly-fire:before { content: "\f174"; }
+.zly-fire-o:before { content: "\f175"; }
+.zly-flag:before { content: "\f176"; }
+.zly-flag-o:before { content: "\f177"; }
+.zly-folder:before { content: "\f179"; }
+.zly-folder-o:before { content: "\f17a"; }
+.zly-footprint:before { content: "\f17b"; }
+.zly-form:before { content: "\f17d"; }
+.zly-forward:before { content: "\f17f"; }
+.zly-forward-o:before { content: "\f180"; }
+.zly-full-screen:before { content: "\f181"; }
+.zly-gallery:before { content: "\f182"; }
+.zly-gallery-o:before { content: "\f183"; }
+.zly-gear-s:before { content: "\f187"; }
+.zly-gear-s-o:before { content: "\f188"; }
+.zly-gift:before { content: "\f189"; }
+.zly-gift-box:before { content: "\f18a"; }
+.zly-gift-box-o:before { content: "\f18b"; }
+.zly-gift-card:before { content: "\f18c"; }
+.zly-gift-o:before { content: "\f18d"; }
+.zly-glasses:before { content: "\f18e"; }
+.zly-glasses-legs:before { content: "\f18f"; }
+.zly-glasses-legs-o:before { content: "\f190"; }
+.zly-glasses-o:before { content: "\f191"; }
+.zly-globe:before { content: "\f192"; }
+.zly-globe-o:before { content: "\f193"; }
+.zly-group:before { content: "\f194"; }
+.zly-guard:before { content: "\f195"; }
+.zly-guard-o:before { content: "\f196"; }
+.zly-hand-bag:before { content: "\f197"; }
+.zly-hard-disk:before { content: "\f198"; }
+.zly-headset:before { content: "\f199"; }
+.zly-headset-o:before { content: "\f19a"; }
+.zly-heart:before { content: "\f19b"; }
+.zly-heart-o:before { content: "\f19c"; }
+.zly-history:before { content: "\f19d"; }
+.zly-home:before { content: "\f19e"; }
+.zly-home-o:before { content: "\f19f"; }
+.zly-html:before { content: "\f1a0"; }
+.zly-image:before { content: "\f1a1"; }
+.zly-integral:before { content: "\f1a2"; }
+.zly-integral-o:before { content: "\f1a3"; }
+.zly-key:before { content: "\f1a4"; }
+.zly-knot:before { content: "\f1a5"; }
+.zly-label:before { content: "\f1a6"; }
+.zly-label-o:before { content: "\f1a7"; }
+.zly-lbs:before { content: "\f1a8"; }
+.zly-lbs-o:before { content: "\f1a9"; }
+.zly-lightning:before { content: "\f1aa"; }
+.zly-lightning-o:before { content: "\f1ab"; }
+.zly-like:before { content: "\f1ac"; }
+.zly-like-o:before { content: "\f1ad"; }
+.zly-list:before { content: "\f1ae"; }
+.zly-list-o:before { content: "\f1af"; }
+.zly-list-ul:before { content: "\f1b0"; }
+.zly-live:before { content: "\f1b1"; }
+.zly-live-o:before { content: "\f1b2"; }
+.zly-location-arrow:before { content: "\f1b3"; }
+.zly-location-arrow-o:before { content: "\f1b4"; }
+.zly-lock:before { content: "\f1b5"; }
+.zly-lock-o:before { content: "\f1b6"; }
+.zly-male:before { content: "\f1b7"; }
+.zly-manage:before { content: "\f1b8"; }
+.zly-manage-o:before { content: "\f1b9"; }
+.zly-map:before { content: "\f1ba"; }
+.zly-map-o:before { content: "\f1bb"; }
+.zly-medal:before { content: "\f1bc"; }
+.zly-medal-o:before { content: "\f1bd"; }
+.zly-medical-kit:before { content: "\f1be"; }
+.zly-medical-kit-o:before { content: "\f1bf"; }
+.zly-member:before { content: "\f1c0"; }
+.zly-member-o:before { content: "\f1c1"; }
+.zly-message:before { content: "\f1c2"; }
+.zly-message-o:before { content: "\f1c3"; }
+.zly-microphone:before { content: "\f1c4"; }
+.zly-microphone-o:before { content: "\f1c5"; }
+.zly-minus:before { content: "\f1c6"; }
+.zly-minus-circle:before { content: "\f1c7"; }
+.zly-minus-circle-o:before { content: "\f1c8"; }
+.zly-molecule:before { content: "\f1c9"; }
+.zly-molecule-o:before { content: "\f1ca"; }
+.zly-money-circle:before { content: "\f1cb"; }
+.zly-money-circle-o:before { content: "\f1cc"; }
+.zly-money-guard:before { content: "\f1cd"; }
+.zly-money-guard-o:before { content: "\f1ce"; }
+.zly-mouse:before { content: "\f1d0"; }
+.zly-movie:before { content: "\f1d1"; }
+.zly-movie-o:before { content: "\f1d2"; }
+.zly-music:before { content: "\f1d3"; }
+.zly-music-o:before { content: "\f1d4"; }
+.zly-new:before { content: "\f282"; }
+.zly-news-o:before { content: "\f1d6"; }
+.zly-organization:before { content: "\f1d7"; }
+.zly-organization-o:before { content: "\f1d8"; }
+.zly-packet:before { content: "\f1d9"; }
+.zly-packet-o:before { content: "\f1da"; }
+.zly-pant:before { content: "\f1db"; }
+.zly-pant-o:before { content: "\f1dc"; }
+.zly-paper:before { content: "\f1dd"; }
+.zly-paper-o:before { content: "\f1de"; }
+.zly-partake:before { content: "\f1df"; }
+.zly-partake-o:before { content: "\f1e0"; }
+.zly-password:before { content: "\f1e1"; }
+.zly-password-o:before { content: "\f1e2"; }
+.zly-pause:before { content: "\f1e3"; }
+.zly-pause-o:before { content: "\f1e4"; }
+.zly-pencil:before { content: "\f1e5"; }
+.zly-pencil-o:before { content: "\f1e6"; }
+.zly-phone:before { content: "\f1e7"; }
+.zly-phone-call:before { content: "\f283"; }
+.zly-phone-call-o:before { content: "\f284"; }
+.zly-phone-o:before { content: "\f1e8"; }
+.zly-pile:before { content: "\f1e9"; }
+.zly-pill:before { content: "\f1ea"; }
+.zly-plan:before { content: "\f1eb"; }
+.zly-play:before { content: "\f1ec"; }
+.zly-play-o:before { content: "\f1ed"; }
+.zly-plus:before { content: "\f1ee"; }
+.zly-plus-circle:before { content: "\f1ef"; }
+.zly-plus-circle-o:before { content: "\f1f0"; }
+.zly-points-h:before { content: "\f1f1"; }
+.zly-points-v:before { content: "\f1f2"; }
+.zly-polyline:before { content: "\f1f3"; }
+.zly-polyline-o:before { content: "\f1f4"; }
+.zly-power-off:before { content: "\f1f5"; }
+.zly-printer:before { content: "\f1f6"; }
+.zly-printer-empty:before { content: "\f1f7"; }
+.zly-progress:before { content: "\f1f8"; }
+.zly-progress-o:before { content: "\f1f9"; }
+.zly-purchase:before { content: "\f1fa"; }
+.zly-push:before { content: "\f1fb"; }
+.zly-qrcode:before { content: "\f1fc"; }
+.zly-qrcode-o:before { content: "\f1fd"; }
+.zly-rain:before { content: "\f1fe"; }
+.zly-rain-o:before { content: "\f1ff"; }
+.zly-rank:before { content: "\f200"; }
+.zly-rank-o:before { content: "\f201"; }
+.zly-recharge:before { content: "\f202"; }
+.zly-recharge-o:before { content: "\f205"; }
+.zly-restore:before { content: "\f206"; }
+.zly-resycle:before { content: "\f207"; }
+.zly-ring:before { content: "\f208"; }
+.zly-ring-o:before { content: "\f209"; }
+.zly-rss:before { content: "\f20a"; }
+.zly-scan:before { content: "\f20b"; }
+.zly-science:before { content: "\f285"; }
+.zly-screen:before { content: "\f20c"; }
+.zly-search:before { content: "\f20e"; }
+.zly-search-o:before { content: "\f20f"; }
+.zly-seckill:before { content: "\f210"; }
+.zly-send:before { content: "\f211"; }
+.zly-send-o:before { content: "\f212"; }
+.zly-service:before { content: "\f213"; }
+.zly-setting:before { content: "\f216"; }
+.zly-setting-o:before { content: "\f217"; }
+.zly-share:before { content: "\f218"; }
+.zly-shoe-high-heeled:before { content: "\f219"; }
+.zly-shoe-high-heeled-o:before { content: "\f21a"; }
+.zly-shoe-sport:before { content: "\f21b"; }
+.zly-shoe-sport-o:before { content: "\f21c"; }
+.zly-shopping-bag:before { content: "\f21d"; }
+.zly-shopping-bag-o:before { content: "\f21e"; }
+.zly-shopping-bucket:before { content: "\f21f"; }
+.zly-shopping-bucket-o:before { content: "\f220"; }
+.zly-shot-glass:before { content: "\f221"; }
+.zly-shot-glass-o:before { content: "\f222"; }
+.zly-shrink:before { content: "\f223"; }
+.zly-skirt:before { content: "\f224"; }
+.zly-skirt-o:before { content: "\f225"; }
+.zly-smile:before { content: "\f226"; }
+.zly-sofa:before { content: "\f227"; }
+.zly-sofa-o:before { content: "\f228"; }
+.zly-sound:before { content: "\f229"; }
+.zly-sound-o:before { content: "\f22a"; }
+.zly-specie:before { content: "\f22b"; }
+.zly-stack:before { content: "\f22c"; }
+.zly-star:before { content: "\f22d"; }
+.zly-star-o:before { content: "\f22e"; }
+.zly-statistics:before { content: "\f22f"; }
+.zly-statistics-o:before { content: "\f230"; }
+.zly-store:before { content: "\f231"; }
+.zly-store-o:before { content: "\f232"; }
+.zly-subway:before { content: "\f233"; }
+.zly-sun:before { content: "\f234"; }
+.zly-sun-o:before { content: "\f235"; }
+.zly-t-shirt:before { content: "\f236"; }
+.zly-t-shirt-o:before { content: "\f237"; }
+.zly-tableware:before { content: "\f238"; }
+.zly-tailor:before { content: "\f239"; }
+.zly-task:before { content: "\f23a"; }
+.zly-task-o:before { content: "\f23b"; }
+.zly-telephone:before { content: "\f23c"; }
+.zly-telephone-o:before { content: "\f23d"; }
+.zly-text-square:before { content: "\f23e"; }
+.zly-th:before { content: "\f23f"; }
+.zly-th-o:before { content: "\f240"; }
+.zly-ticket:before { content: "\f241"; }
+.zly-ticket-o:before { content: "\f242"; }
+.zly-tie:before { content: "\f243"; }
+.zly-tie-o:before { content: "\f244"; }
+.zly-time:before { content: "\f245"; }
+.zly-time-o:before { content: "\f247"; }
+.zly-trash:before { content: "\f24a"; }
+.zly-trash-o:before { content: "\f24b"; }
+.zly-trophy:before { content: "\f24d"; }
+.zly-trophy-o:before { content: "\f24e"; }
+.zly-trunk:before { content: "\f24f"; }
+.zly-trunk-o:before { content: "\f250"; }
+.zly-umbrella:before { content: "\f251"; }
+.zly-umbrella-o:before { content: "\f252"; }
+.zly-undo:before { content: "\f253"; }
+.zly-upload:before { content: "\f254"; }
+.zly-upload-cloud:before { content: "\f255"; }
+.zly-user:before { content: "\f257"; }
+.zly-user-add:before { content: "\f25a"; }
+.zly-user-check:before { content: "\f25b"; }
+.zly-user-circle:before { content: "\f25c"; }
+.zly-user-circle-o:before { content: "\f25d"; }
+.zly-user-o:before { content: "\f25e"; }
+.zly-video:before { content: "\f260"; }
+.zly-video-camera:before { content: "\f261"; }
+.zly-video-camera-o:before { content: "\f262"; }
+.zly-video-o:before { content: "\f263"; }
+.zly-voice-tube:before { content: "\f265"; }
+.zly-volume-off:before { content: "\f266"; }
+.zly-volume-off-o:before { content: "\f267"; }
+.zly-volume-up:before { content: "\f268"; }
+.zly-volume-up-o:before { content: "\f269"; }
+.zly-wallet:before { content: "\f26a"; }
+.zly-wallet-o:before { content: "\f26b"; }
+.zly-warning:before { content: "\f26c"; }
+.zly-warning-o:before { content: "\f26d"; }
+.zly-water-drop:before { content: "\f26e"; }
+.zly-water-drop-o:before { content: "\f26f"; }
+.zly-wechat-pay:before { content: "\f272"; }
+.zly-weibo:before { content: "\f273"; }
+.zly-weixin:before { content: "\f274"; }
+.zly-wifi:before { content: "\f275"; }
+.zly-wind:before { content: "\f276"; }
+.zly-window:before { content: "\f277"; }
+.zly-window-o:before { content: "\f278"; }
+.zly-wine-glass:before { content: "\f279"; }
+.zly-wine-glass-o:before { content: "\f27a"; }
+.zly-workbench:before { content: "\f27b"; }
+.zly-workbench-o:before { content: "\f27c"; }
+.zly-zhilacloud:before { content: "\f27d"; }

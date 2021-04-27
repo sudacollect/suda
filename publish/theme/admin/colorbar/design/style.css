@@ -1,0 +1,41 @@
+/**
+ * colorbar theme by suda.
+ * Powered by suda.
+**/
+
+.navbar .navbar-brand{ display:inline-block }
+
+
+.navbar-dark .navbar-nav .nav-link{
+    color:#efefef;
+}
+
+
+
+@media (min-width: 768px) {
+    
+    
+    
+
+    
+    
+    .navbar-nav>li>a.with-avatar{
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+    
+    
+    .suda-row{
+        padding: 0px 0px 20px 0px;
+    }
+    .suda-row.in{
+        padding: 0px 0px 20px 0px;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-side{display:none;}
+    
+    
+    
+}

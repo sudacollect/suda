@@ -1,0 +1,3 @@
+*.local
+*.map
+node_modules

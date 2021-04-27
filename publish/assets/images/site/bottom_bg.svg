@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1982px" height="337px" viewBox="0 0 1982 337" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>底部背景</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="27.3193842%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#4DACFF" offset="0%"></stop>
+            <stop stop-color="#A1D3FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-2">
+            <stop stop-color="#64B7FF" offset="0%"></stop>
+            <stop stop-color="#0071D4" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="底部背景" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M991,337.000268 C1205.99374,337.000268 1955.18447,336.978919 1982,337 C1982.34126,337.000268 2067.84126,33.6700759 2067.5,17 C2066.99984,-7.4322909 1713.40904,100.186295 1300,65.9322909 C1084.45948,48.0731604 749.96951,8.52651283e-14 562.5,8.52651283e-14 C197.80797,8.52651283e-14 -19.6920298,37.2357832 -90,111.70735 C-39.9488433,260.192823 -9.89507527,335.290462 0.161304171,337.000268 C296.748036,387.426549 643.958688,337.000268 991,337.000268 Z" id="Oval" fill="url(#linearGradient-1)"></path>
+        <path d="M1020,514.763972 C1234.99374,514.763972 1984.18447,514.732312 2011,514.763574 C2011.34126,514.763972 2096.84126,64.9319806 2096.5,40.2106254 C2095.99984,3.97807637 1742.40904,163.574068 1329,112.776135 C1113.45948,86.2914376 778.96951,15 591.5,15 C226.80797,15 9.30797022,70.2198461 -61,180.659538 C-10.9488433,400.860223 19.1049247,512.228367 29.1613042,514.763972 C325.748036,589.545035 672.958688,514.763972 1020,514.763972 Z" id="Oval" fill="url(#linearGradient-2)"></path>
+    </g>
+</svg>

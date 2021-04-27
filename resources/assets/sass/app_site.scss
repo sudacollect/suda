@@ -1,0 +1,22 @@
+
+// Fonts
+//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+// @import "~bootstrap/dist/css/bootstrap";//v3
+@import "~bootstrap/scss/bootstrap"; //4.4
+
+@import "../vendors/ionicons/ionicons";
+
+// FontAwesome
+@import "@fortawesome/fontawesome-free/css/all";
+
+@import "~select2/dist/css/select2";
+@import "@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4";
+
+@import "../vendors/jqueryfileupload/css/jquery.fileupload";
+
+@import "../vendors/pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker";
