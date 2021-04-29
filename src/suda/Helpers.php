@@ -105,7 +105,7 @@ if (! function_exists('config_admin_path')) {
 if (! function_exists('suda_path')) {
     function suda_path($path = '')
     {
-        return base_path('vendor/gtd/suda/'.$path);
+        return base_path('vendor/gtdxyz/suda/'.$path);
     }
 }
 

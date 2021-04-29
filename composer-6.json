@@ -1,10 +1,10 @@
 {
-  "name": "gtd/suda",
+  "name": "gtdxyz/suda",
   "type": "library",
   "description": "suda system",
   "keywords": ["laravel", "suda", "gtd"],
   "homepage": "https://github.com/sudacollect/suda.git",
-  "license": "GPL-2.0",
+  "license": "Apache-2.0",
   "require": {
     "php": ">7.2",
     "intervention/image": "^2.5",

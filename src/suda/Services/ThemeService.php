@@ -505,7 +505,7 @@ class ThemeService {
         $filesystem = new Filesystem();
 
         $widgets = [];
-        $widget_path = $filesystem->files(base_path('vendor/gtd/suda/resources/widgets'));
+        $widget_path = $filesystem->files(base_path('vendor/gtdxyz/suda/resources/widgets'));
         
         if(!empty($widget_path)){
 
