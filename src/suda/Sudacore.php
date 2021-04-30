@@ -15,7 +15,7 @@ use Arrilot\Widgets\AsyncFacade as AsyncWidget;
 class Sudacore
 {
     protected static $name = 'Suda';
-    protected static $version = '5.1.0';//2021-05-01
+    protected static $version = '5.1.1';//2021-05-01
     protected static $author = 'SUDA';
     protected static $email = 'hello@suda.gtd.xyz';
     private static $instance;
