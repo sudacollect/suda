@@ -162,7 +162,11 @@ trait HasTaxonomies
     {
         if ($taxonomy) {
             $term_ids = Taxonomy::where('taxonomy', $taxonomy)->pluck('term_id');
-            return Term::whereIn('id', $term_ids)->where('taxonomy',$taxonomy)->where('name','like', DB::raw("'%$term_name%'"))->take($limit>0?$limit:10)->get();
+            return Term::whereIn('id', $term_ids)
+                ->where('taxonomy',$taxonomy)
+                ->where('name','like', DB::raw("'%$term_name%'"))
+                ->take($limit>0?$limit:10)
+                ->get();
         } else {
             $term_ids = Taxonomy::where([])->pluck('term_id');
             return Term::whereIn('id', $term_ids)->where('name','like', DB::raw("'%$term_name%'"))->take($limit>0?$limit:10)->get();

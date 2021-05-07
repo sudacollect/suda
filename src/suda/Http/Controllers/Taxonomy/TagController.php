@@ -19,7 +19,7 @@ class TagController extends BaseController{
         $model = new Tag;
 
         $name = $request->name;
-        $tags = $model->getTermsByName($name, $request->taxonomy, 5);
+        $tags = $model->getTermsByName($name, $request->taxonomy,0);
         
         if($returnJson){
             $tag_datas = [];
