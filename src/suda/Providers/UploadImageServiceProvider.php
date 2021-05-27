@@ -36,10 +36,10 @@ class UploadImageServiceProvider extends ServiceProvider
             $components = $this->getArguments($components);
             
             $data_string = '';
-            if(count($components)>3){
+            if(count($components)>3 && $components[3]){
                 $data_string = ', "data"=>'.$components[3];
             }
-
+            
             $input_name = '';
             $media_type = $components[0];
 
@@ -54,15 +54,20 @@ class UploadImageServiceProvider extends ServiceProvider
             }else{
                 $data_string .= ', "input_name"=>""';
             }
+
+            $is_crop = 0;
+            if(count($components)>4){
+                $is_crop = $components[4];
+            }
             
             $view = "view_suda::admin.component.upload_box";
             
-            if(count($components)>4){
-                $view = $components[4];
+            if(count($components)>5){
+                $view = $components[5];
             }
             
             return '<?php
-                echo View( "'.$view.'",["media_type"=>'.$media_type.',"max"=>'.$components[1].',"columns"=>'.$components[2].$data_string.']);
+                echo View( "'.$view.'",["media_type"=>'.$media_type.',"max"=>'.$components[1].',"is_crop"=>'.$is_crop.',"columns"=>'.$components[2].$data_string.']);
             ?>';
         });
         

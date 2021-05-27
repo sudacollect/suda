@@ -14,7 +14,7 @@
                 
                 <div class="card-body">
                     
-                    @uploadBox('media','6','6')
+                    @uploadBox('media','6','6',null,1)
                     
                 </div>
             </div>

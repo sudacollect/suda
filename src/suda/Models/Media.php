@@ -21,13 +21,14 @@ class Media extends Model
         'type',
         'size',
         'path',
+        'crop',
         'hidden'
     ];
     protected $dispatchesEvents = [
         'deleted' => \Gtd\Suda\Events\MediaDeleted::class
     ];
 
-    protected $appends = ['original_path','original_large_path','original_small_path','original_type'];
+    protected $appends = ['original_path','original_medium_path','original_large_path','original_small_path','original_type'];
     
     public function scopeName($query, $name)
     {
@@ -117,6 +118,12 @@ class Media extends Model
     }
     
     public function getOriginalPathAttribute()
+    {
+
+        return suda_image($this,['size'=>'large','imageClass'=>'image_show','url'=>true]);
+
+    }
+    public function getOriginalMediumPathAttribute()
     {
 
         return suda_image($this,['size'=>'medium','imageClass'=>'image_show','url'=>true]);

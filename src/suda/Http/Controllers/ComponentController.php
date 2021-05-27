@@ -37,9 +37,14 @@ class ComponentController extends BaseController
         if($request->media_max){
             $media_max = $request->media_max;
         }
-        
+        $media_crop = 0;
+        if($request->media_crop){
+            $media_crop = $request->media_crop;
+        }
+
         $outputs['media_name'] =  $media_name;
         $outputs['media_max'] =  $media_max;
+        $outputs['media_crop'] =  $media_crop;
 
         $layout_site = suda_path('resources/views/site');
         View::addNamespace('view_app', $layout_site);

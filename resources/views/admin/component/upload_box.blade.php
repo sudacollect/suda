@@ -11,7 +11,7 @@
                 <i class="zly-cancel-circle"></i>
             </span>
             @endif
-            <div class="upload-item uploadbox uploadbox-filled" id="media-{{ $k }}" _data_type="{{ $media_type }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif media_max="@if(isset($max)){{$max}}@else{{1}}@endif">
+            <div class="upload-item uploadbox uploadbox-filled" id="media-{{ $k }}" _data_type="{{ $media_type }}" _data_crop="{{ $is_crop }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif media_max="@if(isset($max)){{$max}}@else{{1}}@endif">
         
                 <img src="{{ suda_image($media,['size'=>'large','imageClass'=>'image_icon','url'=>true],false) }}" title="{{ $media->name }}" class="zpress-image image-medium image_show">
                 
@@ -32,7 +32,7 @@
                 <span class="remove-modal-item">
                     <i class="zly-cancel-circle"></i>
                 </span>
-                <div class="upload-item uploadbox" id="media-0" _data_type="{{ $media_type }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif media_max="@if(isset($max)){{$max}}@else{{1}}@endif">
+                <div class="upload-item uploadbox" id="media-0" _data_type="{{ $media_type }}" _data_crop="{{ $is_crop }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif media_max="@if(isset($max)){{$max}}@else{{1}}@endif">
                 </div>
             </div>
         
@@ -48,7 +48,7 @@
 
             <div class="list-group-item">
                 
-                <div class="upload-item uploadbox uploadbox-filled" id="media-0" _data_type="{{ $media_type }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif media_max="@if(isset($max)){{$max}}@else{{1}}@endif">
+                <div class="upload-item uploadbox uploadbox-filled" id="media-0" _data_type="{{ $media_type }}" _data_crop="{{ $is_crop }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif media_max="@if(isset($max)){{$max}}@else{{1}}@endif">
             
                     <img src="{{ suda_image($media,['size'=>'large','imageClass'=>'image_icon','url'=>true,false]) }}" title="{{ $media->name }}" class="zpress-image image-medium image_show">
 
@@ -75,7 +75,7 @@
         
         <div class="list-group-item">
             
-            <div class="upload-item uploadbox uploadbox-filled" id="media-0" _data_type="{{ $media_type }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif @if(isset($max)) media_max="{{$max}}" @else media_max="1" @endif>
+            <div class="upload-item uploadbox uploadbox-filled" id="media-0" _data_type="{{ $media_type }}" _data_crop="{{ $is_crop }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif @if(isset($max)) media_max="{{$max}}" @else media_max="1" @endif>
                 
                 @if($data)
                 <img src="{{ suda_image(isset($data)?$data:'',['size'=>'medium','imageClass'=>'image_icon','url'=>true,false]) }}" title="{{ $data->name }}" class="zpress-image image-medium image_show">
@@ -107,7 +107,7 @@
     
     <div class="list-group-item">
         
-        <div class="upload-item uploadbox" id="media-0" _data_type="{{ $media_type }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif media_max="@if(isset($max)){{$max}}@else{{1}}@endif">
+        <div class="upload-item uploadbox" id="media-0" _data_type="{{ $media_type }}" _data_crop="{{ $is_crop }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif media_max="@if(isset($max)){{$max}}@else{{1}}@endif">
             
         </div>
     

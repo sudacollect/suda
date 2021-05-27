@@ -240,6 +240,7 @@ trait MediaBoxTrait
             if($request->media_type){
                 $media_type = $request->media_type;
             }
+            $media_crop = $request->media_crop;
             $media_name = $request->media_name;
             if(!$media_name){
                 $media_name = 'default';
@@ -249,6 +250,7 @@ trait MediaBoxTrait
                 'user_type'=>$this->guard,
                 'user_id'=>$this->user->id,
                 'media_type'=>$media_type,
+                'media_crop'=>$media_crop,
                 'resize'=>$this->resize, //生成缩略图
                 'ratio'=>$this->ratio, //是否缩放
                 'hidden'=>$this->hidden,//是否从选图中隐藏

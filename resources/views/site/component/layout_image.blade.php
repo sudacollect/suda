@@ -27,7 +27,7 @@
       
       <div class="modal-body" id="media-upload" style="display:none">
         
-        <div class="suda-upload-modal" media_name="{{ $media_name }}" media_max="{{ $media_max }}" media_type="{{ $media_type }}">
+        <div class="suda-upload-modal" media_name="{{ $media_name }}" media_max="{{ $media_max }}" media_type="{{ $media_type }}" media_crop="{{ $media_crop }}">
             <div class="filelists">
         	<ol class="filelist complete">
         	</ol>

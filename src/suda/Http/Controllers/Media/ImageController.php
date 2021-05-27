@@ -259,9 +259,11 @@ class ImageController extends BaseController
             ];
         }
 
-        $isCrop = false;
-        if(isset($setting['crop']) && $setting['crop']==1){
-            $isCrop = true;
+        $is_crop = false;
+        $media_crop = array_get($options,'media_crop',false);
+        
+        if($media_crop || (isset($setting['crop']) && $setting['crop']==1)){
+            $is_crop = true;
         }
 
         //medium缩略图
@@ -275,7 +277,7 @@ class ImageController extends BaseController
 
             $save_medium_height = ceil(($save_medium_width/$sourceWidth)*$sourceHeight);
 
-            if($isCrop){
+            if($is_crop){
                 $save_medium_height = array_get($options,'save_medium_height',$setting['size']['medium']['height']);
             }
 
@@ -287,7 +289,7 @@ class ImageController extends BaseController
             }
             $save_medium_width = ceil(($save_medium_height/$sourceHeight)*$sourceWidth);
 
-            if($isCrop){
+            if($is_crop){
                 $save_medium_width = array_get($options,'save_medium_width',$setting['size']['medium']['width']);
             }
 
@@ -302,7 +304,7 @@ class ImageController extends BaseController
             // }
             $save_small_height = ceil(($save_small_width/$sourceWidth)*$sourceHeight);
 
-            if($isCrop){
+            if($is_crop){
                 $save_small_height = array_get($options,'save_small_height',$setting['size']['small']['height']);
             }
 
@@ -314,7 +316,7 @@ class ImageController extends BaseController
             }
             $save_small_width = ceil(($save_small_height/$sourceHeight)*$sourceWidth);
 
-            if($isCrop){
+            if($is_crop){
                 $save_small_width = array_get($options,'save_small_width',$setting['size']['small']['width']);
             }
 
@@ -347,7 +349,7 @@ class ImageController extends BaseController
         }
         //=============== end 优先级别最高的特殊设置 ================
         
-        $isCrop = array_get($options,'crop',$isCrop); //默认不剪切
+        // $is_crop = array_get($options,'crop',$is_crop); //默认不剪切
         $isResize = array_get($options,'resize',false); //默认不缩放
         $quality = array_get($options,'quality',100); //默认质量100
         $storage = array_get($options,'storage',''); //默认存储本地
@@ -371,7 +373,7 @@ class ImageController extends BaseController
                 // $image = Image::make($this->_file);
                 // $image->save($saveImage);
                 
-                if($isCrop){
+                if($is_crop){
                     //计算x,y,截取图的中间位置
                     $x = $y = 0;
                     if($sourceWidth >= $save_medium_width){
@@ -402,6 +404,7 @@ class ImageController extends BaseController
                 $mediaModel->user_id = array_get($options,'user_id');
                 $mediaModel->size = $this->_file_data['size'];
                 $mediaModel->path = $savePath;
+                $mediaModel->crop = $is_crop;
                 $mediaModel->hidden = array_get($options,'hidden',0);
                 $mediaModel->type = array_key_exists($sourceType,$this->image_types)?$this->image_types[$sourceType]:$sourceType;
                 
@@ -485,15 +488,15 @@ class ImageController extends BaseController
             ];
         }
 
-        $isCrop = false;
-        if(isset($setting['crop']) && $setting['crop']==1){
-            $isCrop = true;
+        $is_crop = false;
+        if($media->crop==1 || (isset($setting['crop']) && $setting['crop']==1)){
+            $is_crop = true;
         }
 
         $save_medium_size = $this->getWidthHeight($source_width,$source_height,$setting['size']['medium']['width'],$setting['size']['medium']['height']);
         $save_small_size = $this->getWidthHeight($source_width,$source_height,$setting['size']['small']['width'],$setting['size']['small']['height']);
 
-        if($isCrop){
+        if($is_crop){
             $save_medium_width = $setting['size']['medium']['width'];
             $save_medium_height = $setting['size']['medium']['height'];
 

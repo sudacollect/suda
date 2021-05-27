@@ -212,6 +212,7 @@ class MediaController extends BaseController
             ),
             'json_response' => true,
             'user_type'     => 'user',
+            'is_crop'       => false,
         ];
         
         if($user){
@@ -390,7 +391,7 @@ class MediaController extends BaseController
     }
 
 
-    protected function handle_file_upload($request, $size = null,$content_range = null,&$files=[],&$msg='')
+    protected function handle_file_upload($request, $size = null,$content_range = null,&$files=[],$is_crop=false,&$msg='')
     {
         
         $files = $request->file('files');
@@ -426,7 +427,7 @@ class MediaController extends BaseController
         if(in_array($type,$this->_unique_types)){
             $type_id = $this->user->id;
         }
-        $medias = $this->saveImage($type,['resize'=>true,'file_type'=>$file_type,'ratio'=>false,'type_id'=>$type_id,'position'=>$position]);
+        $medias = $this->saveImage($type,['resize'=>true,'crop'=>$is_crop,'file_type'=>$file_type,'ratio'=>false,'type_id'=>$type_id,'position'=>$position]);
         
         if($medias) {
             
@@ -485,7 +486,7 @@ class MediaController extends BaseController
         
         //=============== end 优先级别最高的特殊设置 ================
         
-        $isCrop = array_get($options,'crop',false); //默认不剪切
+        $is_crop = array_get($options,'crop',false); //默认不剪切
         $isResize = array_get($options,'resize',false); //默认不缩放
         $quality = array_get($options,'quality',100); //默认质量100
         $storage = array_get($options,'storage','local'); //默认存储本地
@@ -512,7 +513,7 @@ class MediaController extends BaseController
                 $imagefile = Image::make($this->_file)->stream();
                 Storage::disk('local')->put($saveImage, $imagefile);
                 
-                $this->resizeImage($saveDirPath,$basename,$storage,$sourceWidth,$sourceHeight,$ratio,$isCrop,$quality);
+                $this->resizeImage($saveDirPath,$basename,$storage,$sourceWidth,$sourceHeight,$ratio,$is_crop,$quality);
                 
                 $type_id = array_get($options,'type_id',0);
                 
@@ -523,6 +524,7 @@ class MediaController extends BaseController
                 $mediaModel->user_id = $this->user->id;
                 $mediaModel->size = $this->_file->getSize();
                 $mediaModel->path = $savePath;
+                $mediaModel->crop = $is_crop;
                 $mediaModel->type = $this->image_types[$sourceType];
                 
                 $mediaModel->save();
@@ -541,7 +543,7 @@ class MediaController extends BaseController
        }
     }
     
-    public function resizeImage($saveDirPath,$basename,$storage,$sourceWidth,$sourceHeight,$ratio,$isCrop,$quality){
+    public function resizeImage($saveDirPath,$basename,$storage,$sourceWidth,$sourceHeight,$ratio,$is_crop=false,$quality){
         
         //宽高都有值，按照实际存储(resize可能会造成图片变形)
         // $medium_config = $this->options['image_versions']['medium'];
@@ -569,8 +571,8 @@ class MediaController extends BaseController
             ];
         }
 
-        if(isset($setting['crop']) && $setting['crop']==1){
-            $isCrop = true;
+        if($is_crop || (isset($setting['crop']) && $setting['crop']==1)){
+            $is_crop = true;
         }
 
         //生成缩略图
@@ -609,14 +611,14 @@ class MediaController extends BaseController
             $medium_width = $setting['size']['medium']['width'];
             $medium_height = ceil(($medium_width/$sourceWidth)*$sourceHeight);
 
-            if($isCrop){
+            if($is_crop){
                 $medium_height = $setting['size']['medium']['height'];
             }
         }else{
             $medium_height = $setting['size']['medium']['height'];
             $medium_width = ceil(($medium_height/$sourceHeight)*$sourceWidth);
 
-            if($isCrop){
+            if($is_crop){
                 $medium_width = $setting['size']['medium']['width'];
             }
         }
@@ -632,18 +634,18 @@ class MediaController extends BaseController
         if($sourceWidth>=$sourceHeight){
             $small_width = $setting['size']['small']['width'];
             $small_height = ceil(($small_width/$sourceWidth)*$sourceHeight);
-            if($isCrop){
+            if($is_crop){
                 $small_height = $setting['size']['small']['height'];
             }
         }else{
             $small_height = $setting['size']['small']['height'];
             $small_width = ceil(($small_height/$sourceHeight)*$sourceWidth);
-            if($isCrop){
+            if($is_crop){
                 $small_width = $setting['size']['small']['width'];
             }
         }
         
-        if($isCrop){
+        if($is_crop){
 
             $x = $y = 0;
             if($sourceWidth >= $medium_width){
@@ -882,12 +884,13 @@ class MediaController extends BaseController
         $content_range_header = $this->get_server_var('HTTP_CONTENT_RANGE');
         $content_range = $content_range_header ? preg_split('/[^0-9]+/', $content_range_header) : null;
         $size =  $content_range ? $content_range[3] : null;
-        
+        $is_crop = $this->options['is_crop'];
+
         $files = [];
         $msg = '';
         
         if ($request) {
-            return $this->handle_file_upload($request,$size,$content_range,$files,$msg);
+            return $this->handle_file_upload($request,$size,$content_range,$files,$is_crop,$msg);
         }
         
         

@@ -551,6 +551,7 @@ jQuery(document).ready(function(){
         };    
 
         var media_type = $(modalLayout).find('.suda-upload-modal').attr('media_type');
+        var media_crop = $(modalLayout).find('.suda-upload-modal').attr('media_crop');
 
         
         var upload_url = suda.link(window.suda.meta['.mediabox_upload_url']+media_type);
@@ -573,7 +574,7 @@ jQuery(document).ready(function(){
             maxQueue:1,
             maxFiles:false,
             multiple:true,
-            postData:{_token:suda.data('csrfToken'),media_type:media_type,media_name:media_name},
+            postData:{_token:suda.data('csrfToken'),media_type:media_type,media_crop:media_crop,media_name:media_name},
             delete:false,
             postKey:'img',
             onComplete:modal_upload_complete
@@ -833,6 +834,7 @@ jQuery(document).ready(function(){
         var elem_id = $(this).attr('id');
         
         var media_type = $(elem).attr('_data_type');
+        var media_crop = $(elem).attr('_data_crop');
         var media_name = $(elem).attr('_data_name');
         var media_max = $(elem).attr('media_max')||1;
         
@@ -852,7 +854,7 @@ jQuery(document).ready(function(){
             type    : 'POST', 
             url     : layout_href,
             cache   : false,
-            data: { media_name: media_name,media_max:media_max,media_type:media_type,_token:suda.data('csrfToken') },
+            data: { media_name: media_name,media_max:media_max,media_type:media_type,media_crop:media_crop,_token:suda.data('csrfToken') },
             success : function(data){
                if(data){
                    $.fn.layout_media(data,$(elem),csrfToken);
