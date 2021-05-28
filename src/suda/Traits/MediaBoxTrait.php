@@ -274,6 +274,8 @@ trait MediaBoxTrait
                     return Response::json([
                         'image' => suda_media($media,['size'=>'medium','imageClass'=>'image_show']),
                         'url' => suda_media($media,['size'=>'medium','imageClass'=>'image_show','url'=>true]),
+                        'large_url' => suda_media($media,['size'=>'large','imageClass'=>'image_show','url'=>true]),
+                        'small_url' => suda_media($media,['size'=>'small','imageClass'=>'image_show','url'=>true]),
                         'media_id' => $media_id,
                         'name'=> $media->name,
                         'media_path' => $media_path,
