@@ -56,7 +56,7 @@ class AboutController extends DashboardController
             $args = (isset($args)) ? ' '.$args : '';
 
             try {
-                $process = new Process('cd '.base_path().' && php artisan '.$command.$args);
+                $process = new Process(['php artisan '.$command.$args]);
                 $process->run();
 
                 if (!$process->isSuccessful()) {

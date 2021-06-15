@@ -21,12 +21,14 @@ trait MediaBoxTrait
     public $user;
     public $guard='';
     public $media_type;
-    public $onlyUser=false;
+    public $onlyUser = false;
+    public $only_user = false;
+    public $media_users = [];
     public $resize = true;
     public $ratio = false;
     public $hidden = '0';
     
-    public function mediaSetting($guard='',$media_type='',$onlyUser=false,$resize=true,$ratio=false){
+    public function mediaSetting($guard='',$media_type='',$only_user=false,$resize=true,$ratio=false){
 
         if(!empty($guard)){
             $this->guard=$guard;
@@ -36,7 +38,8 @@ trait MediaBoxTrait
             $this->media_type=$media_type;
         }
         
-        $this->onlyUser = $onlyUser;
+        $this->onlyUser = $only_user;
+        $this->only_user = $only_user;
         $this->resize=$resize;
         $this->ratio=$ratio;
     }
@@ -113,9 +116,16 @@ trait MediaBoxTrait
         
         
         //只获取当前用户的图片
-        if($this->onlyUser){
+        if($this->only_user || $this->onlyUser){
             $objectModel = new Media;
-            $objectModel = $objectModel->where('user_type',$this->guard)->where('user_id',$this->user->id);
+            if($this->media_users && count($this->media_users)>0)
+            {
+                $objectModel = $objectModel->where('user_type',$this->guard)->whereIn('user_id',$this->media_users);
+            }else{
+                $objectModel = $objectModel->where('user_type',$this->guard)->where('user_id',$this->user->id);
+            }
+            
+
         }else{
             $objectModel = $objectModel->where([]);
         }
