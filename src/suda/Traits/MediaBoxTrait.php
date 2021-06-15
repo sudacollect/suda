@@ -115,7 +115,8 @@ trait MediaBoxTrait
 
         
         
-        //只获取当前用户的图片
+        //获取当前用户或用户组内的图片
+        //方便子应用中使用，例如同一个公司
         if($this->only_user || $this->onlyUser){
             $objectModel = new Media;
             if($this->media_users && count($this->media_users)>0)
