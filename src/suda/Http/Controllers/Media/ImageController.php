@@ -225,10 +225,10 @@ class ImageController extends BaseController
         $basename = pathinfo($targetImage, PATHINFO_BASENAME);
         $subdir = stringBeginsWith(dirname($targetImage), storage_path('app/public/images'), FALSE, TRUE);
         
-        $savePath = 'public/images/'.$type_path.$subdir.'/'.$basename;
-        $saveImage = 'public/images/'.$type_path.$subdir.'/p'.$basename;
-        $saveImageMedium = 'public/images/'.$type_path.$subdir.'/m'.$basename;
-        $saveImageSmall = 'public/images/'.$type_path.$subdir.'/s'.$basename;
+        $save_base_path = 'public/images/'.$type_path.$subdir.'/'.$basename;
+        $save_original_path = 'public/images/'.$type_path.$subdir.'/p'.$basename;
+        $save_medium_path = 'public/images/'.$type_path.$subdir.'/m'.$basename;
+        $save_small_path = 'public/images/'.$type_path.$subdir.'/s'.$basename;
         
         
         $sourceWidth = $this->_file_data['source_width'];
@@ -278,7 +278,8 @@ class ImageController extends BaseController
             $save_medium_height = ceil(($save_medium_width/$sourceWidth)*$sourceHeight);
 
             if($is_crop){
-                $save_medium_height = array_get($options,'save_medium_height',$setting['size']['medium']['height']);
+                $crop_medium_width = $save_medium_width;
+                $crop_medium_height = array_get($options,'save_medium_height',$setting['size']['medium']['height']);
             }
 
         }else{
@@ -290,7 +291,8 @@ class ImageController extends BaseController
             $save_medium_width = ceil(($save_medium_height/$sourceHeight)*$sourceWidth);
 
             if($is_crop){
-                $save_medium_width = array_get($options,'save_medium_width',$setting['size']['medium']['width']);
+                $crop_medium_height = $save_medium_height;
+                $crop_medium_width = array_get($options,'save_medium_width',$setting['size']['medium']['width']);
             }
 
         }
@@ -305,7 +307,8 @@ class ImageController extends BaseController
             $save_small_height = ceil(($save_small_width/$sourceWidth)*$sourceHeight);
 
             if($is_crop){
-                $save_small_height = array_get($options,'save_small_height',$setting['size']['small']['height']);
+                $crop_small_width = $save_small_width;
+                $crop_small_height = array_get($options,'save_small_height',$setting['size']['small']['height']);
             }
 
         }else{
@@ -317,7 +320,8 @@ class ImageController extends BaseController
             $save_small_width = ceil(($save_small_height/$sourceHeight)*$sourceWidth);
 
             if($is_crop){
-                $save_small_width = array_get($options,'save_small_width',$setting['size']['small']['width']);
+                $crop_small_height = $save_small_height;
+                $crop_small_width = array_get($options,'save_small_width',$setting['size']['small']['width']);
             }
 
         }
@@ -368,10 +372,10 @@ class ImageController extends BaseController
                 //文件存储
 
                 $imagefile = Image::make($this->_file)->stream();
-                Storage::disk('local')->put($saveImage, $imagefile);
+                Storage::disk('local')->put($save_original_path, $imagefile);
                 
                 // $image = Image::make($this->_file);
-                // $image->save($saveImage);
+                // $image->save($save_original_path);
                 
                 if($is_crop){
                     //计算x,y,截取图的中间位置
@@ -383,7 +387,7 @@ class ImageController extends BaseController
                         $y = ceil(($sourceHeight-$save_medium_height)/2);
                     }
 
-                    $this->cropImage($saveImageMedium,$storage,$save_medium_width,$save_medium_height,$x,$y);
+                    $this->cropImage($save_medium_path,$storage,$crop_medium_width,$crop_medium_height,$x,$y);
 
                     $x = $y = 0;
                     if($sourceWidth >= $save_small_width){
@@ -392,10 +396,11 @@ class ImageController extends BaseController
                     if($sourceHeight >= $save_small_height){
                         $y = ceil(($sourceHeight-$save_small_height)/2);
                     }
-                    $this->cropImage($saveImageSmall,$storage,$save_small_width,$save_small_height,$x,$y);
+
+                    $this->cropImage($save_small_path,$storage,$crop_small_width,$crop_small_height,$x,$y);
                 }elseif($isResize){
-                    $this->resizeImage($saveImageMedium,$storage,$save_medium_width,$save_medium_height,$quality);
-                    $this->resizeImage($saveImageSmall,$storage,$save_small_width,$save_small_height,$quality);
+                    $this->resizeImage($save_medium_path,$storage,$save_medium_width,$save_medium_height,$quality);
+                    $this->resizeImage($save_small_path,$storage,$save_small_width,$save_small_height,$quality);
                 }
                 
                 $mediaModel = new Media;
@@ -403,19 +408,19 @@ class ImageController extends BaseController
                 $mediaModel->user_type = array_get($options,'user_type');
                 $mediaModel->user_id = array_get($options,'user_id');
                 $mediaModel->size = $this->_file_data['size'];
-                $mediaModel->path = $savePath;
+                $mediaModel->path = $save_base_path;
                 $mediaModel->crop = $is_crop;
                 $mediaModel->hidden = array_get($options,'hidden',0);
                 $mediaModel->type = array_key_exists($sourceType,$this->image_types)?$this->image_types[$sourceType]:$sourceType;
                 
                 $mediaModel->save();
-                return [$mediaModel->id,$savePath];//返回media_id 对应 相对存储地址
+                return [$mediaModel->id,$save_base_path];//返回media_id 对应 相对存储地址
             }
             if($storage=='aliyun'){
-                return 'oss:'.$savePath;
+                return 'oss:'.$save_base_path;
             }
             if($storage=='aliyun'){
-                return 'qiniu:'.$savePath;
+                return 'qiniu:'.$save_base_path;
             }
         }catch (Exception $Ex) {
            $Error = $Ex;
@@ -423,17 +428,17 @@ class ImageController extends BaseController
        }
     }
     
-    public function resizeImage($savePath,$storage,$saveWidth,$saveHeight,$quality){
+    public function resizeImage($save_path,$storage,$saveWidth,$saveHeight,$quality){
         //生成缩略图
         $resizeImage = Image::make($this->_file)->resize($saveWidth, $saveHeight)->stream();
-        return Storage::disk('local')->put($savePath, $resizeImage);
+        return Storage::disk('local')->put($save_path, $resizeImage);
     }
     
-    public function cropImage($savePath,$storage,$saveWidth,$saveHeight,$x=0,$y=0){
-        
-        $cropImage = Image::make($this->_file)->crop($saveWidth, $saveHeight,$x,$y)->stream();
-        Storage::disk('local')->put($savePath, $cropImage);
-
+    public function cropImage($save_path,$storage,$saveWidth,$saveHeight,$x=0,$y=0)
+    {
+        // $crop_image = Image::make($this->_file)->crop($saveWidth, $saveHeight,$x,$y)->stream();
+        // Storage::disk('local')->put($save_path, $crop_image);
+        Image::make($this->_file)->fit($saveWidth,$saveHeight)->save(storage_path('app/'.$save_path));
     }
 
     //rebuild图片
@@ -635,7 +640,7 @@ class ImageController extends BaseController
         $basename = pathinfo($targetFile, PATHINFO_BASENAME);
         $subdir = stringBeginsWith(dirname($targetFile), storage_path('app/public/files'), FALSE, TRUE);
         
-        $savePath = 'public/files/'.$type_path.$subdir.'/'.$basename;
+        $save_base_path = 'public/files/'.$type_path.$subdir.'/'.$basename;
         $saveFile = 'public/files/'.$type_path.$subdir.'/'.$basename;
         
         
@@ -657,17 +662,17 @@ class ImageController extends BaseController
                 $mediaModel->user_type = array_get($options,'user_type');
                 $mediaModel->user_id = array_get($options,'user_id');
                 $mediaModel->size = $this->_file_data['size'];
-                $mediaModel->path = $savePath;
+                $mediaModel->path = $save_base_path;
                 $mediaModel->type = 'FILE|'.$this->_file_data['extension'];
                 
                 $mediaModel->save();
-                return [$mediaModel->id,$savePath];//返回media_id 对应 相对存储地址
+                return [$mediaModel->id,$save_base_path];//返回media_id 对应 相对存储地址
             }
             if($storage=='aliyun'){
-                return 'oss:'.$savePath;
+                return 'oss:'.$save_base_path;
             }
             if($storage=='aliyun'){
-                return 'qiniu:'.$savePath;
+                return 'qiniu:'.$save_base_path;
             }
         }catch (Exception $Ex) {
            $Error = $Ex;

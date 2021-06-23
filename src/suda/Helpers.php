@@ -227,7 +227,7 @@ if (!function_exists('suda_image_process')) {
         if($return_url){
             return $image_url;
         }
-        return '<img src="'.$image_url.'" title="'.$title.'" '.$image_large_url_str.' class="zpress-image image-'.$size.' '.$image_class.'">';
+        return '<img src="'.$image_url.'?'.time().'" title="'.$title.'" '.$image_large_url_str.' class="zpress-image image-'.$size.' '.$image_class.'">';
     }
     
 }
@@ -337,7 +337,7 @@ if (!function_exists('suda_media')) {
             if($return_url){
                 return $image_url;
             }
-            return '<img src="'.$image_url.'" title="'.$title.'" class="zpress-image image-'.$size.' '.$image_class.'">';
+            return '<img src="'.$image_url.'?.'.time().'" title="'.$title.'" class="zpress-image image-'.$size.' '.$image_class.'">';
         }
         
         $type = $data->type;
