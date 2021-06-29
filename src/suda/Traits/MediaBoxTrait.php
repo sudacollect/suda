@@ -20,6 +20,7 @@ trait MediaBoxTrait
 
     public $user;
     public $guard='';
+    public $media_guards=[];
     public $media_type;
     public $onlyUser = false;
     public $only_user = false;
@@ -40,6 +41,11 @@ trait MediaBoxTrait
         
         $this->onlyUser = $only_user;
         $this->only_user = $only_user;
+        $this->media_guards = $media_guards;
+        if(!$this->media_guards)
+        {
+            $this->media_guards[] = $this->guard;
+        }
         $this->resize=$resize;
         $this->ratio=$ratio;
     }
@@ -121,9 +127,9 @@ trait MediaBoxTrait
             $objectModel = new Media;
             if($this->media_users && count($this->media_users)>0)
             {
-                $objectModel = $objectModel->where('user_type',$this->guard)->whereIn('user_id',$this->media_users);
+                $objectModel = $objectModel->whereIn('user_type',$this->media_guards)->whereIn('user_id',$this->media_users);
             }else{
-                $objectModel = $objectModel->where('user_type',$this->guard)->where('user_id',$this->user->id);
+                $objectModel = $objectModel->whereIn('user_type',$this->media_guards)->where('user_id',$this->user->id);
             }
             
 
