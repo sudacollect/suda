@@ -384,10 +384,7 @@ class ExtensionService {
     protected function runMigrate($extension_slug){
         
         $filesystem = new Filesystem;
-        //更新基础目录
-        if(!$filesystem->exists(base_path('database/migrations/extensions'))){
-            $filesystem->makeDirectory(base_path('database/migrations/extensions'));
-        }
+        
         
         $file_list = [];
         if($filesystem->exists(app_path('Extensions/'.ucfirst($extension_slug).'/publish/database/migrations'))){
@@ -396,10 +393,16 @@ class ExtensionService {
         
         
         if($file_list){
+
+            //更新基础目录
+            if(!$filesystem->exists(base_path('database/migrations/extensions/'.ucfirst($extension_slug)))){
+                $filesystem->makeDirectory(base_path('database/migrations/extensions/'.ucfirst($extension_slug)));
+            }
+            
             foreach($file_list as $file){
             
                 //防止重复的文件
-                $dest_file = base_path('database/migrations/extensions/'.pathinfo($file, PATHINFO_BASENAME));
+                $dest_file = base_path('database/migrations/extensions/'.ucfirst($extension_slug).'/'.pathinfo($file, PATHINFO_BASENAME));
                 if($filesystem->exists($dest_file)){
                     $filesystem->delete($dest_file);
                 }
@@ -419,7 +422,7 @@ class ExtensionService {
             //     throw new ProcessFailedException($process);
             // }
 
-            Artisan::call('migrate --force');
+            Artisan::call('migrate --force --path=database/migrations/extensions/'.ucfirst($extension_slug));
         }
         
     }
