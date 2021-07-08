@@ -705,14 +705,19 @@ if (!function_exists('getValue')) {
 if (!function_exists('extension_path')) {
     function extension_path($path = '')
     {
-        return app_path('Extensions/'.$path);
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
+
+        return app_path($ucf_extension_dir.'/'.$path);
     }
 }
 
 if (!function_exists('extension_asset')) {
     function extension_asset($extension_name, $path='',$secure = null)
     {
-        return asset('extensions/'.strtolower($extension_name).'/assets/'.$path, $secure?$secure:config('sudaconf.force_secure',null));
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
+        return asset($extension_dir.'/'.strtolower($extension_name).'/assets/'.$path, $secure?$secure:config('sudaconf.force_secure',null));
     }
 }
 

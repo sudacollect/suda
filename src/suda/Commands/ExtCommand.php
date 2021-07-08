@@ -79,7 +79,12 @@ class ExtCommand extends Command
      */
     public function handle(Filesystem $filesystem)
     {
-        
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
+
+        $ucf_extname = $this->argument('extension');
+        $extname = strtolower($ucf_extname);
+
         // if ($this->option('list')) {
         //
         //     //列出所有安装的应用
@@ -87,74 +92,112 @@ class ExtCommand extends Command
         //     $this->info('Successfully listed all extensions');
         // }
         
-        if(!$filesystem->exists(app_path('Extensions/'.$this->argument('extension')))){
-            $this->info('extension '.$this->argument('extension').' not exists');
+        if(!$filesystem->exists(app_path($ucf_extension_dir.'/'.$ucf_extname))){
+            $this->info('extension '.$ucf_extname.' not exists');
             exit;
         }
+
+        $this->info('===========START=========');
         
+        $to_dir = 'database/migrations/'.$extension_dir.'/'.$ucf_extname;
+        $from_path = app_path($ucf_extension_dir.'/'.$ucf_extname.'/publish/database/migrations');
+
+        $dest_folder = public_path($extension_dir.'/'.$extname);
+
+        //安装数据库
+        if(!$filesystem->exists(base_path($to_dir))){
+            $filesystem->makeDirectory(base_path($to_dir));
+        }
+
         if ($this->argument('run')=='install') {
 
-            
-            
-            //安装数据库
-            if(!$filesystem->exists(base_path('database/migrations/extensions'))){
-                $filesystem->makeDirectory(base_path('database/migrations/extensions'));
-            }
+           
+            if($filesystem->exists($from_path)){
+                
+                $filesystem->copyDirectory($from_path,base_path($to_dir));
 
-            if($filesystem->exists(app_path('Extensions/'.$this->argument('extension').'/publish/database/migrations'))){
-                $file_list = $filesystem->allFiles(app_path('Extensions/'.$this->argument('extension').'/publish/database/migrations'));
-            
+                $file_list = $filesystem->files($from_path);
+                $sub_directories = $filesystem->directories($from_path);
+
+                $this->info('== Migrating the database tables into your application');
+
                 if($file_list){
-                    foreach($file_list as $file){
+                    // foreach($file_list as $file){
+                    //     $filesystem->copy((string)$file,base_path('database/migrations/'.$extension_dir.'/'.pathinfo($file, PATHINFO_BASENAME)));
+                    // }
                     
-                        $filesystem->copy((string)$file,base_path('database/migrations/extensions/'.pathinfo($file, PATHINFO_BASENAME)));
+                    $this->info('== '.$to_dir);
+                    $this->call('migrate',['--path'=>$to_dir]);
+                }
+                if($sub_directories)
+                {
+                    foreach($sub_directories as $sub_path)
+                    {
+                        $this->info('== '.$to_dir.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
+                        $this->call('migrate',['--path'=>$to_dir.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
                     }
-                
-                
-                    $this->info('Migrating the database tables into your application');
-                    $this->call('migrate');
                 }
             }
 
-            if(!$filesystem->exists(public_path('extensions'))){
-                $filesystem->makeDirectory(public_path('extensions'));
-            }
             
-            $dest_folder = public_path('extensions/'.strtolower($this->argument('extension')));
+            //更新静态文件
+            if(!$filesystem->exists(public_path($extension_dir))){
+                $filesystem->makeDirectory(public_path($extension_dir));
+            }
+
             if(!$filesystem->exists($dest_folder)){
                 $filesystem->makeDirectory($dest_folder);
             }
             
             //安装静态资源
-            $filesystem->copyDirectory(app_path('Extensions/'.$this->argument('extension').'/publish/assets'),$dest_folder.'/assets');
-            
-            $this->info('Successfully installed '.$this->argument('extension').' extension');
+            $filesystem->copyDirectory(app_path($ucf_extension_dir.'/'.$ucf_extname.'/publish/assets'),$dest_folder.'/assets');
+            $this->info('== update the assets into your application');
+
+
+            $this->info('===========END=========');
+            $this->info('Successfully installed '.$ucf_extname.' extension');
         }
         
         if ($this->argument('run')=='flush') {
             
             
-            if($filesystem->exists(app_path('Extensions/'.$this->argument('extension').'/publish/database/migrations'))){
-                $file_list = $filesystem->allFiles(app_path('Extensions/'.$this->argument('extension').'/publish/database/migrations'));
-            
+            if($filesystem->exists($from_path)){
+
+                $filesystem->copyDirectory($from_path,base_path($to_dir));
+
+                $file_list = $filesystem->files($from_path);
+                $sub_directories = $filesystem->directories($from_path);
+                
+                $this->info('== Migrating the database tables into your application');
+
                 if($file_list){
-                    foreach($file_list as $file){
+                    // foreach($file_list as $file){
+                    //     $filesystem->copy((string)$file,base_path('database/migrations/'.$extension_dir.'/'.pathinfo($file, PATHINFO_BASENAME)));
+                    // }
+
                     
-                        $filesystem->copy((string)$file,base_path('database/migrations/extensions/'.pathinfo($file, PATHINFO_BASENAME)));
+                    $this->info('== '.$to_dir);
+                    $this->call('migrate',['--path'=>$to_dir]);
+                }
+
+                if($sub_directories)
+                {
+                    foreach($sub_directories as $sub_path)
+                    {
+                        $this->info('== '.$to_dir.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
+                        $this->call('migrate',['--path'=>$to_dir.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
                     }
-                
-                
-                    $this->info('Migrating the database tables into your application');
-                    $this->call('migrate');
                 }
             }
             
             
             //安装静态资源
-            $dest_folder = public_path('extensions/'.strtolower($this->argument('extension')));
-            $filesystem->copyDirectory(app_path('Extensions/'.$this->argument('extension').'/publish/assets'),$dest_folder.'/assets');
-            
-            $resets = 'app/Extensions';
+            $filesystem->copyDirectory(app_path($ucf_extension_dir.'/'.$ucf_extname.'/publish/assets'),$dest_folder.'/assets');
+            $this->info('== update the assets into your application');
+
+            $this->info('===========END=========');
+
+            $resets = 'app/'.$ucf_extension_dir.'/'.$ucf_extname;
             $this->info('Successfully flush '.$resets.'');
             
         }

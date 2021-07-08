@@ -41,7 +41,11 @@ class SudaServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router,\App\Http\Kernel $kernel){
+    public function boot(Router $router,\App\Http\Kernel $kernel)
+    {
+
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
         
         $router->middlewareGroup('admin', [OperateAdminMiddleware::class,CertificateMiddleware::class]);
         $router->middlewareGroup('admin/extension', [OperateAdminMiddleware::class,CertificateMiddleware::class]);
@@ -58,12 +62,18 @@ class SudaServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(realpath(__DIR__.'/../../publish/lang'), 'suda_lang');
 
         $this->loadMigrationsFrom(realpath(__DIR__.'/../../migrations'));
-        $this->loadMigrationsFrom(base_path('database/migrations/extensions'));
+
+        
+
+        $this->loadMigrationsFrom(base_path('database/migrations/'.$extension_dir));
         
         
         
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'view_suda');
-        $this->loadViewsFrom(app_path('Extensions'), 'view_extension');
+
+        
+
+        $this->loadViewsFrom(app_path($ucf_extension_dir), 'view_extension');
         
     }
 

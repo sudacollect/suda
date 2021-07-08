@@ -102,7 +102,11 @@ class Sudacore
     
     //获取应用路由信息
     private static function extendRoutes(){
-        $extend_path = 'Extensions';
+
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
+
+        $extend_path = $ucf_extension_dir;
         
         $files = new Filesystem;
         if(Cache::store(config('sudaconf.admin_cache','file'))->has('cache_avaliable_extensions')){

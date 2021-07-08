@@ -381,49 +381,51 @@ class ExtensionService {
     
     
     //更新数据表
-    protected function runMigrate($extension_slug){
+    protected function runMigrate($extension_slug)
+    {
+
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
+
         
         $filesystem = new Filesystem;
         
+        $from_path = app_path($ucf_extension_dir.'/'.ucfirst($extension_slug).'/publish/database/migrations');
+
+        $to_dir_path = 'database/migrations/'.$extension_dir.'/'.ucfirst($extension_slug);
+        $to_path = base_path($to_dir_path);
         
         $file_list = [];
-        if($filesystem->exists(app_path('Extensions/'.ucfirst($extension_slug).'/publish/database/migrations'))){
-            $file_list = $filesystem->allFiles(app_path('Extensions/'.ucfirst($extension_slug).'/publish/database/migrations'));
+        $sub_directories = [];
+        if($filesystem->exists($from_path)){
+            $file_list = $filesystem->files($from_path);
+            $sub_directories = $filesystem->directories($from_path);
         }
-        
-        
+
+        //更新基础目录,删除并重建
+        if($filesystem->exists($to_path)){
+            $filesystem->deleteDirectory($to_path);
+        }
+
+        $filesystem->makeDirectory($to_path);
+        $filesystem->copyDirectory($from_path,$to_path);
+
         if($file_list){
-
-            //更新基础目录
-            if(!$filesystem->exists(base_path('database/migrations/extensions/'.ucfirst($extension_slug)))){
-                $filesystem->makeDirectory(base_path('database/migrations/extensions/'.ucfirst($extension_slug)));
-            }
-            
-            foreach($file_list as $file){
-            
-                //防止重复的文件
-                $dest_file = base_path('database/migrations/extensions/'.ucfirst($extension_slug).'/'.pathinfo($file, PATHINFO_BASENAME));
-                if($filesystem->exists($dest_file)){
-                    $filesystem->delete($dest_file);
-                }
-                $filesystem->copy((string)$file,$dest_file);
-            
-            }
-            
-            //执行migration
-            // $commands = [
-            //     "cd",
-            //     base_path()
-            // ];
-            // $process = new Process($commands);
-            // $process->run();
-
-            // if (!$process->isSuccessful()) {
-            //     throw new ProcessFailedException($process);
-            // }
-
-            Artisan::call('migrate --force --path=database/migrations/extensions/'.ucfirst($extension_slug));
+            Artisan::call('migrate --force --path=database/migrations/'.$extension_dir.'/'.ucfirst($extension_slug));
         }
+
+        
+
+        if($sub_directories)
+        {
+            foreach($sub_directories as $sub_path)
+            {
+                Artisan::call('migrate --force --path='.$to_dir_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
+            }
+            
+        }
+
+
         
     }
     
@@ -431,19 +433,22 @@ class ExtensionService {
     protected function runPublish($extension_slug){
         
         $filesystem = new Filesystem;
+
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
         
-        if(!$filesystem->exists(public_path('extensions'))){
-            $filesystem->makeDirectory(public_path('extensions'));
+        if(!$filesystem->exists(public_path($extension_dir))){
+            $filesystem->makeDirectory(public_path($extension_dir));
         }
         
-        $dest_folder = public_path('extensions/'.strtolower($extension_slug));
+        $dest_folder = public_path($extension_dir.'/'.strtolower($extension_slug));
         if(!$filesystem->exists($dest_folder)){
             $filesystem->makeDirectory($dest_folder);
         }
         
         //安装静态资源
-        if($filesystem->exists(app_path('Extensions/'.ucfirst($extension_slug).'/publish/assets'))){
-            $filesystem->copyDirectory(app_path('Extensions/'.ucfirst($extension_slug).'/publish/assets'),$dest_folder.'/assets');
+        if($filesystem->exists(app_path($ucf_extension_dir.'/'.ucfirst($extension_slug).'/publish/assets'))){
+            $filesystem->copyDirectory(app_path($ucf_extension_dir.'/'.ucfirst($extension_slug).'/publish/assets'),$dest_folder.'/assets');
         }
         
         
@@ -583,12 +588,15 @@ class ExtensionService {
     
     //应用Logo
     public function getIcon($ext_slug){
+
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
         
         $files = new Filesystem;
-        $path = app_path('Extensions/' . ucfirst($ext_slug) . '/icon.png');
+        $path = app_path($ucf_extension_dir.'/' . ucfirst($ext_slug) . '/icon.png');
         
         if (!$files->exists($path)) {
-            $path = app_path('Extensions/' . ucfirst($ext_slug) . '/icon.jpg');
+            $path = app_path($ucf_extension_dir.'/' . ucfirst($ext_slug) . '/icon.jpg');
             if (!$files->exists($path)) {
                 return false;
             }
