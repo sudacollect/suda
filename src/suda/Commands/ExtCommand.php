@@ -99,42 +99,37 @@ class ExtCommand extends Command
 
         $this->info('===========START=========');
         
-        $to_dir = 'database/migrations/'.$extension_dir.'/'.$ucf_extname;
+        // $to_dir = 'database/migrations/'.$extension_dir.'/'.$ucf_extname;
+
         $from_path = app_path($ucf_extension_dir.'/'.$ucf_extname.'/publish/database/migrations');
+
+        $from_relative_path = 'app/'.$ucf_extension_dir.'/'.$ucf_extname.'/publish/database/migrations';
 
         $dest_folder = public_path($extension_dir.'/'.$extname);
 
         //安装数据库
-        if(!$filesystem->exists(base_path($to_dir))){
-            $filesystem->makeDirectory(base_path($to_dir));
-        }
-
+        
         if ($this->argument('run')=='install') {
 
            
             if($filesystem->exists($from_path)){
                 
-                $filesystem->copyDirectory($from_path,base_path($to_dir));
-
                 $file_list = $filesystem->files($from_path);
                 $sub_directories = $filesystem->directories($from_path);
 
                 $this->info('== Migrating the database tables into your application');
 
                 if($file_list){
-                    // foreach($file_list as $file){
-                    //     $filesystem->copy((string)$file,base_path('database/migrations/'.$extension_dir.'/'.pathinfo($file, PATHINFO_BASENAME)));
-                    // }
                     
-                    $this->info('== '.$to_dir);
-                    $this->call('migrate',['--path'=>$to_dir]);
+                    $this->info('== '.$from_relative_path);
+                    $this->call('migrate',['--path'=>$from_relative_path]);
                 }
                 if($sub_directories)
                 {
                     foreach($sub_directories as $sub_path)
                     {
-                        $this->info('== '.$to_dir.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
-                        $this->call('migrate',['--path'=>$to_dir.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
+                        $this->info('== '.$from_relative_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
+                        $this->call('migrate',['--path'=>$from_relative_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
                     }
                 }
             }
@@ -162,30 +157,25 @@ class ExtCommand extends Command
             
             
             if($filesystem->exists($from_path)){
-
-                $filesystem->copyDirectory($from_path,base_path($to_dir));
-
+                
                 $file_list = $filesystem->files($from_path);
                 $sub_directories = $filesystem->directories($from_path);
                 
                 $this->info('== Migrating the database tables into your application');
 
                 if($file_list){
-                    // foreach($file_list as $file){
-                    //     $filesystem->copy((string)$file,base_path('database/migrations/'.$extension_dir.'/'.pathinfo($file, PATHINFO_BASENAME)));
-                    // }
-
                     
-                    $this->info('== '.$to_dir);
-                    $this->call('migrate',['--path'=>$to_dir]);
+                    
+                    $this->info('== '.$from_relative_path);
+                    $this->call('migrate',['--path'=>$from_relative_path]);
                 }
 
                 if($sub_directories)
                 {
                     foreach($sub_directories as $sub_path)
                     {
-                        $this->info('== '.$to_dir.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
-                        $this->call('migrate',['--path'=>$to_dir.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
+                        $this->info('== '.$from_relative_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
+                        $this->call('migrate',['--path'=>$from_relative_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
                     }
                 }
             }

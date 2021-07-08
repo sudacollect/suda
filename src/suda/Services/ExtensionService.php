@@ -392,8 +392,8 @@ class ExtensionService {
         
         $from_path = app_path($ucf_extension_dir.'/'.ucfirst($extension_slug).'/publish/database/migrations');
 
-        $to_dir_path = 'database/migrations/'.$extension_dir.'/'.ucfirst($extension_slug);
-        $to_path = base_path($to_dir_path);
+        // $to_dir_path = 'database/migrations/'.$extension_dir.'/'.ucfirst($extension_slug);
+        // $to_path = base_path($to_dir_path);
         
         $file_list = [];
         $sub_directories = [];
@@ -401,17 +401,18 @@ class ExtensionService {
             $file_list = $filesystem->files($from_path);
             $sub_directories = $filesystem->directories($from_path);
         }
+        
+        // //更新基础目录,删除并重建
+        // if($filesystem->exists($to_path)){
+        //     $filesystem->deleteDirectory($to_path);
+        // }
 
-        //更新基础目录,删除并重建
-        if($filesystem->exists($to_path)){
-            $filesystem->deleteDirectory($to_path);
-        }
-
-        $filesystem->makeDirectory($to_path);
-        $filesystem->copyDirectory($from_path,$to_path);
-
+        // $filesystem->makeDirectory($to_path);
+        // $filesystem->copyDirectory($from_path,$to_path);
+        
+        
         if($file_list){
-            Artisan::call('migrate --force --path=database/migrations/'.$extension_dir.'/'.ucfirst($extension_slug));
+            Artisan::call('migrate --force --path=app/'.$ucf_extension_dir.'/'.ucfirst($extension_slug).'/publish/database/migrations');
         }
 
         
@@ -420,7 +421,7 @@ class ExtensionService {
         {
             foreach($sub_directories as $sub_path)
             {
-                Artisan::call('migrate --force --path='.$to_dir_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
+                Artisan::call('migrate --force --path=app/'.$ucf_extension_dir.'/'.ucfirst($extension_slug).'/publish/database/migrations'.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
             }
             
         }
