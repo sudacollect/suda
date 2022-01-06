@@ -12,13 +12,12 @@
     "jhofm/flysystem-iterator": "^2.2",
     "intervention/image": "^2.5",
     "intervention/imagecache": "^2.4",
-    "guzzlehttp/guzzle": "^7.0.1",
     "arrilot/laravel-widgets": "^3.13",
     "willvincent/feeds": "^2.0",
-    "cviebrock/eloquent-sluggable" : "^8.0",
+    "cviebrock/eloquent-sluggable" : "^7.0",
     "simplesoftwareio/simple-qrcode": "^4.0",
     "mews/purifier": "^3.1",
-    "laravel/ui": "^3.0"
+    "laravel/ui": "^2.4"
   },
   "suggest": {
     "league/flysystem-cached-adapter": "Required to use the Flysystem cache (~1.0)."
