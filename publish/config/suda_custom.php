@@ -14,19 +14,19 @@ return [
         //     'url'=>'index',
         //     'target'=>'_self',
         //     'icon'=>'ion-pricetag',
-        //     'name'=>'商品'
+        //     'name'=>'Goods'
         // ],
         // [
         //     'url'=>'index',
         //     'target'=>'_self',
         //     'icon'=>'ion-reader',
-        //     'name'=>'订单'
+        //     'name'=>'Orders'
         // ],
         // [
         //     'url'=>'index',
         //     'target'=>'_self',
         //     'icon'=>'ion-person',
-        //     'name'=>'会员'
+        //     'name'=>'Members'
         // ]
     ],
 ];

@@ -1,4 +1,5 @@
 <?php
+// Chinese districts database
 return [
   '100000'=>[
       '110000'=>'北京市',

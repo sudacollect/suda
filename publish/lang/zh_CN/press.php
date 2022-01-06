@@ -30,8 +30,6 @@ return [
     'description'=>'描述',
     
     'sidebar_style'=>'边栏样式',
-    'sidebar_style_inside'=>'嵌入布局',
-    'sidebar_style_outside'=>'左右布局',
     
     'created_at'=>'创建时间',
     'updated_at'=>'更新时间',
@@ -76,7 +74,6 @@ return [
         'edit'=>'编辑',
         'delete'=>'删除',
         'search'=>'搜索',
-        'searchs'=>'查询',
         'update'=>'更新',
     ],
     
@@ -92,7 +89,6 @@ return [
     'number'=>'编号',
     'category'=>'分类',
     'category_name'=>'分类名称',
-    'category_ename'=>'英文名称',
     
     
     
@@ -104,21 +100,8 @@ return [
     
     'brands'=>'品牌',
     'gender'=>'性别',
- 
 
-    
-    'add_category'=>'增加分类',
-    'edit_category'=>'编辑分类',
-    
-    'add_tag'=>'增加标签',
-    'edit_tag'=>'编辑标签',
     'tag_name'=>'标签名称',
-    
-    'brands_setting'=>'品牌设置',
-    'brands_list'=>'品牌列表',
-    'brand_name'=>'品牌名称',
-    
-    'attribute_manage'=>'属性管理',
     
     
     
@@ -128,8 +111,7 @@ return [
     'role_list'=>'角色列表',
     'role_name'=>'角色名称',
     'role_authority'=>'角色权限',
-    'add_user'=>'增加用户',
-    'edit_user'=>'编辑用户',
+
     'telephone'=>'电话',
     'phone'=>'电话',
     'email'=>'邮箱',
@@ -143,40 +125,29 @@ return [
     
     
     'filter_missing'=>'缺少查询条件',
-    'sort_set'=>'排序设定',
+
     
     
-    'taxonomy_type'=>'分类类型',
-    'taxonomy_type_list'=>'类型列表',
-    'add_taxonomy_type'=>'增加类型',
-    'edit_taxonomy_type'=>'编辑类型',
-    'delete_taxonomy_type'=>'删除类型',
+    
     'type_name'=>'类型名称',
     'taxonomy'=>'分类系统',
-    'taxonomy_set'=>'分类管理',
-    'tag_set'=>'标签设置',
+    
+    
     'slug'=>'路径别名',
     
     '404'=>'没有找到信息',
     
     
-    'language' => '语言',
-    'switch_language' => '切换语言',
     
-    'dashboard'=>'控制面板',
-    'welcome'=>'欢迎回来',
-    
-    'official_website'=>'公司官网',
     
     'close'=>'关闭',
     'open'=>'开启',
     'enable'=>'是否启用',
     'notice'=>'提示',
-    'no_filter'=>'没有选择搜索条件',
-    'image_set'=>'图片设置',
+    
+    'image_setting'=>'图片设置',
 
-    'print'=>'打印',
-    'print_time'=>'打印时间',
+    
     'download'=>'下载',
     
     'yes'=>'有',
@@ -185,7 +156,7 @@ return [
     //#Menu
     'menu'=>'菜单',
     'menu_name'=>'菜单名称',
-    'menu_title'=>'菜单标题',
+    
     'setting_menu'=>'管理菜单',
     'setting_menu_desc'=>'菜单由菜单组和菜单项组成. 菜单缓存自动更新.',
     'add_menu'=>'增加菜单',
@@ -229,15 +200,15 @@ return [
         'setting_dashboard'=>'面板风格',
         'setting_operate'=>'管理员',
         'setting_operate_role'=>'角色设置',
-        'setting_role'=>'角色设置',
+        
         'setting_operate_org'=>'部门设置',
-        'setting_org'=>'部门设置',
+        
         'tool'=>'工具',
         'tool_menu'=>'菜单设置',
         'tool_style'=>'后台主题',
         'tool_permission'=>'权限设置',
         'tool_extend'=>'应用管理',
-        'tool_compass'=>'组件管理',
+        'tool_compass'=>'组件',
     ],
     
     'error'=>[
@@ -251,7 +222,7 @@ return [
     'about_suda'=>'关于速搭',
     'compass'=>'指南',
     'resources'=>'资源',
-    'resources_inside'=>'内置资源',
+    
     'commands'=>'命令',
     'faq'=>'帮助',
     
