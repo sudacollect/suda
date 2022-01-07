@@ -8,7 +8,7 @@
         <h1 class="page-title">
             <i class="ion-people"></i>&nbsp;{{ trans('suda_lang::press.user_list') }}
         </h1>
-        <a href="{{ admin_url('user/add') }}" class="pop-modal btn btn-primary btn-sm"><i class="zly-plus-circle"></i>&nbsp;{{ trans('suda_lang::press.add_user') }}</a>
+        <a href="{{ admin_url('user/add') }}" class="pop-modal btn btn-primary btn-sm"><i class="zly-plus-circle"></i>&nbsp;{{ trans('suda_lang::press.btn.add') }}</a>
     </div>
 
     <div class="row suda-row">

@@ -21,8 +21,8 @@
 return[
     
     'default'=>[
-        'name'=>'默认主题',
-        'description'=>'默认主题',
+        'name'=>'default',
+        'description'=>'default theme for website',
         'version'=>'1.0',
         'suda_version'=>'>1.0',//=表示只是配当前版本,>表示必须大于某个版本,<表示必须小于某个版本
         'theme_url'=>'http://suda.gtd.xyz', //主题在线地址
@@ -31,11 +31,11 @@ return[
         'author_url'=>'http://suda.gtd.xyz',
         'widgets'=>[
             'sidebar'=>[
-                'name'=>'侧边栏',
+                'name'=>'sidebar',
                 'max'=>3,
             ],
             'content'=>[
-                'name'=>'内容栏',
+                'name'=>'content',
                 'max'=>3,
             ]
         ]

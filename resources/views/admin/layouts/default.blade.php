@@ -118,7 +118,7 @@
                     @include('view_suda::admin.layouts.operate_top')
                     
                     <!-- support language -->
-                    {{-- @include('view_suda::admin.layouts.top_language') --}}
+                    @include('view_suda::admin.layouts.top_language')
                     
                     @endif
             </ul>

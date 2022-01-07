@@ -23,8 +23,8 @@
 return[
     
     'default'=>[
-        'name'=>'默认主题',
-        'description'=>'左右布局的菜单和导航，深色边栏',
+        'name'=>'default',
+        'description'=>'left panel',
         'version'=>'1.0',
         'press_version'=>'>1.0',//=表示只是配当前版本,>表示必须大于某个版本,<表示必须小于某个版本
         'theme_url'=>'http://suda.gtd.xyz', //主题在线地址

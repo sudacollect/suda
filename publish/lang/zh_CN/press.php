@@ -18,9 +18,14 @@ return [
     'certificated'=>'已授权',
     'uncertificated'=>'未授权',
     
-    'system_info'=>'系统信息',
+    'basic_info'=>'系统',
+    'dashboard_info'=>'控制台',
+    'front_info'=>'前台',
+    'seo_info'=>'SEO',
     'logo'=>'Logo',
-    'site_name'=>'站点名称',
+    
+
+    'website_name'=>'站点名称',
     
     'dashboard_setting'=>'面板设置',
     'dashboard_style'=>'后台主题',
@@ -227,5 +232,11 @@ return [
     'faq'=>'帮助',
     
     'system_permission'=>'系统权限',
+
+    'about_page'=>[
+        'brief'=>'用于快速开发 Web 应用和 App 应用后台系统',
+        'target'=>'设计初衷是为了帮助我们自己和很多相似的个人/公司能快速设计和研发自己的业务系统。 我们相信以最便捷的方式开始使用能有助于您专注于自身的业务，同时我们提供软件的持续发展和增值应用。 基于我们丰富的经验和对 Web 应用、 App 应用设计实现的最佳实践，它将提供可扩展的接口，方便所有个人/公司都可以很快的上手来实现一个应用或者对接自己的 App。 我们相信通过不断提升和发展，在为大家提供便捷的同时，我们也能够和所有客户一道，共同设计优秀的产品体验。',
+        'vision'=>'降低 Web 应用研发的成本和门槛, 分享产品/项目设计实施中的经验，有效/有用的集成模块, 提高IT基础能力(Just Wish)'
+    ],
 
 ];

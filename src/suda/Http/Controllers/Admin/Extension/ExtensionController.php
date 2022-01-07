@@ -98,7 +98,7 @@ class ExtensionController extends DashboardController
         $path = extension_path(ucfirst($extension_name) . '/' . 'icon.png');
         
         if (!$files->exists($path)) {
-            $path = public_path(config('sudaconf.assets_path').'/images/empty_extension_icon.png');
+            $path = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
         }
         
         $file = $files->get($path);

@@ -159,14 +159,14 @@ class SudaServiceProvider extends ServiceProvider
                 "{$publishPath}/theme/" => public_path('theme'),
             ],
             'core_assets' => [
-                "{$publishPath}/assets/" => public_path(config('sudaconf.assets_path','/vendor/suda/assets')),
+                "{$publishPath}/assets/" => public_path(config('sudaconf.core_assets_path','/vendor/suda/assets')),
             ],
             'core_demo' => [
                 "{$publishPath}/demo/" => storage_path('app/public/images/demo'),
             ],
-            'seeds' => [
-                "{$publishPath}/database/seeds/" => database_path('seeds'),
-            ],
+            // 'seeds' => [
+            //     "{$publishPath}/database/seeds/" => database_path('seeds'),
+            // ],
 
         ];
 

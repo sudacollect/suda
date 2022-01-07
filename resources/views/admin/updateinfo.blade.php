@@ -18,35 +18,35 @@
                         </div>
 
                             <p>
-                                <strong>核心更新</strong>
+                                <strong>core update</strong>
                             </p>
                             <p>
                                 <code>composer update gtd/suda</code>
                             </p>
                             
                             <p>
-                                <strong>更新图片/样式表资源</strong>
+                                <strong>reset assets</strong>
                             </p>
                             <p>
                                 <code>php artisan suda:reset assets</code>
                             </p>
     
                             <p>
-                                <strong>更新 themes 文件</strong>
+                                <strong>reset themes</strong>
                             </p>
                             <p>
                                 <code>php artisan suda:reset themes</code>
                             </p>
     
                             <p>
-                                <strong>更新应用</strong>
+                                <strong>update extension</strong>
                             </p>
                             <p>
-                                <code>php artisan suda:ext flush 应用Slug</code>
+                                <code>php artisan suda:ext ext-slug-name</code>
                             </p>
     
                             <p>
-                                <strong>更新数据库/表</strong>
+                                <strong>update database</strong>
                             </p>
                             <p>
                                 <code>php artisan migrate</code>

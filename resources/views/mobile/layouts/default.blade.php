@@ -55,13 +55,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                   <li class="nav-item @if(isset($active_tab) && $active_tab=='home') active @endif">
-                    <a class="nav-link" href="{{ url('/') }}"><i class="ion-home"></i>&nbsp;首页 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url('/') }}"><i class="ion-home"></i>&nbsp;Home <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item @if(isset($active_tab) && $active_tab=='pages') active @endif">
-                    <a class="nav-link" href="{{ url('pages') }}"><i class="ion-reader"></i>&nbsp;页面</a>
+                    <a class="nav-link" href="{{ url('pages') }}"><i class="ion-reader"></i>&nbsp;Page</a>
                   </li>
                   <li class="nav-item @if(isset($active_tab) && $active_tab=='articles') active @endif">
-                    <a class="nav-link" href="{{ url('articles') }}"><i class="ion-newspaper"></i>&nbsp;文章</a>
+                    <a class="nav-link" href="{{ url('articles') }}"><i class="ion-newspaper"></i>&nbsp;Article</a>
                   </li>
                   
                 </ul>

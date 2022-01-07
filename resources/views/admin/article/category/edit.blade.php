@@ -65,7 +65,7 @@
                           上级分类
                       </label>
                       <div class="col-sm-6">
-                          <select name="parent" selectize="true" placeholder="-上级分类-">
+                          <select name="parent" selectcate="true" placeholder="-上级分类-">
                               <option value="0">无</option>
                               @if($categories)
                               
@@ -111,7 +111,7 @@
     
     jQuery(document).ready(function(){
         $('.handle-ajaxform').ajaxform();
-        $('select[selectize="true"]').selectCategory();
+        $('select[selectcate="true"]').selectCategory();
     });
     
 </script>

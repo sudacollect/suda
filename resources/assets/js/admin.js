@@ -1159,7 +1159,9 @@ jQuery(document).ready(function(){
     });
     
     
-    
+    // $('.switch-language').on('hidden.bs.dropdown', function (e) {
+    //     console.log(e);
+    // });
 
     
 

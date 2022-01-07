@@ -104,8 +104,6 @@
 
                                         <a href="{{ url('https://ionicons.com') }}" target="_blank" class="btn btn-light btn-sm">Ionicons</a>
 
-                                        <a href="{{ url('#') }}" target="_blank" class="btn btn-light btn-sm">zly-icons(弃用)</a>
-
                                     </td>
                                 </tr>
 

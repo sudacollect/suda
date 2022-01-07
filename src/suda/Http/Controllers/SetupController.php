@@ -30,7 +30,7 @@ class SetupController extends SiteController{
         }
         
         //判断是否新增自定义首页
-        $this->title('欢迎使用');
+        $this->title('Welcome');
         return $this->display('setup.license');
     }
     

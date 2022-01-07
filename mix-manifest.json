@@ -1,10 +1,3 @@
 {
-    "/publish/assets/js/app.js": "/publish/assets/js/app.js",
-    "/publish/assets/css/app.css": "/publish/assets/css/app.css",
-    "/publish/assets/css/app_site.css": "/publish/assets/css/app_site.css",
-    "/publish/assets/js/app.vendor.js": "/publish/assets/js/app.vendor.js",
-    "/publish/assets/js/app_site.js": "/publish/assets/js/app_site.js",
-    "/Users/mengdoo/codes/www/zhilayun/blog7/public/vendor/suda/assets/js/app.js": "/Users/mengdoo/codes/www/zhilayun/blog7/public/vendor/suda/assets/js/app.js",
-    "/Users/mengdoo/codes/www/zhilayun/blog7/public/vendor/suda/assets/js/app.vendor.js": "/Users/mengdoo/codes/www/zhilayun/blog7/public/vendor/suda/assets/js/app.vendor.js",
-    "/Users/mengdoo/codes/www/zhilayun/blog7/public/vendor/suda/assets/css/app.css": "/Users/mengdoo/codes/www/zhilayun/blog7/public/vendor/suda/assets/css/app.css"
+    "/publish/assets/js/app.js": "/publish/assets/js/app.js"
 }

@@ -57,11 +57,11 @@ class UserController extends DashboardController
     
     public function add()
     {
-        $this->title('增加用户');
+        $this->title(__('suda_lang::press.btn.add'));
         
         $this->gate('setting.view',app(Setting::class));
         
-        $this->setData('modal_title',__('suda_lang::press.add_user'));
+        $this->setData('modal_title',__('suda_lang::press.btn.add'));
         $this->setData('modal_icon_class','zly-user-o');
         
         
@@ -71,7 +71,7 @@ class UserController extends DashboardController
     
     public function edit($id=0)
     {
-        $this->title('编辑用户');
+        $this->title(__('suda_lang::press.btn.edit'));
         
         $this->gate('setting.view',app(Setting::class));
         
@@ -83,7 +83,7 @@ class UserController extends DashboardController
         }
         
         
-        $this->setData('modal_title',__('suda_lang::press.edit_user'));
+        $this->setData('modal_title',__('suda_lang::press.btn.edit'));
         $this->setData('modal_icon_class','zly-user-o');
         
         $this->setData('user',$user);

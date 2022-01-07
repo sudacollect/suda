@@ -14,13 +14,19 @@ return [
     'system_name'=>'Suda',
     'product'=>'Product ',
     
-    'certificate'=>'certificate',
+    'certificate'=>'Certificate',
     'certificated'=>'certified',
     'uncertificated'=>'uncertified',
     
-    'system_info'=>'system Info',
+    'basic_info'=>'Basic',
+    'dashboard_info'=>'Dashboard',
+    'front_info'=>'Front',
+    'seo_info'=>'SEO',
+
     'logo'=>'Logo',
-    'site_name'=>'site Name',
+    
+
+    'website_name'=>'Site Name',
     
     'dashboard_setting'=>'setting',
     'dashboard_style'=>'theme',
@@ -177,14 +183,14 @@ return [
         'dashboard'=>'Dashboard',
         'article'=>'Article',
         'article_list'=>'Articles',
-        'article_new'=>'Add',
+        'article_new'=>'Add article',
         'article_update'=>'Edit',
         'article_delete'=>'Delete',
         'category'=>'Category',
         'tag'=>'Tags',
         'page'=>'Page',
         'page_list'=>'Pages',
-        'page_new'=>'Add',
+        'page_new'=>'Add page',
         'page_update'=>'Edit',
         'page_delete'=>'Delete',
         'media'=>'Media',
@@ -201,18 +207,18 @@ return [
         'appearance_widget'=>'Widget',
         'setting'=>'Setting',
         'setting_system'=>'Setting',
-        'setting_dashboard'=>'theme',
-        'setting_operate'=>'operate',
-        'setting_operate_role'=>'role',
+        'setting_dashboard'=>'Theme',
+        'setting_operate'=>'Operate',
+        'setting_operate_role'=>'Role',
         
-        'setting_operate_org'=>'organization',
+        'setting_operate_org'=>'Organization',
         
         'tool'=>'Tool',
-        'tool_menu'=>'menus',
-        'tool_style'=>'themes',
-        'tool_permission'=>'permissions',
-        'tool_extend'=>'extensions',
-        'tool_compass'=>'compass',
+        'tool_menu'=>'Menus',
+        'tool_style'=>'Themes',
+        'tool_permission'=>'Permissions',
+        'tool_extend'=>'Extensions',
+        'tool_compass'=>'Compass',
     ],
     
     'error'=>[
@@ -232,4 +238,10 @@ return [
     
     'system_permission'=>'System Permission',
 
+
+    'about_page'=>[
+        'brief'=>'build systems simply and quickly',
+        'target'=>'to help developers like me or small company to build private SaaS application',
+        'vision'=>'build application market base suda'
+    ],
 ];

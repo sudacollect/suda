@@ -34,7 +34,7 @@ class AdminController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
-    public $locale = 'zh_CN';
+    public $locale = 'en';
     public $data = [];
     public $title;
     public $description;
@@ -52,14 +52,17 @@ class AdminController extends BaseController
             
             $admin_path = config('sudaconf.admin_path','admin');
             
-            if($request->route()->getPrefix()=='zh/'.$admin_path || $request->route()->getPrefix()==$admin_path){
-                app('config')->set('app.name', 'Suda');
-                App::setLocale('zh_CN');
+            if($request->route()->getPrefix() == 'zh_CN/'.$admin_path || $request->route()->getPrefix() == $admin_path){
+                app('config')->set('app.name', '速搭');
             }
-            if($request->route()->getPrefix()=='en/'.$admin_path){
+            if($request->route()->getPrefix() == 'en/'.$admin_path){
                 app('config')->set('app.name', 'Suda');
-                App::setLocale('en');
             }
+
+            if (session()->has('locale')) {
+                App::setLocale(session()->get('locale'));
+            }
+            
             $this->locale = App::getLocale();
             
             //$this->middleware('guest:operate', ['except' => $admin_path.'/logout']);

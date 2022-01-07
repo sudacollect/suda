@@ -72,7 +72,7 @@ class ThemeService {
             return;
         }
 
-        //模板风格目录，支持多套风格
+        // theme dir
         $themes_path = $this->files->directories($app_dir_path);
 
         if(empty($themes_path)){
@@ -95,19 +95,19 @@ class ThemeService {
                     $themes[$theme_basename] = $theme[$theme_basename];
                 }
             }else{
-                //忽略缺少配置的模板
+                //ignore missing theme.
             }
             
         }
         
-        //默认主题启用
+        // default theme
         if(count($themes) > 0 && !array_key_exists($this->getTheme($app),$themes)){
             $this->setTheme($app,config('sudaconf.theme.'.$app,'default'));
         }
 
         if(count($themes)>0){
             $this->themeCache[$app] = $themes;
-            //写配置文件
+            // write cache
             Cache::store(config('sudaconf.admin_cache','file'))->forever('theme_'.$app, $themes);
         }
         

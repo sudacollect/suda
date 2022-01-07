@@ -14,7 +14,7 @@
             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                   
                 <label for="title">
-                    {{ trans('suda_lang::press.menu_title') }}
+                    {{ trans('suda_lang::press.menu_name') }}
                 </label>
         
                 <input type="text" name="title" class="form-control" id="inputTitle" placeholder="{{ trans('suda_lang::press.menu_name') }}">

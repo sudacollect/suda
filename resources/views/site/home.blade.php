@@ -32,15 +32,14 @@
         <section class="hero text-center">
             <div class="container-sm">
                 <div class="hero-inner">
-                    <h1 class="hero-title h2-mobile mt-0 is-revealing">开启一个全新的站点</h1>
+                    <h1 class="hero-title h2-mobile mt-0 is-revealing">{{ __('suda_lang::demo.kv_title') }}</h1>
                     <p class="hero-paragraph is-revealing" >
-                        简单高效的开发组件<br>
-                        内建应用机制 / 快速实现多业务功能的设计和开发
+                        {{ __('suda_lang::demo.kv_description') }}
                     </p>
                     <div class="hero-form newsletter-form field field-grouped is-revealing">
                         
                         <div class="control">
-                            <a class="button button-primary button-block button-shadow" href="https://suda.gtd.xyz" target="_blank">了解详情</a>
+                            <a class="button button-primary button-block button-shadow" href="https://suda.gtd.xyz" target="_blank">{{ __('suda_lang::demo.kv_btn') }}</a>
                         </div>
                     </div>
                     <div class="hero-browser">
@@ -190,9 +189,9 @@
     </g>
 </svg>
                                 </div>
-                                <h3 class="feature-title">应用机制</h3>
+                                <h3 class="feature-title">{{ __('suda_lang::demo.block_application') }}</h3>
                                 <p class="text-sm">
-                                    简单配置就可以进行应用开发，快速扩展应用系统的功能，提升系统的能力。
+                                    {{ __('suda_lang::demo.block_application_desc') }}
                                 </p>
                             </div>
                         </div>
@@ -215,9 +214,9 @@
                                             </g>
                                         </svg>
                                 </div>
-                                <h3 class="feature-title">主题风格</h3>
+                                <h3 class="feature-title">{{ __('suda_lang::demo.block_theme') }}</h3>
                                 <p class="text-sm">
-                                    支持响应式设计和不同终端主题机制，自定义主题模板。
+                                    {{ __('suda_lang::demo.block_theme_desc') }}
                                 </p>
                             </div>
                         </div>
@@ -240,9 +239,9 @@
 </svg>
 
                                 </div>
-                                <h3 class="feature-title">媒体管理</h3>
+                                <h3 class="feature-title">{{ __('suda_lang::demo.block_media') }}</h3>
                                 <p class="text-sm">
-                                    提供图片等媒体资源的管理，并提供易用的上传组件，缩略图、广告图、编辑器内的图片等多种形式。
+                                    {{ __('suda_lang::demo.block_media_desc') }}
                                 </p>
                             </div>
                         </div>
@@ -262,9 +261,9 @@
     </g>
 </svg>
                                 </div>
-                                <h3 class="feature-title">权限管理</h3>
+                                <h3 class="feature-title">{{ __('suda_lang::demo.block_role') }}</h3>
                                 <p class="text-sm">
-                                    独立的管理授权和角色设置，区分前后端保障安全。
+                                    {{ __('suda_lang::demo.block_role_desc') }}
                                 </p>
                             </div>
                         </div>
@@ -292,9 +291,9 @@
 </svg>
     
                                     </div>
-                                    <h3 class="feature-title">菜单扩展</h3>
+                                    <h3 class="feature-title">{{ __('suda_lang::demo.block_menu') }}</h3>
                                     <p class="text-sm">
-                                        支持自定义菜单，自定义路由、菜单图标、菜单打开方式等。
+                                        {{ __('suda_lang::demo.block_menu_desc') }}
                                     </p>
                                 </div>
                             </div>
@@ -317,9 +316,9 @@
     </g>
 </svg>
                                     </div>
-                                    <h3 class="feature-title">集成CMS</h3>
+                                    <h3 class="feature-title">{{ __('suda_lang::demo.block_cms') }}</h3>
                                     <p class="text-sm">
-                                        使用文章和页面可以快速建立官网、博客、杂志、产品展示等站点。
+                                        {{ __('suda_lang::demo.block_cms_desc') }}
                                     </p>
                                 </div>
                             </div>
@@ -332,14 +331,11 @@
             <div class="container-sm">
                 <div class="newsletter-inner section-inner">
                     <div class="newsletter-header text-center is-revealing">
-                        <h2 class="section-title mt-0">立即使用</h2>
-                        {{-- <p class="section-paragraph">
-                            注册获取授权, 立即启用
-                        </p> --}}
+                        <h2 class="section-title mt-0">{{ __('suda_lang::demo.take_title') }}</h2>
                     </div>
                     <div class="footer-form newsletter-form field field-grouped is-revealing">
                         <div class="control">
-                            <a class="button button-primary button-block button-shadow" href="https://suda.gtd.xyz" target="_blank">立即使用</a>
+                            <a class="button button-primary button-block button-shadow" href="https://suda.gtd.xyz" target="_blank">{{ __('suda_lang::demo.take_btn') }}</a>
                         </div>
                     </div>
                 </div>

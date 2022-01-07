@@ -34,7 +34,7 @@
                                   {{ trans('suda_lang::press.name') }}
                               </th>
                               <th>
-                                  使用方法
+                                  code
                               </th>
                               <th>
                                   {{ trans('suda_lang::press.created_at') }}

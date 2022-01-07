@@ -32,7 +32,7 @@ class ViewRenderMiddleware
         //判断当前链接是不是应该被except
         $except_do = $this->isExceptConfig($request);
         
-        // if(with_copyright()=='true' && !$except_do){
+        // if(show_copyright()=='true' && !$except_do){
             
         //     $response = $next($request);
         

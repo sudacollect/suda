@@ -18,7 +18,7 @@
                 
                 @endif
                 <span class="help-block">
-                    菜单在模板中的引用方式是 <code>menu('{{ $menu->name }}')</code>
+                    菜单在模板中的引用方式是 <code>  menu('{{ $menu->name }}') </code>
                 </span>
             </h1>
 
@@ -31,7 +31,7 @@
             <div class="col-sm-8">
                 <div class="card">
                     <div class="card-header bg-white">
-                        菜单 {{ $menu->name }} 的所有项
+                        {{ $menu->name }} 的所有条目
                     </div>
                     <div class="card-body">
                         
@@ -56,7 +56,7 @@
         if($('.menu-items').length>0)
         {
             $('.menu-items').each(function(index,el){
-                new Sortable(el, {
+                new Sortable.Sortable(el, {
                     group: 'nested',
                     sort: true,
                     dragoverBubble: false,
@@ -76,9 +76,10 @@
                         $.post('{{ route('sudaroute.admin.tool_menu_order',['menu' => $menu->id]) }}', {
                             parent_id: parent_id,
                             order: slugs,
-                            _token: '{{ csrf_token() }}'
+                            _token: '{{ csrf_token() }}',
+                            dataType: 'json',
                         }, function (data) {
-                            suda.alert('菜单排序完成','primary');
+                            suda.alert(data.response_msg,'primary');
                         });
 
                     }

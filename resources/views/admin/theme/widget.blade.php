@@ -137,9 +137,9 @@
             <i class="ion-albums-outline"></i>&nbsp;挂件
             <span class="badge badge-light">{{ $app_name.'/'.$theme_name }}</span>
             <span class="help-block">
-                拖动挂件到挂件区，即时启用挂件
+                拖动挂件到挂件区，即时启用
                 <a href="https://suda.gtd.xyz" style="color:#999;">
-                    <i class="ion-help-circle"></i> 如何使用挂件?
+                    <i class="ion-help-circle"></i> 如何使用?
                 </a>
             </span>
         </h1>
@@ -308,10 +308,10 @@
         var app_name = $('input[name="app_name"]').val();
         var theme_name = $('input[name="theme_name"]').val();
 
-        
+        // console.log(window);
 
         $('ul.ul-widget').each(function(index,el){
-            new Sortable(el, {
+            new Sortable.Sortable(el, {
                 group: {
                     name: 'widget-item',
                     pull: 'clone',
@@ -346,7 +346,7 @@
         });
 
         $('ul.ul-area').each(function(index,el){
-            new Sortable(el, {
+            new Sortable.Sortable(el, {
                 group: {
                     name: 'widget-item',
                     pull: false,

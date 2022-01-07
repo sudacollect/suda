@@ -12,86 +12,87 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | 系统初始化设置
+    | BASIC
     |--------------------------------------------------------------------------
-    |
-    | 1. 是否自动识别移动端 2. 是否显示版权 3. 静态资源加速 4. 图片存储设置
     |
     */
     
-    //显示版权
-    'with_copyright'=>true,
+    //show copyright of suda
+    'show_copyright'=>true,
     
-    //移动端路由prefix
+    # auto_mobile => false,
+
+    // auto_mobile=true, auto add prefix to url on phone browser
     'mobile_prefix'=>'mobile',
+
+    // auto_mobile=true,url with except prefix would not add mobile_prefix
+    'except_mobile_prefix'=>[],
     
-    //当auto_mobile时，可配置不自动跳转的
-    'except_prefix'=>[],
-    
-    //强制https
+    // force https
     'force_secure'=>null,
     
     
-    //图片静态资源分离
+    // cdn host for static files
     'static_host'=>'',
     
-    //图片设置
+    // image upload
     'image' => [
-        'storage'=>'local',
+        'storage'=>'local', //storage
         'size'=>[
-            'small'=>200,
+            'small'=>200, //resize
             'medium'=>400,
         ]
     ],
 
-    //默认中文配置.
+    // locale language
     'locale'=>'zh_CN',
 
-    //默认的静态文件路径
-    'assets_path'=>'/vendor/suda/assets',
+    // default assets path
+    'core_assets_path'=>'/vendor/suda/assets',
 
     /*
     |--------------------------------------------------------------------------
-    | 模板配置
+    | THEME
     |--------------------------------------------------------------------------
     |
-    | 设置PC和移动端的默认样式
+    | set default theme for website.
     |
     */
     
     'theme'=>[
-        'site'  =>'default',
-        'mobile'=>'default',
+        'site'  =>'default', //pc website
+        'mobile'=>'default', //mobile website
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | 管理面板设置
+    | DASHBOARD
     |--------------------------------------------------------------------------
     |
-    | admin_loginname 登录控制面板的用户名参数，可以是 username, email, phone
-    | admin_path 控制面板的访问路径，可以自定义
-    | controllers 默认的控制器目录
+    | admin_loginname has three options: username, email, phone
     |
     */
     
-    //登录方式
+    // dashboard login path
+    'admin_path' => 'admin',
+
+    // login name
     'admin_loginname'=>'email',
     
-    //控制台域名
+    // login host
     'admin_host' => '',
-    //控制台路径
-    'admin_path' => 'admin',
     
-    //后台缓存方式(可以和前台区分)
+    
+    // an option to dashboard cache
     'admin_cache' => 'file',
     
-    //默认菜单组
+    // default menu name, related to database's menu setting
     'default_menu' => 'suda',
 
-    //菜单专业样式
+    // enable pro style for sidebar.
     // 'sidemenu_style' => 'pro',
     
+    //default widget for dashboard homepage.
     'widget'=>[
         'dashaboard'=>[
             'start'=>\Gtd\Suda\Widgets\Start::class,
@@ -104,7 +105,8 @@ return [
         ],
     ],
     
-    //控制器的路径 App\Http\Controllers\
+    // Controller path.
+    // WARNING: DO NOT CHANGE OR DELETE THIS.
     'controllers'=>[
         'namespace'=>[
             'admin'=>'Admin',
@@ -113,14 +115,21 @@ return [
         ]
     ],
     
-    //media配置
+    //media models
     /**
-     * types_model => ['page'=>'Gtd\Suda\Models\Page'] typetable关联的model,默认关联到 App\Models\Page
+     * types_model append to media upload types relate to table model
+     * It's about which application/module when you upload you image or file.
+     * You can use this attribute to create permission or different functions
+     * 
+     * 
+     * default types is: page,article,media,setting,editor,operate,user,upload
+     * you can't rewrite or cover the default types.
+     * 
      */
     'media'=>[
         'types_model'=>[
-            'page'=>'Gtd\Suda\Models\Page',
-            'article'=>'Gtd\Suda\Models\Article',
+            // 'page'=>'Gtd\Suda\Models\Page',
+            // 'article'=>'Gtd\Suda\Models\Article',
         ]
     ],
     

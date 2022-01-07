@@ -61,15 +61,15 @@ class SettingsTableSeeder extends Seeder
             ])->save();
         }
 
-        $setting = $this->findSetting('icp_number');
-        if (!$setting->exists) {
-            $setting->fill([
-                'values'        => '沪ICP-2018123456',
-                'type'         => 'text',
-                'order'        => 1,
-                'group'        => 'site',
-            ])->save();
-        }
+        // $setting = $this->findSetting('icp_number');
+        // if (!$setting->exists) {
+        //     $setting->fill([
+        //         'values'        => '沪ICP-2018123456',
+        //         'type'         => 'text',
+        //         'order'        => 1,
+        //         'group'        => 'site',
+        //     ])->save();
+        // }
 
         $setting = $this->findSetting('company_phone');
         if (!$setting->exists) {
@@ -84,7 +84,7 @@ class SettingsTableSeeder extends Seeder
         $setting = $this->findSetting('company_name');
         if (!$setting->exists) {
             $setting->fill([
-                'values'        => '科技公司',
+                'values'        => 'Company',
                 'type'         => 'text',
                 'order'        => 1,
                 'group'        => 'site',
@@ -94,7 +94,7 @@ class SettingsTableSeeder extends Seeder
         $setting = $this->findSetting('company_addr');
         if (!$setting->exists) {
             $setting->fill([
-                'values'        => '上海市黄浦区',
+                'values'        => 'ShangHai',
                 'type'         => 'text',
                 'order'        => 1,
                 'group'        => 'site',

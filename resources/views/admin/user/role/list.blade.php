@@ -7,7 +7,7 @@
     <div class="row suda-row">
         
         <div class="page-heading">
-        <h1 class="page-title"><i class="far fa-id-badge"></i>&nbsp;{{ trans('suda_lang::press.role_list') }}</h1>
+        <h1 class="page-title"><i class="far fa-id-badge"></i>&nbsp;{{ trans('suda_lang::press.list') }}</h1>
 
         @if($soperate->user_role==9)
         <a href="{{ admin_url('user/roles/add') }}" class="btn btn-primary btn-sm"><i class="zly-plus-circle"></i>&nbsp;{{ trans('suda_lang::press.add') }}</a>

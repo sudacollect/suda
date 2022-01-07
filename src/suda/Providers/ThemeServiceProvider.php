@@ -105,7 +105,7 @@ class ThemeServiceProvider extends ServiceProvider
         }else{
             $title = config('app.name',trans('suda_lang::press.system_name'));
         }
-        if(with_copyright()=='true'){
+        if(show_copyright()=='true'){
             return $title.' - Powered by Suda';
         }
         return $title;

@@ -152,13 +152,14 @@ class MenuController extends DashboardController
     }
     
     //菜单排序
-    public function orderItems(Request $request)
+    public function sortItems(Request $request)
     {
         
         $menuItems = $request->input('order');
         $parent_id = $request->parent_id;
         $this->orderMenu($menuItems, $parent_id);
         
+        return $this->responseAjax('success', '排序已更新');
     }
     
     private function orderMenu(array $menuItems, $parentId)

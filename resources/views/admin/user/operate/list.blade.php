@@ -15,7 +15,7 @@
                 @endif
             </h1>
             @if(!isset($deleted))
-            <a href="{{ admin_url('manage/operates/add') }}" class="pop-modal btn btn-primary btn-sm pull-left"><i class="zly-plus-circle"></i>&nbsp;{{ trans('suda_lang::press.add_user') }}</a>
+            <a href="{{ admin_url('manage/operates/add') }}" class="pop-modal btn btn-primary btn-sm pull-left"><i class="zly-plus-circle"></i>&nbsp;{{ trans('suda_lang::press.btn.add') }}</a>
 
             @if($soperate->superadmin==1 || $soperate->user_role>=6)
             <a href="{{ admin_url('manage/operates/deleted') }}" class="btn btn-warning btn-sm ml-auto"><i class="ion-person-remove-outline text-muted"></i>&nbsp;已删除</a>

@@ -19,7 +19,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a class="backhome" href="{{ url('/') }}">返回首页</a>
+                    <a class="backhome" href="{{ url('/') }}">return</a>
                 </div>
             </div>
         </div>

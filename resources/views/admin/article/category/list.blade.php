@@ -7,7 +7,7 @@
     <div class="row suda-row">
         <div class="page-heading">
             <h1 class="page-title"><i class="zly-th-o"></i>&nbsp;文章分类</h1>
-            <a href="{{ admin_url('article/category/add') }}" class="pop-modal btn btn-primary btn-sm pull-left" data-modal-id="add-article-category"><i class="ion-add"></i>&nbsp;{{ __('suda_lang::press.add_category') }}</a>
+            <a href="{{ admin_url('article/category/add') }}" class="pop-modal btn btn-primary btn-sm pull-left" data-modal-id="add-article-category"><i class="ion-add"></i>&nbsp;{{ __('suda_lang::press.btn.add') }}</a>
         </div>
         <div class="col-sm-12 suda_page_body">
             <div class="panel panel-default">

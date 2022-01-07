@@ -114,7 +114,7 @@ class InstallCommand extends Command
             );
         }
         
-        Sudacore::routes();
+        // Sudacore::routes();
         
         
         

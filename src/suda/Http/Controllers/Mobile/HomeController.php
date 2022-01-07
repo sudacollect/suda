@@ -16,7 +16,7 @@ class HomeController extends MobileController
     }
     
     public function index(Request $request){
-        $this->title('欢迎使用');
+        $this->title('Welcome');
         return $this->display('home');
     }
 }

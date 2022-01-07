@@ -18,7 +18,7 @@ class PowerServiceProvider extends ServiceProvider
     {
         Blade::directive('sudacopyright', function($expression) {
             
-            if(with_copyright()=='true'){
+            if(show_copyright()=='true'){
                 $render  = "<?php \$__env->startSection('sudacopyright'); ?>";
                 $render .= "<?php \$__env->stopSection(); ?>";
                 $render .= "<?php echo '<div id=\"'.base64_decode('emhpbGEtcG93ZXJlZA==').'\" style=\"color'.':#999'.';font-'.'size:'.'12'.'px;text'.'-align:'.'center'.';margin'.':10p'.'x 0px'.';\">'.base64_decode('UG93ZXJlZCBieSA8YSBocmVmPSJodHRwOi8vemVzdC5xdXlvdWluYy5jb20iPlpFU1Q8L2E+').'</div>'; ?>";

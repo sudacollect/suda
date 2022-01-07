@@ -95,7 +95,7 @@ class HomeController extends SiteController{
 
         $this->setData('active_tab','home');
         
-        $this->title('欢迎使用');
+        $this->title('Welcome');
         return $this->display('home');
     }
 }

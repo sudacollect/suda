@@ -41,6 +41,7 @@ mix.options({
 |--------------------------------------------------------------------------
 |
 | description
+| enable pack when upgrade version
 |
 */
 
@@ -65,6 +66,7 @@ mix.options({
 |--------------------------------------------------------------------------
 |
 | description
+| enable pack when upgrade version
 |
 */
 
@@ -98,48 +100,39 @@ mix.options({
 */
 
 
-// 图标集
-// mix.styles('resources/assets/css/zlyicon.css', 'publish/assets/css/zlyicon.css');
-
-//系统组件
 // mix.copy('node_modules/popper.js/dist/popper.js.map', 'publish/assets/js');
 
 // mix.js('resources/assets/js/plugins/editor.js', 'publish/assets/js/plugins');
 // mix.copy('resources/assets/js/plugins/summernote-ext-media.js', 'publish/assets/js/plugins');
 
-// mix.copyDirectory('resources/assets/vendors/ionicons', 'publish/assets/fonts/vendor/ionicons');
+
 
 // mix.js('resources/assets/js/plugins/upload.js', 'publish/assets/js/plugins');
 // mix.js('resources/assets/js/plugins/uploadavatar.js', 'publish/assets/js/plugins');
 
 // mix.js('resources/assets/js/global.js', 'publish/assets/js');
 
+// mix.copyDirectory('resources/assets/vendors/ionicons', 'publish/assets/fonts/vendor/ionicons');
 
-//dashboard模块
+// dashboard
+mix.js('resources/assets/js/app.js', 'publish/assets/js/app.js');
 
-mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'publish/assets/css');
+// mix.js('resources/assets/js/app.vendor.js', 'publish/assets/js/app.vendor.js');
 
-mix.js('resources/assets/js/app.js', 'publish/assets/js/app.js').copy('publish/assets/js/app.js', '../public/vendor/suda/assets/js/app.js');
+// mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'publish/assets/css');
 
-mix.js('resources/assets/js/app.vendor.js', 'publish/assets/js/app.vendor.js')
-    .copy('publish/assets/js/app.vendor.js', '../public/vendor/suda/assets/js/app.vendor.js');
-
-mix.copy('publish/assets/css/app.css', '../public/vendor/suda/assets/css/app.css');
-
-
-//site模块
-mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
-
-mix.js('resources/assets/js/app_site.js', 'publish/assets/js/app_site.js');
+// front-site
+// mix.js('resources/assets/js/app_site.js', 'publish/assets/js/app_site.js');
+// mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
 
 
-//自带的默认页面
 
-// mix.copy('publish/assets/css/app_site.css', '../public/vendor/suda/assets/css/app_site.css');
+
+
 
 /*
 |--------------------------------------------------------------------------
-| themes
+| DASHBOARD THEME
 |--------------------------------------------------------------------------
 |
 | description
@@ -172,13 +165,24 @@ mix.js('resources/assets/js/app_site.js', 'publish/assets/js/app_site.js');
 |--------------------------------------------------------------------------
 | DEV SETTING
 |--------------------------------------------------------------------------
-|
-| description
+| 
+| only for local dev/test
+| auto build file to public/vendor folder
 |
 */
 
 // mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', '../public/vendor/suda/assets/css/');
+
+
+// dashboard css
+// mix.copy('publish/assets/css/app.css', '../public/vendor/suda/assets/css/app.css');
+
+// site css
+// mix.copy('publish/assets/css/app_site.css', '../public/vendor/suda/assets/css/app_site.css');
+
+
+// core js
 // mix.js('resources/assets/js/app.js', '../public/vendor/suda/assets/js/app.js');
 
-
-
+// vendor js
+// mix.copy('publish/assets/js/app.vendor.js', '../public/vendor/suda/assets/js/app.vendor.js');

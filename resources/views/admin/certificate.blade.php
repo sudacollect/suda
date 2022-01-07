@@ -19,7 +19,7 @@
                         </div>
                         
                         
-                        <h2 class="card-title text-center">{{ $application['name'] }} 授权</h2>
+                        <h2 class="card-title text-center">{{ $application['name'] }}</h2>
 
                         <ul class="list-group list-group-flush text-center">
                             <li class="list-group-item">

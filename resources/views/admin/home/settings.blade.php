@@ -31,7 +31,7 @@
                        
                         
                         <label for="site_name" class="col-sm-2 col-form-label text-right">
-                               系统名称<i class="optional">*</i>
+                            {{ __('suda_lang::press.website_name') }}<i class="optional">*</i>
                            </label>
                         
                         <div class="col-sm-4">

@@ -24,7 +24,7 @@ class AuthSuperadminMiddleware
             
             return $next($request);
         }else{
-            if(!in_array($request->route()->uri(),[$admin_path.'/passport/login','zh/'.$admin_path.'/passport/login','en/'.$admin_path.'/passport/login'])){
+            if(!in_array($request->route()->uri(),[$admin_path.'/passport/login','zh_CN/'.$admin_path.'/passport/login','en/'.$admin_path.'/passport/login'])){
                 return redirect(admin_url('passport/login'));
             }else{
                 return $next($request);

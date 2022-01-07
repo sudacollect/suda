@@ -6,7 +6,6 @@
 @import "variables";
 
 // Bootstrap
-// @import "~bootstrap/dist/css/bootstrap";//3.4.1
 @import "~bootstrap/scss/bootstrap"; //4.4
 
 //ionicons
@@ -16,18 +15,16 @@
 // @import "@fortawesome/fontawesome-free/css/all";
 
 @import "~select2/dist/css/select2";
-@import "@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4";
+@import "@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4";//b5 support
 
 @import "../vendors/jqueryfileupload/css/jquery.fileupload.css";
 
-@import "../vendors/pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker";
+@import "../vendors/pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker";//
 
 @import "../vendors/formstone/css/formstone";
 
 @import '@simonwep/pickr/dist/themes/classic.min';
 @import '@simonwep/pickr/dist/themes/monolith.min';
 @import '@simonwep/pickr/dist/themes/nano.min';
-
-@import "../css/zlyicon";
 
 @import "../css/admin";

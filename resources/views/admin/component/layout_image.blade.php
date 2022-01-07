@@ -4,7 +4,7 @@
       <div class="modal-header modal-header-tabs">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <!-- <h4 class="modal-title">
-            {{ trans('suda_lang::press.image_set') }}
+            {{ trans('suda_lang::press.image_setting') }}
         </h4> -->
         <div class="modal-title-tabs">
             <ul class="nav nav-tabs">

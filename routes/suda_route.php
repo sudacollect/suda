@@ -13,7 +13,9 @@ Route::get('/sudapower', function () {
 });
 
 
-Route::group(['as' => 'sudaroute.'], function () {
+Route::group([
+    'as' => 'sudaroute.'
+], function () {
     event(new Routing());
     
     $adminNamespace     = "\\".config('sudaconf.controllers.namespace.admin');
@@ -45,25 +47,24 @@ Route::group(['as' => 'sudaroute.'], function () {
             return redirect('/'.config('sudaconf.admin_path','admin').'/index');
         })->name('root');
         
-        /*控制台登录*/
+        // Login
         Route::get('/passport/login',$controller_prefix.'Passport\LoginController@showLoginForm')->name('login');
         Route::post('/passport/login',$controller_prefix.'Passport\LoginController@login');
         
-        /*控制台注册*/
+        // Register
         Route::get('/passport/register',$controller_prefix.'Passport\LoginController@showLoginForm')->name('register');
         Route::post('/passport/register', $controller_prefix.'Passport\RegisterController@register');
 
-        /*找回密码*/
+        // reset password
         Route::get('/passport/password/reset',$controller_prefix.'Passport\ForgotPasswordController@showLinkRequestForm');
         
-        //退出登录
         Route::post('/logout',$controller_prefix.'Passport\LoginController@logout');
         
-        //错误提示
+        // error page
         Route::get('/error', $controller_prefix.'HomeController@errorPage')->name('admin.error');
         Route::get('/forbidden', $controller_prefix.'HomeController@forbidden');
         
-        /*========= 页面管理 ========*/
+        /*========= page ========*/
         Route::get('/page', $controller_prefix.'PageController@index')->name('page');
         Route::get('/page/list', $controller_prefix.'PageController@index')->name('page_list');
         Route::get('/page/{list}/by/{sort}', $controller_prefix.'PageController@index')->name('page_list_by_sort');
@@ -74,25 +75,25 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::post('/page/save', $controller_prefix.'PageController@save')->name('page_save');
         Route::post('/page/delete/{id}', $controller_prefix.'PageController@deletePage')->name('page_delete');
 
-        //页面排序
+        // page sort
         Route::post('/page/editsort/{id}', $controller_prefix.'PageController@editSort');
         
         Route::post('/page/restore/{id}', $controller_prefix.'PageController@restorePage')->name('page_restore');
 
-        //强制删除
+        // force delete
         Route::post('/page/forcedelete/{id}', $controller_prefix.'PageController@forceDelete')->name('page_force_delete');
 
-        //文章预览
+        // page preview
         Route::get('/page/preview/{id}', $controller_prefix.'PageController@preview')->name('page_preview');
         
-        //页面选择框
+        // page modalbox
         Route::get('/page/modalbox/{view?}/{name}', $controller_prefix.'PageController@modalBox');
 
 
-        //页面搜索
+        // page search
         Route::post('/page/search', $controller_prefix.'PageController@search');
         
-        /*========= 文章管理 ========*/
+        /*========= Article ========*/
         Route::get('/articles', $controller_prefix.'ArticleController@index')->name('article');
         Route::get('/articles/{view?}', $controller_prefix.'ArticleController@index')->name('article_list');
         Route::get('/articles/{view?}/{sorted?}', $controller_prefix.'ArticleController@index')->name('article_list_by_sort');
@@ -102,20 +103,16 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::post('/article/save', $controller_prefix.'ArticleController@save')->name('article_save');
         Route::post('/article/delete/{id}', $controller_prefix.'ArticleController@delete')->name('article_delete');
 
-        //文章排序
         Route::post('/article/editsort/{id}', $controller_prefix.'ArticleController@editSort');
 
-        //恢复页面
         Route::post('/article/restore/{id}', $controller_prefix.'ArticleController@restoreItem')->name('article_restore');
-
-        //强制删除
         Route::post('/article/forcedelete/{id}', $controller_prefix.'ArticleController@forceDelete')->name('article_force_delete');
 
-        //文章搜索
+        // search
         Route::post('/article/search', $controller_prefix.'ArticleController@search');
         Route::post('/article/filter', $controller_prefix.'ArticleController@processFilter');
 
-        //文章预览
+        // preview
         Route::get('/article/preview/{id}', $controller_prefix.'ArticleController@preview')->name('article_preview');
         
         Route::get('/article/categories', $controller_prefix.'Article\CategoryController@getList')->name('article_category');
@@ -124,30 +121,28 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::post('/article/category/delete/{id}', $controller_prefix.'Article\CategoryController@delete')->name('article_category_delete');
         
         Route::post('/article/category/save', $controller_prefix.'Article\CategoryController@save')->name('article_category_save');
-        //分类排序
-        Route::post('/article/category/editsort/{id}', $controller_prefix.'Article\CategoryController@editSort');
 
-        //收起
+        Route::post('/article/category/editsort/{id}', $controller_prefix.'Article\CategoryController@editSort');
         Route::post('/article/category/toggle/{id}', $controller_prefix.'Article\CategoryController@editToggle');
         
-        //标签管理
+        // tag
         Route::get('/article/tags', $controller_prefix.'Article\TagController@getList')->name('article_tag');
         Route::get('/article/tag/add', $controller_prefix.'Article\TagController@create')->name('article_tag_create');
         Route::get('/article/tag/update/{id}', $controller_prefix.'Article\TagController@update')->name('article_tag_update');
         Route::post('/article/tag/delete/{id}', $controller_prefix.'Article\TagController@delete')->name('article_tag_delete');
         
         Route::post('/article/tag/save', $controller_prefix.'Article\TagController@save')->name('article_tag_save');
-        //标签排序
+        
         Route::post('/article/tag/editsort/{id}', $controller_prefix.'Article\TagController@editSort');
         
         Route::get('/article/tags/deleted', $controller_prefix.'Article\TagController@deletedList')->name('article_tag_deleted');
-        //恢复标签
+        
         Route::get('/article/tag/restore/{id}', $controller_prefix.'Article\TagController@restore')->name('article_tag_restore');
-        //强制删除
+        
         Route::post('/article/tag/forcedelete/{id}', $controller_prefix.'Article\TagController@deleteForce')->name('article_tag_delete_force');
         
         
-        /*========= 基本信息 ========*/
+        /*========= basic route ========*/
 
         Route::get('/index', $controller_prefix.'HomeController@index')->name('index');
         Route::get('/dashboard', $controller_prefix.'HomeController@index')->name('dashboard');
@@ -160,7 +155,7 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::get('/serverinfo', $controller_prefix.'HomeController@serverInfo');
         Route::get('/serverinfo/phpinfo', $controller_prefix.'HomeController@getPhpInfo');
 
-        //基础设定
+        // setting
         Route::get('/setting', $controller_prefix.'HomeController@settings')->name('setting_system');
         Route::get('/setting/site', $controller_prefix.'HomeController@settings')->name('setting_system');
         Route::post('/setting/site', $controller_prefix.'HomeController@saveSettings');
@@ -175,23 +170,26 @@ Route::group(['as' => 'sudaroute.'], function () {
         
         Route::get('/setting/seo', $controller_prefix.'HomeController@setSeo');
         Route::post('/setting/seo', $controller_prefix.'HomeController@saveSeo');
+
+        // switch language
+        Route::get('/setting/switch-language/{lang}', $controller_prefix.'LangController@switchLang');
         
-        //设置样式
+        // dashboard style
         Route::get('/style/dashboard', $controller_prefix.'StyleController@dashboardStyle')->name('setting_dashboard');
         Route::post('/style/dashboard', $controller_prefix.'StyleController@saveDashboardStyle');
         Route::post('/style/dashboard/save', $controller_prefix.'StyleController@setStyle');
         
-        //设置面板布局
+        // dashboard layout
         Route::get('/style/dashboard.layout', $controller_prefix.'StyleController@dashboardLayout')->name('setting_dashboard_layout');
         Route::post('/style/dashboard.layout/save', $controller_prefix.'StyleController@saveDashboardLayout');
 
         Route::get('/style/preview/{theme}', $controller_prefix.'StyleController@previewStyle');
 
-        //设置菜单样式
+        // sidebar menu
         Route::post('/style/sidemenu/{style}', $controller_prefix.'StyleController@sidemenu');
         
         
-        //媒体管理
+        // media
         Route::get('/media/hidden',               $controller_prefix.'MediasController@getHiddens')->name('media_file');
         Route::get('/media/files',               $controller_prefix.'MediasController@files')->name('media_file');
         Route::get('/media/images',               $controller_prefix.'MediasController@images')->name('media_file');
@@ -206,7 +204,7 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::post('/media/update',   $controller_prefix.'MediasController@updateMedia');
         Route::post('/media/delete/{id}',   $controller_prefix.'MediasController@deleteMedia');
 
-        //打标签
+        // batch tag
         Route::get('/medias/batchtag',   $controller_prefix.'MediasController@batchTag')->name('media_retag');
         Route::post('/medias/batchtag/save',   $controller_prefix.'MediasController@batchTagSave')->name('media_retag');
 
@@ -215,31 +213,32 @@ Route::group(['as' => 'sudaroute.'], function () {
 
         Route::post('/medias/deletebatch',   $controller_prefix.'MediasController@deleteBatchMedia');
         
-        //重新生成图片
+        // rebuild thumbs
         Route::get('/media/rebuild/{id}',   $controller_prefix.'MediasController@rebuildMedia')->name('media_rebuild');
 
-        //上传图片类路由
+        // #TODO make route more clearly and simply.
+        // upload route
 
         Route::post('/component/loadlayout/{layout}/{type}',    $suda_controller_path.'\\'.'ComponentController@loadLayout');
 
-        //调取图片上传界面
+        // medias load modal
         Route::get('/medias/modal/{type}',               $controller_prefix.'Media\MediasController@modal');
         
-        //图片上传处理
+        // medias upload route
         Route::post('/medias/upload/image/{type?}', $controller_prefix.'Media\MediasController@uploadImage');
 
-        //删除图片
+        // delete
         Route::post('/medias/remove/image/{type?}', $controller_prefix.'Media\MediasController@removeImage');
 
 
-        //图片标签
+        // media tags
         Route::get('/mediatags',               $controller_prefix.'Media\TagController@getList')->name('mediatags');
         Route::get('/mediatags/add', $controller_prefix.'Media\TagController@create')->name('mediatags_create');
         Route::get('/mediatags/update/{id}', $controller_prefix.'Media\TagController@update')->name('mediatags_update');
         Route::post('/mediatags/delete/{id}', $controller_prefix.'Media\TagController@delete')->name('mediatags_delete');
         
         Route::post('/mediatags/save', $controller_prefix.'Media\TagController@save')->name('mediatags_save');
-        //标签排序
+
         Route::post('/mediatags/editsort/{id}', $controller_prefix.'Media\TagController@editSort');
 
         //备用路由，不启用
@@ -253,7 +252,7 @@ Route::group(['as' => 'sudaroute.'], function () {
         MediaRoutes::routes();
         
         
-        //模板管理
+        // theme
         Route::get('/theme/{app?}', $controller_prefix.'ThemeController@index')->name('appearance_theme');
         
         Route::get('/themes/{app_path}/{theme_path}/screenshot', $controller_prefix.'ThemeController@getScreenshot');
@@ -261,45 +260,37 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::post('/theme/settheme', $controller_prefix.'ThemeController@setTheme');
         
         
-        //模板挂件
+        // widgets
         Route::get('/widget/{app?}/{theme?}', $controller_prefix.'WidgetController@index')->name('appearance_widget');
-
-        //保存挂件内容
         Route::post('/widget/{slug}/save', $controller_prefix.'WidgetController@saveWidget');
-
-        //挂件排序
         Route::post('/widget/sort/order', $controller_prefix.'WidgetController@sortOrder');
-
-        //删除挂件
         Route::post('/widget/remove', $controller_prefix.'WidgetController@removeWidget');
-
-        //挂件缓存更新
         Route::post('/widget/updatecache', $controller_prefix.'WidgetController@updateCache');
         
         
-        //用户user管理
+        // User
         Route::get('/user/list', $controller_prefix.'User\UserController@index')->name('user_list');
         Route::get('/user/add', $controller_prefix.'User\UserController@add');
         Route::get('/user/edit/{id}', $controller_prefix.'User\UserController@edit');
         Route::post('/user/save', $controller_prefix.'User\UserController@saveUser');
         Route::post('/user/delete/{id}', $controller_prefix.'User\UserController@deleteUser');
         
-        //注册规则
+        // register rule
         Route::get('/user/rule/register', $controller_prefix.'User\UserController@ruleRegister')->name('user_register_rule');
         Route::post('/user/rule/save/{type}', $controller_prefix.'User\UserController@ruleSave');
         
-        //角色设置
+        // Role
         Route::get('/user/roles', $controller_prefix.'User\RoleController@index')->name('setting_operate_role');
         Route::get('/user/roles/add', $controller_prefix.'User\RoleController@add');
         Route::get('/user/roles/edit/{id}', $controller_prefix.'User\RoleController@edit');
         Route::post('/user/roles/save', $controller_prefix.'User\RoleController@saveRole');
         Route::post('/user/roles/delete/{id}', $controller_prefix.'User\RoleController@delete');
 
-        //角色系统权限设置
+        // role permissions
         Route::get('/user/roles/showsys/{id}', $controller_prefix.'User\RoleController@showSys');
         Route::post('/user/roles/savesys', $controller_prefix.'User\RoleController@saveSys');
 
-        //角色应用权限设置
+        // role permissions of extensions
         Route::get('/user/roles/showexts/{id}', $controller_prefix.'User\RoleController@showExts');
         Route::post('/user/roles/saveexts', $controller_prefix.'User\RoleController@saveExts');
 
@@ -308,7 +299,7 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::get('/user/roles/extDetail/{id}/{slug}', $controller_prefix.'User\RoleController@getExtDetail');
 
 
-        //部门设置
+        // Organization
         Route::get('/user/organization', $controller_prefix.'User\OrganizationController@getList')->name('setting_operate_org');;
         Route::get('/user/organization/add/{pid?}', $controller_prefix.'User\OrganizationController@create');
         Route::get('/user/organization/edit/{id}', $controller_prefix.'User\OrganizationController@update');
@@ -317,7 +308,7 @@ Route::group(['as' => 'sudaroute.'], function () {
 
         Route::post('/user/organization/editsort/{id}', $controller_prefix.'User\OrganizationController@editSort');
 
-        //管理员设置
+        // operate
         Route::get('/manage/operates', $controller_prefix.'User\OperateController@index')->name('setting_operate');
         Route::get('/manage/operates/add', $controller_prefix.'User\OperateController@add');
         Route::get('/manage/operates/edit/{id}', $controller_prefix.'User\OperateController@edit');
@@ -325,11 +316,11 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::post('/manage/operates/save', $controller_prefix.'User\OperateController@saveOperate');
         Route::post('/manage/operates/delete/{id}/{force?}', $controller_prefix.'User\OperateController@deleteOperate');
 
-        //软删除的用户列表
+        // soft delete
         Route::get('/manage/operates/{deleted}', $controller_prefix.'User\OperateController@index');
         Route::post('/manage/operates/restore/{id}', $controller_prefix.'User\OperateController@restore');
 
-        //用户资料设置
+        // profile
         Route::get('/profile', $controller_prefix.'User\ProfileController@showProfile');
         Route::post('/profile/save', $controller_prefix.'User\ProfileController@saveProfile');
         Route::get('/email', $controller_prefix.'User\ProfileController@editEmail');
@@ -359,7 +350,7 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::post('/menu/item/save', $controller_prefix.'Menu\MenuController@saveItem')->name('tool_menu_item_save');
         Route::post('/menu/item/delete/{menu_id}/{id}', $controller_prefix.'Menu\MenuController@deleteItem')->name('tool_menu_item_delete');
         
-        Route::post('/menu/order', $controller_prefix.'Menu\MenuController@orderItems')->name('tool_menu_order');
+        Route::post('/menu/order', $controller_prefix.'Menu\MenuController@sortItems')->name('tool_menu_order');
         
         //compass
         Route::get('/compass', $controller_prefix.'Compass\AboutController@index')->name('tool_compass');
@@ -372,7 +363,7 @@ Route::group(['as' => 'sudaroute.'], function () {
         
         Route::get('/compass/demo', $controller_prefix.'Compass\AboutController@demopage');
         
-        //应用管理
+        // extensions
         Route::get('/manage/extension', $controller_prefix.'Extension\ExtensionController@index')->name('tool_extend');
         Route::get('/manage/extension/{status}', $controller_prefix.'Extension\ExtensionController@index')->name('tool_extend');
         Route::get('/manage/extension/{status}', $controller_prefix.'Extension\ExtensionController@index')->name('tool_extend_disabled');
@@ -388,17 +379,16 @@ Route::group(['as' => 'sudaroute.'], function () {
         
         Route::post('/manage/extensionsort', $controller_prefix.'Extension\ExtensionController@resort')->name('tool_extend_resort');
 
-        //三级地区数据
+        // Chinese districts data
         Route::get('/areadata/json', $controller_prefix.'Compass\DistrictController@areaJson')->name('district_data');
         
 
-        //应用模块的路由机制
-        //应用管理员默认进入
+        // extensions dashboard
         Route::get('/entry/extensions', $controller_prefix.'Extension\EntryController@showExtensions')->name('entry_extensions');
-        //应用面板
+        
         Route::get('/entry/extension/{extension_slug}', $controller_prefix.'Extension\EntryController@index')->name('entry_extension');
         
-        //载入自定义路由
+        // load routes
         if(file_exists(base_path('routes/admin.php'))){
             require base_path('routes/admin.php');
         }
@@ -417,10 +407,6 @@ Route::group(['as' => 'sudaroute.'], function () {
         'guard'      => $admin_path.'operate',
     ], function ($router) use ($adminNamespace) {
 
-        
-        
-        //载入应用路由
-        
         Sudacore::getExtendAdminRoutes();
     
     });
@@ -435,20 +421,20 @@ Route::group(['as' => 'sudaroute.'], function () {
         $suda_controller_path = "\\Gtd\\Suda\\Http\\Controllers";
         $controller_prefix = $suda_controller_path."\\";
         
-        //保留的路由,方便扩充新增功能
+        //suda keeped
         Route::group([
             'as'         => 'sdone.',
             'prefix'     => 'sdone',
         ], function ($router) use ($controller_prefix) {
             
-            //license安装
+            // install license
             Route::get('setup/license', $controller_prefix.'SetupController@index');
             Route::post('setup/license', $controller_prefix.'SetupController@setLicense');
             
-            //模板版权缺失提示
+            // theme error page
             Route::get('/theme/error', $controller_prefix.'Controller@themeError');
             
-            //http status
+            // http status page
             Route::get('/status/{code}', $controller_prefix.'Controller@status');
             
             //ajax错误
@@ -459,10 +445,10 @@ Route::group(['as' => 'sudaroute.'], function () {
             Route::get('/tags/slug/{name}', $controller_prefix.'Taxonomy\PostTagController@getTagBySlug');
             //Route::get('/tags/search/{returnJson?}', $controller_prefix.'Taxonomy\PostTagController@getTagsByName');
 
-            //selectize获取标签
+            // #[x] drop selectize js plugin
             Route::any('/tags/search/{returnJson?}', $controller_prefix.'Taxonomy\TagController@getTagsByName');
 
-            //图片显示URL
+            // public media url
             Route::get('/media/view/{id}',$controller_prefix.'Media\MediasController@showMedia');
             
         });
@@ -474,31 +460,28 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::get('/', $controller_prefix_site.'HomeController@index');
         Route::get('/home', $controller_prefix_site.'HomeController@index');
         Route::get('/index', $controller_prefix_site.'HomeController@index');
-        
-        
-        //错误提示
         Route::get('/error', $controller_prefix_site.'HomeController@errors');
         
         
-        //Page
+        // Page
         Route::get('/pages', $controller_prefix_site.'PageController@showAll');
         Route::get('/page/list', $controller_prefix_site.'PageController@showAll');
         Route::get('/page/{id}/{preview_str?}', $controller_prefix_site.'PageController@index');
         
-        //Articles
+        // Articles
         Route::get('/articles', $controller_prefix_site.'ArticleController@showAll');
         Route::get('/article/{id}/{preview_str?}', $controller_prefix_site.'ArticleController@index');
 
-        //Category
+        // Category
         Route::get('/category/{slug}', $controller_prefix_site.'ArticleController@showCategory');
 
-        //Tag
+        // Tag
         Route::get('/tag/{tag_name}', $controller_prefix_site.'ArticleController@showTag');
 
         
         Sudacore::getExtendWebRoutes();
         
-        //载入自定义路由
+        //load routes
         if(file_exists(base_path('routes/site.php'))){
             require base_path('routes/site.php');
         }
@@ -523,7 +506,6 @@ Route::group(['as' => 'sudaroute.'], function () {
         Route::get('/', $controller_prefix_mobile.'HomeController@index');
         Route::get('/home', $controller_prefix_mobile.'HomeController@index');
         
-        //错误提示
         Route::get('/error', $controller_prefix_mobile.'HomeController@errors');
         
         
@@ -536,7 +518,7 @@ Route::group(['as' => 'sudaroute.'], function () {
     });
     
     
-    //API机制
+    // api route
     Route::group([
         'middleware' => 'api',
         'namespace' => $apiNamespace,

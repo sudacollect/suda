@@ -14,7 +14,7 @@
         <i class="ion-chevron-up"></i>
         @endif
       </button>
-      <a href="{{ admin_url($buttons['create'].'/'.$cate->id) }}" class="pop-modal btn btn-light btn-xs" data-modal-id="add-taxonomy-category" title="{{ __('suda_lang::press.add_category') }}"><i class="ion-add"></i></a>
+      <a href="{{ admin_url($buttons['create'].'/'.$cate->id) }}" class="pop-modal btn btn-light btn-xs" data-modal-id="add-taxonomy-category" title="{{ __('suda_lang::press.btn.add') }}"><i class="ion-add"></i></a>
       @endif
       
   </td>

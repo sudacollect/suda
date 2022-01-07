@@ -164,14 +164,14 @@ class HomeController extends DashboardController
             'company_name' => 'required|min:2|max:64',
             'company_addr' => 'required|min:2|max:64',
             'company_phone' => 'required|min:2|max:64',
-            'icp_number' => 'required|min:2|max:64',
+            // 'icp_number' => 'required|min:2|max:64',
         ];
         $messages = [
             'site_name.required'=>'请输入站点名称',
             'company_name.required'=>'请输入公司名称',
             'company_addr.required'=>'请输入格式地址',
             'company_phone.required'=>'请输入公司电话',
-            'icp_number.required'=>'请输入ICP备案号'
+            // 'icp_number.required'=>'请输入ICP备案号'
         ];
         $response_msg = '';
         $ajax_result = $this->ajaxValidator($request->all(),$roles,$messages,$response_msg);
@@ -185,20 +185,24 @@ class HomeController extends DashboardController
             
             $data = [];
             foreach($post as $k=>$v){
-                if($k=='site_name'){
-                    $site_name = $v;
+                if($v)
+                {
+                    if($k=='site_name'){
+                        $site_name = $v;
+                    }
+                    $data = [
+                        'key'=>$k,
+                        'values'=>$v,
+                        'type'=>'site'
+                    ];
+                    
+                    if($first = $settingModel->where(['key'=>$k])->first()){
+                        $settingModel->where(['key'=>$k])->update($data);
+                    }else{
+                        $settingModel->insert($data);
+                    }
                 }
-                $data = [
-                    'key'=>$k,
-                    'values'=>$v,
-                    'type'=>'site'
-                ];
                 
-                if($first = $settingModel->where(['key'=>$k])->first()){
-                    $settingModel->where(['key'=>$k])->update($data);
-                }else{
-                    $settingModel->insert($data);
-                }
             }
             // $settingModel->fill($data);
             

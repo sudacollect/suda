@@ -37,7 +37,7 @@ if (!function_exists('suda_widget')) {
 if (!function_exists('suda_asset')) {
     function suda_asset($path, $secure = null)
     {
-        return asset(config('sudaconf.assets_path').'/'.$path, $secure?$secure:config('sudaconf.force_secure',null));
+        return asset(config('sudaconf.core_assets_path').'/'.$path, $secure?$secure:config('sudaconf.force_secure',null));
     }
 }
 
@@ -85,10 +85,10 @@ if (!function_exists('menu')) {
     }
 }
 
-if (! function_exists('with_copyright')) {
-    function with_copyright()
+if (! function_exists('show_copyright')) {
+    function show_copyright()
     {
-        if(config('sudaconf.with_copyright',true)==true){
+        if(config('sudaconf.show_copyright',true)==true){
             return true;
         }
         return false;
@@ -522,7 +522,7 @@ if (!function_exists('metas')) {
         }else{
             $title = config('app.name',trans('suda_lang::press.system_name'));
         }
-        if(with_copyright()=='true'){
+        if(show_copyright()=='true'){
             return $title.' - Powered by Suda';
         }
         return $title;
@@ -536,9 +536,9 @@ if(!function_exists('locale_url')) {
         if (!is_null($to)) {
             
             $locale = '';
-            if(config('app.locale') != config('sudaconf.locale','zh_CN')){
-                $locale = config('app.locale');
-            }
+            // if(config('app.locale') != 'en'){
+            //     $locale = config('app.locale');
+            // }
             
             if(substr($to,0,1)=='/'){
                 if(!empty($locale)){
@@ -576,9 +576,9 @@ if (!function_exists('admin_url')) {
             $admin_path = config('sudaconf.admin_path','admin');
         
             $path = $admin_path.'/'.$path;
-            if(config('app.locale') != config('sudaconf.locale','zh_CN')){
-                $path = config('app.locale').'/'.$admin_path.'/'.$path;
-            }
+            // if(config('app.locale') != 'en'){
+            //     $path = config('app.locale').'/'.$path;
+            // }
         }
         
         return url($path, $parameters, $secure);

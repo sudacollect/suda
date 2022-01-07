@@ -30,7 +30,7 @@ class RedirectMobileMiddleware
             'arrilot/*'
         ];
         
-        $config_excepts = config('sudaconf.except_prefix',[]);
+        $config_excepts = config('sudaconf.except_mobile_prefix',[]);
         $this->except = array_merge($except_redirects,$config_excepts);
         
         //判断当前链接是不是应该被except
