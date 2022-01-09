@@ -502,12 +502,12 @@ code {
 
 .press-sidebar-pro .navbar-brand.only{
     text-indent:-9999px;
-    background: url('../images/logo/logo_proonly_1.png') no-repeat center center;
+    background: url('../images/logo/logo_white_only.png') no-repeat center center;
     background-size: contain;
 }
 .press-sidebar-pro .sidebar-head .navbar-brand.only{
     text-indent:-9999px;
-    background: url('../images/logo/logo_proonly_1.png') no-repeat center center;
+    background: url('../images/logo/logo_white_only.png') no-repeat center center;
     background-size: contain;
     padding:0;
 }
@@ -2938,7 +2938,7 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     }
     .press-sidebar-pro .sidebar-head .navbar-brand.only{
         text-indent:-9999px;
-        background: url('../images/logo/logo_proonly_1.png') no-repeat center center;
+        background: url('../images/logo/logo_white_only.png') no-repeat center center;
         background-size: contain;
         padding:0;
     }

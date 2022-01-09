@@ -137,7 +137,7 @@
                                     <td>Jack Chueng</td>
                                     <td>2020-01-01</td>
                                     <td>
-                                        <span class="badge badge-pill badge-primary">高级用户</span>
+                                        <span class="badge rounded-pill bg-primary">高级用户</span>
                                     </td>
                                     <td>
                                         <font>开启</font>
@@ -154,7 +154,7 @@
                                     <td>Emillie Bailey</td>
                                     <td>2020-01-02</td>
                                     <td>
-                                        <span class="badge badge-pill badge-warning">审核用户</span>
+                                        <span class="badge rounded-pill bg-warning">审核用户</span>
                                     </td>
                                     <td>
                                         <font class="text-danger">关闭</font>
@@ -172,7 +172,7 @@
                                     <td>Evan Melia</td>
                                     <td>2020-01-11</td>
                                     <td>
-                                        <span class="badge badge-pill badge-danger">拒绝用户</span>
+                                        <span class="badge rounded-pill bg-danger">拒绝用户</span>
                                     </td>
                                     <td>
                                         <font class="text-danger">关闭</font>
@@ -189,7 +189,7 @@
                                     <td>Reon Bass</td>
                                     <td>2020-02-01</td>
                                     <td>
-                                        <span class="badge badge-pill badge-primary">高级用户</span>
+                                        <span class="badge rounded-pill bg-primary">高级用户</span>
                                     </td>
                                     <td>
                                         <font>开启</font>
@@ -206,7 +206,7 @@
                                     <td>Sara Bareilles</td>
                                     <td>2020-02-01</td>
                                     <td>
-                                        <span class="badge badge-pill badge-primary">高级用户</span>
+                                        <span class="badge rounded-pill bg-primary">高级用户</span>
                                     </td>
                                     <td>
                                         <font>开启</font>

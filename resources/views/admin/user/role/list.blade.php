@@ -46,7 +46,7 @@
                             <tr>
                               <td>{{ $role->id }}</td>
                               <td>
-                                  <span class="badge badge-primary badge-pill">
+                                  <span class="badge bg-primary rounded-pill">
                                   {{ $role->authority_name }}
                                   </span>
                                   {{ $role->name }}

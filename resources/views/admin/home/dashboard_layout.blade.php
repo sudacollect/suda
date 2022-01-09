@@ -37,25 +37,25 @@
                     <div class="form-check">
                       <input class="form-check-input" type="radio" name="navbar_color" id="navbar_color" value="white" @if(isset($setting['navbar_color']) && $setting['navbar_color']=='white') checked @endif>
                       <label class="form-check-label" for="navbar_color">
-                            <span class="badge badge-white bg-white text-dark border border-light">白色</span>
+                            <span class="badge bg-white text-dark border border-light">白色</span>
                       </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="navbar_color" id="navbar_color" value="dark" @if(isset($setting['navbar_color']) && $setting['navbar_color']=='dark') checked @endif>
                         <label class="form-check-label" for="navbar_color">
-                            <span class="badge badge-dark">暗色</span>
+                            <span class="badge bg-dark">暗色</span>
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="navbar_color" id="navbar_color" value="blue" @if(isset($setting['navbar_color']) && $setting['navbar_color']=='blue') checked @endif>
                         <label class="form-check-label" for="navbar_color">
-                            <span class="badge badge-light" style="background:#005caf;color:#fff;">蓝色</span>
+                            <span class="badge bg-light text-dark" style="background:#005caf;color:#fff;">蓝色</span>
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="navbar_color" id="navbar_color" value="coffe" @if(isset($setting['navbar_color']) && $setting['navbar_color']=='coffe') checked @endif>
                         <label class="form-check-label" for="navbar_color">
-                            <span class="badge badge-light" style="background:#755e4a;color:#fff;">茶色</span>
+                            <span class="badge bg-light text-dark" style="background:#755e4a;color:#fff;">茶色</span>
                         </label>
                     </div>
                     

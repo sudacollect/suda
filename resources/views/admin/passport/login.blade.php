@@ -206,7 +206,7 @@
                                     <div class="form-check text-right">
                                         <input class="form-check-input" type="checkbox" value="1" name="remember" id="remember">
                                         <label class="form-check-label" for="remember">
-                                            {{trans('suda_lang::auth.rememberLogin')}}
+                                            {{ __('suda_lang::auth.rememberLogin') }}
                                         </label>
                                     </div>
                                     
@@ -215,7 +215,7 @@
                                 <div class="form-group">
                                     
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                            {{trans('suda_lang::auth.login')}}
+                                            {{ __('suda_lang::auth.login') }}
                                         </button>
 
                                 </div>

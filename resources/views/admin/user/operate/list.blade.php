@@ -73,7 +73,7 @@
                                   @if($operate->categories)
                                   @foreach($operate->categories as $cate)
                                   @if($cate->taxonomy && $cate->taxonomy->term)
-                                  <span class="badge badge-light">{{ $cate->taxonomy->term->name }}</span><br>
+                                  <span class="badge bg-light text-dark">{{ $cate->taxonomy->term->name }}</span><br>
                                   @endif
                                   @endforeach
                                   @endif

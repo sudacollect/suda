@@ -84,7 +84,7 @@
                                     {{ dirname($item->path) }}<br>
                                     {{ $item->name }}
                                     @if($item->hidden==1)
-                                    <small class="badge badge-light">HIDDEN</small>
+                                    <small class="badge bg-light text-dark">HIDDEN</small>
                                     @endif
                                 </td>
                                 <td width="20%">
@@ -92,7 +92,7 @@
                                     @foreach($item->tags as $tag)
 
                                     @if($tag && isset($tag->taxonomy) && isset($tag->taxonomy->term))
-                                    <span class="badge badge-light badge-pill">{{ $tag->taxonomy->term->name }}</span>
+                                    <span class="badge bg-light text-dark rounded-pill">{{ $tag->taxonomy->term->name }}</span>
                                     @endif
 
                                     @endforeach

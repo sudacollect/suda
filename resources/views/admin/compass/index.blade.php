@@ -31,7 +31,7 @@
                                
                                <tbody style="font-weight:bold">
                                    <tr>
-                                       <td><img src="{{ suda_asset('images/addition/icon_default.png') }}" class="icon">常用</td>
+                                       <td><img src="{{ suda_asset('images/addition/icon_default.png') }}" class="icon">Build with</td>
                                        
                                        <td>
                                            <a href="{{ url('http://jquery.com/') }}" target="_blank" class="btn btn-light btn-sm">jQuery</a>
@@ -97,7 +97,7 @@
                                   </tr>
 
                                   <tr>
-                                    <td><img src="{{ suda_asset('images/addition/icon_default.png') }}" class="icon">字体图标</td>
+                                    <td><img src="{{ suda_asset('images/addition/icon_default.png') }}" class="icon">iconfont</td>
                                     
                                     <td>
                                         <a href="{{ url('https://www.fontawesome.com') }}" target="_blank" class="btn btn-light btn-sm">FontAwesome</a>
@@ -121,7 +121,7 @@
             
                 <div class="card">
                     <h5 class="card-header">
-                        字体图标
+                        ICON
                     </h5>
                     <div class="card-body">
                         <p>Ionicons 使用，例如 <code>ion-person</code> <i class="ion-person"></i></p>

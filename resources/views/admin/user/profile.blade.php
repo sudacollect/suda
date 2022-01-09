@@ -75,7 +75,7 @@
                           <label for="inputPassword3" class="col-form-label">部门</label>
                           @foreach($soperate->categories as $cate)
                           @if($cate->taxonomy && $cate->taxonomy->term)
-                          <span class="badge badge-light">{{ $cate->taxonomy->term->name }}</span>
+                          <span class="badge bg-light text-dark">{{ $cate->taxonomy->term->name }}</span>
                           @endif
                           @endforeach
                         </div>
@@ -84,7 +84,7 @@
                         @if(isset($soperate->role))
                         <div class="form-group">
                           <label for="inputPassword3" class="col-form-label">角色</label>
-                          <span class="badge badge-light">{{ $soperate->role->name }}</span>
+                          <span class="badge bg-light text-dark">{{ $soperate->role->name }}</span>
                         </div>
                         @endif
                         

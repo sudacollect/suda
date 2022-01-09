@@ -27,7 +27,7 @@
                         <input type="checkbox" class="form-check-input permission-group" name="permission[{{ $menu_group['slug'] }}][_all_]" refer_check="check_{{ $menu_group['slug'] }}">
                         <label class="form-check-label extend-name font-weight-bold" for="permission-group" refer_check="check_{{ $menu_group['slug'] }}">
                             <i class="ion-reader-outline"></i>&nbsp;{{ $menu_group['title'] }}
-                            {{-- <span class="badge badge-light">{{ $menu_group['slug'] }}</span> --}}
+                            {{-- <span class="badge bg-light text-dark">{{ $menu_group['slug'] }}</span> --}}
                         </label>
                     </div>
                     

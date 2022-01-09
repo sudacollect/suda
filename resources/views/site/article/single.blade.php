@@ -28,7 +28,7 @@
                     <i class="ion-today"></i> {{ $article->updated_at->format('Y-m-d') }}
                     @foreach($cates as $cate)
                         @if($cate->taxonomy && $cate->taxonomy->term->name)
-                            <a class="badge badge-pill badge-primary text-white" style="font-size:1rem;" href="{{ url('/category/'.$cate->taxonomy->term->slug) }}"> {{ $cate->taxonomy->term->name }}</a>
+                            <a class="badge rounded-pill bg-primary text-white" style="font-size:1rem;" href="{{ url('/category/'.$cate->taxonomy->term->slug) }}"> {{ $cate->taxonomy->term->name }}</a>
                         @endif
                     @endforeach
                 </div>

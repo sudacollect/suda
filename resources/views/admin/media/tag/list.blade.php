@@ -36,7 +36,7 @@
                                   <td>
                                     <a href="{{ admin_url('media?tag_id='.$tag->id) }}">
                                       {{ $tag->term->name }}
-                                      <span class="badge badge-light">{{ $tag->taxables_count }}</span>
+                                      <span class="badge bg-light text-dark">{{ $tag->taxables_count }}</span>
                                     </a>
                                   </td>
                                   <td>{{ $tag->term->slug }}</td>

@@ -19,12 +19,11 @@
                         </div>
                         
                         
-                        <h2 class="card-title text-center">{{ $application['name'] }}</h2>
+                        <h2 class="card-title text-center">{{ $application['name'] }} v{{ $application['version'] }}</h2>
 
                         <ul class="list-group list-group-flush text-center">
                             <li class="list-group-item">
-                                <b >产品版本</b> v{{ $application['version'] }}
-                                <a href="{{ admin_url('updateinfo') }}" class="badge badge-pill badge-primary">查看版本信息</a>
+                                <a href="{{ admin_url('updateinfo') }}" class="badge rounded-pill bg-primary">查看版本信息</a>
                             </li>
                         </ul>
                         

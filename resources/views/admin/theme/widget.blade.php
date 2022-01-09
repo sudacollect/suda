@@ -135,7 +135,7 @@
     <div class="page-heading">
         <h1 class="page-title">
             <i class="ion-albums-outline"></i>&nbsp;挂件
-            <span class="badge badge-light">{{ $app_name.'/'.$theme_name }}</span>
+            <span class="badge bg-light text-dark">{{ $app_name.'/'.$theme_name }}</span>
             <span class="help-block">
                 拖动挂件到挂件区，即时启用
                 <a href="https://suda.gtd.xyz" style="color:#999;">

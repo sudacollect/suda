@@ -32,7 +32,7 @@
             </td>
             <td width="20%">
                 @if($item->stick_top==1)
-                <span class="badge badge-warning">置顶</span>
+                <span class="badge bg-warning">置顶</span>
                 
                 @endif
                 @if(!empty($item->redirect_url))
