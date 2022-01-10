@@ -1,14 +1,10 @@
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-const $ = require('jquery');
-window.jQuery = window.$ = require('jquery');
+window.$ = window.jQuery = require('jquery');
 
 require('./bootstrap');
+
+window.Popper = require('@popperjs/core').default;
+require('bootstrap');
 
 const np = require('number-precision');
 window.NP = np;

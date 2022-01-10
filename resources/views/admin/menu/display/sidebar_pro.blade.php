@@ -153,7 +153,7 @@
     @if($permission)
     
     <div class="panel panel-default" id="panel-{{ $loop->iteration }}">
-        <div class="panel-heading @if(!$hasChildren) only-link @endif collapse show  @if(!isset($current_item) || !$current_item) collapsed @endif" data-toggle="collapse" data-target="#sidebar-menu-{{ $item->slug }}" aria-controls=".sidebar-menu-{{ $item->slug }}" aria-expanded="true">
+        <div class="panel-heading @if(!$hasChildren) only-link @endif collapse show  @if(!isset($current_item) || !$current_item) collapsed @endif" data-bs-toggle="collapse" data-bs-target="#sidebar-menu-{{ $item->slug }}" aria-controls=".sidebar-menu-{{ $item->slug }}" aria-expanded="true">
             <a {!! $linkAttributes !!} target="{{ $item->target }}" style="color:{{ (isset($item->color) && $item->color != '#000000' ? $item->color : '') }}">
 
                 @if(isset($item->blade_icon))

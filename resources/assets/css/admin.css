@@ -185,7 +185,7 @@ code {
 }
 
 .navbar .navbar-nav > li > a{
-    font-size:1.2rem;
+    font-size:1rem;
 }
 
 .navbar .navbar-nav > .open > a,
@@ -267,8 +267,8 @@ code {
 }
 
 .navbar .navbar-nav .avatar{
-    width:24px;
-    height:24px;
+    width:18px;
+    height:18px;
     border-radius:50%;
 }
 
@@ -394,7 +394,6 @@ code {
 }
 .card{
     border-color:#efefef;
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .card-header{
     background-color: rgba(243, 243, 243, 0.61);
@@ -447,11 +446,6 @@ code {
 .card-header.note-toolbar{
     padding:0rem 0.25rem 5px;
 }
-
-
-/* button.note-btn.btn.btn-default.btn-sm{
-    background:#fffff8;
-} */
 
 
 .suda-body{

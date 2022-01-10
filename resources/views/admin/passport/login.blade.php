@@ -119,13 +119,11 @@
                                 {{ csrf_field() }}
                                 
                                 @if($login_name=='email')
-                                <div class="form-group">
+                                <div class="mb-3">
 
                                     <div class="input-group ">
-
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text"><i class="icon ion-person"></i></div>
-                                        </div>
+                                        <div class="input-group-text"><i class="icon ion-person"></i></div>
+                                        
 
                                         <input id="email" type="text" class="form-control font-weight-bold {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="{{trans('suda_lang::auth.emailorphone')}}">
                                         @if ($errors->has('email'))
@@ -140,12 +138,10 @@
                                 </div>
                                 @elseif($login_name=='phone')
                                 
-                                <div class="form-group">
+                                <div class="mb-3">
                                     
                                         <div class="input-group ">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text"><i class="icon ion-person"></i></div>
-                                            </div>
+                                            <div class="input-group-text"><i class="icon ion-person"></i></div>
                                             <input id="phone" type="text" class="form-control font-weight-bold {{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required autofocus placeholder="{{trans('suda_lang::auth.phone')}}">
                                             @if ($errors->has('phone'))
                                             <div class="invalid-feedback">
@@ -160,13 +156,13 @@
                                 
                                 @elseif($login_name=='username')
                                 
-                                <div class="form-group">
+                                <div class="mb-3">
                                     
                                     
                                         <div class="input-group ">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text"><i class="icon ion-person"></i></div>
-                                            </div>
+                                            
+                                            <div class="input-group-text"><i class="icon ion-person"></i></div>
+                                            
                                             <input id="username" type="text" class="form-control font-weight-bold {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus placeholder="{{trans('suda_lang::auth.username')}}">
                                             @if ($errors->has('username'))
                                             <div class="invalid-feedback">
@@ -182,13 +178,11 @@
                                 
                                 @endif
         
-                                <div class="form-group">
+                                <div class="mb-3">
                                     
                                     
                                         <div class="input-group ">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text"><i class="icon ion-key"></i></div>
-                                            </div>
+                                            <div class="input-group-text"><i class="icon ion-key"></i></div>
                                             <input id="password" type="password" class="form-control font-weight-bold {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="{{trans('suda_lang::auth.password')}}">
                                             @if ($errors->has('password'))
                                             <div class="invalid-feedback">
@@ -201,7 +195,7 @@
                                     
                                 </div>
         
-                                <div class="form-group">
+                                <div class="mb-3">
                                     
                                     <div class="form-check text-right">
                                         <input class="form-check-input" type="checkbox" value="1" name="remember" id="remember">
@@ -212,22 +206,22 @@
                                     
                                 </div>
         
-                                <div class="form-group">
+                                <div class="mb-3 d-flex flex-row justify-content-between">
                                     
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                        <button type="submit" class="btn btn-primary btn-lg">
                                             {{ __('suda_lang::auth.login') }}
                                         </button>
-
-                                </div>
-                                <div class="form-group text-right">
+                                        <div>
                                     
                                         
-                                        <a class="btn btn-link ajaxPassword" href="{{ admin_url('passport/password/reset') }}">
-                                            {{trans('suda_lang::auth.forgetPassword')}}?
-                                        </a>
+                                            <a class="btn btn-link ajaxPassword" href="{{ admin_url('passport/password/reset') }}">
+                                                {{trans('suda_lang::auth.forgetPassword')}}?
+                                            </a>
+                                            
                                         
-                                    
+                                        </div>
                                 </div>
+                                
                                 
                             </form>
                         </div>

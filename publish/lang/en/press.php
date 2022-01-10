@@ -228,7 +228,20 @@ return [
     ],
     
     'user_list'=>'Users',
-    
+
+    'dash'=>[
+        'welcome'=>'Welcome',
+        'customize_setting'=>'Suda Admin Panel, support customize and extend widgets.',
+        'customize_btn_text'=>'Setting',
+
+        'dev_tips'=>'Learn about develop dashboard widgets.',
+        'dev_link_text'=>'Quick Start',
+    ],
+
+
+
+
+    // ABOUT
     'about_suda'=>'About',
     'compass'=>'Compass',
     'resources'=>'Resources',

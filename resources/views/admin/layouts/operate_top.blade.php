@@ -1,7 +1,7 @@
 @if(Auth::guard('operate')->check())
 @if(!isset($sdcore->settings->dashboard->operate_avatar) || (isset($sdcore->settings->dashboard->operate_avatar) && $sdcore->settings->dashboard->operate_avatar!=1))
 <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle with-avatar" id="navbar-user-dropdown" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+    <a href="#" class="nav-link dropdown-toggle with-avatar" id="navbar-user-dropdown" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
         @if(isset($soperate))
         {{ suda_avatar($soperate->avatar) }}
         {{ $soperate->username }}
@@ -13,11 +13,11 @@
 
     <div class="dropdown-menu user-menu" aria-labelledby="navbar-user-dropdown">
         <a class="dropdown-item" href="{{ admin_url('/') }}">
-            <i class="icon ion-settings"></i>控制面板
+            <i class="icon ion-settings"></i>{{ ucfirst(__('suda_lang::press.dashboard')) }}
         </a>
 
         <a class="dropdown-item" href="{{ admin_url('profile') }}">
-            <i class="icon ion-person"></i>{{ trans('suda_lang::auth.accountInfo') }}
+            <i class="icon ion-person"></i>{{ __('suda_lang::auth.accountInfo') }}
         </a>
 
         <div class="dropdown-divider"></div>

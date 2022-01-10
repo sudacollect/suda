@@ -126,7 +126,7 @@
                     <div class="card-body">
                         <p>Ionicons 使用，例如 <code>ion-person</code> <i class="ion-person"></i></p>
                         <p>
-                            Laravel 7 引入了新的 Blade icons 使用方案，具体参考 <a href="https://driesvints.com/blog/blade-heroicons/" style="text-decoration:underline">Blade Heroicons</a>
+                            推荐使用 Blade icons 方案，具体参考 <a href="https://driesvints.com/blog/blade-heroicons/" style="text-decoration:underline">Blade Heroicons</a>
                         </p>
                     </div>
                     </div>

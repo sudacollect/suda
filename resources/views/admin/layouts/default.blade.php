@@ -96,13 +96,13 @@
             <ul class="nav navbar-nav navbar-operate">
                         
                         
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         @if($soperate->user_role==2)
-                        <a href="{{ admin_url('entry/extensions') }}" title="控制面板" class="nav-link"><i class="ion-settings"></i></a>
+                        <a href="{{ admin_url('entry/extensions') }}" title="Dashboard" class="nav-link"><i class="ion-settings"></i></a>
                         @else
-                        <a href="{{ admin_url('/') }}" title="控制面板" class="nav-link"><i class="ion-settings"></i></a>
+                        <a href="{{ admin_url('/') }}" title="Dashboard" class="nav-link"><i class="ion-settings"></i></a>
                         @endif
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item">
                         <a href="{{ url('/home') }}" target="_blank" title="{{ __('suda_lang::press.visit_homepage') }}" class="nav-link"><i class="ion-home"></i></a>

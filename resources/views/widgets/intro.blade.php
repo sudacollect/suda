@@ -4,13 +4,13 @@
         <div class="card">
          
             <div class="card-header bg-white">
-                <a href="{{ admin_url('/') }}">欢迎使用</a>
-                <i class="dash-switch zly-angle-up"></i>
+                <a href="{{ admin_url('/') }}">Wecome</a>
+                <i class="dash-switch ion-chevron-up-outline"></i>
             </div>
              
             <div class="card-body">
-                <p>「速搭」管理面板, 支持模块显示设置和进行自定义扩展。<a href="{{ admin_url('setting/dashboard_info') }}" class="btn btn-primary btn-sm">立即设置</a></p>
-                <p>了解如何开发自定义面板模块。<a target="_blank" href="https://suda.gtd.xyz" class="btn btn-light btn-sm">开发学习</a></p>
+                <p>{{ __('suda_lang::press.dash.customize_setting') }}<a href="{{ admin_url('setting/dashboard_info') }}" class="btn btn-primary btn-sm">{{ __('suda_lang::press.dash.customize_btn_text') }}</a></p>
+                <p>{{ __('suda_lang::press.dash.dev_tips') }}<a target="_blank" href="https://suda.gtd.xyz" class="btn btn-light btn-sm">{{ __('suda_lang::press.dash.dev_link_text') }}</a></p>
             </div>
              
          </div>

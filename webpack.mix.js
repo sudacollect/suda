@@ -116,17 +116,15 @@ mix.options({
 
 // dashboard
 // mix.js('resources/assets/js/app.js', 'publish/assets/js/app.js');
-
-// mix.js('resources/assets/js/app.vendor.js', 'publish/assets/js/app.vendor.js');
-
 mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'publish/assets/css');
 
 // front-site
 // mix.js('resources/assets/js/app_site.js', 'publish/assets/js/app_site.js');
-mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
+// mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
 
 
-
+// vendor js
+// mix.js('resources/assets/js/app.vendor.js', 'publish/assets/js/app.vendor.js');
 
 
 

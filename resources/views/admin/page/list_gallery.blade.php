@@ -1,4 +1,4 @@
-<div class="data-list" id="waterfall-container" style="margin:0 -15px;">
+<div class="data-list" id="waterfall-container">
 
     @if($data_list->count() > 0)
         
@@ -51,25 +51,26 @@
                     @endif
                 </small>
                 <small class="help-block">
-                    更新于{{ $item->updated_at->format('Y-m-d') }}
+                    <small class="help-block float-right">
+                        @if($item->disable==0)
+                        已发布
+                        @else
+                        未发布
+                        @endif
+                    </small> 更新于{{ $item->updated_at->format('Y-m-d') }}
                 </small>
             </p>
             <div class="card-text">
                 @if($soperate->id==$item->operate_id || $soperate->user_role>7)
-                <button href="{{ admin_url('page/delete/'.$item->id) }}" class="pop-modal-delete btn btn-light btn-xs"  data_id="{{ $item->id }}" data_title="确认删除?" title="删除" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
+                <button href="{{ admin_url('page/delete/'.$item->id) }}" class="pop-modal-delete btn btn-light btn-sm"  data_id="{{ $item->id }}" data_title="确认删除?" title="删除" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
                 @endif
                 @if($soperate->id==$item->operate_id || $soperate->user_role>7)
-                <a href="{{ admin_url('page/update/'.$item->id) }}" class="btn btn-light btn-xs tips" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
+                <a href="{{ admin_url('page/update/'.$item->id) }}" class="btn btn-light btn-sm tips" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                 @endif
                 
-                <a href="{{ admin_url('page/preview/'.$item->id) }}" data-id="{{ $item->id }}" class="btn-preview btn btn-light btn-xs" title="{{ __('suda_lang::press.preview') }}" ><i class="ion-eye"></i>&nbsp;{{ __('suda_lang::press.preview') }}</a>
+                <a href="{{ admin_url('page/preview/'.$item->id) }}" data-id="{{ $item->id }}" class="btn-preview btn btn-light btn-sm" title="{{ __('suda_lang::press.preview') }}" ><i class="ion-eye"></i>&nbsp;{{ __('suda_lang::press.preview') }}</a>
                 
-                <small class="help-block float-right">
-                    @if($item->disable==0)
-                    已发布
-                    @else
-                    @endif
-                </small>
+                
             </div>
             </div>
             

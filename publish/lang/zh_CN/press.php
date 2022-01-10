@@ -223,7 +223,20 @@ return [
     ],
     
     'user_list'=>'所有用户',
-    
+
+    'dash'=>[
+        'welcome'=>'欢迎使用',
+        'customize_setting'=>'「速搭」管理面板, 支持模块显示设置和进行自定义扩展。',
+        'customize_btn_text'=>'立即设置',
+
+        'dev_tips'=>'了解如何开发自定义面板模块。',
+        'dev_link_text'=>'开发学习',
+    ],
+
+
+
+
+    // ABOUT
     'about_suda'=>'关于速搭',
     'compass'=>'指南',
     'resources'=>'资源',

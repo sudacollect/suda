@@ -1,5 +1,5 @@
 <li class="nav-item dropdown switch-language">
-    <a href="#" class="nav-link dropdown-toggle" role="button" id="navbar-language-dropdown" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+    <a href="#" class="nav-link dropdown-toggle" role="button" id="navbar-language-dropdown" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
         @if(config('app.locale')=='zh_CN')
         <i class="icon-chinese"></i>
         @elseif(config('app.locale')=='en')

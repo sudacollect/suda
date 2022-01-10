@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container-fluid">
+    
     <div class="row suda-row">
         
         <div class="page-heading">
@@ -11,17 +12,18 @@
                 <i class="ion-document-text"></i>
                 页面
             </h1>
-            <div class="btn-groups">
-                <a href="{{ admin_url('page/create') }}" class="btn btn-primary btn-sm pull-left">
-                    <i class="zly-plus-circle"></i>&nbsp;增加页面
+            
+            <div class="btn-groups flex-grow-1">
+                <a href="{{ admin_url('page/create') }}" class="btn btn-primary btn-sm">
+                    <i class="ion-add-outline"></i>&nbsp;增加页面
                 </a>
-                
-                
             </div>
-
-            <a href="{{ admin_url('page/list/deleted') }}" class="btn btn-warning btn-xs ml-auto">
+            
+            
+            <a href="{{ admin_url('page/list/deleted') }}" class="btn btn-warning btn-xs">
                 <i class="ion-trash"></i>&nbsp;回收站
             </a>
+            
             
         </div>
         
