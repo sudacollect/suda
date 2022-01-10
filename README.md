@@ -1,38 +1,46 @@
 # ABOUT
-Laravel Suda - swifty system framework.
+Laravel Suda - build mutiple extensions, private SaaS.
 
-Suda-速搭 是一个Laravel后台系统开发和多应用开发的组件
 
-安装后即可使用，具有常用的功能：文章管理、页面管理、图片管理、多应用管理、角色权限管理。
+[Official Website](https://suda.gtd.xyz)  [中文文档](https://docs.gtd.xyz)
 
-支持多端不同模板风格
+[![Latest Stable Version](http://poser.pugx.org/gtdxyz/suda/v)](https://packagist.org/packages/gtdxyz/suda) [![Total Downloads](http://poser.pugx.org/gtdxyz/suda/downloads)](https://packagist.org/packages/gtdxyz/suda) [![Latest Unstable Version](http://poser.pugx.org/gtdxyz/suda/v/unstable)](https://packagist.org/packages/gtdxyz/suda) [![License](http://poser.pugx.org/gtdxyz/suda/license)](https://packagist.org/packages/gtdxyz/suda) [![PHP Version Require](http://poser.pugx.org/gtdxyz/suda/require/php)](https://packagist.org/packages/gtdxyz/suda)
 
-支持应用开发和管理，可以建立自己的小型SaaS系统
+Versions
+---
 
-[中文官网](https://suda.gtd.xyz)
+|  Laravel   | Suda  | PHP  |
+|  ----  | ----  | ----  |
+| 8.x  | 8.0(dev) | 8.0+ |
+| 7.x  | 5.2.1 | 7.2~7.4 |
 
-[中文文档](https://docs.gtd.xyz)
 
-说明：内置部分支持多语言特性，如需要多语言完整支持，可在此基础上完善即可。
+## Requirments
 
-## Laravel 版本
-
-  PHP >= 7.1.0
+  PHP >= 8.0
   
-  Laravel 6+ (建议7+)
+  Laravel 8.x
 
-## 安装
+## Install
+
+After initial Laravel project folder,
 
 ```
 composer require gtdxyz/suda
 ```
 
-具体步骤请参照文档，配置和安装后执行安装命令即可
+```
+php artisan suda:install
+# auto install include migrations and assets
+```
 
-默认后台访问入口是 /admin 但是强烈建议在安装后修改 sudaconf.php 中的 admin_path
 
-默认账号 admin@gtd.xyz
+|  List   | Default  | Change  |
+|  ----  | ----  | ----  |
+| Default Login Path  | /admin | change config/sudaconf.php |
+| Login Account  | admin@gtd.xyz |  |
+| Password  | suda#2021 |  |
 
-默认密码 suda#2021
+
 
  
