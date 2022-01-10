@@ -4,7 +4,7 @@
       
       @if(isset($modal_title))
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <h4 class="modal-title">
             @if(isset($modal_icon_class))
             <i class="{{ $modal_icon_class }}"></i>

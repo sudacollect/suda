@@ -18,21 +18,13 @@ return [
     'certificated'=>'已授权',
     'uncertificated'=>'未授权',
     
-    'basic_info'=>'系统',
-    'dashboard_info'=>'控制台',
-    'front_info'=>'前台',
-    'seo_info'=>'SEO',
-    'logo'=>'Logo',
     
+    'logo'=>'Logo',
 
     'website_name'=>'站点名称',
     
-    'dashboard_setting'=>'面板设置',
-    'dashboard_style'=>'后台主题',
-    'seo_setting'=>'SEO配置',
-    'keyword'=>'关键字',
-    'keywords'=>'关键词',
-    'description'=>'描述',
+
+    
     
     'sidebar_style'=>'边栏样式',
     
@@ -62,7 +54,7 @@ return [
     'homepage'=>'首页',
     'visit_homepage'=>'访问首页',
     
-    'system_close'=>'关闭系统',
+    'system_status'=>'系统状态',
     'domain'=>'域名地址',
     'icp_number'=>'ICP备案号',
     
@@ -224,6 +216,7 @@ return [
     
     'user_list'=>'所有用户',
 
+    //Dashboard
     'dash'=>[
         'welcome'=>'欢迎使用',
         'customize_setting'=>'「速搭」管理面板, 支持模块显示设置和进行自定义扩展。',
@@ -234,6 +227,58 @@ return [
     ],
 
 
+    // SETTING
+
+    'basic_info'=>'系统',
+    'dashboard_info'=>'控制台',
+    'front_info'=>'前台',
+    'seo_info'=>'SEO',
+    
+    
+    'dashboard_style'=>'后台主题',
+    'seo_setting'=>'SEO配置',
+
+    
+
+    'settings'=>[
+        'login_path'=>'登录入口',
+        'breadcrumb'=>'面包屑导航',
+        'userinfo'=>'用户信息',
+        'userinfo_position'=>[
+            'all'=>'显示全部',
+            'left_bottom'=>'只显示左下角',
+            'top_right'=>'只显示右上角',
+        ],
+
+        'modules'=>'显示模块',
+
+        'modules_list'=>[
+            'welcome'=>'欢迎信息',
+            'quickin'=>'应用入口',
+            'custom'=>'自定义',
+        ],
+
+        'login_style'=>'窗口风格',
+
+        'style_list'=>[
+            'default'=>'明亮风格',
+            'dark'=>'暗色风格',
+        ],
+
+        'login_image'=>'登录配图',
+
+        'share_image'=>'分享图片',
+
+        'front_default_page'=>'前台默认访问',
+        'default_homepage'=>'默认首页',
+        'static_homepage'=>'静态首页',
+        'custom_homepage'=>'自定义URL',
+
+        'seo_title'=>'标题',
+        'keyword'=>'关键字',
+        'keywords'=>'关键词',
+        'description'=>'描述',
+    ],
 
 
     // ABOUT

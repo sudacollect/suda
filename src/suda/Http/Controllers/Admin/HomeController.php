@@ -131,7 +131,7 @@ class HomeController extends DashboardController
         //policy 判断
         $this->gate('setting.view',app(Setting::class));
         
-        $this->title('系统设置');
+        $this->title(__('suda_lang::press.basic_info'));
         
         $settings = Setting::where([])->get();
         
@@ -322,7 +322,7 @@ class HomeController extends DashboardController
         //policy 判断
         $this->gate('setting.view',app(Setting::class));
         
-        $this->title(trans('suda_lang::press.dashboard_setting'));
+        $this->title(trans('suda_lang::press.dashboard_info'));
         
         $settings = Setting::where(['group'=>'dashboard'])->whereIn('key',$options)->get();
         

@@ -7,8 +7,8 @@
     <div class="row suda-row">
         <div class="page-heading">
             <h1 class="page-title">
-                <i class="zly-gear-s"></i>
-                系统设置
+                <i class="ion-settings"></i>
+                {{ __('suda_lang::press.logo') }}
             </h1>
             
         </div>
@@ -22,9 +22,9 @@
                       
                       {{ csrf_field() }}
                       
-                      <div class="form-group row">
+                      <div class="row mb-3">
                         
-                        <label for="site_name" class="col-sm-2 col-form-label text-right">
+                        <label for="site_name" class="col-sm-2 col-form-label text-end">
                             Logo
                         </label>
                         
@@ -40,13 +40,13 @@
                                   </div>
                               </div>
                             </div>
-                            <span class="help-block">请根据模板风格上传Logo</span>
+                            <span class="help-block">Logo</span>
                         </div>
                       </div>
                       
-                      <div class="form-group row">
+                      <div class="row mb-3">
                         
-                        <label for="site_domain" class="col-sm-2 col-form-label text-right">Favicon</label>
+                        <label for="site_domain" class="col-sm-2 col-form-label text-end">Favicon</label>
                         
                         <div class="col-sm-4">
                             <div class="list-group list-images list-images-1">
@@ -59,13 +59,13 @@
                                   </div>
                               </div>
                             </div>
-                            <span class="help-block">尺寸建议64x64, 格式建议png</span>
+                            <span class="help-block">64x64 pixel, png</span>
                         </div>
                       </div>
                       
-                      <div class="form-group row">
+                      <div class="row mb-3">
                         
-                        <label for="company_name" class="col-sm-2 col-form-label text-right">分享图片</label>
+                        <label for="company_name" class="col-sm-2 col-form-label text-end">{{ __('suda_lang::press.settings.share_image') }}</label>
                         
                         <div class="col-sm-4">
                             <div class="list-group list-images list-images-1">
@@ -78,17 +78,12 @@
                                   </div>
                               </div>
                             </div>
-                            <span class="help-block">建议不要小于400x400</span>
+                            <span class="help-block">> 400x400 pixel</span>
                         </div>
                       </div>
                       
                       
-                      <div class="form-group row">
-                          <div class="buttons col-sm-4 offset-sm-2">
-                              <button type="submit" class="btn btn-primary btn-block">{{ trans('suda_lang::press.submit_save') }}</button>
-                          </div>
-                          
-                      </div>
+                      <button type="submit" class="btn btn-primary offset-sm-2">{{ trans('suda_lang::press.submit_save') }}</button>
 
                     </form>
                 </div>

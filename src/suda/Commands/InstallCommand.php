@@ -72,17 +72,17 @@ class InstallCommand extends Command
     {
         $this->info('Publishing the Suda assets, database, and config files');
         
-        //更新静态资源数据表
+        //updatea assets
         $tags = ['core_assets','seeds','core_demo'];
         $theme_tag = ['core_themes'];
-        //注册类
+        
+        //providers
         $this->call('vendor:publish', ['--provider' => SudaServiceProvider::class, '--tag' => $tags,'--force'=>true]);
         $this->call('vendor:publish', ['--provider' => SudaServiceProvider::class, '--tag' => $theme_tag]);
-        // $this->call('vendor:publish', ['--provider' => ImageServiceProviderLaravel5::class]);
         $this->call('vendor:publish', ['--provider' => FeedsServiceProvider::class]);
-        // $this->call('vendor:publish', ['--provider' => SendCloudServiceProvider::class]);
+        
 
-        //媒体管理器MediaManager
+        // #TODO remove MediaManager from core suda.
         $this->call('vendor:publish', ['--provider' => MediaManagerServiceProvider::class]);
         
         //注册数据表

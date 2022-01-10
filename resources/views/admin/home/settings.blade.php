@@ -7,8 +7,8 @@
     <div class="row suda-row">
         <div class="page-heading">
             <h1 class="page-title">
-                <i class="zly-gear-s"></i>
-                系统设置
+                <i class="ion-settings"></i>
+                {{ __('suda_lang::press.basic_info') }}
             </h1>
             
         </div>
@@ -23,85 +23,60 @@
             <div class="card card-with-tab">
                 
                 <div class="card-body">
-                    
-                    <form class="form-ajax"  method="POST" action="{{ admin_url('setting/site') }}" role="form">
-                      {{ csrf_field() }}
-                      
-                      <div class="form-group row">
-                       
+                    <div class="col-md-4 col-sm-6">
+                        <form class="form-ajax"  method="POST" action="{{ admin_url('setting/site') }}" role="form">
+                        {{ csrf_field() }}
                         
-                        <label for="site_name" class="col-sm-2 col-form-label text-right">
-                            {{ __('suda_lang::press.website_name') }}<i class="optional">*</i>
-                           </label>
+                        <div class="mb-3 form-floating">
                         
-                        <div class="col-sm-4">
                             <input type="text" class="form-control" name="site_name" placeholder="{{ trans('suda_lang::press.input_placeholder',['column'=>trans('suda_lang::press.system_name')]) }}" value="@if(isset($settings->site_name)){{ $settings->site_name }}@endif">
+                                <label for="site_name">
+                                    {{ __('suda_lang::press.website_name') }}<i class="optional">*</i>
+                                </label>
                         </div>
-                      </div>
-                      
-                      <div class="form-group row">
                         
-                        <label for="site_domain" class="col-sm-2 col-form-label text-right">
-                               {{ trans('suda_lang::press.domain') }}
-                           </label>
-                        
-                        <div class="col-sm-4">
+                        <div class="mb-3 form-floating">
                             <input type="text" class="form-control" name="site_domain" placeholder="{{ trans('suda_lang::press.input_placeholder',['column'=>trans('suda_lang::press.domain')]) }}" value="@if(isset($settings->site_domain)){{ $settings->site_domain }}@endif">
+                            <label for="site_domain">
+                                {{ __('suda_lang::press.domain') }}
+                            </label>
+                            
                         </div>
-                      </div>
-                      
-                      <div class="form-group row">
                         
-                        <label for="company_name" class="col-sm-2  col-form-label text-right">
-                               {{ trans('suda_lang::press.company_name') }}<i class="optional">*</i>
-                           </label>
-                        
-                        <div class="col-sm-4">
+                        <div class="mb-3 form-floating">
                             <input type="text" class="form-control" name="company_name" placeholder="{{ trans('suda_lang::press.input_placeholder',['column'=>trans('suda_lang::press.company_name')]) }}" value="@if(isset($settings->company_name)){{ $settings->company_name }}@endif">
+                            <label for="company_name">
+                                {{ __('suda_lang::press.company_name') }}<i class="optional">*</i>
+                            </label>
                         </div>
-                      </div>
-                      
-                      <div class="form-group row">
-                          
-                        <label for="company_addr" class="col-sm-2  col-form-label text-right">
-                               {{ __('suda_lang::press.company_address') }}<i class="optional">*</i>
-                           </label>
                         
-                        <div class="col-sm-4">
+                        <div class="mb-3 form-floating">
                             <input type="text" class="form-control" name="company_addr" placeholder="{{ trans('suda_lang::press.input_placeholder',['column'=>trans('suda_lang::press.company_address')]) }}" value="@if(isset($settings->company_addr)){{ $settings->company_addr }}@endif">
+                            <label for="company_addr" >
+                                {{ __('suda_lang::press.company_address') }}<i class="optional">*</i>
+                            </label>
                         </div>
-                      </div>
-                      
-                      <div class="form-group row">
                         
-                        <label for="company_phone" class="col-sm-2  col-form-label text-right">
-                               {{ trans('suda_lang::press.company_telephone') }}<i class="optional">*</i>
-                        </label>
-                        
-                        <div class="col-sm-4">
+                        <div class="mb-3 form-floating">
                             <input type="text" class="form-control" name="company_phone" placeholder="{{ trans('suda_lang::press.input_placeholder',['column'=>trans('suda_lang::press.company_telephone')]) }}" value="@if(isset($settings->company_phone)){{ $settings->company_phone }}@endif">
+                            <label for="company_phone">
+                                {{ trans('suda_lang::press.company_telephone') }}<i class="optional">*</i>
+                            </label>
                         </div>
-
-                      </div>
-                      
-                      <div class="form-group row">
                         
-                        <label for="icp_number" class="col-sm-2 col-form-label text-right">
-                               {{ trans('suda_lang::press.icp_number') }}<i class="optional">*</i>
-                           </label>
-                        
-                        <div class="col-sm-4">
+                        <div class="mb-3 form-floating">
                             <input type="text" class="form-control" name="icp_number" placeholder="{{ trans('suda_lang::press.input_placeholder',['column'=>trans('suda_lang::press.icp_number')]) }}" value="@if(isset($settings->icp_number)){{ $settings->icp_number }}@endif">
+                            <label for="icp_number">
+                                {{ trans('suda_lang::press.icp_number') }}
+                            </label>
                         </div>
-                      </div>
-                      
-                      <div class="form-group row">
                         
-                        <label for="icp_number" class="col-sm-2 col-form-label text-right">
-                               {{ trans('suda_lang::press.system_close') }}
-                           </label>
-                        
-                        <div class="col-sm-4 form-inline">
+                        <div class="mb-3">
+                            
+                            <label for="icp_number" class="col-sm-2 col-form-label text-right">
+                                {{ trans('suda_lang::press.system_status') }}
+                            </label>
+                            
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="site_close" id="site_close_0" value="0" @if((isset($settings->site_close) && $settings->site_close==0) || !isset($settings->site_close)) checked @endif>
                                 <label class="form-check-label" for="site_close">{{ trans('suda_lang::press.open') }}</label>
@@ -110,19 +85,14 @@
                                 <input class="form-check-input" type="radio" name="site_close" id="site_close_1" value="1" @if((isset($settings->site_close) && $settings->site_close==1) || !isset($settings->site_close)) checked @endif>
                                 <label class="form-check-label" for="site_close">{{ trans('suda_lang::press.close') }}</label>
                             </div>
-                            
-                            
                         </div>
-                      </div>
-                      
-                      <div class="form-group row">
-                          <div class="buttons col-sm-4 offset-sm-2">
-                              <button type="submit" class="btn btn-primary btn-block">{{ trans('suda_lang::press.submit_save') }}</button>
-                          </div>
-                          
-                      </div>
+                        
+                        <div class="">
+                            <button type="submit" class="btn btn-primary btn-block">{{ trans('suda_lang::press.submit_save') }}</button>
+                        </div>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
             

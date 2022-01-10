@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-dialog-full" role="document">
     <div class="modal-content">
       <div class="modal-header modal-header-tabs">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <!-- <h4 class="modal-title">
             {{ trans('suda_lang::press.image_setting') }}
         </h4> -->

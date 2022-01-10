@@ -7,8 +7,8 @@
     <div class="row suda-row">
         <div class="page-heading">
             <h1 class="page-title">
-                <i class="zly-gear-s"></i>
-                浏览设置
+                <i class="ion-settings"></i>
+                {{ __('suda_lang::press.front_info') }}
             </h1>
             
         </div>
@@ -22,25 +22,25 @@
                     <form class="form-ajax"  method="POST" action="{{ admin_url('setting/browser') }}" role="form">
                       {{ csrf_field() }}
                       
-                      <div class="form-group row">
+                      <div class="row mb-3">
                        
                         
-                        <label for="default_page" class="col-sm-2 col-form-label text-right">
-                               前台默认访问
+                        <label for="default_page" class="col-sm-2 col-form-label text-end">
+                            {{ __('suda_lang::press.settings.front_default_page') }}
                         </label>
                         
                         <div class="col-sm-4">
                             <div class="form-check">
                                 <input type="radio" name="default_page" @if(isset($settings->values['page_type']) && $settings->values['page_type']=='default_page') checked @endif value="default_page">
                                 <label class="form-check-label" for="default_page">
-                                    默认首页
+                                    {{ __('suda_lang::press.settings.default_homepage') }}
                                 </label>
                             </div>
                             
                             <div class="form-check">
                                 <input type="radio" name="default_page" @if(isset($settings->values['page_type']) && $settings->values['page_type']=='single_page') checked @endif  value="single_page">
                                 <label class="form-check-label" for="default_page">
-                                    静态页面
+                                    {{ __('suda_lang::press.settings.static_homepage') }}
                                 </label>
 
                                 &nbsp;&nbsp;
@@ -61,7 +61,7 @@
 
                                 <input type="radio" name="default_page" @if(isset($settings->values['page_type']) && $settings->values['page_type']=='link_page') checked @endif value="link_page">
                                 <label class="form-check-label" for="default_page">
-                                    自定义URL
+                                    {{ __('suda_lang::press.settings.custom_homepage') }}
                                 </label>
 
                                 <div class="input-group default_page_url" style="display:none;">
@@ -82,13 +82,7 @@
                       </div>
                       
                       
-                      
-                      <div class="form-group row">
-                          <div class="buttons col-sm-4 offset-sm-2">
-                              <button type="submit" class="btn btn-primary btn-block">{{ trans('suda_lang::press.submit_save') }}</button>
-                          </div>
-                          
-                      </div>
+                      <button type="submit" class="btn btn-primary offset-sm-2">{{ trans('suda_lang::press.submit_save') }}</button>
 
                     </form>
                 </div>

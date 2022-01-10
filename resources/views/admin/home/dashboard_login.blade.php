@@ -8,7 +8,7 @@
         <div class="page-heading">
             <h1 class="page-title">
                 <i class="ion-settings"></i>
-                控制台设置
+                {{ __('suda_lang::press.dashboard_info') }}
             </h1>
             
         </div>
@@ -23,11 +23,11 @@
                       {{ csrf_field() }}
                       
                       
-                      <div class="form-group row">
+                      <div class="row mb-3">
                        
                         
-                        <label for="site_name" class="col-sm-2 col-form-label text-right">
-                               后台Logo
+                        <label for="site_name" class="col-sm-2 col-form-label text-end">
+                               Logo
                         </label>
                         
                         <div class="col-sm-4">
@@ -42,84 +42,83 @@
                                   </div>
                               </div>
                             </div>
-                            <span class="help-block">尺寸 360*128 像素</span>
+                            <span class="help-block">360*128 pixel</span>
                         </div>
                       </div>
                       
-                      <div class="form-group row">
+                      <div class="row mb-3">
                        
                         
-                        <label for="login_page" class="col-sm-2 col-form-label text-right">
-                               默认访问
+                        <label for="login_page" class="col-sm-2 col-form-label text-end">
+                               {{ __('suda_lang::press.settings.login_path') }}
                         </label>
                         
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        {{ config('sudaconf.admin_path') }}/
-                                    </div>
+                                <div class="input-group-text">
+                                    {{ config('sudaconf.admin_path') }}/
                                 </div>
-                                <input type="text" class="form-control" name="login_page" placeholder="请填写访问路径 例如 index" value="@if(isset($settings['login_page']->values)){{ $settings['login_page']->values }}@endif">
+                                <input type="text" class="form-control" name="login_page" placeholder="example: index" value="@if(isset($settings['login_page']->values)){{ $settings['login_page']->values }}@endif">
                             </div><!-- /input-group -->
                         </div>
                       </div>
 
-                      <div class="form-group row">
+                      <div class="row mb-3">
                        
                         
-                        <label for="login_page" class="col-sm-2 col-form-label text-right">
-                                面包屑路径
+                        <label for="login_page" class="col-sm-2 col-form-label text-end">
+                            {{ __('suda_lang::press.settings.breadcrumb') }}
                         </label>
                         
-                        <div class="col-sm-4 form-check-inline">
-                            <div class="form-check">
+                        <div class="col-sm-4">
+                            <label for="login_page" class="col-form-label text-end">
+                                &nbsp;
+                            </label>
+                            <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="show_breadcrumb" value="1" @if(isset($settings['show_breadcrumb']) && $settings['show_breadcrumb']==1) checked @endif>
                                 <label class="form-check-label" for="show_breadcrumb">{{ trans('suda_lang::press.open') }}</label>
                             </div>
-                            <div class="form-check">
+                            <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="show_breadcrumb" value="0" @if(!isset($settings['show_breadcrumb']) || (isset($settings['show_breadcrumb']) && $settings['show_breadcrumb']==0)) checked @endif>
                                 <label class="form-check-label" for="show_breadcrumb">{{ trans('suda_lang::press.close') }}</label>
                             </div>
                         </div>
                         </div>
                       
-                    <div class="form-group row">
+                    <div class="row mb-3">
                        
                         
-                        <label for="operate_avatar" class="col-sm-2  col-form-label text-right">
-                            用户信息
+                        <label for="operate_avatar" class="col-sm-2  col-form-label text-end">
+                            {{ __('suda_lang::press.settings.userinfo') }}
                         </label>
 
                         <div class="col-sm-4">
                             <select name="operate_avatar" class="form-control">
-                                <option value="2" @if(isset($settings['operate_avatar']->values) && $settings['operate_avatar']->values=='2') selected @endif>全部显示</option>
-                                <option value="1" @if(isset($settings['operate_avatar']->values) && $settings['operate_avatar']->values=='1') selected @endif>只显示左下角</option>
-                                <option value="0" @if(isset($settings['operate_avatar']->values) && $settings['operate_avatar']->values=='0') selected @endif>只显示右上角</option>
+                                <option value="2" @if(isset($settings['operate_avatar']->values) && $settings['operate_avatar']->values=='2') selected @endif>{{ __('suda_lang::press.settings.userinfo_position.all') }}</option>
+                                <option value="1" @if(isset($settings['operate_avatar']->values) && $settings['operate_avatar']->values=='1') selected @endif>{{ __('suda_lang::press.settings.userinfo_position.left_bottom') }}</option>
+                                <option value="0" @if(isset($settings['operate_avatar']->values) && $settings['operate_avatar']->values=='0') selected @endif>{{ __('suda_lang::press.settings.userinfo_position.top_right') }}</option>
                             </select>
                         </div>
 
                     </div>
                       
-                    <div class="form-group row">
+                    <div class="row mb-3">
                     
                     
-                        <label for="app_quickin" class="col-sm-2 col-form-label text-right">
-                            显示模块
+                        <label for="app_quickin" class="col-sm-2 col-form-label text-end">
+                            {{ __('suda_lang::press.settings.modules') }}
                         </label>
                         
                         <div class="col-sm-4 check-buttons btn-group" data-toggle="buttons">
-                            {{-- <label class="btn btn-light @if(isset($settings['dashboard_apps']['start']) && $settings['dashboard_apps']['start']=='on') active @endif">
-                                <input type="checkbox" name="dashboard_apps[start]"  @if(isset($settings['dashboard_apps']['start']) && $settings['dashboard_apps']['start']=='on') checked @endif >&nbsp;彩色导航
-                            </label> --}}
+                            
                             <label class="btn btn-light @if(isset($settings['dashboard_apps']['welcome']) && $settings['dashboard_apps']['welcome']=='on') active @endif">
-                                <input type="checkbox" name="dashboard_apps[welcome]"  @if(isset($settings['dashboard_apps']['welcome']) && $settings['dashboard_apps']['welcome']=='on') checked @endif >&nbsp;欢迎信息
+                                <input type="checkbox" name="dashboard_apps[welcome]"  @if(isset($settings['dashboard_apps']['welcome']) && $settings['dashboard_apps']['welcome']=='on') checked @endif >&nbsp;{{ __('suda_lang::press.settings.modules_list.welcome') }}
                             </label>
                             <label class="btn btn-light @if(isset($settings['dashboard_apps']['quickin']) && $settings['dashboard_apps']['quickin']=='on') active @endif">
-                                <input type="checkbox" name="dashboard_apps[quickin]"  @if(isset($settings['dashboard_apps']['quickin']) && $settings['dashboard_apps']['quickin']=='on') checked @endif >&nbsp;应用入口
+                                <input type="checkbox" name="dashboard_apps[quickin]"  @if(isset($settings['dashboard_apps']['quickin']) && $settings['dashboard_apps']['quickin']=='on') checked @endif >&nbsp;{{ __('suda_lang::press.settings.modules_list.quickin') }}
                             </label>
                             <label class="btn btn-light @if(isset($settings['dashboard_apps']['custom']) && $settings['dashboard_apps']['custom']=='on') active @endif">
-                                <input type="checkbox" name="dashboard_apps[custom]"  @if(isset($settings['dashboard_apps']['custom']) && $settings['dashboard_apps']['custom']=='on') checked @endif >&nbsp;自定义
+                                <input type="checkbox" name="dashboard_apps[custom]"  @if(isset($settings['dashboard_apps']['custom']) && $settings['dashboard_apps']['custom']=='on') checked @endif >&nbsp;{{ __('suda_lang::press.settings.modules_list.custom') }}
                             </label>
                         </div>
                     </div>
@@ -127,31 +126,31 @@
 
 
 
-                    <div class="form-group row">
+                    <div class="row mb-3">
                        
                         
-                       <label for="loginbox" class="col-sm-2 col-form-label text-right">
-                              登录窗口
+                       <label for="loginbox" class="col-sm-2 col-form-label text-end">
+                            {{ __('suda_lang::press.settings.login_style') }}
                           </label>
                        
                        <div class="col-sm-4">
                            <select class="form-control" name="loginbox">
-                               <option value="default" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='default') selected @endif>默认风格</option>
-                               <option value="picture" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='picture') selected @endif>暗色风格</option>
+                               <option value="default" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='default') selected @endif>{{ __('suda_lang::press.settings.style_list.default') }}</option>
+                               <option value="picture" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='picture') selected @endif>{{ __('suda_lang::press.settings.style_list.dark') }}</option>
                                {{-- <option value="simple-blue" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='simple-blue') selected @endif>简单蓝</option>
                                <option value="simple-orange" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='simple-orange') selected @endif>简单橙</option>
                                <option value="simple-cyan" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='simple-cyan') selected @endif>简单青</option>
                                <option value="simple-black" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='simple-black') selected @endif>简单黑</option> --}}
                            </select>
-                           <span class="help-block">选择图片风格时,可选择下面图片</span>
+                           {{-- <span class="help-block">选择图片风格时,可选择下面图片</span> --}}
                        </div>
                        
                     </div>
 
-                    <div class="form-group row">
+                    <div class="row mb-3">
                        
                         
-                        <label for="loginbox" class="col-sm-2 col-form-label text-right">&nbsp;</label>
+                        <label for="loginbox" class="col-sm-2 col-form-label text-end">&nbsp;</label>
                     
                         <div class="col-sm-4">
                             <input type="text" class="form-control color-pickr" name="login_color" placeholder="背景配色" @if(isset($settings['login_color']->values)) value="{{ $settings['login_color']->values }}" @else value="#1c35a7" @endif>
@@ -159,11 +158,11 @@
                     
                     </div>
 
-                    <div class="form-group row">
+                    <div class="row mb-3">
                        
                         
-                        <label for="site_name" class="col-sm-2 col-form-label text-right">
-                            登录图片
+                        <label for="site_name" class="col-sm-2 col-form-label text-end">
+                            {{ __('suda_lang::press.settings.login_image') }}
                         </label>
                         
                         <div class="col-sm-4">
@@ -199,10 +198,10 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="row mb-3">
                        
                         
-                        <label for="site_name" class="col-sm-2 col-form-label text-right">
+                        <label for="site_name" class="col-sm-2 col-form-label text-end">
                             &nbsp;
                         </label>
                         
@@ -227,15 +226,12 @@
 
                         </div>
                     </div>
-                      
-                      
-                    
-                    <div class="form-group">
-                        <div class="buttons col-sm-4 offset-sm-2">
-                            <button type="submit" class="btn btn-primary btn-block">{{ trans('suda_lang::press.submit_save') }}</button>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">{{ trans('suda_lang::press.save') }}</button>
                         </div>
                     </div>
-
                     </form>
                 </div>
             </div>

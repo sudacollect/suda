@@ -9,7 +9,7 @@
             <h4 class="modal-title">
                 <i class="ion-checkmark-done-outline"></i>&nbsp;选择页面
             </h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         
         @if($data_list->count()>0)

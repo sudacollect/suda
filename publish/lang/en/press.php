@@ -18,22 +18,15 @@ return [
     'certificated'=>'certified',
     'uncertificated'=>'uncertified',
     
-    'basic_info'=>'Basic',
-    'dashboard_info'=>'Dashboard',
-    'front_info'=>'Front',
-    'seo_info'=>'SEO',
+    
 
     'logo'=>'Logo',
     
 
     'website_name'=>'Site Name',
     
-    'dashboard_setting'=>'setting',
-    'dashboard_style'=>'theme',
-    'seo_setting'=>'SEO',
-    'keyword'=>'keyword',
-    'keywords'=>'keywords',
-    'description'=>'description',
+
+    
     
     'sidebar_style'=>'Sidebar style',
     
@@ -63,7 +56,7 @@ return [
     'homepage'=>'home',
     'visit_homepage'=>'visit Home',
     
-    'system_close'=>'close',
+    'system_status'=>'System Status',
     'domain'=>'domain',
     'icp_number'=>'ICP.NO',
     
@@ -229,6 +222,7 @@ return [
     
     'user_list'=>'Users',
 
+    // DASHBOARD
     'dash'=>[
         'welcome'=>'Welcome',
         'customize_setting'=>'Suda Admin Panel, support customize and extend widgets.',
@@ -238,7 +232,57 @@ return [
         'dev_link_text'=>'Quick Start',
     ],
 
+    // SETTING
 
+    'basic_info'=>'Basic',
+    'dashboard_info'=>'Dashboard',
+    'front_info'=>'Front',
+    'seo_info'=>'SEO',
+    
+    'dashboard_style'=>'theme',
+    'seo_setting'=>'SEO',
+    
+
+    'settings'=>[
+        'login_path'=>'Login Path',
+        'breadcrumb'=>'Breadcrumb',
+        'userinfo'=>'Userinfo',
+
+        'userinfo_position'=>[
+            'all'=>'Show All',
+            'left_bottom'=>'Left Bottom',
+            'top_right'=>'Top Right',
+        ],
+
+        'modules'=>'Modules',
+
+        'modules_list'=>[
+            'welcome'=>'Welcome',
+            'quickin'=>'QuickIn',
+            'custom'=>'Customs',
+        ],
+
+        'login_style'=>'Login Style',
+
+        'style_list'=>[
+            'default'=>'Light',
+            'dark'=>'Dark',
+        ],
+
+        'login_image'=>'Login Image',
+
+        'share_image'=>'Share Image',
+
+        'front_default_page'=>'Default Home',
+        'default_homepage'=>'Default',
+        'static_homepage'=>'Static Page',
+        'custom_homepage'=>'Custom URL',
+
+        'seo_title'=>'Title',
+        'keyword'=>'Keyword',
+        'keywords'=>'Keywords',
+        'description'=>'Description',
+    ],
 
 
     // ABOUT
