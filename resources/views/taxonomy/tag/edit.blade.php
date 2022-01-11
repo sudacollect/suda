@@ -14,7 +14,7 @@
             
                     
                     
-                  <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
+                  <div class="mb-3 row {{ $errors->has('name') ? ' has-error' : '' }}">
                   
                     <label for="inputName" class="col-sm-3 col-form-label text-right">
                         {{ __('suda_lang::press.tag_name') }}
@@ -30,7 +30,7 @@
                 
                   </div>
               
-                  <div class="form-group row {{ $errors->has('slug') ? ' has-error' : '' }}">
+                  <div class="mb-3 row {{ $errors->has('slug') ? ' has-error' : '' }}">
                   
                     <label for="inputName" class="col-sm-3 col-form-label text-right">
                         别名
@@ -47,7 +47,7 @@
                 
                   </div>
               
-                    <div class="form-group row {{ $errors->has('desc') ? ' has-error' : '' }}">
+                    <div class="mb-3 row {{ $errors->has('desc') ? ' has-error' : '' }}">
                   
                       <label for="desc" class="col-sm-3 col-form-label text-right">
                           描述
@@ -60,7 +60,7 @@
                     </div>
                     
                     
-                    <div class="form-group row {{ $errors->has('sort') ? ' has-error' : '' }}">
+                    <div class="mb-3 row {{ $errors->has('sort') ? ' has-error' : '' }}">
                   
                       <label for="inputName" class="col-sm-3 col-form-label text-right">
                           排序
@@ -80,7 +80,7 @@
 </div>
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">取消</span></button>
+    <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">取消</span></button>
     <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.submit_save') }}</button>
 </div>
 

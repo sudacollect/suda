@@ -148,7 +148,7 @@
         @endphp
         <div class="suda-flat  {{ $suda_flat_style }}">
         
-        @if(isset($sdcore->settings->dashboard->show_breadcrumb) && $sdcore->settings->dashboard->show_breadcrumb==1)
+        @if(isset($sdcore->settings->dashboard->show_breadcrumb) && $sdcore->settings->dashboard->show_breadcrumb==1 && (!isset($no_breadcrumb) || !$no_breadcrumb))
             @include('view_path::layouts.menu_float_breadcrumb')
         @endif
         

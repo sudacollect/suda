@@ -4,7 +4,7 @@
         <div class="card">
          
             <div class="card-header bg-white">
-                <a href="{{ admin_url('/') }}">欢迎</a>
+                <a href="{{ admin_url('/') }}">{{ ucfirst(__('suda_lang::press.welcome')) }}</a>
                 <i class="dash-switch zly-angle-down pull-right"></i>
             </div>
              
@@ -37,7 +37,7 @@
     <div class="card">
      
         <div class="card-header bg-white">
-            <a href="{{ admin_url('/') }}">快捷管理</a>
+            <a href="{{ admin_url('/') }}">{{ __('suda_lang::press.dash.quick_start') }}</a>
             <i class="dash-switch zly-angle-down pull-right"></i>
         </div>
          
@@ -51,7 +51,7 @@
                             <span class="badge text-secondary">
                                 <i class="ion-cog"></i>
                             </span>
-                            系统设置
+                            {{ __('suda_lang::press.dash.system_setting') }}
                         </a>
                     </li>
 
@@ -60,7 +60,7 @@
                             <span class="badge text-secondary">
                                 <i class="ion-document"></i>
                             </span>
-                            页面管理
+                            {{ __('suda_lang::press.dash.pages') }}
                         </a>
                     </li>
 
@@ -69,7 +69,7 @@
                             <span class="badge text-secondary">
                                 <i class="ion-folder"></i>
                             </span>
-                            文章管理
+                            {{ __('suda_lang::press.dash.articles') }}
                         </a>
                     </li>
                 </ul>
@@ -81,7 +81,7 @@
                             <span class="badge text-secondary">
                                 <i class="ion-color-palette"></i>
                             </span>
-                            模板风格
+                            {{ __('suda_lang::press.dash.themes') }}
                         </a>
                     </li>
 
@@ -90,7 +90,7 @@
                             <span class="badge text-secondary">
                                 <i class="ion-people"></i>
                             </span>
-                            角色权限
+                            {{ __('suda_lang::press.dash.roles') }}
                         </a>
                     </li>
 
@@ -99,7 +99,7 @@
                             <span class="badge text-secondary">
                                 <i class="ion-cube"></i>
                             </span>
-                            应用列表
+                            {{ __('suda_lang::press.dash.extensions') }}
                         </a>
                     </li>
                 </ul>

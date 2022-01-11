@@ -38,7 +38,7 @@
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">关闭</button>
         <button type="button" class="btn btn-primary" id="btn-save">确定</button>
       </div>
       

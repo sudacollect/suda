@@ -4,10 +4,10 @@
        <div class="card">
         
             <div class="card-header bg-white">
-                <a href="{{ admin_url('manage/extension') }}"><i class="ion-file-tray-full"></i>&nbsp;应用</a>
+                <a href="{{ admin_url('manage/extension') }}"><i class="ion-file-tray-full"></i>&nbsp;{{ __('suda_lang::press.dash.application') }}</a>
                 <i class="dash-switch zly-angle-down pull-right"></i>
             </div>
-            @if(isset($exts))
+            @if(isset($exts) && $exts)
                 <div class="card-body app_quickin">
                     <div class="row px-3">
                     @foreach ($exts as $item)
@@ -29,6 +29,12 @@
                      @endforeach
                     </div>
                 </div>
+            @else
+            <div class="card-body app_quickin">
+
+                {{ __('suda_lang::press.dash.no_applications') }}
+
+            </div>
             @endif
         </div>
 

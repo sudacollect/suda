@@ -1,4 +1,4 @@
-@extends('view_path::layouts.default')
+@extends('view_path::layouts.default',['no_breadcrumb'=>true])
 
 
 @section('content')
@@ -41,7 +41,8 @@
                 {{ Sudacore::widget('\Gtd\Suda\Widgets\Welcome') }}
                 @endif
 
-                {{ Sudacore::widget('dashaboard.dashhelp') }}
+                {{-- {{ Sudacore::widget('dashaboard.dashhelp') }} --}}
+
                 {{ Sudacore::widget('dashaboard.news') }}
 
                 @if(count(config('suda_custom.widget_extends',[]))>0)

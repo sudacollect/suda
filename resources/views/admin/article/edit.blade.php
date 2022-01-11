@@ -21,14 +21,14 @@
                     
                     
                     
-                    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}" >
+                    <div class="mb-3{{ $errors->has('title') ? ' has-error' : '' }}" >
                         <label for="title">标题</label>
                       <input type="text" name="title" class="form-control" value="{{ $item->title }}" id="inputName" placeholder="请输入标题">
                     </div>
                     
                     
                     
-                    <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}" >
+                    <div class="mb-3{{ $errors->has('content') ? ' has-error' : '' }}" >
                         <label for="title">内容</label>
                         @include('view_app::component.editor',['height'=>$editor_height,'content'=>$item->content])
                         
@@ -44,7 +44,7 @@
             
             <div class="card mb-3">
                 <div class="card-body">
-                    <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}" >
+                    <div class="mb-3{{ $errors->has('category') ? ' has-error' : '' }}" >
                         <label for="slug" >
                                 分类
                         </label>
@@ -59,7 +59,7 @@
                     </div>
                 
                 
-                    <div class="form-group{{ $errors->has('keyword') ? ' has-error' : '' }}" >
+                    <div class="mb-3{{ $errors->has('keyword') ? ' has-error' : '' }}" >
                             <label for="slug" >
                                 标签
                             </label>
@@ -86,7 +86,7 @@
                             </select>
 
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="inputName" >
                         标题图
                         </label>
@@ -105,7 +105,7 @@
             <div class="card mb-3">
                 <div class="card-body">
 
-                    <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}" >
+                    <div class="mb-3{{ $errors->has('slug') ? ' has-error' : '' }}" >
                         <label for="slug" >
                                 自定义路径
                         </label>
@@ -115,7 +115,7 @@
                         </span>
                     </div>
                     
-                    <div class="form-group{{ $errors->has('redirect_url') ? ' has-error' : '' }}" >
+                    <div class="mb-3{{ $errors->has('redirect_url') ? ' has-error' : '' }}" >
                         <label for="redirect_url" >
                             跳转URL
                         </label>
@@ -127,7 +127,7 @@
         
                     </div>
 
-                    <div class="form-group">
+                    <div class="mb-3">
                             
                         <label for="published_at" >
                             发布日期
@@ -142,7 +142,7 @@
             <div class="card">
 
                 <div class="card-body">
-                        <div class="form-group">
+                        <div class="mb-3">
                                 
                                 <label for="stick_top" >
                                     置顶
@@ -158,7 +158,7 @@
                                 </div>
 
                             </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                             <label for="slug" >
                                     发布
                             </label>    
@@ -172,7 +172,7 @@
                             </div>
                     </div>
                 
-                    <button type="submit" class="btn btn-primary btn-block">{{ __('suda_lang::press.save') }}</button>
+                    <button type="submit" class="btn btn-primary ">{{ __('suda_lang::press.save') }}</button>
                 </div>
             </div>
   

@@ -19,23 +19,23 @@
         
 
         <div class="col-12 suda_page_body">
-            <div class="d-flex mb-3">
+            <div class="d-flex justify-content-between mb-3">
                 @if(!isset($article_only_deleted))
                 @include('view_suda::admin.article.filter_bar')
                 @endif
 
-                <div class="btn-groups ml-auto">
+                <div class="btn-groups">
                     
                     @if(!isset($article_only_deleted))
-                    <a class="btn btn-light btn-sm" href="{{ admin_url('articles/gallery') }}"><i class="ion-grid"></i></a>
-                    <a class="btn btn-light btn-sm" href="{{ admin_url('articles/list') }}"><i class="ion-reorder-four"></i></a>
+                    <a class="btn btn-dark btn-sm" href="{{ admin_url('articles/gallery') }}"><i class="ion-grid"></i></a>
+                    <a class="btn btn-dark btn-sm" href="{{ admin_url('articles/list') }}"><i class="ion-reorder-four"></i></a>
                     
-                    <button class="btn btn-light btn-sm more-filter" data-element=".data-list">
+                    <button class="btn btn-primary btn-sm more-filter" data-element=".data-list">
                         <i class="ion-search-circle-outline"></i>&nbsp;高级搜索
                     </button>
                     @endif
 
-                    <a class="btn btn-sm @if(isset($article_only_deleted)) btn-warning @else  btn-light @endif" href="{{ admin_url('articles/deleted') }}">回收站</a>
+                    <a class="btn btn-sm @if(isset($article_only_deleted)) btn-warning @else  btn-warning @endif" href="{{ admin_url('articles/deleted') }}">回收站</a>
                 </div>
 
             </div>

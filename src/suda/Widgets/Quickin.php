@@ -37,11 +37,7 @@ class Quickin extends Widget
     {
         
         $exts = $this->getExts();
-        if($exts){
-            return view('view_suda::widgets.quickin', ['exts'=>$exts]);
-        }
-
-        return '';
+        return view('view_suda::widgets.quickin', ['exts'=>$exts]);
         
     }
     

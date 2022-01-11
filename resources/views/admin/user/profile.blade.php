@@ -127,7 +127,7 @@
       
       <div class="modal-footer">
           <button type="button" id="apply-crop" class="btn btn-primary btn-sm pull-right" >使用此头像</button>
-          <button type="button" class="btn btn-light btn-sm pull-right" style="margin-right:15px;" data-dismiss="modal" aria-label="Close">取消</button>
+          <button type="button" class="btn btn-light btn-sm pull-right" style="margin-right:15px;" data-bs-dismiss="modal" aria-label="Close">取消</button>
       </div>
       
       

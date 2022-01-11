@@ -28,7 +28,7 @@
 </div>
 
 <!-- <div class="modal-footer">
-    <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">取消</span></button>
+    <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">取消</span></button>
 </div> -->
 
 @endsection

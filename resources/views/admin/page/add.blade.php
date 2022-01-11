@@ -7,7 +7,7 @@
 <div class="container">
 
     <form role="form" method="POST" action="{{ admin_url('page/save') }}" class="form-ajax">
-        <div class="page-title"><i class="ion-create"></i>&nbsp;新建页面</div>
+        <div class="page-title"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.menu_items.page_new') }}</div>
     <div class="row suda-row">
 
         <input type="hidden" name="previous_url" value="{{ URL::previous() }}">
@@ -18,22 +18,22 @@
                 <div class="card-body">
                     
                     
-                    {{ csrf_field() }}
+                    @csrf
                     
                     
-                    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}" >
+                    <div class="mb-3 {{ $errors->has('title') ? ' has-error' : '' }}" >
                         <label for="inputName" >
-                            标题<i class="optional">*</i>
+                            {{ __('suda_lang::press.pages.title') }}<i class="optional">*</i>
                         </label>
-                        <input type="text" name="title" class="form-control" id="inputName" placeholder="请输入名称">
+                        <input type="text" name="title" class="form-control" id="inputName" placeholder="title">
                     </div>
 
                     
                     
-                    <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}" >
+                    <div class="mb-3 {{ $errors->has('content') ? ' has-error' : '' }}" >
                         
                         <label for="inputName" >
-                            内容<i class="optional">*</i>
+                            {{ __('suda_lang::press.pages.content') }}<i class="optional">*</i>
                         </label>
 
                         @include('view_app::component.editor',['height'=>$editor_height])
@@ -43,11 +43,7 @@
                     
                 </div>
                 
-                <div class="card-footer">
-                    <span class="help-block">
-                        <a target="_blank" href="https://suda.gtd.xyz" style="color:#999;"><i class="icon ion-help-buoy"></i>&nbsp;了解什么是自定义路径？</a>
-                    </span>
-                </div>
+                
             </div>
             
         </div>
@@ -56,56 +52,56 @@
     
                 <div class="card-body">
                     
-                    <div class="form-group{{ $errors->has('keyword') ? ' has-error' : '' }}" >
+                    <div class="mb-3 {{ $errors->has('keyword') ? ' has-error' : '' }}" >
                         <label for="keyword" >
-                            标签
+                            {{ __('suda_lang::press.tags.tag') }}
                         </label>
-                        <select name="keyword[]" class="select-keyword form-control" multiple="multiple" placeholder="输入标签"></select>
+                        <select name="keyword[]" class="select-keyword form-control" multiple="multiple" placeholder="{{ __('suda_lang::press.tags.select_tag') }}"></select>
                     </div>
                     
                     
                     
-                    <div class="form-group">
+                    <div class="mb-3 ">
                         <label for="inputName" >
-                            标题图<i class="optional">*</i>
+                            {{ __('suda_lang::press.pages.kv_image') }}<i class="optional">*</i>
                         </label>
                         @uploadBox('page@input_page','1','1')
                     </div>
     
-                    <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}" >
+                    <div class="mb-3 {{ $errors->has('slug') ? ' has-error' : '' }}" >
                         <label for="slug" >
-                            自定义路径
+                            {{ __('suda_lang::press.pages.slug') }}
                         </label>
-                        <input type="text" name="slug" class="form-control" id="slug" placeholder="自定义路径">
+                        <input type="text" name="slug" class="form-control" id="slug" placeholder="{{ __('suda_lang::press.pages.slug') }}">
                         <span class="help-block">
-                        设置后页面访问链接将变成 page/定义的路径.
+                            {{ __('suda_lang::press.pages.slug_tips') }}
                         </span>
                     </div>
                     
-                    <div class="form-group{{ $errors->has('redirect_url') ? ' has-error' : '' }}" >
+                    <div class="mb-3{{ $errors->has('redirect_url') ? ' has-error' : '' }}" >
                         <label for="redirect_url" >
-                            跳转URL
+                            {{ __('suda_lang::press.pages.redirect_url') }}
                         </label>
     
-                        <input type="text" name="redirect_url" class="form-control" id="redirect_url" placeholder="跳转URL">
+                        <input type="text" name="redirect_url" class="form-control" id="redirect_url" placeholder="/">
                         <span class="help-block">
-                        设置跳转后，将直接访问到设定的URL页面.
+                            {{ __('suda_lang::press.pages.redirect_tips') }}
                         </span>
     
                     </div>
     
-                    <div class="form-group">
+                    <div class="mb-3">
                         
                         <label for="published_at" >
-                            发布日期
+                            {{ __('suda_lang::press.publish_date') }}
                         </label>
-                        <input type="text" name="published_at" data-toggle="datepicker" class="form-control" placeholder="可选发布日期">
+                        <input type="text" name="published_at" data-toggle="datepicker" class="form-control" placeholder="{{ __('suda_lang::press.publish_date') }}">
                     </div>
     
-                    <div class="form-group">
+                    <div class="mb-3">
                         
                         <label for="stick_top" >
-                            置顶
+                            {{ __('suda_lang::press.stick_top') }}
                         </label>
 
                         <div class="form-check form-check-inline">
@@ -120,10 +116,10 @@
                         
                     </div>
     
-                    <div class="form-group">
+                    <div class="mb-3">
                         
                         <label for="enable" >
-                            发布
+                            {{ __('suda_lang::press.publish') }}
                         </label>
 
                         <div class="form-check form-check-inline">
@@ -137,9 +133,7 @@
                     </div>
                     
                     
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">{{ __('suda_lang::press.save') }}</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.save') }}</button>
                     
                 </div>
     

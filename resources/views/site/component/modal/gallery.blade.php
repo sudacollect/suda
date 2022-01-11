@@ -1,6 +1,6 @@
 @if(isset($tags) && $tags)
 
-<div class="col-sm-12 my-2">
+<div class="col-sm-12 my-2 px-2">
     <span class="modal-tag-filter btn  @if(!$tag) btn-success @else btn-light @endif btn-sm" tag-id="0">所有</span>
 @foreach($tags as $item)
     @if($item->term)

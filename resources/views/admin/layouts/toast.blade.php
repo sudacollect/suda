@@ -11,9 +11,7 @@ if(!isset($toast_top)){
     <i class="ion-alert-circle"></i>&nbsp;
     <strong class="mr-auto">提示</strong>
     {{-- <small>11 mins ago</small> --}}
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
         {!! session('status')['msg'] !!}

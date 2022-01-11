@@ -88,7 +88,7 @@
                         </div>
                         
                         <div class="">
-                            <button type="submit" class="btn btn-primary btn-block">{{ trans('suda_lang::press.submit_save') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('suda_lang::press.submit_save') }}</button>
                         </div>
 
                         </form>

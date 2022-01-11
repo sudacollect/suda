@@ -216,6 +216,12 @@ return [
     
     'user_list'=>'所有用户',
 
+    'publish_date'=>'发布日期',
+    'stick_top'=>'置顶',
+    'publish'=>'发布',
+
+
+
     //Dashboard
     'dash'=>[
         'welcome'=>'欢迎使用',
@@ -224,6 +230,40 @@ return [
 
         'dev_tips'=>'了解如何开发自定义面板模块。',
         'dev_link_text'=>'开发学习',
+
+        'application'=>'应用',
+        'no_applications'=>'目前暂时没有应用',
+
+        //默认板块
+        'quick_start'=>'快捷管理',
+        'system_setting'=>'系统设置',
+        'themes'=>'模板风格',
+        'pages'=>'页面管理',
+        'roles'=>'角色权限',
+        'articles'=>'文章管理',
+        'extensions'=>'应用列表',
+        
+    ],
+
+
+    // PAGES
+    'pages'=>[
+
+        'title'=>'标题',
+        'content'=>'内容',
+        'content_tips'=>'请输入内容',
+
+        'kv_image'=>'标题图',
+        'slug'=>'自定义路径',
+        'slug_tips'=>'设置后页面访问链接将变成 page/定义的路径.',
+        'redirect_url'=>'跳转URL',
+        'redirect_tips'=>'设置跳转后，将直接访问到设定的URL页面.',
+    ],
+
+    // TAGS
+    'tags'=>[
+        'tag'=>'标签',
+        'select_tag'=>'选择标签',
     ],
 
 

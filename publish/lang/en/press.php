@@ -222,6 +222,10 @@ return [
     
     'user_list'=>'Users',
 
+    'publish_date'=>'Publish Date',
+    'stick_top'=>'Stick Top',
+    'publish'=>'Publish',
+
     // DASHBOARD
     'dash'=>[
         'welcome'=>'Welcome',
@@ -230,6 +234,38 @@ return [
 
         'dev_tips'=>'Learn about develop dashboard widgets.',
         'dev_link_text'=>'Quick Start',
+
+        'application'=>'Extensions',
+        'no_applications'=>'No extensions found..',
+
+        'quick_start'=>'Quick Start',
+        'system_setting'=>'System',
+        'themes'=>'Theme',
+        'pages'=>'Pages',
+        'roles'=>'Roles',
+        'articles'=>'Articles',
+        'extensions'=>'Extensions',
+    ],
+
+
+    // PAGES
+    'pages'=>[
+
+        'title'=>'Title',
+        'content'=>'Content',
+        'content_tips'=>'Plese write here..',
+
+        'kv_image'=>'Image',
+        'slug'=>'Slug',
+        'slug_tips'=>'page link will be page/yourslug.',
+        'redirect_url'=>'Redirect',
+        'redirect_tips'=>'page will redirect to url.',
+    ],
+
+    // TAGS
+    'tags'=>[
+        'tag'=>'Tag',
+        'select_tag'=>'Select Tag',
     ],
 
     // SETTING

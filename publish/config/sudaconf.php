@@ -98,7 +98,7 @@ return [
             'start'=>\Gtd\Suda\Widgets\Start::class,
             'quickin'=>\Gtd\Suda\Widgets\Quickin::class,
             'news'=>\Gtd\Suda\Widgets\News::class,
-            'dashhelp'=>\Gtd\Suda\Widgets\DashHelp::class,
+            // 'dashhelp'=>\Gtd\Suda\Widgets\DashHelp::class,
         ],
         'entry'=>[
             'extension'=>\Gtd\Suda\Widgets\Entry\Extension::class,

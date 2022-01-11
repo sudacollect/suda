@@ -1,19 +1,19 @@
 
 <div class="more-filter-section" id="filter-options">
     {{-- <a href="javascript:void(0)" class="filter-close"></a> --}}
-    <h5 class="title d-flex">
-        <i class="zly-search-o"></i>&nbsp;搜索
-        <i class="zly-cancel-circle-o ml-auto filter-close color: #6b6b6b;"></i>
+    <h5 class="title d-flex justify-content-between">
+        <i class="ion-search"></i>&nbsp;搜索
+        <i class="ion-close-circle-outline float-end filter-close color: #6b6b6b;"></i>
     </h5>
 
-    <div class="col-sm-12 content">
+    <div class="col-sm-12 content px-3">
 
 
         <form action="{{ admin_url('article/filter') }}" class="filter-form">
             
             <input type="hidden" name="view_type" value="{{ $view_type }}">
 
-            <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}" >
+            <div class="mb-3{{ $errors->has('title') ? ' has-error' : '' }}" >
                 <label for="title" >
                     标题
                 </label>
@@ -31,7 +31,7 @@
             
             @endphp
 
-            <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}" >
+            <div class="mb-3{{ $errors->has('category') ? ' has-error' : '' }}" >
                 <label for="category">
                     分类
                 </label>
@@ -46,7 +46,7 @@
                 </select>
             </div>
 
-            <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}" >
+            <div class="mb-3{{ $errors->has('date') ? ' has-error' : '' }}" >
                 <label for="date" >
                     日期
                 </label>
@@ -60,14 +60,14 @@
                 </select>
             </div>
 
-            <div class="form-group{{ $errors->has('author') ? ' has-error' : '' }}" >
+            <div class="mb-3{{ $errors->has('author') ? ' has-error' : '' }}" >
                 <label for="author" >
                     发布者
                 </label>
                 <input type="text" name="author" class="form-control " id="filter_search_author" placeholder="请输入发布者名称">
             </div>
 
-            <div class="form-group{{ $errors->has('updated_at') ? ' has-error' : '' }}" >
+            <div class="mb-3{{ $errors->has('updated_at') ? ' has-error' : '' }}" >
                 <label for="updated_at">
                     更新时间
                 </label>
@@ -79,7 +79,7 @@
                 <input type="text" data-toggle="datetimepicker" name="updated_at" class="form-control " id="updated_at" placeholder="请选择时间">
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                               
                 <label for="stick_top">
                     置顶
@@ -95,7 +95,7 @@
 
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                     <label for="disable">
                             发布
                     </label>    
@@ -111,7 +111,7 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="mb-3">
                 <button class="btn btn-primary btn-sm filter-submit">立即搜索</button>
                 <button class="btn btn-light btn-sm filter-reset">重置条件</button>
             </div>

@@ -65,7 +65,7 @@
                       
                       <div class="row mb-3">
                           <div class="buttons col-sm-4 offset-sm-2">
-                              <button type="submit" class="btn btn-primary btn-block">{{ trans('suda_lang::press.submit_save') }}</button>
+                              <button type="submit" class="btn btn-primary">{{ trans('suda_lang::press.submit_save') }}</button>
                           </div>
                           
                       </div>

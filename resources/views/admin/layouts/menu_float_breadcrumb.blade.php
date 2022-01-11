@@ -1,5 +1,5 @@
 @if(isset($sdcore->menu_breadcrumbs) && count($sdcore->menu_breadcrumbs)>0)
-<nav aria-label="breadcrumb" class="col-12 bg-transparent float-breadcrumb">
+<nav style="--bs-breadcrumb-divider: '>';" class="col-12 bg-transparent p-2" aria-label="breadcrumb" >
     <ol class="breadcrumb py-0 px-0 mb-1">
         
         @foreach($sdcore->menu_breadcrumbs as $bitem)
