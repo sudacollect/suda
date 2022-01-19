@@ -43,7 +43,7 @@
                         {{ csrf_field() }}
                         
                         @if($login_name=='email')
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('email') ? ' has-error' : '' }}">
                             
                             <div class="col-sm-12">
                                 
@@ -51,7 +51,7 @@
                                     <span class="input-group-addon" id="basic-addon1">
                                         <i class="icon ion-person"></i>
                                     </span>
-                                    <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="{{trans('suda_lang::auth.emailorphone')}}">
+                                    <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="{{__('suda_lang::auth.emailorphone')}}">
                                 </div>
                                 
                                 @if ($errors->has('email'))
@@ -65,13 +65,13 @@
                         </div>
                         @elseif($login_name=='phone')
                         
-                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <div class="col-sm-12">
                                 <div class="input-group input-group-md">
                                     <span class="input-group-addon" id="basic-addon1">
                                         <i class="icon ion-person"></i>
                                     </span>
-                                    <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required autofocus placeholder="{{trans('suda_lang::auth.phone')}}">
+                                    <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required autofocus placeholder="{{__('suda_lang::auth.phone')}}">
                                 </div>
                                 @if ($errors->has('phone'))
                                     <span class="help-block">
@@ -84,14 +84,14 @@
                         
                         @elseif($login_name=='username')
                         
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('username') ? ' has-error' : '' }}">
                             
                             <div class="col-sm-12">
                                 <div class="input-group input-group-md">
                                     <span class="input-group-addon" id="basic-addon1">
                                         <i class="icon ion-person"></i>
                                     </span>
-                                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus placeholder="{{trans('suda_lang::auth.username')}}">
+                                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus placeholder="{{__('suda_lang::auth.username')}}">
                                 </div>
                                 @if ($errors->has('username'))
                                     <span class="help-block">
@@ -105,14 +105,14 @@
                         
                         @endif
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('password') ? ' has-error' : '' }}">
                             
                             <div class="col-sm-12">
                                 <div class="input-group input-group-md">
                                     <span class="input-group-addon" id="basic-addon1">
                                         <i class="icon ion-key"></i>
                                     </span>
-                                    <input id="password" type="password" class="form-control" name="password" required placeholder="{{trans('suda_lang::auth.password')}}">
+                                    <input id="password" type="password" class="form-control" name="password" required placeholder="{{__('suda_lang::auth.password')}}">
                                 </div>
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -123,30 +123,30 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="col-sm-12">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember"> {{trans('suda_lang::auth.rememberLogin')}}
+                                        <input type="checkbox" name="remember"> {{__('suda_lang::auth.rememberLogin')}}
                                     </label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="col-sm-12">
                                 
                                 <button type="submit" class="btn btn-primary btn-md ">
-                                    {{trans('suda_lang::auth.login')}}
+                                    {{__('suda_lang::auth.login')}}
                                 </button>
                                 
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="col-sm-12">
                                 
                                 <a class="btn btn-link ajaxPassword" href="{{ admin_url('passport/password/reset') }}">
-                                    {{trans('suda_lang::auth.forgetPassword')}}?
+                                    {{__('suda_lang::auth.forgetPassword')}}?
                                 </a>
                                 
                             </div>

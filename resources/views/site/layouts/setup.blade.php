@@ -56,7 +56,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nnavbar-nav ml-auto">
+                    <ul class="nnavbar-nav ms-auto">
                         <li class="nav-item">
                             <a href="{{ url('https://suda.gtd.xyz') }}" class="nav-link">
                                 <i class="ion-home"></i>&nbsp;Suda

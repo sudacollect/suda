@@ -7,7 +7,7 @@
         @else
         <i class="icon-english"></i>
         @endif
-        {{ trans('suda_lang::press.switch_language') }} <span class="caret"></span>
+        {{ __('suda_lang::press.switch_language') }} <span class="caret"></span>
     </a>
 
     <div class="dropdown-menu " aria-labelledby="navbar-language-dropdown" >

@@ -20,12 +20,15 @@
                 <h1 class="my-4">{{ $article->title }}</h1>
                 
                 <div class="meta-item created_at">
+                    
+                    <i class="ion-today"></i> {{ $article->updated_at->format('Y-m-d') }}
+
                     @if(isset($article_preview))
-                    <span class="help-block bg-warning text-dark p-2">
+                    <span class="help-block d-flex bg-warning text-dark p-2 my-2">
                         当前为预览模式，有效期为1个小时
                     </span><br>
                     @endif
-                    <i class="ion-today"></i> {{ $article->updated_at->format('Y-m-d') }}
+
                     @foreach($cates as $cate)
                         @if($cate->taxonomy && $cate->taxonomy->term->name)
                             <a class="badge rounded-pill bg-primary text-white" style="font-size:1rem;" href="{{ url('/category/'.$cate->taxonomy->term->slug) }}"> {{ $cate->taxonomy->term->name }}</a>

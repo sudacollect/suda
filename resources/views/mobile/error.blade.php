@@ -7,7 +7,7 @@
         <div class="col-sm-6 offset-sm-3">
             <div class="card">
                 <div class="card-header bg-white">
-                    <h4><i class="zly-warning"></i>&nbsp;@if ($errors->has('errcode')) {{ $errors->first('errcode') }} @endif</h4>
+                    <h4><i class="ion-alert-circle"></i>&nbsp;@if ($errors->has('errcode')) {{ $errors->first('errcode') }} @endif</h4>
                 </div>
                 <div class="card-body">
                     <p>

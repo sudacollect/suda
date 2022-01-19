@@ -29,7 +29,7 @@
 
                         <input type="hidden" name="rule_type" value="register">
                         
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                         
                           <label for="register" class="col-form-label col-sm-2 text-right">
                                  开启注册
@@ -46,9 +46,9 @@
                           
                         </div>
                         
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                           <div class="offset-sm-2 col-sm-6">
-                            <button type="submit" class="btn btn-primary btn-md">{{ trans('suda_lang::press.submit_save') }}</button>
+                            <button type="submit" class="btn btn-primary btn-md">{{ __('suda_lang::press.submit_save') }}</button>
                           </div>
                         </div>
 

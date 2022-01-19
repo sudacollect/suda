@@ -15,18 +15,18 @@
               </nav>
             <div class="page-heading">
                 <h1>{{ $page->title }}</h1>
-                @if(isset($page_preview))
-                    <span class="help-block bg-warning text-dark p-2">
-                        当前为预览模式，有效期为1个小时
-                    </span><br>
-                    @endif
+                
                 <div class="meta-item created_at"><i class="ion-calendar"></i> {{ $page->created_at->format('Y-m-d') }}</div>
-                <!-- @if(isset($hero_image))
-                <img class="hero-img" src="{{ $hero_image['image'] }}">
-                @endif -->
+                
             </div>
             
             <div class="page-content my-3">
+
+                @if(isset($page_preview))
+                    <span class="help-block d-flex bg-warning text-dark p-2 my-2">
+                        当前为预览模式，有效期为1个小时
+                    </span><br>
+                @endif
                 
                 {!! $page->content !!}
                 

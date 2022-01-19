@@ -8,7 +8,7 @@
         
         <div class="page-heading">
             <h1 class="page-title text-nowrap">
-                <i class="zly-list"></i>
+                <i class="ion-list"></i>
                 {{ __('suda_lang::press.menu_item') }}
                 @if($menu->id>1)
             

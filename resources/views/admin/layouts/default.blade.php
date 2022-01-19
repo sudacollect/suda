@@ -110,15 +110,15 @@
                 
                     <!-- Authentication Links -->
                     @if (Auth::guard('operate')->guest())
-                        <li class="nav-item"><a href="{{ url('/login') }}">{{ trans('suda_lang::auth.login') }}</a></li>
-                        <li class="nav-item"><a href="{{ url('/register') }}">{{ trans('suda_lang::auth.register') }}</a></li>
+                        <li class="nav-item"><a href="{{ url('/login') }}">{{ __('suda_lang::auth.login') }}</a></li>
+                        <li class="nav-item"><a href="{{ url('/register') }}">{{ __('suda_lang::auth.register') }}</a></li>
                     @else
                     
                     
                     @include('view_suda::admin.layouts.operate_top')
                     
                     <!-- support language -->
-                    @include('view_suda::admin.layouts.top_language')
+                    {{-- @include('view_suda::admin.layouts.top_language') --}}
                     
                     @endif
             </ul>

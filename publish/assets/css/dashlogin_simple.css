@@ -73,10 +73,6 @@
     .form-control{
         /* border: 1px solid #70d0ff; */
     }
-    .suda-login-form .form-group .input-group-addon{
-        color:#777;
-        /* border-color:#70d0ff; */
-    }
     #core-powered{
         position:absolute;
         bottom:0;

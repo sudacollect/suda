@@ -11,10 +11,10 @@
     <div class="container-fluid">
 
 
-        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+        <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
                 
             <label for="name">
-                {{ trans('suda_lang::press.name') }}
+                {{ __('suda_lang::press.name') }}
             </label>
         
             <input type="text" name="name" class="form-control" id="inputName" placeholder="只能使用英文、数字">

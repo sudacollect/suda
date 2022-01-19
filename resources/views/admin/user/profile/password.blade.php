@@ -27,14 +27,14 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="user_id" value="{{ $soperate->id }}">
                         
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="inputName" class="col-form-label">当前用户</label>
                             
                             <input type="text" readonly class="form-control-plaintext" id="inputName" value="{{ $soperate->username }}">
 
                         </div>
                     
-                        <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('old_password') ? ' has-error' : '' }}">
                             <label for="inputName" class="col-form-label">当前密码</label>
                             <input type="password" name="old_password" class="form-control" id="inputName" placeholder="请输入当前密码">
                                 @if ($errors->has('old_password'))
@@ -44,7 +44,7 @@
                                 @endif
                         </div>
                     
-                        <div class="form-group{{ $errors->has('new_password') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('new_password') ? ' has-error' : '' }}">
                             <label for="inputName" class="col-form-label">新密码</label>
                             <input type="password" name="new_password" class="form-control" id="inputName" placeholder="请输入当前密码">
                                 @if ($errors->has('new_password'))
@@ -54,7 +54,7 @@
                                 @endif
                         </div>
                     
-                        <div class="form-group{{ $errors->has('new_password_confirm') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('new_password_confirm') ? ' has-error' : '' }}">
                             <label for="inputName" class="col-form-label">确认新密码</label>
                             <input type="password" name="new_password_confirm" class="form-control" id="inputName" placeholder="请输入当前密码">
                                 @if ($errors->has('new_password_confirm'))
@@ -65,8 +65,8 @@
                       
                         </div>
                     
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">{{ trans('suda_lang::press.submit_save') }}</button>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.submit_save') }}</button>
                         </div>
                     </form>
                 </div>

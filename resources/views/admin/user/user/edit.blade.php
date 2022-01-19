@@ -11,10 +11,10 @@
     <div class="modal-body">
         <div class="container-fluid">
             
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
                 
                 <label for="name">
-                    {{ trans('suda_lang::press.username') }}
+                    {{ __('suda_lang::press.username') }}
                 </label>
             
                 <input type="text" name="name" class="form-control" id="inputName" placeholder="英文数字下划线" value="{{ $user->name }}">
@@ -26,10 +26,10 @@
             
             </div>
             
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('email') ? ' has-error' : '' }}">
                 
                 <label for="email">
-                    {{ trans('suda_lang::press.email') }}
+                    {{ __('suda_lang::press.email') }}
                 </label>
                 
                 <input type="text" name="email" class="form-control" id="inputEmail" placeholder="请输入邮箱（选填）" value="{{ $user->email }}">
@@ -41,10 +41,10 @@
             
             </div>
         
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('password') ? ' has-error' : '' }}">
                 
                 <label for="password">
-                    {{ trans('suda_lang::auth.password') }}
+                    {{ __('suda_lang::auth.password') }}
                 </label>
                 
                 <input type="password" name="password" class="form-control" id="inputPassword" placeholder="请输入密码">
@@ -60,7 +60,7 @@
     </div>
 
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">{{ trans('suda_lang::press.submit_save') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.submit_save') }}</button>
     </div>
 
 </form>

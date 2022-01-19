@@ -7,8 +7,7 @@
     "Gtd\\Suda\\Providers\\UploadImageServiceProvider",
     "Gtd\\Suda\\Providers\\SudaEventServiceProvider",
     "Gtd\\Suda\\Providers\\AuthServiceProvider",
-    "Gtd\\Suda\\Providers\\AuthSudaServiceProvider",
-    "Gtd\\MediaManager\\MediaManagerServiceProvider"
+    "Gtd\\Suda\\Providers\\AuthSudaServiceProvider"
   ],
   "aliases": [
     {

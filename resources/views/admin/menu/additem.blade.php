@@ -11,13 +11,13 @@
 
         <div class="container-fluid">
 
-            <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('title') ? ' has-error' : '' }}">
                   
                 <label for="title">
-                    {{ trans('suda_lang::press.menu_name') }}
+                    {{ __('suda_lang::press.menu_name') }}
                 </label>
         
-                <input type="text" name="title" class="form-control" id="inputTitle" placeholder="{{ trans('suda_lang::press.menu_name') }}">
+                <input type="text" name="title" class="form-control" id="inputTitle" placeholder="{{ __('suda_lang::press.menu_name') }}">
                 @if ($errors->has('title'))
                     <span class="help-block">
                         <strong>{{ $errors->first('title') }}</strong>
@@ -27,10 +27,10 @@
             </div>
               
               
-            <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('slug') ? ' has-error' : '' }}">
           
                 <label for="slug">
-                    {{ trans('suda_lang::press.slug') }}
+                    {{ __('suda_lang::press.slug') }}
                 </label>
         
                 <input type="text" name="slug" class="form-control" id="inputSlug" placeholder="要求唯一,只能使用英文、数字">
@@ -42,7 +42,7 @@
         
             </div>
               
-            <div class="form-group{{ $errors->has('url_type') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('url_type') ? ' has-error' : '' }}">
           
                 <label for="url_type">
                     链接类型
@@ -57,7 +57,7 @@
               
               
               
-            <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('url') ? ' has-error' : '' }}">
           
                 <label for="url">
                     URL
@@ -72,7 +72,7 @@
         
             </div>
               
-            <div class="form-group{{ $errors->has('target') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('target') ? ' has-error' : '' }}">
           
                 <label for="target">
                     是否新窗口打开
@@ -85,13 +85,13 @@
         
             </div>
               
-            <div class="form-group{{ $errors->has('icon_class') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('icon_class') ? ' has-error' : '' }}">
           
                 <label for="icon_class">
                     图标样式
                 </label>
         
-                <input type="text" name="icon_class" class="form-control" id="icon_class" placeholder="图标样式,例如 zly-gear-s">
+                <input type="text" name="icon_class" class="form-control" id="icon_class" placeholder="图标样式,例如 ion-settings">
                 @if ($errors->has('icon_class'))
                     <span class="help-block">
                         <strong>{{ $errors->first('icon_class') }}</strong>

@@ -14,9 +14,9 @@
     <li class="nav-item">
         <a class="nav-link @if($media_tab=='tag') bg-white active @endif" href="{{ admin_url('mediatags') }}"><i class="ion-pricetags-outline"></i>&nbsp;标签</a>
     </li>
-    @if($soperate->superadmin==1)
+    {{-- @if($soperate->superadmin==1)
     <li class="nav-item">
         <a class="nav-link" target="_blank" href="{{ admin_url('mediamanager') }}"><i class="ion-folder-outline"></i>&nbsp;打开管理器</a>
     </li>
-    @endif
+    @endif --}}
 </ul>

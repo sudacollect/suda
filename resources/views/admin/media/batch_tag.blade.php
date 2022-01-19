@@ -19,14 +19,14 @@
             
 
             
-              <div class="form-group">
+              <div class="mb-3">
                   <label for="inputName" class="control-label">
                       对已选择图片设置标签
                   </label>
                   
               </div>
               
-              <div class="form-group{{ $errors->has('keyword') ? ' has-error' : '' }}" >
+              <div class="mb-3{{ $errors->has('keyword') ? ' has-error' : '' }}" >
                 <label for="slug" >
                     标签
                 </label>

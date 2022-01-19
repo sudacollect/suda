@@ -93,7 +93,7 @@ $(document).ready(function($) {
         var alerthtml = '<div class="suda-toast toast" data-autohide="true" data-delay="2500" style="position: absolute; z-index:9999;top:'+boxa_top+'px; right:'+ boxa_right +'px;width:180px;">';
             alerthtml += '<div class="toast-header text-'+infoType+'" style="background:#efefef;">';
             alerthtml += '<i class="ion-alert-circle"></i>&nbsp;';
-            alerthtml += '<strong class="mr-auto">提示</strong>';
+            alerthtml += '<strong class="me-auto">提示</strong>';
             alerthtml += '<button type="button" class="ml-2 mb-1 close" data-bs-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
             alerthtml += '</div>';
             alerthtml += '<div class="toast-body">'+errors+'</div>';

@@ -1,12 +1,12 @@
 <ul class="nav nav-tabs page-tabs">
     <li class="nav-item">
-        <a class="nav-link @if($active=='settings') active @endif" href="{{ admin_url('setting/site') }}">{{ trans('suda_lang::press.basic_info') }}</a>
+        <a class="nav-link @if($active=='settings') active @endif" href="{{ admin_url('setting/site') }}">{{ __('suda_lang::press.basic_info') }}</a>
       </li>
       <li  class="nav-item">
         <a class="nav-link @if($active=='login') active @endif" href="{{ admin_url('setting/dashboard_info') }}">{{ __('suda_lang::press.dashboard_info') }}</a>
       </li>
       <li  class="nav-item">
-        <a class="nav-link @if($active=='logo') active @endif" href="{{ admin_url('setting/logo') }}">{{ trans('suda_lang::press.logo') }}</a>
+        <a class="nav-link @if($active=='logo') active @endif" href="{{ admin_url('setting/logo') }}">{{ __('suda_lang::press.logo') }}</a>
       </li>
       
       <li  class="nav-item">

@@ -67,8 +67,8 @@
                                     
                                     <td>
                                             <div data-toggle="distpickerrr" class="form-inline">
-                                                <select name="province" data-province="选择省" class="form-control form-control-sm mr-2" ></select>
-                                                <select name="city" data-city="选择市" class="form-control form-control-sm mr-2" ></select>
+                                                <select name="province" data-province="选择省" class="form-control form-control-sm me-2" ></select>
+                                                <select name="city" data-city="选择市" class="form-control form-control-sm me-2" ></select>
                                                 <select name="district" data-district="选择区" class="form-control form-control-sm" ></select>
                                             </div>
                                             <span class="help-block">

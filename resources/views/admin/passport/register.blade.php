@@ -10,7 +10,7 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/'.$sdcore->admin_path.'/passport/register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-sm-4 control-label">用户名</label>
 
                             <div class="col-sm-6">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="phone" class="col-sm-4 control-label">手机号</label>
 
                             <div class="col-sm-6">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-sm-4 control-label">邮箱</label>
 
                             <div class="col-sm-6">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-sm-4 control-label">密码</label>
 
                             <div class="col-sm-6">
@@ -65,7 +65,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="password-confirm" class="col-sm-4 control-label">确认密码</label>
 
                             <div class="col-sm-6">
@@ -73,7 +73,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="col-sm-6 offset-sm-4">
                                 <button type="submit" class="btn btn-primary">
                                     提交注册

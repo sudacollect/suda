@@ -11,7 +11,7 @@
             </h1>
             <div class="btn-groups">
                 <a href="{{ admin_url('article/create') }}" class="btn btn-primary btn-sm pull-left">
-                    <i class="zly-plus-circle"></i>&nbsp;增加文章
+                    <i class="ion-add-circle"></i>&nbsp;增加文章
                 </a>
             </div>
         </div>

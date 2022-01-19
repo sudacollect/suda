@@ -17,12 +17,12 @@
     <div class="container-fluid">
         <div class="col-12 suda_page_body">
             
-              <div class="form-group">
+              <div class="mb-3">
                 <label for="inputName" class="control-label">
                     图片
                 </label>
 
-                <div class="form-row">
+                <div class="row">
                     <div class="col col-sm-6">
                         {!! suda_image($media,['size'=>'large','imageClass'=>'edit-media edit-media-'.$media->id],false) !!}
                     </div>
@@ -36,7 +36,7 @@
                   
               </div>
             
-              <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+              <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
                   <label for="inputName" class="control-label">
                       {{ __('suda_lang::press.name') }}
                   </label>
@@ -44,11 +44,11 @@
                   <input type="text" name="name" class="form-control" value="{{ $media->name }}" id="inputName" placeholder="图片名称">
               </div>
               
-              <div class="form-group{{ $errors->has('keyword') ? ' has-error' : '' }}" >
+              <div class="mb-3{{ $errors->has('keyword') ? ' has-error' : '' }}" >
                 <label for="slug" >
                     标签
                 </label>
-                <select class="select-keyword form-control" name="keyword[]" multiple="multiple" placeholder="输入标签">
+                <select class="select-keyword form-select" name="keyword[]" multiple="multiple" placeholder="输入标签">
                     @if($tags->count()>0)
                 
                     @foreach($tags as $tag)

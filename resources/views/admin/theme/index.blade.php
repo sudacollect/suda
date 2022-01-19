@@ -10,7 +10,7 @@
             </h1>
 
             @if(isset($apps))
-            <div  class="ml-auto mr-2">
+            <div  class="ms-auto me-2">
                 <select id="change-app" class="form-control form-control-sm">
                     @foreach($apps as $zapp)
                     

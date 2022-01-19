@@ -120,7 +120,7 @@ mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'p
 
 // front-site
 // mix.js('resources/assets/js/app_site.js', 'publish/assets/js/app_site.js');
-// mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
+mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
 
 
 // vendor js
@@ -173,10 +173,10 @@ mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'p
 
 
 // dashboard css
-// mix.copy('publish/assets/css/app.css', '../public/vendor/suda/assets/css/app.css');
+mix.copy('publish/assets/css/app.css', '../public/vendor/suda/assets/css/app.css');
 
 // site css
-// mix.copy('publish/assets/css/app_site.css', '../public/vendor/suda/assets/css/app_site.css');
+mix.copy('publish/assets/css/app_site.css', '../public/vendor/suda/assets/css/app_site.css');
 
 
 // core js

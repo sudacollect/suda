@@ -15,7 +15,7 @@
       
       <div class="inline-edit-block">
           <span id="{{ $cate->id }}" class="inedit" edit-id="{{ $cate->id }}" edit-value="{{ $cate->sort }}">{{ $cate->sort }}</span>
-          <a href="{{ admin_url('article/category/editsort/'.$cate->id) }}" class="btn btn-sm inline-edit" title="设置排序"><i class="zly-pencil" style="color:#999;"></i></a>
+          <a href="{{ admin_url('article/category/editsort/'.$cate->id) }}" class="btn btn-sm inline-edit" title="设置排序"><i class="ion-create" style="color:#999;"></i></a>
       </div>
       
   </td>

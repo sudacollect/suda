@@ -83,7 +83,7 @@
                       </div>
                       
                       
-                      <button type="submit" class="btn btn-primary offset-sm-2">{{ trans('suda_lang::press.submit_save') }}</button>
+                      <button type="submit" class="btn btn-primary offset-sm-2">{{ __('suda_lang::press.submit_save') }}</button>
 
                     </form>
                 </div>

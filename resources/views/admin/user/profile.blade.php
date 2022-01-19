@@ -31,7 +31,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="user_id" value="{{ $soperate->id }}">
                         
-                        <div class="form-group">
+                        <div class="mb-3">
                           <label for="inputEmail3" class="col-form-label">头像</label>
                           <div class="form-control-static">
                             @uploadCroppie('operate',$soperate->avatar)
@@ -39,9 +39,9 @@
                         </div>
                         
                         
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                          <label for="inputEmail3" class="col-form-label">{{ trans('suda_lang::auth.username') }}</label>
-                          <input type="text" name="username" class="form-control" value="{{ $soperate->username }}" id="inputName" placeholder="{{ trans('suda_lang::auth.username') }}">
+                        <div class="mb-3{{ $errors->has('username') ? ' has-error' : '' }}">
+                          <label for="inputEmail3" class="col-form-label">{{ __('suda_lang::auth.username') }}</label>
+                          <input type="text" name="username" class="form-control" value="{{ $soperate->username }}" id="inputName" placeholder="{{ __('suda_lang::auth.username') }}">
                             @if ($errors->has('username'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('username') }}</strong>
@@ -49,9 +49,9 @@
                             @endif
                         </div>
                         
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                          <label for="inputEmail3" class="col-form-label">{{ trans('suda_lang::auth.email') }}</label>
-                          <input type="text" name="email" class="form-control" value="{{ $soperate->email }}" id="inputName" placeholder="{{ trans('suda_lang::auth.email') }}">
+                        <div class="mb-3{{ $errors->has('email') ? ' has-error' : '' }}">
+                          <label for="inputEmail3" class="col-form-label">{{ __('suda_lang::auth.email') }}</label>
+                          <input type="text" name="email" class="form-control" value="{{ $soperate->email }}" id="inputName" placeholder="{{ __('suda_lang::auth.email') }}">
                               @if ($errors->has('email'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('email') }}</strong>
@@ -59,9 +59,9 @@
                               @endif
                         </div>
                         
-                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                          <label for="inputEmail3" class="col-form-label">{{ trans('suda_lang::auth.phone') }}</label>
-                          <input type="text" name="phone" class="form-control" value="{{ $soperate->phone }}" id="inputName" placeholder="{{ trans('suda_lang::auth.phone') }}">
+                        <div class="mb-3{{ $errors->has('phone') ? ' has-error' : '' }}">
+                          <label for="inputEmail3" class="col-form-label">{{ __('suda_lang::auth.phone') }}</label>
+                          <input type="text" name="phone" class="form-control" value="{{ $soperate->phone }}" id="inputName" placeholder="{{ __('suda_lang::auth.phone') }}">
                               @if ($errors->has('phone'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('phone') }}</strong>
@@ -71,7 +71,7 @@
                         </div>
                       
                         @if($soperate->categories && $soperate->categories->count()>0)
-                        <div class="form-group">
+                        <div class="mb-3">
                           <label for="inputPassword3" class="col-form-label">部门</label>
                           @foreach($soperate->categories as $cate)
                           @if($cate->taxonomy && $cate->taxonomy->term)
@@ -82,14 +82,14 @@
                         @endif
                       
                         @if(isset($soperate->role))
-                        <div class="form-group">
+                        <div class="mb-3">
                           <label for="inputPassword3" class="col-form-label">角色</label>
                           <span class="badge bg-light text-dark">{{ $soperate->role->name }}</span>
                         </div>
                         @endif
                         
-                        <div class="form-group">
-                          <button type="submit" class="btn btn-primary">{{ trans('suda_lang::press.submit_save') }}</button>
+                        <div class="mb-3">
+                          <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.submit_save') }}</button>
                         </div>
 
                     </form>

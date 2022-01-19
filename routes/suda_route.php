@@ -4,7 +4,6 @@ use Gtd\Suda\Events\Routing;
 use Gtd\Suda\Events\RoutingAdmin;
 use Gtd\Suda\Events\RoutingAdminAfter;
 use Gtd\Suda\Events\RoutingAfter;
-use Gtd\MediaManager\MediaRoutes;
 use Illuminate\Filesystem\Filesystem;
 
 

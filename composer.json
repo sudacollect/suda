@@ -29,15 +29,13 @@
         "src/suda/Helpers.php"
     ],
     "psr-4": {
-        "Gtd\\Suda\\": "src/suda/",
-        "Gtd\\MediaManager\\": "media-manager/"
+        "Gtd\\Suda\\": "src/suda/"
     }
   },
   "extra": {
       "laravel": {
           "providers": [
               "Gtd\\Suda\\SudaServiceProvider",
-              "Gtd\\MediaManager\\MediaManagerServiceProvider",
               "Arrilot\\Widgets\\ServiceProvider"
           ],
           "aliases": {

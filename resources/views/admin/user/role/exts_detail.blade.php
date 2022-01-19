@@ -13,7 +13,7 @@
         
         <div class="container-fluid ext-permissions-group">
 
-            <button class="btn btn-success btn-sm mr-2" id="permission-select-all">所有权限</button><button class="btn btn-light btn-sm" id="permission-deselect-all">取消全选</button>
+            <button class="btn btn-success btn-sm me-2" id="permission-select-all">所有权限</button><button class="btn btn-light btn-sm" id="permission-deselect-all">取消全选</button>
 
             <div class="row ext-permissions-group">
             

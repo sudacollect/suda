@@ -10,7 +10,7 @@
                 <i class="ion-grid"></i>&nbsp;{{ $taxonomy_title }}
             </h1>
             <a href="{{ admin_url($buttons['create']) }}" class="pop-modal btn btn-primary btn-sm pull-left" data-modal-id="add-taxonomy-category" title="{{ __('suda_lang::press.add') }}" data-toggle="tooltip" data-placement="top">
-                <i class="zly-plus-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}
+                <i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}
             </a>
         </div>
         <div class="col-sm-12 suda_page_body">

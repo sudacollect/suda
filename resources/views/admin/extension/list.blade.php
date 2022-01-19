@@ -26,7 +26,7 @@
                 应用管理
             </h1>
             
-            <div class="btn-groups ml-auto">
+            <div class="btn-groups ms-auto">
                 @if($soperate->user_role >=9)
                 <button type="button" href="{{ admin_url('manage/extension/updatecache') }}" class="btn-refresh-cache btn btn-sm btn-light">
                     <i class="ion-sync"></i>&nbsp;更新缓存

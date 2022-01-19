@@ -12,10 +12,10 @@
       
       
       
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
         
               <label for="inputName" >
-                  {{ trans('suda_lang::press.username') }}
+                  {{ __('suda_lang::press.username') }}
               </label>
       
               <input type="text" name="name" class="form-control" id="inputName" placeholder="{{ __('suda_lang::auth.username_rule') }}">
@@ -27,13 +27,13 @@
             </div>
             
     
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('email') ? ' has-error' : '' }}">
         
               <label for="email">
-                  {{ trans('suda_lang::press.email') }}
+                  {{ __('suda_lang::press.email') }}
               </label>
       
-              <input type="text" name="email" class="form-control" id="inputEmail" placeholder="{{ trans('suda_lang::press.email') }}">
+              <input type="text" name="email" class="form-control" id="inputEmail" placeholder="{{ __('suda_lang::press.email') }}">
             @if ($errors->has('email'))
                 <span class="help-block">
                     <strong>{{ $errors->first('email') }}</strong>
@@ -42,13 +42,13 @@
       
             </div>
     
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('password') ? ' has-error' : '' }}">
         
               <label for="password">
-                  {{ trans('suda_lang::auth.password') }}
+                  {{ __('suda_lang::auth.password') }}
               </label>
       
-              <input type="password" name="password" class="form-control" id="inputPassword" placeholder="{{ trans('suda_lang::auth.password') }}">
+              <input type="password" name="password" class="form-control" id="inputPassword" placeholder="{{ __('suda_lang::auth.password') }}">
                   @if ($errors->has('password'))
                       <span class="help-block">
                           <strong>{{ $errors->first('password') }}</strong>

@@ -7,7 +7,7 @@
     <div class="row suda-row">
         <div class="page-heading">
             <h1 class="page-title">
-                <i class="zly-user"></i>
+                <i class="ion-person"></i>
                 @if(isset($deleted))
                 已删除管理员
                 @else
@@ -15,10 +15,10 @@
                 @endif
             </h1>
             @if(!isset($deleted))
-            <a href="{{ admin_url('manage/operates/add') }}" class="pop-modal btn btn-primary btn-sm pull-left"><i class="zly-plus-circle"></i>&nbsp;{{ trans('suda_lang::press.btn.add') }}</a>
+            <a href="{{ admin_url('manage/operates/add') }}" class="pop-modal btn btn-primary btn-sm pull-left"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.btn.add') }}</a>
 
             @if($soperate->superadmin==1 || $soperate->user_role>=6)
-            <a href="{{ admin_url('manage/operates/deleted') }}" class="btn btn-warning btn-sm ml-auto"><i class="ion-person-remove-outline text-muted"></i>&nbsp;已删除</a>
+            <a href="{{ admin_url('manage/operates/deleted') }}" class="btn btn-warning btn-sm ms-auto"><i class="ion-person-remove-outline text-muted"></i>&nbsp;已删除</a>
             @endif
 
             @endif
@@ -36,28 +36,28 @@
                             <tr>
                               <th>#</th>
                               <th>
-                                  {{ trans('suda_lang::press.username') }}
+                                  {{ __('suda_lang::press.username') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.email') }}
+                                  {{ __('suda_lang::press.email') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.phone') }}
+                                  {{ __('suda_lang::press.phone') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.organization') }}
+                                  {{ __('suda_lang::press.organization') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.role') }}
+                                  {{ __('suda_lang::press.role') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.updated_at') }}
+                                  {{ __('suda_lang::press.updated_at') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.enable') }}
+                                  {{ __('suda_lang::press.enable') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.operate') }}
+                                  {{ __('suda_lang::press.operate') }}
                               </th>
                             </tr>
                           </thead>
@@ -99,18 +99,18 @@
                               <td>
                                 @if(isset($deleted))
                                     @if($soperate->superadmin==1 || ($soperate->user_role>=6 && $soperate->user_role >= $operate->user_role))
-                                        <button href="{{ admin_url('manage/operates/restore/'.$operate->id) }}" data_id="{{ $operate->id }}" data_title="确认恢复用户?" class="pop-modal-box btn btn-warning btn-xs" title="{{ trans('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top">恢复</button>
+                                        <button href="{{ admin_url('manage/operates/restore/'.$operate->id) }}" data_id="{{ $operate->id }}" data_title="确认恢复用户?" class="pop-modal-box btn btn-warning btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top">恢复</button>
                                     @endif
 
                                     @if($soperate->superadmin==1)
-                                    <button href="{{ admin_url('manage/operates/delete/'.$operate->id.'/force') }}" class="pop-modal-delete btn btn-danger btn-xs" data_id="{{ $operate->id }}" title="{{ trans('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i>&nbsp;删除</button>
+                                    <button href="{{ admin_url('manage/operates/delete/'.$operate->id.'/force') }}" class="pop-modal-delete btn btn-danger btn-xs" data_id="{{ $operate->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i>&nbsp;删除</button>
                                     @endif
 
                                 @else
                                   
                                   @if($soperate->id!=$operate->id )
-                                  <a href="{{ admin_url('manage/operates/edit/'.$operate->id) }}" class="pop-modal btn btn-light btn-xs" title="{{ trans('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ trans('suda_lang::press.edit') }}</a>
-                                  <button href="{{ admin_url('manage/operates/delete/'.$operate->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $operate->id }}" title="{{ trans('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
+                                  <a href="{{ admin_url('manage/operates/edit/'.$operate->id) }}" class="pop-modal btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
+                                  <button href="{{ admin_url('manage/operates/delete/'.$operate->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $operate->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
                                   @endif
 
                                 @endif

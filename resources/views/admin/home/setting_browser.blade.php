@@ -44,7 +44,7 @@
                                 </label>
 
                                 &nbsp;&nbsp;
-                                <button href="{{ admin_url('page/modalbox/list/default') }}" class="pop-modal modalbox-select-page btn btn-light btn-sm"><i class="zly-paper"></i>&nbsp;选择</button>
+                                <button href="{{ admin_url('page/modalbox/list/default') }}" class="pop-modal modalbox-select-page btn btn-light btn-sm">选择</button>
                                 <div class="modal-result-default" style="padding-left:30px;color:#08f;">
                                     @if(isset($page))
                                     <p>
@@ -82,7 +82,7 @@
                       </div>
                       
                       
-                      <button type="submit" class="btn btn-primary offset-sm-2">{{ trans('suda_lang::press.submit_save') }}</button>
+                      <button type="submit" class="btn btn-primary offset-sm-2">{{ __('suda_lang::press.submit_save') }}</button>
 
                     </form>
                 </div>

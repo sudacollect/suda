@@ -8,12 +8,12 @@
         
         <div class="page-heading">
             <h1 class="page-title text-nowrap">
-                <i class="zly-list"></i>
+                <i class="ion-list"></i>
                 {{ __('suda_lang::press.setting_menu') }}
             </h1>
-            <div class="btn-groups ml-auto">
+            <div class="btn-groups ms-auto">
                 <a href="{{ admin_url('menu/add') }}" class="pop-modal btn btn-light btn-sm text-nowrap">
-                    <i class="zly-plus-circle"></i>&nbsp;{{ trans('suda_lang::press.add_menu') }}
+                    <i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add_menu') }}
                 </a>
             </div>
         </div>
@@ -31,16 +31,16 @@
                             <tr>
                               <th>#</th>
                               <th>
-                                  {{ trans('suda_lang::press.name') }}
+                                  {{ __('suda_lang::press.name') }}
                               </th>
                               <th>
                                   code
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.created_at') }}
+                                  {{ __('suda_lang::press.created_at') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.operate') }}
+                                  {{ __('suda_lang::press.operate') }}
                               </th>
                             </tr>
                           </thead>
@@ -55,10 +55,10 @@
                               <td>{{ $menu->created_at }}</td>
                               
                               <td>
-                                  <a href="{{ admin_url('menu/items/'.$menu->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.menu_item') }}" data-toggle="tooltip" data-placement="top"><i class="ion-list"></i>&nbsp;{{ trans('suda_lang::press.menu_item') }}</a>
+                                  <a href="{{ admin_url('menu/items/'.$menu->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.menu_item') }}" data-toggle="tooltip" data-placement="top"><i class="ion-list"></i>&nbsp;{{ __('suda_lang::press.menu_item') }}</a>
                                   @if($menu->id>1)
-                                  <a href="{{ admin_url('menu/edit/'.$menu->id) }}" class="pop-modal btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ trans('suda_lang::press.edit') }}</a>
-                                  <button href="{{ admin_url('menu/delete/'.$menu->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $menu->id }}" title="{{ trans('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i>&nbsp;{{ __('suda_lang::press.delete') }}</button>
+                                  <a href="{{ admin_url('menu/edit/'.$menu->id) }}" class="pop-modal btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
+                                  <button href="{{ admin_url('menu/delete/'.$menu->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $menu->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i>&nbsp;{{ __('suda_lang::press.delete') }}</button>
                                   @endif
                                   
                               </td>

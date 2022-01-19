@@ -61,7 +61,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-auto">
                         
 
                         

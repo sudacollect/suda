@@ -62,20 +62,20 @@
                         
                     <li class="nav-item">
                         @if($soperate->user_role==2)
-                        <a href="{{ admin_url('entry/extensions') }}" title="控制面板" class="nav-link"><i class="zly-setting"></i></a>
+                        <a href="{{ admin_url('entry/extensions') }}" title="控制面板" class="nav-link"><i class="ion-settings"></i></a>
                         @else
-                        <a href="{{ admin_url('/') }}" title="控制面板" class="nav-link"><i class="zly-setting"></i></a>
+                        <a href="{{ admin_url('/') }}" title="控制面板" class="nav-link"><i class="ion-settings"></i></a>
                         @endif
                     </li>
 
                     <li>
-                        <a href="{{ url('/home') }}" target="_blank" title="{{ __('suda_lang::press.visit_homepage') }}" class="nav-link"><i class="zlyicon zly-home"></i></a>
+                        <a href="{{ url('/home') }}" target="_blank" title="{{ __('suda_lang::press.visit_homepage') }}" class="nav-link"><i class="zlyicon ion-home"></i></a>
                     </li>
                 
                 <!-- Authentication Links -->
                 @if (Auth::guard('operate')->guest())
-                    <li><a href="{{ url('/login') }}">{{ trans('suda_lang::auth.login') }}</a></li>
-                    <li><a href="{{ url('/register') }}">{{ trans('suda_lang::auth.register') }}</a></li>
+                    <li><a href="{{ url('/login') }}">{{ __('suda_lang::auth.login') }}</a></li>
+                    <li><a href="{{ url('/register') }}">{{ __('suda_lang::auth.register') }}</a></li>
                 @else
                     
                     

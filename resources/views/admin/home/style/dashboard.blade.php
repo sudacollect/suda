@@ -11,10 +11,10 @@
                 后台模板管理<span class="help-block">控制面板风格</span>
             </h1>
 
-            <div class="btn-toolbar ml-auto" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-toolbar ms-auto" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="First group">
 
-                    <button type="button" href="{{ admin_url('style/dashboard.layout') }}" class="pop-modal btn btn-sm btn-light mr-2">
+                    <button type="button" href="{{ admin_url('style/dashboard.layout') }}" class="pop-modal btn btn-sm btn-light me-2">
                         设置风格
                     </button>
 

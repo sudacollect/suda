@@ -7,7 +7,7 @@
     <a class="nav-link @if($active=='login') bg-white active @endif" href="{{ admin_url('setting/dashboard_info') }}">{{ __('suda_lang::press.dashboard_info') }}</a>
   </li>
   <li  class="nav-item">
-    <a class="nav-link @if($active=='logo') bg-white active @endif" href="{{ admin_url('setting/logo') }}">{{ trans('suda_lang::press.logo') }}</a>
+    <a class="nav-link @if($active=='logo') bg-white active @endif" href="{{ admin_url('setting/logo') }}">{{ __('suda_lang::press.logo') }}</a>
   </li>
   
   <li  class="nav-item">

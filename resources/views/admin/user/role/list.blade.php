@@ -7,10 +7,10 @@
     <div class="row suda-row">
         
         <div class="page-heading">
-        <h1 class="page-title"><i class="far fa-id-badge"></i>&nbsp;{{ trans('suda_lang::press.list') }}</h1>
+        <h1 class="page-title"><i class="far fa-id-badge"></i>&nbsp;{{ __('suda_lang::press.list') }}</h1>
 
         @if($soperate->user_role==9)
-        <a href="{{ admin_url('user/roles/add') }}" class="btn btn-primary btn-sm"><i class="zly-plus-circle"></i>&nbsp;{{ trans('suda_lang::press.add') }}</a>
+        <a href="{{ admin_url('user/roles/add') }}" class="btn btn-primary btn-sm"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}</a>
         @endif
         </div>
         
@@ -27,16 +27,16 @@
                             <tr>
                               <th>#</th>
                               <th>
-                                  {{ trans('suda_lang::press.role_name') }}
+                                  {{ __('suda_lang::press.role_name') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.enable') }}
+                                  {{ __('suda_lang::press.enable') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.updated_at') }}
+                                  {{ __('suda_lang::press.updated_at') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.operate') }}
+                                  {{ __('suda_lang::press.operate') }}
                               </th>
                             </tr>
                           </thead>
@@ -56,15 +56,15 @@
                               <td>
                                   
                                   @if($soperate->user_role==9)
-                                  <a href="{{ admin_url('user/roles/edit/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ trans('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ trans('suda_lang::press.edit') }}</a>
+                                  <a href="{{ admin_url('user/roles/edit/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                                   @endif
                                   @if($role->authority=='extension')
                                   <a href="{{ admin_url('user/roles/showexts/'.$role->id) }}" class="btn btn-light btn-xs" title="应用权限设置" data-toggle="tooltip" data-placement="top"><i class="zly-stack"></i>&nbsp;应用权限</a>
                                   @elseif($soperate->user_role >= 6)
-                                  <a href="{{ admin_url('user/roles/showsys/'.$role->id) }}" class="btn btn-light btn-xs" title="系统权限" data-toggle="tooltip" data-placement="top"><i class="zly-list"></i>&nbsp;系统权限</a>
+                                  <a href="{{ admin_url('user/roles/showsys/'.$role->id) }}" class="btn btn-light btn-xs" title="系统权限" data-toggle="tooltip" data-placement="top"><i class="ion-list"></i>&nbsp;系统权限</a>
                                   @endif
                                   @if($soperate->user_role==9)
-                                  <button href="{{ admin_url('user/roles/delete/'.$role->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $role->id }}" title="{{ trans('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
+                                  <button href="{{ admin_url('user/roles/delete/'.$role->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $role->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
                                   @endif
                               </td>
                             </tr>

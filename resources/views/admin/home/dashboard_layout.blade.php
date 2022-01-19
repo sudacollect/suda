@@ -9,7 +9,7 @@
         
         <div class="container-fluid">
             
-            <fieldset class="form-group">
+            <fieldset class="mb-3">
                 <div class="row">
                   <legend class="col-form-label col-sm-3 pt-0">导航布局</legend>
                   <div class="col-sm-9">
@@ -30,7 +30,7 @@
             </fieldset>
     
 
-            <fieldset class="form-group">
+            <fieldset class="mb-3">
                 <div class="row">
                   <legend class="col-form-label col-sm-3 pt-0">导航配色</legend>
                   <div class="col-sm-9">

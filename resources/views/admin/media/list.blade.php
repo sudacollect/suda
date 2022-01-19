@@ -30,7 +30,7 @@
                     <div class="card-header bg-white">
 
                         @if(isset($tag))
-                        <span class="btn btn-sm btn-primary mr-3 float-left list-tag-filter"><i class="ion-close"></i>&nbsp;标签：{{ $tag->term->name }}</span>
+                        <span class="btn btn-sm btn-primary me-3 float-left list-tag-filter"><i class="ion-close"></i>&nbsp;标签：{{ $tag->term->name }}</span>
                         @endif
 
                         <div class="dropdown d-inline-flex">

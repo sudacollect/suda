@@ -13,7 +13,7 @@
                     {{ csrf_field() }}
                     
                     <input type="hidden" name="id" value="{{ $term->id }}">
-                  <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                  <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
                   
                     <label for="inputName" class="col-sm-3 control-label">
                         {{ __('suda_lang::press.tag_name') }}
@@ -29,7 +29,7 @@
                 
                   </div>
               
-                  <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
+                  <div class="mb-3{{ $errors->has('slug') ? ' has-error' : '' }}">
                   
                     <label for="inputName" class="col-sm-3 control-label">
                         别名
@@ -46,7 +46,7 @@
                 
                   </div>
               
-                    <div class="form-group{{ $errors->has('desc') ? ' has-error' : '' }}">
+                    <div class="mb-3{{ $errors->has('desc') ? ' has-error' : '' }}">
                   
                       <label for="desc" class="col-sm-3 control-label">
                           描述
@@ -59,7 +59,7 @@
                     </div>
                     
                     
-                    <div class="form-group{{ $errors->has('sort') ? ' has-error' : '' }}">
+                    <div class="mb-3{{ $errors->has('sort') ? ' has-error' : '' }}">
                   
                       <label for="inputName" class="col-sm-3 control-label">
                           排序

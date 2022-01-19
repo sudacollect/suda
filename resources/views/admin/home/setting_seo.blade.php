@@ -7,7 +7,7 @@
     <div class="row suda-row">
         <div class="page-heading">
             <h1 class="page-title">
-                <i class="zly-gear-s"></i>
+                <i class="ion-settings"></i>
                 {{ __('suda_lang::press.seo_info') }}
             </h1>
             
@@ -65,7 +65,7 @@
                       
                       <div class="row mb-3">
                           <div class="buttons col-sm-4 offset-sm-2">
-                              <button type="submit" class="btn btn-primary">{{ trans('suda_lang::press.submit_save') }}</button>
+                              <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.submit_save') }}</button>
                           </div>
                           
                       </div>

@@ -76,11 +76,11 @@
                             </label>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="show_breadcrumb" value="1" @if(isset($settings['show_breadcrumb']) && $settings['show_breadcrumb']==1) checked @endif>
-                                <label class="form-check-label" for="show_breadcrumb">{{ trans('suda_lang::press.open') }}</label>
+                                <label class="form-check-label" for="show_breadcrumb">{{ __('suda_lang::press.open') }}</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="show_breadcrumb" value="0" @if(!isset($settings['show_breadcrumb']) || (isset($settings['show_breadcrumb']) && $settings['show_breadcrumb']==0)) checked @endif>
-                                <label class="form-check-label" for="show_breadcrumb">{{ trans('suda_lang::press.close') }}</label>
+                                <label class="form-check-label" for="show_breadcrumb">{{ __('suda_lang::press.close') }}</label>
                             </div>
                         </div>
                         </div>
@@ -229,7 +229,7 @@
 
                     <div class="row mb-3">
                         <div class="col-sm-4 offset-sm-2">
-                            <button type="submit" class="btn btn-primary">{{ trans('suda_lang::press.save') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.save') }}</button>
                         </div>
                     </div>
                     </form>

@@ -20,7 +20,6 @@ use Gtd\Suda\Sudacore;
 
 use willvincent\Feeds\FeedsServiceProvider;
 use Gtd\Suda\Providers\SendCloudServiceProvider;
-use Gtd\MediaManager\MediaManagerServiceProvider;
 
 class InstallCommand extends Command
 {
@@ -81,9 +80,6 @@ class InstallCommand extends Command
         $this->call('vendor:publish', ['--provider' => SudaServiceProvider::class, '--tag' => $theme_tag]);
         $this->call('vendor:publish', ['--provider' => FeedsServiceProvider::class]);
         
-
-        // #TODO remove MediaManager from core suda.
-        $this->call('vendor:publish', ['--provider' => MediaManagerServiceProvider::class]);
         
         //注册数据表
         $this->info('Migrating the database tables into your application');

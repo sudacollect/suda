@@ -6,9 +6,9 @@
 <div class="container container-fluid">
     <div class="page-heading">
         <h1 class="page-title">
-            <i class="ion-people"></i>&nbsp;{{ trans('suda_lang::press.user_list') }}
+            <i class="ion-people"></i>&nbsp;{{ __('suda_lang::press.user_list') }}
         </h1>
-        <a href="{{ admin_url('user/add') }}" class="pop-modal btn btn-primary btn-sm"><i class="zly-plus-circle"></i>&nbsp;{{ trans('suda_lang::press.btn.add') }}</a>
+        <a href="{{ admin_url('user/add') }}" class="pop-modal btn btn-primary btn-sm"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.btn.add') }}</a>
     </div>
 
     <div class="row suda-row">
@@ -26,21 +26,21 @@
                             <tr>
                               <th>#</th>
                               <th>
-                                  {{ trans('suda_lang::press.username') }}
+                                  {{ __('suda_lang::press.username') }}
                               </th>
                               <th>
-                                  {{ trans('suda_lang::press.email') }}
-                              </th>
-                              
-                              <th>
-                                  {{ trans('suda_lang::press.created_at') }}
-                              </th>
-                              <th>
-                                  {{ trans('suda_lang::press.updated_at') }}
+                                  {{ __('suda_lang::press.email') }}
                               </th>
                               
                               <th>
-                                  {{ trans('suda_lang::press.operate') }}
+                                  {{ __('suda_lang::press.created_at') }}
+                              </th>
+                              <th>
+                                  {{ __('suda_lang::press.updated_at') }}
+                              </th>
+                              
+                              <th>
+                                  {{ __('suda_lang::press.operate') }}
                               </th>
                             </tr>
                           </thead>
@@ -56,8 +56,8 @@
                               <td>{{ $user->updated_at }}</td>
                               
                               <td>
-                                  <a href="{{ admin_url('user/edit/'.$user->id) }}" class="pop-modal btn btn-light btn-xs" title="{{ trans('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ trans('suda_lang::press.edit') }}</a>
-                                  <button href="{{ admin_url('user/delete/'.$user->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $user->id }}" title="{{ trans('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
+                                  <a href="{{ admin_url('user/edit/'.$user->id) }}" class="pop-modal btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
+                                  <button href="{{ admin_url('user/delete/'.$user->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $user->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
                               </td>
                             </tr>
                             @endforeach

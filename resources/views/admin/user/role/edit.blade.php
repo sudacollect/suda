@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row suda-row">
         <div class="page-heading">
-            <h1 class="page-title"><i class="ion-create"></i>&nbsp;{{ trans('suda_lang::press.edit').trans('suda_lang::press.role') }}</h1>
+            <h1 class="page-title"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit').__('suda_lang::press.role') }}</h1>
         </div>
         
         <div class="col-sm-5 suda_page_body">
@@ -19,7 +19,7 @@
                         
                       <input type="hidden" name="id" value="{{ $role->id }}">
 
-                      <div class="form-group row {{ $errors->has('authority') ? ' has-error' : '' }}">
+                      <div class="mb-3 row {{ $errors->has('authority') ? ' has-error' : '' }}">
                           
                           <label for="authority" class="col-form-label col-sm-3 text-right">
                               角色级别
@@ -36,14 +36,14 @@
   
                       </div>
 
-                      <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
+                      <div class="mb-3 row {{ $errors->has('name') ? ' has-error' : '' }}">
                           
                         <label for="name" class="col-form-label col-sm-3 text-right">
-                            {{ trans('suda_lang::press.role_name') }}
+                            {{ __('suda_lang::press.role_name') }}
                         </label>
                         
                         <div class="col-sm-9">
-                            <input type="text" name="name" class="form-control" id="inputName" placeholder="{{ trans('suda_lang::press.input_placeholder',['column'=>trans('suda_lang::press.role_name')]) }}" value="{{ $role->name }}">
+                            <input type="text" name="name" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.input_placeholder',['column'=>__('suda_lang::press.role_name')]) }}" value="{{ $role->name }}">
                             @if ($errors->has('name'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('name') }}</strong>
@@ -53,23 +53,23 @@
 
                       </div>
 
-                      <div class="form-group row">
+                      <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-right">
                                 &nbsp;
                             </label>
                             <div class="col-sm-9 checkbox">
-                                <input type="checkbox" name="disable" @if($role->disable==0) checked @endif > {{ trans('suda_lang::press.enable') }}
+                                <input type="checkbox" name="disable" @if($role->disable==0) checked @endif > {{ __('suda_lang::press.enable') }}
                             </div>
                       </div>
                     
                       
                       
-                      <div class="form-group row">
+                      <div class="mb-3 row">
                         <label class="control-label col-sm-3">
                             &nbsp;
                         </label>
                         <div class="col-sm-9">
-                            <button type="submit" class="btn btn-primary">{{ trans('suda_lang::press.submit_save') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.submit_save') }}</button>
                         </div>
                       </div>
                       

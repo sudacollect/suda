@@ -4,10 +4,10 @@
           <tr>
             <th>#</th>
             <th>
-                {{ trans('suda_lang::press.organization') }}
+                {{ __('suda_lang::press.organization') }}
             </th>
             <th>
-                {{ trans('suda_lang::press.analytics.count') }}
+                {{ __('suda_lang::press.analytics.count') }}
             </th>
           </tr>
         </thead>

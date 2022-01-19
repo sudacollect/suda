@@ -10,13 +10,13 @@
 <div class="modal-body">
     <div class="container-fluid">
 
-        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+        <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
                           
             <label for="name" >
-                {{ trans('suda_lang::press.name') }}
+                {{ __('suda_lang::press.name') }}
             </label>
             
-            <input type="text" name="name" class="form-control" id="inputName" value="{{ $menu->name }}" placeholder="{{ trans('suda_lang::press.input_placeholder',['column'=>trans('suda_lang::press.name')]) }}">
+            <input type="text" name="name" class="form-control" id="inputName" value="{{ $menu->name }}" placeholder="{{ __('suda_lang::press.input_placeholder',['column'=>__('suda_lang::press.name')]) }}">
             @if ($errors->has('name'))
                 <span class="help-block">
                     <strong>{{ $errors->first('name') }}</strong>

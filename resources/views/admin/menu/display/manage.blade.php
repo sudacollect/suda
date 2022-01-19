@@ -41,7 +41,7 @@
                 <span class="title"><i class="ion-menu-outline"></i>&nbsp;{{ __($item->title) }}</span>
                 <span class="url text-muted" style="font-size:0.8rem;">{{ $item->link() }}</span>
                 @if($menu->id>1)
-                <div class="btn-group ml-auto" role="group">
+                <div class="btn-group ms-auto" role="group">
 
                     <button href="{{ admin_url('menu/item/edit/'.$item->id) }}" id="edit-item" type="button" class="pop-modal btn btn-light btn-xs"><i class="ion-create"></i>&nbsp;编辑</button>
                     <button id="delete-item" type="button" class="pop-modal-delete btn btn-light btn-xs" href="{{ admin_url('menu/item/delete/'.$item->menu_id.'/'.$item->id) }}" data_id="{{ $item->id }}"><i class="ion-trash"></i></button>

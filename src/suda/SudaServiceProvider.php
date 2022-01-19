@@ -29,8 +29,6 @@ use Gtd\Suda\Providers\AuthServiceProvider;
 
 use Gtd\Suda\Providers\SendCloudServiceProvider;
 
-use Gtd\MediaManager\MediaManagerServiceProvider;
-
 use Gtd\Suda\Sudacore;
 
 class SudaServiceProvider extends ServiceProvider
@@ -101,8 +99,6 @@ class SudaServiceProvider extends ServiceProvider
         $this->app->register(SudaEventServiceProvider::class);
         
         $this->app->register(SendCloudServiceProvider::class);
-
-        $this->app->register(MediaManagerServiceProvider::class);
         
         $app = $this->app;
         $app->bind('sudacore', function ($app) {
@@ -140,7 +136,6 @@ class SudaServiceProvider extends ServiceProvider
         $this->commands(\Gtd\Suda\Commands\InfoCommand::class);
         $this->commands(\Gtd\Suda\Commands\ExtCommand::class);
         $this->commands(\Gtd\Suda\Commands\AdminCommand::class);
-        $this->commands(\Gtd\MediaManager\App\Commands\PackageSetup::class);
     }
     
     //注册资源

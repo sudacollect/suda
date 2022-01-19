@@ -8,7 +8,7 @@
 
     <div class="modal-body">
     <div class="container-fluid">
-            <div class="form-group{{ $errors->has('medium[width]') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('medium[width]') ? ' has-error' : '' }}">
                   
                 <label for="medium[width]">
                     缩略大图
@@ -17,20 +17,16 @@
                     </span>
                 </label>
 
-                <div class="form-row">
+                <div class="row">
                     <div class="col">
                         <div class="input-group">
-                            <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">宽度</span>
-                            </div>
                             <input type="number" name="medium[width]" class="form-control input-sm" value="{{ $setting['size']['medium']['width'] }}" id="medium_width" placeholder="宽度">
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-group">
-                            <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">高度</span>
-                            </div>
                             <input type="number" name="medium[height]" class="form-control input-sm" value="{{ $setting['size']['medium']['height'] }}" id="medium_height" placeholder="高度">
                         </div>
                     </div>
@@ -42,7 +38,7 @@
   
               </div>
   
-              <div class="form-group{{ $errors->has('small[width]') ? ' has-error' : '' }}">
+              <div class="mb-3{{ $errors->has('small[width]') ? ' has-error' : '' }}">
                     
                   <label for="small[width]">
                         缩略小图
@@ -51,20 +47,16 @@
                         </span>
                   </label>
   
-                <div class="form-row">
+                <div class="row">
                     <div class="col">
                         <div class="input-group">
-                            <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">宽度</span>
-                            </div>
                             <input type="number" name="small[width]" class="form-control input-sm" value="{{ $setting['size']['small']['width'] }}" id="small_width" placeholder="宽度">
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-group">
-                            <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">高度</span>
-                            </div>
                             <input type="number" name="small[height]" class="form-control input-sm" value="{{ $setting['size']['small']['height'] }}" id="small_height" placeholder="高度">
                         </div>
                     </div>
@@ -72,7 +64,7 @@
 
               </div>
 
-            <div class="form-group{{ $errors->has('crop') ? ' has-error' : '' }}">
+            <div class="mb-3{{ $errors->has('crop') ? ' has-error' : '' }}">
                 
                 <label for="crop">
                     强制宽高
@@ -91,7 +83,7 @@
                 
             </div>
 
-              <div class="form-group{{ $errors->has('images') ? ' has-error' : '' }}">
+              <div class="mb-3{{ $errors->has('images') ? ' has-error' : '' }}">
                     
                     <label for="images">
                         默认图

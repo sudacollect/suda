@@ -127,6 +127,7 @@ return [
                                 admin: view and edit all data<br/>',
     
     
+    'as_superadmin'=>'Set as Superadmin',
     'filter_missing'=>'missing fileter params',
     
     

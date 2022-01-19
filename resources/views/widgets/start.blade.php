@@ -4,7 +4,7 @@
         <a href="{{ admin_url('setting/site') }}">
             <span class="title">系统设定</span>
             <span class="desc">立即去设定</span>
-            <i class="zlyicon zly-gear-s"></i>
+            <i class="zlyicon ion-settings"></i>
         </a>
         
     </div>

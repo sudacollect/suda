@@ -21,13 +21,13 @@
                         
                       <input type="hidden" name="id" value="{{ $role->id }}">
                       
-                      <div class="form-group{{ $errors->has('permission') ? ' has-error' : '' }}">
+                      <div class="mb-3{{ $errors->has('permission') ? ' has-error' : '' }}">
                           
                         <p for="permission">
                             {{ __('suda_lang::press.system_permission') }}
                         </p>
                         
-                        <button class="btn btn-success btn-sm mr-2" id="permission-select-all">选择所有权限</button>
+                        <button class="btn btn-success btn-sm me-2" id="permission-select-all">选择所有权限</button>
                         <button class="btn btn-light btn-sm" id="permission-deselect-all">取消全选</button>
 
                         <div class="row role-permissions-group" >
@@ -157,9 +157,9 @@
                       </div>
                       
                       
-                      <div class="form-group">
+                      <div class="mb-3">
                         
-                          <button type="submit" class="btn btn-primary">{{ trans('suda_lang::press.submit_save') }}</button>
+                          <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.submit_save') }}</button>
                         
                       </div>
                       

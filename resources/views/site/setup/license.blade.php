@@ -22,7 +22,7 @@
                     <form role="form" method="POST" action="{{ url('sdone/setup/license') }}">
                         @csrf
 
-                        <div class="form-group{{ $errors->has('serialnumber') ? ' has-error' : '' }}">
+                        <div class="mb-3{{ $errors->has('serialnumber') ? ' has-error' : '' }}">
                             
                             <input id="serialnumber" type="text" class="form-control" name="serialnumber" value="" required autofocus placeholder="请输入授权码">
                                 
@@ -34,7 +34,7 @@
                             
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <button type="submit" class="btn btn-primary">
                                 授权验证
                             </button>

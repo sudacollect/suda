@@ -13,10 +13,10 @@
         <div class="container-fluid">
 
     
-      <div id="organization_group"  class="form-group{{ $errors->has('organization_id') ? ' has-error' : '' }}" @if($operate->superadmin==1) style="display:none;" @endif>
+      <div id="organization_group"  class="mb-3{{ $errors->has('organization_id') ? ' has-error' : '' }}" @if($operate->superadmin==1) style="display:none;" @endif>
         
         <label for="organization_id" >
-            {{ trans('suda_lang::press.organization') }}
+            {{ __('suda_lang::press.organization') }}
         </label>
         
         <select class="select-category form-control" name="category[]" multiple="multiple" placeholder="请选择部门">
@@ -29,10 +29,10 @@
       
       </div>
       
-      <div id="role_group" class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}" @if($operate->superadmin==1) style="display:none;" @endif>
+      <div id="role_group" class="mb-3{{ $errors->has('role_id') ? ' has-error' : '' }}" @if($operate->superadmin==1) style="display:none;" @endif>
         
         <label for="role_id" >
-            {{ trans('suda_lang::press.role') }}
+            {{ __('suda_lang::press.role') }}
         </label>
         
         <select id="role_id" name="role_id" class="form-control" placeholder="选择角色">
@@ -45,10 +45,10 @@
       </div>
       
       
-    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+    <div class="mb-3{{ $errors->has('username') ? ' has-error' : '' }}">
         
       <label for="username" >
-          {{ trans('suda_lang::press.username') }}
+          {{ __('suda_lang::press.username') }}
       </label>
       
       <input type="text" name="username" class="form-control" id="inputName" placeholder="英文数字下划线" value="{{ $operate->username }}">
@@ -60,10 +60,10 @@
       
     </div>
     
-    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+    <div class="mb-3{{ $errors->has('password') ? ' has-error' : '' }}">
         
       <label for="password" >
-          {{ trans('suda_lang::auth.password') }}
+          {{ __('suda_lang::auth.password') }}
       </label>
       
       <input type="password" name="password" class="form-control" id="inputName" placeholder="请输入密码">
@@ -75,10 +75,10 @@
       
     </div>
     
-    <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+    <div class="mb-3{{ $errors->has('phone') ? ' has-error' : '' }}">
         
       <label for="phone" >
-          {{ trans('suda_lang::press.telephone') }}
+          {{ __('suda_lang::press.telephone') }}
       </label>
       
       <input type="text" name="phone" class="form-control" id="inputName" placeholder="请输入手机（选填）" value="{{ $operate->phone }}">
@@ -90,10 +90,10 @@
       
     </div>
     
-    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+    <div class="mb-3{{ $errors->has('email') ? ' has-error' : '' }}">
         
       <label for="email" >
-          {{ trans('suda_lang::press.email') }}
+          {{ __('suda_lang::press.email') }}
       </label>
       
       <input type="text" name="email" class="form-control" id="inputName" placeholder="请输入邮箱（选填）" value="{{ $operate->email }}">
@@ -106,7 +106,7 @@
     </div>
     
     @if($soperate->superadmin==1)
-    <div class="form-group">
+    <div class="mb-3">
         <div class="form-check form-check-inline">
             <input type="radio" class="form-check-input" name="superadmin" placeholder="是" value="1" @if($operate->superadmin==1) checked @endif>
             <label class="form-check-label" for="superadmin">启用超级管理员</label>
@@ -117,10 +117,10 @@
     @endif
 
 
-    <div class="form-group">
+    <div class="mb-3">
         <div class="form-check form-check-inline">
             <input type="checkbox" class="form-check-input" name="enable" placeholder="是" value="1" @if($operate->enable==1) checked @endif>
-            <label class="form-check-label" for="enable">{{ trans('suda_lang::press.enable') }}</label>
+            <label class="form-check-label" for="enable">{{ __('suda_lang::press.enable') }}</label>
         </div>
     </div>
     
@@ -129,7 +129,7 @@
     </div>
 
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">{{ trans('suda_lang::press.submit_save') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.submit_save') }}</button>
     </div>
 
 </form>

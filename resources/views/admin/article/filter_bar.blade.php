@@ -25,7 +25,7 @@
             </select>
         </div>
         <div class="col">
-            <select name="search[date]" class="form-select ml-2 mr-2" aria-placeholder="- 选择日期 -" placeholder="- 选择日期 -">
+            <select name="search[date]" class="form-select ml-2 me-2" aria-placeholder="- 选择日期 -" placeholder="- 选择日期 -">
                 <option value="">-选择日期-</option>
                 @if($dates && $dates->count()>0)
                 @foreach($dates as $date)
@@ -36,7 +36,7 @@
         </div>
         <div class="col">
             <div class="input-group">
-                <input type="text" name="search[title]" class="form-control mr-2" placeholder="文章标题">
+                <input type="text" name="search[title]" class="form-control me-2" placeholder="文章标题">
                 <button type="submit" class="btn btn-dark">搜索</button>
             </div>
         </div>
