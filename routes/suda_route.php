@@ -248,7 +248,7 @@ Route::group([
         //Route::post('/component/loadmodal',     $controller_prefix.'ComponentController@loadModal');
         
 
-        MediaRoutes::routes();
+        // MediaRoutes::routes();
         
         
         // theme
