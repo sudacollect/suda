@@ -81,20 +81,16 @@ $(document).ready(function($) {
             infoType = 'dark';
         }
         
-        // var alerthtml = '<div class="modal-alert"><div class="alert alert-'+infoType+'">'+errors+'</div></div>';
-        // $('body').find('.modal-alert').remove();
-        // $('body').append(alerthtml);
-        // $('body').find('.suda-toast').find('.toast-body').text(errors);
-        var suda_flat_width = $('body').find('.suda-flat').width();
-        var boxa_right = (suda_flat_width-180)/2;
-
-        var boxa_top = $(window).scrollTop()+15;
+        // with bs-5 DO NOT NEED THIS
+        // var suda_flat_width = $('body').find('.suda-flat').width();
+        // var boxa_right = (suda_flat_width-180)/2;
+        // var boxa_top = $(window).scrollTop()+15;
         
-        var alerthtml = '<div class="suda-toast toast" data-autohide="true" data-delay="2500" style="position: absolute; z-index:9999;top:'+boxa_top+'px; right:'+ boxa_right +'px;width:180px;">';
+        var alerthtml = '<div class="suda-toast toast position-absolute top-0 start-50 translate-middle-x" data-bs-autohide="true" data-bs-delay="2500" style="z-index:9999;" >';
             alerthtml += '<div class="toast-header text-'+infoType+'" style="background:#efefef;">';
             alerthtml += '<i class="ion-alert-circle"></i>&nbsp;';
             alerthtml += '<strong class="me-auto">提示</strong>';
-            alerthtml += '<button type="button" class="ml-2 mb-1 close" data-bs-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+            alerthtml += '<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>';
             alerthtml += '</div>';
             alerthtml += '<div class="toast-body">'+errors+'</div>';
             alerthtml += '</div>';

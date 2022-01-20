@@ -112,13 +112,6 @@
         
     </div>
     
-    {{-- @if (session('status'))
-    <div class="modal-alert @if(isset(session('status')['keep'])) alert-keep @endif">
-        <div class="alert alert-{{ session('status')['code'] }}">
-            {!! session('status')['msg'] !!}
-        </div>
-    </div>
-    @endif --}}
     
     <script src="{{ suda_asset('js/app.js') }}"></script>
     <script src="{{ suda_asset('js/app.vendor.js') }}"></script>

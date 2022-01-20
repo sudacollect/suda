@@ -1,20 +1,16 @@
 @if (session('status'))
-@php
-if(!isset($toast_top)){
-    $toast_top = '1rem';
-}else{
-    $toast_top .= 'px';
-}
-@endphp
-<div class="suda-toast toast" @if(isset(session('status')['autohide'])) data-autohide="session('status')['autohide']" @else data-autohide="true" @endif @if(isset(session('status')['delay'])) data-delay="{{ session('status')['delay'] }}" @else data-delay="2500" @endif style="position: absolute; top:{{ $toast_top }}; right: 1rem;min-width:160px;z-index:9999;">
-    <div class="toast-header @if(isset(session('status')['code'])) text-{{ session('status')['code'] }} @else text-dark @endif" style="background:#efefef;">
-    <i class="ion-alert-circle"></i>&nbsp;
-    <strong class="me-auto">提示</strong>
-    {{-- <small>11 mins ago</small> --}}
-    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-        {!! session('status')['msg'] !!}
+
+<div aria-live="polite" aria-atomic="true" class="position-relative" style="z-index:9999;">
+    <div class="toast-container toast-container position-absolute top-0 end-0 p-3" id="toastPlacement">
+        <div class="suda-toast toast" role="alert" aria-live="assertive" aria-atomic="true" @if(isset(session('status')['autohide'])) data-bs-autohide="session('status')['autohide']" @else data-bs-autohide="true" @endif @if(isset(session('status')['delay'])) data-bs-delay="{{ session('status')['delay'] }}" @else data-bs-delay="2500" @endif >
+            <div class="d-flex">
+                <div class="toast-body">
+                    {!! session('status')['msg'] !!}
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
     </div>
 </div>
+
 @endif
