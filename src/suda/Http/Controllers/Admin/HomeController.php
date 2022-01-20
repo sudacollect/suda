@@ -65,6 +65,8 @@ class HomeController extends DashboardController
         $sysinfo = \Gtd\Suda\Sudacore::sysInfo();
         $this->setData('sysinfo',$sysinfo);
 
+        $this->setData('active_tab','certificate');
+
         $this->setData('extend_breadcrumbs',[
             [
                 'slug'=>'certificate',

@@ -6,7 +6,11 @@
 <div class="container">
     <div class="row suda-row">
         
-        <div class="col-sm-8 offset-sm-2 py-3 suda_page_body">
+        <h1 class="display-3 page-title page-tabs-title">{{ __('suda_lang::press.menu_items.tool_compass') }}</h1>
+
+        @include('view_suda::admin.compass.tabs',['active'=>'index'])
+
+        <div class="col-12 suda_page_body">
 
             
             
@@ -15,7 +19,7 @@
                     @if($sysinfo)
                     <div class="card-body" >
                         <div class="certified-logo text-center">
-                            <img src="{{ suda_asset('images/certified.png') }}" class="w-25">
+                            <img src="{{ suda_asset('images/certified.png') }}" class="w-25" style="width:200px !important;">
                         </div>
                         
                         
