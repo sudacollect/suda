@@ -8,14 +8,14 @@
 <textarea id="{{ isset($editor)?$editor:'summernote' }}" class="form-control" name="{{ $input_name }}" placeholder="请输入内容" style="width:100%;padding:5px;" rows=5>{{ $content }}</textarea>
 
 @push('styles-head')
-<link href="{{ suda_asset('editor/summernote-bs4.min.css') }}" rel="stylesheet">
+<link href="{{ suda_asset('editor/summernote-bs5.min.css') }}" rel="stylesheet">
 @endpush
 
 
 @push('scripts')
 
 @once
-<script src="{{ suda_asset('editor/summernote-bs4.min.js') }}"></script>
+<script src="{{ suda_asset('editor/summernote-bs5.min.js') }}"></script>
 <script src="{{ suda_asset('editor/lang/summernote-zh-CN.js') }}"></script>
 <script src="{{ suda_asset('js/plugins/summernote-ext-media.js') }}"></script>
 <script src="{{ suda_asset('js/plugins/summernote-cleaner.js') }}"></script>

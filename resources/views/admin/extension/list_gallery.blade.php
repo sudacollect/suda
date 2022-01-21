@@ -51,16 +51,18 @@
                 <a href="{{ admin_url('extension/'.$item['setting']['setting_page']) }}" class="btn btn-primary btn-xs" title="应用配置" ><i class="ion-settings-sharp"></i>&nbsp;配置</a>
                 @endif
                 
+                <div class="form-check form-switch float-start">
+                    <input type="checkbox" class="quickin-change form-check-input" href="{{ admin_url('manage/extension/'.$item['slug'].'/setQuickin') }}" data-id="{{ $item['slug'] }}" @if(array_key_exists($item['slug'],$quickins)) data-content="checked" checked @else data-content="" @endif id="{{ $item['slug'] }}"  >
+                    <label class="form-check-label" for="{{ $item['slug'] }}">&nbsp;</label>
+                </div>
+
             @else
                 @if($soperate->user_role >=9)
-                <button class="btn btn-success btn-xs btn-install" href="{{ admin_url('manage/extension/'.$item['slug'].'/install') }}" title="安装" data-id="{{ $item['slug'] }}"><i class="ion-flag"></i>&nbsp;安装</button>
+                <button class="btn btn-success btn-sm btn-install" href="{{ admin_url('manage/extension/'.$item['slug'].'/install') }}" title="安装" data-id="{{ $item['slug'] }}"><i class="ion-flag"></i>&nbsp;安装</button>
                 @endif
             @endif
             </div>
-            <div class="custom-control custom-switch float-left">
-                <input type="checkbox" class="quickin-change custom-control-input" href="{{ admin_url('manage/extension/'.$item['slug'].'/setQuickin') }}" data-id="{{ $item['slug'] }}" @if(array_key_exists($item['slug'],$quickins)) data-content="checked" checked @else data-content="" @endif id="{{ $item['slug'] }}"  >
-                <label class="custom-control-label custom-control-label-success" for="{{ $item['slug'] }}">&nbsp;</label>
-            </div>
+            
         </div>
     </div>
 </div>

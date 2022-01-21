@@ -3,8 +3,11 @@ window.$ = window.jQuery = require('jquery');
 
 require('./bootstrap');
 
+
 window.Popper = require('@popperjs/core').default;
-require('bootstrap');
+
+const bootstrap = require('bootstrap');
+window.bootstrap = bootstrap;
 
 const np = require('number-precision');
 window.NP = np;
