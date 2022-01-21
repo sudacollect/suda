@@ -96,7 +96,7 @@ code {
 
 /*=== select2 ===*/
 .select2-container{
-    z-index:9999;
+    z-index:1000;
 }
 .select2-container .select2-selection{
     /* height: calc(1.6em + 0.75rem + 2px); */
