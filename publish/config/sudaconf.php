@@ -17,8 +17,6 @@ return [
     |
     */
     
-    //show copyright of suda
-    'show_copyright'=>true,
     
     # auto_mobile => false,
 

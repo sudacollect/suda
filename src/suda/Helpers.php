@@ -85,16 +85,6 @@ if (!function_exists('menu')) {
     }
 }
 
-if (! function_exists('show_copyright')) {
-    function show_copyright()
-    {
-        if(config('sudaconf.show_copyright',true)==true){
-            return true;
-        }
-        return false;
-    }
-}
-
 if (! function_exists('config_admin_path')) {
     function config_admin_path($path = '')
     {
@@ -522,10 +512,7 @@ if (!function_exists('metas')) {
         }else{
             $title = config('app.name',trans('suda_lang::press.system_name'));
         }
-        if(show_copyright()=='true'){
-            return $title.' - Powered by Suda';
-        }
-        return $title;
+        return $title.' - Powered by Suda';
     }
 }
 

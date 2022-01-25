@@ -39,10 +39,8 @@ class MetaServiceProvider extends ServiceProvider
             }else{
                 $title = config('app.name',trans('suda_lang::press.system_name'));
             }
-            if(show_copyright()=='true'){
-                return $title.' - Powered by Suda';
-            }
-            return $title;
+            return $title.' - Powered by Suda';
+            
         });
     }
 

@@ -72,11 +72,10 @@
 
         
         
-            @yield('content')
-        
-            @include('view_suda::site.layouts.footer')
-        
-        {{-- @sudacopyright --}}
+        @yield('content')
+    
+        @include('view_suda::site.layouts.footer')
+    
 
         
     </div>

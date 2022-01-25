@@ -76,7 +76,6 @@
         
             @include('view_suda::mobile.layouts.footer')
         
-        {{-- @sudacopyright --}}
 
         
     </div>

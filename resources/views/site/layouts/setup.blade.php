@@ -72,7 +72,6 @@
 
     </div>
     
-    @sudacopyright
     
         
     @stack('scripts')

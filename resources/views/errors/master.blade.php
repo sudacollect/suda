@@ -55,7 +55,6 @@
 
         @yield('content')
         
-        @sudacopyright
     </div>
     
     

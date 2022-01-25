@@ -60,7 +60,6 @@
 
         @yield('content')
         
-        @sudacopyright
     </div>
     
     

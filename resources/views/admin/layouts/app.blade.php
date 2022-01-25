@@ -56,7 +56,6 @@
         @yield('content')
     </div>
     
-    {{-- @sudacopyright --}}
     <!-- Scripts -->
     <script src="{{ suda_asset('js/app.js') }}"></script>
     <script>

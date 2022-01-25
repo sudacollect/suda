@@ -32,19 +32,6 @@ class ViewRenderMiddleware
         //判断当前链接是不是应该被except
         $except_do = $this->isExceptConfig($request);
         
-        // if(show_copyright()=='true' && !$except_do){
-            
-        //     $response = $next($request);
-        
-        //     if(!empty($response->getOriginalContent()) && !is_string($response->getOriginalContent())){
-            
-        //         $content = $response->getOriginalContent()->renderSections();
-            
-        //         if(!array_key_exists(base64_decode('emhpbGFwb3dlcg=='),$content)){
-        //             //return redirect(locale_url('/sdone/'.'t'.'he'.'m'.'e/'.'er'.'ror'));
-        //         }
-        //     }
-        // }
         
         return $next($request);
     }
