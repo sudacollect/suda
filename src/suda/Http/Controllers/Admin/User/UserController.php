@@ -110,6 +110,8 @@ class UserController extends DashboardController
         
         $userModel = new User;
         
+        $password_link = config('sudaconf.password_link','zp');
+
         if($id){
             if($user_exist){
                 $url = '';
@@ -124,7 +126,7 @@ class UserController extends DashboardController
                     'email'=>$request->email,
                 ];
                 if($request->password){
-                    $update_data['password'] = bcrypt($request->password.'zp');
+                    $update_data['password'] = bcrypt($request->password.$password_link);
                     $update_data['remember_token'] = Str::random(60);
                 }
                 
@@ -142,7 +144,9 @@ class UserController extends DashboardController
             
             $userModel->name = $request->name;
             $userModel->email = $request->email;
-            $userModel->password = bcrypt($request->password.'zp');
+
+            
+            $userModel->password = bcrypt($request->password.$password_link);
             $userModel->remember_token = Str::random(60);
             
             $userModel->save();

@@ -29,7 +29,8 @@ class AuthSudaServiceProvider extends EloquentUserProvider {
         $hashedValue = $user->getAuthPassword();
         
         $salt = $user->salt;
-        $plain = $plain.'zp'.$salt;
+        $password_link = config('sudaconf.password_link','zp');
+        $plain = $plain.$password_link.$salt;
         
         /**
         if ($this->hasher->needsRehash($hashedValue) && $hashedValue === md5($plain)) {

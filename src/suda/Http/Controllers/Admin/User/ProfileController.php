@@ -214,13 +214,16 @@ class ProfileController extends DashboardController
         
         if(!$response_msg) {
             $operateModel = new Operate;
-            
-            $result = $this->hasher->check($request->old_password.'zp'.$this->user->salt, $this->user->password);
+            $password_link = config('sudaconf.password_link','zp');
+
+            $result = $this->hasher->check($request->old_password.$password_link.$this->user->salt, $this->user->password);
             
             if($result){
+                $password_link = config('sudaconf.password_link','zp');
+
                 $update_data = [];
                 $update_data['salt'] = Str::random(6);
-                $update_data['password'] = bcrypt($request->new_password.'zp'.$update_data['salt']);
+                $update_data['password'] = bcrypt($request->new_password.$password_link.$update_data['salt']);
                 $update_data['remember_token'] = Str::random(60);
                 
                 $operateModel->where('id',$this->user->id)->update($update_data);

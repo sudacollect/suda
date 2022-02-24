@@ -84,10 +84,11 @@ class AdminCommand extends Command
             //#TODO 优化密码的加密机制
             $salt = Str::random(6);
             $operateObj = new Operate;
+            $password_link = config('sudaconf.password_link','zp');
 
             $operateObj->username = $username;
             $operateObj->email = $email;
-            $operateObj->password = bcrypt($password.'zp'.$salt);
+            $operateObj->password = bcrypt($password.$password_link.$salt);
             $operateObj->superadmin = 1;
             $operateObj->organization_id = 0;
             $operateObj->is_company = 0;

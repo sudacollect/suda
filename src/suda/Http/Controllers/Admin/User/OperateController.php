@@ -201,9 +201,12 @@ class OperateController extends DashboardController
                     'roletable'=>"Gtd\\Suda\\Models\\Role",
                     'enable'=>$enable,
                 ];
+                
+                $password_link = config('sudaconf.password_link','zp');
+
                 if($request->password){
                     $update_data['salt'] = Str::random(6);
-                    $update_data['password'] = bcrypt($request->password.'zp'.$update_data['salt']);
+                    $update_data['password'] = bcrypt($request->password.$password_link.$update_data['salt']);
                     $update_data['remember_token'] = Str::random(60);
                 }
                 
@@ -227,6 +230,8 @@ class OperateController extends DashboardController
                 $org_id = 0;
                 $role_id = 0;
             }
+
+            $password_link = config('sudaconf.password_link','zp');
             
             $operateModel->username = $request->username;
             $operateModel->phone = $request->phone;
@@ -236,7 +241,7 @@ class OperateController extends DashboardController
             $operateModel->roletable = "Gtd\\Suda\\Models\\Role";
             $operateModel->remember_token = Str::random(60);
             $operateModel->salt = Str::random(6);
-            $operateModel->password = bcrypt($request->password.'zp'.$operateModel->salt);
+            $operateModel->password = bcrypt($request->password.$password_link.$operateModel->salt);
             $operateModel->is_company = '0';
             $operateModel->enable = $enable;
             

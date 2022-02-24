@@ -70,6 +70,9 @@ return [
     | admin_loginname has three options: username, email, phone
     |
     */
+
+    // password link
+    'password_link' => 'zp',
     
     // dashboard login path
     'admin_path' => 'admin',
