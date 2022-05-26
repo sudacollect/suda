@@ -173,19 +173,19 @@ class Sudacore
     
     public static function widget($widget_name,$config=[]){
         
-        $widgets = config('sudaconf.widget',false);
+        $widget_group = config('sudaconf.widget',false);
         
-        if(!$widgets){
+        if(!$widget_group){
             return;
         }
-
+        
         if($widget_name=='suda_widget_extend')
         {
-            $widgets = config('suda_custom.widget_extends',[]);
+            $widget_group = config('suda_custom.widget_extends',[]);
             $widget_name = isset($config['extend'])?$config['extend']:'';
         }
         
-        $widgets = self::existWidget($widget_name,$widgets);
+        $widgets = self::existWidget($widget_name,$widget_group);
         
         if(is_string($widgets)){
             if(array_key_exists('async',$config)){
@@ -193,11 +193,7 @@ class Sudacore
             }
             return Widget::run($widgets,$config);
         }elseif(is_array($widgets)){
-            // foreach($widgets as $widget){
-                
-            //     //
-                
-            // }
+            return false;
         }
     }
     

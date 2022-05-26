@@ -171,14 +171,14 @@ class ExtensionService {
         if($extensions)
         {
             // 对比删除的应用
-            if(Cache::store(config('zhila.admin_cache','file'))->has('cache_avaliable_extensions')){
-                $avaliable_extensions = Cache::store(config('zhila.admin_cache','file'))->get('cache_avaliable_extensions');
+            if(Cache::store(config('sudaconf.admin_cache','file'))->has('cache_avaliable_extensions')){
+                $avaliable_extensions = Cache::store(config('sudaconf.admin_cache','file'))->get('cache_avaliable_extensions');
                 $need_removes = array_diff_key($avaliable_extensions,$extensions);
                 $avaliable_news = array_diff_key($avaliable_extensions,$need_removes);
-                Cache::store(config('zhila.admin_cache','file'))->forever('cache_avaliable_extensions',$avaliable_news);
+                Cache::store(config('sudaconf.admin_cache','file'))->forever('cache_avaliable_extensions',$avaliable_news);
             }
         }else{
-            Cache::store(config('zhila.admin_cache','file'))->forever('cache_avaliable_extensions',[]);
+            Cache::store(config('sudaconf.admin_cache','file'))->forever('cache_avaliable_extensions',[]);
         }
         
     }
