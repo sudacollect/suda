@@ -37,6 +37,10 @@ code {
     border-radius: 4px;
 }
 
+.table>:not(:first-child){
+    border-top:1px solid;
+}
+
 .icon-extension {
     border-radius:8%;
     box-shadow:0 1px 5px 0 rgb(228 228 228 / 98%);

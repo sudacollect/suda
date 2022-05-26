@@ -21,7 +21,7 @@
 
                 @if($cate->children && $cate->children->count()>0)
                 <li class="nav-item dropdown">
-                    <a href="{{ url('category/'.$cate->term->slug) }}" class="nav-link dropdown-toggle @if(isset($category) && $category->id==$cate->id) active @endif" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <a href="{{ url('category/'.$cate->term->slug) }}" class="nav-link dropdown-toggle @if(isset($category) && $category->id==$cate->id) active @endif" data-bs-toggle="dropdown" role="button" aria-expanded="false">
                         {{ $cate->term->name }}
                     </a>
 

@@ -34,17 +34,17 @@
                         @endif
 
                         <div class="dropdown d-inline-flex">
-                            <a class="btn btn-light btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="btn btn-light btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               批量管理
                             </a>
                           
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a id="batch_retag" class="dropdown-item" href="{{ admin_url('medias/batchtag') }}">批量标签</a>
-                                <a id="batch_rebuild" class="dropdown-item" href="#">批量缩略图</a>
-                                <a  class="batch-action dropdown-item" href="{{ admin_url('medias/showbatch') }}">批量显示</a>
-                                <a  class="batch-action dropdown-item" href="{{ admin_url('medias/hiddenbatch') }}">批量隐藏</a>
-                                <a  class="batch-action dropdown-item" href="{{ admin_url('medias/deletebatch') }}">批量删除</a>
-                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a id="batch_retag" class="dropdown-item" href="{{ admin_url('medias/batchtag') }}">批量标签</a></li>
+                                <li><a id="batch_rebuild" class="dropdown-item" href="#">批量缩略图</a></li>
+                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('medias/showbatch') }}">批量显示</a></li>
+                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('medias/hiddenbatch') }}">批量隐藏</a></li>
+                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('medias/deletebatch') }}">批量删除</a></li>
+                            </ul>
                         </div>
 
                         
@@ -56,7 +56,7 @@
                     
                         <div class="table-responsive data-list">
                         <table class="table table-hover">
-                            <thead class="bg-light">
+                            <thead class="table-light">
                                 <tr>
                                 <th width="20px"><input type="checkbox" id="select_all" value="1"></th>
                                 <th width="5%">#<i class="stitle"></i></th>

@@ -221,7 +221,7 @@
 
     <li class="nav-item dropdown @if(isset($navi['slug']) && array_key_exists($navi['slug'],$current_menu)) active @endif">
         @if(array_key_exists('children',$navi))
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
             <i class="@if(isset($navi['icon'])) {{ $navi['icon'] }} @else fa fa-th-large @endif"></i>
             {{ $navi['name'] }}
         </a>
