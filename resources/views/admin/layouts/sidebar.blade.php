@@ -37,7 +37,7 @@
         
     </div>
     
-    @include("view_path::layouts.sidebar_bottom")
+    
     
 </div>
 

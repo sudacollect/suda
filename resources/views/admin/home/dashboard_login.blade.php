@@ -46,7 +46,7 @@
                         </div>
                       </div>
                       
-                      <div class="row mb-3">
+                    <div class="row mb-3">
                        
                         
                         <label for="login_page" class="col-sm-2 col-form-label text-end">
@@ -61,9 +61,9 @@
                                 <input type="text" class="form-control" name="login_page" placeholder="example: index" value="@if(isset($settings['login_page']->values)){{ $settings['login_page']->values }}@endif">
                             </div><!-- /input-group -->
                         </div>
-                      </div>
+                    </div>
 
-                      <div class="row mb-3">
+                    <div class="row mb-3">
                        
                         
                         <label for="login_page" class="col-sm-2 col-form-label text-end">
@@ -83,24 +83,9 @@
                                 <label class="form-check-label" for="show_breadcrumb">{{ __('suda_lang::press.close') }}</label>
                             </div>
                         </div>
-                        </div>
-                      
-                    <div class="row mb-3">
-                       
-                        
-                        <label for="operate_avatar" class="col-sm-2  col-form-label text-end">
-                            {{ __('suda_lang::press.settings.userinfo') }}
-                        </label>
-
-                        <div class="col-sm-4">
-                            <select name="operate_avatar" class="form-control">
-                                <option value="2" @if(isset($settings['operate_avatar']->values) && $settings['operate_avatar']->values=='2') selected @endif>{{ __('suda_lang::press.settings.userinfo_position.all') }}</option>
-                                <option value="1" @if(isset($settings['operate_avatar']->values) && $settings['operate_avatar']->values=='1') selected @endif>{{ __('suda_lang::press.settings.userinfo_position.left_bottom') }}</option>
-                                <option value="0" @if(isset($settings['operate_avatar']->values) && $settings['operate_avatar']->values=='0') selected @endif>{{ __('suda_lang::press.settings.userinfo_position.top_right') }}</option>
-                            </select>
-                        </div>
-
                     </div>
+                      
+                    
                       
                     <div class="row mb-3">
                     

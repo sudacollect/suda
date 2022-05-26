@@ -828,27 +828,8 @@ code {
 }
 .side-user .avatar{
     width:32px;height:32px;
-    display:inline-flex;
-    float:left;
-    border-radius:50%;margin-right:5px;
 }
-.side-user .username{
-    font-weight:normal;
-    color:#aeb3bb;
-    display: inline-block;
-    float: left;
-    line-height: 2.4rem;
-    font-size:1rem;
-    overflow:hidden;
-    white-space:nowrap;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 72px;
-    text-align:left;
-}
-.sidebar_bottom.open .side-user .username,.side-user:hover .username{
-    color:#fff;
-}
+
 .press-sidebar-icon .sidebar_bottom .side-user{
     padding:5px;background:transparent;
     display:inline-flex;
@@ -857,9 +838,7 @@ code {
 .press-sidebar-icon .sidebar_bottom .side-user image{
     margin:0;
 }
-.press-sidebar-icon .sidebar_bottom .side-user .username{
-    display:none;
-}
+
 
 .sidebar_bottom .dropdown-menu{
     padding:0;
@@ -2663,15 +2642,11 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     }
 
     .press-sidebar-pro .sidebar_bottom .side-user{
-        padding:5px;background:transparent;
-        display:inline-flex;
-        justify-content: center;
+        padding:5px;
+        text-align:center;
     }
     .press-sidebar-pro .sidebar_bottom .side-user image{
         margin:0;
-    }
-    .press-sidebar-pro .sidebar_bottom .side-user .username{
-        display:none;
     }
 
 

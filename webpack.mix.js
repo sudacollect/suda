@@ -115,7 +115,7 @@ mix.options({
 // mix.copyDirectory('resources/assets/vendors/ionicons', 'publish/assets/fonts/vendor/ionicons');
 
 // dashboard
-// mix.js('resources/assets/js/app.js', 'publish/assets/js/app.js');
+mix.js('resources/assets/js/app.js', 'publish/assets/js/app.js');
 mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'publish/assets/css');
 
 // front-site

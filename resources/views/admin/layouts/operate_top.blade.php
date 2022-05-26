@@ -1,5 +1,5 @@
 @if(Auth::guard('operate')->check())
-@if(!isset($sdcore->settings->dashboard->operate_avatar) || (isset($sdcore->settings->dashboard->operate_avatar) && $sdcore->settings->dashboard->operate_avatar!=1))
+
 <li class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle with-avatar" id="navbar-user-dropdown" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
         @if(isset($soperate))
@@ -30,5 +30,5 @@
         </form>
     </div>
 </li>
-@endif
+
 @endif

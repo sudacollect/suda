@@ -39,7 +39,7 @@
     <div id="app" class="suda-app">
 
         <div class="suda-flat suda-flat-fluid">
-            <nav class="{{ $navbar_style }}">
+            <nav class="{{ $navbar_style }}" style="padding-left:0">
                 
                 <a class="navbar-brand" href="{{ admin_url('/') }}">
                     {{ config('app.name', 'Suda') }}

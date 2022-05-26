@@ -89,7 +89,7 @@ $(document).ready(function($) {
         var alerthtml = '<div class="suda-toast toast position-absolute top-0 start-50 translate-middle-x" data-bs-autohide="true" data-bs-delay="2500" style="z-index:9999;" >';
             alerthtml += '<div class="toast-header text-'+infoType+'" style="background:#efefef;">';
             alerthtml += '<i class="ion-alert-circle"></i>&nbsp;';
-            alerthtml += '<strong class="me-auto">提示</strong>';
+            alerthtml += '<span class="me-auto">提示</span>';
             alerthtml += '<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>';
             alerthtml += '</div>';
             alerthtml += '<div class="toast-body">'+errors+'</div>';

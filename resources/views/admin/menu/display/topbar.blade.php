@@ -116,7 +116,7 @@
     <li class="nav-item @if($hasChildren) dropdown @endif @if(isset($current_item) && $current_item) active @endif">
         
         @if($hasChildren)
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
             <i class="@if(isset($item->icon_class)) {{ $item->icon_class }} @else ion-grid @endif"></i>
             {{ __($item->title) }}
         </a>
@@ -138,8 +138,8 @@
                 @endphp
                 
                     @if($super_permission || $soperate->user_role >= 6 || array_key_exists($menu->slug,$soperate->role->permissions['exts'][$options->extension_slug][$item->slug]))
-                    <li  class="dropdown-item @if($current_item && in_array($menu->slug,$current_menu)) active @endif">
-                        <a href="{{ menu_link($menu) }}">
+                    <li>
+                        <a href="{{ menu_link($menu) }}" class="dropdown-item @if($current_item && in_array($menu->slug,$current_menu)) active @endif">
                             {{ __($menu->title) }}
                         </a>
                     </li>
@@ -182,8 +182,8 @@
                     @endphp
 
                     @if($show_menu)
-                    <li  class=" dropdown-item @if($current_item && in_array($menu->slug,$current_menu)) active @endif">
-                        <a href="{{ menu_link($menu) }}">
+                    <li>
+                        <a href="{{ menu_link($menu) }}" class=" dropdown-item @if($current_item && in_array($menu->slug,$current_menu)) active @endif">
                             {{ __($menu->title) }}
                         </a>
                     </li>

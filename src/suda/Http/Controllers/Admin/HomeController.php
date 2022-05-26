@@ -316,7 +316,7 @@ class HomeController extends DashboardController
     public function dashaboardLogin(){
 
         $options = [
-            'login_page','operate_avatar',
+            'login_page',
             'dashboard_apps', 'show_breadcrumb',
             'dashboard_logo', 'dashboard_login_logo_select',
             'dashboard_login_logo', 'loginbox', 'login_color'
@@ -409,25 +409,9 @@ class HomeController extends DashboardController
             $settingModel->fill($data)->save();
         }
 
-        $operate_avatar = $request->operate_avatar?$request->operate_avatar:0;
         
-        $data = [
-            'key'=>'operate_avatar',
-            'group'=>'dashboard',
-            'type'=>'text',
-            'values'=>$operate_avatar,
-        ];
         
-        $settingModel = new Setting;
         
-        if($first = Setting::where(['key'=>'operate_avatar','group'=>'dashboard'])->first())
-        {
-            Setting::where(['key'=>'operate_avatar','group'=>'dashboard'])->update($data);
-        }
-        else
-        {
-            $settingModel->fill($data)->save();
-        }
         
         
         $dashboard_apps = $request->dashboard_apps?$request->dashboard_apps:[];
