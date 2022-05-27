@@ -2,31 +2,23 @@
 
 return [
 
-    'kv_title'=>'New Web Application',
-    'kv_description'=>'Simple and efficient development components',
+    'kv_title'=>'Start project with "suda',
+    'kv_description'=>'Simple admin panel, multiple extensions builder.',
 
-    'kv_btn'=>'Quick Start',
+    'kv_btn'=>'Find More',
 
-    'block_application'=>'Application',
-    'block_application_desc'=>'Suda provides multiple extensions for different business',
+    'start_project'=>'Start Project',
+    'start_project_description'=>'Ready to start a new project?',
 
+    'start_project_item1'=>'Build a brand website',
+    'start_project_item2'=>'Install a extension',
+    'start_project_item3'=>'Develop a system for miniprograms',
 
-    'block_theme'=>'Theme',
-    'block_theme_desc'=>'Suda provides a robust theming system that is capable of producing multiple sites',
+    'guides'=>'Guides',
+    // 'guides_description'=>'了解详情',
 
-    'block_media'=>'Media',
-    'block_media_desc'=>'upload,resize,thumb,media infomation all system needed',
-
-    'block_role'=>'Role',
-    'block_role_desc'=>'Suda provides role system to create and manage roles with permissions',
-
-    'block_menu'=>'Menu',
-    'block_menu_desc'=>'Customize menu group,menu item,route,path,icon, drag and drop to resort menus',
-
-    'block_cms'=>'CMS Inside',
-    'block_cms_desc'=>'Suda is a small cms with pages and articles',
-
-
-    'take_title'=>'Quick Start',
-    'take_btn'=>'Quick Start',
+    'guide_install'=>'Install Suda',
+    'guide_config'=>'System config',
+    'guide_extension'=>'Extension manage',
+    'guide_theme'=>'Themes and styles',
 ];

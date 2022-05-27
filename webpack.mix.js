@@ -100,7 +100,7 @@ mix.options({
 */
 
 
-// mix.copy('node_modules/popper.js/dist/popper.js.map', 'publish/assets/js');
+mix.copy('node_modules/popper.js/dist/popper.js.map', 'publish/assets/js');
 
 // mix.js('resources/assets/js/plugins/editor.js', 'publish/assets/js/plugins');
 // mix.copy('resources/assets/js/plugins/summernote-ext-media.js', 'publish/assets/js/plugins');
@@ -119,12 +119,12 @@ mix.js('resources/assets/js/app.js', 'publish/assets/js/app.js');
 mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'publish/assets/css');
 
 // front-site
-// mix.js('resources/assets/js/app_site.js', 'publish/assets/js/app_site.js');
-// mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
+mix.js('resources/assets/js/app_site.js', 'publish/assets/js/app_site.js');
+mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
 
 
 // vendor js
-// mix.js('resources/assets/js/app.vendor.js', 'publish/assets/js/app.vendor.js');
+mix.js('resources/assets/js/app.vendor.js', 'publish/assets/js/app.vendor.js');
 
 
 

@@ -59,7 +59,7 @@ class Extension extends Model
         //         'title'     => '控制台',
         //         'slug'      => 'suda_extension_dash',
         //         'url'       => 'entry/extension/'.$extension->slug,
-        //         'icon_class'=> 'zlyicon zly-array',
+        //         'icon_class'=> 'ion-grid',
         //         'target'     => '_self',
         //         'order'     => 0,
         

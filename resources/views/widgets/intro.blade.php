@@ -5,7 +5,7 @@
          
             <div class="card-header bg-white">
                 <a href="{{ admin_url('/') }}">Welcome</a>
-                <i class="dash-switch ion-chevron-up-outline"></i>
+                <i class="dash-switch ion-chevron-up"></i>
             </div>
              
             <div class="card-body">

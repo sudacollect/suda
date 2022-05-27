@@ -147,7 +147,7 @@ class MobileController extends BaseController
         if(array_key_exists('logo',$this->data['sdcore']['settings']['site'])){
             $this->setData('logo',$this->data['sdcore']['settings']['site']['logo']);
         }else{
-            $this->setData('logo',suda_asset('images/site/logo_blue.png'));
+            $this->setData('logo',suda_asset('images/site/logo/logo_blue.png'));
         }
         
         $view_source = $view;

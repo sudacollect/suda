@@ -543,7 +543,7 @@ jQuery(document).ready(function(){
                 //var modalUpload = $('.modal-image-upload');
             
                 // if(modalUpload.find(".filelist.complete li:has('div.checked')").length<1){
-//                     modalUpload.find('.filelist.complete li:first-child').append('<div class="checked"><i class="zly-check-circle"></i></div>');
+//                     modalUpload.find('.filelist.complete li:first-child').append('<div class="checked"><i class="ion-checkmark-circle"></i></div>');
 //                 }
                 //=====TODO: delete insert page
                 
@@ -740,7 +740,7 @@ jQuery(document).ready(function(){
                     }
                     
                 }
-                $(this).append('<div class="checked" style="line-height:'+columnWidth+'px"><i class="zly-check-circle"></i></div>');
+                $(this).append('<div class="checked" style="line-height:'+columnWidth+'px"><i class="ion-checkmark-circle"></i></div>');
                 if(media_max>1){
                     if(media_name){
                         $(this).append("<input type='hidden' name='images["+media_name+"][]' value='"+media_id+"'>");
@@ -796,7 +796,7 @@ jQuery(document).ready(function(){
                         list_group_item.find('.upload-item').addClass('uploadbox-filled').html($items);
                         if(index>0){
                             if(list_group_item.find('.remove-modal-item').length<1){
-                                list_group_item.prepend('<span class="remove-modal-item"><i class="zly-cancel-circle"></i></span>');
+                                list_group_item.prepend('<span class="remove-modal-item"><i class="ion-close-circle"></i></span>');
                             }
                         }
                         media_modal_group.append(list_group_item);
@@ -813,7 +813,7 @@ jQuery(document).ready(function(){
                     modal_item.find('.image_show').remove();
                     modal_item.find('input').remove();
                     modal_item.find('.upload-item').removeClass('uploadbox-filled');
-                    modal_item.prepend('<span class="remove-modal-item"><i class="zly-cancel-circle"></i></span>');
+                    modal_item.prepend('<span class="remove-modal-item"><i class="ion-close-circle"></i></span>');
                     media_modal_group.append(modal_item);
                 }
                 

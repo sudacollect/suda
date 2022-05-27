@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row suda-row">
         <div class="page-heading">
-            <h1 class="page-title"><i class="zly-label-o"></i>&nbsp;标签</h1>
+            <h1 class="page-title"><i class="ion-bookmarks"></i>&nbsp;标签</h1>
             <a href="{{ admin_url('article/tag/add') }}" class="pop-modal btn btn-primary btn-sm pull-left"><i class="fa fa-plus"></i>&nbsp;增加标签</a>
         </div>
         <div class="col-sm-12 suda_page_body">

@@ -72,7 +72,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear-s',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $pageMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -88,7 +88,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear-s',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $pageMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -129,7 +129,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear-s',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $articleMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -145,7 +145,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear-s',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $articleMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -161,7 +161,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear-s',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $articleMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -178,7 +178,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear-s',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $articleMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -246,7 +246,7 @@ class MenuItemsTableSeeder extends Seeder
         // if (!$menuItem->exists) {
         //     $menuItem->fill([
         //         'target'     => '_self',
-        //         'icon_class' => 'zly-gear-s',
+        //         'icon_class' => 'ion-settings',
         //         'parent_id'  => $userMenuItem->id,
         //         'order'      => 91,
         //     ])->save();
@@ -262,7 +262,7 @@ class MenuItemsTableSeeder extends Seeder
         // if (!$menuItem->exists) {
         //     $menuItem->fill([
         //         'target'     => '_self',
-        //         'icon_class' => 'zly-gear-s',
+        //         'icon_class' => 'ion-settings',
         //         'parent_id'  => $userMenuItem->id,
         //         'order'      => 91,
         //     ])->save();
@@ -304,7 +304,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear-s',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $appearanceMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -320,7 +320,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear-s',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $appearanceMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -362,7 +362,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $settingMenuItem->id,
                 'order'      => 1,
             ])->save();
@@ -378,7 +378,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $settingMenuItem->id,
                 'order'      => 1,
             ])->save();
@@ -394,7 +394,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $settingMenuItem->id,
                 'order'      => 1,
             ])->save();
@@ -410,7 +410,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $settingMenuItem->id,
                 'order'      => 1,
             ])->save();
@@ -426,7 +426,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-gear',
+                'icon_class' => 'ion-settings',
                 'parent_id'  => $settingMenuItem->id,
                 'order'      => 1,
             ])->save();
@@ -468,7 +468,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-bars',
+                'icon_class' => 'ion-menu',
                 'parent_id'  => $toolsMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -484,7 +484,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-th',
+                'icon_class' => 'ion-grid',
                 'parent_id'  => $toolsMenuItem->id,
                 'order'      => 94,
             ])->save();
@@ -500,7 +500,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'zly-th',
+                'icon_class' => 'ion-grid',
                 'parent_id'  => $toolsMenuItem->id,
                 'order'      => 95,
             ])->save();

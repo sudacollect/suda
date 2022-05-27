@@ -5,7 +5,7 @@
          
             <div class="card-header bg-white">
                 <a href="{{ admin_url('/') }}">{{ ucfirst(__('suda_lang::press.welcome')) }}</a>
-                <i class="dash-switch zly-angle-down pull-right"></i>
+                <i class="dash-switch ion-chevron-down pull-right"></i>
             </div>
              
             <div class="card-body welcome">
@@ -38,7 +38,7 @@
      
         <div class="card-header bg-white">
             <a href="{{ admin_url('/') }}">{{ __('suda_lang::press.dash.quick_start') }}</a>
-            <i class="dash-switch zly-angle-down pull-right"></i>
+            <i class="dash-switch ion-chevron-down pull-right"></i>
         </div>
          
         <div class="card-body welcome">

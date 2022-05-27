@@ -107,7 +107,7 @@ class OperateController extends DashboardController
         }
         
         $this->setData('modal_title',__('suda_lang::press.btn.edit'));
-        $this->setData('modal_icon_class','zly-user-o');
+        $this->setData('modal_icon_class','ion-person-outline');
 
         $this->setData('operate',$operate);
         

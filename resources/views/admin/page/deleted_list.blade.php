@@ -8,7 +8,7 @@
         
         <div class="page-heading">
             <h1 class="page-title">
-                <i class="zly-page"></i>
+                <i class="ion-document-text"></i>
                 已删除页面
             </h1>
         </div>

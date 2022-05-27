@@ -20,7 +20,7 @@
                 <div class="card-body">
                     
                     <form class="form-ajax"  method="POST" action="{{ admin_url('setting/dashboard_info') }}" role="form">
-                      {{ csrf_field() }}
+                      @csrf
                       
                       
                       <div class="row mb-3">

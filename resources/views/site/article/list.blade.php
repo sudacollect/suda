@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="article_page my-3">
+<div class="col-lg-8 mx-auto pb-md-5 px-3">
 
     <div class="container navbar-expand-sm category-nav mb-3">
 

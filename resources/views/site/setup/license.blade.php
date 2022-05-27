@@ -8,7 +8,7 @@
         <div class="col-sm-4 offset-sm-4 login-box">
             
             <div class="card">
-                <div class="card-header"><i class="zly-medal-o"></i>&nbsp;授权</div>
+                <div class="card-header">授权</div>
                 
                 <div class="card-body">
                     

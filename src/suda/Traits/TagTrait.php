@@ -58,7 +58,7 @@ trait TagTrait
     {
         $this->title('增加标签');
         $this->setData('modal_title',__('suda_lang::press.btn.add'));
-        $this->setData('modal_icon_class','zly-plus-circle');
+        $this->setData('modal_icon_class','ion-add-circle');
         
         $this->getButtonConfig();
         return $this->display($this->getViewConfig('create'));
@@ -68,7 +68,7 @@ trait TagTrait
     public function update(Request $request,$id=0)
     {
         $this->setData('modal_title',__('suda_lang::press.btn.edit'));
-        $this->setData('modal_icon_class','zly-plus-circle');
+        $this->setData('modal_icon_class','ion-add-circle');
         $this->title('编辑标签');
 
         $id = intval($id);

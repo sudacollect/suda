@@ -936,7 +936,7 @@ i[class^="ion-"]:before, i[class*=" ion-"]:before {
 .ion-chevron-down-circle:before {
     content: "\f232";
 }
-.ion-chevron-down-outline:before {
+.ion-chevron-down:before {
     content: "\f233";
 }
 .ion-chevron-down-sharp:before {

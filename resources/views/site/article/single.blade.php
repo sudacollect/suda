@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container container-page py-3">
+<div class="col-lg-8 mx-auto pb-md-5 px-3">
 
     <div class="row">
 

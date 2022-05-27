@@ -4,7 +4,7 @@
         <a href="{{ admin_url('setting/site') }}">
             <span class="title">系统设定</span>
             <span class="desc">立即去设定</span>
-            <i class="zlyicon ion-settings"></i>
+            <i class="ion-settings"></i>
         </a>
         
     </div>
@@ -15,7 +15,7 @@
         <a href="{{ admin_url('user/roles') }}">
             <span class="title">角色权限</span>
             <span class="desc">立即去设定</span>
-             <i class="zlyicon  zly-user"></i>
+             <i class="ion-person"></i>
         </a>
         
     </div>
@@ -26,7 +26,7 @@
         <a href="{{ admin_url('start/theme') }}" class="pop-modal" modal-id="theme">
             <span class="title">主题外观</span>
             <span class="desc">立即去设定</span>
-             <i class="zlyicon zly-medal"></i>
+             <i class="ion-color-palette"></i>
         </a>
         
     </div>
@@ -37,7 +37,7 @@
         <a href="{{ admin_url('manage/extension') }}">
             <span class="title">应用扩展</span>
             <span class="desc">立即去设定</span>
-            <i class="zlyicon zly-stack"></i>
+            <i class="ion-cube"></i>
         </a>
         
     </div>

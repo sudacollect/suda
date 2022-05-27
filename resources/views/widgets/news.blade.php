@@ -6,7 +6,7 @@
 
         <div class="card-header bg-white">
             <a href="{{ $product['permalink'] }}">更新日志</a>
-            <i class="dash-switch zly-angle-down pull-right"></i>
+            <i class="dash-switch ion-chevron-down pull-right"></i>
         </div>
         <div class="card-body newsfeed">
             <ul class="list-group list-group-flush">

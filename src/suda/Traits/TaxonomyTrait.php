@@ -47,7 +47,7 @@ trait TaxonomyTrait
 
         $this->title((property_exists($this,'taxonomy_title')?$this->taxonomy_title:'分类').'管理');
         $this->setData('modal_title',__('suda_lang::press.add'));
-        $this->setData('modal_icon_class','zly-plus-circle');
+        $this->setData('modal_icon_class','ion-add-circle');
 
         $taxonomyObj = new Taxonomy;
         $categories = $taxonomyObj->lists($this->taxonomy_name);
@@ -64,7 +64,7 @@ trait TaxonomyTrait
     public function update(Request $request,$id=0)
     {
         $this->setData('modal_title',__('suda_lang::press.btn.edit'));
-        $this->setData('modal_icon_class','zly-plus-circle');
+        $this->setData('modal_icon_class','ion-add-circle');
         $this->title('编辑');
 
         $id = intval($id);

@@ -59,7 +59,7 @@
                                   <a href="{{ admin_url('user/roles/edit/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                                   @endif
                                   @if($role->authority=='extension')
-                                  <a href="{{ admin_url('user/roles/showexts/'.$role->id) }}" class="btn btn-light btn-xs" title="应用权限设置" data-toggle="tooltip" data-placement="top"><i class="zly-stack"></i>&nbsp;应用权限</a>
+                                  <a href="{{ admin_url('user/roles/showexts/'.$role->id) }}" class="btn btn-light btn-xs" title="应用权限设置" data-toggle="tooltip" data-placement="top"><i class="ion-filter-circle"></i>&nbsp;应用权限</a>
                                   @elseif($soperate->user_role >= 6)
                                   <a href="{{ admin_url('user/roles/showsys/'.$role->id) }}" class="btn btn-light btn-xs" title="系统权限" data-toggle="tooltip" data-placement="top"><i class="ion-list"></i>&nbsp;系统权限</a>
                                   @endif

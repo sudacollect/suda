@@ -212,7 +212,7 @@ class MenuController extends DashboardController
         $this->title(__('suda_lang::press.add_menu_item'));
         
         $this->setData('modal_title',__('suda_lang::press.add_menu_item'));
-        $this->setData('modal_icon_class','zly-plus-circle');
+        $this->setData('modal_icon_class','ion-add-circle');
         
         
         $view = 'menu.additem';
@@ -236,13 +236,13 @@ class MenuController extends DashboardController
         $this->setMenu('tool','tool_menu');
         $this->title(__('suda_lang::press.add_menu_item'));
         $this->setData('modal_title',__('suda_lang::press.add_menu_item'));
-        $this->setData('modal_icon_class','zly-plus-circle');
+        $this->setData('modal_icon_class','ion-add-circle');
         
         if(intval($id)>0){
             $this->title(__('suda_lang::press.edit_menu_item'));
             
             $this->setData('modal_title',__('suda_lang::press.edit_menu_item'));
-            $this->setData('modal_icon_class','zly-pencil');
+            $this->setData('modal_icon_class','ion-pencil');
             
             $item = MenuItem::where('id','=',$id)->firstOrFail();
             if(!$item){

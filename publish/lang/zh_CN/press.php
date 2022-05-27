@@ -233,7 +233,7 @@ return [
         'dev_link_text'=>'开发学习',
 
         'application'=>'应用',
-        'no_applications'=>'目前暂时没有应用',
+        'no_applications'=>'暂无应用',
 
         //默认板块
         'quick_start'=>'快捷管理',

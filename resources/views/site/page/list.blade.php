@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container mb-5">
+<div class="col-lg-8 mx-auto pb-md-5 px-3">
     
     
     <h4 class="my-3">所有页面</h4>

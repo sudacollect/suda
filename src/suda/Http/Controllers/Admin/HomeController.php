@@ -106,7 +106,7 @@ class HomeController extends DashboardController
             
             if(isset($version_result->product) && isset($version_result->version)){
                 
-                return Response::make('<h5><i class="zly-gift-card" style="color:#FF6C6C;"></i>&nbsp;最新版本 v'.$version_result->version.'</h5>', 200);
+                return Response::make('<h5>最新版本 v'.$version_result->version.'</h5>', 200);
                 
             }
         }
@@ -711,16 +711,6 @@ class HomeController extends DashboardController
         //更新成功
         $url = 'setting/seo';
         return $this->responseAjax('success','保存成功',$url);
-        
-    }
-    
-    
-    public function startTheme(){
-        
-        // $this->setData('modal_title','设置主题');
-        $this->setData('modal_icon_class','zly-medal');
-        
-        return $this->display('home.start_theme');
         
     }
     

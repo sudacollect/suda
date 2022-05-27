@@ -5,7 +5,7 @@
          
             {{-- <div class="card-header bg-white">
                 <a href="{{ admin_url('/') }}">专属定制</a>
-                <i class="dash-switch zly-angle-down pull-right"></i>
+                <i class="dash-switch ion-chevron-down pull-right"></i>
             </div> --}}
              
             <div class="card-body p-0">

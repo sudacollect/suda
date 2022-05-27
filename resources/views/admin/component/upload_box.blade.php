@@ -8,7 +8,7 @@
         <div class="list-group-item">
             @if($k>0)
             <span class="remove-modal-item">
-                <i class="zly-cancel-circle"></i>
+                <i class="ion-close-circle"></i>
             </span>
             @endif
             <div class="upload-item uploadbox uploadbox-filled" id="media-{{ $k }}" _data_type="{{ $media_type }}" _data_crop="{{ $is_crop }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif media_max="@if(isset($max)){{$max}}@else{{1}}@endif">
@@ -30,7 +30,7 @@
             <!-- 提示可以继续上传 -->
             <div class="list-group-item">
                 <span class="remove-modal-item">
-                    <i class="zly-cancel-circle"></i>
+                    <i class="ion-close-circle"></i>
                 </span>
                 <div class="upload-item uploadbox" id="media-0" _data_type="{{ $media_type }}" _data_crop="{{ $is_crop }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif media_max="@if(isset($max)){{$max}}@else{{1}}@endif">
                 </div>

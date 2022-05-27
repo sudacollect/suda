@@ -7,26 +7,18 @@ return [
 
     'kv_btn'=>'了解详情',
 
-    'block_application'=>'应用机制',
-    'block_application_desc'=>'简单配置就可以进行应用开发，快速扩展应用系统的功能，提升系统的能力。',
+    'start_project'=>'创建项目',
+    'start_project_description'=>'通过学习开发文档，可以快速的开始一个项目。',
 
+    'start_project_item1'=>'创建一个品牌官网',
+    'start_project_item2'=>'下载安装一个应用',
+    'start_project_item3'=>'开发小程序管理后台系统',
 
-    'block_theme'=>'主题风格',
-    'block_theme_desc'=>'简单配置就可以进行应用开发，快速扩展应用系统的功能，提升系统的能力。',
+    'guides'=>'指导',
+    // 'guides_description'=>'了解详情',
 
-    'block_media'=>'媒体管理',
-    'block_media_desc'=>'提供图片等媒体资源的管理，并提供易用的上传组件，缩略图、广告图、编辑器内的图片等多种形式。',
-
-    'block_role'=>'权限管理',
-    'block_role_desc'=>'独立的管理授权和角色设置，区分前后端保障安全。',
-
-    'block_menu'=>'菜单扩展',
-    'block_menu_desc'=>'支持自定义菜单，自定义路由、菜单图标、菜单打开方式等。',
-
-    'block_cms'=>'CMS开箱即用',
-    'block_cms_desc'=>'使用文章和页面可以快速建立官网、博客、杂志、产品展示等站点。',
-
-
-    'take_title'=>'立即使用',
-    'take_btn'=>'立即使用',
+    'guide_install'=>'安装速搭',
+    'guide_config'=>'系统参数配置',
+    'guide_extension'=>'应用管理',
+    'guide_theme'=>'风格模板',
 ];

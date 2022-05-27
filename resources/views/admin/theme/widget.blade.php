@@ -169,7 +169,7 @@
                             <div class="card-header bg-white d-flex">
                                 {{ $widget['name'] }}
                                 <i class="ion-ellipsis-horizontal ms-auto"></i>
-                                {{-- <i class="ion-chevron-down-outline icon-switch-content ms-auto"></i> --}}
+                                {{-- <i class="ion-chevron-down icon-switch-content ms-auto"></i> --}}
                             </div>
                         
                             <div class="card-body">
@@ -219,7 +219,7 @@
                 <div class="widget-area" data-area='{{ $key }}' @if(isset($area['max'])) data-max="{{ $area['max'] }}" @endif>
                     <h3 class="d-flex">
                         {{ $area['name'] }}
-                        <i class="ion-chevron-down-outline icon-switch ms-auto"></i>
+                        <i class="ion-chevron-down icon-switch ms-auto"></i>
                     </h3>
 
                     @if(count($theme_widgets)>0 && isset($theme_widgets[$key]))
@@ -237,7 +237,7 @@
                                 <div class="card">
                                         <div class="card-header bg-white d-flex">
                                             {{ $_widget['name'] }}
-                                            <i class="ion-chevron-down-outline icon-switch-content ms-auto"></i>
+                                            <i class="ion-chevron-down icon-switch-content ms-auto"></i>
                                         </div>
                                     <div class="card-body" style="display:none;">
                                         {{-- 加载挂件的配置项目 --}}
@@ -329,7 +329,7 @@
                     
                     $(itemEl).find('span.help-block').hide();
                     $(itemEl).find('.ion-ellipsis-horizontal').removeClass('ion-ellipsis-horizontal')
-                        .addClass('ion-chevron-up-outline icon-switch-content');
+                        .addClass('ion-chevron-up icon-switch-content');
                     
                     if($(itemEl).parent('.ul-area').children().length > 0)
                     {
@@ -373,12 +373,12 @@
 
             $(this).parents('.widget-area').find('.dd-list').toggle();
             
-            if($(this).hasClass('ion-chevron-down-outline')){
-                $(this).addClass('ion-chevron-up-outline');
-                $(this).removeClass('ion-chevron-down-outline');
+            if($(this).hasClass('ion-chevron-down')){
+                $(this).addClass('ion-chevron-up');
+                $(this).removeClass('ion-chevron-down');
             }else{
-                $(this).addClass('ion-chevron-down-outline');
-                $(this).removeClass('ion-chevron-up-outline');
+                $(this).addClass('ion-chevron-down');
+                $(this).removeClass('ion-chevron-up');
             }
         });
 
@@ -388,12 +388,12 @@
 
             $(this).parents('li').find('.card-body,.card-footer').toggle();
             
-            if($(this).find('i').hasClass('ion-chevron-down-outline')){
-                $(this).find('i').addClass('ion-chevron-up-outline');
-                $(this).find('i').removeClass('ion-chevron-down-outline');
+            if($(this).find('i').hasClass('ion-chevron-down')){
+                $(this).find('i').addClass('ion-chevron-up');
+                $(this).find('i').removeClass('ion-chevron-down');
             }else{
-                $(this).find('i').addClass('ion-chevron-down-outline');
-                $(this).find('i').removeClass('ion-chevron-up-outline');
+                $(this).find('i').addClass('ion-chevron-down');
+                $(this).find('i').removeClass('ion-chevron-up');
             }
         });
 

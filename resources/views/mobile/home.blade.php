@@ -2,6 +2,10 @@
 
 @section('content')
 
-<p>mobile page test</p>
+<div class="col-lg-8 mx-auto px-3 py-md-5">
+    
+    mobile test page.
+    
+</div>
 
 @endsection

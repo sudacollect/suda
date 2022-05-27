@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="row suda-row">
         <div class="page-heading">
-        <h1 class="page-title"><i class="zly-building"></i>&nbsp;{{ __('suda_lang::press.organization') }}</h1>
+        <h1 class="page-title"><i class="ion-business"></i>&nbsp;{{ __('suda_lang::press.organization') }}</h1>
         @if($soperate->user_role==9)
         <a href="{{ admin_url('user/organization/add') }}" class="btn btn-primary btn-sm"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}</a>
         @endif

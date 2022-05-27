@@ -172,7 +172,7 @@ class MediasController extends DashboardController
         $this->title('媒体管理');
         $this->setMenu('media');
         $this->setData('modal_title',__('suda_lang::press.edit'));
-        $this->setData('modal_icon_class','zly-image');
+        $this->setData('modal_icon_class','ion-image-outline');
         
         $media = Media::where('id',$id)->first();
         if(!$media){
@@ -257,7 +257,7 @@ class MediasController extends DashboardController
         $this->title('设置标签');
         $this->setMenu('media');
         $this->setData('modal_title','批量设置标签');
-        $this->setData('modal_icon_class','zly-image');
+        $this->setData('modal_icon_class','ion-image-outline');
         
         $mediaObj = new Media;
 
@@ -464,7 +464,7 @@ class MediasController extends DashboardController
     {
 
         $this->setData('modal_title','媒体设置');
-        $this->setData('modal_icon_class','zly-image');
+        $this->setData('modal_icon_class','ion-image-outline');
 
 
         $first = Setting::where(['key'=>'media_setting','group'=>'media'])->first();

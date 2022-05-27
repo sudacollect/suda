@@ -11,15 +11,15 @@ Versions
 
 |  Laravel   | Suda  | PHP  |
 |  ----  | ----  | ----  |
-| 8.x  | 8.0(dev) | 8.0+ |
+| 9.x  | 9.x(dev) | 8.0.2+ |
+| 8.x  | 8.x | 8.0+ |
 | 7.x  | 5.2.1 | 7.2~7.4 |
 
 
 ## Requirments
 
-  PHP >= 8.0
+  PHP >= 8.0.2
   
-  Laravel 8.x
 
 ## Install
 
@@ -31,7 +31,7 @@ composer require gtdxyz/suda
 
 ```
 php artisan suda:install
-# auto install include migrations and assets
+# auto install include migrations,assets,themes
 ```
 
 

@@ -7,7 +7,7 @@
     <div class="row suda-row">
         <div class="page-heading">
             <h1 class="page-title">
-                <i class="zly-user-check"></i>&nbsp;用户注册设置
+                <i class="ion-person-circle"></i>&nbsp;用户注册设置
             </h1>
         </div>
         

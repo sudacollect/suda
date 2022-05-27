@@ -1943,11 +1943,6 @@ h4.modal-title{font-size:1.1rem;color:#333;}
 }
 
 
-.suda-errors i.zly-warning{
-    color:#08f;
-}
-
-
 .modal-alert{
     position:fixed;
     top:50px;
@@ -2187,14 +2182,6 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     background:#000;
     color:#fff;
     position:relative;
-}
-.compass-commands pre .zly-cancel-circle{
-    position:absolute;
-    right:15px;
-    top:15px;
-    color:#fff;
-    font-size:2rem;
-    
 }
 .compass-commands pre .output-title{
     display:block;

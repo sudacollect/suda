@@ -78,7 +78,7 @@
                                   </div>
                               </div>
                             </div>
-                            <span class="help-block">> 400x400 pixel</span>
+                            <span class="help-block"> 400x400 pixel</span>
                         </div>
                       </div>
                       

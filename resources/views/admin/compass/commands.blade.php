@@ -18,7 +18,7 @@
                         
                         @if(isset($artisan_output) && !empty($artisan_output))
                             <pre>
-                               <i class="close-output zly-cancel-circle"></i>
+                               <i class="close-output ion-close-circle"></i>
                                <div class="output-title">命令执行结果:</div>
                                <div class="output-content">
                                    {{ trim(trim($artisan_output,'"')) }}
@@ -34,7 +34,7 @@
                                 <div class="command px-2 py-2" data-command="{{ $command->name }}">
                             		<code>php artisan {{ $command->name }}</code>
                             		<small>{{ $command->description }}</small>
-                                    <i class="zly-play"></i>
+                                    <i class="ion-play"></i>
                             		<form action="{{ route('sudaroute.admin.tool_compass_commands_post') }}" class="command-form" method="POST">
                                         {{ csrf_field() }}
                                         <input type="text" name="args" autofocus class="form-control" placeholder="输入参数">

@@ -15,12 +15,12 @@
         
         <div class="col-sm-12 suda_page_body">
             
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="zly-stack"></i>&nbsp;&nbsp;创建应用
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ion-layers"></i>&nbsp;&nbsp;创建应用
                     </div>
                     
-                    <div class="panel-body">
+                    <div class="card-body">
                         
                         创建应用的说明.<br>
                         
@@ -32,12 +32,12 @@
         
         <div class="col-sm-12 suda_page_body">
             
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="zly-bulb-o"></i>&nbsp;&nbsp;模板制作
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ion-color-palette"></i>&nbsp;&nbsp;模板制作
                     </div>
                     
-                    <div class="panel-body">
+                    <div class="card-body">
                         
                         创建应用的说明.<br>
                         
@@ -49,12 +49,12 @@
         
         <div class="col-sm-12 suda_page_body">
             
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         <i class="ion-grid"></i>&nbsp;&nbsp;常用函数
                     </div>
                     
-                    <div class="panel-body">
+                    <div class="card-body">
                         
                         创建应用的说明.<br>
                         
@@ -66,12 +66,12 @@
         
         <div class="col-sm-12 suda_page_body">
             
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="zly-buoy"></i>&nbsp;&nbsp;系统参数
+                <div class="card">
+                    <div class="card-header">
+                        <i class="ion-help-buoy"></i>&nbsp;&nbsp;系统参数
                     </div>
                     
-                    <div class="panel-body">
+                    <div class="card-body">
                         
                         创建应用的说明.<br>
                         

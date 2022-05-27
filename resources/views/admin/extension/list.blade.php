@@ -22,7 +22,7 @@
         
         <div class="page-heading">
             <h1 class="page-title">
-                <i class="zly-stack"></i>
+                <i class="ion-cube"></i>
                 应用管理
             </h1>
             
