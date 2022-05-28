@@ -1232,7 +1232,7 @@ jQuery(document).ready(function(){
         var default_options = {
             taxonomy: 'post_tag',
             maximumSelectionLength: 5,
-            url: suda.link('sdone/tags/search/json'),
+            url: suda.link('/' + suda.data('adminPath') + '/tags/search/json'),
             method: 'GET',
             tags: true,
             placeholder: '选择标签',

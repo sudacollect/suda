@@ -159,6 +159,11 @@
                                     </div>
                                 </div>
                                 <div class="list-group-item">
+                                    <div class="login-logo" data-name="brand">
+                                    <img src="{{ suda_asset('images/login/icon_brand.jpg') }}" style="max-width:100%;width:100%;">
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
                                     <div class="login-logo" data-name="building">
                                     <img src="{{ suda_asset('images/login/icon_building.jpg') }}" style="max-width:100%;width:100%;">
                                     </div>
@@ -173,11 +178,7 @@
                                     <img src="{{ suda_asset('images/login/icon_cake.jpg') }}" style="max-width:100%;width:100%;">
                                     </div>
                                 </div>
-                                <div class="list-group-item">
-                                    <div class="login-logo" data-name="simple">
-                                    <img src="{{ suda_asset('images/login/icon_simple.jpg') }}" style="max-width:100%;width:100%;">
-                                    </div>
-                                </div>
+                                
                             </div>
 
                         </div>

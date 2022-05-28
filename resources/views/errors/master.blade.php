@@ -11,7 +11,6 @@
     <title>{{ metas() }}</title>
     
     <link rel="stylesheet" href="{{ suda_asset('css/app_site.css') }}">
-    <link rel="stylesheet" href="{{ suda_asset('css/site.css') }}">
     @stack('styles')
     
     <!-- CSRF Token -->
@@ -28,11 +27,11 @@
    
     <div id="app" class="app-of-suda">
         
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
             
             <!-- Branding Image -->
             <a class="navbar-brand"  href="{{ url('/') }}" >
-            @if(isset($logo))<img src="{{ $logo }}" width="80"> @else <img src="{{ suda_asset('images/site/logo_white.png') }}" width="80">@endif
+            @if(isset($logo))<img src="{{ $logo }}" width="80"> @else <img src="{{ suda_asset('images/logo/logo_black.png') }}" width="80">@endif
             </a>
 
             {{-- <div class="collapse navbar-collapse" id="navbarNav">

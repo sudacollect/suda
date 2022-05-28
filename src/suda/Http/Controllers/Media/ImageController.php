@@ -372,7 +372,7 @@ class ImageController extends BaseController
                 //文件存储
 
                 $imagefile = Image::make($this->_file)->stream();
-                Storage::disk('local')->put($save_original_path, $imagefile);
+                Storage::disk('local')->put($save_original_path, $imagefile,'public');
                 
                 // $image = Image::make($this->_file);
                 // $image->save($save_original_path);

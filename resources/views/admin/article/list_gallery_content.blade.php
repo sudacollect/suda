@@ -13,8 +13,7 @@
         <h5 class="card-title">
             @if($item->stick_top==1)
                 <span class="badge bg-warning">置顶</span>
-                
-                @endif
+            @endif
             @if(!empty($item->redirect_url))
             <a target="_blank" href="{{ url($item->redirect_url) }}">{{ $item->title }}&nbsp;<i class="icon ion-open-outline" style="color:#999;"></i></a>
             

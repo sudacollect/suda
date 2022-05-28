@@ -17,7 +17,7 @@
     <meta property="og:image" itemprop="image" content="{{ $sdcore->settings->og_image }}">
     
     <link rel="stylesheet" href="{{ suda_asset('css/app_site.css') }}">
-    <link rel="stylesheet" href="{{ suda_asset('css/site.css') }}">
+    
     @stack('styles')
     
     <!-- CSRF Token -->

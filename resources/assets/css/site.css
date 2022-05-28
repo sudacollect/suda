@@ -232,27 +232,3 @@ blockquote{
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
     color:#292929;
 }
-
-.site-header::before{
-    display:none;
-}
-.features::before{display:none;}
-
-.site-footer{position:relative;font-size:1.2rem;line-height:1.8;letter-spacing:0px;}
-
-.site-footer a{color:#b0daff; text-decoration:none}
-.site-footer a:hover,.site-footer a:active{color:#000;text-decoration:underline}
-.site-footer-inner{position:relative;display:flex;flex-wrap:wrap;padding-top:40px;padding-bottom:40px}
-.footer-brand,.footer-links,.footer-social-links,.footer-copyright{flex:none;width:100%;display:inline-flex;justify-content:center}
-.footer-brand,.footer-links,.footer-social-links{margin-bottom:24px}
-.footer-links li+li,.footer-social-links li+li{margin-left:16px}
-.footer-social-links li{display:inline-flex}
-.footer-social-links li a{padding:8px}
-@media (min-width: 641px){
-    .site-footer::before{height:202px}
-    .site-footer-inner{justify-content:space-between}
-    .footer-brand,.footer-links,.footer-social-links,.footer-copyright{flex:50%}
-    .footer-brand,.footer-copyright{justify-content:flex-start}
-    .footer-links,.footer-social-links{justify-content:flex-end}
-    .footer-links{order:1;margin-bottom:0}
-}

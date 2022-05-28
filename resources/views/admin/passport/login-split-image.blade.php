@@ -40,7 +40,7 @@
                 <div class="panel-heading" style="text-align:left;font-size:1.6rem"><i class="icon ion-person"></i>&nbsp;登录</div>
                 <div class="panel-body">
                     <form class="form-horizontal suda-login-form" role="form" method="POST" action="{{ admin_url('passport/login') }}">
-                        {{ csrf_field() }}
+                        @csrf
                         
                         @if($login_name=='email')
                         <div class="mb-3{{ $errors->has('email') ? ' has-error' : '' }}">

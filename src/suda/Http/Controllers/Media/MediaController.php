@@ -511,7 +511,7 @@ class MediaController extends BaseController
             if($storage=='local'){
                 //文件存储
                 $imagefile = Image::make($this->_file)->stream();
-                Storage::disk('local')->put($saveImage, $imagefile);
+                Storage::disk('local')->put($saveImage, $imagefile,'public');
                 
                 $this->resizeImage($saveDirPath,$basename,$storage,$sourceWidth,$sourceHeight,$ratio,$is_crop,$quality);
                 
@@ -669,10 +669,10 @@ class MediaController extends BaseController
 
         }else{
             $resizeMediumImage = Image::make($this->_file)->resize($medium_width, $medium_height)->stream();
-            Storage::disk('local')->put($saveImageMedium, $resizeMediumImage);
+            Storage::disk('local')->put($saveImageMedium, $resizeMediumImage,'public');
             
             $resizeThumbnailImage = Image::make($this->_file)->resize($small_width, $small_height)->stream();
-            Storage::disk('local')->put($saveImageThumbmail, $resizeThumbnailImage);
+            Storage::disk('local')->put($saveImageThumbmail, $resizeThumbnailImage,'public');
         }
         
         
@@ -682,7 +682,7 @@ class MediaController extends BaseController
     public function cropImage($savePath,$storage,$saveWidth,$saveHeight,$x=0,$y=0){
         
         $cropImage = Image::make($this->_file)->crop($saveWidth, $saveHeight,$x,$y)->stream();
-        Storage::disk('local')->put($savePath, $cropImage);
+        Storage::disk('local')->put($savePath, $cropImage,'public');
         
     }
 

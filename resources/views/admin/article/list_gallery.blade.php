@@ -2,7 +2,7 @@
 
 
 
-<div class="data-list" id="waterfall-container" style="margin:0 -15px;">
+<div class="data-list" id="waterfall-container">
 
 @if($data_list->count() > 0)
     

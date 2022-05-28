@@ -99,10 +99,7 @@
                     <div class="row no-gutters min-vh-100">
                     
                         <div class="col-sm-5 dash-login-tips">
-                            <a class="navbar-brand" href="{{ url('/') }}" style="position:absolute;top:1rem;left:1rem;width:60px;opacity:0.6;z-index:999;">
-                                {{ config('app.name', 'Suda') }}
-                            </a>
-
+                            
                             <div class="box" @if(isset($sdcore->settings->dashboard->login_color) && !empty($sdcore->settings->dashboard->login_color)) style="background-color:{{ $sdcore->settings->dashboard->login_color }}" @endif>
                                 @if(isset($sdcore->settings->dashboard->dashboard_logo) && !empty($sdcore->settings->dashboard->dashboard_logo))
                                 <img src="{{ $sdcore->settings->dashboard->dashboard_logo }}">
@@ -113,12 +110,13 @@
 
                         <div class="col-sm-3 offset-sm-2 dash-login-box px-3">
                             <h4 class="card-title">
-                                <i class="icon ion-speedometer"></i>&nbsp;{{ __('suda_lang::auth.DashboardLogin') }}
+                                {{ __('suda_lang::auth.DashboardLogin') }}
                             </h4>
                             <form class="suda-login-form" role="form" method="POST" action="{{ admin_url('passport/login') }}">
-                                {{ csrf_field() }}
+                                @csrf
                                 
                                 @if($login_name=='email')
+                                
                                 <div class="mb-3">
 
                                     <div class="input-group ">
@@ -131,49 +129,38 @@
                                             {{ $errors->first('email') }}
                                         </div>
                                         @endif
-                                        </div>
-                                    
-                                    
-                                    
+                                     </div>
                                 </div>
                                 @elseif($login_name=='phone')
                                 
                                 <div class="mb-3">
                                     
-                                        <div class="input-group ">
-                                            <div class="input-group-text"><i class="icon ion-person"></i></div>
-                                            <input id="phone" type="text" class="form-control font-weight-bold {{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required autofocus placeholder="{{__('suda_lang::auth.phone')}}">
-                                            @if ($errors->has('phone'))
-                                            <div class="invalid-feedback">
-                                                    {{ $errors->first('phone') }}
-                                            </div>
-                                            @endif
+                                    <div class="input-group ">
+                                        <div class="input-group-text"><i class="icon ion-person"></i></div>
+                                        <input id="phone" type="text" class="form-control font-weight-bold {{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required autofocus placeholder="{{__('suda_lang::auth.phone')}}">
+                                        @if ($errors->has('phone'))
+                                        <div class="invalid-feedback">
+                                                {{ $errors->first('phone') }}
                                         </div>
-                                        
-                                        
-                                    
+                                        @endif
+                                    </div>
+                                
                                 </div>
                                 
                                 @elseif($login_name=='username')
                                 
                                 <div class="mb-3">
-                                    
-                                    
-                                        <div class="input-group ">
-                                            
-                                            <div class="input-group-text"><i class="icon ion-person"></i></div>
-                                            
-                                            <input id="username" type="text" class="form-control font-weight-bold {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus placeholder="{{__('suda_lang::auth.username')}}">
-                                            @if ($errors->has('username'))
-                                            <div class="invalid-feedback">
-                                                    {{ $errors->first('username') }}
-                                            </div>
-                                            @endif
+                                    <div class="input-group ">
+                                        
+                                        <div class="input-group-text"><i class="icon ion-person"></i></div>
+                                        
+                                        <input id="username" type="text" class="form-control font-weight-bold {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus placeholder="{{__('suda_lang::auth.username')}}">
+                                        @if ($errors->has('username'))
+                                        <div class="invalid-feedback">
+                                                {{ $errors->first('username') }}
                                         </div>
-                                        
-                                        
-                                    
-                                    
+                                        @endif
+                                    </div>
                                 </div>
                                 
                                 @endif

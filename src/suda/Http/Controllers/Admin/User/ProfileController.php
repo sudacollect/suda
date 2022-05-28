@@ -15,7 +15,6 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Validator;
 
-use Gtd\Suda\Http\Controllers\Media\ImageController;
 use Gtd\Suda\Http\Controllers\Media\MediaController;
 use Gtd\Suda\Models\Media;
 
