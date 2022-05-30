@@ -9,6 +9,7 @@ Laravel Suda - build mutiple extensions, private SaaS.
 [![Latest Unstable Version](http://poser.pugx.org/gtdxyz/suda/v/unstable)](https://packagist.org/packages/gtdxyz/suda) 
 [![License](http://poser.pugx.org/gtdxyz/suda/license)](https://packagist.org/packages/gtdxyz/suda) 
 [![PHP Version Require](http://poser.pugx.org/gtdxyz/suda/require/php)](https://packagist.org/packages/gtdxyz/suda)
+[![composer.lock](http://poser.pugx.org/gtdxyz/suda/composerlock)](https://packagist.org/packages/gtdxyz/suda)
 
 Versions
 ---
