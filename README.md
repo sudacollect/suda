@@ -4,7 +4,11 @@ Laravel Suda - build mutiple extensions, private SaaS.
 
 [Official Website](https://suda.gtd.xyz)  [中文文档](https://docs.gtd.xyz)
 
-[![Latest Stable Version](http://poser.pugx.org/gtdxyz/suda/v)](https://packagist.org/packages/gtdxyz/suda) [![Total Downloads](http://poser.pugx.org/gtdxyz/suda/downloads)](https://packagist.org/packages/gtdxyz/suda) [![Latest Unstable Version](http://poser.pugx.org/gtdxyz/suda/v/unstable)](https://packagist.org/packages/gtdxyz/suda) [![License](http://poser.pugx.org/gtdxyz/suda/license)](https://packagist.org/packages/gtdxyz/suda) [![PHP Version Require](http://poser.pugx.org/gtdxyz/suda/require/php)](https://packagist.org/packages/gtdxyz/suda)
+[![Latest Stable Version](http://poser.pugx.org/gtdxyz/suda/v)](https://packagist.org/packages/gtdxyz/suda) 
+[![Total Downloads](http://poser.pugx.org/gtdxyz/suda/downloads)](https://packagist.org/packages/gtdxyz/suda) 
+[![Latest Unstable Version](http://poser.pugx.org/gtdxyz/suda/v/unstable)](https://packagist.org/packages/gtdxyz/suda) 
+[![License](http://poser.pugx.org/gtdxyz/suda/license)](https://packagist.org/packages/gtdxyz/suda) 
+[![PHP Version Require](http://poser.pugx.org/gtdxyz/suda/require/php)](https://packagist.org/packages/gtdxyz/suda)
 
 Versions
 ---
