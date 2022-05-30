@@ -15,7 +15,6 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Validator;
 
-use Gtd\Suda\Http\Controllers\Media\MediaController;
 use Gtd\Suda\Models\Media;
 
 use Gtd\Suda\Http\Controllers\Admin\DashboardController;
@@ -101,8 +100,7 @@ class ProfileController extends DashboardController
     }
     
     //保存资料信息
-    public function saveProfile(Request $request,HasherContract $hasher){
-        $this->hasher = $hasher;
+    public function saveProfile(Request $request){
         
         //if($this->user->id==1){
         //    $url = '';
@@ -237,36 +235,6 @@ class ProfileController extends DashboardController
         } else {
             return $this->responseAjax('fail',$response_msg,'');
         }
-        
-    }
-    
-    
-    //已经作废
-    public function uploadAvatarTo(Request $request){
-        
-        $mediaHandler = new MediaController;
-        
-        $result = $mediaHandler->doUpload($request,$this->user,['user_type'=>'operate']);
-        
-        
-        //处理头像关系
-        
-        $data = json_decode($result->content(),true);
-        
-        if(array_key_exists('media_id',$data) && !empty($data['media_id'])){
-            
-            //#1 移除旧头像的关系
-            $operate = Operate::where('id',$this->user->id)->with('avatar')->first();
-            if($operate->avatar && $operate->avatar->media_id != $data['media_id']){
-                $operate->removeMediatable($operate->avatar->media_id,'avatar');
-            }
-
-            //#2 保存新的头像关系
-            $operate->createMediatables($data['media_id'],'avatar');
-            
-        }
-        
-        return $result;
         
     }
     

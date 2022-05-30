@@ -9,8 +9,8 @@ use Gtd\Suda\Models\Mediatable;
 use Gtd\Suda\Models\Media;
 use Gtd\Suda\Models\Taxonomy;
 
-use Gtd\Suda\Http\Controllers\Media\ImageController;
-use Gtd\Suda\Http\Controllers\Media\MediaController;
+use Gtd\Suda\Services\ImageService;
+use Gtd\Suda\Services\MediaService;
 
 use Illuminate\Support\Facades\View;
 use Auth;
@@ -230,8 +230,8 @@ trait MediaBoxTrait
     {
         $this->checkSetting();
 
-        $imageController = new ImageController;
-        $validate = $imageController->validateUpload($request,$msg);
+        $imgService = new ImageService;
+        $validate = $imgService->validateUpload($request,$msg);
         
         if (!$validate) {
             
@@ -274,10 +274,10 @@ trait MediaBoxTrait
             ];
             
             $msg = '';
-            if($imageController->_file_data['file_type']=='image'){
-                $medias = $imageController->saveImage($save_data,$msg);
+            if($imgService->_file_data['file_type']=='image'){
+                $medias = $imgService->saveImage($save_data,$msg);
             }else{
-                $medias = $imageController->saveFile($save_data,$msg);
+                $medias = $imgService->saveFile($save_data,$msg);
             }
             
             
@@ -309,13 +309,13 @@ trait MediaBoxTrait
         }
     }
 
-
+    // 暂时用不到
     public function toUpload(Request $request,$media_type="default")
     {
         $this->checkSetting();
 
-        $media_handler = new MediaController;
-        $result = $media_handler->doUpload($request,$this->user,['user_type'=>$this->guard]);
+        $mediaHandler = new MediaService;
+        $result = $mediaHandler->doUpload($request,$this->user,['user_type'=>$this->guard]);
         return $result;
         
     }
@@ -333,13 +333,14 @@ trait MediaBoxTrait
         $this->checkSetting();
 
         //$media_type 参数暂时没用
-        $media_handler = new MediaController;
+        $mediaHandler = new MediaService;
+
         if(!intval($request->media_id)){
-            return $media_handler->response('fail','文件不存在');
+            return $mediaHandler->response('fail','文件不存在');
         }
         
         //删除图片
         $media_id = intval($request->media_id);
-        return $media_handler->doRemove($media_id);
+        return $mediaHandler->doRemove($media_id);
     }
 }

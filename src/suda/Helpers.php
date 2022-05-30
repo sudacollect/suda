@@ -111,16 +111,10 @@ if (! function_exists('theme_path')) {
 //改变basename
 if (!function_exists('change_basename')) {
    function change_basename($path, $newBasename) {
-       $paths = explode(':',$path);
-       if(in_array($paths[0],array('oss','qiniu'))){
-           $path = $paths[1];
-       }
+       
        $newBasename = str_replace('%s', '$2', $newBasename);
        $result = preg_replace('/^(.*\/)?(.*?)(\.[^.]+)$/', '$1'.$newBasename.'$3', $path);
        
-       if(in_array($paths[0],array('oss','qiniu'))){
-           $result = $paths[0].':'.$result;
-       }
        return $result;
    }
 }
@@ -169,8 +163,14 @@ if (!function_exists('suda_image_process')) {
         
         $path = $data->path;
         $name = $data->name;
+        $disk = $data->disk;
+        if(!$disk)
+        {
+            $disk = 'local';
+        }
+
         $large_path = change_basename($path, 'p%s');
-        if(!file_exists(Storage::path($large_path))){
+        if(!file_exists(Storage::disk($disk)->path($large_path))){
             $large_path = $path;
         }
         
@@ -181,9 +181,9 @@ if (!function_exists('suda_image_process')) {
         $image_large_url = $image_large_url_str = '';
         if($withLarge){
             if($cdn){
-                $image_large_url = passet(Storage::url($large_path));
+                $image_large_url = passet(Storage::disk($disk)->url($large_path));
             }else{
-                $image_large_url = asset(Storage::url($large_path));
+                $image_large_url = asset(Storage::disk($disk)->url($large_path));
             }
             
             $image_large_url_str = 'data-src="'.$image_large_url.'"';
@@ -202,16 +202,16 @@ if (!function_exists('suda_image_process')) {
             $path = change_basename($path, 'i%s');//mini图
         }
         
-        if(!file_exists(Storage::path($path))){
+        if(!file_exists(Storage::disk($disk)->path($path))){
             $path = $data->path;
         }
         
         
         
         if($cdn){
-            $image_url = passet(Storage::url($path));
+            $image_url = passet(Storage::disk($disk)->url($path));
         }else{
-            $image_url = asset(Storage::url($path));
+            $image_url = asset(Storage::disk($disk)->url($path));
         }
         
         if($return_url){
@@ -245,6 +245,12 @@ if (!function_exists('suda_media_process')) {
             return '<img src="'.$image_url.'" title="'.$title.'" class="zpress-image image-'.$size.' '.$image_class.'">';
         }
         
+        $disk = $data->disk;
+        if(!$disk)
+        {
+            $disk = 'local';
+        }
+
         $path = $data->path;
         $name = $data->name;
         $type = $data->type;
@@ -264,9 +270,9 @@ if (!function_exists('suda_media_process')) {
         $file_path_url = $file_path_url_str = '';
         if($withLarge){
             if($cdn){
-                $file_path_url = url(Storage::url($path));
+                $file_path_url = url(Storage::disk($disk)->url($path));
             }else{
-                $file_path_url = url(Storage::url($path));
+                $file_path_url = url(Storage::disk($disk)->url($path));
             }
             
             $file_path_url_str = 'data-src="'.$file_path_url.'"';

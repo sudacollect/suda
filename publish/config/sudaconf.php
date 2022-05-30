@@ -35,7 +35,7 @@ return [
     
     // image upload
     'image' => [
-        'storage'=>'local', //storage
+        'disk'=>'public', //save disk
         'size'=>[
             'small'=>200, //resize
             'medium'=>400,

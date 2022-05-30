@@ -151,7 +151,7 @@
     <div class="panel" id="panel-{{ $loop->iteration }}">
         <div class="panel-heading @if(!$hasChildren) only-link @endif collapse show  @if(!isset($current_item) || !$current_item) collapsed @endif" @if($hasChildren) data-bs-toggle="collapse" data-bs-target="#sidebar-menu-{{ $item->slug }}" @endif aria-controls=".sidebar-menu-{{ $item->slug }}" aria-expanded="true">
             
-            <a {!! $linkAttributes !!} target="{{ $item->target }}" {{ (isset($item->color) && $item->color != '#000000' ? 'style="color:'.$item->color.'"' : '') }}>
+            <a title="{{ __($item->title) }}" {!! $linkAttributes !!} target="{{ $item->target }}" {{ (isset($item->color) && $item->color != '#000000' ? 'style="color:'.$item->color.'"' : '') }}>
                 
                 @if(isset($item->blade_icon))
                 @svg($item->blade_icon,['width'=>'16px'])

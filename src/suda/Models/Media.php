@@ -20,6 +20,7 @@ class Media extends Model
         'user_id',
         'type',
         'size',
+        'disk',
         'path',
         'crop',
         'hidden'

@@ -71,8 +71,8 @@
                     <div class="col-sm-8">
                         <div class="input-group">
                             <input type="text" class="form-control" name="color" aria-label="color" value="{{ $term->color }}">
-                            <div class="input-group-append">
-                              <span class="input-group-text color-picker"><i class="ion-color-palette"></i></span>
+                            <div class="input-group-text">
+                              <span class="color-picker"><i class="ion-color-palette"></i></span>
                             </div>
                           </div>
                     </div>

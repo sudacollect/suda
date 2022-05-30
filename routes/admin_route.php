@@ -213,16 +213,7 @@ Route::group([
     Route::post('/mediatags/save', $controller_prefix.'Media\TagController@save')->name('mediatags_save');
 
     Route::post('/mediatags/editsort/{id}', $controller_prefix.'Media\TagController@editSort');
-
-    //备用路由，不启用
-    //Route::get('/images',               $controller_prefix.'MediasController@images');
     
-    
-    //#TODO 通用弹出框
-    //Route::post('/component/loadmodal',     $controller_prefix.'ComponentController@loadModal');
-    
-
-    // MediaRoutes::routes();
     
     
     // theme
@@ -299,8 +290,6 @@ Route::group([
     Route::get('/email', $controller_prefix.'User\ProfileController@editEmail');
     Route::get('/profile/password', $controller_prefix.'User\ProfileController@editPassword');
     Route::post('/profile/changepassword', $controller_prefix.'User\ProfileController@savePassword');
-    
-    //Route::post('/profile/upload/avatar', $controller_prefix.'User\ProfileController@uploadAvatarTo');
     
     /*
     |--------------------------------------------------------------------------

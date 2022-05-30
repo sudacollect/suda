@@ -2,8 +2,7 @@
 
 namespace Gtd\Suda\Traits;
 
-use Gtd\Suda\Http\Controllers\Media\ImageController;
-use Gtd\Suda\Http\Controllers\Media\MediaController;
+use Gtd\Suda\Services\ImageService;
 use Gtd\Suda\Models\Media;
 
 use Illuminate\Support\Facades\DB;
@@ -15,7 +14,7 @@ trait AvatarTrait
     public function uploadCroppie($data,$user_type,$user){
         
         if(!empty($data)){
-            $imageHandler = new ImageController;
+            $imageHandler = new ImageService;
             
             $file = $imageHandler->makeFileFromBinary($data);
             $file->resize(400,400);

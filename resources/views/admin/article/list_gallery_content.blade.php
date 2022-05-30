@@ -10,17 +10,18 @@
         @endif
 
         <div class="card-body">
-        <h5 class="card-title">
-            @if($item->stick_top==1)
-                <span class="badge bg-warning">置顶</span>
-            @endif
-            @if(!empty($item->redirect_url))
-            <a target="_blank" href="{{ url($item->redirect_url) }}">{{ $item->title }}&nbsp;<i class="icon ion-open-outline" style="color:#999;"></i></a>
+        <div class="card-title">
             
-            @else
-            <a target="_blank" href="{{ $item->real_url }}">{{ $item->title }}</a>
-            @endif
-        </h5>
+            
+            <h5>
+                @if($item->stick_top==1)
+                    <span class="badge bg-warning me-2" style="float:left;">置顶</span>
+                @endif
+                {{ $item->title }}&nbsp;
+                @if(!empty($item->redirect_url))<i class="icon ion-open-outline" style="color:#999;"></i>@endif
+            </h5>
+            
+        </div>
         
         <p class="card-text">
             <small class="text-muted">
@@ -47,9 +48,6 @@
                 未设定分类
                 @endif
             </small>
-            <small class="help-block">
-                更新于{{ $item->updated_at->format('Y-m-d') }}
-            </small>
         </p>
         <div class="card-text text-left">
             @if($soperate->id==$item->operate_id || $soperate->user_role>7)
@@ -65,7 +63,9 @@
                 已发布
                 @else
                 @endif
+                 / 更新于{{ $item->updated_at->format('Y-m-d') }}
             </small>
+            
 
         </div>
         </div>

@@ -20,8 +20,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 
 use Gtd\Suda\Http\Controllers\Admin\DashboardController;
-use Gtd\Suda\Http\Controllers\Media\ImageController;
-use Gtd\Suda\Http\Controllers\Media\MediaController;
+
+use Gtd\Suda\Services\ImageService;
+use Gtd\Suda\Services\MediaService;
 
 use Gtd\Suda\Models\Media;
 use Gtd\Suda\Models\Mediatable;
@@ -37,11 +38,11 @@ class MediasController extends DashboardController
         'Gtd\Suda\Models\Operate'
     ];
     
-    protected $media_handler;
+    protected $mediaHandler;
     
     function __construct(){
         
-        $this->media_handler = new MediaController;
+        $this->mediaHandler = new MediaService;
         
         parent::__construct();
     }
@@ -225,7 +226,7 @@ class MediasController extends DashboardController
         }
         
         //rebuild
-        $imgObj = new ImageController;
+        $imgObj = new ImageService;
         $msg = '';
         $result = $imgObj->rebuildImage($media->id,$msg);
 
@@ -246,7 +247,7 @@ class MediasController extends DashboardController
         }
         //删除图片
         $media_id = intval($request->id);
-        $this->media_handler->doRemove($media_id);
+        $this->mediaHandler->doRemove($media_id);
         
         return $this->responseAjax('success','文件已删除');
     }
@@ -314,7 +315,7 @@ class MediasController extends DashboardController
             foreach($medias as $id)
             {
                 //删除图片
-                $this->media_handler->doHidden(intval($id),'0');
+                $this->mediaHandler->doHidden(intval($id),'0');
             }
         }
         
@@ -337,7 +338,7 @@ class MediasController extends DashboardController
             foreach($medias as $id)
             {
                 //删除图片
-                $this->media_handler->doHidden(intval($id),'1');
+                $this->mediaHandler->doHidden(intval($id),'1');
             }
         }
         
@@ -358,7 +359,7 @@ class MediasController extends DashboardController
             foreach($medias as $id)
             {
                 //删除图片
-                $this->media_handler->doRemove(intval($id));
+                $this->mediaHandler->doRemove(intval($id));
             }
         }
         

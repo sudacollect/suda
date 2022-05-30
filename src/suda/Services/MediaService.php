@@ -1,14 +1,6 @@
 <?php
-/**
- * MediaController.php
- * description
- * date 2017-11-06 10:23:31
- * author suda <hello@suda.gtd.xyz>
- * @copyright GTD. All Rights Reserved.
- */
- 
-
-namespace Gtd\Suda\Http\Controllers\Media;
+// MediaService
+namespace Gtd\Suda\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,19 +12,21 @@ use Response;
 use Storage;
 use Illuminate\Filesystem\Filesystem;
 
-use Gtd\Suda\Http\Controllers\Controller as BaseController;
 use Gtd\Suda\Models\Media;
 use Gtd\Suda\Models\Mediatable;
 use Gtd\Suda\Models\Setting;
 use Illuminate\Support\Str;
 
-class MediaController extends BaseController
+class MediaService
 {
     
     protected $options;
     protected $user;
     protected $_file;
     
+    public $save_path;
+    public $save_disk;
+
     private $type_data = [];
     
     
@@ -459,7 +453,7 @@ class MediaController extends BaseController
     public function saveImage($saveType='upload',$options=[])
     {
         //验证规则
-        //$options = ['resize'=>true, 'crop'=>true,'ratio'=>1, 'quality'=>100, 'storage'=>['local','oss','qiniu']]
+        //$options = ['resize'=>true, 'crop'=>true,'ratio'=>1, 'quality'=>100, 'disk'=>'public']
         //生成对应目录文件名规则
         $user_type = $this->options['user_type'];
         $type = $saveType;
@@ -468,9 +462,10 @@ class MediaController extends BaseController
         $file_extension = pathinfo($targetImage, PATHINFO_EXTENSION);
         $subdir = stringBeginsWith(dirname($targetImage), storage_path('app/public/images'), FALSE, TRUE);
         
-        $saveDirPath = 'public/images/'.$type.$subdir;
+        $saveDirPath = 'images/'.$type.$subdir;
         
-        $savePath           = $saveDirPath.'/'.$basename;
+        $savePath           = $saveDirPath.'/p'.$basename;
+        
         $saveImage          = $saveDirPath.'/p'.$basename;
         $saveImageMedium    = $saveDirPath.'/m'.$basename;
         $saveImageSmall     = $saveDirPath.'/s'.$basename;
@@ -489,12 +484,15 @@ class MediaController extends BaseController
         $is_crop = array_get($options,'crop',false); //默认不剪切
         $isResize = array_get($options,'resize',false); //默认不缩放
         $quality = array_get($options,'quality',100); //默认质量100
-        $storage = array_get($options,'storage','local'); //默认存储本地
+        
+        $disk = array_get($options,'disk',''); //默认存储本地
         
         //只有本地存储时，检测是否有预先设置的存储方式
-        if($storage=='local' && config('sudaconf.image.storage')){
-            $storage = config('sudaconf.image.storage');
+        if(!$disk && config('sudaconf.image.disk')){
+            $disk = config('sudaconf.image.disk');
         }
+
+        $this->save_disk = $disk;
         
         try{
             
@@ -508,42 +506,36 @@ class MediaController extends BaseController
             }
             
             //先存储，再进行后续动作
-            if($storage=='local'){
-                //文件存储
-                $imagefile = Image::make($this->_file)->stream();
-                Storage::disk('local')->put($saveImage, $imagefile,'public');
-                
-                $this->resizeImage($saveDirPath,$basename,$storage,$sourceWidth,$sourceHeight,$ratio,$is_crop,$quality);
-                
-                $type_id = array_get($options,'type_id',0);
-                
-                
-                $mediaModel = new Media;
-                $mediaModel->name = $basename;
-                $mediaModel->user_type = $user_type;
-                $mediaModel->user_id = $this->user->id;
-                $mediaModel->size = $this->_file->getSize();
-                $mediaModel->path = $savePath;
-                $mediaModel->crop = $is_crop;
-                $mediaModel->type = $this->image_types[$sourceType];
-                
-                $mediaModel->save();
-                
-                return [$mediaModel->id,$savePath];//返回media_id 对应 相对存储地址
-            }
-            if($storage=='aliyun'){
-                return 'oss:'.$savePath;
-            }
-            if($storage=='qiniu'){
-                return 'qiniu:'.$savePath;
-            }
+            //文件存储
+            $imagefile = Image::make($this->_file)->stream();
+            Storage::disk($this->save_disk)->put($saveImage, $imagefile);
+            
+            $this->resizeImage($saveDirPath,$basename,$this->save_disk,$sourceWidth,$sourceHeight,$ratio,$is_crop,$quality);
+            
+            $type_id = array_get($options,'type_id',0);
+            
+            
+            $mediaModel = new Media;
+            $mediaModel->name = $basename;
+            $mediaModel->user_type = $user_type;
+            $mediaModel->user_id = $this->user->id;
+            $mediaModel->size = $this->_file->getSize();
+            $mediaModel->dist = $this->save_disk;
+            $mediaModel->path = $savePath;
+            $mediaModel->crop = $is_crop;
+            $mediaModel->type = $this->image_types[$sourceType];
+            
+            $mediaModel->save();
+            
+            return [$mediaModel->id,$savePath];//返回media_id 对应 相对存储地址
+
         } catch (Exception $Ex) {
            $Error = $Ex;
            return false;
        }
     }
     
-    public function resizeImage($saveDirPath,$basename,$storage,$sourceWidth,$sourceHeight,$ratio,$is_crop=false,$quality){
+    public function resizeImage($saveDirPath,$basename,$disk,$sourceWidth,$sourceHeight,$ratio,$is_crop=false,$quality){
         
         //宽高都有值，按照实际存储(resize可能会造成图片变形)
         // $medium_config = $this->options['image_versions']['medium'];
@@ -574,37 +566,6 @@ class MediaController extends BaseController
         if($is_crop || (isset($setting['crop']) && $setting['crop']==1)){
             $is_crop = true;
         }
-
-        //生成缩略图
-        //$saveWidth = $saveWidth;
-        //$saveHeight = $saveHeight;
-        
-        //medium
-        //宽高只有一个有值，按比例存储，建议一般情况下只给一个值即可
-        // if(!empty($medium_config['max_width'])){
-        //     $medium_config['max_height'] = ceil(($medium_config['max_width']/$sourceWidth)*$sourceHeight);
-        // }elseif(!empty($medium_config['max_height'])){
-        //     $medium_config['max_width'] = ceil(($medium_config['max_height']/$sourceHeight)*$sourceWidth);
-        // }
-
-        //宽高值都没有，则按照原始大小存储
-        // if(empty($medium_config['max_width']) && empty($medium_config['max_height'])){
-        //     $medium_config['max_width'] = $sourceWidth;
-        //     $medium_config['max_height'] = $sourceHeight;
-        // }
-
-        //thumbnail
-        //宽高只有一个有值，按比例存储，建议一般情况下只给一个值即可
-        // if(!empty($thumbnail_config['max_width'])){
-        //     $thumbnail_config['max_height'] = ceil(($thumbnail_config['max_width']/$sourceWidth)*$sourceHeight);
-        // }elseif(!empty($thumbnail_config['max_height'])){
-        //     $thumbnail_config['max_width'] = ceil(($thumbnail_config['max_height']/$sourceHeight)*$sourceWidth);
-        // }
-        // //宽高值都没有，则按照原始大小存储
-        // if(empty($thumbnail_config['max_width']) && empty($thumbnail_config['max_height'])){
-        //     $thumbnail_config['max_width'] = $sourceWidth;
-        //     $thumbnail_config['max_height'] = $sourceHeight;
-        // }
 
         //medium缩略图
         if($sourceWidth>=$sourceHeight){
@@ -655,7 +616,7 @@ class MediaController extends BaseController
                 $y = ceil(($sourceHeight-$medium_height)/2);
             }
 
-            $this->cropImage($saveImageMedium,'local',$medium_width,$medium_height,$x,$y);
+            $this->cropImage($saveImageMedium,$disk,$medium_width,$medium_height,$x,$y);
 
             $x = $y = 0;
             if($sourceWidth >= $small_width){
@@ -665,24 +626,24 @@ class MediaController extends BaseController
                 $y = ceil(($sourceHeight-$small_height)/2);
             }
 
-            $this->cropImage($saveImageThumbmail,'local',$small_width,$small_height,$x,$y);
+            $this->cropImage($saveImageThumbmail,$disk,$small_width,$small_height,$x,$y);
 
         }else{
             $resizeMediumImage = Image::make($this->_file)->resize($medium_width, $medium_height)->stream();
-            Storage::disk('local')->put($saveImageMedium, $resizeMediumImage,'public');
+            Storage::disk($diisk)->put($saveImageMedium, $resizeMediumImage);
             
             $resizeThumbnailImage = Image::make($this->_file)->resize($small_width, $small_height)->stream();
-            Storage::disk('local')->put($saveImageThumbmail, $resizeThumbnailImage,'public');
+            Storage::disk($disk)->put($saveImageThumbmail, $resizeThumbnailImage);
         }
         
         
         return true;
     }
     
-    public function cropImage($savePath,$storage,$saveWidth,$saveHeight,$x=0,$y=0){
+    public function cropImage($savePath,$disk,$saveWidth,$saveHeight,$x=0,$y=0){
         
         $cropImage = Image::make($this->_file)->crop($saveWidth, $saveHeight,$x,$y)->stream();
-        Storage::disk('local')->put($savePath, $cropImage,'public');
+        Storage::disk($disk)->put($savePath, $cropImage);
         
     }
 

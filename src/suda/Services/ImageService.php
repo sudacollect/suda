@@ -1,13 +1,9 @@
 <?php
 /**
- * ImageController.php
- * description
- * date 2017-11-06 10:23:31
- * author suda <hello@suda.gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * ImageService class
  */
 
-namespace Gtd\Suda\Http\Controllers\Media;
+namespace Gtd\Suda\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,16 +13,18 @@ use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
 use Storage;
 
-use Gtd\Suda\Http\Controllers\Controller as BaseController;
 use Gtd\Suda\Models\Media;
 use Gtd\Suda\Models\Setting;
 use Illuminate\Support\Str;
 
-class ImageController extends BaseController
+class ImageService
 {
     public $_file;
 
     public $_filename;
+
+    public $save_disk;
+    public $save_path;
     
     public $_file_data = [];
     
@@ -193,7 +191,7 @@ class ImageController extends BaseController
     
     public function saveImage($options=[],&$msg){
         //验证规则
-        //$options = ['media_type','user_type','user_id','resize'=>true, 'crop'=>true,'ratio'=>1, 'quality'=>100, 'storage'=>['local','oss','qiniu']]
+        //$options = ['media_type','user_type','user_id','resize'=>true, 'crop'=>true,'ratio'=>1, 'quality'=>100, 'disk'=>'public']
         //生成对应目录文件名规则
         
         if(!array_key_exists('user_type',$options) || !array_key_exists('user_id',$options)){
@@ -225,15 +223,18 @@ class ImageController extends BaseController
         $basename = pathinfo($targetImage, PATHINFO_BASENAME);
         $subdir = stringBeginsWith(dirname($targetImage), storage_path('app/public/images'), FALSE, TRUE);
         
-        $save_base_path = 'public/images/'.$type_path.$subdir.'/'.$basename;
-        $save_original_path = 'public/images/'.$type_path.$subdir.'/p'.$basename;
-        $save_medium_path = 'public/images/'.$type_path.$subdir.'/m'.$basename;
-        $save_small_path = 'public/images/'.$type_path.$subdir.'/s'.$basename;
+        $this->save_path = 'images/'.$type_path.$subdir;
+
+        $save_base_path     = $this->save_path.'/'.$basename;
+
+        $save_original_name = $this->save_path.'/p'.$basename;
+        $save_medium_name   = $this->save_path.'/m'.$basename;
+        $save_small_name    = $this->save_path.'/s'.$basename;
         
         
-        $sourceWidth = $this->_file_data['source_width'];
-        $sourceHeight = $this->_file_data['source_height'];
-        $sourceType = $this->_file_data['source_type'];
+        $sourceWidth    = $this->_file_data['source_width'];
+        $sourceHeight   = $this->_file_data['source_height'];
+        $sourceType     = $this->_file_data['source_type'];
         
         //宽高都有值，按照实际存储(resize可能会造成图片变形)
         $save_width = array_get($options,'save_width',$sourceWidth);
@@ -356,89 +357,81 @@ class ImageController extends BaseController
         // $is_crop = array_get($options,'crop',$is_crop); //默认不剪切
         $isResize = array_get($options,'resize',false); //默认不缩放
         $quality = array_get($options,'quality',100); //默认质量100
-        $storage = array_get($options,'storage',''); //默认存储本地
+        $disk = array_get($options,'disk',''); //默认存储本地
 
-        //判断系统是否设置强制剪切
-
-        
-        //没有指定storage时，设置为默认存储
-        if(!$storage){
-            $storage = config('sudaconf.image.storage','local');
+        //没有指定disk时，设置为默认存储
+        if(!$disk){
+            $disk = config('sudaconf.image.disk','public');
         }
+
+        $this->save_disk = $disk;
         
         try {
+
             //先存储，再进行后续动作
-            if($storage=='local'){
-                //文件存储
-
-                $imagefile = Image::make($this->_file)->stream();
-                Storage::disk('local')->put($save_original_path, $imagefile,'public');
-                
-                // $image = Image::make($this->_file);
-                // $image->save($save_original_path);
-                
-                if($is_crop){
-                    //计算x,y,截取图的中间位置
-                    $x = $y = 0;
-                    if($sourceWidth >= $save_medium_width){
-                        $x = ceil(($sourceWidth-$save_medium_width)/2);
-                    }
-                    if($sourceHeight >= $save_medium_height){
-                        $y = ceil(($sourceHeight-$save_medium_height)/2);
-                    }
-
-                    $this->cropImage($save_medium_path,$storage,$crop_medium_width,$crop_medium_height,$x,$y);
-
-                    $x = $y = 0;
-                    if($sourceWidth >= $save_small_width){
-                        $x = ceil(($sourceWidth-$save_small_width)/2);
-                    }
-                    if($sourceHeight >= $save_small_height){
-                        $y = ceil(($sourceHeight-$save_small_height)/2);
-                    }
-
-                    $this->cropImage($save_small_path,$storage,$crop_small_width,$crop_small_height,$x,$y);
-                }elseif($isResize){
-                    $this->resizeImage($save_medium_path,$storage,$save_medium_width,$save_medium_height,$quality);
-                    $this->resizeImage($save_small_path,$storage,$save_small_width,$save_small_height,$quality);
+            $imagefile = Image::make($this->_file)->stream();
+            Storage::disk($this->save_disk)->put($save_original_name, $imagefile);
+            
+            // $image = Image::make($this->_file);
+            // $image->save($save_original_name);
+            
+            if($is_crop){
+                //计算x,y,截取图的中间位置
+                $x = $y = 0;
+                if($sourceWidth >= $save_medium_width){
+                    $x = ceil(($sourceWidth-$save_medium_width)/2);
                 }
-                
-                $mediaModel = new Media;
-                $mediaModel->name = $basename;
-                $mediaModel->user_type = array_get($options,'user_type');
-                $mediaModel->user_id = array_get($options,'user_id');
-                $mediaModel->size = $this->_file_data['size'];
-                $mediaModel->path = $save_base_path;
-                $mediaModel->crop = $is_crop;
-                $mediaModel->hidden = array_get($options,'hidden',0);
-                $mediaModel->type = array_key_exists($sourceType,$this->image_types)?$this->image_types[$sourceType]:$sourceType;
-                
-                $mediaModel->save();
-                return [$mediaModel->id,$save_base_path];//返回media_id 对应 相对存储地址
+                if($sourceHeight >= $save_medium_height){
+                    $y = ceil(($sourceHeight-$save_medium_height)/2);
+                }
+
+                $this->cropImage($save_medium_name,$this->save_disk,$crop_medium_width,$crop_medium_height,$x,$y);
+
+                $x = $y = 0;
+                if($sourceWidth >= $save_small_width){
+                    $x = ceil(($sourceWidth-$save_small_width)/2);
+                }
+                if($sourceHeight >= $save_small_height){
+                    $y = ceil(($sourceHeight-$save_small_height)/2);
+                }
+
+                $this->cropImage($save_small_name,$this->save_disk,$crop_small_width,$crop_small_height,$x,$y);
+            }elseif($isResize){
+                $this->resizeImage($save_medium_name,$this->save_disk,$save_medium_width,$save_medium_height,$quality);
+                $this->resizeImage($save_small_name,$this->save_disk,$save_small_width,$save_small_height,$quality);
             }
-            if($storage=='aliyun'){
-                return 'oss:'.$save_base_path;
-            }
-            if($storage=='aliyun'){
-                return 'qiniu:'.$save_base_path;
-            }
+            
+            $mediaModel = new Media;
+            $mediaModel->name = $basename;
+            $mediaModel->user_type = array_get($options,'user_type');
+            $mediaModel->user_id = array_get($options,'user_id');
+            $mediaModel->size = $this->_file_data['size'];
+            $mediaModel->disk = $this->save_disk;
+            $mediaModel->path = $save_base_path;
+            $mediaModel->crop = $is_crop;
+            $mediaModel->hidden = array_get($options,'hidden',0);
+            $mediaModel->type = array_key_exists($sourceType,$this->image_types)?$this->image_types[$sourceType]:$sourceType;
+            
+            $mediaModel->save();
+            return [$mediaModel->id,$save_base_path];//返回media_id 对应 相对存储地址
+
         }catch (Exception $Ex) {
            $Error = $Ex;
            return false;
        }
     }
     
-    public function resizeImage($save_path,$storage,$saveWidth,$saveHeight,$quality){
+    public function resizeImage($img_path,$disk,$saveWidth,$saveHeight,$quality){
         //生成缩略图
         $resizeImage = Image::make($this->_file)->resize($saveWidth, $saveHeight)->stream();
-        return Storage::disk('local')->put($save_path, $resizeImage);
+        return Storage::disk($disk)->put($img_path, $resizeImage);
     }
     
-    public function cropImage($save_path,$storage,$saveWidth,$saveHeight,$x=0,$y=0)
+    public function cropImage($img_path,$disk,$saveWidth,$saveHeight,$x=0,$y=0)
     {
-        // $crop_image = Image::make($this->_file)->crop($saveWidth, $saveHeight,$x,$y)->stream();
-        // Storage::disk('local')->put($save_path, $crop_image);
-        Image::make($this->_file)->fit($saveWidth,$saveHeight)->save(storage_path('app/'.$save_path));
+        $crop_image = Image::make($this->_file)->fit($saveWidth,$saveHeight)->stream();
+        Storage::disk($disk)->put($img_path, $crop_image);
+        // Image::make($this->_file)->fit($saveWidth,$saveHeight)->save(storage_path('app/public/'.$img_path));
     }
 
     //rebuild图片
@@ -446,8 +439,21 @@ class ImageController extends BaseController
     {
         $media = Media::where('id',$media_id)->first();
 
-        //这个并不存在
-        $media_path = storage_path('app/'.$media->path);
+        // 只有本地存储的可以生成缩略图
+        // #TODO 支持其他存储方式重新生成缩略图
+        if($media->disk && $media->disk!='public')
+        {
+            return false;
+        }
+
+        // 判断是否是有public上层目录
+        // 9.x 版本都没有public
+        $path = $media->path;
+        if(substr($path,0,6)!='public'){
+            $path = 'public/'.$path;
+        }
+
+        $media_path = storage_path('app/'.$path);
         
         //获取保存目录
         $dir_path = dirname($media_path);
@@ -531,12 +537,6 @@ class ImageController extends BaseController
 
     }
     
-    //删除图片
-    public function removeImage(Request $request){
-        
-        
-        
-    }
     
     public function generateTargetName($targetFolder, $extension = 'jpg', $chunk = FALSE) {
        
@@ -608,7 +608,7 @@ class ImageController extends BaseController
 
     public function saveFile($options=[],&$msg){
         //验证规则
-        //$options = ['media_type','user_type','user_id','resize'=>true, 'crop'=>true,'ratio'=>1, 'quality'=>100, 'storage'=>['local','oss','qiniu']]
+        //$options = ['media_type','user_type','user_id','resize'=>true, 'crop'=>true,'ratio'=>1, 'quality'=>100, 'disk'=>'public']
         //生成对应目录文件名规则
         
         if(!array_key_exists('user_type',$options) || !array_key_exists('user_id',$options)){
@@ -640,40 +640,37 @@ class ImageController extends BaseController
         $basename = pathinfo($targetFile, PATHINFO_BASENAME);
         $subdir = stringBeginsWith(dirname($targetFile), storage_path('app/public/files'), FALSE, TRUE);
         
-        $save_base_path = 'public/files/'.$type_path.$subdir.'/'.$basename;
-        $saveFile = 'public/files/'.$type_path.$subdir.'/'.$basename;
+        $this->save_path = 'images/'.$type_path.$subdir;
+
+        $save_base_path = $this->save_path.'/'.$basename;
+        $saveFile       = $this->save_path.'/'.$basename;
         
         
-        $storage = array_get($options,'storage',''); //默认存储本地
+        $disk = array_get($options,'disk',''); //默认存储本地
         
-        //没有指定storage时，设置为默认存储
-        if(!$storage){
-            $storage = config('sudaconf.image.storage','local');
+        //没有指定disk时，设置为默认存储
+        if(!$disk){
+            $disk = config('sudaconf.image.disk','public');
         }
-        
+        $this->save_disk = $save_disk;
+
         try {
             //先存储，再进行后续动作
-            if($storage=='local'){
-                //文件存储
-                Storage::disk('local')->put($saveFile, file_get_contents($this->_file));
+            //文件存储
+            Storage::disk($this->save_disk)->put($saveFile, file_get_contents($this->_file));
                 
-                $mediaModel = new Media;
-                $mediaModel->name = $basename;
-                $mediaModel->user_type = array_get($options,'user_type');
-                $mediaModel->user_id = array_get($options,'user_id');
-                $mediaModel->size = $this->_file_data['size'];
-                $mediaModel->path = $save_base_path;
-                $mediaModel->type = 'FILE|'.$this->_file_data['extension'];
-                
-                $mediaModel->save();
-                return [$mediaModel->id,$save_base_path];//返回media_id 对应 相对存储地址
-            }
-            if($storage=='aliyun'){
-                return 'oss:'.$save_base_path;
-            }
-            if($storage=='aliyun'){
-                return 'qiniu:'.$save_base_path;
-            }
+            $mediaModel = new Media;
+            $mediaModel->name = $basename;
+            $mediaModel->user_type = array_get($options,'user_type');
+            $mediaModel->user_id = array_get($options,'user_id');
+            $mediaModel->size = $this->_file_data['size'];
+            $mediaModel->disk = $this->save_disk;
+            $mediaModel->path = $save_base_path;
+            $mediaModel->type = 'FILE|'.$this->_file_data['extension'];
+            
+            $mediaModel->save();
+            return [$mediaModel->id,$save_base_path];//返回media_id 对应 相对存储地址
+
         }catch (Exception $Ex) {
            $Error = $Ex;
            return false;
