@@ -461,6 +461,8 @@ class ExtensionService {
         
         //安装静态资源
         if($filesystem->exists(app_path($ucf_extension_dir.'/'.ucfirst($extension_slug).'/publish/assets'))){
+            //删除目录，并重新复制
+            $filesystem->deleteDirectory($dest_folder.'/assets');
             $filesystem->copyDirectory(app_path($ucf_extension_dir.'/'.ucfirst($extension_slug).'/publish/assets'),$dest_folder.'/assets');
         }
         
