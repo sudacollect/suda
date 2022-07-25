@@ -118,7 +118,7 @@
 
     <div class="row suda-row">
         
-        <div class="col-sm-9">
+        <div class="col-sm-8">
             <div class="card">
                 
                 <div class="card-body">
@@ -226,35 +226,45 @@
             </div>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             
-            <div class="card bg-primary text-white mb-3" style="background-image: linear-gradient(to right,#f383f5,#9178ff);">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card bg-primary text-white mb-3" style="background-image: linear-gradient(to right,#f383f5,#9178ff);">
                 
-                <div class="card-body">
-                    
-                   <div class="card-title my-0 py-0">2月销售额</div>
-                   
-                    <div class="font-weight-bold text-white" style="font-size:2.2rem;">¥3,658</div>
-                    <div class="font-weight-bold text-white text-right" style="position:absolute;right:1rem;top:1rem;font-size:4rem;opacity:0.4">33%</div>
-
-                    {{-- <div class="help-block text-light">2020年1月</div> --}}
-
+                        <div class="card-body">
+                            
+                           <div class="card-title my-0 py-0">2月销售额</div>
+                           
+                            <div class="font-weight-bold text-white" style="font-size:2.2rem;">¥3,658</div>
+                            <div class="font-weight-bold text-white text-right" style="position:absolute;right:0rem;bottom:0rem;font-size:2.5rem;opacity:0.4">食品</div>
+        
+                            {{-- <div class="help-block text-light">2020年1月</div> --}}
+        
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="card bg-primary text-white mb-3" style="background-image: linear-gradient(to right,#c3f668, #fda666);">
+                <div class="col-sm-6">
+                    <div class="card bg-primary text-white mb-3" style="background-image: linear-gradient(to right,#c3f668, #fda666);">
                 
-                <div class="card-body">
-                    
-                   <div class="card-title my-0 py-0">3月销售额</div>
-                   
-                    <div class="font-weight-bold text-white" style="font-size:2.2rem;">¥19,365</div>
-                    <div class="font-weight-bold text-white text-right" style="position:absolute;right:1rem;top:1rem;font-size:4rem;opacity:0.4">68%</div>
-
-                    {{-- <div class="help-block text-light">2020年1月</div> --}}
-
+                        <div class="card-body">
+                            
+                           <div class="card-title my-0 py-0">3月销售额</div>
+                           
+                            <div class="font-weight-bold text-white" style="font-size:2.2rem;">¥19,365</div>
+                            <div class="font-weight-bold text-white text-right" style="position:absolute;right:0rem;bottom:0rem;font-size:2.5rem;opacity:0.4">服饰</div>
+        
+                            {{-- <div class="help-block text-light">2020年1月</div> --}}
+        
+                        </div>
+                    </div>
                 </div>
+
             </div>
+            
+
+            
 
             <div class="card bg-primary text-white mb-3" style="background-image: linear-gradient(to right,#3e9cff, #2de9e2);">
                 
@@ -278,149 +288,146 @@
 
 @push('scripts')
 <script>
-    $(document).ready(function(){
+$(document).ready(function(){
+    
+    window.chartColors = {
+        red: 'rgb(255, 99, 132)',
+        orange: 'rgb(255, 159, 64)',
+        yellow: 'rgb(255, 205, 86)',
+        green: 'rgb(75, 192, 192)',
+        blue: 'rgb(54, 162, 235)',
+        purple: 'rgb(153, 102, 255)',
+        grey: 'rgb(201, 203, 207)'
+    };
+
+    (function(global) {
+        var MONTHS = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ];
+
+        var COLORS = [
+            '#4dc9f6',
+            '#f67019',
+            '#f53794',
+            '#537bc4',
+            '#acc236',
+            '#166a8f',
+            '#00a950',
+            '#58595b',
+            '#8549ba'
+        ];
+
+        var Samples = global.Samples || (global.Samples = {});
+        var Color = global.Color;
+
+        Samples.utils = {
+            // Adapted from http://indiegamr.com/generate-repeatable-random-numbers-in-js/
+            srand: function(seed) {
+                this._seed = seed;
+            },
+
+            rand: function(min, max) {
+                var seed = this._seed;
+                min = min === undefined ? 0 : min;
+                max = max === undefined ? 1 : max;
+                this._seed = (seed * 9301 + 49297) % 233280;
+                return min + (this._seed / 233280) * (max - min);
+            },
+
+            numbers: function(config) {
+                var cfg = config || {};
+                var min = cfg.min || 0;
+                var max = cfg.max || 1;
+                var from = cfg.from || [];
+                var count = cfg.count || 8;
+                var decimals = cfg.decimals || 8;
+                var continuity = cfg.continuity || 1;
+                var dfactor = Math.pow(10, decimals) || 0;
+                var data = [];
+                var i, value;
+
+                for (i = 0; i < count; ++i) {
+                    value = (from[i] || 0) + this.rand(min, max);
+                    if (this.rand() <= continuity) {
+                        data.push(Math.round(dfactor * value) / dfactor);
+                    } else {
+                        data.push(null);
+                    }
+                }
+
+                return data;
+            },
+
+            labels: function(config) {
+                var cfg = config || {};
+                var min = cfg.min || 0;
+                var max = cfg.max || 100;
+                var count = cfg.count || 8;
+                var step = (max - min) / count;
+                var decimals = cfg.decimals || 8;
+                var dfactor = Math.pow(10, decimals) || 0;
+                var prefix = cfg.prefix || '';
+                var values = [];
+                var i;
+
+                for (i = min; i < max; i += step) {
+                    values.push(prefix + Math.round(dfactor * i) / dfactor);
+                }
+
+                return values;
+            },
+
+            months: function(config) {
+                var cfg = config || {};
+                var count = cfg.count || 12;
+                var section = cfg.section;
+                var values = [];
+                var i, value;
+
+                for (i = 0; i < count; ++i) {
+                    value = MONTHS[Math.ceil(i) % 12];
+                    values.push(value.substring(0, section));
+                }
+
+                return values;
+            },
+
+            color: function(index) {
+                return COLORS[index % COLORS.length];
+            },
+
+            transparentize: function(color, opacity) {
+                var alpha = opacity === undefined ? 0.5 : 1 - opacity;
+                return Color(color).alpha(alpha).rgbString();
+            }
+        };
+
+        // DEPRECATED
+        window.randomScalingFactor = function() {
+            return Math.round(Samples.utils.rand(-100, 100));
+        };
+
+        // INITIALIZATION
+
+        Samples.utils.srand(Date.now());
 
 
-        
-
-window.chartColors = {
-	red: 'rgb(255, 99, 132)',
-	orange: 'rgb(255, 159, 64)',
-	yellow: 'rgb(255, 205, 86)',
-	green: 'rgb(75, 192, 192)',
-	blue: 'rgb(54, 162, 235)',
-	purple: 'rgb(153, 102, 255)',
-	grey: 'rgb(201, 203, 207)'
-};
-
-(function(global) {
-	var MONTHS = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December'
-	];
-
-	var COLORS = [
-		'#4dc9f6',
-		'#f67019',
-		'#f53794',
-		'#537bc4',
-		'#acc236',
-		'#166a8f',
-		'#00a950',
-		'#58595b',
-		'#8549ba'
-	];
-
-	var Samples = global.Samples || (global.Samples = {});
-	var Color = global.Color;
-
-	Samples.utils = {
-		// Adapted from http://indiegamr.com/generate-repeatable-random-numbers-in-js/
-		srand: function(seed) {
-			this._seed = seed;
-		},
-
-		rand: function(min, max) {
-			var seed = this._seed;
-			min = min === undefined ? 0 : min;
-			max = max === undefined ? 1 : max;
-			this._seed = (seed * 9301 + 49297) % 233280;
-			return min + (this._seed / 233280) * (max - min);
-		},
-
-		numbers: function(config) {
-			var cfg = config || {};
-			var min = cfg.min || 0;
-			var max = cfg.max || 1;
-			var from = cfg.from || [];
-			var count = cfg.count || 8;
-			var decimals = cfg.decimals || 8;
-			var continuity = cfg.continuity || 1;
-			var dfactor = Math.pow(10, decimals) || 0;
-			var data = [];
-			var i, value;
-
-			for (i = 0; i < count; ++i) {
-				value = (from[i] || 0) + this.rand(min, max);
-				if (this.rand() <= continuity) {
-					data.push(Math.round(dfactor * value) / dfactor);
-				} else {
-					data.push(null);
-				}
-			}
-
-			return data;
-		},
-
-		labels: function(config) {
-			var cfg = config || {};
-			var min = cfg.min || 0;
-			var max = cfg.max || 100;
-			var count = cfg.count || 8;
-			var step = (max - min) / count;
-			var decimals = cfg.decimals || 8;
-			var dfactor = Math.pow(10, decimals) || 0;
-			var prefix = cfg.prefix || '';
-			var values = [];
-			var i;
-
-			for (i = min; i < max; i += step) {
-				values.push(prefix + Math.round(dfactor * i) / dfactor);
-			}
-
-			return values;
-		},
-
-		months: function(config) {
-			var cfg = config || {};
-			var count = cfg.count || 12;
-			var section = cfg.section;
-			var values = [];
-			var i, value;
-
-			for (i = 0; i < count; ++i) {
-				value = MONTHS[Math.ceil(i) % 12];
-				values.push(value.substring(0, section));
-			}
-
-			return values;
-		},
-
-		color: function(index) {
-			return COLORS[index % COLORS.length];
-		},
-
-		transparentize: function(color, opacity) {
-			var alpha = opacity === undefined ? 0.5 : 1 - opacity;
-			return Color(color).alpha(alpha).rgbString();
-		}
-	};
-
-	// DEPRECATED
-	window.randomScalingFactor = function() {
-		return Math.round(Samples.utils.rand(-100, 100));
-	};
-
-	// INITIALIZATION
-
-	Samples.utils.srand(Date.now());
-
-
-}(this));
+    }(this));
 
 
 
-        var config = {
+    var config = {
         type: 'line',
         data: {
             labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月'],
@@ -460,10 +467,11 @@ window.chartColors = {
         }
     };
 
-    window.onload = function() {
-        var ctx = document.getElementById('canvas').getContext('2d');
-        window.myLine = new Chart(ctx, config);
-    };
-    });
+    var ctx = document.getElementById('canvas').getContext('2d');
+    window.myLine = new Chart(ctx, config);
+
+});
+
+
 </script>
 @endpush
