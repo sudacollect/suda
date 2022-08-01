@@ -193,9 +193,10 @@ class HomeController extends DashboardController
                         $site_name = $v;
                     }
                     $data = [
+                        'group'=>'site',
                         'key'=>$k,
                         'values'=>$v,
-                        'type'=>'site'
+                        'type'=>'text'
                     ];
                     
                     if($first = $settingModel->where(['key'=>$k])->first()){

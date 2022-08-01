@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="col-md-4 col-sm-6">
                         <form class="form-ajax"  method="POST" action="{{ admin_url('setting/site') }}" role="form">
-                        {{ csrf_field() }}
+                        @csrf
                         
                         <div class="mb-3 form-floating">
                         
