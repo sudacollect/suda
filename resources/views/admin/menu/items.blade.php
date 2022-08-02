@@ -32,6 +32,9 @@
                 <div class="card">
                     <div class="card-header bg-white">
                         {{ $menu->name }} 的所有条目
+                        @if($menu->id==1)
+                        <a href="{{ admin_url('menu/recovery') }}" class="pop-modal btn btn-light btn-sm float-end" title="恢复默认">恢复默认</a>
+                        @endif
                     </div>
                     <div class="card-body">
                         

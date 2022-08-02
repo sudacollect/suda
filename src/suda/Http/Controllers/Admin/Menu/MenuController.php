@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Validator;
+use Artisan;
 
 use Gtd\Suda\Http\Controllers\Admin\DashboardController;
 use Gtd\Suda\Models\Operate;
@@ -179,6 +180,34 @@ class MenuController extends DashboardController
             Menu::updateCache($menu_id);
         }
     }
+
+    //恢复默认菜单
+    public function recovery(Request $request){
+        
+        $this->title(__('suda_lang::press.edit_menu'));
+        $this->setData('modal_title',__('suda_lang::press.edit_menu'));
+
+        $this->setMenu('tool','tool_menu');
+        return $this->display('menu.recovery');
+    }
+
+    //更新数据
+    public function recoverySave(Request $request)
+    {
+        
+        //移除所有菜单数据
+        MenuItem::where(['menu_id'=>1])->delete();
+
+        $command = "db:seed";
+
+        $params = [
+            'class' => "\\Gtd\\Suda\\Database\\Seeds\\MenuItemsTableSeeder",
+        ];
+
+        Artisan::call($command,$params);
+
+        return $this->responseAjax('success', '数据已恢复', 'self.refresh');
+    }
     
     public function items(Request $request,$id){
         $this->title(__('suda_lang::press.menu_item'));
@@ -236,13 +265,13 @@ class MenuController extends DashboardController
         $this->setMenu('tool','tool_menu');
         $this->title(__('suda_lang::press.add_menu_item'));
         $this->setData('modal_title',__('suda_lang::press.add_menu_item'));
-        $this->setData('modal_icon_class','ion-add-circle');
+        // $this->setData('modal_icon_class','ion-add-circle');
         
         if(intval($id)>0){
             $this->title(__('suda_lang::press.edit_menu_item'));
             
             $this->setData('modal_title',__('suda_lang::press.edit_menu_item'));
-            $this->setData('modal_icon_class','ion-pencil');
+            // $this->setData('modal_icon_class','ion-pencil');
             
             $item = MenuItem::where('id','=',$id)->firstOrFail();
             if(!$item){
@@ -296,6 +325,8 @@ class MenuController extends DashboardController
         if($request->id){
             $id = $request->id;
         }
+
+        $enable = !$request->enable?0:1;
         
         if($id){
             MenuItem::where('id',$id)->update([
@@ -305,6 +336,7 @@ class MenuController extends DashboardController
                 'route'      => $route,
                 'target'     => $request->target,
                 'icon_class' => $request->icon_class,
+                'enable'     => $enable,
             ]);
             
             Menu::updateCache($request->menu_id);
@@ -318,6 +350,7 @@ class MenuController extends DashboardController
             $itemModel->target = $request->target;
             $itemModel->icon_class = $request->icon_class;
             $itemModel->order = 1;
+            $itemModel->enable = $enable;
             $itemModel->save();
             
             Menu::updateCache($request->menu_id);

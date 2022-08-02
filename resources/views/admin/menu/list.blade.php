@@ -57,7 +57,7 @@
                               <td>
                                   <a href="{{ admin_url('menu/items/'.$menu->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.menu_item') }}" data-toggle="tooltip" data-placement="top"><i class="ion-list"></i>&nbsp;{{ __('suda_lang::press.menu_item') }}</a>
                                   @if($menu->id>1)
-                                  <a href="{{ admin_url('menu/edit/'.$menu->id) }}" class="pop-modal btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
+                                  <a href="{{ admin_url('menu/edit/'.$menu->id) }}" class="pop-modal btn btn-primary btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                                   <button href="{{ admin_url('menu/delete/'.$menu->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $menu->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i>&nbsp;{{ __('suda_lang::press.delete') }}</button>
                                   @endif
                                   

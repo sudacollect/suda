@@ -104,11 +104,18 @@
         
             </div>
 
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="enable" name="enable" checked>
+                <label class="form-check-label" for="enable">
+                  是否启用
+                </label>
+            </div>
+
         </div>
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">取消</span></button>
+        {{-- <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">取消</span></button> --}}
         <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.btn.submit') }}</button>
     </div>
 

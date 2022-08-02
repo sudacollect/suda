@@ -313,6 +313,10 @@ Route::group([
     Route::post('/menu/item/delete/{menu_id}/{id}', $controller_prefix.'Menu\MenuController@deleteItem')->name('tool_menu_item_delete');
     
     Route::post('/menu/order', $controller_prefix.'Menu\MenuController@sortItems')->name('tool_menu_order');
+
+    // recover default menu data
+    Route::get('/menu/recovery', $controller_prefix.'Menu\MenuController@recovery')->name('tool_menu_recovery');
+    Route::post('/menu/recovery/save', $controller_prefix.'Menu\MenuController@recoverySave')->name('tool_menu_recovery_save');
     
     //compass
     Route::get('/compass', $controller_prefix.'Compass\AboutController@index')->name('tool_compass');

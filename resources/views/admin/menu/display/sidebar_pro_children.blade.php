@@ -14,6 +14,9 @@
                 if(property_exists($menu,'hidden')){
                     continue;
                 }
+                if(property_exists($menu,'enable') && !$menu->enable){
+                    continue;
+                }
                 @endphp
                 
                 @if(isset($menu->title))

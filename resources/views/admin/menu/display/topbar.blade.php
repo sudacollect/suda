@@ -43,6 +43,9 @@
         if(property_exists($item,'hidden')){
             continue;
         }
+        if(property_exists($item,'enable') && !$item->enable){
+            continue;
+        }
 
         $permission = false;
     

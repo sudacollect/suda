@@ -1,4 +1,5 @@
 <?php
+namespace Gtd\Suda\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 use Gtd\Suda\Models\Menu;
