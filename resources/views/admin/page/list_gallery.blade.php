@@ -1,11 +1,22 @@
-<div class="data-list" id="waterfall-container">
-
-    @if($data_list->count() > 0)
+<style>
+    .waterfall-item{
+        flex-shrink: 0;
         
-    @foreach ($data_list as $item)
+        padding-right: calc(var(--bs-gutter-x)*0.5);
+        padding-left: calc(var(--bs-gutter-x)*0.5);
+        margin-top: var(--bs-gutter-y);
+    }
+</style>
+<div class="data-list row" id="waterfall-container">
 
-    <div class="pin col-sm-3">
     
+    @if($data_list->count() > 0)
+    
+    
+    @foreach ($data_list as $k=>$item)
+
+    <div class="waterfall-item col-sm-3">
+        
         <div class="card mb-3">
             @if($item->heroimage)
             <img class="card-img-top" src="{{ suda_image(isset($item->heroimage->media)?$item->heroimage->media:'',['size'=>'medium','imageClass'=>'image_icon',"url"=>true],false) }}" alt="Card image cap">
@@ -75,14 +86,19 @@
             </div>
             
         </div>
+
     </div>
+
+    
     @endforeach
+
+    
     
     
     @else
     
     
-        <div class="col-sm-3">
+        <div class="waterfall-item col-sm-3">
     
             <div class="card mb-3">
                 <div class="card-body">
@@ -92,8 +108,11 @@
     
         </div>
     
-    
+        
     @endif
+    
+    
+
 </div>
 
 @if($data_list->count() > 0)
