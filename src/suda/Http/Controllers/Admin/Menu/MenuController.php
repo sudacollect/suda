@@ -202,6 +202,7 @@ class MenuController extends DashboardController
 
         $params = [
             'class' => "\\Gtd\\Suda\\Database\\Seeds\\MenuItemsTableSeeder",
+            'force' => true,
         ];
 
         Artisan::call($command,$params);
