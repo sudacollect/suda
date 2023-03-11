@@ -36,7 +36,7 @@
                     <div class="card card-role-exts" ext-slug="{{ $item['slug'] }}">
                         <div class="card-body">
                             <span class="check_ext @if(array_key_exists($item['slug'],$role->permissions['exts'])) checked @endif" style="position:absolute;left:10px;top:5px;">
-                            <i class="zly-check-circle" style="font-size:2rem;"></i>
+                                <i class="ion-checkmark-circle" style="font-size:2rem;"></i>
                             </span>
 
                             <p class="ext-logo @if(array_key_exists($item['slug'],$role->permissions['exts'])) checked @endif">
