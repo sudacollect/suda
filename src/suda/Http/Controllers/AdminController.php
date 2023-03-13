@@ -210,8 +210,12 @@ class AdminController extends BaseController
     
     //获取自定义扩展导航
     protected function getNavi(){
+
+        // 允许增加自定义菜单
+        $custom_navi = $this->data('custom_navi',[]);
         
-        $custom_navi = (array)config('suda_custom.navi',[]);
+        $get_navi = (array)config('suda_custom.navi',[]);
+        $custom_navi = array_merge($get_navi, $custom_navi);
         
         $this->setData('custom_navi',$custom_navi);
         
