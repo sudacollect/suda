@@ -157,10 +157,14 @@ class AdminController extends BaseController
         $this->data['sdcore']['description'] = $description?$description:'';
     }
     
-    public function data($key)
+    public function data($key, $default_value=null)
     {
         if(array_key_exists($key,$this->data)){
             return $this->data[$key];
+        }
+        if(isset($default_value))
+        {
+            return $default_value;
         }
         return false;
     }
