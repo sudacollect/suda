@@ -27,14 +27,14 @@ jQuery(document).ready(function(){
     }
     
     
-    $('.navbar-side').on('click',function(e){
+    $('.navbar-take-toggle').on('click',function(e){
         
         var sidemenu_style = 'flat';
-        if($('.navbar-brand').hasClass('only')){
+        if($('.sidebar-brand').hasClass('only')){
             sidemenu_style = 'flat';
-            $('.navbar-brand').removeClass('only');
+            $('.sidebar-brand').removeClass('only');
         }else{
-            $('.navbar-brand').addClass('only');
+            $('.sidebar-brand').addClass('only');
             sidemenu_style = 'icon';
         }
         
@@ -1184,41 +1184,48 @@ jQuery(document).ready(function(){
         return $item;
     };
 
-    $.fn.selectCategory = function(multi="single",remove_button,placeholder="- 选择分类 -"){
+    $.fn.selectCategory = function(multi="single",dropdownParent='',placeholder="- 选择分类 -"){
 
         var el = this;
         var containerCssClass = '';
         var dropdownCssClass = '';
         if($(el).hasClass('form-control-sm'))
         {
-            containerCssClass = 'select2-selection-sm';
-            dropdownCssClass = 'select2-dropdown-sm';
+            containerCssClass = 'select2--small';
+            dropdownCssClass = 'select2--small';
         }
         if($(el).hasClass('form-control-lg'))
         {
-            containerCssClass = 'select2-selection-lg';
-            dropdownCssClass = 'select2-dropdown-lg';
+            containerCssClass = 'select2--large';
+            dropdownCssClass = 'select2--large';
+        }
+
+        if(!dropdownParent)
+        {
+            dropdownParent = $(el).parent();
         }
 
         if(multi=='single')
         {
             $(el).select2({
-                theme: 'bootstrap4',
+                theme: 'bootstrap-5',
                 templateResult: formatCategoryChild,
                 placeholder: placeholder,
-                containerCssClass: containerCssClass,//select2-selection-lg
+                selectionCssClass: containerCssClass,//select2-selection-lg
                 dropdownCssClass: dropdownCssClass,//select2-selection-lg
+                dropdownParent: dropdownParent
             });
         }
 
         if(multi=='multiple')
         {
             $(el).select2({
-                theme: 'bootstrap4',
+                theme: 'bootstrap-5',
                 templateResult: formatCategoryChild,
                 placeholder: placeholder,
-                containerCssClass: containerCssClass,//select2-selection-lg
+                selectionCssClass: containerCssClass,//select2-selection-lg
                 dropdownCssClass: dropdownCssClass,//select2-selection-lg
+                dropdownParent: dropdownParent
             });
         }
         
@@ -1236,30 +1243,39 @@ jQuery(document).ready(function(){
             method: 'GET',
             tags: true,
             placeholder: '选择标签',
+            dropdownParent: ''
         };
         
         var tag_settings = $.extend({}, default_options,options);
         
         var containerCssClass = '';
         var dropdownCssClass = '';
+        var dropdownParent = tag_settings.dropdownParent;
         if($(el).hasClass('form-control-sm'))
         {
-            containerCssClass = 'select2-selection-sm';
-            dropdownCssClass = 'select2-dropdown-sm';
+            containerCssClass = 'select2--small';
+            dropdownCssClass = 'select2--small';
         }
         if($(el).hasClass('form-control-lg'))
         {
-            containerCssClass = 'select2-selection-lg';
-            dropdownCssClass = 'select2-dropdown-lg';
+            containerCssClass = 'select2--large';
+            dropdownCssClass = 'select2--large';
+        }
+
+        if(!dropdownParent)
+        {
+            dropdownParent = $(el).parent();
         }
 
         var select2_options = {
             maximumSelectionLength: tag_settings.maximumSelectionLength,
             tags: tag_settings.tags,
             placeholder: tag_settings.placeholder,
-            theme: 'bootstrap4',
+            theme: 'bootstrap-5',
             containerCssClass: containerCssClass,
+            selectionCssClass: containerCssClass,
             dropdownCssClass: dropdownCssClass,
+            dropdownParent: dropdownParent,
             language: "zh-CN",
             ajax: {
                 url: tag_settings.url,

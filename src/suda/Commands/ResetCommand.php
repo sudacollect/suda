@@ -22,7 +22,7 @@ use Gtd\Suda\SudaServiceProvider;
 class ResetCommand extends Command
 {
     use Seedable;
-    protected $seedersPath = __DIR__.'/../../../publish/database/seeds/';
+    protected $seedersPath = __DIR__.'/../../../publish/database/seeders/';
     /**
      * The console command name.
      *

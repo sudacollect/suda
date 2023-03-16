@@ -66,7 +66,7 @@
                                     <td><img src="{{ suda_asset('images/addition/icon_default.png') }}" class="icon">Distpicker</td>
                                     
                                     <td>
-                                            <div data-toggle="distpickerrr" class="form-inline">
+                                            <div data-toggle="distpickerrr">
                                                 <select name="province" data-province="选择省" class="form-control form-control-sm me-2" ></select>
                                                 <select name="city" data-city="选择市" class="form-control form-control-sm me-2" ></select>
                                                 <select name="district" data-district="选择区" class="form-control form-control-sm" ></select>
@@ -81,7 +81,7 @@
                                     <td><img src="{{ suda_asset('images/addition/icon_default.png') }}" class="icon">Datetimepicker</td>
                                     
                                     <td style="position:relative;">
-                                        <div class="form-inline">
+                                        <div class="">
                                             <input type="text" class="form-control form-control-sm" data-toggle="datetimepicker" placeholder="选择时间">
                                         </div>
                                         

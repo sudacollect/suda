@@ -26,7 +26,11 @@
 <div class="col-12 {{ $sidebar_class }}">
 
     <div class="sidebar-head">
-        <a class="navbar-brand @if($sidemenu_style=='icon' || config('sudaconf.sidemenu_style','')=='pro') only @endif" @if(isset($sdcore->settings->dashboard->dashboard_logo) && !empty($sdcore->settings->dashboard->dashboard_logo)) style="background:url({{ $sdcore->settings->dashboard->dashboard_logo }}) no-repeat center center;background-size:contain;" @endif href="{{ admin_url('/') }}">
+        <a class="sidebar-brand @if($sidemenu_style=='icon' || config('sudaconf.sidemenu_style','')=='pro') only @endif" 
+            @if(isset($sdcore->settings->dashboard->dashboard_logo) && !empty($sdcore->settings->dashboard->dashboard_logo))
+             style="background:url({{ $sdcore->settings->dashboard->dashboard_logo }}) no-repeat center center;background-size:contain;"
+            @endif
+             href="{{ admin_url('/') }}">
             {{ config('app.name', 'Suda') }}
         </a>
     </div>

@@ -100,7 +100,7 @@ code {
 
 /*=== select2 ===*/
 .select2-container{
-    z-index:1000;
+    z-index:1044;
 }
 .select2-container .select2-selection{
     /* height: calc(1.6em + 0.75rem + 2px); */
@@ -293,7 +293,7 @@ code {
 
 .navbar .navbar-take-toggle i.fa{color:#fff;font-size:2rem;}
 
-.navbar-side{margin-right:0;display:block;}
+.navbar-take-toggle{margin-right:0;display:block;}
 
 .navbar-nav .certificate i{
     margin-right:5px;
@@ -503,27 +503,63 @@ code {
     background-size: contain;
 }
 
+/* sidebar-style */
+
+.sidebar-brand{
+    width:80px;
+    text-indent:-9999px;
+    background: url('../images/logo/logo_white.png') no-repeat center center;
+    background-size: contain;
+}
+.sidebar-brand.brand-white{
+    background: url('../images/logo/logo_white.png') no-repeat center center;
+    background-size: contain;
+}
+.sidebar-brand.brand-white-only{
+    background: url('../images/logo/logo_white_only.png') no-repeat center center;
+    background-size: contain;
+}
+.sidebar-brand.brand-black{
+    background: url('../images/logo/logo_black.png') no-repeat center center;
+    background-size: contain;
+}
+.sidebar-brand.brand-black-only{
+    background: url('../images/logo/logo_black_only.png') no-repeat center center;
+    background-size: contain;
+}
+.sidebar-brand.brand-primary{
+    background: url('../images/logo/logo_blue.png') no-repeat center center;
+    background-size: contain;
+}
+.sidebar-brand.brand-primary-only{
+    background: url('../images/logo/logo_blue_only.png') no-repeat center center;
+    background-size: contain;
+}
+.sidebar-brand.only{
+    text-indent:-9999px;
+    background: url('../images/logo/logo_blue.png') no-repeat center center;
+    background-size: contain;
+}
 
 
-
-.press-sidebar-pro .navbar-brand.only{
+.press-sidebar-pro .sidebar-brand.only{
     text-indent:-9999px;
     background: url('../images/logo/logo_white_only.png') no-repeat center center;
     background-size: contain;
 }
-.press-sidebar-pro .sidebar-head .navbar-brand.only{
+.press-sidebar-pro .sidebar-head .sidebar-brand.only{
     text-indent:-9999px;
     background: url('../images/logo/logo_white_only.png') no-repeat center center;
     background-size: contain;
     padding:0;
 }
-.navbar-brand.pro-only{
+.sidebar-brand.pro-only{
     width:52px;
     text-indent:-9999px;
     background: #fff url('../images/logo/logo_blue.png') no-repeat center center;
     background-size: contain;
 }
-.navbar-brand.pro-with-sub-menus-only{
+.sidebar-brand.pro-with-sub-menus-only{
     width:192px;
     text-indent:-9999px;
     background: #fff url('../images/logo/logo_blue.png') no-repeat center center;
@@ -2587,14 +2623,7 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     {
         padding:0 1rem 0 192px;
     }
-    .navbar-pro .navbar-side{
-        display:none;
-    }
-
     
-    .navbar-take-toggle.navbar-side-sm{
-        display:none;
-    }
     
 
     .input-group-column[class*="col-"]{
@@ -2650,11 +2679,11 @@ h4.modal-title{font-size:1.1rem;color:#333;}
         /* justify-content: flex-start; */
         justify-content: center;
     }
-    .press-sidebar .sidebar-head .navbar-brand{
+    .press-sidebar .sidebar-head .sidebar-brand{
         margin-right:0;
         padding:0;
     }
-    .press-sidebar .sidebar-head .navbar-brand.only{
+    .press-sidebar .sidebar-head .sidebar-brand.only{
         text-indent: -9999px;
         background: url('../images/logo/logo_white.png') no-repeat center center;
         background-size: contain;
@@ -2764,7 +2793,7 @@ h4.modal-title{font-size:1.1rem;color:#333;}
         background:#273543;
         background-image:linear-gradient(45deg, #273543, #4e6075);
     }
-    .press-sidebar-pro .sidebar-head .navbar-brand.only{
+    .press-sidebar-pro .sidebar-head .sidebar-brand.only{
         text-indent:-9999px;
         background: url('../images/logo/logo_white_only.png') no-repeat center center;
         background-size: contain;
@@ -2896,18 +2925,7 @@ h4.modal-title{font-size:1.1rem;color:#333;}
 
 
     /*切换左侧菜单的按键*/
-    .navbar-take-toggle.navbar-side{
-        display:none;
-    }
-    .navbar-take-toggle.navbar-side-sm{
-        display:block;
-    }
-
     
-    .form-inline .radio input[type="radio"], .form-inline .checkbox input[type="checkbox"]{
-        position: relative;
-        margin-left: 0;
-    }
     
     .page-title{margin:0px;display:none;}
     .page-heading{display:none;}

@@ -160,7 +160,7 @@ class SudaServiceProvider extends ServiceProvider
                 "{$publishPath}/demo/" => storage_path('app/public/images/demo'),
             ],
             // 'seeds' => [
-            //     "{$publishPath}/database/seeds/" => database_path('seeds'),
+            //     "{$publishPath}/database/seeders/" => database_path('seeds'),
             // ],
 
         ];

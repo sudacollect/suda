@@ -277,8 +277,8 @@
             return obj;
         };
 
-        $('select.select-permission').select2({
-            theme: 'bootstrap4',
+        $('select.select-permission').select5({
+            theme: 'bootstrap5',
             placeholder: '选择权限',
         });
 

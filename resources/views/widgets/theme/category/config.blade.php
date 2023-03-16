@@ -6,7 +6,7 @@
 
     </div>
 
-    <div class="mb-3 form-inline">
+    <div class="mb-3">
 
         <input type="checkbox" name="parent" value="1" @if(isset($content) && isset($content['parent']) && $content['parent']==1) checked @endif> 只显示一级分类
 

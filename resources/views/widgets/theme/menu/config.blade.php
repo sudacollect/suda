@@ -5,7 +5,7 @@
         <input type="text" name="title" class="form-control input-sm" @if(isset($content) && isset($content['title'])) value="{{ $content['title'] }}" @endif>
 
     </div>
-    <div class="mb-3 form-inline">
+    <div class="mb-3">
 
         {{-- 选择菜单组 --}}
         <label class="control-label">选择菜单</label>

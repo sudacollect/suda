@@ -43,7 +43,7 @@
     
     <nav class="{{ $navbar_style }}">
         
-        <button type="button" class="navbar-take-toggle navbar-side navbar-side-sm collapsed" style="float:left">
+        <button type="button" class="navbar-take-toggle navbar-take-toggle-sm" style="float:left">
             <span class="sr-only">Menu</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -53,16 +53,6 @@
         <a class="navbar-brand" href="{{ admin_url('/') }}">
             {{ config('app.name', 'Suda') }}
         </a>
-        
-        <button type="button" class="navbar-take-toggle navbar-side collapsed" style="float:left">
-            <span class="sr-only">Menu</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        
-        
-
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

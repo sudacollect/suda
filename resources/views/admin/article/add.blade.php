@@ -52,7 +52,7 @@
                         <label for="slug">
                                 分类
                         </label>
-                        <select class="select-category form-control" name="category[]" multiple="multiple" placeholder="请选择分类">
+                        <select class="select-category form-select" name="category[]" multiple="multiple" placeholder="请选择分类">
                             @if($categories)
                             
                             @include('view_suda::taxonomy.category_options',['cates'=>$categories,'child'=>0])
