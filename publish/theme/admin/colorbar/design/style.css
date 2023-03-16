@@ -34,7 +34,7 @@
 }
 
 @media (max-width: 767px) {
-    .navbar-side{display:none;}
+    .navbar-take-toggle{display:none;}
     
     
     

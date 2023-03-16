@@ -115,7 +115,7 @@ mix.options({
 // mix.copyDirectory('resources/assets/vendors/ionicons', 'publish/assets/fonts/vendor/ionicons');
 
 // dashboard
-// mix.js('resources/assets/js/app.js', 'publish/assets/js/app.js');
+mix.js('resources/assets/js/app.js', 'publish/assets/js/app.js');
 mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'publish/assets/css');
 
 // front-site
@@ -173,14 +173,14 @@ mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'p
 
 
 // dashboard css
-// mix.copy('publish/assets/css/app.css', '../public/vendor/suda/assets/css/app.css');
+mix.copy('publish/assets/css/app.css', '../public/vendor/suda/assets/css/app.css');
 
 // site css
-// mix.copy('publish/assets/css/app_site.css', '../public/vendor/suda/assets/css/app_site.css');
+mix.copy('publish/assets/css/app_site.css', '../public/vendor/suda/assets/css/app_site.css');
 
 
 // core js
-// mix.js('resources/assets/js/app.js', '../public/vendor/suda/assets/js/app.js');
+mix.copy('publish/assets/js/app.js', '../public/vendor/suda/assets/js/app.js');
 
 // vendor js
 // mix.copy('publish/assets/js/app.vendor.js', '../public/vendor/suda/assets/js/app.vendor.js');

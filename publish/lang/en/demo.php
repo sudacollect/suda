@@ -2,7 +2,7 @@
 
 return [
 
-    'kv_title'=>'Start project with "suda',
+    'kv_title'=>'Suda new project',
     'kv_description'=>'Simple admin panel, multiple extensions builder.',
 
     'kv_btn'=>'Find More',

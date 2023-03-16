@@ -15,7 +15,8 @@
 // @import "@fortawesome/fontawesome-free/css/all";
 
 @import "~select2/dist/css/select2";
-@import "@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4";//b5 support
+// @import "~select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme";//b5 support
+@import "~select2-bootstrap-5-theme/src/include-all";
 
 @import "../vendors/jqueryfileupload/css/jquery.fileupload.css";
 
