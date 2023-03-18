@@ -166,21 +166,6 @@ mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'p
 | 
 | only for local dev/test
 | auto build file to public/vendor folder
-|
+| local symlink
 */
 
-// mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', '../public/vendor/suda/assets/css/');
-
-
-// dashboard css
-mix.copy('publish/assets/css/app.css', '../public/vendor/suda/assets/css/app.css');
-
-// site css
-mix.copy('publish/assets/css/app_site.css', '../public/vendor/suda/assets/css/app_site.css');
-
-
-// core js
-mix.copy('publish/assets/js/app.js', '../public/vendor/suda/assets/js/app.js');
-
-// vendor js
-// mix.copy('publish/assets/js/app.vendor.js', '../public/vendor/suda/assets/js/app.vendor.js');
