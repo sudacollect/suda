@@ -69,7 +69,7 @@
     $(document).ready(function(){
         
         
-        $('select.select-category').selectCategory('single');
+        $('select.select-category').selectCategory('single',$('body'));
         $('select.select-category-search').selectCategory('single');
 
         $('[data-toggle="datetimepicker"]').datetimepicker({

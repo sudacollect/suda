@@ -54,16 +54,28 @@ trait Extension
         
     }
     
-    //获取应用Slug
-    public function getExtensionSlug(){
+    public function getExtensionPath(){
         $reflector = new ReflectionClass(get_class($this));
         $whole_dir = dirname($reflector->getFileName());
+
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
         
-        $path_dir = substr(strstr($whole_dir,'app/Extensions'),15);
+        $path_dir = substr(strstr($whole_dir,'app/'.$ucf_extension_dir),strlen('app/'.$ucf_extension_dir)+1);
         $path_dirs = explode('/',$path_dir);
+
         if(count($path_dirs)<1 || empty($path_dirs[0])){
-            $this->redirect(403,'应用配置目录异常');
+            return false;
         }
         return strtolower($path_dirs[0]);
+    }
+    
+    //获取应用Slug
+    public function getExtensionSlug(){
+        $path = $this->getExtensionPath();
+        if(!$path){
+            $this->redirect(403,'应用配置目录异常');
+        }
+        return $path;
     }
 }
