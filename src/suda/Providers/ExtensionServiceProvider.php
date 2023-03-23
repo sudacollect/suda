@@ -37,6 +37,13 @@ class ExtensionServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
+
+        //2023 blade components
+        Blade::componentNamespace('App\\'.$ucf_extension_dir, 'sudaext');
+        
         //可以这么绑定,这需要use App;
         App::bind("suda_extension",function(){
             return new ExtensionService();

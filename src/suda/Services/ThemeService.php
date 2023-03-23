@@ -363,6 +363,11 @@ class ThemeService {
             //扩展应用的自定义导航
             $extension_navi = (new ExtensionService)->getExtensionNavi(isset($data['soperate'])?$data['soperate']:false);
             
+            if(!isset($data['custom_navi']) || empty($data['custom_navi']))
+            {
+                $data['custom_navi'] = [];
+            }
+
             foreach($extension_navi as $navi)
             {
                 foreach($navi as $item)
