@@ -4,21 +4,21 @@
   "description": "suda system",
   "keywords": ["laravel", "suda", "gtd"],
   "homepage": "https://github.com/sudacollect/suda.git",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "require": {
-    "php": "^8.0.2",
+    "php": "^8.1",
     "maennchen/zipstream-php": ">=2.2.1",
     "intervention/image": "^2.5",
     "intervention/imagecache": "^2.4",
     "guzzlehttp/guzzle": "^7.2",
     "arrilot/laravel-widgets": "^3.13",
     "willvincent/feeds": "^2.3",
-    "cviebrock/eloquent-sluggable" : "^9.0",
+    "cviebrock/eloquent-sluggable" : "^10.0",
     "simplesoftwareio/simple-qrcode": "^4.2",
     "mews/purifier": "^3.3",
-    "laravel/ui": "^3.0",
-    "league/flysystem": "^3.0",
-    "illuminate/support": "^9.0"
+    "laravel/ui": "^4.0",
+    "league/flysystem": "^3.12",
+    "illuminate/support": "^10.0"
   },
   "suggest": {
     "league/flysystem-cached-adapter": "Required to use the Flysystem cache (~1.1)."
