@@ -19,7 +19,7 @@
             <div class="card card-with-tab">
                 <div class="card-body">
                     
-                    <form class="form-ajax"  method="POST" action="{{ admin_url('setting/dashboard_info') }}" role="form">
+                    <form class="form-ajax"  method="POST" action="{{ admin_url('setting/dashboardinfo') }}" role="form">
                       @csrf
                       
                       

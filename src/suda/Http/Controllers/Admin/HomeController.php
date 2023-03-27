@@ -573,7 +573,7 @@ class HomeController extends DashboardController
         
         Setting::updateSettings();
         //更新成功
-        $url = 'setting/dashboard_info';
+        $url = 'setting/dashboardinfo';
         return $this->responseAjax('success','保存成功',$url);
         
     }
