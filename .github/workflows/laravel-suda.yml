@@ -86,6 +86,7 @@ jobs:
           REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
 
       - name: Finish Test
+        working-directory: ./blog
         run: php artisan suda:info
         env:
           DB_PORT: ${{ job.services.mysql.ports['3306'] }}
