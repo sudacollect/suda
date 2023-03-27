@@ -19,8 +19,6 @@ jobs:
       run: composer create-project laravel/laravel blog
     - name: cd blog
       run: cd /home/runner/work/suda/suda/blog
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Generate key
       run: php artisan key:generate
     - name: Copy .env
