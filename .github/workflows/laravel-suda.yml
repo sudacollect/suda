@@ -18,7 +18,7 @@ jobs:
     - name: install laravel
       run: composer create-project laravel/laravel blog
     - name: cd blog
-      run: cd blog
+      run: cd /home/runner/work/suda/suda/blog
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Generate key
@@ -37,7 +37,7 @@ jobs:
         cd suda
     - uses: actions/checkout@v3
     - name: go dir
-      run: cd ../
+      run: cd /home/runner/work/suda/suda/blog
     - name: Install Dependencies
       run: composer update
     - name: Install Suda
