@@ -17,7 +17,23 @@ jobs:
         php-version: '8.1'
     - name: install laravel
       run: composer create-project laravel/laravel blog
-    - name: cd blog
-      run: cd /home/runner/work/suda/suda/blog
     - name: Generate key
-      run: ls -la
+      working-directory: ./blog
+      run: php artisan key:generate
+    - name: Copy .env
+      working-directory: ./blog
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Directory Permissions
+      working-directory: ./blog
+      run: chmod -R 777 storage bootstrap/cache
+    - name: Create Database
+      working-directory: ./blog
+      run: |
+        mkdir -p database
+        touch database/database.sqlite
+    - name: mkdir
+      working-directory: ./blog
+      run: |
+        mkdir suda
+        ls -la
+    
