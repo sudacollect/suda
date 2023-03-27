@@ -47,7 +47,7 @@
     <!-- Scripts -->
     <script src="{{ suda_asset('js/app.js') }}"></script>
     <script>
-        jQuery(document).ready(function($){
+        jQuery(function($){
             $('.ajaxPassword').on('click',function(e){
                 e.preventDefault();
                 var aurl = $(this).attr('href');

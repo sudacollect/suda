@@ -31,7 +31,7 @@
         
     <!-- Scripts -->
     @stack('scripts-head')
-        
+    
 </head>
 <body class="suda-body">
     @if (Auth::guard('operate')->check())

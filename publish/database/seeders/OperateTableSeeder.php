@@ -13,8 +13,8 @@ class OperateTableSeeder extends Seeder
         $setting = $this->findUsername('admin');
         if (!$setting->exists) {
             $setting->fill([
-                'phone'          => '13088888888',
-                'email'        => 'admin@gtd.xyz',
+                'phone'          => '13012345678',
+                'email'        => 'admin@suda.run',
                 'password'         => '$2y$10$Sp4f60kQVzrJhetHhhvGiefVfVTzcUJPfmwjz1T4VD4m80lgDbzFK',
                 'is_company'        => '0',
                 'remember_token'        => 'nQPalCx6O9JOWhTFVhN7FcmokpofKOSNAVUsTax6u4B3994wGASA6FlhfcQa',

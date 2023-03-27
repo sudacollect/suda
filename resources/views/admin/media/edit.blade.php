@@ -72,7 +72,7 @@
 
 <script>
     
-    jQuery(document).ready(function(){
+    jQuery(function(){
         $('.handle-ajaxform').ajaxform();
 
         $('select.select-keyword').selectTag({taxonomy:'media_tag'});

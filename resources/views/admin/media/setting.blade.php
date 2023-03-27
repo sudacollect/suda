@@ -112,7 +112,7 @@
 
 <script>
     
-    jQuery(document).ready(function(){
+    jQuery(function(){
         
         $('.handle-ajaxform').ajaxform();
 

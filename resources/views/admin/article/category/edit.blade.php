@@ -109,7 +109,7 @@
 
 <script>
     
-    jQuery(document).ready(function(){
+    jQuery(function(){
         $('.handle-ajaxform').ajaxform();
         $('select[selectcate="true"]').selectCategory();
     });

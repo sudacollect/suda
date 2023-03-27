@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){
+jQuery(function(){
     
     var upload_url = suda.link(suda.data('adminPath')+'/medias/upload/image');
     var remove_url = suda.link(suda.data('adminPath')+'/medias/remove/image');

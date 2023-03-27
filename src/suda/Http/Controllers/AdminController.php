@@ -246,7 +246,7 @@ class AdminController extends BaseController
         }
         
         $this->getSettings();
-        $this->getComponent();
+        // $this->getComponent();
         $this->getNavi();
         
         //#TODO 实现自动化的breadcrumbs

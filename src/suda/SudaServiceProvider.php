@@ -31,6 +31,10 @@ use Gtd\Suda\Providers\SendCloudServiceProvider;
 
 use Gtd\Suda\Sudacore;
 
+use Livewire;
+use Gtd\Suda\Components\CategoryComponent;
+use Gtd\Suda\Components\SettingComponent;
+
 class SudaServiceProvider extends ServiceProvider
 {
 
@@ -52,26 +56,19 @@ class SudaServiceProvider extends ServiceProvider
         $router->pushMiddlewareToGroup('web', CertificateMiddleware::class);
         $router->pushMiddlewareToGroup('web', RedirectMobileMiddleware::class);
         
-        
-        
         $router->aliasMiddleware('auth.superadmin', AuthSuperadminMiddleware::class);
 
         //2020-1-12修改
         $this->loadTranslationsFrom(realpath(__DIR__.'/../../publish/lang'), 'suda_lang');
 
         $this->loadMigrationsFrom(realpath(__DIR__.'/../../migrations'));
-
-        
-
         $this->loadMigrationsFrom(base_path('database/migrations/'.$extension_dir));
-        
-        
-        
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'view_suda');
-
-        
-
         $this->loadViewsFrom(app_path($ucf_extension_dir), 'view_extension');
+
+        // 自定义 livewire components
+        Livewire::component('category-component', CategoryComponent::class);
+        Livewire::component('setting-component', SettingComponent::class);
         
     }
 
@@ -93,7 +90,7 @@ class SudaServiceProvider extends ServiceProvider
         $this->app->register(ThemeServiceProvider::class);
         $this->app->register(ExtensionServiceProvider::class);
         $this->app->register(MetaServiceProvider::class);
-        $this->app->register(PowerServiceProvider::class);
+        // $this->app->register(PowerServiceProvider::class);
         $this->app->register(UploadImageServiceProvider::class);
         
         $this->app->register(SudaEventServiceProvider::class);
@@ -104,10 +101,6 @@ class SudaServiceProvider extends ServiceProvider
         $app->bind('sudacore', function ($app) {
             return new Sudacore($app);
         });
-        
-        
-        
-        
         
         //注册配置文件
         

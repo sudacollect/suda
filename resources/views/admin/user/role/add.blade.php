@@ -136,7 +136,7 @@
 
     <script>
     
-        jQuery(document).ready(function(){
+        jQuery(function(){
             
             $('.role-permissions').find('.extend-name').on('click',function(){
                 

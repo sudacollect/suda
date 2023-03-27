@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){
+jQuery(function(){
     
     // Firefox和Chrome早期版本中带有前缀
     var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
@@ -520,7 +520,7 @@ jQuery(document).ready(function(){
         
         //upload-box
         var modal_upload_complete = function (e, file, response) {
-            response = $.parseJSON(response);
+            response = JSON.parse(response);
         	if (response.error) {
         		suda.modal(response.error);
                 //suda.infobox(response.error);

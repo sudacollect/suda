@@ -110,12 +110,12 @@ class InstallCommand extends Command
             );
         }
         
-        // Sudacore::routes();
-        
-        
-        
-        //注册配置文件
+        // 注册配置文件
         $this->call('vendor:publish', ['--provider' => SudaServiceProvider::class, '--tag' => 'config']);
+
+        // 注册livewire
+        $this->call('livewire:publish', ['--assets'=>true]);
+        $this->call('livewire:publish', ['--config'=>true]);
         
         $this->info('Add storage symlink to your public folder');
         $this->call('storage:link');

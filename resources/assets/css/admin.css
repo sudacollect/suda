@@ -1555,6 +1555,7 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     height:100%;
     border:none;
     padding-top:30px;
+    text-align:center;
 }
 .modal-layout #media-upload .fs-upload.fs-light .fs-upload-target p{
     line-height:1.5rem;

@@ -2,12 +2,15 @@
 
 namespace Gtd\Suda\Traits;
 
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Facades\DB;
+
 use Gtd\Suda\Models\Taxable;
 use Gtd\Suda\Models\Taxonomy;
 use Gtd\Suda\Models\Term;
 use Gtd\Suda\TaxableUtils;
 
-use Illuminate\Support\Facades\DB;
+
 
 trait HasTaxonomies
 {

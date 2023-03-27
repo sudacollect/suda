@@ -163,7 +163,7 @@
 
 <script>
     
-    jQuery(document).ready(function(){
+    jQuery(function(){
 
         //init
         if($('input[name="select_permission[{{ $ext["slug"] }}]"]').length>0){

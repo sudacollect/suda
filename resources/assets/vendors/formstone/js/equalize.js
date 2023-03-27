@@ -48,7 +48,7 @@
       data.type = (data.property === "height") ? "outerHeight" : "outerWidth";
 
       if (data.target) {
-        if (!$.isArray(data.target)) {
+        if (!Array.isArray(data.target)) {
           data.target = [data.target];
         }
       } else {

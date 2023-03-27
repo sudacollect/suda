@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){
+jQuery(function(){
     'use strict';
     // Change this to the location of your server-side upload handler:
     var url = suda.link('/'+suda.data('adminPath')+'/profile/upload/avatar');

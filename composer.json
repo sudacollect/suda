@@ -18,10 +18,11 @@
     "mews/purifier": "^3.3",
     "laravel/ui": "^4.0",
     "league/flysystem": "^3.12",
-    "illuminate/support": "^10.0"
+    "illuminate/support": "^10.0",
+    "livewire/livewire": "^2.12"
   },
   "suggest": {
-    "league/flysystem-cached-adapter": "Required to use the Flysystem cache (~1.1)."
+    "league/flysystem-cached-adapter": "Required to use the Flysystem cache."
   },
   "autoload": {
     "files": [

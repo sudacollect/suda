@@ -25,7 +25,7 @@ window.moment = require('moment');
 
 require('jquery-ui');
 
-require('../vendors/distpicker');
+require('../vendors/distpicker/dist/distpicker.common');
 require('../vendors/pc-bootstrap4-datetimepicker/src/js/bootstrap-datetimepicker');
 
 require('select2/dist/js/select2.full');

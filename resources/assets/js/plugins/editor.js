@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){
+jQuery(function(){
     
     var sendEditorFile = function(file,editor){
         
@@ -52,7 +52,7 @@ jQuery(document).ready(function(){
         return output;
     }
     
-    $.fn.zeditor = function(elem,load_url,modal_url,upload_url){
+    $.fn.sudaEditor = function(elem,load_url,modal_url,upload_url){
         if($(elem)){
 
             $(elem).summernote({

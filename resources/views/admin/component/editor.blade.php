@@ -28,7 +28,7 @@
     $(document).ready(function(){
         suda.editor_height = {{ $height }};
         
-        $.fn.zeditor("{{ isset($editor)?'#'.$editor:'#summernote' }}","{{ isset($load_url)?$load_url:admin_url('component/loadlayout/image/editor') }}","{{ isset($modal_url)?$modal_url:admin_url('medias/modal/') }}","{{ isset($upload_url)?$upload_url:admin_url('medias/upload/image/') }}");
+        $.fn.sudaEditor("{{ isset($editor)?'#'.$editor:'#summernote' }}","{{ isset($load_url)?$load_url:admin_url('component/loadlayout/image/editor') }}","{{ isset($modal_url)?$modal_url:admin_url('medias/modal/') }}","{{ isset($upload_url)?$upload_url:admin_url('medias/upload/image/') }}");
     })
 </script>
 

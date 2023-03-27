@@ -54,7 +54,7 @@
 @push('scripts')
 <script>
     
-    jQuery(document).ready(function(){
+    jQuery(function(){
         
         if($('.menu-items').length>0)
         {

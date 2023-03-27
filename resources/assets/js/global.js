@@ -1,4 +1,4 @@
-$(document).ready(function($) {
+jQuery(function($) {
     
     window.suda = window.suda || {};
     
@@ -56,7 +56,7 @@ $(document).ready(function($) {
     
     suda.infobox = function(info){
         var errors = '';
-        if($.isArray(info)){
+        if(Array.isArray(info)){
             $.each(info,function(index,e){
                 errors += index+":"+e+'<br>';
             });
@@ -69,7 +69,7 @@ $(document).ready(function($) {
     suda.alert = function(info,infoType){
         
         var errors = '';
-        if ($.isArray(info)) {
+        if (Array.isArray(info)) {
             $.each(info, function (index, e) {
                 errors += index + ":" + e + '<br>';
             });
@@ -108,7 +108,7 @@ $(document).ready(function($) {
                if(data){
                    $('body').append($(data));
                    var errors = '';
-                   if ($.isArray(info)){
+                   if (Array.isArray(info)){
                        $.each(info,function(index,e){
                            errors += index+":"+e+'<br>';
                        });

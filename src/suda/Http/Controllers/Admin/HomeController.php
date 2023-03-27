@@ -161,22 +161,22 @@ class HomeController extends DashboardController
             return redirect('home');
         }
         
-        $roles = [
-            'site_name' => 'required|min:2|max:64',
-            'company_name' => 'required|min:2|max:64',
-            'company_addr' => 'required|min:2|max:64',
+        $rules = [
+            'site_name'     => 'required|min:2|max:64',
+            'company_name'  => 'required|min:2|max:64',
+            'company_addr'  => 'required|min:2|max:64',
             'company_phone' => 'required|min:2|max:64',
             // 'icp_number' => 'required|min:2|max:64',
         ];
         $messages = [
-            'site_name.required'=>'请输入站点名称',
-            'company_name.required'=>'请输入公司名称',
-            'company_addr.required'=>'请输入格式地址',
-            'company_phone.required'=>'请输入公司电话',
-            // 'icp_number.required'=>'请输入ICP备案号'
+            'site_name.required'        => '请输入站点名称',
+            'company_name.required'     => '请输入公司名称',
+            'company_addr.required'     => '请输入格式地址',
+            'company_phone.required'    => '请输入公司电话',
+            // 'icp_number.required'    => '请输入ICP备案号'
         ];
         $response_msg = '';
-        $ajax_result = $this->ajaxValidator($request->all(),$roles,$messages,$response_msg);
+        $ajax_result = $this->ajaxValidator($request->all(),$rules,$messages,$response_msg);
         
         
         if(!$response_msg){
