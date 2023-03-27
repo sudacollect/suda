@@ -2,12 +2,13 @@
 Laravel Suda - build mutiple extensions, private SaaS.
 
 
-[Official Website](https://suda.gtd.xyz)  [中文文档](https://docs.gtd.xyz)
+- [Official Website](https://suda.gtd.xyz)
+- [Documents](https://docs.gtd.xyz)
+- [中文文档](https://docs.gtd.xyz)
 
 [![Latest Stable Version](http://poser.pugx.org/gtdxyz/suda/v)](https://packagist.org/packages/gtdxyz/suda) 
 [![Total Downloads](http://poser.pugx.org/gtdxyz/suda/downloads)](https://packagist.org/packages/gtdxyz/suda) 
 [![Latest Unstable Version](http://poser.pugx.org/gtdxyz/suda/v/unstable)](https://packagist.org/packages/gtdxyz/suda) 
-[![License](http://poser.pugx.org/gtdxyz/suda/license)](https://packagist.org/packages/gtdxyz/suda) 
 [![PHP Version Require](http://poser.pugx.org/gtdxyz/suda/require/php)](https://packagist.org/packages/gtdxyz/suda)
 [![composer.lock](http://poser.pugx.org/gtdxyz/suda/composerlock)](https://packagist.org/packages/gtdxyz/suda)
 
@@ -39,6 +40,47 @@ composer require gtdxyz/suda
 php artisan suda:install
 # auto install include migrations,assets,themes
 ```
+
+```
+# edit config/app.php
+# Chinse
+'locale' => 'zh_CN',
+'timezone' => 'Asia/Shanghai',
+
+# edit config/auth.php
+
+'guards' => [
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
+    ],
+	 // add operate
+    'operate' => [
+        'driver' => 'session',
+        'provider' => 'authsuda',
+    ],
+],
+
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+    ],
+	 
+	 // add provider
+    'authsuda' => [
+        'driver' => 'authsuda_provider',
+        'model' => Gtd\Suda\Models\Operate::class,
+    ],
+
+    // 'users' => [
+    //     'driver' => 'database',
+    //     'table' => 'users',
+    // ],
+],
+
+```
+
 
 ## Suda 10.x
 
