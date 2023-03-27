@@ -34,11 +34,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-versions: ['7.4', '8.0', '8.1']
+        php-versions: ['8.1']
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
       # Docs: https://github.com/shivammathur/setup-php
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -65,17 +62,20 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - name: Install Composer dependencies
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
+      - name: Install laravel
+        run: composer create-project laravel/laravel blog
 
       - name: Prepare the application
+        working-directory: ./blog
         run: |
           php -r "file_exists('.env') || copy('.env.example', '.env');"
           php artisan key:generate
       - name: Clear Config
+        working-directory: ./blog
         run: php artisan config:clear
 
       - name: Run Migration
+        working-directory: ./blog
         run: php artisan migrate -v
         env:
           DB_PORT: ${{ job.services.mysql.ports['3306'] }}
