@@ -74,15 +74,19 @@ jobs:
         working-directory: ./blog
         run: php artisan config:clear
 
-      - name: Run Migration
+      - name: Composer require suda
         working-directory: ./blog
-        run: php artisan migrate -v
+        run: composer require gtdxyz/suda dev-main
+        
+      - name: suda install
+        working-directory: ./blog
+        run: php artisan suda:install
         env:
           DB_PORT: ${{ job.services.mysql.ports['3306'] }}
           REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
 
-      - name: Test with phpunit
-        run: vendor/bin/phpunit --coverage-text
+      - name: Finish Test
+        run: php artisan suda:info
         env:
           DB_PORT: ${{ job.services.mysql.ports['3306'] }}
           REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
