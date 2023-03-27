@@ -15,9 +15,9 @@ use Arrilot\Widgets\AsyncFacade as AsyncWidget;
 class Sudacore
 {
     protected static $name = 'Suda';
-    protected static $version = '8.0';//2022-01-07
+    protected static $version = '10.x';
     protected static $author = 'SUDA';
-    protected static $email = 'hello@gtd.xyz';
+    protected static $email = 'dev@suda.run';
     private static $instance;
     private static $extend_admin_routes = [];
     private static $extend_web_routes = [];
@@ -37,12 +37,6 @@ class Sudacore
     {
         require suda_path('routes/suda_route.php');
     }
-    
-    public static function erLog($data){
-        error_log(var_export($data,true),3,__FILE__.'location.log');
-    }
-    
-    
     
     public static function getExtendAdminRoutes(){
         
