@@ -34,6 +34,14 @@ jobs:
     - name: mkdir
       working-directory: ./blog
       run: |
-        mkdir suda
-        ls -la
+        composer require gtdxyz/suda dev-main
+    - name: suda install
+      working-directory: ./blog
+      run: |
+        php artisan suda:install
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
+      run: vendor/bin/phpunit
     
