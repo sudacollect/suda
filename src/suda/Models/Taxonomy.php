@@ -2,6 +2,8 @@
 namespace Gtd\Suda\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Taxonomy extends Model
@@ -50,7 +52,8 @@ class Taxonomy extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function term() {
+    public function term(): BelongsTo
+    {
         return $this->belongsTo(Term::class)->withTrashed();
     }
     
@@ -59,7 +62,7 @@ class Taxonomy extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function parent()
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(Taxonomy::class, 'parent');
     }
@@ -70,7 +73,7 @@ class Taxonomy extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function children()
+    public function children(): HasMany
     {
         return $this->hasMany(Taxonomy::class, 'parent')->orderBy('sort');
     }
@@ -80,7 +83,7 @@ class Taxonomy extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function parents()
+    public function parents(): BelongsTo
     {
         return $this->belongsTo(Taxonomy::class, 'parent')->with(['parents' => function ($q) {
                 $q->with('term')->orderBy('sort');
@@ -93,7 +96,7 @@ class Taxonomy extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function childrens()
+    public function childrens(): HasMany
     {
         return $this->hasMany(Taxonomy::class, 'parent')->with(['childrens' => function ($q) {
                 $q->with('term');
@@ -119,26 +122,6 @@ class Taxonomy extends Model
             
             return $taxonomies;
         
-    }
-
-    /**
-     * An example for a related posts model.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
-     */
-    public function posts()
-    {
-        return $this->morphedByMany('App\Models\Posts\Post', 'taxable', 'taxables');
-    }
-    
-    public function pages()
-    {
-        return $this->morphedByMany('Gtd\Suda\Models\Page', 'taxable', 'taxables');
-    }
-    
-    public function articles()
-    {
-        return $this->morphedByMany('Gtd\Suda\Models\Article', 'taxable', 'taxables');
     }
 
     /**
