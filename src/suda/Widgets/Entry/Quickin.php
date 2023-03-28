@@ -1,6 +1,6 @@
 <?php
 
-namespace Gtd\Suda\Widgets;
+namespace Gtd\Suda\Widgets\Entry;
 
 use Arrilot\Widgets\AbstractWidget;
 use View;
@@ -9,7 +9,7 @@ use \willvincent\Feeds\Facades\FeedsFacade as Feeds;
 
 use Gtd\Suda\Models\Setting;
 
-class DashboardQuickin extends Widget
+class Quickin extends Widget
 {
     /**
      * The configuration array.
@@ -36,7 +36,7 @@ class DashboardQuickin extends Widget
         
         $exts = $this->getExts();
         
-        return view('view_suda::widgets.dashboard_quickin', ['exts'=>$exts]);
+        return view('view_suda::widgets.entry.quickin', ['exts'=>$exts]);
 
         return '';
         

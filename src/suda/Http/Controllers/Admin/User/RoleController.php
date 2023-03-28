@@ -463,11 +463,16 @@ class RoleController extends DashboardController
         }
         
         //过滤提交的权限设置
+        $select_exts = [];
+        if($request->select_exts)
+        {
+            $select_exts = $request->select_exts;
+        }
         $select_permission = [];
         $auth_permission = [];
-        if(count($request->select_exts)>0){
+        if(count($select_exts)>0){
             foreach((array)$request->select_permission as $ext_slug=>$permission){
-                if(array_key_exists($ext_slug,$request->select_exts)){
+                if(array_key_exists($ext_slug,$select_exts)){
                     parse_str($permission,$output);
                     
                     foreach($output['permission'] as $pk=>&$pv)

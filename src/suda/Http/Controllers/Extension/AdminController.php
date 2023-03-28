@@ -1,13 +1,6 @@
 <?php
-/**
- * AdminController.php
- * description
- * date 2017-11-06 10:23:31
- * author suda <hello@suda.gtd.xyz>
- * @copyright GTD. All Rights Reserved.
- */
 
-namespace Gtd\Suda\Http\Controllers;
+namespace Gtd\Suda\Http\Controllers\Extension;
 
 use App;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -45,12 +38,12 @@ class AdminController extends BaseController
     protected $breadcrumbs=[];
     
     public function __construct() {
-        $this->admin_path = config('sudaconf.admin_path','admin');
+        $this->admin_path = config('sudaconf.extension_admin_path','sudaapp');
         $this->getSettings();
         
         $this->middleware(function (Request $request, $next) {
             
-            $admin_path = config('sudaconf.admin_path','admin');
+            $admin_path = config('sudaconf.extension_admin_path','sudaapp');
             
             if($request->route()->getPrefix() == 'zh_CN/'.$admin_path || $request->route()->getPrefix() == $admin_path){
                 app('config')->set('app.name', '速搭');
@@ -68,15 +61,15 @@ class AdminController extends BaseController
             //$this->middleware('guest:operate', ['except' => $admin_path.'/logout']);
 
             $except_redirects = [
-                config_admin_path().'/passport/login',
-                config_admin_path().'/passport/register',
-                config_admin_path().'/passport/password/reset',
-                'zh/'.config_admin_path().'/passport/login',
-                'en/'.config_admin_path().'/passport/login',
-                'zh/'.config_admin_path().'/passport/register',
-                'en/'.config_admin_path().'/passport/register',
-                'zh/'.config_admin_path().'/passport/password/reset',
-                'en/'.config_admin_path().'/passport/password/reset',
+                $admin_path.'/passport/login',
+                $admin_path.'/passport/register',
+                $admin_path.'/passport/password/reset',
+                'zh/'.$admin_path.'/passport/login',
+                'en/'.$admin_path.'/passport/login',
+                'zh/'.$admin_path.'/passport/register',
+                'en/'.$admin_path.'/passport/register',
+                'zh/'.$admin_path.'/passport/password/reset',
+                'en/'.$admin_path.'/passport/password/reset',
             ];
 
             //判断当前链接是不是应该被except
@@ -86,7 +79,7 @@ class AdminController extends BaseController
                 
                 $this->user = auth('operate')->user();
                 
-                if($this->user->superadmin==0 && $this->user->user_role < 1)
+                if($this->user->user_role != 2)
                 {
                     Auth::guard('operate')->logout();
                     $request->session()->invalidate();
@@ -104,7 +97,7 @@ class AdminController extends BaseController
             }else{
 
                 if(!$is_login_url){
-                    return redirect(admin_url('passport/login'));
+                    return redirect(extadmin_url('passport/login'));
                 }else{
                     return $next($request);
                 }

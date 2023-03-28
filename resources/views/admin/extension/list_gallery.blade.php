@@ -15,7 +15,7 @@
                 <div class="col-sm-9">
 
                     <h5 class="card-title">
-                        <strong class="ext-title" data-slug="{{ $item['slug'] }}">{{ $item['name'] }}</strong><small class="badge bg-light text-dark ml-2">v{{ $item['version'] }}</small>
+                        <strong class="ext-title" data-slug="{{ $item['slug'] }}">{{ $item['name'] }}</strong><small class="text-dark ms-2">v{{ $item['version'] }}</small>
                     </h5>
 
                     <a href="{{ $item['website'] }}" target="_blank" title="关于{{ $item['author'] }}" class="help-block">

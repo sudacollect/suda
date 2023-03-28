@@ -22,14 +22,13 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
-        OperateModel::class => OperatePolicy::class,
-        \Gtd\Suda\Models\Setting::class => SettingPolicy::class,
-        \Gtd\Suda\Models\Role::class => SettingPolicy::class,
+        OperateModel::class                 => OperatePolicy::class,
+        \Gtd\Suda\Models\Setting::class     => SettingPolicy::class,
+        \Gtd\Suda\Models\Role::class        => SettingPolicy::class,
         \Gtd\Suda\Models\Organization::class => SettingPolicy::class,
-        \Gtd\Suda\Models\Menu::class => SettingPolicy::class,
-        \Gtd\Suda\Models\Article::class => SettingPolicy::class,
-        \Gtd\Suda\Models\Page::class => SettingPolicy::class,
+        \Gtd\Suda\Models\Menu::class        => SettingPolicy::class,
+        \Gtd\Suda\Models\Article::class     => SettingPolicy::class,
+        \Gtd\Suda\Models\Page::class        => SettingPolicy::class,
     ];
 
     /**

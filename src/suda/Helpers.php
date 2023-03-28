@@ -9,6 +9,7 @@
 
 use Illuminate\Support\Arr;
 use \Illuminate\Contracts\Routing\UrlGenerator;
+use Illuminate\Support\Facades\Auth;
 
 if (! function_exists('array_get')) {
     /**
@@ -567,6 +568,11 @@ if (!function_exists('admin_url')) {
         
         if(!is_url($path)){
             $admin_path = config('sudaconf.admin_path','admin');
+            if(Auth::guard('operate')->user() && Auth::guard('operate')->user()->user_role==2)
+            {
+                $admin_path = config('sudaconf.extension_admin_path','sudaapp');
+            }
+            
         
             $path = $admin_path.'/'.$path;
             // if(config('app.locale') != 'en'){
@@ -583,6 +589,26 @@ if (!function_exists('admin_ext_url')) {
     {
         $path = 'extension/'.$path;
         return admin_url($path,$parameters,$secure);
+    }
+}
+
+if (!function_exists('extadmin_url')) {
+    function extadmin_url($path = null, $parameters = [], $secure = null)
+    {
+        if (is_null($path)) {
+            $path = 'index';
+        }
+        
+        if(!is_url($path)){
+            $admin_path = config('sudaconf.extension_admin_path','sudaapp');
+        
+            $path = $admin_path.'/'.$path;
+            // if(config('app.locale') != 'en'){
+            //     $path = config('app.locale').'/'.$path;
+            // }
+        }
+        
+        return url($path, $parameters, $secure);
     }
 }
 
@@ -716,6 +742,10 @@ if (!function_exists('extension_asset')) {
 
 function extension_logo($extension_slug,$secure=null){
     return admin_url('manage/extension/'.$extension_slug.'/logo');
+}
+
+function ext_extension_logo($extension_slug,$secure=null){
+    return extadmin_url('entry/extension/'.$extension_slug.'/logo');
 }
 
 if (!function_exists('extension_menu')) {

@@ -118,7 +118,7 @@ $(document).ready(function() {
     
     if(document.getElementById('app_sort_list'))
     {
-        new Sortable(document.getElementById('app_sort_list'), {
+        new Sortable.Sortable(document.getElementById('app_sort_list'), {
             animation: 150,
             onEnd: function (/**Event*/ evt) {
                 var itemEl = evt.item; // dragged HTMLElement

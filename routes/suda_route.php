@@ -21,10 +21,12 @@ Route::group([
     $apiNamespace    = "\\".config('sudaconf.controllers.namespace.api','Api');
     
     $admin_path = config('sudaconf.admin_path','admin');
+    $extension_admin_path = config('sudaconf.extension_admin_path','sudaapp');
 
     
     include_once(suda_path('routes/admin_route.php'));
     include_once(suda_path('routes/ext_route.php'));
+    include_once(suda_path('routes/ext_entry_route.php'));
     include_once(suda_path('routes/web_route.php'));
     include_once(suda_path('routes/mob_route.php'));
     include_once(suda_path('routes/api_route.php'));

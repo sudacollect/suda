@@ -4,6 +4,7 @@ namespace Gtd\Suda\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 class MenuItem extends Model
 {
@@ -50,15 +51,21 @@ class MenuItem extends Model
             return route($route, $parameters, $absolute);
         }
 
+        $admin_url = admin_url($url);
+        if(Auth::guard('operate')->user() && Auth::guard('operate')->user()->user_role==2)
+        {
+            $admin_url = extadmin_url($url);
+        }
+
         if ($absolute) {
             if($app=='admin'){
-                return admin_url($url);
+                return $admin_url;
             }
             return url($url);
         }
 
         if($app=='admin'){
-            return admin_url($url);
+            return $admin_url;
         }
         return url($url);
     }

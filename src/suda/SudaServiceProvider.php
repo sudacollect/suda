@@ -16,6 +16,7 @@ use SimpleSoftwareIO\QrCode\QrCodeServiceProvider;
 use Gtd\Suda\Http\Middleware\RedirectMobileMiddleware;
 use Gtd\Suda\Http\Middleware\ViewRenderMiddleware;
 use Gtd\Suda\Http\Middleware\OperateAdminMiddleware;
+use Gtd\Suda\Http\Middleware\OperateExtensionMiddleware;
 use Gtd\Suda\Http\Middleware\CertificateMiddleware;
 use Gtd\Suda\Http\Middleware\AuthSuperadminMiddleware;
 
@@ -51,6 +52,7 @@ class SudaServiceProvider extends ServiceProvider
         
         $router->middlewareGroup('admin', [OperateAdminMiddleware::class,CertificateMiddleware::class]);
         $router->middlewareGroup('admin/extension', [OperateAdminMiddleware::class,CertificateMiddleware::class]);
+        $router->middlewareGroup('extadmin/extension', [OperateExtensionMiddleware::class,CertificateMiddleware::class]);
         
         $router->pushMiddlewareToGroup('web', ViewRenderMiddleware::class);
         $router->pushMiddlewareToGroup('web', CertificateMiddleware::class);

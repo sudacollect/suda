@@ -20,12 +20,13 @@ class SetupController extends SiteController{
     
     public function index(Request $request)
     {
+        return redirect()->to(url('/'));
         
         $err = '';
         if(Certificate::isLicensed($err) && !$request->session()->get('success'))
         {
             
-            return redirect()->to(url('/'));
+            // return redirect()->to(url('/'));
             
         }
         

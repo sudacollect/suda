@@ -19,8 +19,8 @@
                         isset($item['ext_entrance_menu']['url'])?$url=$item['slug'].'/'.$item['ext_entrance_menu']['url']:'';
                     }
                     @endphp
-                    <a href="{{ admin_ext_url($url) }}" title="{{ $item['name'] }}">
-                        <img src="{{ extension_logo($item['slug']) }}" class="icon icon-extension">
+                    <a href="{{ extadmin_url('extension/'.$url) }}" title="{{ $item['name'] }}">
+                        <img src="{{ ext_extension_logo($item['slug']) }}" class="icon icon-extension">
                         <span>{{ $item['name'] }}</span>
                     </a>
                 </li>

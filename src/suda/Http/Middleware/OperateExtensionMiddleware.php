@@ -6,7 +6,7 @@ use Closure;
 use Auth;
 use Session;
 
-class OperateAdminMiddleware
+class OperateExtensionMiddleware
 {
     public $user;
     
@@ -14,26 +14,26 @@ class OperateAdminMiddleware
         
         Auth::shouldUse('operate');
         
-        $admin_path = config('sudaconf.admin_path','admin');
+        $extadmin_path = config('sudaconf.extension_admin_path','sudaapp');
         
         if(Auth::guard('operate')->check()){
             
             $this->user = auth('operate')->user();
 
             // extension manager go out
-            if($this->user->user_role == 2)
+            if($this->user->user_role != 2)
             {
                 Auth::guard('operate')->logout();
                 $request->session()->invalidate();
-                return redirect(admin_url('passport/login'));
+                return redirect(extadmin_url('passport/login'));
             }
             
             Session::flash('user_id',$this->user->id);
 
             $login_uris = [
-                $admin_path.'/passport/login',
-                'zh_CN/'.$admin_path.'/passport/login',
-                'en/'.$admin_path.'/passport/login'
+                $extadmin_path.'/passport/login',
+                'zh_CN/'.$extadmin_path.'/passport/login',
+                'en/'.$extadmin_path.'/passport/login'
             ];
             
             if(!in_array($request->route()->uri(),$login_uris)){
@@ -44,14 +44,14 @@ class OperateAdminMiddleware
             return $next($request);
         }else{
             $login_uris = [
-                $admin_path.'/passport/login',
-                'zh_CN/'.$admin_path.'/passport/login',
-                'en/'.$admin_path.'/passport/login',
-                $admin_path.'/passport/password/reset',
+                $extadmin_path.'/passport/login',
+                'zh_CN/'.$extadmin_path.'/passport/login',
+                'en/'.$extadmin_path.'/passport/login',
+                $extadmin_path.'/passport/password/reset',
             ];
             if(!in_array($request->route()->uri(),$login_uris)){
                 
-                return redirect(admin_url('passport/login?redirectTo='.urlencode(url()->full())));
+                return redirect(extadmin_url('passport/login?redirectTo='.urlencode(url()->full())));
                 
             }else{
                 return $next($request);

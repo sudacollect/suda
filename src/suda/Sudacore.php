@@ -147,6 +147,12 @@ class Sudacore
         return request()->getHost();
     }
 
+    public static function extHost()
+    {
+        return config('sudaconf.extension_host','');
+        return request()->getHost();
+    }
+
     public static function webHost()
     {
         return config('sudaconf.web_host',request()->getHost());

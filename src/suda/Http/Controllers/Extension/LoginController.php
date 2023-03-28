@@ -1,13 +1,5 @@
 <?php
-/**
- * LoginController.php
- * description
- * date 2016-02-06 18:26:12
- * author suda <hello@suda.gtd.xyz>
- * @copyright GTD. All Rights Reserved.
- */
-
-namespace Gtd\Suda\Http\Controllers\Admin\Passport;
+namespace Gtd\Suda\Http\Controllers\Extension;
 
 use App;
 use Illuminate\Http\Request;
@@ -16,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-use Gtd\Suda\Http\Controllers\AdminController;
+use Gtd\Suda\Http\Controllers\Extension\AdminController;
 
 use Gtd\Suda\Models\Operate;
 use Gtd\Suda\Models\Media;
@@ -34,7 +26,7 @@ class LoginController extends AdminController
     
     public function showLoginForm(SessionStore $sessionStore,Request $request) {
         $this->title(__('suda_lang::auth.UserLogin'));
-        $login_name = config('sudaconf.admin_loginname','email');
+        $login_name = config('sudaconf.extension_loginname','email');
         
         if($request->has('redirectTo')){
             $sessionStore->put('url.intended',$request->redirectTo);
@@ -61,7 +53,7 @@ class LoginController extends AdminController
             }
         }
         
-        return $this->display('view_suda::admin.passport.'.$login_view);
+        return $this->display('view_suda::extension.passport.'.$login_view);
     }
     
     public function login(SessionStore $sessionStore,Request $request)
@@ -80,7 +72,7 @@ class LoginController extends AdminController
         if(isset($this->settings['dashboard']['login_page'])){
             $redirect_url = $this->settings['dashboard']['login_page'];
             if(!empty($redirect_url)){
-                $this->redirectTo = admin_url($redirect_url);
+                $this->redirectTo = extadmin_url($redirect_url);
             }
         }
         
@@ -94,7 +86,7 @@ class LoginController extends AdminController
         
         if ($this->attemptLogin($request)) {
             
-            if(auth('operate')->user()->user_role>0 && auth('operate')->user()->user_role!=2)
+            if(auth('operate')->user()->user_role == 2)
             {
                 //设置跳转入口
                 if(auth('operate')->user()->user_role==2){
@@ -159,7 +151,7 @@ class LoginController extends AdminController
         if(url()->previous()){
             $redirectTo = '?redirectTo='.urlencode(url()->previous());
         }
-        return redirect('/'.config('sudaconf.admin_path','admin').'/passport/login'.$redirectTo);
+        return redirect('/'.config('sudaconf.extension_admin_path','sudaapp').'/passport/login'.$redirectTo);
     }
     
     protected function guard() {

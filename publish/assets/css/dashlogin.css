@@ -39,7 +39,6 @@
         text-align:center;
         position:relative;
         min-height:330px;
-        border-radius:0.25rem 0 0 0.25rem;
     }
     .dash-login-tips .box{
         position:absolute;
@@ -55,7 +54,6 @@
         flex-direction: column;
         justify-items: center;
         justify-content: center;
-        border-radius:0.25rem 0 0 0.25rem;
 
         background: #fff url("../images/dashboard/login-tip.png") no-repeat center bottom;
         background-size: cover;

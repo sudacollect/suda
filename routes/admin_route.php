@@ -8,7 +8,6 @@ Route::group([
     'middleware' => 'admin',
     'prefix'     => $admin_path,
     'namespace'  => $adminNamespace,
-    'guard'      => 'operate',
 ], function ($router) use ($adminNamespace) {
     
     event(new RoutingAdmin());
@@ -165,59 +164,63 @@ Route::group([
     Route::any('/tags/search/{returnJson?}', $controller_prefix.'Taxonomy\TagController@getTagsByName');
 
     
+    Route::controller($controller_prefix.'StyleController')->group(function(){
+        // dashboard style
+        Route::get('style/dashboard', 'dashboardStyle')->name('setting_dashboard');
+        Route::post('style/dashboard', 'saveDashboardStyle');
+        Route::post('style/dashboard/save', 'setStyle');
+        
+        // dashboard layout
+        Route::get('style/dashboard.layout', 'dashboardLayout')->name('setting_dashboard_layout');
+        Route::post('style/dashboard.layout/save', 'saveDashboardLayout');
+
+        Route::get('style/preview/{theme}', 'previewStyle');
+
+        // sidebar menu
+        Route::post('style/sidemenu/{style}', 'sidemenu');
+    });
 
     // switch language
     Route::get('setting/switch-language/{lang}', $controller_prefix.'LangController@switchLang');
     
-    // dashboard style
-    Route::get('style/dashboard', $controller_prefix.'StyleController@dashboardStyle')->name('setting_dashboard');
-    Route::post('style/dashboard', $controller_prefix.'StyleController@saveDashboardStyle');
-    Route::post('style/dashboard/save', $controller_prefix.'StyleController@setStyle');
+
+    Route::controller($controller_prefix.'MediasController')->group(function(){
+        // media
+        Route::get('media/hidden', 'getHiddens')->name('media_file');
+        Route::get('media/files', 'files')->name('media_file');
+        Route::get('media/images', 'images')->name('media_file');
+
+        Route::get('media/setting', 'setting')->name('media_setting');
+        Route::post('media/setting/save', 'settingSave')->name('media_setting_save');
+
+
+        Route::get('media/{view?}', 'getAll')->name('media');
+
+        Route::get('media/update/{id}', 'editMedia')->name('media_update');
+        Route::post('media/update', 'updateMedia');
+        Route::post('media/delete/{id}', 'deleteMedia');
+
+        // batch tag
+        Route::get('medias/batchtag', 'batchTag')->name('media_retag');
+        Route::post('medias/batchtag/save', 'batchTagSave')->name('media_retag');
+
+        Route::post('medias/hiddenbatch', 'hiddenBatchMedia');
+        Route::post('medias/showbatch', 'showBatchMedia');
+
+        Route::post('medias/deletebatch', 'deleteBatchMedia');
+        
+        // rebuild thumbs
+        Route::get('media/rebuild/{id}', 'rebuildMedia')->name('media_rebuild');
+
+    });
     
-    // dashboard layout
-    Route::get('style/dashboard.layout', $controller_prefix.'StyleController@dashboardLayout')->name('setting_dashboard_layout');
-    Route::post('style/dashboard.layout/save', $controller_prefix.'StyleController@saveDashboardLayout');
-
-    Route::get('style/preview/{theme}', $controller_prefix.'StyleController@previewStyle');
-
-    // sidebar menu
-    Route::post('style/sidemenu/{style}', $controller_prefix.'StyleController@sidemenu');
-    
-    
-    // media
-    Route::get('media/hidden',               $controller_prefix.'MediasController@getHiddens')->name('media_file');
-    Route::get('media/files',               $controller_prefix.'MediasController@files')->name('media_file');
-    Route::get('media/images',               $controller_prefix.'MediasController@images')->name('media_file');
-
-    Route::get('media/setting',               $controller_prefix.'MediasController@setting')->name('media_setting');
-    Route::post('media/setting/save',         $controller_prefix.'MediasController@settingSave')->name('media_setting_save');
-
-
-    Route::get('media/{view?}',               $controller_prefix.'MediasController@getAll')->name('media');
-
-    Route::get('media/update/{id}',   $controller_prefix.'MediasController@editMedia')->name('media_update');
-    Route::post('media/update',   $controller_prefix.'MediasController@updateMedia');
-    Route::post('media/delete/{id}',   $controller_prefix.'MediasController@deleteMedia');
-
-    // batch tag
-    Route::get('medias/batchtag',   $controller_prefix.'MediasController@batchTag')->name('media_retag');
-    Route::post('medias/batchtag/save',   $controller_prefix.'MediasController@batchTagSave')->name('media_retag');
-
-    Route::post('medias/hiddenbatch',   $controller_prefix.'MediasController@hiddenBatchMedia');
-    Route::post('medias/showbatch',   $controller_prefix.'MediasController@showBatchMedia');
-
-    Route::post('medias/deletebatch',   $controller_prefix.'MediasController@deleteBatchMedia');
-    
-    // rebuild thumbs
-    Route::get('media/rebuild/{id}',   $controller_prefix.'MediasController@rebuildMedia')->name('media_rebuild');
-
     // #TODO make route more clearly and simply.
     // upload route
 
-    Route::post('component/loadlayout/{layout}/{type}',    $suda_controller_path.'\\'.'ComponentController@loadLayout');
+    Route::post('component/loadlayout/{layout}/{type}', $suda_controller_path.'\\'.'ComponentController@loadLayout');
 
     // medias load modal
-    Route::get('medias/modal/{type}',               $controller_prefix.'Media\MediasController@modal');
+    Route::get('medias/modal/{type}', $controller_prefix.'Media\MediasController@modal');
     
     // medias upload route
     Route::post('medias/upload/image/{type?}', $controller_prefix.'Media\MediasController@uploadImage');
@@ -227,7 +230,7 @@ Route::group([
 
 
     // media tags
-    Route::get('mediatags',               $controller_prefix.'Media\TagController@getList')->name('mediatags');
+    Route::get('mediatags', $controller_prefix.'Media\TagController@getList')->name('mediatags');
     Route::get('mediatags/add', $controller_prefix.'Media\TagController@create')->name('mediatags_create');
     Route::get('mediatags/update/{id}', $controller_prefix.'Media\TagController@update')->name('mediatags_update');
     Route::post('mediatags/delete/{id}', $controller_prefix.'Media\TagController@delete')->name('mediatags_delete');
@@ -255,11 +258,11 @@ Route::group([
     
     
     // User
-    Route::get('user/list', $controller_prefix.'User\UserController@index')->name('user_list');
-    Route::get('user/add', $controller_prefix.'User\UserController@add');
-    Route::get('user/edit/{id}', $controller_prefix.'User\UserController@edit');
-    Route::post('user/save', $controller_prefix.'User\UserController@saveUser');
-    Route::post('user/delete/{id}', $controller_prefix.'User\UserController@deleteUser');
+    // Route::get('user/list', $controller_prefix.'User\UserController@index')->name('user_list');
+    // Route::get('user/add', $controller_prefix.'User\UserController@add');
+    // Route::get('user/edit/{id}', $controller_prefix.'User\UserController@edit');
+    // Route::post('user/save', $controller_prefix.'User\UserController@saveUser');
+    // Route::post('user/delete/{id}', $controller_prefix.'User\UserController@deleteUser');
     
     // register rule
     Route::get('user/rule/register', $controller_prefix.'User\UserController@ruleRegister')->name('user_register_rule');
@@ -302,7 +305,7 @@ Route::group([
     Route::post('manage/operates/save', $controller_prefix.'User\OperateController@saveOperate');
     Route::post('manage/operates/delete/{id}/{force?}', $controller_prefix.'User\OperateController@deleteOperate');
 
-    // soft delete
+    // operate soft delete
     Route::get('manage/operates/{deleted}', $controller_prefix.'User\OperateController@index');
     Route::post('manage/operates/restore/{id}', $controller_prefix.'User\OperateController@restore');
 
@@ -321,24 +324,28 @@ Route::group([
     | description
     |
     */
-    
-    Route::get('menu', $controller_prefix.'Menu\MenuController@menus')->name('tool_menu');
-    Route::get('menu/add', $controller_prefix.'Menu\MenuController@editMenu')->name('tool_menu_add');
-    Route::get('menu/edit/{id}', $controller_prefix.'Menu\MenuController@editMenu')->name('tool_menu_edit');
-    Route::post('menu/save', $controller_prefix.'Menu\MenuController@saveMenu')->name('tool_menu_save');
-    Route::post('menu/delete/{id}', $controller_prefix.'Menu\MenuController@deleteMenu')->name('tool_menu_delete');
-    
-    Route::get('menu/items/{id}', $controller_prefix.'Menu\MenuController@items')->name('tool_menu_items');
-    Route::get('menu/item/add/{id}', $controller_prefix.'Menu\MenuController@addItem')->name('tool_menu_item_add');
-    Route::get('menu/item/edit/{id}', $controller_prefix.'Menu\MenuController@editItem')->name('tool_menu_item_edit');
-    Route::post('menu/item/save', $controller_prefix.'Menu\MenuController@saveItem')->name('tool_menu_item_save');
-    Route::post('menu/item/delete/{menu_id}/{id}', $controller_prefix.'Menu\MenuController@deleteItem')->name('tool_menu_item_delete');
-    
-    Route::post('menu/order', $controller_prefix.'Menu\MenuController@sortItems')->name('tool_menu_order');
 
-    // recover default menu data
-    Route::get('menu/recovery', $controller_prefix.'Menu\MenuController@recovery')->name('tool_menu_recovery');
-    Route::post('menu/recovery/save', $controller_prefix.'Menu\MenuController@recoverySave')->name('tool_menu_recovery_save');
+    Route::controller($controller_prefix.'Menu\MenuController')->group(function(){
+        Route::get('menu', 'menus')->name('tool_menu');
+        Route::get('menu/add', 'editMenu')->name('tool_menu_add');
+        Route::get('menu/edit/{id}', 'editMenu')->name('tool_menu_edit');
+        Route::post('menu/save', 'saveMenu')->name('tool_menu_save');
+        Route::post('menu/delete/{id}', 'deleteMenu')->name('tool_menu_delete');
+        
+        Route::get('menu/items/{id}', 'items')->name('tool_menu_items');
+        Route::get('menu/item/add/{id}', 'addItem')->name('tool_menu_item_add');
+        Route::get('menu/item/edit/{id}', 'editItem')->name('tool_menu_item_edit');
+        Route::post('menu/item/save', 'saveItem')->name('tool_menu_item_save');
+        Route::post('menu/item/delete/{menu_id}/{id}', 'deleteItem')->name('tool_menu_item_delete');
+        
+        Route::post('menu/order', 'sortItems')->name('tool_menu_order');
+
+        // recover default menu data
+        Route::get('menu/recovery', 'recovery')->name('tool_menu_recovery');
+        Route::post('menu/recovery/save', 'recoverySave')->name('tool_menu_recovery_save');
+        
+    });
+    
     
     //compass
     Route::get('compass', $controller_prefix.'Compass\AboutController@index')->name('tool_compass');
@@ -351,6 +358,10 @@ Route::group([
     
     Route::get('compass/demo', $controller_prefix.'Compass\AboutController@demopage');
     
+    
+    // Chinese districts data
+    Route::get('areadata/json', $controller_prefix.'Compass\DistrictController@areaJson')->name('district_data');
+    
     // extensions
     Route::get('manage/extension', $controller_prefix.'Extension\ExtensionController@index')->name('tool_extend');
     Route::get('manage/extension/{status}', $controller_prefix.'Extension\ExtensionController@index')->name('tool_extend');
@@ -360,20 +371,13 @@ Route::group([
     Route::post('manage/extension/{extension_slug}/install/', $controller_prefix.'Extension\ExtensionController@toInstall')->name('tool_extend_install');
     Route::post('manage/extension/{extension_slug}/refresh/', $controller_prefix.'Extension\ExtensionController@flushExtension')->name('tool_extend_flush');
     Route::post('manage/extension/{extension_slug}/uninstall/', $controller_prefix.'Extension\ExtensionController@toUninstall')->name('tool_extend_uninstall');
-    
-    Route::post('manage/extension/updatecache', $controller_prefix.'Extension\ExtensionController@flushExtensions')->name('tool_extend_updatecache');
-    
-    Route::post('manage/extension/{extension_slug}/setQuickin/', $controller_prefix.'Extension\ExtensionController@setQuickin')->name('tool_extend_setquickin');
-    
-    Route::post('manage/extensionsort', $controller_prefix.'Extension\ExtensionController@resort')->name('tool_extend_resort');
 
-    // Chinese districts data
-    Route::get('areadata/json', $controller_prefix.'Compass\DistrictController@areaJson')->name('district_data');
-    
+    Route::post('manage/extension/updatecache', $controller_prefix.'Extension\ExtensionController@flushExtensions')->name('tool_extend_updatecache');
+    Route::post('manage/extension/{extension_slug}/setQuickin/', $controller_prefix.'Extension\ExtensionController@setQuickin')->name('tool_extend_setquickin');
+    Route::post('manage/extensionsort', $controller_prefix.'Extension\ExtensionController@resort')->name('tool_extend_resort');
 
     // extensions dashboard
     Route::get('entry/extensions', $controller_prefix.'Extension\EntryController@showExtensions')->name('entry_extensions');
-    
     Route::get('entry/extension/{extension_slug}', $controller_prefix.'Extension\EntryController@index')->name('entry_extension');
     
     // load routes

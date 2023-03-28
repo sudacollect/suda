@@ -39,7 +39,7 @@ class HomeController extends DashboardController
         // $this->setData('servers',$servers);
         if($this->user->user_role==2)
         {
-            return redirect()->to(admin_url('entry/extensions'));
+            return redirect()->to(extadmin_url('entry/extensions'));
         }
 
         // $this->setData('current_navi','商品');

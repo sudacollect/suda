@@ -64,28 +64,7 @@
 </style>
 @endif
 
-@if(isset($login_select))
 
-    @if($login_select=='custom' && isset($login_pic ))
-    <style>
-        .dash-login-tips .box{
-            background: #fff url("{{ $login_pic }}") no-repeat center bottom;
-            background-size: cover;
-        }
-        .dash-login-tips .box img{display:none;}
-    </style>
-    @else
-    <style>
-        
-        .dash-login-tips .box{
-            background: #fff url("{{ suda_asset('images/login/'.$login_select.'.jpg') }}") no-repeat center bottom;
-            background-size: cover;
-        }
-        .dash-login-tips .box img{display:none;}
-    </style>
-    @endif
-
-@endif
 
 @endpush
 
@@ -100,9 +79,9 @@
                         
                         <div class="col-sm-3 offset-sm-1 dash-login-box px-3">
                             <h4 class="card-title">
-                                {{ __('suda_lang::auth.DashboardLogin') }}
+                                应用管理
                             </h4>
-                            <form class="suda-login-form" role="form" method="POST" action="{{ admin_url('passport/login') }}">
+                            <form class="suda-login-form" role="form" method="POST" action="{{ extadmin_url('passport/login') }}">
                                 @csrf
                                 
                                 @if($login_name=='email')
@@ -191,7 +170,7 @@
                                         <div>
                                     
                                         
-                                            <a class="btn btn-link ajaxPassword" href="{{ admin_url('passport/password/reset') }}">
+                                            <a class="btn btn-link ajaxPassword" href="{{ extadmin_url('passport/password/reset') }}">
                                                 {{__('suda_lang::auth.forgetPassword')}}?
                                             </a>
                                             

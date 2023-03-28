@@ -86,7 +86,7 @@ jQuery(function($) {
         // var boxa_right = (suda_flat_width-180)/2;
         // var boxa_top = $(window).scrollTop()+15;
         
-        var alerthtml = '<div class="suda-toast toast position-absolute top-0 start-50 translate-middle-x" data-bs-autohide="true" data-bs-delay="2500" style="z-index:9999;" >';
+        var alerthtml = '<div class="suda-toast toast position-absolute top-0 start-50" data-bs-autohide="true" data-bs-delay="2500" style="z-index:9999;transform:translate(-50%,20%)" >';
             alerthtml += '<div class="toast-header text-'+infoType+'" style="background:#efefef;">';
             alerthtml += '<i class="ion-alert-circle"></i>&nbsp;';
             alerthtml += '<span class="me-auto">提示</span>';
