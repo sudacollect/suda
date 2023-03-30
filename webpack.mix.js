@@ -99,20 +99,19 @@ mix.options({
 |
 */
 
+// mix.copyDirectory('resources/assets/vendors/ionicons', 'publish/assets/fonts/vendor/ionicons');
 
 // mix.copy('node_modules/popper.js/dist/popper.js.map', 'publish/assets/js');
 
-// mix.js('resources/assets/js/plugins/editor.js', 'publish/assets/js/plugins');
-// mix.copy('resources/assets/js/plugins/summernote-ext-media.js', 'publish/assets/js/plugins');
+mix.js('resources/assets/js/plugins/editor.js', 'publish/assets/js/plugins');
+mix.copy('resources/assets/js/plugins/summernote-ext-media.js', 'publish/assets/js/plugins');
 
 
 
-// mix.js('resources/assets/js/plugins/upload.js', 'publish/assets/js/plugins');
-// mix.js('resources/assets/js/plugins/uploadavatar.js', 'publish/assets/js/plugins');
+mix.js('resources/assets/js/plugins/upload.js', 'publish/assets/js/plugins');
+mix.js('resources/assets/js/plugins/uploadavatar.js', 'publish/assets/js/plugins');
 
-// mix.js('resources/assets/js/global.js', 'publish/assets/js');
-
-// mix.copyDirectory('resources/assets/vendors/ionicons', 'publish/assets/fonts/vendor/ionicons');
+mix.js('resources/assets/js/global.js', 'publish/assets/js');
 
 // dashboard
 mix.js('resources/assets/js/app.js', 'publish/assets/js/app.js');
@@ -129,7 +128,7 @@ mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'p
 
 
 // vendor js
-// mix.js('resources/assets/js/app.vendor.js', 'publish/assets/js/app.vendor.js');
+mix.js('resources/assets/js/app.vendor.js', 'publish/assets/js/app.vendor.js');
 
 
 

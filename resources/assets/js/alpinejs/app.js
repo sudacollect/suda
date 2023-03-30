@@ -30,13 +30,15 @@ document.addEventListener('alpine:init', () => {
                 this.$refs.suda_app_content.classList.add('suda-flat-lg')
                 this.sidebarStyle = 'icon'
             }
-            fetch(document.head.querySelector('meta[name=root-path]').content+'/style/sidemenu/'+this.sidebarStyle, {
+            fetch(e.currentTarget.dataset.href, {
 				method: 'POST',
 				headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.head.querySelector('meta[name=csrf-token]').content
                 },
-                body: JSON.stringify({})
+                body: JSON.stringify({
+                    style: this.sidebarStyle
+                })
             })
 			.then(() => {
                 // this.message = 'Form sucessfully submitted!'

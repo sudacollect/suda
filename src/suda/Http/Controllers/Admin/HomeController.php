@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Log;
 use Validator;
 use Response;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
+use GuzzleHttp\Client as HttpClient;
 
 use Gtd\Suda\Http\Controllers\Admin\DashboardController;
 
@@ -19,14 +21,13 @@ use Gtd\Suda\Models\Mediatable;
 use Gtd\Suda\Models\Operate;
 use Gtd\Suda\Models\Organization;
 use Gtd\Suda\Certificate;
-
-use GuzzleHttp\Client as HttpClient;
-
+use Gtd\Suda\Traits\SettingTrait;
 
 class HomeController extends DashboardController
 {
+    use SettingTrait;
     public $view_in_suda = true;
-       
+
     public function index(Request $request)
     {
         $this->title(__('suda_lang::press.dashboard'));
@@ -48,13 +49,7 @@ class HomeController extends DashboardController
         return $this->display('dashboard');
     }
 
-    public function getCgiinfo()
-    {
-        phpinfo();
-        exit;
-    }
-
-    //查看授权信息
+    // 查看授权信息
     public function certificateInfo()
     {
         $this->title('产品授权');
@@ -79,7 +74,7 @@ class HomeController extends DashboardController
         return $this->display('certificate');
     }
     
-    //查看更新信息
+    // 查看更新信息
     public function updateInfo(){
         
         $this->title('产品版本信息');
@@ -88,7 +83,7 @@ class HomeController extends DashboardController
     }
     
 
-    //暂时没用请求最新版本
+    // 暂时没用请求最新版本
     public function getUpdate(){
         
         $httpClient = new HttpClient();
@@ -113,7 +108,7 @@ class HomeController extends DashboardController
         
     }
     
-    //查看服务器信息
+    // 查看服务器信息
     public function serverInfo(){
         
         $this->title('服务器信息');
@@ -121,13 +116,13 @@ class HomeController extends DashboardController
         return $this->display('serverinfo');
     }
     
-    //输出phpinfo
+    // phpinfo
     public function getPhpInfo(){
         
         exit(phpinfo());
     }
     
-    //站点设置项
+    // 站点设置项
     public function settings(){
         
         //policy 判断
@@ -135,26 +130,14 @@ class HomeController extends DashboardController
         
         $this->title(__('suda_lang::press.basic_info'));
         
-        $settings = Setting::where([])->get();
         
-        $settings_data = [];
-        
-        foreach((array)$settings as $k=>$v){
-            if($v){
-                foreach($v as $key=>$values){
-                    $settings_data[$values->key] = $values->values;
-                }
-            }
-        }
-        
-        $this->setData('settings',(object)$settings_data);
         
         $this->setMenu('setting','setting_system');
         
         return $this->display('home.settings');
     }
     
-    //保存站点设置项
+    // 保存站点设置项
     public function saveSettings(Request $request){
         
         if(!Auth::guard('operate')->check()){
@@ -181,7 +164,6 @@ class HomeController extends DashboardController
         
         if(!$response_msg){
             
-            $settingModel = new Setting;
             $post = $request->all();
             unset($post['_token']);
             
@@ -189,49 +171,28 @@ class HomeController extends DashboardController
             foreach($post as $k=>$v){
                 if($v)
                 {
-                    if($k=='site_name'){
-                        $site_name = $v;
-                    }
-                    $data = [
-                        'group'=>'site',
-                        'key'=>$k,
-                        'values'=>$v,
-                        'type'=>'text'
-                    ];
-                    
-                    if($first = $settingModel->where(['key'=>$k])->first()){
-                        $settingModel->where(['key'=>$k])->update($data);
-                    }else{
-                        $settingModel->insert($data);
-                    }
+                    $this->saveSettingByKey($k,'site',$v);   
                 }
-                
             }
-            // $settingModel->fill($data);
             
-            Setting::updateSettings();
             //更新成功
-            $url = 'setting/site';
-            return $this->responseAjax('success','保存成功',$url);
+            return $this->responseAjax('success','保存成功','self.refresh');
         }
         
         $url = 'setting/site';
-        return $this->responseAjax('fail',$response_msg,$url);
+        return $this->responseAjax('fail',$response_msg,'self.refresh');
     }
     
+    // Logo
     public function logo(){
         
         $this->title('Logo设置');
+
+        $logos_data = $this->getSettingByKey(['logo','favicon','share_image'],'site');
         
-        $logos = Setting::whereIn('key',['logo','favicon','share_image'])->get();
-        
-        $logos_data = [];
-        
-        foreach((array)$logos as $k=>$v){
+        foreach($logos_data as $k=>$v){
             if($v){
-                foreach($v as $key=>$values){
-                    $logos_data[$values->key] = Mediatable::where('mediatable_type','Gtd\Suda\Models\Setting')->where(['position'=>$values->key,'media_id'=>$values->values])->with('media')->first();
-                }
+                $logos_data[$k] = Mediatable::where('mediatable_type','Gtd\Suda\Models\Setting')->where(['position'=>$k,'media_id'=>$v])->with('media')->first();
             }
         }
         
@@ -265,29 +226,21 @@ class HomeController extends DashboardController
         if(!$response_msg){
             
             $logos = $request->images;
-            $logos = array_merge(['favicon'=>'','logo'=>'','share_image'=>''],$logos);
-            $settingModel = new Setting;
+            
+            $logos = Arr::where($logos, function (int $value, string $key) {
+                return in_array($key,['favicon','logo','share_image']);
+            });
+            
             $data = [];
             
             foreach($logos as $k=>$v){
 
                 if(!$v){
-                    $settingModel->where(['key'=>$k])->delete();
+                    $this->deleteSettingByKey($k,'site');
                     continue;
                 }
-                
-                $data = [
-                    'group'=>'site',
-                    'key'=>$k,
-                    'values'=>$v,
-                    'type'=>'image'
-                ];
-                
-                if($first = $settingModel->where(['group'=>'site'])->where(['key'=>$k])->first()){
-                    $settingModel->where(['key'=>$k])->update($data);
-                }else{
-                    $settingModel->insert($data);
-                }
+
+                $this->saveSettingByKey($k,'site',$v,'image');
 
                 //删除相应的数据
                 Mediatable::where('mediatable_type','Gtd\Suda\Models\Setting')->whereIn('position',[$k])->delete();
@@ -301,19 +254,15 @@ class HomeController extends DashboardController
                 $mediatableModel->save();
                 
             }
-
-            Setting::updateSettings();
             
             //更新成功
-            $url = 'setting/logo';
-            return $this->responseAjax('success','保存成功',$url);
+            return $this->responseAjax('success','保存成功','self.refresh');
         }
         
-        $url = 'setting/logo';
-        return $this->responseAjax('fail',$response_msg,$url);
+        return $this->responseAjax('fail',$response_msg,'self.refresh');
     }
     
-    //设置控制台登录
+    // 设置控制台登录
     public function dashaboardLogin(){
 
         $options = [
@@ -327,35 +276,30 @@ class HomeController extends DashboardController
         
         $this->title(trans('suda_lang::press.dashboard_info'));
         
-        $settings = Setting::where(['group'=>'dashboard'])->whereIn('key',$options)->get();
         
-        $datas = [];
-        foreach($settings as $k=>$setting){
+
+        $datas = $this->getSettingByKey($options,'dashboard');
+        
+        
+        if(!isset($datas['dashboard_login_logo']) || empty($datas['dashboard_login_logo']))
+        {
+            $datas['dashboard_login_logo'] = null;
+        }
+
+        if(!isset($datas['dashboard_login_logo_select']) || empty($datas['dashboard_login_logo_select']))
+        {
+            if(!$datas['dashboard_login_logo'])
+            {
+                $datas['dashboard_login_logo_select'] = 'boat';
+            }else{
+                $datas['dashboard_login_logo_select'] = 'customize';
+            }
             
-            $datas[$setting->key] = $setting;
-            if($setting->key=='dashboard_apps'){
-                $datas[$setting->key] = unserialize($setting->values);
-            }
-            if($setting->key=='show_breadcrumb'){
-                $datas[$setting->key] = $setting->values;
-            }
-            if($setting->key=='dashboard_login_logo_select'){
-                $datas[$setting->key] = $setting->values;
-            }
-            if($setting->key=='dashboard_login_logo' && !empty($setting->values)){
-                $datas[$setting->key] = Media::where('id',$setting->values)->first();
-            }
-            if($setting->key=='dashboard_logo'){
-                
-                $datas[$setting->key] = Mediatable::where('mediatable_type','Gtd\Suda\Models\Setting')->where(['position'=>'dashboard_logo','media_id'=>$setting->values])->with('media')->first();
-                
-            }    
         }
         
         if(!array_key_exists('dashboard_apps',$datas)){
             $datas['dashboard_apps'] = ['start'=>'on','welcome'=>'on','quickin'=>'on'];
         }
-        
         
         $this->setData('settings',$datas);
         
@@ -364,117 +308,31 @@ class HomeController extends DashboardController
         return $this->display('home.dashboard_login');
     }
     
-    
-    
-    
     public function saveDashaboardLogin(Request $request){
         
         $login_page = $request->login_page?$request->login_page:'';
-        
-        $data = [
-            'key'=>'login_page',
-            'group'=>'dashboard',
-            'type'=>'text',
-            'values'=>$login_page,
-        ];
-        
-        $settingModel = new Setting;
-        
-        if($first = Setting::where(['key'=>'login_page','group'=>'dashboard'])->first())
-        {
-            Setting::where(['key'=>'login_page','group'=>'dashboard'])->update($data);
-        }
-        else
-        {
-            $settingModel->fill($data)->save();
-        }
+
+        $this->saveSettingByKey('login_page','dashboard',$login_page);
 
         //颜色配置
         $login_color = $request->login_color?$request->login_color:'';
-        
-        $data = [
-            'key'=>'login_color',
-            'group'=>'dashboard',
-            'type'=>'text',
-            'values'=>$login_color,
-        ];
-        
-        $settingModel = new Setting;
-        
-        if($first = Setting::where(['key'=>'login_color','group'=>'dashboard'])->first())
-        {
-            Setting::where(['key'=>'login_color','group'=>'dashboard'])->update($data);
-        }
-        else
-        {
-            $settingModel->fill($data)->save();
-        }
+
+        $this->saveSettingByKey('login_color','dashboard',$login_color);
 
         
-        
-        
-        
-        
         $dashboard_apps = $request->dashboard_apps?$request->dashboard_apps:[];
-        
-        $data = [
-            'key'=>'dashboard_apps',
-            'group'=>'dashboard',
-            'type'=>'text',
-            'values'=>serialize($dashboard_apps),
-        ];
-        
-        $settingModel = new Setting;
-        
-        if($first = Setting::where(['key'=>'dashboard_apps','group'=>'dashboard'])->first())
-        {
-            Setting::where(['key'=>'dashboard_apps','group'=>'dashboard'])->update($data);
-        }
-        else
-        {
-            $settingModel->fill($data)->save();
-        }
+
+        $this->saveSettingByKey('dashboard_apps','dashboard',$dashboard_apps,'serialize');
 
 
         $show_breadcrumb = $request->show_breadcrumb?$request->show_breadcrumb:0;
-        
-        $data = [
-            'key'=>'show_breadcrumb',
-            'group'=>'dashboard',
-            'type'=>'text',
-            'values'=>$show_breadcrumb,
-        ];
-        
-        $settingModel = new Setting;
-        
-        if($first = Setting::where(['key'=>'show_breadcrumb','group'=>'dashboard'])->first())
-        {
-            Setting::where(['key'=>'show_breadcrumb','group'=>'dashboard'])->update($data);
-        }
-        else
-        {
-            $settingModel->fill($data)->save();
-        }
+
+        $this->saveSettingByKey('show_breadcrumb','dashboard',$show_breadcrumb);
 
 
-        $loginbox = $request->loginbox?$request->loginbox:'default';
-        $data = [
-            'key'=>'loginbox',
-            'group'=>'dashboard',
-            'type'=>'text',
-            'values'=>$loginbox,
-        ];
-        
-        $settingModel = new Setting;
-        
-        if($first = Setting::where(['key'=>'loginbox','group'=>'dashboard'])->first())
-        {
-            Setting::where(['key'=>'loginbox','group'=>'dashboard'])->update($data);
-        }
-        else
-        {
-            $settingModel->fill($data)->save();
-        }
+        $loginbox = $request->loginbox?$request->loginbox:'light';
+
+        $this->saveSettingByKey('loginbox','dashboard',$loginbox);
         
         
         $dashboard_logos = false;
@@ -482,29 +340,14 @@ class HomeController extends DashboardController
             $dashboard_logos = $request->images['dashboard_logo'];
         }
         
-        
         if($dashboard_logos)
         {
-            
-            
+
             Mediatable::where('mediatable_type','Gtd\Suda\Models\Setting')->where('position','dashboard_logo')->whereNotIn('media_id',[$dashboard_logos])->delete();
-        
-            $mediatableModel = new Mediatable;
-        
-            $data = [];
             
-            $data = [
-                'group'=>'dashboard',
-                'key'=>'dashboard_logo',
-                'values'=>$dashboard_logos,
-                'type'=>'image'
-            ];
-        
-            if($first = $settingModel->where(['key'=>'dashboard_logo'])->first()){
-                $settingModel->where(['key'=>'dashboard_logo'])->update($data);
-            }else{
-                $settingModel->insert($data);
-            }
+            $this->saveSettingByKey('dashboard_logo','dashboard',$dashboard_logos,'image');
+
+            $mediatableModel = new Mediatable;
         
             $mediatableModel->mediatable_type = 'Gtd\Suda\Models\Setting';
             $mediatableModel->mediatable_id = 1;
@@ -513,40 +356,25 @@ class HomeController extends DashboardController
             $mediatableModel->save();
             
         } else {
-            $data = [
-                'group'=>'dashboard',
-                'key'=>'dashboard_logo',
-                'values'=>'',
-                'type'=>'image'
-            ];
-        
-            if($first = $settingModel->where(['key'=>'dashboard_logo'])->first()){
-                $settingModel->where(['key'=>'dashboard_logo'])->update($data);
-            }else{
-                $settingModel->insert($data);
-            }
+            $this->saveSettingByKey('dashboard_logo','dashboard',0,'image');
             
             Mediatable::where('mediatable_type','Gtd\Suda\Models\Setting')->where('position','dashboard_logo')->delete();
         }
 
         //设置登录图片
 
-        $dashboard_login_logo_select = $request->dashboard_login_logo_select;
-
-        $data = [
-            'group'=>'dashboard',
-            'key'=>'dashboard_login_logo_select',
-            'values'=>$dashboard_login_logo_select,
-            'type'=>'text'
-        ];
-        
-        $settingModel = new Setting;
-
-        if($first = $settingModel->where(['group'=>'dashboard','key'=>'dashboard_login_logo_select'])->first()){
-            $settingModel->where(['group'=>'dashboard','key'=>'dashboard_login_logo_select'])->update($data);
+        $select = $request->dashboard_login_logo_select?$request->dashboard_login_logo_select:'boat';
+        if($request->custom_dashboard_login_logo)
+        {
+            $select = 'customize';
         }else{
-            $settingModel->insert($data);
+            if($select == 'customize')
+            {
+                $select = 'boat';
+            }
         }
+
+        $this->saveSettingByKey('dashboard_login_logo_select','dashboard',$select);
 
         $dashboard_login_logo = false;
         if($request->images && isset($request->images['dashboard_login_logo'])){
@@ -554,57 +382,39 @@ class HomeController extends DashboardController
         }
 
         if($dashboard_login_logo){
-            $data = [
-                'group'=>'dashboard',
-                'key'=>'dashboard_login_logo',
-                'values'=>$dashboard_login_logo,
-                'type'=>'image'
-            ];
-            
-            $settingModel = new Setting;
-    
-            if($first = $settingModel->where(['group'=>'dashboard','key'=>'dashboard_login_logo'])->first()){
-                $settingModel->where(['group'=>'dashboard','key'=>'dashboard_login_logo'])->update($data);
-            }else{
-                $settingModel->insert($data);
-            }
+            $this->saveSettingByKey('dashboard_login_logo','dashboard',$dashboard_login_logo,'image');
         }
         
-        
-        Setting::updateSettings();
         //更新成功
         $url = 'setting/dashboardinfo';
         return $this->responseAjax('success','保存成功',$url);
         
     }
     
-    //浏览设置
+    // 浏览设置
     public function setBrowser(){
         //policy 判断
         $this->gate('setting.view',app(Setting::class));
         
         $this->title('浏览设置');
         
-        $settings = Setting::where(['key'=>'default_page','group'=>'site'])->first();
+        $settings = $this->getSettingByKey('default_page','site');
+
+        
         
         if($settings){
-            if(!$settings->values){
-                $settings->values = serialize(['page_type'=>'default_page','page_value'=>'']);
-            }
-            $settings->values = unserialize($settings->values);
-        
-            if($settings->values['page_type']=='single_page'){
             
-                $page_id = intval($settings->values['page_value']);
+            if($settings['page_type'] == 'single_page'){
+            
+                $page_id = intval($settings['page_value']);
                 $page = Page::where(['id'=>$page_id])->first();
                 $this->setData('page',$page);
             
             }
         }else{
-            $settings = new \stdClass();
-            $settings->values = ['page_type'=>'default_page','page_value'=>''];
+            $settings = ['page_type'=>'default_page','page_value'=>''];
         }
-        
+
         $this->setData('settings',$settings);
         
         $this->setMenu('setting','setting_system');
@@ -620,69 +430,47 @@ class HomeController extends DashboardController
         switch($default_page){
             
             case 'default_page':
-                $page_value = serialize(['page_type'=>'default_page','page_value'=>'']);
+                $page_value = ['page_type'=>'default_page','page_value'=>''];
             break;
             case 'single_page':
                 if(!$request->default_page_id){
                     return $this->responseAjax('fail','请选择一个页面作为默认访问页面');
                 }
-                $page_value = serialize(['page_type'=>'single_page','page_value'=>$request->default_page_id]);
+                $page_value = ['page_type'=>'single_page','page_value'=>$request->default_page_id];
             break;
             
             case 'link_page':
                 if(!$request->default_page_url){
                     return $this->responseAjax('fail','请选择一个页面作为默认访问页面');
                 }
-                $page_value = serialize(['page_type'=>'link_page','page_value'=>$request->default_page_url]);
+                $page_value = ['page_type'=>'link_page','page_value'=>$request->default_page_url];
             break;
             
         }
-        
-        $data = [
-            'key'=>'default_page',
-            'group'=>'site',
-            'type'=>'text',
-            'values'=>$page_value,
-        ];
-        
-        $settingModel = new Setting;
-        
-        if($first = Setting::where(['key'=>'default_page','group'=>'site'])->first()){
-            Setting::where(['key'=>'default_page','group'=>'site'])->update($data);
-        }else{
-            $settingModel->fill($data)->save();
-        }
-        
-        Setting::updateSettings();
+
+        $this->saveSettingByKey('default_page','site',$page_value,'serialize');
+
         //更新成功
         $url = 'setting/browser';
         return $this->responseAjax('success','保存成功',$url);
         
     }
     
-    
-    public function setSeo(){
-        //policy 判断
+    // SEO
+    public function setSeo()
+    {
+        $this->setMenu('setting','setting_system');
         $this->gate('setting.view',app(Setting::class));
         
         $this->title('SEO设置');
+
+        $settings = $this->getSettingByKey('seo','site');
         
-        $settings = Setting::where(['key'=>'seo','group'=>'site'])->first();
-        
-        if($settings){
-            if(!$settings->values){
-                $settings->values = serialize(['title'=>'','keywords'=>'','description'=>'']);
-            }
-            $settings->values = unserialize($settings->values);
-            
-        }else{
-            $settings = new \stdClass();
-            $settings->values = ['title'=>'','keywords'=>'','description'=>''];
+        if(!$settings){
+            $settings = ['title'=>'','keywords'=>'','description'=>''];
         }
         
         $this->setData('settings',$settings);
-        
-        $this->setMenu('setting','setting_system');
         
         return $this->display('home.setting_seo');
     }
@@ -690,28 +478,16 @@ class HomeController extends DashboardController
     
     public function saveSeo(Request $request){
         
-        $data_value = serialize(['title'=>$request->title,'keywords'=>$request->keywords,'description'=>$request->description]);
-        
-        $data = [
-            'key'=>'seo',
-            'group'=>'site',
-            'type'=>'text',
-            'values'=>$data_value,
+        $data_value = [
+            'title'         => $request->title,
+            'keywords'      => $request->keywords,
+            'description'   => $request->description
         ];
-        
-        $settingModel = new Setting;
-        
-        if($first = Setting::where(['key'=>'seo','group'=>'site'])->first()){
-            Setting::where(['key'=>'seo','group'=>'site'])->update($data);
-        }else{
-            $settingModel->fill($data)->save();
-        }
-        
-        Setting::updateSettings();
-        
+
+        $this->saveSettingByKey('seo','site',$data_value,'serialize');
+
         //更新成功
-        $url = 'setting/seo';
-        return $this->responseAjax('success','保存成功',$url);
+        return $this->responseAjax('success','保存成功','self.refresh');
         
     }
     

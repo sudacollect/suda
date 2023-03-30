@@ -8,10 +8,10 @@
  */
  
 
-namespace Gtd\Suda\Http\Controllers\Media;
+namespace Gtd\Suda\Http\Controllers\Extension;
 
 //把这里改为自己需要使用的控制器，才能获取到$this->user;
-use Gtd\Suda\Http\Controllers\Admin\DashboardController;
+use Gtd\Suda\Http\Controllers\Extension\DashboardController;
 
 
 use Gtd\Suda\Traits\MediaBoxTrait;

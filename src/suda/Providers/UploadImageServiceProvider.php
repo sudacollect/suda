@@ -60,7 +60,7 @@ class UploadImageServiceProvider extends ServiceProvider
                 $is_crop = $components[4];
             }
             
-            $view = "view_suda::admin.component.upload_box";
+            $view = "view_suda::media.upload_box";
             
             if(count($components)>5){
                 $view = $components[5];
@@ -91,7 +91,7 @@ class UploadImageServiceProvider extends ServiceProvider
                 }
             }
             
-            $view = "view_suda::admin.component.upload_croppie";
+            $view = "view_suda::media.upload_croppie";
             
             return '<?php
                 echo View( "'.$view.'",["media_type"=>'.$components[0].$data_string.']);

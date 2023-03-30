@@ -10,7 +10,7 @@
         <div class="col-sm-12 suda_page_body">
             
                     
-                    {{ csrf_field() }}
+                    @csrf
                     
                     <input type="hidden" name="id" value="{{ $term->id }}">
                   <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">

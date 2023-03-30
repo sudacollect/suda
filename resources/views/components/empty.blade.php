@@ -1,5 +1,5 @@
-@if(!isset($without_card))
-<div class="col-sm-12 ">
+@if($card)
+<div class="col-12 ">
     <div class="card">
         
         <div class="card-body">
@@ -15,7 +15,8 @@
                 </p>
     
             </div>
-@if(!isset($without_card))            
+
+@if($card)
         </div>
     </div>
 </div>

@@ -17,14 +17,16 @@ use Illuminate\View\FileviewFinder;
 use Arrilot\Widgets\Facade as Widget;
 use Arrilot\Widgets\AsyncFacade as AsyncWidget;
 
-use Gtd\Suda\Models\Setting;
 use Gtd\Suda\Models\ThemeWidget;
 use Gtd\Suda\Models\Menu;
 use Gtd\Suda\Models\Extension;
 use Gtd\Suda\Services\ExtensionService;
+use Gtd\Suda\Traits\SettingTrait;
 
-class ThemeService {
-    
+class ThemeService
+{
+    use SettingTrait;
+
     protected $extension = 'php';
     
     protected $themePaths = null;
@@ -117,20 +119,11 @@ class ThemeService {
     public function setTheme($app_name,$theme_name,$return = false)
     {
 
-        $theme = Setting::where('key',$app_name.'_theme')->where('group','theme')->first();
-
         $themes = $this->availableThemes($app_name);
         
         if(array_key_exists($theme_name,$themes)){
 
-            if($theme){
-                $theme->update([
-                    'values'=>$theme_name,
-                ]);
-            }else{
-                $settingModel = new Setting;
-                $settingModel->insert(['key'=>$app_name.'_theme','group'=>'theme','type'=>'text','values'=>$theme_name]);
-            }
+            $this->saveSettingByKey($app_name.'_theme','theme',$theme_name);
             
             if($return){
                 return true;
@@ -147,10 +140,10 @@ class ThemeService {
     public function getTheme($app_name='')
     {
 
-        $theme = Setting::where('key',$app_name.'_theme')->where('group','theme')->first();
+        $theme = $this->getSettingByKey($app_name.'_theme','theme');
         
         if($theme){
-            return $theme->values;
+            return $theme;
         }else{
             if($app_name){
                 $theme_name = config('sudaconf.theme.'.$app_name,'default');

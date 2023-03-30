@@ -49,12 +49,10 @@ class ArticleController extends DashboardController
         $this->breadParent('文章','article/list');
         $this->breadSet('增加文章','');
         
-        $taxonomyObj = new Taxonomy;
-        $catgories = $taxonomyObj->where('parent',0)->where('taxonomy','post_category')->get();
-        $this->setData('categories',$catgories);
+        // x-suda::select-category
 
         //取最新的5个tag
-        $tags = $taxonomyObj->where('taxonomy','post_tag')->get();
+        $tags = Taxonomy::where('taxonomy','post_tag')->get();
         $this->setData('default_tags',$tags);
         
         $this->setData('editor_height',500);
@@ -85,10 +83,7 @@ class ArticleController extends DashboardController
         
         $this->setData('item',$article);
         
-        //所有分类
-        $taxonomyObj = new Taxonomy;
-        $catgories = $taxonomyObj->lists('post_category');
-        $this->setData('categories',$catgories);
+        // x-suda::select-category
         
         //选中的分类
         $cates = $article->getTerms('post_category');
@@ -105,7 +100,7 @@ class ArticleController extends DashboardController
         $this->setData('tags',$tags);
         if($tags->count()<1){
             //取最新的5个tag
-            $tags = $taxonomyObj->where('taxonomy','post_tag')->get();
+            $tags = Taxonomy::where('taxonomy','post_tag')->get();
             $this->setData('default_tags',$tags);
         }
         
@@ -609,7 +604,7 @@ class ArticleController extends DashboardController
         $this->setData('dates',$dates);
 
         $taxonomyObj = new Taxonomy;
-        $catgories = $taxonomyObj->lists('post_category');
+        $catgories = $taxonomyObj->listAll('post_category');
         $this->setData('categories',$catgories);
     }
 }

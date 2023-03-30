@@ -12,8 +12,7 @@ use Gtd\Suda\Traits\TaxonomyTrait;
 class CategoryController extends DashboardController
 {
     use TaxonomyTrait;
-
-    public $redirect_url = 'article/categories';
+    
     public $taxonomy_name = 'post_category';
     
     function __construct(){
@@ -21,7 +20,6 @@ class CategoryController extends DashboardController
         
         $this->title('管理分类');
         $this->setMenu('article','article_category');
-
         
         //增加自定义的权限控制
         $this->middleware(function (Request $request, $next) {

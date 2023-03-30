@@ -14,7 +14,6 @@ class OrganizationController extends DashboardController
 {
     use TaxonomyTrait;
 
-    public $redirect_url = 'user/organization';
     public $taxonomy_name = 'org_category';
     public $taxonomy_title = '部门';
     
@@ -45,34 +44,36 @@ class OrganizationController extends DashboardController
         }
         
         $taxonomyObj = new Taxonomy;
-        $categories = $taxonomyObj->lists($this->taxonomy_name);
+        $page_no = $request->page?$request->page:1;
+        $categories = $taxonomyObj->lists($this->taxonomy_name, 30, $page_no);
+        
 
         $this->setData('categories',$categories);
         
-        $this->getButtonConfig();
-        return $this->display($this->getViewConfig('list'));
+        $this->getActions();
+        return $this->display($this->getViews('list'));
     }
 
     public function viewConfig(){
 
         return [
 
-            'list'=>'view_suda::taxonomy.category.list',
-            'create'=>'view_suda::taxonomy.category.add',
-            'update'=>'view_suda::taxonomy.category.edit',
+            'list'      => 'view_suda::taxonomy.category.list',
+            'create'    => 'view_suda::taxonomy.category.add',
+            'update'    => 'view_suda::taxonomy.category.edit',
         ];
 
     }
 
-    public function buttonConfig(){
+    public function actionConfig(){
 
         $buttons = [];
     
-        $buttons['create']  = 'user/organization/add';
-        $buttons['update']  = 'user/organization/edit';
-        $buttons['save']    = 'user/organization/save';
-        $buttons['delete']  = 'user/organization/delete';
-        $buttons['sort']    = 'user/organization/editsort';
+        $buttons['create']  = admin_url('user/organization/add');
+        $buttons['update']  = admin_url('user/organization/edit');
+        $buttons['save']    = admin_url('user/organization/save');
+        $buttons['delete']  = admin_url('user/organization/delete');
+        $buttons['sort']    = admin_url('user/organization/editsort');
     
         return $buttons;
     }

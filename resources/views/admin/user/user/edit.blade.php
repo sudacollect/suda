@@ -5,7 +5,7 @@
 @section('content')
 <form class="form-horizontal handle-ajaxform" role="form" method="POST" action="{{ admin_url('user/save') }}">
     
-    {{ csrf_field() }}
+    @csrf
     <input type="hidden" name="id" value="{{ $user->id }}">
     
     <div class="modal-body">

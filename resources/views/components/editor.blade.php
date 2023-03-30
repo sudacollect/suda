@@ -2,10 +2,10 @@
 @php
     $height = !isset($height)?300:intval($height);
     $content = !isset($content)?'':$content;
-    $input_name = !isset($input_name)?'content':$input_name;
+    $name = !isset($name)?'content':$name;
 @endphp
 
-<textarea id="{{ isset($editor)?$editor:'summernote' }}" class="form-control" name="{{ $input_name }}" placeholder="请输入内容" style="width:100%;padding:5px;" rows=5>{{ $content }}</textarea>
+<textarea id="{{ isset($id)?$id:'summernote' }}" class="form-control" name="{{ $name }}" placeholder="请输入内容" style="width:100%;padding:5px;" rows=5>{{ $editor_content }}</textarea>
 
 @push('styles-head')
 <link href="{{ suda_asset('editor/summernote-bs5.min.css') }}" rel="stylesheet">
@@ -28,7 +28,9 @@
     $(document).ready(function(){
         suda.editor_height = {{ $height }};
         
-        $.fn.sudaEditor("{{ isset($editor)?'#'.$editor:'#summernote' }}","{{ isset($load_url)?$load_url:admin_url('component/loadlayout/image/editor') }}","{{ isset($modal_url)?$modal_url:admin_url('medias/modal/') }}","{{ isset($upload_url)?$upload_url:admin_url('medias/upload/image/') }}");
+        const elem = "{{ isset($id)?'#'.$id:'#summernote' }}";
+
+        $.fn.sudaEditor(elem);
     })
 </script>
 

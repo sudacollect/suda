@@ -26,7 +26,7 @@
         </a>
         
         <form id="logout-form" action="{{ admin_url('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
+            @csrf
         </form>
     </div>
 </li>

@@ -21,11 +21,11 @@
         </a>
 
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="{{ extadmin_url('passport/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+        <a class="dropdown-item" href="{{ extadmin_url('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
             <i class="icon ion-exit-outline"></i>{{ __('suda_lang::auth.logout') }}
         </a>
         
-        <form id="logout-form" action="{{ extadmin_url('passport/logout') }}" method="POST" style="display: none;">
+        <form id="logout-form" action="{{ extadmin_url('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
     </div>

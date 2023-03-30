@@ -108,8 +108,7 @@ class Taxonomy extends Model
         return \Gtd\Suda\Models\Taxable::where(['taxonomy_id'=>$this->id])->count();
     }
     
-    
-    public function lists($taxonomy){
+    public function listAll($taxonomy){
         
         $taxonomies = static::where('parent',0)
             ->where('taxonomy',$taxonomy)
@@ -121,7 +120,20 @@ class Taxonomy extends Model
             ->get();
             
             return $taxonomies;
+    }
+    
+    public function lists($taxonomy, $page_size = 20, $page_no = 1){
         
+        $taxonomies = static::where('parent',0)
+            ->where('taxonomy',$taxonomy)
+            ->with(['childrens' => function ($q) {
+                $q->with('term');
+            }])
+            ->with('term')
+            ->orderBy('sort')
+            ->paginate($page_size,['*'],'page',$page_no);
+            
+            return $taxonomies;
     }
 
     /**

@@ -43,7 +43,7 @@
     
     <nav class="{{ $navbar_style }}">
         
-        <button type="button" class="navbar-take-toggle navbar-take-toggle-sm" style="float:left">
+        <button type="button" class="navbar-take-toggle navbar-take-toggle-sm" href="{{ admin_url('style/sidemenu') }}" style="float:left">
             <span class="sr-only">Menu</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>

@@ -126,16 +126,16 @@
                         return $.Deferred(function (deferred) {
                             
                           
-                            var href = options.load_url;
+                            var href = suda.link(suda.meta['.mediabox_box_url'] + 'editor');
         
                             $.ajax({
-                                type    : 'POST', 
+                                type    : 'GET', 
                                 url     : href,
                                 cache   : false,
                                 data: { media_name: 'editor',media_max:10, _token:suda.data('csrfToken') },
                                 success : function(data){
                                    if(data){
-                                       $.fn.layout_media(data,'made-by-suda',suda.data('csrfToken'));
+                                       $.fn.popMediaModel(data,'made-by-suda',suda.data('csrfToken'));
                                        
                                        
                                        var modalLayout = $('.modal-layout');
@@ -174,13 +174,8 @@
                                                     img.title = $(tt).find('img').attr('title');
                                                     img.style = "width:50%";
                                                     context.invoke('editor.insertNode', img);
-                                               }
-                                               
-                                               
-                                               
+                                               }    
                                            });
-                                           
-                                           
                                            
                                            modalLayout.modal('hide');
             

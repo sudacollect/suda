@@ -35,23 +35,7 @@ class LoginController extends AdminController
         $this->setData('login_name',$login_name);
 
         $login_view = 'login';
-        if(array_key_exists('dashboard',$this->settings)) {
-            if(array_key_exists('loginbox',$this->settings['dashboard'])) {
-                if(in_array($this->settings['dashboard']['loginbox'],['picture','default'])){
-                    if(isset($this->settings['dashboard']['dashboard_login_logo_select'])){
-                        $dashboard_login_logo_select = $this->settings['dashboard']['dashboard_login_logo_select'];
-                        $this->setData('login_select',$dashboard_login_logo_select);
-                        $this->setData('loginbox',$this->settings['dashboard']['loginbox']);
-                        if($dashboard_login_logo_select=='custom' && isset($this->settings['dashboard']['dashboard_login_logo'])){
-                            
-                            $login_pic = $this->settings['dashboard']['dashboard_login_logo'];
-                            $this->setData('login_pic',$login_pic);
-
-                        }
-                    }
-                }
-            }
-        }
+        
         
         return $this->display('view_suda::extension.passport.'.$login_view);
     }

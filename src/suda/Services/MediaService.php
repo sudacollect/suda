@@ -11,14 +11,15 @@ use Intervention\Image\Facades\Image;
 use Response;
 use Storage;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 use Gtd\Suda\Models\Media;
 use Gtd\Suda\Models\Mediatable;
-use Gtd\Suda\Models\Setting;
-use Illuminate\Support\Str;
 
+use Gtd\Suda\Traits\SettingTrait;
 class MediaService
 {
+    use SettingTrait;
     
     protected $options;
     protected $user;
@@ -544,10 +545,10 @@ class MediaService
         $saveImageMedium    = $saveDirPath.'/m'.$basename;
         $saveImageThumbmail     = $saveDirPath.'/s'.$basename;
 
-        $media_setting = Setting::where(['key'=>'media_setting','group'=>'media'])->first();
+        $media_setting = $this->getSettingByKey('media_setting','media');
         
         if($media_setting){
-            $setting = $media_setting->value_array;
+            $setting = $media_setting;
         }else{
             $setting = [
                 'size'=>[

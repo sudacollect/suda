@@ -20,7 +20,7 @@
                 <div class="card-body">
                     
                     <form class="form-ajax"  method="POST" action="{{ admin_url('setting/browser') }}" role="form">
-                      {{ csrf_field() }}
+                      @csrf
                       
                       <div class="row mb-3">
                        
@@ -31,14 +31,14 @@
                         
                         <div class="col-sm-4">
                             <div class="form-check">
-                                <input type="radio" name="default_page" @if(isset($settings->values['page_type']) && $settings->values['page_type']=='default_page') checked @endif value="default_page">
+                                <input type="radio" name="default_page" @if(isset($settings['page_type']) && $settings['page_type']=='default_page') checked @endif value="default_page">
                                 <label class="form-check-label" for="default_page">
                                     {{ __('suda_lang::press.settings.default_homepage') }}
                                 </label>
                             </div>
                             
                             <div class="form-check">
-                                <input type="radio" name="default_page" @if(isset($settings->values['page_type']) && $settings->values['page_type']=='single_page') checked @endif  value="single_page">
+                                <input type="radio" name="default_page" @if(isset($settings['page_type']) && $settings['page_type']=='single_page') checked @endif  value="single_page">
                                 <label class="form-check-label" for="default_page">
                                     {{ __('suda_lang::press.settings.static_homepage') }}
                                 </label>
@@ -59,7 +59,7 @@
 
                             <div class="form-check">
 
-                                <input type="radio" name="default_page" @if(isset($settings->values['page_type']) && $settings->values['page_type']=='link_page') checked @endif value="link_page">
+                                <input type="radio" name="default_page" @if(isset($settings['page_type']) && $settings['page_type']=='link_page') checked @endif value="link_page">
                                 <label class="form-check-label" for="default_page">
                                     {{ __('suda_lang::press.settings.custom_homepage') }}
                                 </label>
@@ -70,7 +70,7 @@
                                             {{ env('APP_URL') }}/
                                         </div>
                                     </div>
-                                    <input type="text" name="default_page_url" placeholder="请输入访问地址" class="form-control" @if(isset($settings->values['page_type']) && $settings->values['page_type']=='link_page') value="{{ $settings->values['page_value'] }}" @endif>
+                                    <input type="text" name="default_page_url" placeholder="请输入访问地址" class="form-control" @if(isset($settings['page_type']) && $settings['page_type']=='link_page') value="{{ $settings['page_value'] }}" @endif>
                                 </div>
 
                             </div>

@@ -8,12 +8,12 @@
         <div class="page-heading">
         <h1 class="page-title"><i class="ion-business"></i>&nbsp;{{ __('suda_lang::press.organization') }}</h1>
         @if($soperate->user_role==9)
-        <a href="{{ admin_url('user/organization/add') }}" class="btn btn-primary btn-sm"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}</a>
+        <a href="{{ admin_url('user/organization/add') }}" class="pop-modal btn btn-primary btn-sm"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}</a>
         @endif
         </div>
         
         
-        @if($orgs->count()>0)
+        @if($categories && $categories->count()>0)
         <div class="col-sm-12 suda_page_body">
             <div class="card">
                 
@@ -22,14 +22,16 @@
                       <table class="table table-hover">
                           <thead class="bg-light">
                             <tr>
-                              <th>#</th>
-                              <th>
+                              <th width="15%">
+                                  IMG
+                              </th>
+                              <th width="20%">
                                   {{ __('suda_lang::press.organization_name') }}
                               </th>
-                              <th>
+                              <th width="10%">
                                   {{ __('suda_lang::press.enable') }}
                               </th>
-                              <th>
+                              <th width="15%">
                                   {{ __('suda_lang::press.updated_at') }}
                               </th>
 
@@ -41,26 +43,28 @@
                             </tr>
                           </thead>
                           <tbody>
-                            @if($orgs)
-                            @foreach ($orgs as $org)
+                            
+                            @foreach ($categories as $org)
                             <tr>
-                              <td>{{ $org->id }}</td>
-                              <td>{{ $org->name }}</td>
-                              <td>@if($org->disable==1)否@else是@endif</td>
-                              <td>{{ $org->updated_at }}</td>
+                              <td width="15%">
+                                  {!! suda_image($org->logo,['size'=>'small','imageClass'=>'image_icon']) !!}
+                              </td>
+                              <td width="20%">{{ $org->term->name }}</td>
+                              <td width="10%">@if($org->disable==1)否@else是@endif</td>
+                              <td width="15%">{{ $org->updated_at }}</td>
                               @if($soperate->user_role==9)
                               <td>
-                                  <a href="{{ admin_url('user/organization/edit/'.$org->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
+                                  <a href="{{ admin_url('user/organization/edit/'.$org->id) }}" class="pop-modal btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                                   <button href="{{ admin_url('user/organization/delete/'.$org->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $org->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
                               </td>
                               @endif
                             </tr>
                             @endforeach
-                            @endif
+                            
                           </tbody>
                       </table>
                       
-                      {{ $orgs->links() }}
+                      {{ $categories->links() }}
                     </div>
                 </div>
                 
@@ -69,7 +73,8 @@
         
         @else
         
-        @include('view_suda::admin.component.empty',['type'=>'user','empty'=>'Oops... 还没有部门'])
+        <x-suda::empty-block empty="Oops... 还没有部门" type='user' :card=true />
+        
         
         @endif
     </div>

@@ -5,7 +5,7 @@
 @section('content')
 <form class="handle-ajaxform" role="form" method="POST" action="{{ admin_url('manage/operates/save') }}">
     
-    {{ csrf_field() }}
+    @csrf
     <input type="hidden" name="id" value="{{ $operate->id }}">
     <input type="hidden" name="organization_id" value="1">
     
@@ -18,14 +18,7 @@
         <label for="organization_id" >
             {{ __('suda_lang::press.organization') }}
         </label>
-        
-        <select class="select-category form-control" name="category[]" multiple="multiple" placeholder="请选择部门">
-            @if($categories)
-    
-            @include('view_suda::taxonomy.category_options',['cates'=>$categories,'child'=>0,'select'=>$orgs])
-            
-            @endif
-        </select>
+        <x-suda::select-category taxonomy="org_category" placeholder="请选择部门" :selected="$orgs" />
       
       </div>
       

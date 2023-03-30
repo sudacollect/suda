@@ -40,7 +40,7 @@ class User extends Authenticatable
 
         $users = User::where([])->get()->toArray();
         return $users;
-
+        
     }
     
 }

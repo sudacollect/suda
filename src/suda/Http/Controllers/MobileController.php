@@ -23,6 +23,7 @@ use View;
 use Response;
 
 use Gtd\Suda\Models\Setting;
+use Gtd\Suda\Services\SettingService;
 
 class MobileController extends BaseController
 {
@@ -90,11 +91,9 @@ class MobileController extends BaseController
     }
     
     public function getSettings(){
-        $settings = Setting::getSettings();
+        $settings = (new SettingService)->data();
         $this->data['sdcore']['settings'] = $settings;
-        if(array_key_exists('seo',$this->data['sdcore']['settings']['site'])){
-            $this->data['sdcore']['settings']['site']['seo'] = unserialize($this->data['sdcore']['settings']['site']['seo']);
-        }else{
+        if(!array_key_exists('seo',$this->data['sdcore']['settings']['site'])){
             $this->data['sdcore']['settings']['site']['seo'] = ['title'=>'','keywords'=>'','description'=>''];
         }
         $this->data['sdcore']['title'] = $this->data['sdcore']['settings']['site_name'];

@@ -10,7 +10,7 @@
     display: block;
 }
 </style>
-<form class="handle-ajaxform" role="form" method="POST" action="{{ admin_url('medias/batchtag/save') }}">
+<form class="handle-ajaxform" role="form" method="POST" action="{{ admin_url('media/batchtag/save') }}">
     @csrf
     
     <div class="modal-body">

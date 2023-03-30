@@ -16,7 +16,7 @@
                 <div class="card-body">
                     
                     <form class="form-ajax" role="form" method="POST" action="{{ admin_url('user/roles/savesys') }}">
-                        {{ csrf_field() }}
+                        @csrf
                         
                         
                       <input type="hidden" name="id" value="{{ $role->id }}">

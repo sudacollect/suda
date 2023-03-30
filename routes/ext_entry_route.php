@@ -12,7 +12,7 @@ Route::group([
 
     Route::get('passport/login',$controller_prefix.'LoginController@showLoginForm')->name('ext_login');
     Route::post('passport/login',$controller_prefix.'LoginController@login');
-    Route::post('passport/logout',$controller_prefix.'LoginController@logout');
+    Route::post('logout',$controller_prefix.'LoginController@logout');
 
     Route::get('profile', $controller_prefix.'User\ProfileController@showProfile');
     Route::post('profile/save', $controller_prefix.'User\ProfileController@saveProfile');
@@ -24,6 +24,12 @@ Route::group([
     Route::get('entry/extensions', $controller_prefix.'EntryController@index');
     Route::get('entry/extension/{extension_slug}', $controller_prefix.'EntryController@detail');
     Route::get('entry/extension/{extension_slug}/logo', $controller_prefix.'EntryController@getLogo');
+
+
+    // medias load modal
+    Route::get('medias/modal/{type}', $controller_prefix.'MediasController@modal');
+    // medias upload route
+    Route::post('medias/upload/image/{type?}', $controller_prefix.'MediasController@uploadImage');
 });
 
 //admin.extension

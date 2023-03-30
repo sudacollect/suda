@@ -22,11 +22,12 @@ use Gtd\Suda\Http\Controllers\Admin\DashboardController;
 
 use Gtd\Suda\Models\User;
 use Gtd\Suda\Models\Setting;
+use Gtd\Suda\Traits\SettingTrait;
 
 
 class UserController extends DashboardController
 {
-    
+    use SettingTrait;
     public $view_in_suda = true;
     
     public function index(Request $request,$view='list')
@@ -230,7 +231,7 @@ class UserController extends DashboardController
         $this->title('用户注册设置');
         
         
-        $settings = Setting::where(['key'=>'register','group'=>'user'])->first();
+        $settings = $this->getSettingByKey('user_rule','user');
         
         $this->setData('settings',$settings);
         
@@ -241,39 +242,15 @@ class UserController extends DashboardController
         return $this->display('user.user.rule_register');
     }
     
-    //保存提交用户规则
-    public function ruleSave(Request $request,$rule_type){
-        
-        if($rule_type!=$request->rule_type){
-            
-            return $this->responseAjax('fail','用户规则类型出错，请重新提交');
-            
-        }
-        
-        $register = 0;
-        
+    // 保存提交用户规则
+    public function ruleSave(Request $request,$rule_type)
+    {
+        $rules = [];
         if($request->register){
-            $register = $request->register;
+            $rules['register'] = $request->register;
         }
-        
-        $data = [
-            'key'=>$rule_type,
-            'group'=>'user',
-            'type'=>'text',
-            'values'=>$register,
-        ];
-        
-        $settingModel = new Setting;
-        
-        if($first = Setting::where(['key'=>$rule_type,'group'=>'user'])->first()){
-            Setting::where(['key'=>$rule_type,'group'=>'user'])->update($data);
-        }else{
-            $settingModel->fill($data)->save();
-        }
-        
-        Setting::updateSettings();
-        
-        return $this->responseAjax('success','保存成功','user/rule/register');
+        $this->saveSettingByKey('user_rule','user',$register,'serialize');
+        return $this->responseAjax('success','保存成功','self.refresh');
     }
     
     public function isPhone($string){

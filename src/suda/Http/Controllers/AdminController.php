@@ -29,6 +29,7 @@ use Gtd\Suda\Models\Role;
 use Gtd\Suda\Models\Organization;
 use Gtd\Suda\Models\Setting;
 
+use Gtd\Suda\Services\SettingService;
 
 class AdminController extends BaseController
 {
@@ -183,24 +184,12 @@ class AdminController extends BaseController
     public function getSettings()
     {
         if(!$this->settings){
-            $settings = Setting::getSettings();
+            $settings = (new SettingService)->data();
             $this->settings = $settings;
             $this->data['sdcore']['settings'] = $settings;
         }else{
             $this->data['sdcore']['settings'] = $this->settings;
         }
-    }
-    
-    public function getComponent()
-    {
-        //作废参数
-        $component = [];
-        
-        //载入图片上传组件
-        $component['image'] = 'view_suda::admin.component.upload_image';
-        
-        $this->setData('component',(object)$component);
-        
     }
 
     //自定义面包屑
@@ -252,7 +241,6 @@ class AdminController extends BaseController
         }
         
         $this->getSettings();
-        // $this->getComponent();
         $this->getNavi();
         
         //#TODO 实现自动化的breadcrumbs

@@ -15,9 +15,11 @@ use Gtd\Suda\Models\Operate;
 use Gtd\Suda\Models\Organization;
 
 use Gtd\Suda\Models\Media;
+use Gtd\Suda\Traits\SettingTrait;
 
 class StyleController extends DashboardController
 {
+    use SettingTrait;
     public $view_in_suda = true;
        
     //控制面板风格
@@ -52,29 +54,21 @@ class StyleController extends DashboardController
             return redirect('home');
         }
         
-        $settingModel = new Setting;
         $post = $request->all();
         unset($post['_token']);
         if(!array_key_exists('sidebar_style',$post)){
             return $this->responseAjax('fail','数据异常，请刷新页面重试');
         }
-        
-        if($first = $settingModel->where(['key'=>'sidebar_style'])->first()){
-            $settingModel->where(['key'=>'sidebar_style'])->update(['values'=>$post['sidebar_style']]);
-        }else{
-            $settingModel->insert(['key'=>'sidebar_style','type'=>'site','values'=>$post['sidebar_style']]);
-        }
-        
-        Setting::updateSettings();
+
+        $this->saveSettingByKey('sidebar_style','dashboard',$post['sidebar_style']);
         
         //更新成功
-        $url = 'setting/sidebarstyle';
-        return $this->responseAjax('success','保存成功',$url);
+        return $this->responseAjax('success','保存成功','self.refresh');
     }
     
     //设置模板
-    public function setStyle(Request $request){
-        $url = 'style/dashboard';
+    public function setStyle(Request $request)
+    {
         $roles = [];
         $messages = [];
         
@@ -92,14 +86,14 @@ class StyleController extends DashboardController
             $new_permission['style']['dashboard'] = $request->theme_name;
 
             $this->user->update([
-                'permission'=>serialize($new_permission),
+                'permission' => serialize($new_permission),
             ]);
             
-            return $this->responseAjax('success','保存成功',$url);
+            return $this->responseAjax('success','保存成功','self.refresh');
         }
         
         
-        return $this->responseAjax('fail',$response_msg,$url);
+        return $this->responseAjax('fail',$response_msg,'self.refresh');
         
     }
 
@@ -140,8 +134,8 @@ class StyleController extends DashboardController
         }
 
         $new_permission['style']['dashboard_layout'] = [
-            'navbar_layout'=>$request->navbar_layout,
-            'navbar_color'=>$request->navbar_color,
+            'navbar_layout' => $request->navbar_layout,
+            'navbar_color'  => $request->navbar_color,
         ];
 
         $this->user->update([
@@ -154,20 +148,20 @@ class StyleController extends DashboardController
     }
     
     //设置菜单显示样式
-    public function sidemenu(Request $request,$style="flat"){
+    public function sidemenu(Request $request)
+    {
+        $style = $request->style?$request->style:'flat';
         
         if(in_array($style,['flat','icon'])){
             
             $user_id = $this->user->id;
             Cache::store(config('sudaconf.admin_cache','file'))->forever('sidemenu#'.$user_id, ['style'=>$style]);
-            
         }
         
     }
     
     
     //预览模板
-    
     public function previewStyle(Request $request,$theme_name){
         
         if(!$theme_name){

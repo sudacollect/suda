@@ -17,7 +17,6 @@ use Illuminate\Validation\Rule;
 trait TaxonomyTrait
 {
     // public $taxonomy_name = '';
-    // public $redirect_url = '';
     // public $multiple_level = false;
     // public $taxonomy_title = '分类';
     
@@ -29,12 +28,12 @@ trait TaxonomyTrait
         }
         
         $taxonomyObj = new Taxonomy;
-        $categories = $taxonomyObj->lists($this->taxonomy_name);
+        $categories = $taxonomyObj->listAll($this->taxonomy_name);
 
         $this->setData('categories',$categories);
         
-        $this->getButtonConfig();
-        return $this->display($this->getViewConfig('list'));
+        $this->getActions();
+        return $this->display($this->getViews('list'));
     }
 
     //新建分类
@@ -50,14 +49,14 @@ trait TaxonomyTrait
         $this->setData('modal_icon_class','ion-add-circle');
 
         $taxonomyObj = new Taxonomy;
-        $categories = $taxonomyObj->lists($this->taxonomy_name);
+        $categories = $taxonomyObj->listAll($this->taxonomy_name);
 
         $this->setData('categories',$categories);
         $this->setData('taxonomy_name',$this->taxonomy_name);
         $this->setData('parent_id',$parent_id);
         
-        $this->getButtonConfig();
-        return $this->display($this->getViewConfig('create'));
+        $this->getActions();
+        return $this->display($this->getViews('create'));
     }
 
     //更新分类
@@ -78,11 +77,11 @@ trait TaxonomyTrait
         $this->setData('term',$term);
         
         $taxonomyObj = new Taxonomy;
-        $catgories = $taxonomyObj->lists($term->taxonomy);
+        $catgories = $taxonomyObj->listAll($term->taxonomy);
         $this->setData('categories',$catgories);
 
-        $this->getButtonConfig();
-        return $this->display($this->getViewConfig('update'));
+        $this->getActions();
+        return $this->display($this->getViews('update'));
     }
 
     //保存分类
@@ -92,7 +91,7 @@ trait TaxonomyTrait
         $id = $request->id;
 
         if(!$request->has('taxonomy_name')){
-            return $this->responseAjax('fail','数据不存在',$this->redirect_url);
+            return $this->responseAjax('fail','数据不存在','self.refresh');
         }
 
         $roles=[];
@@ -200,7 +199,7 @@ trait TaxonomyTrait
                     'taxonomy'=>$request->taxonomy_name,
                 ]);
                 
-                return $this->responseAjax('success','保存成功',$this->redirect_url);
+                return $this->responseAjax('success','保存成功','self.refresh');
                 
             }else{
                 
@@ -235,12 +234,12 @@ trait TaxonomyTrait
                     ]);
                 }
                 
-                return $this->responseAjax('success','保存成功',$this->redirect_url);
+                return $this->responseAjax('success','保存成功','self.refresh');
                 
             }
         }
         
-        return $this->responseAjax('fail',$response_msg,$this->redirect_url);
+        return $this->responseAjax('fail',$response_msg,'self.refresh');
         
     }
 
@@ -251,12 +250,12 @@ trait TaxonomyTrait
         if($request->id && !empty($request->id) && intval($id)==$request->id){
             $taxonomy = Taxonomy::where('id',$request->id)->with('term')->first();
             if($taxonomy->term->slug=='default'){
-                return $this->responseAjax('warning','默认'.(property_exists($this,'taxonomy_title')?$this->taxonomy_title:'分类').'不能删除',$this->redirect_url);
+                return $this->responseAjax('warning','默认'.(property_exists($this,'taxonomy_title')?$this->taxonomy_title:'分类').'不能删除','self.refresh');
             }
             if($taxonomy){
                 
                 if(Taxable::where('taxonomy_id',$taxonomy->id)->first()){
-                    return $this->responseAjax('warning','存在关联内容，无法删除',$this->redirect_url);
+                    return $this->responseAjax('warning','存在关联内容，无法删除','self.refresh');
                 }
                 
                 Taxonomy::where('id',$request->id)->forceDelete();
@@ -266,10 +265,10 @@ trait TaxonomyTrait
                 return $this->responseAjax('success','删除成功');
                 
             }else{
-                return $this->responseAjax('warning','数据不存在,请重试',$this->redirect_url);
+                return $this->responseAjax('warning','数据不存在,请重试','self.refresh');
             }
         }else{
-            return $this->responseAjax('warning','数据不存在,请重试',$this->redirect_url);
+            return $this->responseAjax('warning','数据不存在,请重试','self.refresh');
         }
         
     }
@@ -298,7 +297,7 @@ trait TaxonomyTrait
     }
 
     //修改显示
-    public function editToggle(Request $request,$id){
+    public function toggle(Request $request,$id){
         
         
         $toggle = intval($request->toggle);
@@ -366,62 +365,50 @@ trait TaxonomyTrait
     }
 
     
-    protected function getViewConfig($type='list')
+    protected function getViews($type='list')
     {
 
         $this->setData('taxonomy_title',property_exists($this,'taxonomy_title')?$this->taxonomy_title:'分类');
 
-        $views = (array)$this->viewConfig();
+        $views = $this->viewConfig();
 
         if(count($views)>0 && array_key_exists($type,$views)){
             return $views[$type];
         }
-
-        switch($type){
-            case 'list':
-                return 'view_suda::taxonomy.category.list';
-            break;
-            case 'create':
-                return 'view_suda::taxonomy.category.add';
-            break;
-            case 'update':
-                return 'view_suda::taxonomy.category.edit';
-            break;
-        }
-        
-
     }
 
-    public function viewConfig(){
-
+    public function viewConfig(): array
+    {
         return [
 
             'list'=>'view_suda::taxonomy.category.list',
             'create'=>'view_suda::taxonomy.category.add',
             'update'=>'view_suda::taxonomy.category.edit',
         ];
-
     }
 
-    protected function getButtonConfig(){
+    protected function getActions(){
 
-        $buttons = (array)$this->buttonConfig();
+        $buttons = $this->actionConfig();
 
         $this->setData('buttons',$buttons);
-
     }
 
     //设置自定义的链接
-    public function buttonConfig(){
+    public function actionConfig(): array
+    {
 
         $buttons = [];
 
-        $buttons['create']  = 'article/category/add';
-        $buttons['update']  = 'article/category/update';
-        $buttons['save']    = 'article/category/save';
-        $buttons['delete']  = 'article/category/delete';
-        $buttons['sort']    = 'article/category/editsort';
+        $buttons['create']  = admin_url('article/category/add');
+        $buttons['update']  = admin_url('article/category/update');
+        $buttons['save']    = admin_url('article/category/save');
+        $buttons['delete']  = admin_url('article/category/delete');
+        $buttons['sort']    = admin_url('article/category/editsort');
         
+        $buttons['modal_url'] = admin_url('medias/modal');
+        $buttons['upload_url'] = admin_url('medias/upload/image');
+
         return $buttons;
     }
 }

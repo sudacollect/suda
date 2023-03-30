@@ -1,6 +1,6 @@
 <div class="upload-modal uploadbox-group list-group list-group-column list-images @if(isset($columns))list-images-{{ $columns }}@else list-images-1 @endif">
 
-@if(isset($data))
+@if(isset($data) && !empty($data))
 
     @if(is_array($data) && count($data)>0)
     
@@ -77,8 +77,8 @@
             
             <div class="upload-item uploadbox uploadbox-filled" id="media-0" _data_type="{{ $media_type }}" _data_crop="{{ $is_crop }}" @if(isset($input_name) && !empty($input_name)) _data_name="{{ $input_name }}" @endif @if(isset($max)) media_max="{{$max}}" @else media_max="1" @endif>
                 
-                @if($data)
-                <img src="{{ suda_image(isset($data)?$data:'',['size'=>'medium','imageClass'=>'image_icon','url'=>true,false]) }}" title="{{ $data->name }}" class="zpress-image image-medium image_show">
+                
+                <img src="{{ suda_image($data,['size'=>'medium','imageClass'=>'image_icon','url'=>true,false]) }}" title="{{ $data->name }}" class="zpress-image image-medium image_show">
                 
 
                 @if(isset($input_name) && !empty($input_name))
@@ -92,13 +92,12 @@
                 @endif
 
 
-                @endif
+                
                 
             </div>
     
         </div>
         
-
         @endif
         
     @endif

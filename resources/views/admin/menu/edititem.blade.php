@@ -4,7 +4,7 @@
 
 @section('content')
 <form class="handle-ajaxform" role="form" method="POST" action="{{ admin_url('menu/item/save') }}">
-    {{ csrf_field() }}
+    @csrf
     <input type="hidden" name="menu_id" value="{{ $item->menu_id }}">
     <input type="hidden" name="id" value="{{ $item->id }}">
 

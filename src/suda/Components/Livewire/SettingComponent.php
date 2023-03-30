@@ -1,10 +1,11 @@
 <?php
 
-namespace Gtd\Suda\Components;
+namespace Gtd\Suda\Components\Livewire;
 
 use Livewire\Component;
-use Gtd\Suda\Models\Setting;
 use Illuminate\Support\Facades\Validator;
+use Gtd\Suda\Models\Setting;
+use Gtd\Suda\Services\SettingService;
 
 class SettingComponent extends Component
 {
@@ -28,18 +29,24 @@ class SettingComponent extends Component
   
     public function mount()
     {
+        $keys = [
+            'site_name',
+            'site_domain',
+            'site_close',
+            'share_image',
+            'logo',
+            'company_phone',
+            'company_name',
+            'company_addr',
+            'icp_number',
+        ];
 
-
-        $settings = Setting::where(['group'=>'site'])->get();
+        $settings = Setting::where(['group'=>'site'])->whereIn('key',$keys)->get();
         
         $settings_data = [];
         
-        foreach((array)$settings as $k=>$v){
-            if($v){
-                foreach($v as $key=>$values){
-                    $settings_data[$values->key] = $values->values;
-                }
-            }
+        foreach($settings as $k=>$v){
+            $settings_data[$v->key] = $v->values;
         }
         
         $this->settings = $settings_data;
@@ -79,7 +86,7 @@ class SettingComponent extends Component
             }
         }
         
-        Setting::updateSettings();
+        (new SettingService)->updateCache();
 
         $this->error_msg = '保存成功';
         $this->dispatchBrowserEvent('errorBox',['msg'=>'保存成功']);

@@ -24,7 +24,7 @@
                 {{ __('suda_lang::auth.logout') }}
             </a>
             <form id="logout-form-bottom" action="{{ admin_url('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
+                @csrf
             </form>
         </li>
     </ul>

@@ -1,5 +1,5 @@
 <form class="form" id="quick-search" method="POST" action="{{ admin_url('article/search') }}">
-    {{ csrf_field() }}
+    @csrf
     <input type="hidden" name="view_type" value="{{ $view_type }}">
     <!-- 分类搜索 -->
     @php

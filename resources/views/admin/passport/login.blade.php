@@ -3,7 +3,7 @@
 @push('styles')
 <link rel="stylesheet" href="{{ suda_asset('css/dashlogin.css') }}">
 
-@if(isset($loginbox) && $loginbox=='picture')
+@if(isset($loginbox) && $loginbox=='dark')
 <style>
     body{ background:#061425; }
     .login-box{ color:#888 }
@@ -66,7 +66,7 @@
 
 @if(isset($login_select))
 
-    @if($login_select=='custom' && isset($login_pic ))
+    @if($login_select=='customize' && isset($login_pic ))
     <style>
         .dash-login-tips .box{
             background: #fff url("{{ $login_pic }}") no-repeat center bottom;

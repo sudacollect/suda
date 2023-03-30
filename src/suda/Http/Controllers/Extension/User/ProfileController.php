@@ -128,12 +128,11 @@ class ProfileController extends DashboardController
         }
         
         $user = Operate::where('id',$user_id)->with('avatar')->first();
-        $this->uploadCroppie($request->avatar,'operate',$user);
+        $this->uploadCroppie('operate',$request->avatar,$user);
         
         return redirect(extadmin_url('profile'))->with('status', ['code'=>'success','msg'=>'资料已更新','delay'=>3000]);
 
     }
-    
     
     //修改邮箱
     public function editEmail(){
@@ -141,9 +140,7 @@ class ProfileController extends DashboardController
     }
     
     //保存邮箱
-    public function saveEmail(){
-        
-    }
+    public function saveEmail() {}
     
     //修改密码
     public function editPassword(){

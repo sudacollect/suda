@@ -86,7 +86,7 @@
                                 @if( $current_theme != $kk )
 
                                 <form class="form-ajax" action="{{ admin_url('theme/settheme') }}">
-                                    {{ csrf_field() }}
+                                    @csrf
                                     <input type="hidden" name="app_name" value="{{ $app_name }}">
                                     <div class="theme-info col-sm-3">
                                         <div class="screenshot">

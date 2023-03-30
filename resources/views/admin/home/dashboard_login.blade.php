@@ -31,18 +31,14 @@
                         </label>
                         
                         <div class="col-sm-4">
-                            
-                            <div class="list-group list-images list-images-1">
-                              <div class="list-group-item">
-                                  <div class="upload-item uploadbox add-image-one @if(isset($settings['dashboard_logo']->media)) uploadbox-filled @endif" id="addimage_one" _data_type="setting" _data_name="dashboard_logo">
-                                      @if(isset($settings['dashboard_logo']->media))
-                                      {!! suda_image($settings['dashboard_logo']->media,['size'=>'medium','imageClass'=>'image_show','url'=>false],false) !!}
-                                      <input type="hidden" name="images[dashboard_logo]" value="{{ $settings['dashboard_logo']->media_id }}">
-                                      @endif
-                                  </div>
-                              </div>
-                            </div>
-                            <span class="help-block">360*128 pixel</span>
+
+                            @if(isset($settings['dashboard_logo']->media))
+                            @uploadBox('media@dashboard_logo',1,1,$settings['dashboard_logo']->media)
+                            @else
+                            @uploadBox('media@dashboard_logo',1,1)
+                            @endif
+
+                            <span class="help-block">360*120 pixel</span>
                         </div>
                       </div>
                       
@@ -58,7 +54,7 @@
                                 <div class="input-group-text">
                                     {{ config('sudaconf.admin_path') }}/
                                 </div>
-                                <input type="text" class="form-control" name="login_page" placeholder="example: index" value="@if(isset($settings['login_page']->values)){{ $settings['login_page']->values }}@endif">
+                                <input type="text" class="form-control" name="login_page" placeholder="example: index" value="@if(isset($settings['login_page'])){{ $settings['login_page'] }}@endif">
                             </div><!-- /input-group -->
                         </div>
                     </div>
@@ -120,12 +116,8 @@
                        
                        <div class="col-sm-4">
                            <select class="form-control" name="loginbox">
-                               <option value="default" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='default') selected @endif>{{ __('suda_lang::press.settings.style_list.default') }}</option>
-                               <option value="picture" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='picture') selected @endif>{{ __('suda_lang::press.settings.style_list.dark') }}</option>
-                               {{-- <option value="simple-blue" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='simple-blue') selected @endif>简单蓝</option>
-                               <option value="simple-orange" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='simple-orange') selected @endif>简单橙</option>
-                               <option value="simple-cyan" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='simple-cyan') selected @endif>简单青</option>
-                               <option value="simple-black" @if(isset($settings['loginbox']->values) && $settings['loginbox']->values=='simple-black') selected @endif>简单黑</option> --}}
+                               <option value="light" @if(isset($settings['loginbox']) && $settings['loginbox']=='light') selected @endif>{{ __('suda_lang::press.settings.style_list.default') }}</option>
+                               <option value="dark" @if(isset($settings['loginbox']) && $settings['loginbox']=='dark') selected @endif>{{ __('suda_lang::press.settings.style_list.dark') }}</option>
                            </select>
                            {{-- <span class="help-block">选择图片风格时,可选择下面图片</span> --}}
                        </div>
@@ -138,7 +130,7 @@
                         <label for="loginbox" class="col-sm-2 col-form-label text-end">&nbsp;</label>
                     
                         <div class="col-sm-4">
-                            <input type="text" class="form-control color-pickr" name="login_color" placeholder="背景配色" @if(isset($settings['login_color']->values)) value="{{ $settings['login_color']->values }}" @else value="#1c35a7" @endif>
+                            <input type="text" class="form-control color-pickr" name="login_color" placeholder="背景配色" @if(isset($settings['login_color'])) value="{{ $settings['login_color'] }}" @else value="#1c35a7" @endif>
                         </div>
                     
                     </div>
@@ -151,7 +143,8 @@
                         </label>
                         
                         <div class="col-sm-4">
-                            <input type="hidden" name="dashboard_login_logo_select" @if(isset($settings['dashboard_login_logo_select'])) value="{{ $settings['dashboard_login_logo_select'] }}" @else value="boat" @endif>
+                            <input type="hidden" name="dashboard_login_logo_select" value="{{ $settings['dashboard_login_logo_select'] }}">
+
                             <div class="list-group list-group-horizontal list-images list-images-icon">
                                 <div class="list-group-item">
                                     <div class="login-logo" data-name="boat">
@@ -192,23 +185,13 @@
                         </label>
                         
                         <div class="col-sm-4">
-                            <div class="list-group list-group-horizontal list-images list-images-icon list-images-icon-fixed">
-                                <div class="list-group-item">
-                                    <div class="login-logo" data-name="custom">
-                                    <img src="{{ suda_asset('images/login/icon_custom.jpg') }}" style="max-width:100%;width:100%;">
-                                    </div>
-                                </div>
+                            
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="custom_dashboard_login_logo" @if($settings['dashboard_login_logo_select']=='customize') checked @endif role="switch" id="customLoginImage">
+                                <label class="form-check-label" for="customLoginImage">{{ __('suda_lang::press.settings.custom_login_image') }}</label>
                             </div>
-                            <div class="list-group list-images list-images-icon list-images-icon-fixed">
-                                <div class="list-group-item">
-                                    <div class="upload-item uploadbox add-image-two @if(isset($settings['dashboard_login_logo'])) uploadbox-filled @endif" id="addimage_two" _data_type="setting" _data_name="dashboard_login_logo">
-                                        @if(isset($settings['dashboard_login_logo']))
-                                        {!! suda_image($settings['dashboard_login_logo'],['size'=>'medium','imageClass'=>'image_show','url'=>false],false) !!}
-                                        <input type="hidden" name="images[dashboard_login_logo]" value="{{ $settings['dashboard_login_logo']->id }}">
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
+                            
+                            @uploadBox('media@dashboard_login_logo',1,1,$settings['dashboard_login_logo'])
 
                         </div>
                     </div>
@@ -294,8 +277,10 @@
     $(document).ready(function(){
         
         $.mediabox({
-            modal_url: "{{ admin_url('medias/modal') }}",
-            upload_url: "{{ admin_url('medias/upload/image') }}"
+            box_url: "{{ admin_url('medias/load-modal/') }}",
+            modal_url: "{{ admin_url('medias/modal/') }}",
+            upload_url: "{{ admin_url('medias/upload/image/') }}",
+            remove_url: "{{ admin_url('medias/remove/image/') }}"
         });
 
         var pickr = Pickr.create({
@@ -368,17 +353,10 @@
 
             $(logo_select).val(logo);
 
-            if(logo=='custom'){
-                if($('input[name="images[dashboard_login_logo]"]').length<1){
-                    $('#addimage_two').trigger('click');
-                }
-            }
-
         });
 
         //初始化选择
-        var logo_select = $('input[name="dashboard_login_logo_select"]');
-        $('.list-images-icon').find('.login-logo[data-name="'+logo_select.val()+'"]').trigger('click');
+        $('.list-images-icon').find('.login-logo[data-name="{{ $settings['dashboard_login_logo_select'] }}"]').trigger('click');
     });
 </script>
 @endpush

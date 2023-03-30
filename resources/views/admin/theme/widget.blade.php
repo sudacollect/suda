@@ -301,8 +301,10 @@
     $(document).ready(function(){
 
         $.mediabox({
-            modal_url: "{{ admin_url('medias/modal') }}",
-            upload_url: "{{ admin_url('medias/upload/image') }}"
+            box_url: "{{ admin_url('medias/load-modal/') }}",
+            modal_url: "{{ admin_url('medias/modal/') }}",
+            upload_url: "{{ admin_url('medias/upload/image/') }}",
+            remove_url: "{{ admin_url('medias/remove/image/') }}"
         });
 
         var app_name = $('input[name="app_name"]').val();

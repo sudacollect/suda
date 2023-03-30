@@ -121,6 +121,6 @@
 
 @else
 
-@include('view_suda::admin.component.empty',['without_card'=>true])
+<x-suda::empty-block :card=false />
 
 @endif

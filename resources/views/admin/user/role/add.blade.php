@@ -16,7 +16,7 @@
                 <div class="card-body">
                     
                     <form class="form-ajax" role="form" method="POST" action="{{ admin_url('user/roles/save') }}">
-                        {{ csrf_field() }}
+                        @csrf
                         
                       <div class="mb-3 row {{ $errors->has('authority') ? ' has-error' : '' }}">
                           

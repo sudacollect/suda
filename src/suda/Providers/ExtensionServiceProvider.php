@@ -37,6 +37,8 @@ class ExtensionServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
+        Blade::componentNamespace('Gtd\\Suda\\Components', 'suda');
         
         $extension_dir = config('sudaconf.extension_dir','extensions');
         $ucf_extension_dir = ucfirst($extension_dir);

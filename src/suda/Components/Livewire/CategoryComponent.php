@@ -1,6 +1,6 @@
 <?php
 
-namespace Gtd\Suda\Components;
+namespace Gtd\Suda\Components\Livewire;
 
 use Livewire\Component;
 

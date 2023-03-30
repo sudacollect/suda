@@ -4,7 +4,7 @@
 
 @section('content')
 <form class="handle-ajaxform" role="form" method="POST" action="{{ admin_url('media/setting/save') }}">
-    {{ csrf_field() }}
+    @csrf
 
     <div class="modal-body">
     <div class="container-fluid">
@@ -117,8 +117,10 @@
         $('.handle-ajaxform').ajaxform();
 
         $.mediabox({
-            modal_url: "{{ admin_url('medias/modal') }}",
-            upload_url: "{{ admin_url('medias/upload/image') }}"
+            box_url: "{{ admin_url('medias/load-modal/') }}",
+            modal_url: "{{ admin_url('medias/modal/') }}",
+            upload_url: "{{ admin_url('medias/upload/image/') }}",
+            remove_url: "{{ admin_url('medias/remove/image/') }}"
         });
     });
     

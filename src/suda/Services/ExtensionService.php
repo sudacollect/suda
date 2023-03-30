@@ -12,11 +12,12 @@ use Illuminate\View\FileviewFinder;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
-use Illuminate\Routing\Router;
-use Gtd\Suda\Models\Setting;
 use Gtd\Suda\Models\Operate;
+use Gtd\Suda\Traits\SettingTrait;
 
-class ExtensionService {
+class ExtensionService
+{
+    use SettingTrait;
     
     public $extensions = [];
     
@@ -36,10 +37,9 @@ class ExtensionService {
         if(Cache::store($this->cache_store)->has('cache_avaliable_extensions')){
             $extensions = Cache::store($this->cache_store)->get('cache_avaliable_extensions');
         }else{
-            $setting_exts = Setting::where(['key'=>'extensions','group'=>'extension'])->first();
+            $setting_exts = $this->getSettingByKey('extensions','extension');
             if($setting_exts){
-                
-                $extensions = unserialize($setting_exts->values);
+                $extensions = $setting_exts;
                 Cache::store($this->cache_store)->forever('cache_avaliable_extensions',$extensions);
             }
         }
@@ -156,16 +156,9 @@ class ExtensionService {
         Cache::store($this->cache_store)->forever('cache_extension', $extensions);
         
         //可用应用
-        
-        $setting_exts = Setting::where(['key'=>'extensions','group'=>'extension'])->first();
+        $setting_exts = $this->getSettingByKey('extensions','extension');
         if($setting_exts){
-            
-            //$extensions = unserialize($setting_exts->values);
-            
-            Setting::where(['key'=>'extensions','group'=>'extension'])->update([
-                'values' => serialize($extensions)
-            ]);
-
+            $this->saveSettingByKey('extensions','extension',$extensions,'serialize');
         }
 
         if($extensions)
@@ -346,24 +339,9 @@ class ExtensionService {
             }
             
             $available_exts[$ext['slug']] = $ext;
-            
+
             //保存可用应用
-            $setting_exts = Setting::where(['key'=>'extensions','group'=>'extension'])->first();
-            if($setting_exts){
-                Setting::where(['key'=>'extensions','group'=>'extension'])->update([
-                    'values' => serialize($available_exts)
-                ]);
-            }else{
-                $settingModel = new Setting;
-                $settingModel->fill([
-                    
-                    'key'=>'extensions',
-                    'group'=>'extension',
-                    'values'=>serialize($available_exts),
-                    'type'=>'text'
-                    
-                ])->save();
-            }
+            $this->saveSettingByKey('extensions','extension',$available_exts,'serialize');
             
             Cache::store($this->cache_store)->forever('cache_avaliable_extensions',$available_exts);
             
@@ -379,8 +357,6 @@ class ExtensionService {
             $this->runMigrate($extenion_slug);
             
             //#TODO 支持设置预定义数据
-            
-            
             
             $msg = '应用安装成功';
             return true;
@@ -483,23 +459,7 @@ class ExtensionService {
             
             unset($available_exts[$extension_slug]);
             
-            $setting_exts = Setting::where(['key'=>'extensions','group'=>'extension'])->first();
-            
-            if($setting_exts){
-                Setting::where(['key'=>'extensions','group'=>'extension'])->update([
-                    'values' => serialize($available_exts)
-                ]);
-            }else{
-                $settingModel = new Setting;
-                $settingModel->fill([
-                    
-                    'key'=>'extensions',
-                    'group'=>'extension',
-                    'values'=>serialize($available_exts),
-                    'type'=>'text'
-                    
-                ])->save();
-            }
+            $this->saveSettingByKey('extensions','extension',$available_exts,'serialize');
             
             Cache::store($this->cache_store)->forever('cache_avaliable_extensions',$available_exts);
             $this->removeMenuCache($extension_slug);

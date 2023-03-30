@@ -3,8 +3,8 @@
 
 
 @section('content')
-<form class="handle-ajaxform" role="form" method="POST" action="{{ admin_url($buttons['save']) }}">
-    {{ csrf_field() }}
+<form class="handle-ajaxform" role="form" method="POST" action="{{ $buttons['save'] }}">
+    @csrf
 
     <input type="hidden" name="id" value="{{ $term->id }}">
     <input type="hidden" name="taxonomy_name" value="{{ $term->taxonomy }}">
@@ -29,8 +29,8 @@
                 
                 </div>
                     
-                  <div class="mb-3 row{{ $errors->has('name') ? ' has-error' : '' }}">
-                  
+                <div class="mb-3 row{{ $errors->has('name') ? ' has-error' : '' }}">
+                
                     <label for="inputName" class="col-sm-3 col-form-label text-right">
                         名称
                     </label>
@@ -42,11 +42,11 @@
                             </span>
                         @endif
                     </div>
+            
+                </div>
+            
+                <div class="mb-3 row{{ $errors->has('slug') ? ' has-error' : '' }}">
                 
-                  </div>
-              
-                  <div class="mb-3 row{{ $errors->has('slug') ? ' has-error' : '' }}">
-                  
                     <label for="inputName" class="col-sm-3 col-form-label text-right">
                         别名
                     </label>
@@ -59,12 +59,12 @@
                             例如 <strong>news</strong>
                         </span>
                     </div>
+            
+                </div>
+
+
+                <div class="mb-3 row {{ $errors->has('color') ? ' has-error' : '' }}">
                 
-                  </div>
-
-
-                  <div class="mb-3 row {{ $errors->has('color') ? ' has-error' : '' }}">
-                  
                     <label for="color" class="col-sm-3 col-form-label text-right">
                         颜色
                     </label>
@@ -72,61 +72,61 @@
                         <div class="input-group">
                             <input type="text" class="form-control" name="color" aria-label="color" value="{{ $term->color }}">
                             <div class="input-group-text">
-                              <span class="color-picker"><i class="ion-color-palette"></i></span>
+                                <span class="color-picker"><i class="ion-color-palette"></i></span>
                             </div>
-                          </div>
+                            </div>
                     </div>
-                
-                  </div>
+            
+                </div>
               
-                    <div class="mb-3 row {{ $errors->has('desc') ? ' has-error' : '' }}">
-                  
-                      <label for="desc" class="col-sm-3 col-form-label text-right">
-                          描述
-                      </label>
-                      <div class="col-sm-8">
+                <div class="mb-3 row {{ $errors->has('desc') ? ' has-error' : '' }}">
+                
+                    <label for="desc" class="col-sm-3 col-form-label text-right">
+                        描述
+                    </label>
+                    <div class="col-sm-8">
 
-                          <textarea name="desc" class="form-control" rows=4 placeholder="{{ $taxonomy_title }}描述">{{ $term->desc }}</textarea>
-                      </div>
-                
+                        <textarea name="desc" class="form-control" rows=4 placeholder="{{ $taxonomy_title }}描述">{{ $term->desc }}</textarea>
                     </div>
-                    
-                    @if($term->term->slug!='default')
-                    <div class="mb-3 row {{ $errors->has('parent') ? ' has-error' : '' }}">
-                  
-                      <label for="inputName" class="col-sm-3 col-form-label text-right">
-                          上级{{ $taxonomy_title }}
-                      </label>
-                      <div class="col-sm-8">
-                          <select name="parent" class="select-category" placeholder="-上级{{ $taxonomy_title }}-">
-                              <option value="0">无</option>
-                              @if($categories)
-                              
-                              @include('view_suda::taxonomy.category.options',['cates'=>$categories,'child'=>0,'select'=>$term->parent,'exclude'=>$term->id])
-                              
-                              @endif
-                          </select>
-                          <span class="help-block">
-                              默认不选设置为一级{{ $taxonomy_title }}
-                          </span>
-                      </div>
+            
+                </div>
                 
-                    </div>
-                    @endif
-                    
-                    <div class="mb-3 row{{ $errors->has('sort') ? ' has-error' : '' }}">
-                  
-                      <label for="inputName" class="col-sm-3 col-form-label text-right">
-                          排序
-                      </label>
-                      <div class="col-sm-8">
-                          <input type="number" name="sort" class="form-control" value="{{ $term->sort }}" id="inputName" placeholder="请填写排序">
-                          <span class="help-block">
-                              数字越小越靠前
-                          </span>
-                      </div>
+                @if($term->term->slug!='default')
+                <div class="mb-3 row {{ $errors->has('parent') ? ' has-error' : '' }}">
                 
+                    <label for="inputName" class="col-sm-3 col-form-label text-right">
+                        上级{{ $taxonomy_title }}
+                    </label>
+                    <div class="col-sm-8">
+                        <select name="parent" class="select-category" placeholder="-上级{{ $taxonomy_title }}-">
+                            <option value="0">无</option>
+                            @if($categories)
+                            
+                            @include('view_suda::taxonomy.category.options',['cates'=>$categories,'child'=>0,'select'=>$term->parent,'exclude'=>$term->id])
+                            
+                            @endif
+                        </select>
+                        <span class="help-block">
+                            默认不选设置为一级{{ $taxonomy_title }}
+                        </span>
                     </div>
+            
+                </div>
+                @endif
+                
+                <div class="mb-3 row{{ $errors->has('sort') ? ' has-error' : '' }}">
+                
+                    <label for="inputName" class="col-sm-3 col-form-label text-right">
+                        排序
+                    </label>
+                    <div class="col-sm-8">
+                        <input type="number" name="sort" class="form-control" value="{{ $term->sort }}" id="inputName" placeholder="请填写排序">
+                        <span class="help-block">
+                            数字越小越靠前
+                        </span>
+                    </div>
+            
+                </div>
             
             </div>
 
@@ -142,15 +142,17 @@
 
 <script>
     
-    jQuery(function(){
+    jQuery(function($){
         
         $('.handle-ajaxform').ajaxform();
 
         $('select.select-category').selectCategory('single');
 
         $.mediabox({
-            modal_url: "{{ admin_url('medias/modal') }}",
-            upload_url: "{{ admin_url('medias/upload/image') }}"
+            box_url: "{{ admin_url('medias/load-modal/') }}",
+            modal_url: "{{ admin_url('medias/modal/') }}",
+            upload_url: "{{ admin_url('medias/upload/image/') }}",
+            remove_url: "{{ admin_url('medias/remove/image/') }}"
         });
 
         var pickr = Pickr.create({

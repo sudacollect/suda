@@ -16,7 +16,6 @@ use Illuminate\Validation\Rule;
 trait TagTrait
 {
     // public $taxonomy_name = '';
-    // public $redirect_url = '';
     // public $multiple_level = false;
     
     //分类列表
@@ -27,14 +26,14 @@ trait TagTrait
         }
         
         $taxonomyObj = new Taxonomy;
-        $tags = $taxonomyObj->lists($this->taxonomy_name);
+        $tags = $taxonomyObj->listAll($this->taxonomy_name);
 
         $this->setData('tags',$tags);
         
         $this->setData('tab_view','active');
 
-        $this->getButtonConfig();
-        return $this->display($this->getViewConfig('list'));
+        $this->getActions();
+        return $this->display($this->getViews('list'));
     }
 
     public function deletedList(Request $request,$view='list')
@@ -49,8 +48,8 @@ trait TagTrait
 
         $this->setData('tab_view','deleted');
         
-        $this->getButtonConfig();
-        return $this->display($this->getViewConfig('deleted_list'));
+        $this->getActions();
+        return $this->display($this->getViews('deleted_list'));
     }
 
     //新建标签
@@ -60,8 +59,8 @@ trait TagTrait
         $this->setData('modal_title',__('suda_lang::press.btn.add'));
         $this->setData('modal_icon_class','ion-add-circle');
         
-        $this->getButtonConfig();
-        return $this->display($this->getViewConfig('create'));
+        $this->getActions();
+        return $this->display($this->getViews('create'));
     }
 
     //更新分类
@@ -81,8 +80,8 @@ trait TagTrait
         
         $this->setData('term',$term);
 
-        $this->getButtonConfig();
-        return $this->display($this->getViewConfig('update'));
+        $this->getActions();
+        return $this->display($this->getViews('update'));
     }
 
     //保存分类
@@ -188,7 +187,7 @@ trait TagTrait
                     'taxonomy'=>$this->taxonomy_name,
                 ]);
                 
-                return $this->responseAjax('success','保存成功',$this->redirect_url);
+                return $this->responseAjax('success','保存成功','self.refresh');
                 
             }else{
                 
@@ -219,12 +218,12 @@ trait TagTrait
                     ]);
                 }
                 
-                return $this->responseAjax('success','保存成功',$this->redirect_url);
+                return $this->responseAjax('success','保存成功','self.refresh');
                 
             }
         }
         
-        return $this->responseAjax('fail',$response_msg,$this->redirect_url);
+        return $this->responseAjax('fail',$response_msg,'self.refresh');
         
     }
 
@@ -235,12 +234,12 @@ trait TagTrait
         if($request->id && !empty($request->id) && intval($id)==$request->id){
             $taxonomy = Taxonomy::where('id',$request->id)->with('term')->first();
             if($taxonomy->term->slug=='default'){
-                return $this->responseAjax('warning','默认标签不能删除',$this->redirect_url);
+                return $this->responseAjax('warning','默认标签不能删除','self.refresh');
             }
             if($taxonomy){
                 
                 if(Taxable::where('taxonomy_id',$taxonomy->id)->first()){
-                    return $this->responseAjax('warning','标签关联内容，无法删除',$this->redirect_url);
+                    return $this->responseAjax('warning','标签关联内容，无法删除','self.refresh');
                 }
                 
                 Taxonomy::where('taxonomy',$this->taxonomy_name)->where('id',$request->id)->forceDelete();
@@ -250,10 +249,10 @@ trait TagTrait
                 return $this->responseAjax('success','删除成功');
                 
             }else{
-                return $this->responseAjax('warning','标签不存在,请重试',$this->redirect_url);
+                return $this->responseAjax('warning','标签不存在,请重试','self.refresh');
             }
         }else{
-            return $this->responseAjax('warning','标签不存在,请重试',$this->redirect_url);
+            return $this->responseAjax('warning','标签不存在,请重试','self.refresh');
         }
         
     }
@@ -295,10 +294,10 @@ trait TagTrait
                 return $this->responseAjax('warning','恢复成功');
                 
             }else{
-                return $this->responseAjax('warning','标签不存在,请重试',$this->redirect_url);
+                return $this->responseAjax('warning','标签不存在,请重试','self.refresh');
             }
         }else{
-            return $this->responseAjax('warning','标签不存在,请重试',$this->redirect_url);
+            return $this->responseAjax('warning','标签不存在,请重试','self.refresh');
         }
         
     }
@@ -326,10 +325,10 @@ trait TagTrait
                 return $this->responseAjax('success','删除成功');
                 
             }else{
-                return $this->responseAjax('warning','标签不存在,请重试',$this->redirect_url);
+                return $this->responseAjax('warning','标签不存在,请重试','self.refresh');
             }
         }else{
-            return $this->responseAjax('warning','标签不存在,请重试',$this->redirect_url);
+            return $this->responseAjax('warning','标签不存在,请重试','self.refresh');
         }
         
     }
@@ -384,7 +383,7 @@ trait TagTrait
     }
 
     
-    protected function getViewConfig($type='list')
+    protected function getViews($type='list')
     {
 
         $views = (array)$this->viewConfig();
@@ -415,31 +414,31 @@ trait TagTrait
 
         return [
 
-            'list'=>'view_suda::taxonomy.tag.list',
-            'create'=>'view_suda::taxonomy.tag.add',
-            'update'=>'view_suda::taxonomy.tag.edit',
+            'list'      => 'view_suda::taxonomy.tag.list',
+            'create'    => 'view_suda::taxonomy.tag.add',
+            'update'    => 'view_suda::taxonomy.tag.edit',
         ];
 
     }
 
-    protected function getButtonConfig(){
+    protected function getActions(){
 
-        $buttons = (array)$this->buttonConfig();
+        $buttons = (array)$this->actionConfig();
 
         $this->setData('buttons',$buttons);
 
     }
 
     //设置自定义的链接
-    public function buttonConfig(){
+    public function actionConfig(){
 
         $buttons = [];
 
-        $buttons['create']  = 'article/tag/add';
-        $buttons['update']  = 'article/tag/update';
-        $buttons['save']    = 'article/tag/save';
-        $buttons['delete']  = 'article/tag/delete';
-        $buttons['sort']    = 'article/tag/editsort';
+        $buttons['create']  = admin_url('article/tag/add');
+        $buttons['update']  = admin_url('article/tag/update');
+        $buttons['save']    = admin_url('article/tag/save');
+        $buttons['delete']  = admin_url('article/tag/delete');
+        $buttons['sort']    = admin_url('article/tag/editsort');
         
         return $buttons;
     }

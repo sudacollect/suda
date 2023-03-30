@@ -89,7 +89,7 @@
                             
                             
                                 <form class="col-sm-3 form-ajax" action="{{ admin_url('style/dashboard/save') }}">
-                                    {{ csrf_field() }}
+                                    @csrf
                                     <input type="hidden" name="app_name" value="admin">
 
                                     <div class="theme-info">

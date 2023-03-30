@@ -14,7 +14,7 @@
                 <div class="card-body">
                     
                     <form class="form-ajax" role="form" method="POST" action="{{ admin_url('user/organization/save') }}">
-                        {{ csrf_field() }}
+                        @csrf
                         <input type="hidden" name="id" value="{{ $org->id }}">
                       <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
                           

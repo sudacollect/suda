@@ -41,7 +41,6 @@ Route::group([
 
         Route::get('index', 'index')->name('index');
         Route::get('dashboard', 'index')->name('dashboard');
-        Route::get('phpinfo', 'getCgiinfo');
 
         // error page
         Route::get('error', 'errorPage')->name('admin.error');
@@ -141,7 +140,6 @@ Route::group([
         Route::post('article/category/save', 'save')->name('article_category_save');
 
         Route::post('article/category/editsort/{id}', 'editSort');
-        Route::post('article/category/toggle/{id}', 'editToggle');
         
     });
     
@@ -177,14 +175,14 @@ Route::group([
         Route::get('style/preview/{theme}', 'previewStyle');
 
         // sidebar menu
-        Route::post('style/sidemenu/{style}', 'sidemenu');
+        Route::post('style/sidemenu', 'sidemenu');
     });
 
     // switch language
     Route::get('setting/switch-language/{lang}', $controller_prefix.'LangController@switchLang');
     
 
-    Route::controller($controller_prefix.'MediasController')->group(function(){
+    Route::controller($controller_prefix.'MediaController')->group(function(){
         // media
         Route::get('media/hidden', 'getHiddens')->name('media_file');
         Route::get('media/files', 'files')->name('media_file');
@@ -201,43 +199,39 @@ Route::group([
         Route::post('media/delete/{id}', 'deleteMedia');
 
         // batch tag
-        Route::get('medias/batchtag', 'batchTag')->name('media_retag');
-        Route::post('medias/batchtag/save', 'batchTagSave')->name('media_retag');
+        Route::get('media/batchtag', 'batchTag')->name('media_retag');
+        Route::post('media/batchtag/save', 'batchTagSave')->name('media_retag');
 
-        Route::post('medias/hiddenbatch', 'hiddenBatchMedia');
-        Route::post('medias/showbatch', 'showBatchMedia');
+        Route::post('media/hiddenbatch', 'hiddenBatchMedia');
+        Route::post('media/showbatch', 'showBatchMedia');
 
-        Route::post('medias/deletebatch', 'deleteBatchMedia');
+        Route::post('media/deletebatch', 'deleteBatchMedia');
         
         // rebuild thumbs
         Route::get('media/rebuild/{id}', 'rebuildMedia')->name('media_rebuild');
 
     });
-    
-    // #TODO make route more clearly and simply.
-    // upload route
-
-    Route::post('component/loadlayout/{layout}/{type}', $suda_controller_path.'\\'.'ComponentController@loadLayout');
 
     // medias load modal
-    Route::get('medias/modal/{type}', $controller_prefix.'Media\MediasController@modal');
-    
+    Route::get('medias/load-modal/{media_type}', $controller_prefix.'Media\MediasController@loadModal');
+    Route::get('medias/modal/{media_type}', $controller_prefix.'Media\MediasController@modal');
+
     // medias upload route
-    Route::post('medias/upload/image/{type?}', $controller_prefix.'Media\MediasController@uploadImage');
-
+    Route::post('medias/upload/image/{media_type?}', $controller_prefix.'Media\MediasController@uploadMedia');
     // delete
-    Route::post('medias/remove/image/{type?}', $controller_prefix.'Media\MediasController@removeImage');
-
-
-    // media tags
-    Route::get('mediatags', $controller_prefix.'Media\TagController@getList')->name('mediatags');
-    Route::get('mediatags/add', $controller_prefix.'Media\TagController@create')->name('mediatags_create');
-    Route::get('mediatags/update/{id}', $controller_prefix.'Media\TagController@update')->name('mediatags_update');
-    Route::post('mediatags/delete/{id}', $controller_prefix.'Media\TagController@delete')->name('mediatags_delete');
+    Route::post('medias/remove/image/{media_type?}', $controller_prefix.'Media\MediasController@removeMedia');
     
-    Route::post('mediatags/save', $controller_prefix.'Media\TagController@save')->name('mediatags_save');
 
-    Route::post('mediatags/editsort/{id}', $controller_prefix.'Media\TagController@editSort');
+    Route::controller($controller_prefix.'Media\TagController')->group(function(){
+        // media tags
+        Route::get('mediatags', 'getList')->name('mediatags');
+        Route::get('mediatag/add', 'create')->name('mediatag_create');
+        Route::get('mediatag/update/{id}', 'update')->name('mediatag_update');
+        Route::post('mediatag/delete/{id}', 'delete')->name('mediatag_delete');
+        Route::post('mediatag/save', 'save')->name('mediatag_save');
+        Route::post('mediatags/editsort/{id}', 'editSort');
+    });
+    
     
     
     
@@ -285,7 +279,7 @@ Route::group([
 
     //Route::get('user/roles/setexts/{id}', $controller_prefix.'User\RoleController@setExts');
 
-    Route::get('user/roles/extDetail/{id}/{slug}', $controller_prefix.'User\RoleController@getExtDetail');
+    Route::get('user/roles/ext-detail/{id}/{slug}', $controller_prefix.'User\RoleController@getExtDetail');
 
 
     // Organization

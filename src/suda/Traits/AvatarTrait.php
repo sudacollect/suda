@@ -11,7 +11,7 @@ trait AvatarTrait
 {
     
     //save base64 image data
-    public function uploadCroppie($data,$user_type,$user){
+    public function uploadCroppie($user_type,$data,$user){
         
         if(!empty($data)){
             $imageHandler = new ImageService;
@@ -24,21 +24,21 @@ trait AvatarTrait
             
             $file_size = strlen(base64_decode($data)) - 22;
             
-            $file_data['extension'] = $imageHandler->getExtesionByMime($file->mime());
-            $file_data['size'] = $file_size;
-            $file_data['source_width'] = $file->width();
+            $file_data['extension']     = $imageHandler->getExtesionByMime($file->mime());
+            $file_data['size']          = $file_size;
+            $file_data['source_width']  = $file->width();
             $file_data['source_height'] = $file->height();
-            $file_data['source_type'] = strtoupper($file_data['extension']);
+            $file_data['source_type']   = strtoupper($file_data['extension']);
             
             $imageHandler->setFileData($file_data);
             
             $save_data = [
-                'user_type' => $user_type,
-                'user_id' =>$user->id,
-                'media_type' => $user_type,
-                'resize' => true,
-                'ratio' => false,
-                'hidden'=>'1',//头像属于可以隐藏的图片
+                'user_type'     => $user_type,
+                'user_id'       => $user->id,
+                'media_type'    => $user_type,
+                'resize'        => true,
+                'ratio'         => false,
+                'hidden'        => '1', //hide avatar image
             ];
             
             $msg = '';

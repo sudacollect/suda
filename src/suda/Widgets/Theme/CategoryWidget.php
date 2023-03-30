@@ -62,7 +62,7 @@ class CategoryWidget extends Widget
             if(array_key_exists('parent',$content) && $content['parent']==1){
                 $categories = $taxonomyObj->where('taxonomy','post_category')->where('parent',0)->get();
             }else{
-                $categories = $taxonomyObj->lists('post_category');
+                $categories = $taxonomyObj->listAll('post_category');
             }
             
             $params['categories'] = $categories;

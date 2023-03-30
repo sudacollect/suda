@@ -135,7 +135,7 @@ class ProfileController extends DashboardController
         }
         
         $user = Operate::where('id',$user_id)->with('avatar')->first();
-        $this->uploadCroppie($request->avatar,'operate',$user);
+        $this->uploadCroppie('operate',$request->avatar,$user);
         
         return redirect(admin_url('profile'))->with('status', ['code'=>'success','msg'=>'资料已更新','delay'=>3000]);
 

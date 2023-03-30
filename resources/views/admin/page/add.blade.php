@@ -36,7 +36,7 @@
                             {{ __('suda_lang::press.pages.content') }}<i class="optional">*</i>
                         </label>
 
-                        @include('view_app::component.editor',['height'=>$editor_height])
+                        <x-suda::editor id="summernote" name="content" :height="$editor_height" />
 
                     </div>
                     
@@ -153,10 +153,11 @@
     
     $(document).ready(function(){
         $.mediabox({
-            modal_url: "{{ admin_url('medias/modal') }}",
-            upload_url: "{{ admin_url('medias/upload/image') }}"
+            box_url: "{{ admin_url('medias/load-modal/') }}",
+            modal_url: "{{ admin_url('medias/modal/') }}",
+            upload_url: "{{ admin_url('medias/upload/image/') }}",
+            remove_url: "{{ admin_url('medias/remove/image/') }}"
         });
-        
 
         $('[data-toggle="datepicker"]').datetimepicker({
             format: 'YYYY-MM-DD HH:mm:ss',

@@ -37,6 +37,8 @@ jQuery(function(){
             $('.sidebar-brand').addClass('only');
             sidemenu_style = 'icon';
         }
+
+        const update_url = $(this).attr('href');
         
         if($('.press-sidebar').hasClass('in')) {
             //small
@@ -82,9 +84,9 @@ jQuery(function(){
         $.ajax({
             
             type    : 'POST', 
-            url     : suda.link('/'+suda.data('adminPath')+'/style/sidemenu/'+sidemenu_style),
+            url     : update_url,
             cache   : false,
-            data: {_token:suda.data('csrfToken')},
+            data: {_token:suda.data('csrfToken'),style:sidemenu_style},
             success : function(data){
                 //suda.modal(data.response_msg);
             },
@@ -355,6 +357,7 @@ jQuery(function(){
         }
     });
 
+    // ajax请求函数
     $.fn.suda_ajax = function(custom_options){
 
         var options = {
@@ -454,14 +457,8 @@ jQuery(function(){
 
     };
 
-
-    //定义图片上传的路径
-    $.fn.mediabox = function(options){
-
-        $.mediabox(options);
-    };
-    
-    $.fn.layout_modal = function(data,token){
+    // 弹窗函数
+    $.fn.popModal = function(data,token){
 
         var elem = this;
         var set_content = $(elem);
@@ -496,7 +493,8 @@ jQuery(function(){
         attr_modal.modal('show');
     };
     
-    $.fn.layout_media = function(data,elem,token,img_size){
+    // 弹窗图片
+    $.fn.popMediaModel = function(data,elem,token,img_size){
         
         var set_content = $(elem);
         if(set_content){
@@ -508,7 +506,6 @@ jQuery(function(){
                 var set_content_max = 5;
             }
         }
-        
         
         $('body').append($(data));
         
@@ -713,8 +710,6 @@ jQuery(function(){
         
         //搜索框
         
-        
-        
         //图片点击动作
         modalLayout.on('click','.media-lists li a',function(e){
             e.preventDefault();
@@ -833,10 +828,10 @@ jQuery(function(){
         var elem = this;
         var elem_id = $(this).attr('id');
         
-        var media_type = $(elem).attr('_data_type');
-        var media_crop = $(elem).attr('_data_crop');
-        var media_name = $(elem).attr('_data_name');
-        var media_max = $(elem).attr('media_max')||1;
+        var media_type  = $(elem).attr('_data_type');
+        var media_crop  = $(elem).attr('_data_crop');
+        var media_name  = $(elem).attr('_data_name');
+        var media_max   = $(elem).attr('media_max')||1;
         
         var elemParent = $(elem).parent('.list-group-item');
         
@@ -847,17 +842,16 @@ jQuery(function(){
         
         //$(elemParent).fadeOut();
         
-        var layout_href = suda.link(suda.data('adminPath')+'/component/loadlayout/image/'+media_type);
-        
+        const box_href = suda.link(suda.meta['.mediabox_box_url'] + media_type);
         
         $.ajax({
-            type    : 'POST', 
-            url     : layout_href,
+            type    : 'GET',
+            url     : box_href,
             cache   : false,
             data: { media_name: media_name,media_max:media_max,media_type:media_type,media_crop:media_crop,_token:suda.data('csrfToken') },
             success : function(data){
                if(data){
-                   $.fn.layout_media(data,$(elem),csrfToken);
+                   $.fn.popMediaModel(data,$(elem),csrfToken);
                }
             },
             error : (function(xhr){
@@ -914,7 +908,7 @@ jQuery(function(){
                         suda.modal(data.response_msg);
                         return false;
                    }
-                   $(elem).layout_modal(data,csrfToken);
+                   $(elem).popModal(data,csrfToken);
                }
             },
             error : (function(xhr){
@@ -1303,17 +1297,19 @@ jQuery(function(){
 
     $.fn.suda_distpicker = function(options)
     {
-        var default_options = {};
+        var default_options = {
+            url: suda.link(suda.data('adminPath')+'/areadata/json')
+        };
+        var doptions = $.extend({},default_options,options);
         var el = this;
         $.ajax({
             type: 'GET',
-            url: suda.link(suda.data('adminPath')+'/areadata/json'),
+            url: doptions.url,
             cache: false,
             dataType: 'json',
             success(rsdata) {
                 if (rsdata) {
-                    default_options.districtdata = rsdata.districts;
-                    var doptions = $.extend({},default_options,options);
+                    doptions.districtdata = rsdata.districts;
                     $(el).distpicker(doptions);
                 }
             },
@@ -1334,13 +1330,15 @@ jQuery(function(){
     $.extend({
         mediabox: function(options){
             var default_options = {
+                box_url: '',
                 modal_url: '',
                 upload_url: '',
                 remove_url: '',
             };
     
             var settiings = $.extend({}, default_options,options);
-    
+            
+            suda.addMeta('.mediabox_box_url',settiings.box_url+'/');
             suda.addMeta('.mediabox_modal_url',settiings.modal_url+'/');
             suda.addMeta('.mediabox_upload_url',settiings.upload_url+'/');
             suda.addMeta('.mediabox_remove_url',settiings.remove_url+'/');

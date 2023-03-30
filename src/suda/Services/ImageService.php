@@ -12,13 +12,15 @@ use Validator;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
 use Storage;
+use Illuminate\Support\Str;
 
 use Gtd\Suda\Models\Media;
-use Gtd\Suda\Models\Setting;
-use Illuminate\Support\Str;
+use Gtd\Suda\Traits\SettingTrait;
 
 class ImageService
 {
+    use SettingTrait;
+    
     public $_file;
 
     public $_filename;
@@ -241,10 +243,10 @@ class ImageService
         $save_height = array_get($options,'save_height',$sourceHeight);
 
         //获取相应的值
-        $media_setting = Setting::where(['key'=>'media_setting','group'=>'media'])->first();
+        $media_setting = $this->getSettingByKey('media_setting','media');
         
         if($media_setting){
-            $setting = $media_setting->value_array;
+            $setting = $media_setting;
         }else{
             $setting = [
                 'size'=>[
@@ -480,10 +482,10 @@ class ImageService
         // $media_file->save($dir_path.'/p'.$file_name);
 
         //获取相应的值
-        $media_setting = Setting::where(['key'=>'media_setting','group'=>'media'])->first();
+        $media_setting = $this->getSettingByKey('media_setting','media');
         
         if($media_setting){
-            $setting = $media_setting->value_array;
+            $setting = $media_setting;
         }else{
             $setting = [
                 'size'=>[

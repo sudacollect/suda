@@ -1,4 +1,10 @@
 {
     "/publish/assets/js/app.js": "/publish/assets/js/app.js",
-    "/publish/assets/css/app.css": "/publish/assets/css/app.css"
+    "/publish/assets/js/app.vendor.js": "/publish/assets/js/app.vendor.js",
+    "/publish/assets/js/global.js": "/publish/assets/js/global.js",
+    "/publish/assets/js/plugins/editor.js": "/publish/assets/js/plugins/editor.js",
+    "/publish/assets/css/app.css": "/publish/assets/css/app.css",
+    "/publish/assets/js/plugins/upload.js": "/publish/assets/js/plugins/upload.js",
+    "/publish/assets/js/plugins/uploadavatar.js": "/publish/assets/js/plugins/uploadavatar.js",
+    "/publish/assets/js/plugins/summernote-ext-media.js": "/publish/assets/js/plugins/summernote-ext-media.js"
 }

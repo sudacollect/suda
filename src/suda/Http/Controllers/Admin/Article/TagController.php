@@ -18,8 +18,6 @@ class TagController extends DashboardController
     
     public $view_in_suda = true;
     
-    public $self_url = 'article/tags';
-    public $redirect_url = 'article/tags';
     public $taxonomy_name = 'post_tag';
     
     function __construct(){

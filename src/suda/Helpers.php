@@ -496,7 +496,7 @@ if (!function_exists('metas')) {
                 if(is_array($meta)){
                     $meta = arrayObject($meta);
                 }
-            
+                
                 if(property_exists($meta,'title')){
                     if(property_exists($meta,'settings')){
                         if(!empty($meta->title)){

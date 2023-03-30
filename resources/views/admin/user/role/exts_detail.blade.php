@@ -137,8 +137,8 @@
                             {{-- <span style="font-weight:normal;color:#999;">#auth</span> --}}
                         </strong>
 
-                        <select name="permission[#auth][{{ $key }}][]" multiple="multiple" class="form-control select-permission" placeholder="选择权限">
-                        @foreach($auth['values'] as $auth_key=>$auth_value)
+                        <select name="permission[#auth][{{ $key }}][]" multiple class="form-control select-permission" placeholder="选择权限">
+                        @foreach($auth['values'] as $auth_key => $auth_value)
                             <option value="{{ $auth_value['id'] }}" @if(isset($auth_select_values[$key]) && in_array($auth_value['id'],(array)$auth_select_values[$key])) selected @endif>{{ $auth_value['name'] }}</option>
                         @endforeach
                         </select>
@@ -278,8 +278,10 @@
         };
 
         $('select.select-permission').select2({
-            theme: 'bootstrap5',
+            theme: 'bootstrap-5',
             placeholder: '选择权限',
+            containerCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
         });
 
     });

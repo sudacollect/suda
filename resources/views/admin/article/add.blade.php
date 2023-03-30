@@ -10,7 +10,7 @@
     
     <form role="form" method="POST" action="{{ admin_url('article/save') }}" class="form-ajax">
 
-        {{ csrf_field() }}
+        @csrf
         
 
         <div class="row">
@@ -34,7 +34,7 @@
                     <div class="mb-3{{ $errors->has('content') ? ' has-error' : '' }}" >
                         <label for="content">内容</label>
                         
-                        @include('view_app::component.editor',['height'=>$editor_height])
+                        <x-suda::editor id="summernote" name="content" :height="$editor_height" />
 
                     </div>
                     
@@ -52,13 +52,8 @@
                         <label for="slug">
                                 分类
                         </label>
-                        <select class="select-category form-select" name="category[]" multiple="multiple" placeholder="请选择分类">
-                            @if($categories)
-                            
-                            @include('view_suda::taxonomy.category_options',['cates'=>$categories,'child'=>0])
-                            
-                            @endif
-                        </select>
+                        <x-suda::select-category taxonomy="post_category" />
+                        
                       
                     </div>
                 
@@ -197,13 +192,12 @@
 
         
         $.mediabox({
+            box_url: "{{ admin_url('medias/load-modal/') }}",
             modal_url: "{{ admin_url('medias/modal/') }}",
             upload_url: "{{ admin_url('medias/upload/image/') }}",
             remove_url: "{{ admin_url('medias/remove/image/') }}"
         });
-
         
-
         $('[data-toggle="datepicker"]').datetimepicker({
             format: 'YYYY-MM-DD HH:mm:ss',
             showClear:true,

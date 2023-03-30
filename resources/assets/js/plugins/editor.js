@@ -1,6 +1,6 @@
 jQuery(function(){
     
-    var sendEditorFile = function(file,editor){
+    var sendEditorFile = function(send_url,file,editor){
         
         data = new FormData();
         data.append("img", file);
@@ -10,7 +10,7 @@ jQuery(function(){
         $.ajax({
             data: data,
             type: "POST",
-            url: suda.link(suda.data('adminPath')+'/medias/upload/image/editor'),
+            url: send_url,
             cache: false,
             contentType: false,
             processData: false,
@@ -52,13 +52,12 @@ jQuery(function(){
         return output;
     }
     
-    $.fn.sudaEditor = function(elem,load_url,modal_url,upload_url){
+    $.fn.sudaEditor = function(elem){
         if($(elem)){
 
             $(elem).summernote({
                 lang: 'zh-CN',
                 height: suda.editor_height,
-                load_url: load_url,
                 minHeight: null,
                 maxHeight: null,
                 focus: true,
@@ -92,7 +91,8 @@ jQuery(function(){
                 },
                 callbacks: {
                     onImageUpload: function(files) {
-                        sendEditorFile(files[0],$(elem));                
+                        const upload_url = suda.link(window.suda.meta['.mediabox_upload_url']+'editor');
+                        sendEditorFile(upload_url,files[0],$(elem));                
                     },
                     // onPaste: function(e) {
                     //     var thisNote = $(this);
@@ -126,10 +126,6 @@ jQuery(function(){
                 }
             });
             
-            $.mediabox({
-                modal_url: modal_url,
-                upload_url: upload_url
-            });
         }
     }
 

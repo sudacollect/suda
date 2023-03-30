@@ -1,6 +1,6 @@
 @foreach ($data_list as $item)
 
-<div class="pin col-sm-3">
+<div class="waterfall-item col-sm-3">
 
     <div class="card mb-3">
         @if($item->heroimage)
@@ -63,7 +63,7 @@
                 已发布
                 @else
                 @endif
-                 / 更新于{{ $item->updated_at->format('Y-m-d') }}
+                更新于{{ $item->updated_at->format('Y-m-d') }}
             </small>
             
 
@@ -71,6 +71,7 @@
         </div>
         
     </div>
+    
 </div>
 
 @endforeach

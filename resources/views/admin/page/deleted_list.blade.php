@@ -117,7 +117,7 @@
         
         @else
         
-        @include('view_suda::admin.component.empty')
+        <x-suda::empty-block />
         
         @endif
     </div>

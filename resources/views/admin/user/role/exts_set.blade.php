@@ -41,7 +41,7 @@
 
         <form class="form-ajax" method="POST" id="exts-form" action="{{ admin_url('user/roles/setexts/save') }}">
 
-            {{ csrf_field() }}
+            @csrf
             <input type="hidden" name="role_id" value="{{ $role->id }}" >
 
             <div class="col-sm-12 suda_page_body">

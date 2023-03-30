@@ -130,7 +130,7 @@
         
         @else
         
-        @include('view_suda::admin.component.empty',['type'=>'user','empty'=>'Oops... 还没有信息'])
+        <x-suda::empty-block empty="Oops... 还没有信息" type="user" :card=true />
         
         @endif
     </div>

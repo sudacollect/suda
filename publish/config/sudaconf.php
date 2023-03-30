@@ -1,112 +1,59 @@
 <?php
 /**
- * sudaconf.php
- * description
- * date 2017-10-27 13:21:09
- * author suda <hello@suda.gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * SUDACONF.PHP
+ * DESCRIPTION
+ * DATE 2017-10-27 13:21:09
+ * AUTHOR SUDA <HELLO@SUDA.GTD.XYZ>
+ * @COPYRIGHT GTD. ALL RIGHTS RESERVED.
  */
 
-
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | BASIC
-    |--------------------------------------------------------------------------
-    |
-    */
-    
-    
-    # auto_mobile => false,
-
-    // auto_mobile=true, auto add prefix to url on phone browser
-    'mobile_prefix'=>'mobile',
-
-    // auto_mobile=true,url with except prefix would not add mobile_prefix
-    'except_mobile_prefix'=>[],
-    
-    // force https
-    'force_secure'=>null,
-    
-    
-    // cdn host for static files
-    'static_host'=>'',
-    
-    // image upload
-    'image' => [
-        'disk'=>'public', //save disk
-        'size'=>[
-            'small'=>200, //resize
-            'medium'=>400,
-        ]
-    ],
-
-    // locale language
-    'locale'=>'zh_CN',
-
-    // default assets path
-    'core_assets_path'=>'/vendor/suda/assets',
-
-    /*
-    |--------------------------------------------------------------------------
-    | THEME
-    |--------------------------------------------------------------------------
-    |
-    | set default theme for website.
-    |
-    */
-    
-    'theme'=>[
-        'site'  =>'default', //pc website
-        'mobile'=>'default', //mobile website
-    ],
 
     /*
     |--------------------------------------------------------------------------
     | DASHBOARD
     |--------------------------------------------------------------------------
     |
-    | admin_loginname has three options: username, email, phone
+    | ADMIN_LOGINNAME HAS THREE OPTIONS: USERNAME, EMAIL, PHONE
     |
     */
 
-    // password link
-    'password_link' => 'zp',
+    // PASSWORD SALT
+    'password_link'     => 'zp',
     
-    // dashboard login path
-    'admin_path' => 'admin',
+    // DASHBOARD LOGIN PATH
+    'admin_path'        => 'admin',
 
-    // login name
-    'admin_loginname'=>'email',
+    // LOGIN NAME
+    'admin_loginname'   => 'email',
     
-    // login host
-    'admin_host' => '',
+    // LOGIN HOST
+    'admin_host'        => '',
     
     
-    // an option to dashboard cache
-    'admin_cache' => 'file',
+    // AN OPTION TO DASHBOARD CACHE
+    'admin_cache'       => 'file',
     
-    // default menu name, related to database's menu setting
-    'default_menu' => 'suda',
+    // DEFAULT MENU NAME, RELATED TO DATABASE'S MENU SETTING
+    'default_menu'      => 'suda',
 
-    // enable pro style for sidebar.
+    // ENABLE PRO STYLE FOR SIDEBAR
     // 'sidemenu_style' => 'pro',
     
-    //default widget for dashboard homepage.
+    //DEFAULT WIDGET FOR DASHBOARD HOMEPAGE
     'widget'=>[
         'dashaboard'=>[
-            'start'=>\Gtd\Suda\Widgets\Start::class,
-            'quickin'=>\Gtd\Suda\Widgets\Quickin::class,
-            'news'=>\Gtd\Suda\Widgets\News::class,
+            'start'     =>\Gtd\Suda\Widgets\Start::class,
+            'quickin'   =>\Gtd\Suda\Widgets\Quickin::class,
+            'news'      =>\Gtd\Suda\Widgets\News::class,
             // 'dashhelp'=>\Gtd\Suda\Widgets\DashHelp::class,
         ],
         'entry'=>[
-            'extension'=>\Gtd\Suda\Widgets\Entry\Extension::class,
+            'extension' =>\Gtd\Suda\Widgets\Entry\Extension::class,
         ],
     ],
     
-    // Controller path.
+    // CONTROLLER PATH.
     // WARNING: DO NOT CHANGE OR DELETE THIS.
     'controllers'=>[
         'namespace'=>[
@@ -116,22 +63,90 @@ return [
         ]
     ],
     
-    //media models
+    //MEDIA MODELS
     /**
-     * types_model append to media upload types relate to table model
-     * It's about which application/module when you upload you image or file.
-     * You can use this attribute to create permission or different functions
-     * 
-     * 
-     * default types is: page,article,media,setting,editor,operate,user,upload
-     * you can't rewrite or cover the default types.
-     * 
+     * TYPES_MODEL APPEND TO MEDIA UPLOAD TYPES RELATE TO TABLE MODEL
+     * IT'S ABOUT WHICH APPLICATION/MODULE WHEN YOU UPLOAD YOU IMAGE OR FILE.
+     * YOU CAN USE THIS ATTRIBUTE TO CREATE PERMISSION OR DIFFERENT FUNCTIONS
+     *  
+     * DEFAULT TYPES IS: PAGE,ARTICLE,MEDIA,SETTING,EDITOR,OPERATE,USER,UPLOAD
+     * YOU CAN'T REWRITE OR COVER THE DEFAULT TYPES.
      */
     'media'=>[
-        'types_model'=>[
+        'types_model'   => [
             // 'page'=>'Gtd\Suda\Models\Page',
             // 'article'=>'Gtd\Suda\Models\Article',
         ]
     ],
+
+    // IMAGE UPLOAD
+    'image' => [
+        'disk'  => 'public',
+        'size'=>[
+            'small'     => 200,
+            'medium'    => 400,
+        ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | BASIC
+    |--------------------------------------------------------------------------
+    |
+    */
     
+    // CDN HOST FOR STATIC FILES
+    'static_host'       => '',
+
+    // FORCE HTTPS
+    'force_secure'      => null,
+
+    # auto_mobile => false,
+
+    // AUTO_MOBILE = TRUE, AUTO ADD PREFIX TO URL ON PHONE BROWSER
+    'mobile_prefix'         => 'mobile',
+
+    // AUTO_MOBILE = TRUE,URL WITH EXCEPT PREFIX WOULD NOT ADD MOBILE_PREFIX
+    'except_mobile_prefix'  => [],
+    
+    // LOCALE LANGUAGE
+    'locale'                => 'zh_CN',
+
+    // DEFAULT ASSETS PATH
+    'core_assets_path'      => '/vendor/suda/assets',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | THEME
+    |--------------------------------------------------------------------------
+    |
+    | SET DEFAULT THEME FOR WEBSITE.
+    |
+    */
+    
+    'theme'=>[
+        'site'  =>'default', //pc website
+        'mobile'=>'default', //mobile website
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | EXTENSION
+    |--------------------------------------------------------------------------
+    | EXTENSION ENTRY
+    | SEPARATE LOGIN FOR EXTENSION MANAGER
+    */
+
+    // DONOTMODIFY
+    'extension_dir' => 'extensions',
+    
+    // EXTENSION HOST
+    'extension_host' => '',
+
+    // EXTENSION MANAGER LOGIN
+    'extension_admin_path' => 'sudaapp',
+    'extension_login_name' => 'email',
+
 ];

@@ -33,8 +33,8 @@ use Gtd\Suda\Providers\SendCloudServiceProvider;
 use Gtd\Suda\Sudacore;
 
 use Livewire;
-use Gtd\Suda\Components\CategoryComponent;
-use Gtd\Suda\Components\SettingComponent;
+use Gtd\Suda\Components\Livewire\CategoryComponent;
+use Gtd\Suda\Components\Livewire\SettingComponent;
 
 class SudaServiceProvider extends ServiceProvider
 {

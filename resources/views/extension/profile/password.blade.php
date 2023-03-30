@@ -22,7 +22,7 @@
                 <div class="card-body">
                     
                     <form class="col-sm-6 form-ajax" role="form" method="POST" action="{{ extadmin_url('profile/changepassword') }}">
-                        {{ csrf_field() }}
+                        @csrf
                         <input type="hidden" name="user_id" value="{{ $soperate->id }}">
                         
                         <div class="mb-3">

@@ -24,6 +24,7 @@ use View;
 use Response;
 
 use Gtd\Suda\Models\Setting;
+use Gtd\Suda\Services\SettingService;
 
 class SiteController extends BaseController
 {
@@ -99,13 +100,11 @@ class SiteController extends BaseController
     
     public function getSettings()
     {
-        $settings = Setting::getSettings();
+        $settings = (new SettingService)->data();
         $this->data['sdcore']['settings'] = $settings;
         
         if(array_key_exists('site',$this->data['sdcore']['settings'])){
-            if(array_key_exists('seo',$this->data['sdcore']['settings']['site'])){
-                $this->data['sdcore']['settings']['site']['seo'] = unserialize($this->data['sdcore']['settings']['site']['seo']);
-            }else{
+            if(!array_key_exists('seo',$this->data['sdcore']['settings']['site'])){
                 $this->data['sdcore']['settings']['site']['seo'] = ['title'=>'','keywords'=>'','description'=>''];
             }
         }

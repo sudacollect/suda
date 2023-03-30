@@ -20,7 +20,7 @@
                         </p>
                         <hr />
                         <p style="font-size:1rem;">
-                            {{ $sdcore->settings->company_name }}
+                            {{ $sdcore->settings->site->company_name }}
                         </p>
                     </div>
                 </div>

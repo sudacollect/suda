@@ -29,9 +29,12 @@ use Gtd\Suda\Models\Mediatable;
 use Gtd\Suda\Models\Setting;
 use Gtd\Suda\Models\Taxonomy;
 
+use Gtd\Suda\Traits\SettingTrait;
 
-class MediasController extends DashboardController
+class MediaController extends DashboardController
 {
+    use SettingTrait;
+
     public $view_in_suda = true;
     
     protected $hidden = [
@@ -467,11 +470,10 @@ class MediasController extends DashboardController
         $this->setData('modal_title','媒体设置');
         $this->setData('modal_icon_class','ion-image-outline');
 
+        $setting = $this->getSettingByKey('media_setting','media');
 
-        $first = Setting::where(['key'=>'media_setting','group'=>'media'])->first();
-        
-        if($first){
-            $setting = $first->value_array;
+        if($setting){
+            
             if(isset($setting['default']) && !empty($setting['default'])){
                 $media = Media::where('id',$setting['default'])->first();
                 $this->setData('media',$media);
@@ -523,23 +525,8 @@ class MediasController extends DashboardController
             'crop'=>$request->crop?1:0,
         ];
 
-        $data = [
-            'key'=>'media_setting',
-            'group'=>'media',
-            'type'=>'text',
-            'values'=>serialize($save),
-        ];
 
-        $settingModel = new Setting;
-        
-        if($first = Setting::where(['key'=>'media_setting','group'=>'media'])->first())
-        {
-            Setting::where(['key'=>'media_setting','group'=>'media'])->update($data);
-        }
-        else
-        {
-            $settingModel->fill($data)->save();
-        }
+        $this->saveSettingByKey('media_setting','media',$save,'serialize');
 
         return $this->responseAjax('success','保存成功','media');
 

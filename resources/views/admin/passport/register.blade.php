@@ -8,7 +8,7 @@
                 <div class="panel-heading">注册</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/'.$sdcore->admin_path.'/passport/register') }}">
-                        {{ csrf_field() }}
+                        @csrf
 
                         <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-sm-4 control-label">用户名</label>

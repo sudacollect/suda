@@ -3,8 +3,8 @@
 
 
 @section('content')
-<form class="handle-ajaxform" role="form" method="POST" action="{{ admin_url($buttons['save']) }}">
-    {{ csrf_field() }}
+<form class="handle-ajaxform" role="form" method="POST" action="{{ $buttons['save'] }}">
+    @csrf
 <div class="modal-body">
     <div class="container-fluid">
 

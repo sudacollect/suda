@@ -46,7 +46,7 @@
             @endif
         @else
         
-        @include('view_suda::admin.component.empty',['empty'=>'没有媒体文件'])
+        <x-suda::empty-block empty="没有媒体文件" />
         
         @endif
     </div>
@@ -56,20 +56,22 @@
 
 @push('scripts')
 
-    <script type="text/javascript">
-    
-        $(document).ready(function(){
-            $.mediabox({
-                modal_url: "{{ admin_url('medias/modal') }}",
-                upload_url: "{{ admin_url('medias/upload/image') }}"
-            });
-            
-            $('#show-media-upload').on('click',function(){
-                
-                $('.media-upload').slideToggle();
-                
-            });
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $.mediabox({
+            box_url: "{{ admin_url('medias/load-modal/') }}",
+            modal_url: "{{ admin_url('medias/modal/') }}",
+            upload_url: "{{ admin_url('medias/upload/image/') }}",
+            remove_url: "{{ admin_url('medias/remove/image/') }}"
         });
-    
-    </script>
+        
+        $('#show-media-upload').on('click',function(){
+            
+            $('.media-upload').slideToggle();
+            
+        });
+    });
+
+</script>
 @endpush

@@ -1,28 +1,27 @@
 <div class="container">
     
-    @if($error_msg)
-    <div class="modal-bg position-fixed w-100 h-100 left-0 top-0" style="z-index:9999;background:rgba(0,0,0,0.6)">
-        <div class="modal show d-block"  id="exampleModal" tabindex="999" aria-labelledby="error-modal" aria-modal="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="error-modal">提示</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" wire:click="closeBox"></button>
-                </div>
-                <div class="modal-body" style="min-height:100px;">
-                    {{ $error_msg }}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="closeBox">关闭</button>
-                </div>
+    <div class="row suda-row">
+        @if($error_msg)
+        <div class="modal-bg position-fixed w-100 h-100 left-0 top-0" style="z-index:9999;background:rgba(0,0,0,0.6)">
+            <div class="modal show d-block"  id="exampleModal" tabindex="999" aria-labelledby="error-modal" aria-modal="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="error-modal">提示</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" wire:click="closeBox"></button>
+                    </div>
+                    <div class="modal-body" style="min-height:100px;">
+                        {{ $error_msg }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="closeBox">关闭</button>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    @endif
-        
+        @endif
 
-    <div class="row suda-row">
         <div class="page-heading">
             <h1 class="page-title">
                 <i class="ion-settings"></i>
@@ -121,14 +120,17 @@
         </div>
         
     </div>
+
+    <script>
+        window.addEventListener('errorBox', event => {
+            window.setTimeout(function () {
+                // alert('提示: ' + event.detail.msg);
+                setTimeout(function(){
+                    window.location.reload();
+                }, 500);
+            },0);
+        })
+    </script>
+
 </div>
-<script>
-    window.addEventListener('errorBox', event => {
-        window.setTimeout(function () {
-            // alert('提示: ' + event.detail.msg);
-            setTimeout(function(){
-                window.location.reload();
-            }, 500);
-        },0);
-    })
-</script>
+

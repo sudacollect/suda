@@ -12,7 +12,7 @@ use Gtd\Suda\Models\Taxonomy;
 use Gtd\Suda\Services\ImageService;
 use Gtd\Suda\Services\MediaService;
 
-use Illuminate\Support\Facades\View;
+use Illuminate\View\View;
 use Auth;
 
 trait MediaBoxTrait
@@ -22,7 +22,6 @@ trait MediaBoxTrait
     public $guard='';
     public $media_guards=[];
     public $media_type;
-    public $onlyUser = false;
     public $only_user = false;
     public $media_users = [];
     public $resize = true;
@@ -39,15 +38,14 @@ trait MediaBoxTrait
             $this->media_type=$media_type;
         }
         
-        $this->onlyUser = $only_user;
-        $this->only_user = $only_user;
+        $this->only_user    = $only_user;
         $this->media_guards = $media_guards;
         if(!$this->media_guards)
         {
             $this->media_guards[] = $this->guard;
         }
-        $this->resize=$resize;
-        $this->ratio=$ratio;
+        $this->resize   = $resize;
+        $this->ratio    = $ratio;
     }
 
     protected function checkSetting(){
@@ -65,16 +63,33 @@ trait MediaBoxTrait
 
     }
 
-    public function modal(Request $request,$media_type){
+    public function loadModal(Request $request, string $media_type='default'): View
+    {
+        $this->checkSetting();
+
+        //输出的参数
+        $outputs = [];
+
+        $outputs['media_type']  =  $media_type;
+        $outputs['media_name']  =  $request->media_name?$request->media_name:'';;
+        $outputs['media_max']   =  $request->media_max?$request->media_max:1;
+        $outputs['media_crop']  =  $request->media_crop?$request->media_crop:0;
+
+        // $layout_site = suda_path('resources/views/site');
+        // View::addNamespace('view_app', $layout_site);
+
+        return view('view_suda::media.layout_image')->with($outputs);
+    }
+
+    public function modal(Request $request,string $media_type): View
+    {
 
         $this->checkSetting();
 
         //图片排列
 
-        $column = $request->get('column');
+        $column         = $request->get('column');
         $mediabox_width = $request->get('mediabox_width');
-
-        
         
         $this->title('媒体管理');
         $page_no = 0;
@@ -95,35 +110,34 @@ trait MediaBoxTrait
             $filter['filter'] = true;
         }
         
-        $datas = false;
-        $this->_filter($filter,$page_size,$page_no,$datas);
+        $datas = [];
+        $datas = $this->_filter($filter,$page_size,$page_no);
         
         $datas['media_type'] = $media_type;
 
 
         $taxonomyObj = new Taxonomy;
-        $tags = $taxonomyObj->lists('media_tag');
+        $tags = $taxonomyObj->listAll('media_tag');
 
         $datas['tags'] = $tags;
         $datas['tag'] = $tag;
 
-        $layout_site = suda_path('resources/views/site');
-        View::addNamespace('view_app', $layout_site);
+        // $layout_site = suda_path('resources/views/site');
+        // View::addNamespace('view_app', $layout_site);
 
-        return view('view_suda::site.component.modal.gallery')->with($datas);
+        return view('view_suda::media.modal.gallery')->with($datas);
     }
 
 
-    protected function _filter($filter=[],$page_size=20,$page_no=0,&$data){
-        
+    protected function _filter($filter = [], $page_size = 20 ,$page_no = 0): array
+    {
         $data = [];
+
         $objectModel = new Media;
 
-        
-        
         //获取当前用户或用户组内的图片
         //方便子应用中使用，例如同一个公司
-        if($this->only_user || $this->onlyUser){
+        if($this->only_user){
             $objectModel = new Media;
             if($this->media_users && count($this->media_users)>0)
             {
@@ -223,10 +237,11 @@ trait MediaBoxTrait
             $data['medias'] = $medias;
         }
         
+        return $data;
     }
 
 
-    public function uploadImage(Request $request,$media_type="default")
+    public function uploadMedia(Request $request,$media_type="default")
     {
         $this->checkSetting();
 
@@ -328,7 +343,7 @@ trait MediaBoxTrait
     }
 
 
-    public function removeImage(Request $request,$media_type="default")
+    public function removeMedia(Request $request,$media_type="default")
     {
         $this->checkSetting();
 

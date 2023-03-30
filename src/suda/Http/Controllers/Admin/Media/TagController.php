@@ -16,7 +16,6 @@ class TagController extends DashboardController
 {
     use TagTrait;
 
-    public $redirect_url = 'mediatags';
     public $taxonomy_name = 'media_tag';
 
     function __construct(){
@@ -41,15 +40,15 @@ class TagController extends DashboardController
     }
 
     //设置自定义的链接
-    public function buttonConfig(){
+    public function actionConfig(){
 
         $buttons = [];
 
-        $buttons['create']  = 'mediatags/add';
-        $buttons['update']  = 'mediatags/update';
-        $buttons['save']    = 'mediatags/save';
-        $buttons['delete']  = 'mediatags/delete';
-        $buttons['sort']    = 'mediatags/editsort';
+        $buttons['create']  = admin_url('mediatag/add');
+        $buttons['update']  = admin_url('mediatag/update');
+        $buttons['save']    = admin_url('mediatag/save');
+        $buttons['delete']  = admin_url('mediatag/delete');
+        $buttons['sort']    = admin_url('mediatags/editsort');
         
         return $buttons;
     }

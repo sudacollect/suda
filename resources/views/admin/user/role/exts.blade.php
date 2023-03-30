@@ -27,7 +27,7 @@
             
             
 
-                {{ csrf_field() }}
+                @csrf
                 <input type="hidden" name="role_id" value="{{ $role->id }}" >
 
                 @foreach ($ext_list as $slug=>$item)
@@ -47,7 +47,7 @@
                             </p>
 
                             <p class="ext-name">
-                                <button type="button" href="{{ admin_url('user/roles/extDetail/'.$role->id.'/'.$item['slug']) }}" class="ext-permission pop-modal btn btn-primary btn-sm">设置权限</button>
+                                <button type="button" href="{{ admin_url('user/roles/ext-detail/'.$role->id.'/'.$item['slug']) }}" class="ext-permission pop-modal btn btn-primary btn-sm">设置权限</button>
                             </p>
 
                         </div><!-- panel-body -->
@@ -79,7 +79,7 @@
 
     @else
 
-    @include('view_suda::admin.component.empty',['type'=>'content','empty'=>'Oops... 还没有启用任何应用'])
+    <x-suda::empty-block empty="Oops... 还没有启用任何应用" type="content" :card=true />
 
     @endif
 </div>

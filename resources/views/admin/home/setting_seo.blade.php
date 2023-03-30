@@ -20,7 +20,7 @@
                 <div class="card-body">
                     
                     <form class="form-ajax"  method="POST" action="{{ admin_url('setting/seo') }}" role="form">
-                      {{ csrf_field() }}
+                      @csrf
                       
                       
                       <div class="row mb-3">
@@ -31,7 +31,7 @@
                         </label>
                         
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="title" placeholder="title" value="@if(isset($settings->values['title'])){{ $settings->values['title'] }}@endif">
+                            <input type="text" class="form-control" name="title" placeholder="title" value="@if(isset($settings['title'])){{ $settings['title'] }}@endif">
                         </div>
                       </div>
                       
@@ -44,7 +44,7 @@
                            </label>
                         
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="keywords" placeholder="keywords 英文逗号,分割" value="@if(isset($settings->values['keywords'])){{ $settings->values['keywords'] }}@endif">
+                            <input type="text" class="form-control" name="keywords" placeholder="keywords 英文逗号,分割" value="@if(isset($settings['keywords'])){{ $settings['keywords'] }}@endif">
                         </div>
                       </div>
                       
@@ -57,7 +57,7 @@
                            </label>
                         
                         <div class="col-sm-4">
-                            <textarea class="form-control" rows=5 name="description" placeholder="description">@if(isset($settings->values['description'])){{ $settings->values['description'] }}@endif</textarea>
+                            <textarea class="form-control" rows=5 name="description" placeholder="description">@if(isset($settings['description'])){{ $settings['description'] }}@endif</textarea>
                         </div>
                       </div>
                       

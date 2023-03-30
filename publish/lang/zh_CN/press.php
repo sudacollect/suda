@@ -282,7 +282,7 @@ return [
     
 
     'settings'=>[
-        'login_path'=>'登录入口',
+        'login_path'=>'登录后跳转至',
         'breadcrumb'=>'面包屑导航',
         'userinfo'=>'用户信息',
         'userinfo_position'=>[
@@ -307,6 +307,7 @@ return [
         ],
 
         'login_image'=>'登录配图',
+        'custom_login_image'=>'自定义登录配图',
 
         'share_image'=>'分享图片',
 

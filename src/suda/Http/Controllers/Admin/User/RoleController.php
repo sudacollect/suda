@@ -618,7 +618,7 @@ class RoleController extends DashboardController
 
             foreach($auth_setting as $k=>&$auth){
                 
-                if(strpos($auth['setting'],'@')===false){
+                if(strpos($auth['setting'],'@') === false){
 
                     if(class_exists($auth['setting'])){
                         $auth_object = new $auth['setting'];

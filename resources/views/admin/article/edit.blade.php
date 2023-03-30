@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div class="page-title"><i class="ion-create"></i>&nbsp;编辑文章</div>
     <form role="form" method="POST" action="{{ admin_url('article/save') }}" class="form-ajax">
-        {{ csrf_field() }}
+        @csrf
         <input type="hidden" name="id" value="{{ $item->id }}">
 
     <div class="row suda-row">
@@ -30,7 +30,8 @@
                     
                     <div class="mb-3{{ $errors->has('content') ? ' has-error' : '' }}" >
                         <label for="title">内容</label>
-                        @include('view_app::component.editor',['height'=>$editor_height,'content'=>$item->content])
+                        
+                        <x-suda::editor id="summernote" name="content" :height="$editor_height" :content="$item->content" />
                         
                     </div>
                     
@@ -48,13 +49,7 @@
                         <label for="slug" >
                                 分类
                         </label>
-                        <select class="select-category form-control" name="category[]" multiple="multiple" placeholder="请选择分类">
-                            @if($categories)
-                    
-                            @include('view_suda::taxonomy.category_options',['cates'=>$categories,'child'=>0,'select'=>$cates])
-                            
-                            @endif
-                        </select>
+                        <x-suda::select-category taxonomy="post_category" :selected="$cates" />
                         
                     </div>
                 
@@ -192,8 +187,10 @@
     $(document).ready(function(){
         
         $.mediabox({
-            modal_url: "{{ admin_url('medias/modal') }}",
-            upload_url: "{{ admin_url('medias/upload/image') }}"
+            box_url: "{{ admin_url('medias/load-modal/') }}",
+            modal_url: "{{ admin_url('medias/modal/') }}",
+            upload_url: "{{ admin_url('medias/upload/image/') }}",
+            remove_url: "{{ admin_url('medias/remove/image/') }}"
         });
 
 

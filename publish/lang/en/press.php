@@ -102,7 +102,7 @@ return [
  
     
 
-    'tag_name'=>'标签名称',
+    'tag_name'=>'Tag Name',
     
     
     
@@ -281,7 +281,7 @@ return [
     
 
     'settings'=>[
-        'login_path'=>'Login Path',
+        'login_path'=>'Login RedirectTo',
         'breadcrumb'=>'Breadcrumb',
         'userinfo'=>'Userinfo',
 
@@ -307,6 +307,7 @@ return [
         ],
 
         'login_image'=>'Login Image',
+        'custom_login_image'=>'Customize Login Image',
 
         'share_image'=>'Share Image',
 

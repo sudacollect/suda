@@ -39,11 +39,11 @@
                             </a>
                           
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a id="batch_retag" class="dropdown-item" href="{{ admin_url('medias/batchtag') }}">批量标签</a></li>
+                                <li><a id="batch_retag" class="dropdown-item" href="{{ admin_url('media/batchtag') }}">批量标签</a></li>
                                 <li><a id="batch_rebuild" class="dropdown-item" href="#">批量缩略图</a></li>
-                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('medias/showbatch') }}">批量显示</a></li>
-                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('medias/hiddenbatch') }}">批量隐藏</a></li>
-                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('medias/deletebatch') }}">批量删除</a></li>
+                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/showbatch') }}">批量显示</a></li>
+                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/hiddenbatch') }}">批量隐藏</a></li>
+                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/deletebatch') }}">批量删除</a></li>
                             </ul>
                         </div>
 
@@ -148,8 +148,8 @@
                         <!-- list end -->
 
                     @else
-                
-                    @include('view_suda::admin.component.empty',['without_card'=>true,'empty'=>'没有媒体文件'])
+                    
+                    <x-suda::empty-block empty="没有媒体文件" :card=false />
                     
                     @endif
                 </div>
@@ -168,8 +168,10 @@
         $(document).ready(function(){
 
             $.mediabox({
-                modal_url: "{{ admin_url('medias/modal') }}",
-                upload_url: "{{ admin_url('medias/upload/image') }}"
+                box_url: "{{ admin_url('medias/load-modal/') }}",
+                modal_url: "{{ admin_url('medias/modal/') }}",
+                upload_url: "{{ admin_url('medias/upload/image/') }}",
+                remove_url: "{{ admin_url('medias/remove/image/') }}"
             });
             
             $('#show-media-upload').on('click',function(){

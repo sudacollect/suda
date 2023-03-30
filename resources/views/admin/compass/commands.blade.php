@@ -36,7 +36,7 @@
                             		<small>{{ $command->description }}</small>
                                     <i class="ion-play"></i>
                             		<form action="{{ route('sudaroute.admin.tool_compass_commands_post') }}" class="command-form" method="POST">
-                                        {{ csrf_field() }}
+                                        @csrf
                                         <input type="text" name="args" autofocus class="form-control" placeholder="输入参数">
                                         <input type="submit" class="btn btn-primary pull-right delete-confirm" value="运行">
                                         <input type="hidden" name="command" id="hidden_cmd" value="{{ $command->name }}">

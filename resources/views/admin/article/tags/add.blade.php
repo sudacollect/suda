@@ -10,7 +10,7 @@
         <div class="col-sm-12 suda_page_body">
             
                 
-                    {{ csrf_field() }}
+                    @csrf
               
                   <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
                   

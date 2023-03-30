@@ -57,7 +57,7 @@
 
 
 
-@if($view_type=='list_gallery')
+@if($view_type == 'list_gallery')
 
 <script src="{{ suda_asset('js/waterfall/bootstrap-waterfall.js') }}"></script>
 
@@ -80,11 +80,12 @@
             useCurrent:'day',
         });
 
+        @if($view_type == 'list_gallery')
         if($('#waterfall-container').length>0)
         {
             $('#waterfall-container').waterfall();
         }
-        
+        @endif
 
         $('.more-filter').zfilter();
 
