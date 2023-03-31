@@ -45,7 +45,7 @@ class Editor extends Component
             'name'      => $this->name,
             'editor_content'   => $this->content,
         ];
-
-        return app('theme')->render($this->app, $view, $view,$data);
+        return view($view)->with($data);
+        // return app('theme')->render($this->app, $view, $view,$data);
     }
 }

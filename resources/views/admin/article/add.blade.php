@@ -52,9 +52,7 @@
                         <label for="slug">
                                 分类
                         </label>
-                        <x-suda::select-category taxonomy="post_category" />
-                        
-                      
+                        <x-suda::select-category type="multiple" taxonomy="post_category" placeholder="- 选择分类 -" />
                     </div>
                 
                
@@ -206,7 +204,6 @@
             locale:'zh-CN',
         });
         
-        $('select.select-category').selectCategory('multiple');
         $('select.select-keyword').selectTag({taxonomy:'post_tag'});
     });
     

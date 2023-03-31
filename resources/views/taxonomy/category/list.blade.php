@@ -16,6 +16,7 @@
         <div class="col-sm-12 suda_page_body">
             <div class="card">
                 <div class="card-body">
+                    @if($categories && $categories->count()>0)
                     <div class="table-responsive">
                       <table class="table">
                           <thead class="bg-light">
@@ -28,15 +29,18 @@
                             </tr>
                           </thead>
                           <tbody>
-                            @if($categories)
+                            
                                 
                                 @include('view_suda::taxonomy.category.list_content',['cates'=>$categories,'child'=>0])
                                 
-                            @endif
+                            
                           </tbody>
                       </table>
                       
                     </div>
+                    @else
+                    <x-suda::empty-block empty="Oops.." :card=false />
+                    @endif
                 </div>
             </div>
         </div>

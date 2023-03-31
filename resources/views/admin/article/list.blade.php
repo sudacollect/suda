@@ -69,8 +69,8 @@
     $(document).ready(function(){
         
         
-        $('select.select-category').selectCategory('single',$('body'));
-        $('select.select-category-search').selectCategory('single');
+        $('select.select-category').selectCategory();
+        $('select.select-category-search').selectCategory();
 
         $('[data-toggle="datetimepicker"]').datetimepicker({
             format: 'YYYY-MM-DD HH:mm:ss',

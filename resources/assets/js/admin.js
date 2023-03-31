@@ -1178,7 +1178,7 @@ jQuery(function(){
         return $item;
     };
 
-    $.fn.selectCategory = function(multi="single",dropdownParent='',placeholder="- 选择分类 -"){
+    $.fn.selectCategory = function(){
 
         var el = this;
         var containerCssClass = '';
@@ -1194,12 +1194,16 @@ jQuery(function(){
             dropdownCssClass = 'select2--large';
         }
 
-        if(!dropdownParent)
+        var dropdownParent = $('body');
+        var selectType = 'single';
+        console.log($(el).attr('multiple'));
+        if($(el).attr('multiple'))
         {
-            dropdownParent = $(el).parent();
+            selectType = 'multiple';
         }
+        var placeholder = $(el).attr('placeholder')?$(el).attr('placeholder'):'- 选择分类 -';
 
-        if(multi=='single')
+        if(selectType=='single')
         {
             $(el).select2({
                 theme: 'bootstrap-5',
@@ -1211,7 +1215,7 @@ jQuery(function(){
             });
         }
 
-        if(multi=='multiple')
+        if(selectType=='multiple')
         {
             $(el).select2({
                 theme: 'bootstrap-5',
@@ -1225,6 +1229,10 @@ jQuery(function(){
         
 
     };
+
+    
+    
+    
 
     $.fn.selectTag = function(options){
 
@@ -1345,5 +1353,9 @@ jQuery(function(){
         }
     });
 
-});
 
+    
+
+    
+
+});

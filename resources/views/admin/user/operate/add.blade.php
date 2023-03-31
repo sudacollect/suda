@@ -15,7 +15,7 @@
                     {{ __('suda_lang::press.organization') }}
                 </label>
                 
-                <x-suda::select-category taxonomy="org_category" placeholder="请选择部门" />
+                <x-suda::select-category type="multiple" taxonomy="org_category" placeholder="请选择部门" />
                 
       
               </div>
@@ -141,8 +141,6 @@
                 $('#role_group').show();
             }
         });
-
-        $('select.select-category').selectCategory('multiple');
 
     });
     

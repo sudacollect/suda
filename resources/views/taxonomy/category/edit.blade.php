@@ -98,14 +98,8 @@
                         上级{{ $taxonomy_title }}
                     </label>
                     <div class="col-sm-8">
-                        <select name="parent" class="select-category" placeholder="-上级{{ $taxonomy_title }}-">
-                            <option value="0">无</option>
-                            @if($categories)
-                            
-                            @include('view_suda::taxonomy.category.options',['cates'=>$categories,'child'=>0,'select'=>$term->parent,'exclude'=>$term->id])
-                            
-                            @endif
-                        </select>
+                        <x-suda::select-category type="single" name="parent" :taxonomy="$term->taxonomy" :selected="[$term->parent]" :placeholder="$taxonomy_title" :exclude="[$term->id]" />
+
                         <span class="help-block">
                             默认不选设置为一级{{ $taxonomy_title }}
                         </span>
@@ -140,13 +134,15 @@
 
 </form>
 
+@stack('scripts')
+
 <script>
     
     jQuery(function($){
         
         $('.handle-ajaxform').ajaxform();
 
-        $('select.select-category').selectCategory('single');
+        
 
         $.mediabox({
             box_url: "{{ admin_url('medias/load-modal/') }}",

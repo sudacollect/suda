@@ -15,19 +15,19 @@
     
     @if(!isset($exclude))
     @php
-        $exclude = -1;
+        $exclude = [];
     @endphp
     @endif
     
 @foreach ($cates as $cate)
 
-@if($exclude!=$cate->id && $exclude!=$cate->parent)
-        <option value="{{ $cate->id }}" data-child="{{$child}}" @if(in_array($cate->id,$select)) selected @endif>
-{{ $cate->term->name }}
-</option>
+@if(!in_array($cate->id,$exclude) && !in_array($cate->parent,$exclude))
+    <option value="{{ $cate->id }}" data-child="{{$child}}" @if(in_array($cate->id,$select)) selected @endif>
+    {{ $cate->term->name }}
+    </option>
 @endif
 
-@if($cate->children && $exclude!=$cate->id)
+@if($cate->children && !in_array($cate->id,$exclude))
 
     @include('view_suda::taxonomy.category.options',['cates'=>$cate->children,'child'=>$child+1,'select'=>$select,'exclude'=>$exclude])
     

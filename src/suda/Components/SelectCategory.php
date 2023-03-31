@@ -7,12 +7,7 @@ use Gtd\Suda\Models\Taxonomy;
 
 class SelectCategory extends Component
 {
-    public string $app;
-    public string $multi;
-    public string $taxonomy;
-    public string $placeholder;
-    public array $selected;
- 
+    
     /**
      * Create the component instance.
      *
@@ -21,19 +16,14 @@ class SelectCategory extends Component
      * @return void
      */
     public function __construct(
-        string $multi = 'multiple',
-        string $taxonomy = '',
-        array $selected = [],
-        string $placeholder = '- 选择分类 -',
-        string $app = 'admin'
-    )
-    {
-        $this->multi = $multi;
-        $this->selected = $selected;
-        $this->taxonomy = $taxonomy;
-        $this->app = $app;
-        $this->placeholder = $placeholder;
-    }
+        public string $taxonomy = '',
+        public array $selected = [],
+        public string $type = 'single',
+        public string $placeholder = '- 选择分类 -',
+        public string $app = 'admin',
+        public string $name = 'category[]',
+        public array $exclude = [],
+    ){}
  
     /**
      * Get the view / contents that represent the component.
@@ -52,10 +42,13 @@ class SelectCategory extends Component
             'taxonomy'  => $this->taxonomy,
             'selected'  => $this->selected,
             'placeholder'  => $this->placeholder,
-            'multi'     => $this->multi,
+            'type'      => $this->type,
+            'name'      => $this->name,
+            'exclude'   => $this->exclude,
         ];
         
         $view = 'view_suda::components.select_category';
-        return app('theme')->render($this->app, $view, $view, $data);
+        return view($view)->with($data);
+        // return app('theme')->render($this->app, $view, $view, $data);
     }
 }

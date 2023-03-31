@@ -41,6 +41,7 @@ class EmptyBlock extends Component
             'empty'         => $this->empty,
         ];
 
-        return app('theme')->render($this->app, $view, $view,$data);
+        return view($view)->with($data);
+        // return app('theme')->render($this->app, $view, $view,$data);
     }
 }
