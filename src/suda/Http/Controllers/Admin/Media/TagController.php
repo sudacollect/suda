@@ -32,9 +32,9 @@ class TagController extends DashboardController
 
         return [
 
-            'list'=>'view_suda::admin.media.tag.list',
-            'create'=>'view_suda::taxonomy.tag.add',
-            'update'=>'view_suda::taxonomy.tag.edit',
+            'list'      => 'view_suda::admin.media.tag.list',
+            'create'    => 'view_suda::taxonomy.tag.add',
+            'update'    => 'view_suda::taxonomy.tag.edit',
         ];
 
     }
@@ -48,7 +48,7 @@ class TagController extends DashboardController
         $buttons['update']  = admin_url('mediatag/update');
         $buttons['save']    = admin_url('mediatag/save');
         $buttons['delete']  = admin_url('mediatag/delete');
-        $buttons['sort']    = admin_url('mediatags/editsort');
+        $buttons['sort']    = admin_url('mediatags/sort');
         
         return $buttons;
     }

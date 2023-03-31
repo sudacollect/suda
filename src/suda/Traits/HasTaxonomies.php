@@ -139,8 +139,6 @@ trait HasTaxonomies
         
     }
     
-    
-
     /**
      * Get a term model by the given name and optionally a taxonomy.
      *

@@ -229,7 +229,7 @@ Route::group([
         Route::get('mediatag/update/{id}', 'update')->name('mediatag_update');
         Route::post('mediatag/delete/{id}', 'delete')->name('mediatag_delete');
         Route::post('mediatag/save', 'save')->name('mediatag_save');
-        Route::post('mediatags/editsort/{id}', 'editSort');
+        Route::post('mediatags/sort/{id}', 'editSort');
     });
     
     

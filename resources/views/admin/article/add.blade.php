@@ -54,11 +54,10 @@
                         </label>
                         <x-suda::select-category type="multiple" taxonomy="post_category" placeholder="- 选择分类 -" />
                     </div>
-                
                
                     <div class="mb-3{{ $errors->has('keyword') ? ' has-error' : '' }}" >
                             <label for="slug">
-                                    标签
+                                标签
                             </label>
                           <select name="keyword[]" class="select-keyword form-control" multiple="multiple" placeholder="输入标签">
                                 @if($default_tags->count()>0)
