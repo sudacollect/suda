@@ -27,9 +27,13 @@ Route::group([
 
 
     // medias load modal
-    Route::get('medias/modal/{type}', $controller_prefix.'MediasController@modal');
+    Route::get('medias/load-modal/{media_type}', $controller_prefix.'MediasController@loadModal');
+    Route::get('medias/modal/{media_type}', $controller_prefix.'MediasController@modal');
+
     // medias upload route
-    Route::post('medias/upload/image/{type?}', $controller_prefix.'MediasController@uploadImage');
+    Route::post('medias/upload/image/{media_type?}', $controller_prefix.'MediasController@uploadMedia');
+    // delete
+    Route::post('medias/remove/image/{media_type?}', $controller_prefix.'MediasController@removeMedia');
 });
 
 //admin.extension

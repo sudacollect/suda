@@ -36,8 +36,8 @@
         </div>
         <div class="col">
             <div class="input-group">
-                <input type="text" name="search[title]" class="form-control me-2" placeholder="文章标题">
-                <button type="submit" class="btn btn-dark">搜索</button>
+                <input type="text" name="search[title]" class="form-control" placeholder="文章标题">
+                <button type="submit" class="btn btn-primary">搜索</button>
             </div>
         </div>
     </div>

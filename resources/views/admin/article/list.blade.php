@@ -30,7 +30,7 @@
                     <a class="btn btn-dark btn-sm" href="{{ admin_url('articles/gallery') }}"><i class="ion-grid"></i></a>
                     <a class="btn btn-dark btn-sm" href="{{ admin_url('articles/list') }}"><i class="ion-reorder-four"></i></a>
                     
-                    <button class="btn btn-primary btn-sm more-filter" data-element=".data-list">
+                    <button class="btn btn-light btn-sm more-filter" data-element=".data-list">
                         <i class="ion-search-circle-outline"></i>&nbsp;高级搜索
                     </button>
                     @endif

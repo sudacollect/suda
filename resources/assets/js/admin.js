@@ -1200,7 +1200,6 @@ jQuery(function(){
 
         var dropdownParent = $('body');
         var selectType = 'single';
-        console.log($(el).attr('multiple'));
         if($(el).attr('multiple'))
         {
             selectType = 'multiple';
