@@ -67,7 +67,7 @@ class TaxableUtils
                foreach ($terms as $term) {
                     $term_id = Term::where('name', $term)->where('taxonomy',$taxonomy)->first()->id;
                     
-                    if (Taxonomy::withTrashed()->where('taxonomy', $taxonomy)->where('term_id', $term_id)->where('parent', $parent)->first()){
+                    if (Taxonomy::withTrashed()->where('taxonomy', $taxonomy)->where('term_id', $term_id)->first()){
                         continue;
                     }
                     

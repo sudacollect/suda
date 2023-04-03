@@ -1,4 +1,5 @@
 <select class="x-suda-select-category form-control" name="{{ $name }}" @if($type=='multiple') multiple="multiple" @endif placeholder="{{ $placeholder }}">
+    <option value="0"> - 无上级分类 - </option>
     @if($cates)
 
         @if(isset($selected))

@@ -1629,6 +1629,7 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     width:50%;
     cursor:pointer;
     padding:2px;
+    position:relative;
 }
 .list-images .x-suda-upload-box-div:hover{
     background:rgba(200,200,200,.12);
