@@ -3,11 +3,8 @@
     @if(isset($content) && isset($content['image_title']))
     <h3>{{ $content['image_title'] }}</h3>
     @endif
-
-
     
-
-    @if(isset($medias))
+    @if(isset($medias) && count($medias) > 0)
         
     <div class="owl-carousel owl-theme">
         @foreach($medias as $media)

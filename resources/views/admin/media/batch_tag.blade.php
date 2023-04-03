@@ -1,7 +1,5 @@
 @extends('view_path::component.modal')
 
-
-
 @section('content')
 <style>
 .edit-media{
@@ -17,8 +15,6 @@
     <div class="container-fluid">
         <div class="col-12 suda_page_body">
             
-
-            
               <div class="mb-3">
                   <label for="inputName" class="control-label">
                       对已选择图片设置标签
@@ -30,15 +26,7 @@
                 <label for="slug" >
                     标签
                 </label>
-                <select class="select-keyword form-control" name="keyword[]" multiple="multiple" placeholder="输入标签">
-                    @if($tags->count()>0)
-                
-                    @foreach($tags as $tag)
-                    <option value="{{ $tag->name }}" selected>{{ $tag->name }}</option>
-                    @endforeach
-
-                    @endif
-                </select>
+                <x-suda::select-tag name="keyword[]" taxonomy="media_tag" max=5 :link="admin_url('tags/search/json')" />
             </div>
 
         </div>
@@ -52,15 +40,12 @@
 
 </form>
 
-<script>
-    
-    jQuery(function(){
-        
-        $('.handle-ajaxform').ajaxform();
+@stack('scripts')
 
-        $('select.select-keyword').selectTag({taxonomy:'media_tag'});
+<script>
+    $(function(){
+        $('.handle-ajaxform').ajaxform();
     });
-    
 </script>
 
 @endsection

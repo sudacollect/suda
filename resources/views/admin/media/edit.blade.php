@@ -17,46 +17,38 @@
     <div class="container-fluid">
         <div class="col-12 suda_page_body">
             
-              <div class="mb-3">
+            <div class="mb-3">
+            <label for="inputName" class="control-label">
+                图片
+            </label>
+
+            <div class="row">
+                <div class="col col-sm-6">
+                    {!! suda_image($media,['size'=>'large','imageClass'=>'edit-media edit-media-'.$media->id],false) !!}
+                </div>
+                <div class="col col-sm-4">
+                    {!! suda_image($media,['size'=>'medium','imageClass'=>'edit-media edit-media-'.$media->id],false) !!}
+                </div>
+                <div class="col col-sm-2">
+                    {!! suda_image($media,['size'=>'small','imageClass'=>'edit-media edit-media-'.$media->id],false) !!}
+                </div>
+            </div>
+                
+            </div>
+        
+            <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="inputName" class="control-label">
-                    图片
+                    {{ __('suda_lang::press.name') }}
                 </label>
 
-                <div class="row">
-                    <div class="col col-sm-6">
-                        {!! suda_image($media,['size'=>'large','imageClass'=>'edit-media edit-media-'.$media->id],false) !!}
-                    </div>
-                    <div class="col col-sm-4">
-                        {!! suda_image($media,['size'=>'medium','imageClass'=>'edit-media edit-media-'.$media->id],false) !!}
-                    </div>
-                    <div class="col col-sm-2">
-                        {!! suda_image($media,['size'=>'small','imageClass'=>'edit-media edit-media-'.$media->id],false) !!}
-                    </div>
-                </div>
-                  
-              </div>
+                <input type="text" name="name" class="form-control" value="{{ $media->name }}" id="inputName" placeholder="图片名称">
+            </div>
             
-              <div class="mb-3{{ $errors->has('name') ? ' has-error' : '' }}">
-                  <label for="inputName" class="control-label">
-                      {{ __('suda_lang::press.name') }}
-                  </label>
-
-                  <input type="text" name="name" class="form-control" value="{{ $media->name }}" id="inputName" placeholder="图片名称">
-              </div>
-              
-              <div class="mb-3{{ $errors->has('keyword') ? ' has-error' : '' }}" >
+            <div class="mb-3{{ $errors->has('keyword') ? ' has-error' : '' }}" >
                 <label for="slug" >
                     标签
                 </label>
-                <select class="select-keyword form-select" name="keyword[]" multiple="multiple" placeholder="输入标签">
-                    @if($tags->count()>0)
-                
-                    @foreach($tags as $tag)
-                    <option value="{{ $tag->name }}" selected>{{ $tag->name }}</option>
-                    @endforeach
-
-                    @endif
-                </select>
+                <x-suda::select-tag name="keyword[]" taxonomy="media_tag" max=5 :tags="$tags" :link="admin_url('tags/search/json')" />
             </div>
 
         </div>
@@ -70,12 +62,12 @@
 
 </form>
 
+@stack('scripts')
+
 <script>
     
     jQuery(function(){
         $('.handle-ajaxform').ajaxform();
-
-        $('select.select-keyword').selectTag({taxonomy:'media_tag'});
     });
     
 </script>

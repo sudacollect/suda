@@ -157,7 +157,6 @@ Route::group([
         
     });
     
-    
     // tag search
     Route::any('/tags/search/{returnJson?}', $controller_prefix.'Taxonomy\TagController@getTagsByName');
 
@@ -190,10 +189,7 @@ Route::group([
 
         Route::get('media/setting', 'setting')->name('media_setting');
         Route::post('media/setting/save', 'settingSave')->name('media_setting_save');
-
-
-        Route::get('media/{view?}', 'getAll')->name('media');
-
+        
         Route::get('media/update/{id}', 'editMedia')->name('media_update');
         Route::post('media/update', 'updateMedia');
         Route::post('media/delete/{id}', 'deleteMedia');
@@ -210,6 +206,9 @@ Route::group([
         // rebuild thumbs
         Route::get('media/rebuild/{id}', 'rebuildMedia')->name('media_rebuild');
 
+        Route::get('media', 'getAll')->name('media');
+        Route::get('media/gallery', 'getAll')->name('media');
+        Route::get('media/list', 'getAll')->name('media');
     });
 
     // medias load modal

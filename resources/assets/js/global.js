@@ -296,68 +296,6 @@ jQuery(function($) {
     		$target.find(".cancel").remove();
     		$target.appendTo($(this).find(".filelist.complete"));
             
-            $('.s-upload .filelist.complete li .file').on('mouseenter',function(e){
-        
-                var ele = this;
-                if($(ele).length>0){
-                    if($(ele).find('.delete_image_show').length<1){
-                        $(ele).append("<div class='delete_image_show'><i class='far fa-times-circle'></i>&nbsp;删除</div>");
-                        $(ele).find('.delete_image_show').on('click',function(){
-                        
-                            var href = zpup.options.removeUrl;
-                            $.ajax({
-                               type: "POST",
-                               url: href,
-                               data: { _token:suda.data('csrfToken'),media_id:$(ele).find('input[name^="images["]').val() },
-                               dataType: 'json',
-                               error: function(xhr) {
-                                   var res = xhr.responseJSON;
-                                   if(res.response_msg){
-                                       suda.modal(res.response_msg);
-                                   }else{
-                                       suda.modal('请求出错，请重试');
-                                   }
-                               
-                               },
-                               success: function(json) {
-                               
-                                  if (json == null){
-                                      json = {};
-                                      suda.modal('请求出错，请重试');
-                                  }
-                              
-                                  var msg = json.response_msg;
-                                  if(msg){
-                                      suda.modal(msg);
-                                  
-                                      $(ele).parent('li').animate({
-                                          opacity: 0,
-                                          top:-100,
-                                      }, 500, function() {
-                                          $(ele).parent('li').remove();
-                                          
-                                          if(($(ele).length-1)<media_max){
-                                              $(media_box).find('.fs-upload-target').show();
-                                          }
-                                      });
-                                      
-                                      
-                                  
-                                  }else{
-                                      suda.modal('请求出错，请重试');
-                                  }
-                              
-                               }
-                            });
-                        
-                        
-                        });
-                    }
-                }
-        
-            });
-            
-            
             var media_max = $(this).attr('media_max')||1;
             var media_length = $(this).find(".filelist.complete").find('li').length;
             
@@ -366,12 +304,6 @@ jQuery(function($) {
             }else{
                 $(this).find('.fs-upload-target').show();
             }
-    
-            $('.s-upload .filelist.complete li .file').on('mouseleave',function(e){
-                if($(this).find('.delete_image_show')){
-                    $(this).find('.delete_image_show').remove();
-                }
-            });
             
     	}
     };

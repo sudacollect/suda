@@ -51,6 +51,8 @@ class WidgetController extends DashboardController
 
         //获取所有挂件
         $widgets = app('theme')->getWidgets();
+        
+        
         $this->setData('widgets',$widgets);
 
         $this->setData('app_name',$app);

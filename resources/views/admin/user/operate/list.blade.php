@@ -99,7 +99,7 @@
                               <td>
                                 @if(isset($deleted))
                                     @if($soperate->superadmin==1 || ($soperate->user_role>=6 && $soperate->user_role >= $operate->user_role))
-                                        <button href="{{ admin_url('manage/operates/restore/'.$operate->id) }}" data_id="{{ $operate->id }}" data_title="确认恢复用户?" class="pop-modal-box btn btn-warning btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top">恢复</button>
+                                        <button href="{{ admin_url('manage/operates/restore/'.$operate->id) }}" action_id="{{ $operate->id }}" action_title="确认恢复用户?" class="x-suda-pop-action btn btn-warning btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top">恢复</button>
                                     @endif
 
                                     @if($soperate->superadmin==1)

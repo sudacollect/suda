@@ -10,9 +10,6 @@ use Response;
 
 class TagController extends DashboardController
 {
-    
-    
-    
     //get tag by name
     function getTagsByName(Request $request,$returnJson=false)
     {
@@ -20,14 +17,14 @@ class TagController extends DashboardController
         $model = new Tag;
 
         $name = $request->name;
-        $tags = $model->getTermsByName($name, $request->taxonomy,0);
+        $tags = $model->getTermsByName($name, $request->taxonomy,5);
         
         if($returnJson){
             $tag_datas = [];
             foreach($tags as $tag){
                 $tag_datas[] = [
-                    'id'=> $tag->name,
-                    'text'=> $tag->name,
+                    'id'    => $tag->name,
+                    'text'  => $tag->name,
                 ];
             }
             
@@ -36,11 +33,5 @@ class TagController extends DashboardController
         
         return $tags;
     }
-    
-    //get all keywords
-    function keywords(){
-        
-    }
-    
-    
+
 }

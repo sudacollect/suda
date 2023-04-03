@@ -1200,7 +1200,7 @@ code {
     text-align: center;
     padding:5px;
 }
-.component-image .filelist.complete li .file .delete_image_show{
+.component-image .filelist.complete li .file .x-suda-upload-action{
     position:absolute;
     left:0;
     bottom:0;
@@ -1282,19 +1282,7 @@ code {
     width:20%;
 }
 
-.upload-modal .list-group-item .remove-modal-item{
-    position:absolute;
-    right:5px;
-    top:0px;
-    width:24px;
-    height:24px;
-    line-height:24px;
-    text-align:center;
-    z-index:999;
-}
-.upload-modal .list-group-item .remove-modal-item i{
-    color:rgba(0, 0, 0, 0.45);
-}
+
 
 /*menu*/
 .menu-list .menu-item{
@@ -1627,87 +1615,86 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     overflow-y: auto;
 } */
 
-.list-group-column{
-    display:inline-block;
-    width:100%;
+/*uploda box*/
+.x-suda-upload-box{
+    display:flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    justify-content: flex-start;
     
 }
-.list-group-column .list-group-item{
-    position:relative;
-    border:1px solid #e8e8e8;
-    margin:0 -1px 5px 0px;
-    display:inline-block;
-    float:left;
-    width:50%;
-}
-.list-group-column .list-group-item:first-child{border-radius:0;}
-.list-group-column .list-group-item:last-child{border-radius:0;margin-right:0;}
 
-.list-images .list-group-item{
+
+.list-images .x-suda-upload-box-div{
     width:50%;
     cursor:pointer;
-    padding:0px;
+    padding:2px;
 }
-.list-images .list-group-item:hover{
+.list-images .x-suda-upload-box-div:hover{
     background:rgba(200,200,200,.12);
 }
-.list-images-4 .list-group-item{
-    width:24%;
-}
-.list-images-1 .list-group-item{
+
+.list-images-1 .x-suda-upload-box-div{
     width:100%;
+    padding:0;
 }
-.list-images-2 .list-group-item{
-    width:49%;
+.list-images-2 .x-suda-upload-box-div{
+    width:50%;
 }
-.list-images-3 .list-group-item{
-    width:33%;
+.list-images-3 .x-suda-upload-box-div{
+    width:33.33%;
 }
-.list-images-5 .list-group-item{
-    width:19.5%;
+.list-images-4 .x-suda-upload-box-div{
+    width:25%;
 }
-.list-images-6 .list-group-item{
-    width:16.2%;
+.list-images-5 .x-suda-upload-box-div{
+    width:20%;
 }
-
-.list-images .list-group-item-heading{
-    font-size:1.3rem;
-    font-weight:normal;
-    margin:0;
-    padding:5px 15px;
-    background:#f9f9f9;
-    border-bottom:1px solid #e8e8e8;
-    border-radius:4px 4px 0px 0px;
-}
-.list-images .list-group-item-heading i{
-    display:block;
-    font-style:normal;
-    line-height:1.5em;
+.list-images-6 .x-suda-upload-box-div{
+    width:16.66%;
 }
 
-.list-images .list-group-item .delete_image_show{
+.x-suda-upload-item .x-suda-upload-action
+{
     position:absolute;
-    left:0;
-    bottom:0;
     width:100%;
-    height:100px;
-    background:rgba(50,50,50,.75);
-    text-align:center;
-    line-height:100px;
-    font-size:1.2rem;
-    color:#fff;
-    z-index:99;
+    height:100%;
+    left:0;
+    top:0;
+    background:rgba(50,50,50,0.8);
+    display:none;
 }
 
+.x-suda-upload-action .btn{
+    width: 20%;
+    min-width: 80px;
+}
 
-.uploadbox{
+.x-suda-upload-box .x-suda-upload-box-div .x-suda-remove-upload-item{
+    position:absolute;
+    right:5px;
+    top:0px;
+    width:24px;
+    height:24px;
+    line-height:24px;
+    text-align:center;
+    z-index:999;
+}
+.x-suda-upload-box .x-suda-upload-box-div .x-suda-remove-upload-item i{
+    color:rgba(0, 0, 0, 0.45);
+}
+
+.x-suda-upload-item.uploadbox{
     width:100%;
     height:100px;
-    line-height:80px;
     overflow:hidden;
     text-align:center;
     position:relative;
-    padding:10px;
+    padding:5px;
+    border:1px solid #ededed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .uploadbox::after{
     font-family:'ionicons';
@@ -1722,13 +1709,23 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     max-width:100%;
     max-height:100%;
     height:auto;
+    z-index:10;
 }
 .uploadbox-filled{
     background:transparent;
 }
-.uploadbox-filled::after{
+.uploadbox.uploadbox-filled::after{
     display:none;
 }
+.uploadbox-filled:hover .x-suda-upload-action{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    z-index:20;
+}
+
 .uploadbox-empty{
     background:transparent;
 }

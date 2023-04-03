@@ -52,9 +52,12 @@ class ImageWidget extends Widget
                 if($media){
                     $params['media'] = $media;
                 }
+            }else{
+                $params['media'] = null;
             }
 
         }
+        
         return view('view_suda::widgets.theme.image.config', $params);
 
     }
@@ -85,6 +88,8 @@ class ImageWidget extends Widget
                 if($media){
                     $params['media'] = $media;
                 }
+            }else{
+                $params['media'] = null;
             }
         }
         

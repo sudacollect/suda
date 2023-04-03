@@ -15,27 +15,4 @@ jQuery(function(){
         postKey:'img'
     });
     
-    $('.s-upload .filelist.complete li .file').on('mouseenter',function(e){
-        
-        var ele = this;
-        if($(ele).length>0){
-            $(ele).append("<div class='delete_image_show'><i class='far fa-times-circle'></i>&nbsp;删除文件</div>");
-            $(ele).find('.delete_image_show').on('click',function(){
-                // $(ele).parent('li').remove();
-                $(ele).parent('li').animate({
-                    opacity: 0,
-                    top:-100,
-                }, 500, function() {
-                    $(ele).parent('li').remove();
-                });
-            });
-        }
-        
-    });
-    
-    $('.s-upload .filelist.complete li .file').on('mouseleave',function(e){
-        if($(this).find('.delete_image_show')){
-            $(this).find('.delete_image_show').remove();
-        }
-    });
 });

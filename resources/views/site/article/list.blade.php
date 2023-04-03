@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="col-lg-8 mx-auto pb-md-5 px-3">
+<div class="col-lg-8 mx-auto pb-md-5 px-3 article_page">
 
     <div class="container navbar-expand-sm category-nav mb-3">
 
@@ -169,11 +169,9 @@
 @endsection
 
 
-@push('styles-top')
-
-<script type="text/javascript" src="{{ suda_asset('site/js/swiper.min.js') }}"></script>
-<link rel="stylesheet" type="text/css" href="{{ suda_asset('site/swiper.min.css') }}">
-
+@push('styles')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
 @endpush
 
 @push('styles')
@@ -198,31 +196,29 @@
 
 
 <script type="text/javascript">
-    (function($){
-        $(document).ready(function(){
-            // 浏览器
-            // if (/Android|webOS|iPhone|iPad|BlackBerry/i.test(navigator.userAgent)) {
-            //     $('html').addClass('wap');
-            // } else {
-            //     $('html').addClass('pc');
-            // }
-            var mySwiper = new Swiper ('.main_box .swiper_box .swiper-container', {
-                loop: true,
-                effect : 'fade',
-                autoplay:true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable:true,
-                },
-            });
-            mySwiper.on('tap', function () {
-                var slide = mySwiper.slides[mySwiper.activeIndex];
-                if($(slide).length>0){
-                    var data_href = $(slide).attr('data-href');
-                    window.location.href=data_href;
-                }
-            });
-        })
-    })(jQuery)
+    $(function(){
+        // 浏览器
+        // if (/Android|webOS|iPhone|iPad|BlackBerry/i.test(navigator.userAgent)) {
+        //     $('html').addClass('wap');
+        // } else {
+        //     $('html').addClass('pc');
+        // }
+        var mySwiper = new Swiper ('.main_box .swiper_box .swiper-container', {
+            loop: true,
+            effect : 'fade',
+            autoplay:true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable:true,
+            },
+        });
+        mySwiper.on('tap', function () {
+            var slide = mySwiper.slides[mySwiper.activeIndex];
+            if($(slide).length>0){
+                var data_href = $(slide).attr('data-href');
+                window.location.href=data_href;
+            }
+        });
+    })
 </script>
 @endpush

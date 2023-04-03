@@ -185,7 +185,6 @@ class MediaController extends DashboardController
         
         $this->setData('media',$media);
 
-
         //选中的关键词
         $tags = $media->getTerms('media_tag');
         $this->setData('tags',$tags);
@@ -438,7 +437,7 @@ class MediaController extends DashboardController
             $data = $objectModel->with('tags')->orderBy('id','desc')->paginate($page_size,['*'],'page',$page_no);
             
             $filter_arr['filter'] = 'true';
-            $this->setData('filter_arr',$filter_arr);
+            $this->setData('filter_arr', $filter_arr);
             $comma = '';
             $filter_str='';
             foreach($filter_arr as $k=>$v){

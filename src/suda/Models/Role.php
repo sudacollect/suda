@@ -10,7 +10,7 @@ class Role extends Authenticatable
     use Notifiable;
     protected $table = 'roles';
     
-    protected $appends = ['permissions','authority_name','level'];
+    protected $appends = ['permissions', 'authority_name', 'level'];
     
     public function operates()
     {
@@ -19,10 +19,10 @@ class Role extends Authenticatable
 
     public function authorites(){
         $auths = [
-            'general'=>'普通管理',  //就是根据权限
-            'extension'=>'应用管理',//只授权应用
-            'operation'=>'运营主管',   //管理员
-            'superadmin'=>'超级管理员', //等同于超级管理员
+            'general'       => '普通管理',  //就是根据权限
+            'extension'     => '应用管理',  //只授权应用
+            'operation'     => '运营主管',  //管理员
+            'superadmin'    => '超级管理员',//等同于超级管理员
             
         ];
         return $auths;

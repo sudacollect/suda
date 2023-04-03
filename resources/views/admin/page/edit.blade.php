@@ -50,15 +50,7 @@
                             <label for="keyword" >
                                 {{ __('suda_lang::press.tags.tag') }}
                             </label>
-                            <select name="keyword[]" multiple="multiple" class="select-keyword form-control" placeholder="{{ __('suda_lang::press.tags.select_tag') }}">
-                                @if($tags)
-                                
-                                @foreach($tags as $tag)
-                                <option value="{{ $tag->name }}" selected>{{ $tag->name }}</option>
-                                @endforeach
-                                
-                                @endif
-                            </select>
+                            <x-suda::select-tag name="keyword[]" taxonomy="post_tag" max="5" :tags="$tags" :link="admin_url('tags/search/json')" />
                         </div>
                         
                         
@@ -174,7 +166,6 @@
             locale:'zh-CN',
         });
 
-        $('select.select-keyword').selectTag({taxonomy:'post_tag',placeholder:'选择标签'});
     });
     
 </script>

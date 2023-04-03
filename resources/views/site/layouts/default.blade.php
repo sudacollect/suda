@@ -18,7 +18,7 @@
     
     <link rel="stylesheet" href="{{ suda_asset('css/app_site.css') }}">
     
-   
+   @stack('styles')
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -34,10 +34,10 @@
 
 <body>
    
-    <div id="app" class="app-of-suda">
+    <div id="app" class="app-of-suda row">
       
       <div class="col-lg-8 pt-3 px-3 mx-auto">
-        <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <header class="d-flex align-items-center pb-3 mb-1 border-bottom">
           <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
 
 

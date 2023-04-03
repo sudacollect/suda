@@ -40,7 +40,7 @@
                           
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a id="batch_retag" class="dropdown-item" href="{{ admin_url('media/batchtag') }}">批量标签</a></li>
-                                <li><a id="batch_rebuild" class="dropdown-item" href="#">批量缩略图</a></li>
+                                {{-- <li><a id="batch_rebuild" class="dropdown-item" href="#">批量缩略图</a></li> --}}
                                 <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/showbatch') }}">批量显示</a></li>
                                 <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/hiddenbatch') }}">批量隐藏</a></li>
                                 <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/deletebatch') }}">批量删除</a></li>
@@ -225,7 +225,7 @@
                                     suda.modal(data.response_msg);
                                     return false;
                             }
-                            $(elem).layout_modal(data,csrfToken);
+                            $(elem).popModal(data,csrfToken);
                             $('.modal-layout').find('form').append('<input type="hidden" name="formids" value="'+batch_medias+'">');
                         }
                     },

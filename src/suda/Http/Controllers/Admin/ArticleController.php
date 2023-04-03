@@ -50,10 +50,6 @@ class ArticleController extends DashboardController
         $this->breadSet('增加文章','');
         
         // x-suda::select-category
-
-        //取最新的5个tag
-        $tags = Taxonomy::where('taxonomy','post_tag')->get();
-        $this->setData('default_tags',$tags);
         
         $this->setData('editor_height',500);
         $this->setMenu('article','article_new');
@@ -97,14 +93,11 @@ class ArticleController extends DashboardController
         
         //选中的关键词
         $tags = $article->getTerms('post_tag');
-        $this->setData('tags',$tags);
         if($tags->count()<1){
             //取最新的5个tag
-            $tags = Taxonomy::where('taxonomy','post_tag')->get();
-            $this->setData('default_tags',$tags);
+            $tags = Term::where('taxonomy','post_tag')->limit(10)->get();
         }
-        
-        
+        $this->setData('tags',$tags);
         
         $this->setData('editor_height',500);
         

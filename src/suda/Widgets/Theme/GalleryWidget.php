@@ -1,7 +1,7 @@
 <?php
 
 namespace Gtd\Suda\Widgets\Theme;
-
+use \Illuminate\Database\Eloquent\Collection;
 use Arrilot\Widgets\AbstractWidget;
 use View;
 use Gtd\Suda\Widgets\Widget;
@@ -41,7 +41,7 @@ class GalleryWidget extends Widget
                         $medias[] = $media;
                     }
                 }
-                $params['medias'] = $medias;
+                $params['medias'] = new Collection($medias);
             }
 
         }

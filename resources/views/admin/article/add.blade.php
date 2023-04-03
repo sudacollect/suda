@@ -59,19 +59,7 @@
                             <label for="slug">
                                 标签
                             </label>
-                          <select name="keyword[]" class="select-keyword form-control" multiple="multiple" placeholder="输入标签">
-                                @if($default_tags->count()>0)
-                                  
-                                    @foreach($default_tags as $tag)
-                                        
-                                        <option value="{{ $tag->term->name }}">{{ $tag->term->name }}</option>
-                                        
-                                    @endforeach
-                                    
-                                
-                                @endif
-                          </select>
-
+                            <x-suda::select-tag name="keyword[]" taxonomy="post_tag" max=5 :link="admin_url('tags/search/json')" />
                     </div>
 
                     <div class="mb-3">
@@ -185,7 +173,7 @@
 @push('scripts')
 <script type="text/javascript">
     
-    $(document).ready(function(){
+    $(function(){
 
         
         $.mediabox({
@@ -203,8 +191,8 @@
             locale:'zh-CN',
         });
         
-        $('select.select-keyword').selectTag({taxonomy:'post_tag'});
-    });
+        
+    })
     
 </script>
 @endpush

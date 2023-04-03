@@ -282,26 +282,27 @@ jQuery(function(){
 
     
 
-    $('body').on('click','.pop-modal-box',function(e){
+    $('body').on('click','.x-suda-pop-action',function(e){
         e.preventDefault();
         var ele = this;
-        var status_str = $(this).attr('data_title')?$(this).attr('data_title'):'是否操作';
-        var data_action = $(this).attr('data_action')?$(this).attr('data_action'):null;
+        var status_str = $(this).attr('action_title')?$(this).attr('action_title'):'是否操作';
+        var action = $(this).attr('action')?$(this).attr('action'):null;
+        var action_remove = $(this).attr('action_remove')?$(this).attr('action_remove'):null;
         var delete_statu = window.confirm(status_str);
-        var delete_url = $(this).attr('href');
-        var delete_id = $(this).attr('data_id');
+        var action_url = $(this).attr('href');
+        var action_id = $(this).attr('action_id');
         if(delete_statu){
             
             $.ajax({
                 type    : 'POST', 
-                url     : delete_url,
+                url     : action_url,
                 cache   : false,
                 dataType: 'json',
-                data: { id:delete_id,action:data_action, _token:suda.data('csrfToken') },
+                data: { id:action_id,action:action, _token:suda.data('csrfToken') },
                 success : function(data){
                     suda.modal(data.response_msg,'',true);
-                    if(data_action=='remove'){
-                        $(ele).parents('tr').remove();
+                    if(action_remove){
+                        $(action_remove).remove();
                     }
                     if(data.response_url){
                         var timesRun = 0;
@@ -458,7 +459,7 @@ jQuery(function(){
     };
 
     // 弹窗函数
-    $.fn.popModal = function(data,token){
+    $.fn.popModal = function(data){
 
         var elem = this;
         var set_content = $(elem);
@@ -556,8 +557,11 @@ jQuery(function(){
         
         
 
-        var media_name = $(modalLayout).find('.suda-upload-modal').attr('media_name');
-        var media_max = $(modalLayout).find('.suda-upload-modal').attr('media_max')||1;
+        const media_name = $(modalLayout).find('.suda-upload-modal').attr('media_name');
+        let media_max = $(modalLayout).find('.suda-upload-modal').attr('media_max')||1;
+
+        const has_number = set_content.parents('.x-suda-upload-box').children('.x-suda-upload-box-div:has(".uploadbox-filled")').length
+        media_max = media_max - has_number
 
         // if(media_type!='' && media_type!=undefined){
         //     upload_url += "/"+media_type;
@@ -762,53 +766,64 @@ jQuery(function(){
             
             var files = modalLayout.find('.media-lists li:has("div.checked")');
             
-            if(files.length<1){
-                suda.modal('请至少选择一张图片');
+            if(files.length < 1){
                 return false;
             }
             var images = '';
-            
-            
             
             if(set_content){
 
                 var set_content_clone = set_content.clone();
                 set_content_clone.addClass('uploadbox-filled');
-                var media_modal_group = set_content.parents('.list-group');
+                var media_modal_group = set_content.parents('.x-suda-upload-box');
 
-                var media_filled_count_old = media_modal_group.children('.list-group-item:has(".uploadbox-filled")').length;
-                var avialiable_fill_count = set_content_max - media_filled_count_old;
+                var current_count = media_modal_group.children('.x-suda-upload-box-div:has(".uploadbox-filled")').length;
+                var avialiable_count = set_content_max - current_count + 1;
+                if(avialiable_count > set_content_max)
+                {
+                    avialiable_count = set_content_max;
+                }
+
                 files.each(function(index,e){
-                    if(index < avialiable_fill_count){
+                    if(index < avialiable_count){
                         var tt = $(e).find('img').parent().clone();
                         $(tt).find('div.checked').remove();
                         //images = $(tt).prop('innerHTML');
 
                         var $items =$('<div class="image_show">' + $(tt).prop('innerHTML') + '</div>');
                         $items.find('img').removeClass('d-none');
-
-                        var list_group_item = set_content.parent('.list-group-item').clone();
-                        list_group_item.find('.upload-item').addClass('uploadbox-filled').html($items);
-                        if(index>0){
-                            if(list_group_item.find('.remove-modal-item').length<1){
-                                list_group_item.prepend('<span class="remove-modal-item"><i class="ion-close-circle"></i></span>');
+                        $items.append("<div class='x-suda-upload-action'><span class='btn btn-dark btn-xs x-suda-upload-action-switch'><i class='ion-sync-circle'></i>替换</span><span class='btn btn-dark btn-xs x-suda-upload-action-delete'><i class='ion-close-circle'></i>删除</span></div>");
+                        
+                        if(index === 0)
+                        {
+                            set_content.parent('.x-suda-upload-box-div').find('.x-suda-upload-item').addClass('uploadbox-filled').html($items);
+                        }else{
+                            var list_group_item = set_content.parent('.x-suda-upload-box-div').clone();
+                            if(index>0){
+                                if(list_group_item.find('.x-suda-remove-upload-item').length<1){
+                                    list_group_item.append('<span class="x-suda-remove-upload-item"><i class="ion-close-circle"></i></span>');
+                                }
                             }
+                            
+                            list_group_item.find('.x-suda-upload-item').addClass('uploadbox-filled').html($items);
+                            media_modal_group.append(list_group_item);
                         }
-                        media_modal_group.append(list_group_item);
                     }
                 });
-                set_content.parent('.list-group-item').remove();
-                media_modal_group.children('.list-group-item:not(:has(".uploadbox-filled"))').remove();
 
+                // set_content.parent('.x-suda-upload-box-div').remove();
+                media_modal_group.children('.x-suda-upload-box-div:not(:has(".uploadbox-filled"))').remove();
 
                 //判断可上传的数量
-                var media_filled_count = media_modal_group.children('.list-group-item').length;
+                var media_filled_count = media_modal_group.children('.x-suda-upload-box-div').length;
+                
                 if(set_content_max > media_filled_count){
-                    var modal_item = set_content.parent('.list-group-item').clone();
+                    var modal_item = set_content.parent('.x-suda-upload-box-div').clone();
                     modal_item.find('.image_show').remove();
                     modal_item.find('input').remove();
-                    modal_item.find('.upload-item').removeClass('uploadbox-filled');
-                    modal_item.prepend('<span class="remove-modal-item"><i class="ion-close-circle"></i></span>');
+                    modal_item.find('.x-suda-upload-action').remove();
+                    modal_item.find('.x-suda-upload-item').removeClass('uploadbox-filled');
+                    modal_item.append('<span class="x-suda-remove-upload-item"><i class="ion-close-circle"></i></span>');
                     media_modal_group.append(modal_item);
                 }
                 
@@ -820,7 +835,7 @@ jQuery(function(){
         
     };
     
-    $('body').on('click','.upload-item',function(e){
+    $('body').on('click','.x-suda-upload-item',function(e){
         
         //var csrfToken = $('input[name="_token"]').val();
         
@@ -833,7 +848,7 @@ jQuery(function(){
         var media_name  = $(elem).attr('_data_name');
         var media_max   = $(elem).attr('media_max')||1;
         
-        var elemParent = $(elem).parent('.list-group-item');
+        var elemParent = $(elem).parent('.x-suda-upload-box-div');
         
         if(!media_type){
             alert('上传异常，请确认数据类型');
@@ -869,18 +884,31 @@ jQuery(function(){
     });
     
     
-    $('body').on('click','.remove-modal-item',function(e){
+    $('body').on('click','.x-suda-remove-upload-item',function(e){
         
         e.preventDefault();
         
-        if($(this).parents('.upload-modal').children('.list-group-item').length<2){
-            alert('只剩一个上传，不能删除');
+        if($(this).parents('.x-suda-upload-box').children('.x-suda-upload-box-div').length<2){
+            alert('必须至少保留一个');
         }else{
-            $(this).parent('.list-group-item').remove();
+            $(this).parent('.x-suda-upload-box-div').remove();
         }
         
     });
     
+    $('body').on('click','.x-suda-upload-action-switch',function(e){
+        e.preventDefault();
+        // NOTHING TO DO
+        // auto trigger
+    });
+
+    $('body').on('click','.x-suda-upload-action-delete',function(e){
+        e.preventDefault();
+        var upload_item_el = $(this).parents('.x-suda-upload-item');
+        $(upload_item_el).removeClass('uploadbox-filled');
+        $(upload_item_el).children().remove();
+        return false;
+    });
     
     $('body').on('click','.pop-modal',function(e){
         
@@ -908,7 +936,7 @@ jQuery(function(){
                         suda.modal(data.response_msg);
                         return false;
                    }
-                   $(elem).popModal(data,csrfToken);
+                   $(elem).popModal(data);
                }
             },
             error : (function(xhr){
@@ -924,30 +952,6 @@ jQuery(function(){
         });
         
     });
-    
-    
-    $('body').on('mouseenter','.list-images .list-group-item',function(e){
-        
-        var eee = $(this).find('.image_show');
-        var ele = this;
-        if(eee.length>0){
-            $(this).append("<div class='delete_image_show'><i class='far fa-times-circle'></i>&nbsp;删除</div>");
-            $(this).find('.delete_image_show').on('click',function(){
-                eee.remove();
-                $(ele).find('input').remove();
-                $(ele).find('.delete_image_show').remove();
-                $(ele).find('.upload-item').removeClass('uploadbox-filled');
-            });
-        }
-        
-    });
-    
-    $('body').on('mouseleave','.list-images .list-group-item',function(e){
-        if($(this).find('.delete_image_show')){
-            $(this).find('.delete_image_show').remove();
-        }
-    });
-    
     
     
     //定义侧滑搜索框
@@ -1234,21 +1238,21 @@ jQuery(function(){
     
     
 
-    $.fn.selectTag = function(options){
+    $.fn.selectTag = function(){
 
         var el = this;
 
-        var default_options = {
-            taxonomy: 'post_tag',
-            maximumSelectionLength: 5,
-            url: suda.link('/' + suda.data('adminPath') + '/tags/search/json'),
+        var tag_settings = {
+            taxonomy: $(el).attr('data-taxonomy'),
+            maximumSelectionLength: $(el).attr('data-max'),
+            url: $(el).attr('data-href'),
             method: 'GET',
             tags: true,
-            placeholder: '选择标签',
-            dropdownParent: ''
+            placeholder: $(el).attr('placeholder'),
+            dropdownParent: $('body')
         };
-        
-        var tag_settings = $.extend({}, default_options,options);
+
+        // var tag_settings = $.extend({}, default_options,options);
         
         var containerCssClass = '';
         var dropdownCssClass = '';
@@ -1352,10 +1356,5 @@ jQuery(function(){
             suda.addMeta('.mediabox_remove_url',settiings.remove_url+'/');
         }
     });
-
-
-    
-
-    
 
 });

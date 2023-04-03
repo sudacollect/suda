@@ -3,128 +3,128 @@
 @push('styles')
 
 <style>
-.dd{padding:0 15px;}
-.dd-list{
-    display:block;
-    width:100%;
-}
-.dd-list li{
-    display:inline-block;
-    width:100%;
-    position:relative;
-}
+    .dd{padding:0 15px;}
+    .dd-list{
+        display:block;
+        width:100%;
+    }
+    .dd-list li{
+        display:inline-block;
+        width:100%;
+        position:relative;
+    }
 
-.dd-item{
-    padding:0 15px;
-}
+    .dd-item{
+        padding:0 15px;
+    }
 
-.dd-item span.remove-select{
-    position: absolute;
-    right: 5px;
-    top: 0;
-    line-height: 150%;
-}
-.dd-handle{
-    padding:0;
-    border:none;
-    margin:0;
-}
-.widget-content{
-    margin:5px;
-}
-.widget-content .card{
-    border:1px solid #eee;
-    margin-bottom: 5px;
-    border-radius: 2px;
-}
+    .dd-item span.remove-select{
+        position: absolute;
+        right: 5px;
+        top: 0;
+        line-height: 150%;
+    }
+    .dd-handle{
+        padding:0;
+        border:none;
+        margin:0;
+    }
+    .widget-content{
+        margin:5px;
+    }
+    .widget-content .card{
+        border:1px solid #eee;
+        margin-bottom: 5px;
+        border-radius: 2px;
+    }
 
-#widgets-div span.help-block{
-    margin: 0;
-    line-height: 1.6;
-    padding: 0 0.15rem;
-    font-size:0.975rem;
-}
-.card .dd-handle > .card-header{
-    padding:0.15rem 0.5rem;
-    background:#fff;
-    border-bottom: 1px solid #e8e8e8;
-    font-size:1.1rem;
-    font-weight:normal;
-}
-.dd-dragel .col-sm-6{
-    width:100%;
-}
-.dd-placeholder{
-    display:list-item;
-    float:left;
-    padding:0 15px;
-    margin:0;
-    /* border: 2px dashed #a7a7a7; */
-    border: 1px dashed #e4ccb8;
-    background: #fdfcf7;
-}
-#widgets-div .card-body,.dd-dragel .card-body{
-    display:none;
-}
-#widgets-div .card-footer,.dd-dragel .card-footer{
-    display:none;
-}
-.dd-dragel span.help-block{
-    display:none;
-}
-.widget-area-list{
-    margin-bottom:15px;
-}
-.widget-area-list .widget-area{
-    background: #fff;
-    border: 1px solid #eee;
-    padding: 0px;
-    box-shadow: 0px 0px 5px 0px rgba(1,1,1,0.04);
-    display: inline-block;
-    width: 100%;
-}
-.widget-area h3{
-    margin: 0;
-    padding: 0.375rem 1rem;
-    background: #f9f9f9;
-    font-size: 1.1rem;
-    border-bottom:1px solid #eee;
-}
-.widget-area h3 span.icon{
-    color:#777;
-}
-.widget-area h3 span.icon:hover{
-    color:#333;
-    cursor:pointer;
-}
-.widget-area-empty
-{
-    background:#fffee7;
-    font-size:1rem;
-    padding:30px 0px;
-}
-.dd-list li i.icon-switch{
-    position: absolute;
-    right: 1rem;
-    z-index: 999;
-    top: 5px;
-    width:32px;
-    text-align:center;
-    color: #909090;
-}
-.dd-list li i.icon-switch-content{
-    position: absolute;
-    right: 1rem;
-    top: 8px;
-    z-index: 999;
-    color: #999;
-}
-#widgets-div .dd-list li i.icon-switch{
-    display:none;
-}
-.dd-list.dd-dragel li i.icon-switch-content,#widgets-div .dd-list li i.icon-switch-content{
-    display:none;
-}
+    #widgets-div span.help-block{
+        margin: 0;
+        line-height: 1.6;
+        padding: 0 0.15rem;
+        font-size:0.975rem;
+    }
+    .card .dd-handle > .card-header{
+        padding:0.15rem 0.5rem;
+        background:#fff;
+        border-bottom: 1px solid #e8e8e8;
+        font-size:1.1rem;
+        font-weight:normal;
+    }
+    .dd-dragel .col-sm-6{
+        width:100%;
+    }
+    .dd-placeholder{
+        display:list-item;
+        float:left;
+        padding:0 15px;
+        margin:0;
+        /* border: 2px dashed #a7a7a7; */
+        border: 1px dashed #e4ccb8;
+        background: #fdfcf7;
+    }
+    #widgets-div .card-body,.dd-dragel .card-body{
+        display:none;
+    }
+    #widgets-div .card-footer,.dd-dragel .card-footer{
+        display:none;
+    }
+    .dd-dragel span.help-block{
+        display:none;
+    }
+    .widget-area-list{
+        margin-bottom:15px;
+    }
+    .widget-area-list .widget-area{
+        background: #fff;
+        border: 1px solid #eee;
+        padding: 0px;
+        box-shadow: 0px 0px 5px 0px rgba(1,1,1,0.04);
+        display: inline-block;
+        width: 100%;
+    }
+    .widget-area h3{
+        margin: 0;
+        padding: 0.375rem 1rem;
+        background: #f9f9f9;
+        font-size: 1.1rem;
+        border-bottom:1px solid #eee;
+    }
+    .widget-area h3 span.icon{
+        color:#777;
+    }
+    .widget-area h3 span.icon:hover{
+        color:#333;
+        cursor:pointer;
+    }
+    .widget-area-empty
+    {
+        background:#fffee7;
+        font-size:1rem;
+        padding:30px 0px;
+    }
+    .dd-list li i.icon-switch{
+        position: absolute;
+        right: 1rem;
+        z-index: 999;
+        top: 5px;
+        width:32px;
+        text-align:center;
+        color: #909090;
+    }
+    .dd-list li i.icon-switch-content{
+        position: absolute;
+        right: 1rem;
+        top: 8px;
+        z-index: 999;
+        color: #999;
+    }
+    #widgets-div .dd-list li i.icon-switch{
+        display:none;
+    }
+    .dd-list.dd-dragel li i.icon-switch-content,#widgets-div .dd-list li i.icon-switch-content{
+        display:none;
+    }
 
 </style>
 
@@ -169,7 +169,6 @@
                             <div class="card-header bg-white d-flex">
                                 {{ $widget['name'] }}
                                 <i class="ion-ellipsis-horizontal ms-auto"></i>
-                                {{-- <i class="ion-chevron-down icon-switch-content ms-auto"></i> --}}
                             </div>
                         
                             <div class="card-body">

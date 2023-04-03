@@ -58,28 +58,7 @@
                             <label for="slug" >
                                 标签
                             </label>
-                            <select class="select-keyword form-control" name="keyword[]" multiple="multiple" placeholder="输入标签">
-                                @if($tags->count()>0)
-                            
-                                @foreach($tags as $tag)
-                                <option value="{{ $tag->name }}" selected>{{ $tag->name }}</option>
-                                @endforeach
-    
-                                @else
-    
-                                @if($default_tags->count()>0)
-                                
-                                    @foreach($default_tags as $tag)
-                                        
-                                        <option value="{{ $tag->term->name }}">{{ $tag->term->name }}</option>
-                                        
-                                    @endforeach
-                                    
-                                    @endif
-                                
-                                @endif
-                            </select>
-
+                            <x-suda::select-tag name="keyword[]" taxonomy="post_tag" max="5" :tags="$tags" :link="admin_url('tags/search/json')" />
                     </div>
                     <div class="mb-3">
                         <label for="inputName" >
@@ -201,9 +180,6 @@
             useCurrent:'minute',
             locale:'zh-CN',
         });
-        
-        
-        $('select.select-keyword').selectTag({taxonomy:'post_tag'});
         
     });
     

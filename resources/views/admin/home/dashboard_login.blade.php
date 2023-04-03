@@ -191,7 +191,7 @@
                                 <label class="form-check-label" for="customLoginImage">{{ __('suda_lang::press.settings.custom_login_image') }}</label>
                             </div>
                             
-                            @uploadBox('media@dashboard_login_logo',1,1,$settings['dashboard_login_logo'])
+                            @uploadBox(['media@dashboard_login_logo',1,1,$settings['dashboard_login_logo']])
 
                         </div>
                     </div>
@@ -263,7 +263,7 @@
     color:#fff;
 }
 
-.list-images-icon .list-group-item .delete_image_show{
+.list-images-icon .list-group-item .x-suda-upload-action{
     height:100%;
     display: flex;
     justify-content: center;

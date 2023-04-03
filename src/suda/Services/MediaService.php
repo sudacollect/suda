@@ -1,5 +1,4 @@
 <?php
-// MediaService
 namespace Gtd\Suda\Services;
 
 use Illuminate\Http\Request;

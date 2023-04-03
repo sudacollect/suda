@@ -9,11 +9,11 @@
         
         @if(isset($medias))
         
-        @uploadBox('media',6,3,$medias)
+        @uploadBox(['media',6,3,$medias])
 
         @else
         
-        @uploadBox('media',6,3)
+        @uploadBox(['media',6,3])
 
         @endif
 

@@ -19,7 +19,7 @@ trait HasTaxonomies
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function taxed()
+    public function taxs()
     {
         return $this->morphMany(Taxable::class, 'taxable');
     }
@@ -29,7 +29,7 @@ trait HasTaxonomies
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
-    public function taxonomies()
+    public function taxonomies(): MorphToMany
     {
         return $this->morphToMany(Taxonomy::class, 'taxable');
     }
@@ -48,17 +48,17 @@ trait HasTaxonomies
         
         $this->createTaxables($terms, $taxonomy, $parent, $order);
 
-        $terms = Term::whereIn('name', $terms)->where('taxonomy',$taxonomy)->pluck('id')->all();
+        $term_ids = Term::whereIn('name', $terms)->where('taxonomy',$taxonomy)->pluck('id')->all();
         
-        if (count($terms) > 0) {
-            foreach ($terms as $term) {
+        if (count($term_ids) > 0) {
+            foreach ($term_ids as $term_id) {
                 
-                if ($this->taxonomies()->withTrashed()->where('taxonomy', $taxonomy)->where('term_id', $term)->first()){
+                if ($this->taxonomies()->withTrashed()->where('taxonomy', $taxonomy)->where('term_id', $term_id)->first()){
                     continue;
                 }
                 
-                $tax = Taxonomy::withTrashed()->where('term_id', $term)->where('taxonomy', $taxonomy)->first();
-                $this->taxonomies()->attach($tax->id);
+                $taxonomy_item = Taxonomy::withTrashed()->where('term_id', $term_id)->where('taxonomy', $taxonomy)->first();
+                $this->taxonomies()->attach($taxonomy_item->id);
             }
 
             return;
@@ -74,7 +74,7 @@ trait HasTaxonomies
      */
     public function setCategory($taxonomy_id)
     {
-        $this->taxonomies()->attach($taxonomy_id);
+        $this->taxs()->attach($taxonomy_id);
     }
 
     /**
@@ -219,7 +219,7 @@ trait HasTaxonomies
             $taxonomy = $this->taxonomies()->where('term_id', $term->id)->first();
         }
 
-        return $this->taxed()->where('taxonomy_id', $taxonomy->id)->delete();
+        return $this->taxs()->where('taxonomy_id', $taxonomy->id)->delete();
     }
 
     /**
@@ -231,9 +231,9 @@ trait HasTaxonomies
     {
         if($taxonomy){
             $taxonomies = $this->taxonomies()->where('taxonomy', $taxonomy)->pluck('id')->toArray();
-            return $this->taxed()->whereIn('taxonomy_id',$taxonomies)->delete();
+            return $this->taxs()->whereIn('taxonomy_id',$taxonomies)->delete();
         }else{
-            return $this->taxed()->delete();
+            return $this->taxs()->delete();
         }
     }
 
