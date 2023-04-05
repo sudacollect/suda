@@ -22,14 +22,14 @@
                     
                     
                     <div class="mb-3{{ $errors->has('title') ? ' has-error' : '' }}" >
-                        <label for="title">标题</label>
-                      <input type="text" name="title" class="form-control" value="{{ $item->title }}" id="inputName" placeholder="请输入标题">
+                        <label for="title">{{ __('suda_lang::press.pages.title') }}</label>
+                      <input type="text" name="title" class="form-control" value="{{ $item->title }}" id="inputName" placeholder="title">
                     </div>
                     
                     
                     
                     <div class="mb-3{{ $errors->has('content') ? ' has-error' : '' }}" >
-                        <label for="title">内容</label>
+                        <label for="title">{{ __('suda_lang::press.pages.content') }}</label>
                         
                         <x-suda::editor id="summernote" name="content" :height="$editor_height" :content="$item->content" />
                         
@@ -47,22 +47,22 @@
                 <div class="card-body">
                     <div class="mb-3{{ $errors->has('category') ? ' has-error' : '' }}" >
                         <label for="slug" >
-                                分类
+                            {{ __('suda_lang::press.category') }}
                         </label>
-                        <x-suda::select-category type="multiple" taxonomy="post_category" :selected="$cates" />
+                        <x-suda::select-category type="multiple" taxonomy="post_category" :selected="$cates" :placeholder="__('suda_lang::press.category')" />
                         
                     </div>
                 
                 
                     <div class="mb-3{{ $errors->has('keyword') ? ' has-error' : '' }}" >
                             <label for="slug" >
-                                标签
+                                {{ __('suda_lang::press.tags.tag') }}
                             </label>
                             <x-suda::select-tag name="keyword[]" taxonomy="post_tag" max="5" :tags="$tags" :link="admin_url('tags/search/json')" />
                     </div>
                     <div class="mb-3">
                         <label for="inputName" >
-                        标题图
+                            {{ __('suda_lang::press.pages.kv_image') }}
                         </label>
                         @if($item->heroimage && isset($item->heroimage->media))
                         @uploadBox(['article',1,1,$item->heroimage->media])
@@ -81,22 +81,22 @@
 
                     <div class="mb-3{{ $errors->has('slug') ? ' has-error' : '' }}" >
                         <label for="slug" >
-                                自定义路径
+                            {{ __('suda_lang::press.pages.slug') }}
                         </label>
-                        <input type="text" name="slug" class="form-control" id="slug" placeholder="自定义路径" value="{{ $item->slug }}">
+                        <input type="text" name="slug" class="form-control" id="slug" placeholder="{{ __('suda_lang::press.pages.slug') }}" value="{{ $item->slug }}">
                         <span class="help-block">
-                        设置后访问链接将变成 article/定义的路径.
+                            {{ __('suda_lang::press.pages.slug_tips') }}
                         </span>
                     </div>
                     
                     <div class="mb-3{{ $errors->has('redirect_url') ? ' has-error' : '' }}" >
                         <label for="redirect_url" >
-                            跳转URL
+                            {{ __('suda_lang::press.pages.redirect_url') }}
                         </label>
         
-                        <input type="text" name="redirect_url" class="form-control" id="redirect_url" placeholder="跳转URL" value="{{ $item->redirect_url }}">
+                        <input type="text" name="redirect_url" class="form-control" id="redirect_url" placeholder="{{ __('suda_lang::press.pages.redirect_url') }}" value="{{ $item->redirect_url }}">
                         <span class="help-block">
-                        设置跳转后，将直接访问到设定的URL页面.
+                            {{ __('suda_lang::press.pages.redirect_tips') }}
                         </span>
         
                     </div>
@@ -104,9 +104,9 @@
                     <div class="mb-3">
                             
                         <label for="published_at" >
-                            发布日期
+                            {{ __('suda_lang::press.publish_date') }}
                         </label>
-                        <input type="text" name="published_at" data-toggle="datepicker" value="{{ $item->published_at }}" class="form-control" placeholder="可选发布日期">
+                        <input type="text" name="published_at" data-toggle="datepicker" value="{{ $item->published_at }}" class="form-control" placeholder="{{ __('suda_lang::press.publish_date') }}">
                     </div>
                     
                 </div>
@@ -119,7 +119,7 @@
                         <div class="mb-3">
                                 
                                 <label for="stick_top" >
-                                    置顶
+                                    {{ __('suda_lang::press.sticked') }}
                                 </label>
                                 
                                 <div class="form-check form-check-inline">
@@ -134,7 +134,7 @@
                             </div>
                     <div class="mb-3">
                             <label for="slug" >
-                                    发布
+                                {{ __('suda_lang::press.publish') }}
                             </label>    
                             <div class="form-check form-check-inline">
                                 <input type="radio" class="form-check-input" name="disable" @if($item->disable=='0') checked @endif placeholder="是" value="0" >

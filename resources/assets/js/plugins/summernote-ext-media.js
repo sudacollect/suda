@@ -12,7 +12,6 @@
   }
 }(function ($) {
     $.extend(true,$.summernote.lang, {
-        
         'zh-CN': {
               mediaPlugin: {
                 mediaText: '图片',
@@ -20,8 +19,15 @@
                 okButton: '确认',
                 tooltip : '选取图片',
               }
+        },
+        'en-US': {
+          mediaPlugin: {
+            mediaText: 'Image',
+            dialogTitle: 'Select Image',
+            okButton: 'Confirm',
+            tooltip : 'Select Image',
+          }
         }
-            
     });
     
 
@@ -30,7 +36,7 @@
     $.extend($.summernote.options, {
       mediaPlugin: {
         icon: '<i class="note-icon-picture"/>',
-        tooltip: '选取图片',
+        tooltip: 'Image',
       },
 
     });
@@ -149,7 +155,13 @@
                                            var files = modalLayout.find('.media-lists li:has("div.checked")');
             
                                            if(files.length<1){
-                                               suda.modal('请至少选择一张图片');
+                                              if($.summernote.options.lang == 'zh-CN')
+                                              {
+                                                suda.modal('请至少选择一张图片');
+                                              }else{
+                                                suda.modal('0 selected');
+                                              }
+                                               
                                                return false;
                                            }
             
@@ -189,7 +201,7 @@
                                     }
                                 }),
                                 fail : (function() {
-                                    suda.modal({error:'加载失败，请重试'});
+                                    suda.modal({error:'Loading...'});
                                 })
                             });
                         

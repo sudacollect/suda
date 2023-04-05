@@ -56,7 +56,7 @@
                         <label for="keyword" >
                             {{ __('suda_lang::press.tags.tag') }}
                         </label>
-                        <x-suda::select-tag name="keyword[]" taxonomy="post_tag" max="5" :link="admin_url('tags/search/json')" />
+                        <x-suda::select-tag name="keyword[]" :placeholder="__('suda_lang::press.tags.select_tag')" taxonomy="post_tag" max="5" :link="admin_url('tags/search/json')" />
                     </div>
                     
                     

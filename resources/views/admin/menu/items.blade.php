@@ -33,8 +33,8 @@
                     <div class="card-header bg-white">
                         {{ $menu->name }}
                         @if($menu->id==1)
-                        <a href="{{ admin_url('menu/recovery') }}" class="pop-modal btn btn-light btn-sm float-end" title="恢复默认">
-                            恢复默认
+                        <a href="{{ admin_url('menu/recovery') }}" class="pop-modal btn btn-light btn-sm float-end" title="{{ __('suda_lang::press.recover') }}">
+                            {{ __('suda_lang::press.recover') }}
                         </a>
                         @endif
                     </div>

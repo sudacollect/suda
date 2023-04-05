@@ -2,7 +2,7 @@
 <div class="more-filter-section" id="filter-options">
     {{-- <a href="javascript:void(0)" class="filter-close"></a> --}}
     <h5 class="title d-flex justify-content-between">
-        <i class="ion-search"></i>&nbsp;搜索
+        <i class="ion-search"></i>&nbsp;{{ __('suda_lang::press.search') }}
         <i class="ion-close-circle-outline float-end filter-close color: #6b6b6b;"></i>
     </h5>
 
@@ -14,9 +14,6 @@
             <input type="hidden" name="view_type" value="{{ $view_type }}">
 
             <div class="mb-3{{ $errors->has('title') ? ' has-error' : '' }}" >
-                <label for="title" >
-                    标题
-                </label>
                 <input type="text" name="title" class="form-control" id="title" placeholder="请输入标题">
             </div>
 
@@ -32,9 +29,6 @@
             @endphp
 
             <div class="mb-3{{ $errors->has('category') ? ' has-error' : '' }}" >
-                <label for="category">
-                    分类
-                </label>
                 <select name="category"  placeholder="请选择分类" class="select-category-search form-control">
                     <option value="">-选择分类-</option>
                     <option value="0">所有分类</option>
@@ -47,9 +41,6 @@
             </div>
 
             <div class="mb-3{{ $errors->has('date') ? ' has-error' : '' }}" >
-                <label for="date" >
-                    日期
-                </label>
                 <select name="date" class="form-control ">
                 <option value="">-选择日期-</option>
                     @if($dates && $dates->count()>0)
@@ -61,9 +52,6 @@
             </div>
 
             <div class="mb-3{{ $errors->has('author') ? ' has-error' : '' }}" >
-                <label for="author" >
-                    发布者
-                </label>
                 <input type="text" name="author" class="form-control " id="filter_search_author" placeholder="请输入发布者名称">
             </div>
 
@@ -71,12 +59,20 @@
                 <label for="updated_at">
                     更新时间
                 </label>
-                <select name="updated_at_method" class="form-control " style="margin-bottom:5px;">
-                    <option value="equal">等于</option>
-                    <option value="than">大于</option>
-                    <option value="less">小于</option>
-                </select>
-                <input type="text" data-toggle="datetimepicker" name="updated_at" class="form-control " id="updated_at" placeholder="请选择时间">
+                <div class="input-group">
+                    
+                        <div class="col-sm-4">
+                            <select name="updated_at_method" class="form-select">
+                                <option value="equal">等于</option>
+                                <option value="than">大于</option>
+                                <option value="less">小于</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" data-toggle="datetimepicker" name="updated_at" class="form-control " id="updated_at" placeholder="请选择时间">
+                        </div>
+                    
+                </div>
             </div>
 
             <div class="mb-3">

@@ -10,11 +10,19 @@
 
 namespace Gtd\Suda\Providers;
 
+use Illuminate\Contracts\Hashing\Hasher as HasherContract;
 use Illuminate\Auth\EloquentUserProvider;
 use Illuminate\Contracts\Auth\Authenticatable as UserContract;
 use Illuminate\Support\Facades\Log;
 
-class AuthSudaServiceProvider extends EloquentUserProvider {
+class AuthSudaServiceProvider extends EloquentUserProvider
+{
+
+    public function __construct(HasherContract $hasher, $model)
+    {
+        $this->model = $model;
+        $this->hasher = $hasher;
+    }
     
     /**
     * Validate a user against the given credentials.
@@ -53,40 +61,5 @@ class AuthSudaServiceProvider extends EloquentUserProvider {
             ->first();
         return $user;
     }
-
-
-    public function __invoke(mixed $var)
-    {
-
-        
-        
-        // $provider = $this->createUserProvider($config['provider'] ?? null);
-
-        // $guard = new SessionGuard(
-        //     $name,
-        //     $provider,
-        //     $this->app['session.store'],
-        // );
-
-        // // When using the remember me functionality of the authentication services we
-        // // will need to be set the encryption instance of the guard, which allows
-        // // secure, encrypted cookie values to get generated for those cookies.
-        // if (method_exists($guard, 'setCookieJar')) {
-        //     $guard->setCookieJar($this->app['cookie']);
-        // }
-
-        // if (method_exists($guard, 'setDispatcher')) {
-        //     $guard->setDispatcher($this->app['events']);
-        // }
-
-        // if (method_exists($guard, 'setRequest')) {
-        //     $guard->setRequest($this->app->refresh('request', $guard, 'setRequest'));
-        // }
-
-        // if (isset($config['remember'])) {
-        //     $guard->setRememberDuration($config['remember']);
-        // }
-
-        // return $guard;
-    }
+    
 }

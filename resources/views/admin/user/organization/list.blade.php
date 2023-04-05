@@ -37,7 +37,7 @@
 
                               @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                               <th>
-                                  {{ __('suda_lang::press.operate') }}
+                                  {{ __('suda_lang::press.operation') }}
                               </th>
                               @endif
                             </tr>

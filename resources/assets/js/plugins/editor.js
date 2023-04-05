@@ -56,7 +56,7 @@ jQuery(function(){
         if($(elem)){
 
             $(elem).summernote({
-                lang: 'zh-CN',
+                lang: 'en-US',
                 height: suda.editor_height,
                 minHeight: null,
                 maxHeight: null,
@@ -64,7 +64,7 @@ jQuery(function(){
                 shortcuts: false,
                 disableDragAndDrop: false,
                 dialogsFade: true,
-                placeholder:"请输入内容...",
+                placeholder: $(elem).attr('placeholder'),
                 toolbar: [
                     // ['cleaner',['cleaner']],
                     ['style',['style']],

@@ -56,8 +56,8 @@ php artisan suda:install
     ],
 	 // add operate
     'operate' => [
-        'driver' => 'session',
-        'provider' => 'operates',
+        'driver'    => 'session',
+        'provider'  => 'operates',
     ],
 ],
 
@@ -69,7 +69,7 @@ php artisan suda:install
 	 
 	 // add provider
     'operates' => [
-        'driver' => 'operate_provider',
+        'driver' => 'authsuda_provider',
         'model' => Gtd\Suda\Models\Operate::class,
     ],
 

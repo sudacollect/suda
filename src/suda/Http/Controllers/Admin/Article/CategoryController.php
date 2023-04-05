@@ -18,7 +18,7 @@ class CategoryController extends DashboardController
     function __construct(){
         parent::__construct();
         
-        $this->title('管理分类');
+        $this->title(__('suda_lang::press.category'));
         $this->setMenu('article','article_category');
         
         //增加自定义的权限控制

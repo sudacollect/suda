@@ -47,37 +47,48 @@ class AuthServiceProvider extends ServiceProvider
 
         $this->registerPolicies();
 
-        Auth::provider('operate_provider', function ($app, array $config) {
-            $model = $app['config']['auth.providers.operates.model'];
+        Auth::provider('authsuda_provider', function ($app, array $config) {
+            // $config
+            // Array
+            // (
+            //     [driver] => authsuda_provider
+            //     [model] => Gtd\Suda\Models\Operate
+            // )
+            
+            $model = $config['model'];
             return new AuthSudaServiceProvider($app['hash'], $model);
         });
-        
-        Auth::extend('operate', function (Application $app, string $name, array $config) {
-            $guard = new OperateGuard($name,Auth::createUserProvider('operates'),$app['session.store']);
-            return $guard;
-        });
-        
-        
-        
+
+        // custom guard driver
+        // Auth::extend('suda_operate', function (Application $app, string $name, array $config) {
+        //     // $config
+        //     // Array
+        //     // (
+        //     //     [driver] => operate
+        //     //     [provider] => operates
+        //     // )
+            
+        //     $provider = Auth::createUserProvider('operates');
+        //     $guard = new OperateGuard($name,$provider,$app['session.store']);
+
+        //     if (method_exists($guard, 'setCookieJar')) {
+        //         $guard->setCookieJar($app['cookie']);
+        //     }
+    
+        //     if (method_exists($guard, 'setDispatcher')) {
+        //         $guard->setDispatcher($app['events']);
+        //     }
+    
+        //     if (method_exists($guard, 'setRequest')) {
+        //         $guard->setRequest($app->refresh('request', $guard, 'setRequest'));
+        //     }
+    
+        //     if (isset($config['remember'])) {
+        //         $guard->setRememberDuration($config['remember']);
+        //     }
+
+        //     return $guard;
+        // });
     }
 
-    // protected function customLoadPolicies(){
-
-    //     //从缓存里读取相关的权限配置
-    //     $suda_policies = SudaCache::init()->get('suda_policies',[]);
-
-    //     $this->policies = array_merge($suda_policies,$this->policies);
-
-    // }
-
-
-    public function __invoke(mixed $var)
-    {
-
-        Log::info('test22', [$var]);
-        echo '<pre>';
-        print_r($var);
-        exit();
-        
-    }
 }

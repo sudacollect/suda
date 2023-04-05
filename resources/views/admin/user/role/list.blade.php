@@ -36,7 +36,7 @@
                                   {{ __('suda_lang::press.updated_at') }}
                               </th>
                               <th>
-                                  {{ __('suda_lang::press.operate') }}
+                                  {{ __('suda_lang::press.operation') }}
                               </th>
                             </tr>
                           </thead>

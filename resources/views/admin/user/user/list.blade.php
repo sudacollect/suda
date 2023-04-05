@@ -40,7 +40,7 @@
                               </th>
                               
                               <th>
-                                  {{ __('suda_lang::press.operate') }}
+                                  {{ __('suda_lang::press.operation') }}
                               </th>
                             </tr>
                           </thead>

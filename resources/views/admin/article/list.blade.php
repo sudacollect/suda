@@ -76,7 +76,7 @@
         $('select.select-category-search').selectCategory();
 
         $('[data-toggle="datetimepicker"]').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
+            format: 'YYYY-MM-DD',
             locale:'zh-cn',
             showClear:false,
             sideBySide:false,

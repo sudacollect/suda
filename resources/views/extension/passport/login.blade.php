@@ -15,7 +15,7 @@
                         
                         <div class="col-sm-3 offset-sm-1 dash-login-box px-3">
                             <h4 class="card-title">
-                                应用管理
+                                {{ __('suda_lang::press.passport.extension') }}
                             </h4>
                             <form class="suda-login-form" role="form" method="POST" action="{{ extadmin_url('passport/login') }}">
                                 @csrf

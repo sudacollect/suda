@@ -18,7 +18,7 @@ trait TaxonomyTrait
 {
     // public $taxonomy_name = '';
     // public $multiple_level = false;
-    // public $taxonomy_title = '分类';
+    // public $taxonomy_title = 'Category';
     
     //分类列表
     public function getList(Request $request)
@@ -40,11 +40,11 @@ trait TaxonomyTrait
     public function create(Request $request,$parent_id=0)
     {
         if(!$this->taxonomy_name){
-            return $this->responseAjax('error','数据不存在');
+            return $this->responseAjax('error','error');
         }
         
 
-        $this->title((property_exists($this,'taxonomy_title')?$this->taxonomy_title:'分类').'管理');
+        $this->title((property_exists($this,'taxonomy_title')?$this->taxonomy_title:__('suda_lang::press.category')));
         $this->setData('modal_title',__('suda_lang::press.add'));
         $this->setData('modal_icon_class','ion-add-circle');
 

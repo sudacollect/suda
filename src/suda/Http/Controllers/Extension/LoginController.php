@@ -70,7 +70,7 @@ class LoginController extends AdminController
         
         if ($this->attemptLogin($request)) {
             
-            if(\Gtd\Suda\Auth\OperateCan::extension($this->user))
+            if(\Gtd\Suda\Auth\OperateCan::extension(auth('operate')->user()))
             {
                 //设置跳转入口
                 $this->redirectTo = extadmin_url('entry/extensions');

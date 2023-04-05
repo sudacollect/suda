@@ -140,6 +140,8 @@ return [
     'yes'=>'有',
     'no'=>'N/A',
 
+    'recover' => '恢复默认',
+
     //#Menu
     'menu'=>'菜单',
     'menu_name'=>'菜单名称',
@@ -246,6 +248,25 @@ return [
         'theme-preview'         => '预览',
     ],
 
+    'passport' => [
+        'dashboard' => '管理',
+        'extension' => '应用管理',
+    ],
+
+    'articles'=>[
+
+        'title'         => '标题',
+        'content'       => '内容',
+        'content_tips'  => '请输入内容..',
+
+        'kv_image'      => '主图',
+        'slug'          => '路径',
+        'slug_tips'     => '设置后页面访问链接将变成 article/定义的路径.',
+        'redirect_url'  => '跳转URL',
+        'redirect_tips' => '设置跳转后，将直接访问到设定的URL页面.',
+        
+        'sort'          => '排序',
+    ],
 
     // PAGES
     'pages'=>[

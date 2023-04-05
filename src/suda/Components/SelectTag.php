@@ -20,7 +20,7 @@ class SelectTag extends Component
         public ?Collection $tags,
         public string $taxonomy = '',
         public int $max = 5,
-        public string $placeholder = '- 选择标签 -',
+        public string $placeholder = '- tag -',
         public string $name = 'tag[]',
         public array $exclude = [],
         public string $link = '',

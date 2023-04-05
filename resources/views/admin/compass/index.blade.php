@@ -23,9 +23,9 @@
                                
                                <thead class="bg-light">
                                    <tr>
-                                       <th>组件名称</th>
+                                       <th>Vendors</th>
                                        
-                                       <th>说明</th>
+                                       <th>Description</th>
                                    </tr>
                                </thead>
                                

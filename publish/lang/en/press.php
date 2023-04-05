@@ -19,9 +19,10 @@ return [
     'logo'=>'Logo',
     'website_name'=>'Site Name',
     'sidebar_style'=>'Sidebar style',
-    'created_at'=>'created',
-    'updated_at'=>'updated',
-    'deleted_at'=>'deleted',
+    
+    'created_at'=>'Created',
+    'updated_at'=>'Updated',
+    'deleted_at'=>'Deleted',
     
     'name'=>'Name',
     'title'=>'Title',
@@ -117,10 +118,10 @@ return [
     
     
     
-    'close'=>'close',
-    'open'=>'open',
-    'enable'=>'enable',
-    'notice'=>'notice',
+    'close'     => 'close',
+    'open'      => 'open',
+    'enable'    => 'enable',
+    'notice'    => 'Notice',
     
     'image_setting'=>'Image Setting',
 
@@ -130,6 +131,8 @@ return [
     
     'yes'=>'yes',
     'no'=>'N/A',
+
+    'recover' => 'Recover',
 
     //#Menu
     'menu'=>'menu',
@@ -145,7 +148,7 @@ return [
     
     'update_cache'=>'Update Cache',
     
-    'menu_item'=>'Menu Item',
+    'menu_item'=>'Items',
     'menu_items'=>[
         
         'dashboard'=>'Dashboard',
@@ -238,6 +241,26 @@ return [
         'theme-preview'     => 'Preview',
     ],
 
+    'passport' => [
+        'dashboard' => 'Dashboard',
+        'extension' => 'Extension',
+    ],
+
+
+    'articles'=>[
+
+        'title'         => 'Title',
+        'content'       => 'Content',
+        'content_tips'  => 'Plese write here..',
+
+        'kv_image'      => 'Image',
+        'slug'          => 'Slug',
+        'slug_tips'     => 'page link will be page/yourslug.',
+        'redirect_url'  => 'Redirect',
+        'redirect_tips' => 'page will redirect to url.',
+        
+        'sort'          => 'Sort',
+    ],
 
     // PAGES
     'pages'=>[
@@ -252,6 +275,12 @@ return [
         'redirect_url'  => 'Redirect',
         'redirect_tips' => 'page will redirect to url.',
         
+    ],
+
+    // Category
+    'categories'=>[
+        'category'      => 'Category',
+        'select_cate'    => 'Select Category',
     ],
 
     // TAGS

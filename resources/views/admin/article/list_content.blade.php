@@ -5,16 +5,16 @@
         <thead class="bg-light">
             <tr>
                 <th width="5%">#<i class="stitle"></i></th>
-                <th width="60px">主图</th>
-                <th width="20%">标题</th>
-                <th width="12%">分类</th>
-                <th width="8%">发布</th>
+                <th width="60px">{{ __('suda_lang::press.articles.kv_image') }}</th>
+                <th width="20%">{{ __('suda_lang::press.articles.title') }}</th>
+                <th width="12%">{{ __('suda_lang::press.category') }}</th>
+                <th width="8%">{{ __('suda_lang::press.publish') }}</th>
                 <th width="10%">
-                    排序 <a @if(isset($by_sort) && $by_sort=='sort')  href="{{ admin_url('article/list') }}" class="text-success" @else href="{{ admin_url('articles/list/sorted') }}" class="text-muted" @endif><i class="ion-swap-vertical"></i></a>
+                    {{ __('suda_lang::press.articles.sort') }} <a @if(isset($by_sort) && $by_sort=='sort')  href="{{ admin_url('article/list') }}" class="text-success" @else href="{{ admin_url('articles/list/sorted') }}" class="text-muted" @endif><i class="ion-swap-vertical"></i></a>
                 </th>
-                <th width="10%">发布者</th>
-                <th width="15%">更新时间</th>
-                <th>操作</th>
+                <th width="10%">{{ __('suda_lang::press.publish') }}</th>
+                <th width="15%">{{ __('suda_lang::press.updated_at') }}</th>
+                <th>{{ __('suda_lang::press.operation') }}</th>
             </tr>
             </thead>
 
@@ -32,8 +32,7 @@
             </td>
             <td width="20%">
                 @if($item->stick_top==1)
-                <span class="badge bg-warning">置顶</span>
-                
+                <span class="badge bg-warning">{{ __('suda_lang::press.sticked') }}</span>
                 @endif
                 @if(!empty($item->redirect_url))
                 <a target="_blank" href="{{ url($item->redirect_url) }}">
