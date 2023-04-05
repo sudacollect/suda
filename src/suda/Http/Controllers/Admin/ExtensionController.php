@@ -65,7 +65,7 @@ class ExtensionController extends DashboardController implements ExtensionContra
                 $auth_keys = array_keys($this->auth_setting);
             }
 
-            if($ext_slug && count($auth_keys)>0 && $this->user->user_role==2){
+            if($ext_slug && count($auth_keys)>0 && \Gtd\Suda\Auth\OperateCan::extension($this->user)){
                 $permissions = $this->user->role->permissions;
 
                 //suda-exts

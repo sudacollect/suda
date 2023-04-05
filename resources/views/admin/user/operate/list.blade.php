@@ -17,7 +17,7 @@
             @if(!isset($deleted))
             <a href="{{ admin_url('manage/operates/add') }}" class="pop-modal btn btn-primary btn-sm pull-left"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.btn.add') }}</a>
 
-            @if($soperate->superadmin==1 || $soperate->user_role>=6)
+            @if(\Gtd\Suda\Auth\OperateCan::operation($soperate))
             <a href="{{ admin_url('manage/operates/deleted') }}" class="btn btn-warning btn-sm ms-auto"><i class="ion-person-remove-outline text-muted"></i>&nbsp;已删除</a>
             @endif
 
@@ -98,12 +98,12 @@
                               </td>
                               <td>
                                 @if(isset($deleted))
-                                    @if($soperate->superadmin==1 || ($soperate->user_role>=6 && $soperate->user_role >= $operate->user_role))
+                                    @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                                         <button href="{{ admin_url('manage/operates/restore/'.$operate->id) }}" action_id="{{ $operate->id }}" action_title="确认恢复用户?" class="x-suda-pop-action btn btn-warning btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top">恢复</button>
                                     @endif
 
-                                    @if($soperate->superadmin==1)
-                                    <button href="{{ admin_url('manage/operates/delete/'.$operate->id.'/force') }}" class="pop-modal-delete btn btn-danger btn-xs" data_id="{{ $operate->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i>&nbsp;删除</button>
+                                    @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
+                                        <button href="{{ admin_url('manage/operates/delete/'.$operate->id.'/force') }}" class="pop-modal-delete btn btn-danger btn-xs" data_id="{{ $operate->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i>&nbsp;删除</button>
                                     @endif
 
                                 @else

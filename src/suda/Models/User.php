@@ -7,15 +7,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use Gtd\Suda\Traits\Permission;
-
 class User extends Authenticatable
 {
-    use Permission;
-    
-    //批量复制白名单
     protected $fillable = [];
-    //不能被批量复制
+    
     protected $guarded = [];
     
     

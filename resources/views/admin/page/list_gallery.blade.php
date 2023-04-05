@@ -64,18 +64,18 @@
                         <small class="help-block">
                             <small class="help-block float-right">
                                 @if($item->disable==0)
-                                已发布
+                                {{ __('suda_lang::press.published') }}
                                 @else
-                                未发布
+                                {{ __('suda_lang::press.unpublished') }}
                                 @endif
-                            </small> 更新于{{ $item->updated_at->format('Y-m-d') }}
+                            </small>{{ $item->updated_at->format('Y-m-d') }}
                         </small>
                     </p>
                     <div class="card-text">
-                        @if($soperate->id==$item->operate_id || $soperate->user_role>7)
+                        @if($soperate->id==$item->operate_id || \Gtd\Suda\Auth\OperateCan::operation($soperate))
                         <button href="{{ admin_url('page/delete/'.$item->id) }}" class="pop-modal-delete btn btn-light btn-sm"  data_id="{{ $item->id }}" data_title="确认删除?" title="删除" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
                         @endif
-                        @if($soperate->id==$item->operate_id || $soperate->user_role>7)
+                        @if($soperate->id==$item->operate_id || \Gtd\Suda\Auth\OperateCan::operation($soperate))
                         <a href="{{ admin_url('page/update/'.$item->id) }}" class="btn btn-light btn-sm tips" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                         @endif
                         

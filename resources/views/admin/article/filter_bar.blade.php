@@ -15,8 +15,8 @@
     
     <div class="row">
         <div class="col">
-            <select name="search[category]"  placeholder="请选择分类" class="select-category form-select">
-                <option value="">-选择分类-</option>
+            <select name="search[category]"  placeholder="{{ __('suda_lang::press.category') }}" class="select-category form-select form-select-sm">
+                <option value="">- {{ __('suda_lang::press.category') }} -</option>
                 @if($categories)
                 
                 @include('view_suda::taxonomy.category.options',['cates'=>$categories,'child'=>0,'select'=>$selects])
@@ -25,8 +25,8 @@
             </select>
         </div>
         <div class="col">
-            <select name="search[date]" class="form-select ms-2 me-2" aria-placeholder="- 选择日期 -" placeholder="- 选择日期 -">
-                <option value="">-选择日期-</option>
+            <select name="search[date]" class="form-select form-select-sm ms-2 me-2" aria-placeholder="- {{ __('suda_lang::press.date') }} -" placeholder="- {{ __('suda_lang::press.date') }} -">
+                <option value="">- {{ __('suda_lang::press.date') }} -</option>
                 @if($dates && $dates->count()>0)
                 @foreach($dates as $date)
                 <option value="{{ $date->year.'-'.$date->month }}" @if(isset($filter['date']) && $filter['date']== $date->year.'-'.$date->month) selected @endif>{{ $date->year.'-'.$date->month }}</option>
@@ -35,9 +35,9 @@
             </select>
         </div>
         <div class="col">
-            <div class="input-group">
-                <input type="text" name="search[title]" class="form-control" placeholder="文章标题">
-                <button type="submit" class="btn btn-primary">搜索</button>
+            <div class="input-group input-group-sm">
+                <input type="text" name="search[title]" class="form-control" placeholder="{{ __('suda_lang::press.title') }}">
+                <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.search') }}</button>
             </div>
         </div>
     </div>

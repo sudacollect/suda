@@ -66,7 +66,7 @@
 
                         
                         <li class="nav-item">
-                            @if($soperate->user_role==2)
+                            @if(\Gtd\Suda\Auth\OperateCan::operation($soperate))
                             <a href="{{ admin_url('entry/extensions') }}" title="控制面板" class="nav-link"><i class="ion-settings"></i></a>
                             @else
                             <a href="{{ admin_url('/') }}" title="控制面板" class="nav-link"><i class="ion-settings"></i></a>

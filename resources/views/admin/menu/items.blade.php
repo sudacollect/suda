@@ -18,7 +18,7 @@
                 
                 @endif
                 <span class="help-block">
-                    菜单在模板中的引用方式是 <code>  menu('{{ $menu->name }}') </code>
+                    {{ __('suda_lang::press.menu_tips') }} <code>menu('{{ $menu->name }}') </code>
                 </span>
             </h1>
 
@@ -31,9 +31,11 @@
             <div class="col-sm-8">
                 <div class="card">
                     <div class="card-header bg-white">
-                        {{ $menu->name }} 的所有条目
+                        {{ $menu->name }}
                         @if($menu->id==1)
-                        <a href="{{ admin_url('menu/recovery') }}" class="pop-modal btn btn-light btn-sm float-end" title="恢复默认">恢复默认</a>
+                        <a href="{{ admin_url('menu/recovery') }}" class="pop-modal btn btn-light btn-sm float-end" title="恢复默认">
+                            恢复默认
+                        </a>
                         @endif
                     </div>
                     <div class="card-body">

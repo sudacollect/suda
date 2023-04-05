@@ -4,6 +4,10 @@ namespace Gtd\Suda\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Foundation\Application;
+
+use Gtd\Suda\Auth\OperateGuard;
 
 use Gtd\Suda\Providers\AuthSudaServiceProvider;
 
@@ -43,12 +47,17 @@ class AuthServiceProvider extends ServiceProvider
 
         $this->registerPolicies();
 
-        $this->app['auth']->provider('authsuda_provider', function ($app, array $config) {
-            $model = $app['config']['auth.providers.authsuda.model'];
+        Auth::provider('operate_provider', function ($app, array $config) {
+            $model = $app['config']['auth.providers.operates.model'];
             return new AuthSudaServiceProvider($app['hash'], $model);
         });
         
-        //定义dashboard的权限
+        Auth::extend('operate', function (Application $app, string $name, array $config) {
+            $guard = new OperateGuard($name,Auth::createUserProvider('operates'),$app['session.store']);
+            return $guard;
+        });
+        
+        
         
     }
 
@@ -60,4 +69,15 @@ class AuthServiceProvider extends ServiceProvider
     //     $this->policies = array_merge($suda_policies,$this->policies);
 
     // }
+
+
+    public function __invoke(mixed $var)
+    {
+
+        Log::info('test22', [$var]);
+        echo '<pre>';
+        print_r($var);
+        exit();
+        
+    }
 }

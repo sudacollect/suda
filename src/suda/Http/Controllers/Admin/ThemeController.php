@@ -40,17 +40,16 @@ class ThemeController extends DashboardController
         $this->gate('appearance.view',app(Setting::class));
         $this->title('模板管理');
         
+        $this->setData('app_name',$app);
+
+        $current_theme = app('theme')->getTheme($app);
+        $this->setData('current_theme',$current_theme);
         
         $themes = app('theme')->availableThemes($app);
         if($themes && count($themes)>0){
             $this->setData('themes',$themes);
         }
 
-        $this->setData('app_name',$app);
-        
-        $current_theme = app('theme')->getTheme($app);
-        $this->setData('current_theme',$current_theme);
-        
         if(array_key_exists($current_theme,$themes)){
             $this->setData('theme_info',$themes[$current_theme]);
         }
@@ -93,7 +92,7 @@ class ThemeController extends DashboardController
         
     }
     
-    //更新模板缓存
+    // update-cache
     public function updateCache(Request $request,$app){
         
         app('theme')->updateCache($app);

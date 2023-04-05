@@ -26,7 +26,7 @@
                 @php
                     $menu->extension_slug = $options->extension_slug;
                 @endphp
-                    @if($children_level>0 || $super_permission || $soperate->user_role >= 6 || array_key_exists($menu->slug,$root_group))
+                    @if($children_level>0 || $super_permission || \Gtd\Suda\Auth\OperateCan::operation($soperate) || array_key_exists($menu->slug,$root_group))
                     <li class="mb-2 @if($current_item && in_array($menu->slug,$current_menu)) active @endif">
                         
                         @if(property_exists($menu,'children') && count($menu->children)>0)

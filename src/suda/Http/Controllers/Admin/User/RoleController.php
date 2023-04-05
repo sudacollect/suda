@@ -17,6 +17,8 @@ use Response;
 use Illuminate\Support\Arr;
 
 use Gtd\Suda\Http\Controllers\Admin\DashboardController;
+
+use Gtd\Suda\Auth\Authority;
 use Gtd\Suda\Models\User;
 use Gtd\Suda\Models\Role;
 
@@ -53,11 +55,9 @@ class RoleController extends DashboardController
             $page_no = $request->get('page');
         }
         
-        if($this->user->superadmin == 0 && $this->user->user_role < 9){
-            $auth_slugs = (new Role)->getAuthoritesByLevel($this->user->user_role);
-            
+        if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user)){
+            $auth_slugs = (new Role)->getAuthoritesByLevel($this->user->level);
             $roles = Role::whereIn('authority',$auth_slugs)->where('id','<>',$this->user->role_id)->orderBy('id','desc')->paginate(20,['*'],'page',$page_no);
-
         }else{
             $roles = Role::where([])->orderBy('id','desc')->paginate(20,['*'],'page',$page_no);
         }
@@ -182,34 +182,6 @@ class RoleController extends DashboardController
         // return redirect('user/roles');
     }
     
-    // protected function roleValidator(array $data,&$error='')
-    // {
-    //     $roles_add = [
-    //         'name' => 'required|unique:roles|min:2|max:64'
-    //     ];
-    //     $roles_save = [
-    //         'name' => 'required|min:2|max:64'
-    //     ];
-        
-    //     if(array_key_exists('id',$data)){
-    //         $roles = $roles_save;
-    //     }else{
-    //         $roles = $roles_add;
-    //     }
-        
-    //     $messages = [
-    //         'required'=>'请输入角色名称',
-    //         'unique'=>'角色名称重复，请更换一个名称'
-    //     ];
-    //     $ajax_result = $this->ajaxValidator($data, $roles,$messages,$response_msg);
-    //     if(!$ajax_result){
-    //         $error = $response_msg;
-    //         return false;
-    //     }
-    //     return true;
-    // }
-    
-    
     public function delete(Request $request){
         
         if($request->id && !empty($request->id)){
@@ -330,15 +302,15 @@ class RoleController extends DashboardController
     
     //所有权限列表
     private function _authority(){
-        return (new Role)->authorites();
+        return Authority::cases();
     }
 
 
-    //设置系统权限
+    // system permission
     public function showSys(Request $request,$id=0)
     {
 
-        if($this->user->user_role < 6)
+        if(\Gtd\Suda\Auth\OperateCan::general($this->user))
         {
             return redirect(admin_url('error'));
         }
@@ -378,8 +350,7 @@ class RoleController extends DashboardController
         
         $this->setData('role',$role);
         
-        $auths = $this->_authority();
-        $this->setData('auths',$auths);
+        
         
         $this->loadPermissions();
         

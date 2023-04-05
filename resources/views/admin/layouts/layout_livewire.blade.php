@@ -96,33 +96,24 @@
                 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-operate">
-                            
-                            
-                        {{-- <li class="nav-item">
-                            @if($soperate->user_role==2)
-                            <a href="{{ admin_url('entry/extensions') }}" title="Dashboard" class="nav-link"><i class="ion-settings"></i></a>
-                            @else
-                            <a href="{{ admin_url('/') }}" title="Dashboard" class="nav-link"><i class="ion-settings"></i></a>
-                            @endif
-                        </li> --}}
 
-                        <li class="nav-item">
-                            <a href="{{ url('/home') }}" target="_blank" title="{{ __('suda_lang::press.visit_homepage') }}" class="nav-link"><i class="ion-home"></i></a>
-                        </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/home') }}" target="_blank" title="{{ __('suda_lang::press.visit_homepage') }}" class="nav-link"><i class="ion-home"></i></a>
+                    </li>
+                
+                    <!-- Authentication Links -->
+                    @if (Auth::guard('operate')->guest())
+                        <li class="nav-item"><a href="{{ url('/login') }}">{{ __('suda_lang::auth.login') }}</a></li>
+                        <li class="nav-item"><a href="{{ url('/register') }}">{{ __('suda_lang::auth.register') }}</a></li>
+                    @else
                     
-                        <!-- Authentication Links -->
-                        @if (Auth::guard('operate')->guest())
-                            <li class="nav-item"><a href="{{ url('/login') }}">{{ __('suda_lang::auth.login') }}</a></li>
-                            <li class="nav-item"><a href="{{ url('/register') }}">{{ __('suda_lang::auth.register') }}</a></li>
-                        @else
-                        
-                        
-                        @include('view_suda::admin.layouts.livewire.operate_top')
-                        
-                        <!-- support language -->
-                        {{-- @include('view_suda::admin.layouts.top_language') --}}
-                        
-                        @endif
+                    
+                    @include('view_suda::admin.layouts.livewire.operate_top')
+                    
+                    <!-- support language -->
+                    {{-- @include('view_suda::admin.layouts.top_language') --}}
+                    
+                    @endif
                 </ul>
             
             </div>

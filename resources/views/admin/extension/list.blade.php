@@ -23,18 +23,18 @@
         <div class="page-heading">
             <h1 class="page-title">
                 <i class="ion-cube"></i>
-                应用管理
+                Extensions
             </h1>
             
             <div class="btn-groups ms-auto">
-                @if($soperate->user_role >=9)
+                @if(\Gtd\Suda\Auth\OperateCan::operation($soperate))
                 <button type="button" href="{{ admin_url('manage/extension/updatecache') }}" class="btn-refresh-cache btn btn-sm btn-light">
                     <i class="ion-sync"></i>&nbsp;更新缓存
                 </button>
                 @endif
                 
                 <a href="{{ url('http://suda.gtd.xyz') }}" target="_blank" class="btn btn-light btn-sm">
-                    <i class="ion-bulb-outline"></i>&nbsp;发现更多应用
+                    <i class="ion-bulb-outline"></i>&nbsp;更多应用
                 </a>
 
             </div>

@@ -9,7 +9,7 @@
         <div class="page-heading">
         <h1 class="page-title"><i class="far fa-id-badge"></i>&nbsp;{{ __('suda_lang::press.list') }}</h1>
 
-        @if($soperate->user_role==9)
+        @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
         <a href="{{ admin_url('user/roles/add') }}" class="btn btn-primary btn-sm"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}</a>
         @endif
         </div>
@@ -47,7 +47,7 @@
                               <td>{{ $role->id }}</td>
                               <td>
                                   <span class="badge bg-primary rounded-pill">
-                                  {{ $role->authority_name }}
+                                  {{ __('suda_lang::operate.roles.'.$role->authority_data->value) }}
                                   </span>
                                   {{ $role->name }}
                               </td>
@@ -55,15 +55,15 @@
                               <td>{{ $role->updated_at }}</td>
                               <td>
                                   
-                                  @if($soperate->user_role==9)
+                                  @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                                   <a href="{{ admin_url('user/roles/edit/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                                   @endif
                                   @if($role->authority=='extension')
                                   <a href="{{ admin_url('user/roles/showexts/'.$role->id) }}" class="btn btn-light btn-xs" title="应用权限设置" data-toggle="tooltip" data-placement="top"><i class="ion-filter-circle"></i>&nbsp;应用权限</a>
-                                  @elseif($soperate->user_role >= 6)
+                                  @elseif(\Gtd\Suda\Auth\OperateCan::operation($soperate))
                                   <a href="{{ admin_url('user/roles/showsys/'.$role->id) }}" class="btn btn-light btn-xs" title="系统权限" data-toggle="tooltip" data-placement="top"><i class="ion-list"></i>&nbsp;系统权限</a>
                                   @endif
-                                  @if($soperate->user_role==9)
+                                  @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                                   <button href="{{ admin_url('user/roles/delete/'.$role->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $role->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
                                   @endif
                               </td>

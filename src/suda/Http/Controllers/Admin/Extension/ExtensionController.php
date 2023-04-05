@@ -62,7 +62,7 @@ class ExtensionController extends DashboardController
     public function flushExtensions(Request $request)
     {
 
-        if($this->user->user_role < 9)
+        if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user))
         {
             return $this->responseAjax('fail',$msg?$msg:'无权限');
         }
@@ -77,7 +77,7 @@ class ExtensionController extends DashboardController
     
     public function flushExtension(Request $request,$extension_slug)
     {
-        if($this->user->user_role < 9)
+        if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user))
         {
             return $this->responseAjax('fail',$msg?$msg:'无权限');
         }
@@ -113,7 +113,7 @@ class ExtensionController extends DashboardController
     public function toInstall(Request $request,$extension_slug)
     {
 
-        if($this->user->user_role < 9)
+        if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user))
         {
             return $this->responseAjax('fail',$msg?$msg:'无权限');
         }
@@ -139,7 +139,7 @@ class ExtensionController extends DashboardController
     public function toUninstall(Request $request,$extension_slug)
     {
 
-        if($this->user->user_role < 9)
+        if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user))
         {
             return $this->responseAjax('fail',$msg?$msg:'无权限');
         }

@@ -31,7 +31,7 @@
                         <div class="card-body" style="padding:0px;height:120px;line-height:120px;position:relative;overflow:hidden;">
                             <div class="media-box" style="position:absolute;left:0;top:0;width:100%;height:100%;text-align:center;overflow:hidden;border-radius:4px;background:url({{ suda_image($item,['size'=>'medium','imageClass'=>'image_icon',"url"=>true],false) }}) center center no-repeat;background-size:cover;">
                                 
-                                @if($soperate->id==$item->operate_id || $soperate->user_role>7)
+                                @if($soperate->id==$item->operate_id || \Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                                 <a href="{{ admin_url('media/update/'.$item->id) }}" class="pop-modal" style="display:block;width:100%;height:100%;font-size:0;" title="{{ __('suda_lang::press.edit') }}">
                                     <i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}
                                 </a>

@@ -54,11 +54,11 @@
 
             $item->extension_slug = $options->extension_slug;
             
-            if($item->slug=='dashboard' || $super_permission || $soperate->user_role >= 6){
+            if($item->slug=='dashboard' || $super_permission || \Gtd\Suda\Auth\OperateCan::operation($soperate)){
                 $permission = true;
             }
 
-            if($soperate->user_role==2 && array_key_exists($item->slug,$soperate->role->permissions['exts'][$options->extension_slug]))
+            if(\Gtd\Suda\Auth\OperateCan::extension($soperate) && array_key_exists($item->slug,$soperate->role->permissions['exts'][$options->extension_slug]))
             {
                 $permission = true;
             }
@@ -140,7 +140,7 @@
                 $menu->extension_slug = $options->extension_slug;
                 @endphp
                 
-                    @if($super_permission || $soperate->user_role >= 6 || array_key_exists($menu->slug,$soperate->role->permissions['exts'][$options->extension_slug][$item->slug]))
+                    @if($super_permission || \Gtd\Suda\Auth\OperateCan::operation($soperate) || array_key_exists($menu->slug,$soperate->role->permissions['exts'][$options->extension_slug][$item->slug]))
                     <li>
                         <a href="{{ menu_link($menu) }}" class="dropdown-item @if($current_item && in_array($menu->slug,$current_menu)) active @endif">
                             {{ __($menu->title) }}

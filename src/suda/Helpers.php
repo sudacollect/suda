@@ -568,7 +568,7 @@ if (!function_exists('admin_url')) {
         
         if(!is_url($path)){
             $admin_path = config('sudaconf.admin_path','admin');
-            if(Auth::guard('operate')->user() && Auth::guard('operate')->user()->user_role==2)
+            if(Auth::guard('operate')->user() && \Gtd\Suda\Auth\OperateCan::extension(Auth::guard('operate')->user()))
             {
                 $admin_path = config('sudaconf.extension_admin_path','sudaapp');
             }

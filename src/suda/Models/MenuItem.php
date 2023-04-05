@@ -52,7 +52,7 @@ class MenuItem extends Model
         }
 
         $admin_url = admin_url($url);
-        if(Auth::guard('operate')->user() && Auth::guard('operate')->user()->user_role==2)
+        if(Auth::guard('operate')->user() && \Gtd\Suda\Auth\OperateCan::extension(Auth::guard('operate')->user()))
         {
             $admin_url = extadmin_url($url);
         }

@@ -32,7 +32,7 @@
                     <div class="d-flex justify-content-start gap-2">
                         @if(array_key_exists($item['slug'],$available_ext_list))
 
-                            @if($soperate->user_role >=9)
+                            @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                             <button class="btn btn-light btn-xs btn-uninstall" href="{{ admin_url('manage/extension/'.$item['slug'].'/uninstall') }}" title="卸载应用" data-id="{{ $item['slug'] }}"><i class="ion-trash-outline"></i>&nbsp;卸载</button>
 
                             <button class="btn btn-light btn-xs btn-refresh" title="刷新应用" href="{{ admin_url('manage/extension/'.$item['slug'].'/refresh') }}" data-id="{{ $item['slug'] }}"><i class="ion-sync"></i>&nbsp;刷新</button>
@@ -49,7 +49,7 @@
                             
 
                         @else
-                            @if($soperate->user_role >=9)
+                            @if(\Gtd\Suda\Auth\OperateCan::operation($soperate))
                             <button class="btn btn-success btn-sm btn-install" href="{{ admin_url('manage/extension/'.$item['slug'].'/install') }}" title="安装" data-id="{{ $item['slug'] }}"><i class="ion-flag"></i>&nbsp;安装</button>
                             @endif
                         @endif

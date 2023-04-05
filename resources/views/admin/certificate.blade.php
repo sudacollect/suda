@@ -27,7 +27,7 @@
 
                         <ul class="list-group list-group-flush text-center">
                             <li class="list-group-item">
-                                <a href="{{ admin_url('updateinfo') }}" class="badge rounded-pill bg-primary">查看版本信息</a>
+                                <a href="{{ admin_url('updateinfo') }}" class="badge rounded-pill bg-primary">version</a>
                             </li>
                         </ul>
                         

@@ -8,7 +8,7 @@
   <div class="page-heading">
     <h1 class="page-title"><i class="ion-person"></i>&nbsp;帐户信息</h1>
   </div>
-    <div class="row suda-row @if(intval($soperate->user_role)==2) suda-row-noside @endif">
+    <div class="row suda-row @if(\Gtd\Suda\Auth\OperateCan::extension($soperate)) suda-row-noside @endif">
         
         
         <div class="col-sm-6 suda_page_body">

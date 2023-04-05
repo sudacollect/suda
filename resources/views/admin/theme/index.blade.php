@@ -6,39 +6,41 @@
         
         <div class="page-heading">
             <h1 class="page-title">
-                模板管理<span class="help-block">所有{{ $app_name }}模板在这里管理</span>
+                {{ __('suda_lang::press.menu_items.appearance_theme') }}
             </h1>
-
-            @if(isset($apps))
-            <div  class="ms-auto me-2">
-                <select id="change-app" class="form-control form-control-sm">
-                    @foreach($apps as $zapp)
-                    
-                    @if($zapp!='admin')
-                    <option value="{{ $zapp }}" @if($app_name==$zapp) selected @endif>{{ $zapp }}</option>
-                    @endif
-
-                    @endforeach
-                </select>
-            </div>
-            
-            @endif
 
             <form class="form-ajax" action="{{ admin_url('theme/updatecache/'.$app_name) }}">
                 @csrf
-            <button type="submit" class="btn btn-sm btn-primary">
-                更新模板缓存
-            </button>
+                <button type="submit" class="btn btn-sm btn-primary">
+                    {{ __('suda_lang::press.update_cache') }}
+                </button>
             </form>
         </div>
         
-        @if(isset($themes))
+        
         
         <div class="col-sm-12 suda_page_body">
-            <div class="card card-theme" style="background: transparent;border: none;box-shadow: none;">
+            <ul class="nav nav-tabs card-tabs">
+                @if(isset($apps))
+                
+                @foreach($apps as $zapp)
+
+                @if($zapp!='admin')
+                <li class="nav-item">
+                    <a class="nav-link  @if($app_name==$zapp) bg-white active @endif " href="{{ admin_url('theme/'.$zapp) }}">{{ $zapp }}</a>
+                </li>
+                @endif
+                
+
+                @endforeach
+
+                @endif
+                
+            </ul>
+
+            <div class="card card-theme card-with-tab">
                     
                 <div class="card-body">
-                    
                     
                     @if(isset($theme_info))
                     <div class="row">
@@ -50,18 +52,16 @@
                                     @endif
                                 </div>
                                 <div class="text-center">
-                                    <i class="ion-compass text-primary"></i>正在使用
+                                    <i class="ion-compass text-primary"></i>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="col-sm-6 ">
                             <div class="theme-support">
-                                <p><strong>主题&nbsp;:&nbsp;&nbsp;</strong>{{ $theme_info['name'] }}</p>
-                                <p><strong>描述&nbsp;:&nbsp;&nbsp;</strong>{{ $theme_info['description'] }}</p>
-                                <p><strong>版本&nbsp;:&nbsp;&nbsp;</strong>{{ $theme_info['version'] }}</p>
-                                <p><strong>作者&nbsp;:&nbsp;&nbsp;</strong><a target="_blank" href="{{ $theme_info['author_url'] }}"><i class="ion-person-outline"></i>&nbsp;{{ $theme_info['author'] }}</a></p>
-                                <p><strong>支持&nbsp;:&nbsp;&nbsp;</strong><a target="_blank" href="{{ $theme_info['theme_url'] }}"><i class="ion-share-outline"></i>&nbsp;开发者网站</a></p>
+                                <p><i class="ion-compass-outline me-2"></i><b class="me-2">{{ $theme_info['name'] }}</b>v{{ $theme_info['version'] }}</p>
+                                <p><i class="ion-information-circle-outline me-2"></i>{{ $theme_info['description'] }}</p>
+                                <p><i class="ion-at-outline me-2"></i><a target="_blank" href="{{ $theme_info['author_url'] }}">{{ $theme_info['author'] }}</a></p>
                                 <p><a href="{{ admin_url('widget/'.$app_name.'/'.$current_theme) }}" class="btn btn-light btn-sm">设置挂件</a></p>
                             </div>
                         </div>
@@ -72,44 +72,41 @@
                 
             </div>
 
-            <div class="card card-theme">
+            <div class="card card-theme mt-3">
 
-                <div class="card-header">
-                    模板列表
-                </div>
                 <div class="card-body">
-
+                    
                     @if(isset($themes) && !empty($themes))
 
-                            @foreach($themes as $kk=>$theme)
-                            
-                                @if( $current_theme != $kk )
-
-                                <form class="form-ajax" action="{{ admin_url('theme/settheme') }}">
-                                    @csrf
-                                    <input type="hidden" name="app_name" value="{{ $app_name }}">
-                                    <div class="theme-info col-sm-3">
-                                        <div class="screenshot">
-                                            @if(isset($theme['screenshot']))
-                                            <img src="{{ asset($theme['screenshot']) }}">
-                                            @endif
-                                        </div>
-                                        <div class="text-center text-dark font-weight-bold">
-                                            {{ $theme['name'] }}
-                                        </div>
-                                        <div class="mt-3 text-center text-dark">
-                                            <button type="submit" class="btn btn-light btn-sm">启用</button>
-                                            <a href="{{ admin_url('widget/'.$app_name.'/'.$kk) }}" class="btn btn-light btn-sm">设置挂件</a>
-                                            <a href="{{ url('/?theme_preview='.$kk) }}" target="_blank" class="btn btn-light btn-sm">预览</a>
-                                            <input type="hidden" name="theme_name" value="{{ $kk }}">
-                                        </div>
-                                    </div>
-                                </form>
-                                
-                                
-                                @endif
+                        @foreach($themes as $kk=>$theme)
                         
-                            @endforeach
+                            @if( $current_theme != $kk )
+
+                            <form class="form-ajax" action="{{ admin_url('theme/settheme') }}">
+                                @csrf
+                                <input type="hidden" name="app_name" value="{{ $app_name }}">
+                                <div class="theme-info col-sm-3">
+                                    <div class="screenshot">
+                                        @if(isset($theme['screenshot']))
+                                        <img src="{{ asset($theme['screenshot']) }}">
+                                        @endif
+                                    </div>
+                                    <div class="text-center text-dark font-weight-bold">
+                                        {{ $theme['name'] }}
+                                    </div>
+                                    <div class="mt-3 text-center text-dark">
+                                        <button type="submit" class="btn btn-light btn-sm">启用</button>
+                                        <a href="{{ admin_url('widget/'.$app_name.'/'.$kk) }}" class="btn btn-light btn-sm">设置挂件</a>
+                                        <a href="{{ url('/?theme_preview='.$kk) }}" target="_blank" class="btn btn-light btn-sm">预览</a>
+                                        <input type="hidden" name="theme_name" value="{{ $kk }}">
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            
+                            @endif
+                    
+                        @endforeach
         
                     @else
         
@@ -125,7 +122,7 @@
 
         </div>
         
-        @endif
+        
 
         
         

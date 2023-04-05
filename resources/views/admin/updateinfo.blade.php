@@ -21,7 +21,7 @@
                                 <strong>core update</strong>
                             </p>
                             <p>
-                                <code>composer update gtd/suda</code>
+                                <code>composer update gtdxyz/suda</code>
                             </p>
                             
                             <p>
@@ -42,7 +42,7 @@
                                 <strong>update extension</strong>
                             </p>
                             <p>
-                                <code>php artisan suda:ext ext-slug-name</code>
+                                <code>php artisan suda:ext ext-slug</code>
                             </p>
     
                             <p>

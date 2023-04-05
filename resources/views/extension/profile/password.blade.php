@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row suda-row @if(intval($soperate->user_role)==2) suda-row-noside @endif">
+    <div class="row suda-row @if(\Gtd\Suda\Auth\OperateCan::extension($soperate)) suda-row-noside @endif">
         <div class="page-heading">
             <h1 class="page-title">帐户信息</h1>
         </div>

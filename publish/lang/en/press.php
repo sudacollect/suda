@@ -10,44 +10,33 @@
 
 
 return [
-    
     'system_name'=>'Suda',
     'product'=>'Product ',
     
     'certificate'=>'Certificate',
     'certificated'=>'certified',
     'uncertificated'=>'uncertified',
-    
-    
-
     'logo'=>'Logo',
-    
-
     'website_name'=>'Site Name',
-    
-
-    
-    
     'sidebar_style'=>'Sidebar style',
-    
     'created_at'=>'created',
     'updated_at'=>'updated',
     'deleted_at'=>'deleted',
     
-    'name'=>'name',
-    'title'=>'title',
-    'operate'=>'operate',
-    'operation'=>'operation',
-    'add'=>'add',
-    'edit'=>'edit',
-    'save'=>'save',
-    'submit_save'=>'submit',
-    'preview'=>'preview',
-    'delete'=>'delete',
-    'filter'=>'filter',
-    'search'=>'search',
-    'link'=>'link',
-    'slug'=>'slug',
+    'name'=>'Name',
+    'title'=>'Title',
+    'operate'=>'Operate',
+    'operation'=>'Operation',
+    'add'=>'Add',
+    'edit'=>'Edit',
+    'save'=>'Save',
+    'submit_save'=>'Submit',
+    'preview'=>'Preview',
+    'delete'=>'Delete',
+    'filter'=>'Filter',
+    'search'=>'Search',
+    'link'=>'Link',
+    'slug'=>'Slug',
     
     'language' => 'language',
     'switch_language' => 'switch',
@@ -83,30 +72,21 @@ return [
     
 
     
-    'list'=>'list',
-    'image'=>'iage',
-    'number'=>'number',
-    'category'=>'category',
-    'category_name'=>'category name',
+    'list'      => 'List',
+    'image'     => 'image',
+    'number'    => 'number',
+    'category'  => 'Category',
+    'category_name' => 'Category Name',
     
-    
-    
-    
-    'country'=>'country',
-    'year'=>'year',
+    'country'   => 'country',
+    'year'      => 'year',
     
     'upload_image'=>'Upload Image',
     
     'brands'=>'brands',
     'gender'=>'gender',
  
-    
-
     'tag_name'=>'Tag Name',
-    
-    
-    
-    
     
     'username'=>'username',
     'organization'=>'organization',
@@ -120,12 +100,6 @@ return [
     'email'=>'email',
     
     'organization_name'=>'organization name',
-    
-    'role_description'=>'About role<br>
-                                guest: onle view<br/>
-                                user: view and edit self profile<br/>
-                                admin: view and edit all data<br/>',
-    
     
     'as_superadmin'=>'Set as Superadmin',
     'filter_missing'=>'missing fileter params',
@@ -169,7 +143,7 @@ return [
     'add_menu_item'=>'Add Item',
     'edit_menu_item'=>'Edit Item',
     
-    'update_menu_cache'=>'Update Cache',
+    'update_cache'=>'Update Cache',
     
     'menu_item'=>'Menu Item',
     'menu_items'=>[
@@ -177,14 +151,14 @@ return [
         'dashboard'=>'Dashboard',
         'article'=>'Article',
         'article_list'=>'Articles',
-        'article_new'=>'Add article',
+        'article_new'=>'Add Article',
         'article_update'=>'Edit',
         'article_delete'=>'Delete',
         'category'=>'Category',
         'tag'=>'Tags',
         'page'=>'Page',
         'page_list'=>'Pages',
-        'page_new'=>'Add page',
+        'page_new'=>'Add Page',
         'page_update'=>'Edit',
         'page_delete'=>'Delete',
         'media'=>'Media',
@@ -221,46 +195,63 @@ return [
         
     ],
     
+    'menu_tips' => 'Blade template with menu ',
+
     'user_list'=>'Users',
 
-    'publish_date'=>'Publish Date',
-    'stick_top'=>'Stick Top',
-    'publish'=>'Publish',
+    'publish_date'  => 'Publish Date',
+    'sticked'       => 'Sticked',
+    'publish'       => 'Publish',
+    'published'     => 'Published',
+    'unpublished'     => 'Unpublished',
+
+    'article'   => 'Article',
+    'page'      => 'Page',
+    'recycle'   => 'Recycle',
+
+    'date'      => 'Date',
+    'time'      => 'Time',
 
     // DASHBOARD
     'dash'=>[
-        'welcome'=>'Welcome',
-        'customize_setting'=>'Suda Admin Panel, support customize and extend widgets.',
-        'customize_btn_text'=>'Setting',
+        'welcome'           => 'Welcome',
+        'customize_setting' => 'Suda Admin Panel, support customize and extend widgets.',
+        'customize_btn_text'=> 'Setting',
 
-        'dev_tips'=>'Learn about develop dashboard widgets.',
-        'dev_link_text'=>'Quick Start',
+        'dev_tips'          => 'Learn about develop dashboard widgets.',
+        'dev_link_text'     => 'Quick Start',
 
-        'application'=>'Extensions',
-        'no_applications'=>'No extensions found..',
+        'application'       => 'Extensions',
+        'no_applications'   => 'Extension not found..',
 
-        'quick_start'=>'Quick Start',
-        'system_setting'=>'System',
-        'themes'=>'Theme',
-        'pages'=>'Pages',
-        'roles'=>'Roles',
-        'articles'=>'Articles',
-        'extensions'=>'Extensions',
+        'quick_start'       => 'Quick Start',
+        'system_setting'    => 'System',
+        'themes'            => 'Theme',
+        'pages'             => 'Pages',
+        'roles'             => 'Roles',
+        'articles'          => 'Articles',
+        'extensions'        => 'Extensions',
+        
+        'theme'             => 'Theme',
+        'theme-list'        => 'Themes',
+        'theme-enable'      => 'Enable',
+        'theme-preview'     => 'Preview',
     ],
 
 
     // PAGES
     'pages'=>[
 
-        'title'=>'Title',
-        'content'=>'Content',
-        'content_tips'=>'Plese write here..',
+        'title'         => 'Title',
+        'content'       => 'Content',
+        'content_tips'  => 'Plese write here..',
 
-        'kv_image'=>'Image',
-        'slug'=>'Slug',
-        'slug_tips'=>'page link will be page/yourslug.',
-        'redirect_url'=>'Redirect',
-        'redirect_tips'=>'page will redirect to url.',
+        'kv_image'      => 'Image',
+        'slug'          => 'Slug',
+        'slug_tips'     => 'page link will be page/yourslug.',
+        'redirect_url'  => 'Redirect',
+        'redirect_tips' => 'page will redirect to url.',
+        
     ],
 
     // TAGS

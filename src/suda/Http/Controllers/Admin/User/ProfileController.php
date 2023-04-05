@@ -34,7 +34,7 @@ class ProfileController extends DashboardController
         $this->title(__('suda_lang::auth.accountInfo'));
 
         $this->setData('extendFile','view_path::layouts.default');
-        if($this->user->user_role == 2){
+        if(\Gtd\Suda\Auth\OperateCan::extension($this->user)){
             $this->setData('extendFile','view_path::layouts.default_noside');
         }
 
@@ -157,7 +157,7 @@ class ProfileController extends DashboardController
         $this->title(__('修改密码'));
 
         $this->setData('extendFile','view_path::layouts.default');
-        if($this->user->user_role==2){
+        if(\Gtd\Suda\Auth\OperateCan::extension($this->user)){
             $this->setData('extendFile','view_path::layouts.default_noside');
         }
 

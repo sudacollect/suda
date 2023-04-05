@@ -125,6 +125,7 @@
 
 </form>
 
+@stack('scripts')
 <script>
     
     jQuery(function($){

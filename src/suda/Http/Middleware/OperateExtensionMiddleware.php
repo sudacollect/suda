@@ -21,7 +21,7 @@ class OperateExtensionMiddleware
             $this->user = auth('operate')->user();
 
             // extension manager go out
-            if($this->user->user_role != 2)
+            if(!\Gtd\Suda\Auth\OperateCan::extension($this->user))
             {
                 Auth::guard('operate')->logout();
                 $request->session()->invalidate();

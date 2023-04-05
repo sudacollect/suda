@@ -1,15 +1,12 @@
 @extends('view_path::layouts.default')
 
-
-
 @section('content')
 <div class="container-fluid">
     <div class="page-heading">
         <h1 class="page-title"><i class="ion-people-outline"></i>&nbsp;设置系统权限</h1>
     </div>
     <div class="row suda-row">
-        
-        
+
         <div class="col-sm-9  suda_page_body">
             <div class="card">
                 
@@ -53,7 +50,7 @@
                                   
                                   <li>
 
-                                    <div class="form-check form-check-inline">
+                                    <div class="form-check ">
                                         <input type="checkbox" class="form-check-input permission-group" refer_check="check_{{ $extend['name'] }}">
                                         <label class="form-check-label extend-name font-weight-bold" for="permission-group" refer_check="check_{{ $extend['name'] }}">
                                             <i class="ion-reader-outline"></i>&nbsp;{{ $extend['display_name'] }}
@@ -78,17 +75,14 @@
                                             @endphp
 
                                             <li class="list-group-item" style="overflow: hidden;overflow-wrap: break-word;">
-                                                <div class="checkbox" style="margin:0;">
-                                                
-                                                    <div class="form-check form-check-inline">
-                                                        <input type="checkbox" @if($hasPermission) checked @endif class="form-check-input single-permission list-group-item" name="permission[{{ $extend['name'] }}][{{ $permission['name'] }}]" value="true">
+                                                <div class="checkbox">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" @if($hasPermission) checked @endif class="form-check-input single-permission" name="permission[{{ $extend['name'] }}][{{ $permission['name'] }}]" value="true">
                                                         <label class="form-check-label" >
                                                             {{ $permission['display_name']}}
                                                         </label>
                                                     </div>
-                                                
                                                     <span class="help-block my-0">{{ $extend['name'].'.'.$permission['name'] }}</span>
-
                                                 </div>
                                             </li>
 
@@ -109,9 +103,9 @@
                                           
                                           <li class="list-group-item">
                                               
-                                              <div class="checkbox" style="margin:0;">
-                                                <div class="form-check form-check-inline">
-                                                    <input type="checkbox" @if($hasPermission) checked @endif class="form-check-input single-permission list-group-item" name="permission[{{ $extend['name'] }}][{{ $permission['name'] }}]" value="true">
+                                              <div class="checkbox">
+                                                <div class="form-check">
+                                                    <input type="checkbox" @if($hasPermission) checked @endif class="form-check-input single-permission" name="permission[{{ $extend['name'] }}][{{ $permission['name'] }}]" value="true">
                                                     <label class="form-check-label" >
                                                         {{ $permission['display_name'].$extend['display_name'] }}
                                                     </label>
@@ -130,7 +124,7 @@
                                               <li class="list-group-item">
                                                 <div class="checkbox">
 
-                                                    <div class="form-check form-check-inline">
+                                                    <div class="form-check">
                                                         <input type="checkbox" class="form-check-input single-permission list-group-item" name="permission[{{ $extend['name'] }}][{{ $permission['name'] }}]" value="true">
                                                         <label class="form-check-label" >
                                                             {{ $permission['display_name'].$extend['display_name'] }}
@@ -169,43 +163,8 @@
             </div>
         </div>
 
-
         <div class="col-sm-3  suda_page_body">
-            <div class="card">
-                
-                <div class="card-body">
-                    <h5>角色级别说明</h5>
-                    <p>
-                        <b>普通管理</b><br>
-                        <span class="help-block">普通管理员是最低级别的后台用户，根据设置的权限访问相应功能。</span>
-                    </p>
-
-                    <p>
-                        <b>应用管理</b><br>
-                        <span class="help-block">应用管理和普通管理类似。</span>
-                        <span class="help-block" style="color:#ff5668;">系统为应用管理员提供了有别于其他管理员的控制台。</span>
-                    </p>
-
-                    <p>
-                        <b>运营主管</b><br>
-                        <span class="help-block">运营主管级别高于普通管理员。</span>
-                        <span class="help-block">可以在应用和功能上根据不同级别的管理员给予不同的权限设置。</span>
-                    </p>
-
-                    <p>
-                        <b>超级管理员</b><br>
-                        <span class="help-block">拥有系统所有管理权限。</span>
-                    </p>
-
-                </div>
-
-                <div class="card-footer">
-                最重要说明: 任一角色级别默认不包括任何功能和菜单权限，均需手动完成设置。
-                </div>
-
-            </div>
-
-            
+            @include('view_path::user.role.role_desc')
         </div>
 
     </div>

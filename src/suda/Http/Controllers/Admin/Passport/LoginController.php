@@ -29,6 +29,9 @@ class LoginController extends AdminController
 {
     use AuthenticatesUsers;
     
+    protected $maxAttempts = 5; // Default is 5
+    protected $decayMinutes = 1; // Default is 1
+
     protected $redirectTo = 'index';
     protected $username;
     
@@ -92,12 +95,8 @@ class LoginController extends AdminController
         
         if ($this->attemptLogin($request)) {
             
-            if(auth('operate')->user()->user_role>0 && auth('operate')->user()->user_role!=2)
+            if(!\Gtd\Suda\Auth\OperateCan::guest(auth('operate')->user()) && !\Gtd\Suda\Auth\OperateCan::extension(auth('operate')->user()))
             {
-                //设置跳转入口
-                if(auth('operate')->user()->user_role==2){
-                    $this->redirectTo = extadmin_url('entry/extensions');
-                }
                 return $this->sendLoginResponse($request);
             }else{
                 $this->guard()->logout();

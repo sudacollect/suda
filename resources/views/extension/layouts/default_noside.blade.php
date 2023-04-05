@@ -61,7 +61,7 @@
                         
                         
                     <li class="nav-item">
-                        @if($soperate->user_role==2)
+                        @if(\Gtd\Suda\Auth\OperateCan::extension($soperate))
                         <a href="{{ extadmin_url('entry/extensions') }}" title="控制面板" class="nav-link"><i class="ion-settings"></i></a>
                         @else
                         <a href="{{ extadmin_url('/') }}" title="控制面板" class="nav-link"><i class="ion-settings"></i></a>

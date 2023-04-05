@@ -72,7 +72,7 @@
                             $root_group = $soperate->role->permissions['exts'][$options->extension_slug][$item->slug];
                         }
 
-                    }elseif($soperate->user_role >= 6)
+                    }elseif(\Gtd\Suda\Auth\OperateCan::operation($soperate))
                     {
                         $permission = true;
                     }

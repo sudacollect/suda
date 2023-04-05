@@ -46,7 +46,7 @@ class DashboardQuickin extends Widget
         
         $available_data = app('suda_extension')->availableExtensions();
         $user = auth('operate')->user();
-        if($user->user_role < 6){
+        if(\Gtd\Suda\Auth\OperateCan::general($user)){
             $show_extensions = [];
             $permissions = $user->role->permissions;
             if(array_key_exists('exts',$permissions)){

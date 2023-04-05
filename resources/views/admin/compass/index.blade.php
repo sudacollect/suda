@@ -66,14 +66,16 @@
                                     <td><img src="{{ suda_asset('images/addition/icon_default.png') }}" class="icon">Distpicker</td>
                                     
                                     <td>
-                                            <div data-toggle="distpickerrr">
-                                                <select name="province" data-province="选择省" class="form-control form-control-sm me-2" ></select>
-                                                <select name="city" data-city="选择市" class="form-control form-control-sm me-2" ></select>
-                                                <select name="district" data-district="选择区" class="form-control form-control-sm" ></select>
-                                            </div>
-                                            <span class="help-block">
-                                                数据存放目录 config/suda_districts.php
-                                            </span>
+                                        
+                                        <div class="input-group" data-toggle="distpickerrr">
+                                            <select name="province" data-province="选择省" class="form-control form-control-sm me-2" ></select>
+                                            <select name="city" data-city="选择市" class="form-control form-control-sm me-2" ></select>
+                                            <select name="district" data-district="选择区" class="form-control form-control-sm" ></select>
+                                        </div>
+                                        <span class="help-block">
+                                            config/suda_districts.php
+                                        </span>
+                                        
                                     </td>
                                   </tr>
 
@@ -124,9 +126,9 @@
                         ICON
                     </h5>
                     <div class="card-body">
-                        <p>Ionicons 使用，例如 <code>ion-person</code> <i class="ion-person"></i></p>
+                        <p>1. For example <code>ion-person</code> <i class="ion-person"></i></p>
                         <p>
-                            推荐使用 Blade icons 方案，具体参考 <a href="https://driesvints.com/blog/blade-heroicons/" style="text-decoration:underline">Blade Heroicons</a>
+                            2. Blade icons <a href="https://driesvints.com/blog/blade-heroicons/" style="text-decoration:underline">Blade Heroicons</a>
                         </p>
                     </div>
                     </div>

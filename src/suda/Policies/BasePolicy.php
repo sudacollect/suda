@@ -48,10 +48,10 @@ class BasePolicy
             return false;
         }
         
-        //倾向于认为这是应用
+        // detect extension
         if(count($this->actions)>=2 && strpos($this->name,'extension#')!==false){
 
-            if($this->user->user_role >= 6)
+            if(\Gtd\Suda\Auth\OperateCan::operation($this->user))
             {
                 return true;
             }

@@ -8,7 +8,7 @@
     <div class="row suda-row dashboard dashboard-theme">
         <div class="page-heading">
             <h1 class="page-title">
-                后台模板管理<span class="help-block">控制面板风格</span>
+                {{ __('suda_lang::press.dash.theme') }}
             </h1>
 
             <div class="btn-toolbar ms-auto" role="toolbar" aria-label="Toolbar with button groups">
@@ -19,7 +19,7 @@
                     </button>
 
                     <button type="button" href="{{ admin_url('theme/updatecache/admin') }}" class="modal-action btn btn-sm btn-light">
-                        更新模板缓存
+                        {{ __('suda_lang::press.update_cache') }}
                     </button>
 
                 </div>
@@ -49,17 +49,16 @@
                                     @endif
                                 </div>
                                 <div class="text-center">
-                                    <i class="ion-compass text-primary"></i>正在使用
+                                    <i class="ion-compass text-primary"></i>
                                 </div>
                             </div>
                         </div>
                     
                         <div class="col-sm-6">
                             <div class="theme-support">
-                                <p><strong>主题:&nbsp;&nbsp;</strong>{{ $theme['name'] }} <b>v{{ $theme['version'] }}</b></p>
-                                <p><strong>描述:&nbsp;&nbsp;</strong>{{ $theme['description'] }}</p>
-                                <p><strong>作者:&nbsp;&nbsp;</strong><a target="_blank" href="{{ $theme['author_url'] }}">{{ $theme['author'] }}<i class="ion-arrow-redo-circle-outline"></i></a></p>
-                                <p><strong>支持:&nbsp;&nbsp;</strong><a target="_blank" href="{{ $theme['theme_url'] }}">开发者网站<i class="ion-arrow-redo-circle-outline"></i></a></p>
+                                <p><b><i class="ion-compass-outline"></i>&nbsp;{{ $theme['name'] }} v{{ $theme['version'] }}</b></p>
+                                <p><i class="ion-information-circle-outline"></i>&nbsp;{{ $theme['description'] }}</p>
+                                <p><i class="ion-at-outline"></i>&nbsp;<a target="_blank" href="{{ $theme['author_url'] }}">{{ $theme['author'] }}</a></p>
                             </div>
                         </div>
                     
@@ -75,7 +74,7 @@
 
             <div class="card">
                 <div class="card-header bg-white">
-                    风格列表
+                    {{ __('suda_lang::press.dash.theme-list') }}
                 </div>
                 <div class="card-body">
 
@@ -103,8 +102,12 @@
                                             @if(isset($theme['name'])) {{ $theme['name'] }} @else unkown @endif
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-light btn-sm">启用</button>
-                                            <a href="{{ admin_url('style/preview/'.$kk) }}" target="_blank" class="btn btn-light btn-sm">预览</a>
+                                            <button type="submit" class="btn btn-light btn-sm">
+                                                {{ __('suda_lang::press.dash.theme-enable') }}
+                                            </button>
+                                            <a href="{{ admin_url('style/preview/'.$kk) }}" target="_blank" class="btn btn-light btn-sm">
+                                                {{ __('suda_lang::press.dash.theme-preview') }}
+                                            </a>
                                             <input type="hidden" name="theme_name" value="{{ $kk }}">
                                         </div>
                                     </div>

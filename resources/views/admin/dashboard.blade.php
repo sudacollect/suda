@@ -14,9 +14,7 @@
     @if(isset($sdcore->settings->dashboard) && isset($sdcore->settings->dashboard->dashboard_apps))
     <div class="row suda-row d-flex flex-row justify-content-start flex-wrap">
         
-        {{-- @if($soperate->user_role>8 && isset($sdcore->settings->dashboard->dashboard_apps->start) && $sdcore->settings->dashboard->dashboard_apps->start=='on')
-        {{ Sudacore::widget('dashaboard.start',['soperate'=>$soperate]) }}
-        @endif --}}
+        {{-- {{ Sudacore::widget('dashaboard.start',['soperate'=>$soperate]) }} --}}
 
         <div class="col-sm-9">
 

@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="page-title"><i class="ion-create"></i>&nbsp;编辑文章</div>
+    <div class="page-title"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.menu_items.article_update') }}</div>
     <form role="form" method="POST" action="{{ admin_url('article/save') }}" class="form-ajax">
         @csrf
         <input type="hidden" name="id" value="{{ $item->id }}">

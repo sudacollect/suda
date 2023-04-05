@@ -81,14 +81,11 @@ return [
     
 
     
-    'list'=>'列表',
-    'image'=>'图片',
-    'number'=>'编号',
-    'category'=>'分类',
-    'category_name'=>'分类名称',
-    
-    
-    
+    'list'      => '列表',
+    'image'     => '图片',
+    'number'    => '编号',
+    'category'  => '分类',
+    'category_name' => '分类名称',
     
     'country'=>'国家',
     'year'=>'年份',
@@ -115,18 +112,10 @@ return [
     
     'organization_name'=>'部门名称',
     
-    'role_description'=>'权限说明<br>
-                                访客: 只能访问和进行查看<br/>
-                                用户: 只能编辑自己添加的资料<br/>
-                                管理员: 可编辑所有资料<br/>',
-    
     'as_superadmin'=>'设置为超级管理员',
     
     'filter_missing'=>'缺少查询条件',
 
-    
-    
-    
     'type_name'=>'类型名称',
     'taxonomy'=>'分类系统',
     
@@ -163,7 +152,7 @@ return [
     'add_menu_item'=>'增加菜单项',
     'edit_menu_item'=>'编辑菜单项',
     
-    'update_menu_cache'=>'更新菜单缓存',
+    'update_cache'=>'更新缓存',
     
     'menu_item'=>'菜单项',
     'menu_items'=>[
@@ -214,36 +203,47 @@ return [
         'miss_blade'=>'模板文件丢失',
         
     ],
+
+    'menu_tips'     => '菜单在模板中的引用方式',
+
+    'user_list'     => '所有用户',
     
-    'user_list'=>'所有用户',
+    'publish_date'  => '发布日期',
+    'sticked'       => '置顶',
+    'publish'       => '发布',
+    'published'     => '已发布',
+    'unpublished'   => '未发布',
 
-    'publish_date'=>'发布日期',
-    'stick_top'=>'置顶',
-    'publish'=>'发布',
+    'page'      => '页面',
+    'recycle'   => '恢复',
 
-
+    'date'      => '日期',
+    'time'      => '时间',
 
     //Dashboard
     'dash'=>[
-        'welcome'=>'欢迎使用',
-        'customize_setting'=>'「速搭」管理面板, 支持模块显示设置和进行自定义扩展。',
-        'customize_btn_text'=>'立即设置',
+        'welcome'               => '欢迎使用',
+        'customize_setting'     => '「速搭」管理面板, 支持模块显示设置和进行自定义扩展。',
+        'customize_btn_text'    => '立即设置',
 
-        'dev_tips'=>'了解如何开发自定义面板模块。',
-        'dev_link_text'=>'开发学习',
+        'dev_tips'              => '了解如何开发自定义面板模块。',
+        'dev_link_text'         => '开发学习',
 
-        'application'=>'应用',
-        'no_applications'=>'暂无应用',
+        'application'           => '应用',
+        'no_applications'       => '暂无应用',
 
-        //默认板块
-        'quick_start'=>'快捷管理',
-        'system_setting'=>'系统设置',
-        'themes'=>'模板风格',
-        'pages'=>'页面管理',
-        'roles'=>'角色权限',
-        'articles'=>'文章管理',
-        'extensions'=>'应用列表',
+        'quick_start'           => '快捷管理',
+        'system_setting'        => '系统设置',
+        'themes'                => '模板风格',
+        'pages'                 => '页面管理',
+        'roles'                 => '角色权限',
+        'articles'              => '文章管理',
+        'extensions'            => '应用列表',
         
+        'theme'                 => '控制面板风格',
+        'theme-list'            => '风格列表',
+        'theme-enable'          => '启用',
+        'theme-preview'         => '预览',
     ],
 
 
@@ -267,6 +267,7 @@ return [
         'select_tag'=>'选择标签',
     ],
 
+    
 
     // SETTING
 

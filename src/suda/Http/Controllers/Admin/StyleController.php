@@ -22,9 +22,9 @@ class StyleController extends DashboardController
     use SettingTrait;
     public $view_in_suda = true;
        
-    //控制面板风格
+    
     public function dashboardStyle(){
-        $this->title('控制面板风格');
+        $this->title(__('suda_lang::press.dash.theme'));
         $this->gate('role.setting_dashboard',app(Setting::class));
         
         
@@ -47,7 +47,7 @@ class StyleController extends DashboardController
         return $this->display('home.style.dashboard');
     }
     
-    //设置控制面板风格
+    
     public function saveDashboardStyle(Request $request){
         
         if(!Auth::guard('operate')->check()){

@@ -99,7 +99,7 @@
                         <div class="mb-3 ">
                             
                             <label for="stick_top" >
-                                {{ __('suda_lang::press.stick_top') }}
+                                {{ __('suda_lang::press.sticked') }}
                             </label>
 
                             <div class="form-check form-check-inline">

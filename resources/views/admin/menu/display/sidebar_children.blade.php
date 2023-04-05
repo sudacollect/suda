@@ -22,7 +22,7 @@
             $menu->extension_slug = $options->extension_slug;
             @endphp
             
-                @if($children_level>0 || $super_permission || $soperate->user_role >= 6 || array_key_exists($menu->slug,$root_group))
+                @if($children_level>0 || $super_permission || \Gtd\Suda\Auth\OperateCan::operation($soperate) || array_key_exists($menu->slug,$root_group))
                 <li @if($current_item && in_array($menu->slug,$current_menu)) class="active" @endif>
                     
                     <a href="{{ menu_link($menu) }}">

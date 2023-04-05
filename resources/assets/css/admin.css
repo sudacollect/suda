@@ -807,14 +807,6 @@ code {
     z-index:999;
 }
 
-.list-group{
-    font-size:1.2rem;
-}
-
-.list-group-item{
-    border:1px solid #e8e8e8;
-}
-
 /*gallery display*/
 .panel-box{
     border:0;

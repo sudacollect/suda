@@ -4,85 +4,44 @@ namespace Gtd\Suda\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Gtd\Suda\Auth\Authority;
 
 class Role extends Authenticatable
 {
     use Notifiable;
     protected $table = 'roles';
     
-    protected $appends = ['permissions', 'authority_name', 'level'];
+    protected $appends = ['permissions', 'authority_data'];
     
     public function operates()
     {
          return $this->hasMany('Gtd\Suda\Models\Operate');
     }
-
-    public function authorites(){
-        $auths = [
-            'general'       => '普通管理',  //就是根据权限
-            'extension'     => '应用管理',  //只授权应用
-            'operation'     => '运营主管',  //管理员
-            'superadmin'    => '超级管理员',//等同于超级管理员
-            
-        ];
-        return $auths;
-    }
-
+    
+    // 优化掉的方法
     public function getAuthoritesByLevel($level=''){
-        $auths = [
-            '1'=>'general',  //就是根据权限
-            '2'=>'extension',//只授权应用
-            '6'=>'operation',   //管理员
-            '9'=>'superadmin', //等同于超级管理员
-        ];
+        $auths = Authority::cases();
 
         if($level && array_key_exists($level,$auths)){
 
             switch($level)
             {
-                case 9:
-                    return [$auths[1],$auths[2],$auths[6]];
+                case 'superadmin':
+                    return $auths;
                 break;
-                case 6:
-                    return [$auths[1],$auths[2]];
+                case 'operation':
+                    return ['superadmin','operation'];
                 break;
             }
 
-            return [$auths[$level]];
+            return [$level];
         }
-        return false;
+        return [];
     }
 
-
-    public function getLevelAttribute()
+    public function getAuthorityDataAttribute()
     {
-        switch($this->authority){
-            case 'extension':
-                return 2;
-            break;
-
-            case 'operation':
-                return 6;
-            break;
-
-            case 'superadmin':
-                return 9;
-            break;
-
-            default:
-                return 1;
-            break;
-        }
-    }
-
-    public function getAuthorityNameAttribute()
-    {
-        $auths = $this->authorites();
-
-        if(array_key_exists($this->authority,$auths)){
-            return $auths[$this->authority];
-        }
-
+        return Authority::fromName($this->authority);
     }
     
     public function getPermissionsAttribute()

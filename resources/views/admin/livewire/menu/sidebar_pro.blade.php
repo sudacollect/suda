@@ -65,7 +65,7 @@
                     $permission = true;
                 }else{
                     //suda-exts
-                    if($soperate->user_role==2 && array_key_exists($options->extension_slug,$soperate->role->permissions['exts']))
+                    if(\Gtd\Suda\Auth\OperateCan::extension($soperate) && array_key_exists($options->extension_slug,$soperate->role->permissions['exts']))
                     {
 
                         if(array_key_exists($item->slug,$soperate->role->permissions['exts'][$options->extension_slug])){
@@ -73,7 +73,7 @@
                             $root_group = $soperate->role->permissions['exts'][$options->extension_slug][$item->slug];
                         }
 
-                    }elseif($soperate->user_role >= 6)
+                    }elseif(\Gtd\Suda\Auth\OperateCan::operation($soperate))
                     {
                         $permission = true;
                     }

@@ -22,8 +22,6 @@ class DashboardController extends AdminController
     public $_definition = [];
     public $response_msg = '';
     
-    public $user_role = 0; //0访客，1普通用户，8管理员，9超级管理员
-    
     //常规自定义参数
     
     public $s_tag = 'post_tag';

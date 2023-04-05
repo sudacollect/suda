@@ -7,7 +7,7 @@
     <div class="row suda-row">
         <div class="page-heading">
         <h1 class="page-title"><i class="ion-business"></i>&nbsp;{{ __('suda_lang::press.organization') }}</h1>
-        @if($soperate->user_role==9)
+        @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
         <a href="{{ admin_url('user/organization/add') }}" class="pop-modal btn btn-primary btn-sm"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}</a>
         @endif
         </div>
@@ -35,7 +35,7 @@
                                   {{ __('suda_lang::press.updated_at') }}
                               </th>
 
-                              @if($soperate->user_role==9)
+                              @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                               <th>
                                   {{ __('suda_lang::press.operate') }}
                               </th>
@@ -52,7 +52,7 @@
                               <td width="20%">{{ $org->term->name }}</td>
                               <td width="10%">@if($org->disable==1)否@else是@endif</td>
                               <td width="15%">{{ $org->updated_at }}</td>
-                              @if($soperate->user_role==9)
+                              @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                               <td>
                                   <a href="{{ admin_url('user/organization/edit/'.$org->id) }}" class="pop-modal btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                                   <button href="{{ admin_url('user/organization/delete/'.$org->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $org->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>

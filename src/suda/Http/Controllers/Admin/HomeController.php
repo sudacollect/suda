@@ -32,20 +32,12 @@ class HomeController extends DashboardController
     {
         $this->title(__('suda_lang::press.dashboard'));
         $this->setMenu('dashboard');
-        // //读取服务器信息
-        // $servers = [];
-        // $servers['remote_addr'] = $request->server('REMOTE_ADDR');
-        // $servers['server_software'] = $request->server('SERVER_SOFTWARE');
         
-        // $this->setData('servers',$servers);
-        if($this->user->user_role==2)
+        if(\Gtd\Suda\Auth\OperateCan::extension($this->user))
         {
             return redirect()->to(extadmin_url('entry/extensions'));
         }
-
-        // $this->setData('current_navi','商品');
         
-        // return view('view_suda::widgets.news');
         return $this->display('dashboard');
     }
 

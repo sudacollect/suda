@@ -18,9 +18,9 @@ trait Permission
     public function permissions()
     {
         if($this->superadmin==1){
-            return (object)['user_role'=>9,'permission'=>''];
+            return (object)['permission'=>''];
         }
-        return (object)['user_role'=>1,'permission'=>$this->role->permissions];
+        return (object)['permission'=>$this->role->permissions];
     }
     
     public function setRole($name)

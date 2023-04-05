@@ -87,7 +87,7 @@ class AdminController extends BaseController
                 
                 $this->user = auth('operate')->user();
                 
-                if($this->user->superadmin==0 && $this->user->user_role < 1)
+                if(\Gtd\Suda\Auth\OperateCan::guest($this->user))
                 {
                     Auth::guard('operate')->logout();
                     $request->session()->invalidate();

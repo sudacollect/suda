@@ -275,16 +275,14 @@ class ExtensionService
         $extension_navis = Cache::store($this->cache_store)->get('extension_navi',[]);
         if($operate)
         {
-            if($operate->user_role < 6)
+            if(\Gtd\Suda\Auth\OperateCan::general($operate))
             {
-                //suda-exts
                 if(isset($operate->role->permissions['exts']))
                 {
                     $keys = array_flip(array_keys($operate->role->permissions['exts']));
                     $navis = array_intersect_key($extension_navis,$keys);
                     return $navis;
-                }
-                
+                }   
                 return [];
             }
         }

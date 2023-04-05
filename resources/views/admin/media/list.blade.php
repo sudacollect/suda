@@ -112,7 +112,7 @@
                                 </td>
                                 
                                 <td>
-                                    @if($soperate->id==$item->operate_id || $soperate->user_role>7)
+                                    @if($soperate->id==$item->operate_id || \Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                                     <a href="{{ admin_url('media/update/'.$item->id) }}" class="pop-modal btn btn-light btn-xs tips" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                                     @if(strpos($item->type,'FILE')===false)
                                     <a href="{{ admin_url('media/rebuild/'.$item->id) }}" class="pop-modal btn btn-light btn-xs tips" title="重新生成图片" data-toggle="tooltip" data-placement="top"><i class="ion-crop"></i>&nbsp;重置缩略图</a>

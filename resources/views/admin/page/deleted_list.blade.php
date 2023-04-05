@@ -74,7 +74,7 @@
                                   <td>
                                       
 
-                                      @if($soperate->id==$item->operate_id || $soperate->user_role>7)
+                                      @if($soperate->id==$item->operate_id || \Gtd\Suda\Auth\OperateCan::operation($soperate))
                                       
                                       <button class="btn-restore btn btn-xs btn-light" data-id="{{ $item->id }}" href="{{ admin_url('page/restore/'.$item->id) }}">恢复</button>
                                       <button class="btn-forcedelete btn btn-xs btn-light" data-id="{{ $item->id }}" href="{{ admin_url('page/forcedelete/'.$item->id) }}">删除</button>

@@ -25,7 +25,7 @@ class AboutController extends DashboardController
     public function index()
     {
 
-        if($this->user->user_role < 9)
+        if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user))
         {
             return redirect(admin_url('error'));
         }

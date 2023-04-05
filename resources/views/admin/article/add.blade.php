@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
     
-    <div class="page-title"><i class="ion-create"></i>&nbsp;发布文章</div>
+    <div class="page-title"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.menu_items.article_new') }}</div>
     
     <form role="form" method="POST" action="{{ admin_url('article/save') }}" class="form-ajax">
 

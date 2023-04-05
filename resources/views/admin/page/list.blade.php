@@ -10,18 +10,18 @@
         <div class="page-heading">
             <h1 class="page-title">
                 <i class="ion-document-text"></i>
-                页面
+                {{ __('suda_lang::press.page') }}
             </h1>
             
             <div class="btn-groups flex-grow-1">
                 <a href="{{ admin_url('page/create') }}" class="btn btn-primary btn-sm">
-                    <i class="ion-add-outline"></i>&nbsp;增加页面
+                    <i class="ion-add-outline"></i>&nbsp;{{ __('suda_lang::press.add') }}
                 </a>
             </div>
             
             
             <a href="{{ admin_url('page/list/deleted') }}" class="btn btn-warning btn-xs">
-                <i class="ion-trash"></i>&nbsp;回收站
+                <i class="ion-trash"></i>&nbsp;{{ __('suda_lang::press.recycle') }}
             </a>
             
             

@@ -7,11 +7,11 @@
         <div class="page-heading">
             <h1 class="page-title">
                 <i class="ion-newspaper"></i>
-                文章
+                {{ __('suda_lang::press.article') }}
             </h1>
             <div class="btn-groups">
                 <a href="{{ admin_url('article/create') }}" class="btn btn-primary btn-sm pull-left">
-                    <i class="ion-add-circle"></i>&nbsp;增加文章
+                    <i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}
                 </a>
             </div>
         </div>
@@ -31,11 +31,14 @@
                     <a class="btn btn-dark btn-sm" href="{{ admin_url('articles/list') }}"><i class="ion-reorder-four"></i></a>
                     
                     <button class="btn btn-light btn-sm more-filter" data-element=".data-list">
-                        <i class="ion-search-circle-outline"></i>&nbsp;高级搜索
+                        <i class="ion-search-circle-outline"></i>&nbsp;{{ __('suda_lang::press.search') }}
                     </button>
                     @endif
 
-                    <a class="btn btn-sm @if(isset($article_only_deleted)) btn-warning @else  btn-warning @endif" href="{{ admin_url('articles/deleted') }}">回收站</a>
+                    <a class="btn btn-sm @if(isset($article_only_deleted)) btn-warning @else  btn-warning @endif" href="{{ admin_url('articles/deleted') }}">
+                        {{ __('suda_lang::press.recycle') }}
+                    </a>
+
                 </div>
 
             </div>

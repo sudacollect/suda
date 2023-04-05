@@ -22,13 +22,13 @@
                       <div class="mb-3 row {{ $errors->has('authority') ? ' has-error' : '' }}">
                           
                           <label for="authority" class="col-form-label col-sm-3 text-right">
-                              角色级别
+                            {{ __('suda_lang::operate.role.level') }}
                           </label>
                           <div class="col-sm-9">
                           <select name="authority" class="form-control">
 
                               @foreach($auths as $key=>$auth)
-                                <option value="{{ $key }}" @if($role->authority==$key) selected @endif >{{ $auth }}</option>
+                                <option value="{{ $auth->name }}" @if($role->authority == $auth->name) selected @endif >{{ __('suda_lang::operate.roles.'.$auth->value) }}</option>
                               @endforeach
 
                           </select>
@@ -39,7 +39,7 @@
                       <div class="mb-3 row {{ $errors->has('name') ? ' has-error' : '' }}">
                           
                         <label for="name" class="col-form-label col-sm-3 text-right">
-                            {{ __('suda_lang::press.role_name') }}
+                            {{ __('suda_lang::operate.role.name') }}
                         </label>
                         
                         <div class="col-sm-9">
@@ -81,41 +81,7 @@
 
 
         <div class="col-sm-5 suda_page_body">
-            <div class="card">
-                
-                <div class="card-body" style="color:#333;">
-                    <h5>角色级别说明</h5>
-                    <p>
-                        <b>普通管理</b><br>
-                        <span class="help-block">普通管理员是最低级别的后台用户，根据设置的权限访问相应功能。</span>
-                    </p>
-
-                    <p>
-                        <b>应用管理</b><br>
-                        <span class="help-block">应用管理和普通管理类似。</span>
-                        <span class="help-block" style="color:#ff5668;">系统为应用管理员提供了有别于其他管理员的控制台。</span>
-                    </p>
-
-                    <p>
-                        <b>运营主管</b><br>
-                        <span class="help-block">运营主管级别高于普通管理员。</span>
-                        <span class="help-block">可以在应用和功能上根据不同级别的管理员给予不同的权限设置。</span>
-                    </p>
-
-                    <p>
-                        <b>超级管理员</b><br>
-                        <span class="help-block">拥有系统所有管理权限。</span>
-                    </p>
-
-                </div>
-
-                <div class="card-footer">
-                最重要说明: 任一角色级别默认不包括任何功能和菜单权限，均需手动完成设置。
-                </div>
-
-            </div>
-
-            
+            @include('view_path::user.role.role_desc')
         </div>
 
     </div>

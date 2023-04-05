@@ -59,7 +59,7 @@
                 
                 <div class="btn-group ms-auto" role="group">
 
-                    <button href="{{ admin_url('menu/item/edit/'.$item->id) }}" id="edit-item" type="button" class="pop-modal btn btn-primary btn-xs"><i class="ion-create"></i>&nbsp;编辑</button>
+                    <button href="{{ admin_url('menu/item/edit/'.$item->id) }}" id="edit-item" type="button" class="pop-modal btn btn-primary btn-xs"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</button>
                     <button id="delete-item" type="button" class="pop-modal-delete btn btn-danger btn-xs" href="{{ admin_url('menu/item/delete/'.$item->menu_id.'/'.$item->id) }}" data_id="{{ $item->id }}"><i class="ion-trash"></i></button>
 
                 </div>
