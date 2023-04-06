@@ -387,6 +387,7 @@ return [
         'available'     => '可用',
         'update_cache'  => '更新缓存',
         'market'        => '应用市场',
+        'board'         => '应用导览',
         'ask_before_install'    => '确认安装应用?',
         'ask_before_uninstall'    => '确认卸载应用?',
     ],
@@ -400,8 +401,9 @@ return [
     'commands'      => '命令',
     'faq'           => '帮助',
     
-    'system_permission' => '系统权限',
+    'sys_permission' => '系统权限',
     'ext_permission' => '应用权限',
+    'ext_entry'      => '应用后台',
 
     'about_page' => [
         'brief'     => '用于快速开发 Web 应用和 App 应用后台系统',

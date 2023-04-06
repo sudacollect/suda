@@ -18,26 +18,7 @@ class Role extends Authenticatable
          return $this->hasMany('Gtd\Suda\Models\Operate');
     }
     
-    // 优化掉的方法
-    public function getAuthoritesByLevel($level=''){
-        $auths = Authority::cases();
-
-        if($level && array_key_exists($level,$auths)){
-
-            switch($level)
-            {
-                case 'superadmin':
-                    return $auths;
-                break;
-                case 'operation':
-                    return ['superadmin','operation'];
-                break;
-            }
-
-            return [$level];
-        }
-        return [];
-    }
+    
 
     public function getAuthorityDataAttribute()
     {

@@ -44,11 +44,12 @@
                             @if($roles)
                             @foreach ($roles as $role)
                             <tr>
-                              <td>{{ $role->id }}</td>
-                              <td>
-                                  <span class="badge bg-primary rounded-pill">
+                              <td id="{{ $role->id }}">
+                                <span class="badge bg-primary rounded-pill">
                                   {{ __('suda_lang::operate.roles.'.$role->authority_data->value) }}
-                                  </span>
+                                </span>
+                              </td>
+                              <td>
                                   {{ $role->name }}
                               </td>
                               <td>
@@ -63,11 +64,19 @@
                                   @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                                   <a href="{{ admin_url('user/roles/edit/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                                   @endif
-                                  @if($role->authority=='extension')
+
+                                  @if($role->authority=='extension' || $role->authority=='general')
                                   <a href="{{ admin_url('user/roles/showexts/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.ext_permission') }}" data-toggle="tooltip" data-placement="top"><i class="ion-filter-circle"></i>&nbsp;{{ __('suda_lang::press.ext_permission') }}</a>
-                                  @elseif(\Gtd\Suda\Auth\OperateCan::operation($soperate))
-                                  <a href="{{ admin_url('user/roles/showsys/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.system_permission') }}" data-toggle="tooltip" data-placement="top"><i class="ion-list"></i>&nbsp;{{ __('suda_lang::press.system_permission') }}</a>
                                   @endif
+
+                                  @if($role->authority=='extension')
+                                  <a href="{{ extadmin_url('/') }}" target="_blank" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.ext_permission') }}" data-toggle="tooltip" data-placement="top"><i class="ion-home"></i>&nbsp;{{ __('suda_lang::press.ext_entry') }}</a>
+                                  @endif
+
+                                  @if($role->authority=='operation')
+                                  <a href="{{ admin_url('user/roles/showsys/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.sys_permission') }}" data-toggle="tooltip" data-placement="top"><i class="ion-list"></i>&nbsp;{{ __('suda_lang::press.sys_permission') }}</a>
+                                  @endif
+                                  
                                   @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                                   <button href="{{ admin_url('user/roles/delete/'.$role->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $role->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
                                   @endif

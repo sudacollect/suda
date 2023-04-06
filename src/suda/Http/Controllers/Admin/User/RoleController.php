@@ -22,6 +22,7 @@ use Gtd\Suda\Auth\Authority;
 use Gtd\Suda\Models\User;
 use Gtd\Suda\Models\Role;
 
+use Gtd\Suda\Models\Menu;
 use Gtd\Suda\Models\Media;
 use Gtd\Suda\Models\Setting;
 use Gtd\Suda\Models\Extension;
@@ -56,7 +57,7 @@ class RoleController extends DashboardController
         }
         
         if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user)){
-            $auth_slugs = (new Role)->getAuthoritesByLevel($this->user->level);
+            $auth_slugs = \Gtd\Suda\Auth\OperateCan::getAuthoritesByLevel($this->user->level);
             $roles = Role::whereIn('authority',$auth_slugs)->where('id','<>',$this->user->role_id)->orderBy('id','desc')->paginate(20,['*'],'page',$page_no);
         }else{
             $roles = Role::where([])->orderBy('id','desc')->paginate(20,['*'],'page',$page_no);
@@ -79,7 +80,6 @@ class RoleController extends DashboardController
         $auths = $this->_authority();
         $this->setData('auths',$auths);
         
-        $this->loadPermissions();
 
         //额外的bread
         $this->setData('extend_breadcrumbs',[
@@ -109,7 +109,6 @@ class RoleController extends DashboardController
         $auths = $this->_authority();
         $this->setData('auths',$auths);
         
-        $this->loadPermissions();
         
         return $this->display('user.role.edit');
     }
@@ -208,65 +207,9 @@ class RoleController extends DashboardController
     }
     
     
-    private function getApps(){
-        $basic_apps = [
-            'setting'   => [
-                'name'=>'setting',
-                'display_name'=>'系统设置',
-            ],
-            'role'   => [
-                'name'=>'role',
-                'display_name'=>__('suda_lang::press.menu_items.setting_operate_role'),
-                'policy'=>[
-                    'setting_dashboard'  =>[
-                        'name'=>'setting_dashboard',
-                        'display_name'=>'面板风格',
-                    ],
-                    'setting_operate'  =>[
-                        'name'=>'setting_operate',
-                        'display_name'=>__('suda_lang::press.menu_items.setting_operate'),
-                    ],
-                    'setting_operate_role'  =>[
-                        'name'=>'setting_operate_role',
-                        'display_name'=>__('suda_lang::press.menu_items.setting_operate_role'),
-                    ],
-                    'setting_operate_org'  =>[
-                        'name'=>'setting_operate_org',
-                        'display_name'=>__('suda_lang::press.menu_items.setting_operate_org'),
-                    ],
-                ]
-            ],
-            'tool'      => [
-                'name'=>'tool',
-                'display_name'=>'工具',
-            ],
-            'appearance'     => [
-                'name'=>'appearance',
-                'display_name'=>'外观主题',
-            ],
-            'user'     => [
-                'name'=>'user',
-                'display_name'=>'用户',
-            ],
-            'media'     => [
-                'name'=>'media',
-                'display_name'=>'媒体',
-            ],
-            'page'      => [
-                'name'=>'page',
-                'display_name'=>'页面',
-            ],
-            'article'   => [
-                'name'=>'article',
-                'display_name'=>'文章',
-            ],
-        ];
-        
-        //#TODO 获取扩展应用
-        $extend_apps = [];
-        
-        $apps = array_merge($extend_apps,$basic_apps);
-        return $apps;
+    private function getDefaultMenu(){
+        $data = Menu::getMenuByName(config('sudaconf.default_menu', 'suda'));
+        return isset($data['parent_items'])?$data['parent_items']:[];
     }
     
     private function getPermissionActions(){
@@ -293,11 +236,11 @@ class RoleController extends DashboardController
     }
     
     public function loadPermissions(){
-        $apps = $this->getApps();
-        $permissions = $this->getPermissionActions();
+        $menus = $this->getDefaultMenu();
+        $this->setData('menus',$menus);
         
-        $this->setData('apps',$apps);
-        $this->setData('permissions',$permissions);
+        // $permissions = $this->getPermissionActions();
+        // $this->setData('permissions',$permissions);
     }
     
     //所有权限列表
@@ -315,7 +258,7 @@ class RoleController extends DashboardController
             return redirect(admin_url('error'));
         }
 
-        $this->title(__('suda_lang::press.system_permission'));
+        $this->title(__('suda_lang::press.sys_permission'));
         
         $id = intval($id);
         $role = Role::where('id','=',$id)->first();
@@ -349,8 +292,6 @@ class RoleController extends DashboardController
         $this->setData('role_permissions',$permissions);
         
         $this->setData('role',$role);
-        
-        
         
         $this->loadPermissions();
         

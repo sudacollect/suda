@@ -55,7 +55,7 @@ class OperateController extends DashboardController
             $this->setData('deleted',1);
         }
         if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user)){
-            $auth_slugs = (new Role)->getAuthoritesByLevel($this->user->level);
+            $auth_slugs = \Gtd\Suda\Auth\OperateCan::getAuthoritesByLevel($this->user->level);
             $operates = $operateObj->where(['superadmin'=>0])->orderBy('id','desc')->whereHas('role',function($query) use ($auth_slugs){
                 $query->whereIn('authority',$auth_slugs);
             })->with('categories')->paginate(20,['*'],'page',$page_no);
@@ -411,7 +411,7 @@ class OperateController extends DashboardController
     public function getRolesAndOrgs(){
 
         if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user)){
-            $auth_slugs = (new Role)->getAuthoritesByLevel($this->user->level);
+            $auth_slugs = \Gtd\Suda\Auth\OperateCan::getAuthoritesByLevel($this->user->level);
             $roles = Role::whereIn('authority',$auth_slugs)->where(['disable'=>'0'])->get();
         }else{
             $roles = Role::where(['disable'=>'0'])->get();

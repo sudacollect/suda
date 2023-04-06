@@ -385,7 +385,8 @@ return [
         'refresh'         => 'Refresh',
         'available'     => 'Available',
         'update_cache'  => 'Updadte Cache',
-        'market'        => 'Exts Market',
+        'market'        => 'Exts Store',
+        'board'        => 'Exts Board',
         'ask_before_install'    => 'Confirm to install?',
         'ask_before_uninstall'    => 'Confirm to uninstall?',
     ],
@@ -398,8 +399,9 @@ return [
     'commands'      => 'Commands',
     'faq'           => 'Faq',
     
-    'system_permission' => 'System Permission',
+    'sys_permission'    => 'System Permission',
     'ext_permission'    => 'Extension Permission',
+    'ext_entry'         => 'Extension Login',
 
 
     'about_page'    => [

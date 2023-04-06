@@ -10,7 +10,7 @@
                 <th width="12%">{{ __('suda_lang::press.category') }}</th>
                 <th width="8%">{{ __('suda_lang::press.publish') }}</th>
                 <th width="10%">
-                    {{ __('suda_lang::press.articles.sort') }} <a @if(isset($by_sort) && $by_sort=='sort')  href="{{ admin_url('article/list') }}" class="text-success" @else href="{{ admin_url('articles/list/sorted') }}" class="text-muted" @endif><i class="ion-swap-vertical"></i></a>
+                    {{ __('suda_lang::press.articles.sort') }} <a @if(isset($by_sort) && $by_sort=='sort')  href="{{ admin_url('articles') }}" class="text-success" @else href="{{ admin_url('articles/list/sorted') }}" class="text-muted" @endif><i class="ion-swap-vertical"></i></a>
                 </th>
                 <th width="10%">{{ __('suda_lang::press.publish') }}</th>
                 <th width="15%">{{ __('suda_lang::press.updated_at') }}</th>

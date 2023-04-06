@@ -27,6 +27,10 @@
             </h1>
             
             <div class="btn-groups ms-auto">
+                <a href="{{ admin_url('entry/extensions') }}" target="_blank" class="btn btn-light btn-sm">
+                    <i class="ion-apps-outline"></i>&nbsp;{{ __('suda_lang::press.extensions.board') }}
+                </a>
+
                 @if(\Gtd\Suda\Auth\OperateCan::operation($soperate))
                 <button type="button" href="{{ admin_url('manage/extension/updatecache') }}" class="btn-refresh-cache btn btn-sm btn-light">
                     <i class="ion-sync"></i>&nbsp;{{ __('suda_lang::press.extensions.update_cache') }}
@@ -34,7 +38,7 @@
                 @endif
                 
                 <a href="{{ url('http://suda.gtd.xyz') }}" target="_blank" class="btn btn-light btn-sm">
-                    <i class="ion-bulb-outline"></i>&nbsp;{{ __('suda_lang::press.extensions.market') }}
+                    <i class="ion-bag-handle-outline"></i>&nbsp;{{ __('suda_lang::press.extensions.market') }}
                 </a>
 
             </div>

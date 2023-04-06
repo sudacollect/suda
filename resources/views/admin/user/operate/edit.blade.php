@@ -100,7 +100,7 @@
             @if($soperate->superadmin==1)
             <div class="mb-3">
                 <div class="form-check form-check-inline">
-                    <input type="radio" class="form-check-input" name="superadmin" placeholder="{{ __('suda_lang::press.yes') }}" value="1" @if($operate->superadmin==1) checked @endif>
+                    <input type="checkbox" class="form-check-input" name="superadmin" placeholder="{{ __('suda_lang::press.yes') }}" value="1" @if($operate->superadmin==1) checked @endif>
                     <label class="form-check-label" for="superadmin">{{ __('suda_lang::press.as_superadmin') }}</label>
                 </div>
             </div>

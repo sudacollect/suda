@@ -65,7 +65,7 @@
                     </li>
 
                     <li class="list-group-item" style="font-size:1rem;padding: .75rem .5rem;">
-                        <a href="{{ admin_url('article/list') }}">
+                        <a href="{{ admin_url('articles') }}">
                             <span class="badge text-secondary">
                                 <i class="ion-folder"></i>
                             </span>

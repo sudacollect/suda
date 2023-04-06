@@ -46,7 +46,7 @@ class ArticleController extends DashboardController
         $this->title(__('suda_lang::press.menu_items.article_new'));
 
         $this->breadParent(__('suda_lang::press.menu_items.dashboard'),'/');
-        $this->breadParent(__('suda_lang::press.menu_items.article'),'article/list');
+        $this->breadParent(__('suda_lang::press.menu_items.article'),'articles');
         $this->breadSet(__('suda_lang::press.menu_items.article_new'),'');
         
         // x-suda::select-category
@@ -103,7 +103,7 @@ class ArticleController extends DashboardController
         
         $this->title(__('suda_lang::press.menu_items.article_update'));
         $this->breadParent(__('suda_lang::press.menu_items.dashboard'),'/');
-        $this->breadParent(__('suda_lang::press.menu_items.article'),'article/list');
+        $this->breadParent(__('suda_lang::press.menu_items.article'),'articles');
         $this->breadSet(__('suda_lang::press.menu_items.article_update'),'');
 
         $this->setMenu('article','article_list');

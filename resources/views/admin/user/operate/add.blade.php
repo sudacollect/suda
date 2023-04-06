@@ -27,7 +27,7 @@
                 </label>
         
                 <select id="role_id" name="role_id" class="form-control" placeholder="{{ __('suda_lang::press.select_placeholder',['column'=>__('suda_lang::press.role')]) }}">
-                    <option value="">{{ __('suda_lang::press.select_placeholder',['column'=>__('suda_lang::press.role')]) }}</option>
+                    <option value="">- {{ __('suda_lang::press.select_placeholder',['column'=>__('suda_lang::press.role')]) }} -</option>
                     @foreach ($roles as $k=>$role)
                     <option value="{{ $role->id }}">{{ $role->name }}</option>
                     @endforeach

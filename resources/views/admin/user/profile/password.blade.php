@@ -3,10 +3,10 @@
 
 
 @section('content')
-<div class="container">
-    <div class="row suda-row @if(\Gtd\Suda\Auth\OperateCan::extension($soperate)) suda-row-noside @endif">
+<div class="container  container-fluid">
+    
         <div class="page-heading">
-            <h1 class="page-title">{{ __('suda_lang::auth.profile') }}</h1>
+            <h1 class="page-title"><i class="ion-person"></i>&nbsp;{{ __('suda_lang::auth.profile') }}</h1>
         </div>
         
         <div class="col-sm-6 suda_page_body">
@@ -72,6 +72,6 @@
             </div>
         </div>
         
-    </div>
+    
 </div>
 @endsection

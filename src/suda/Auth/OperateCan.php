@@ -2,10 +2,12 @@
 
 namespace Gtd\Suda\Auth;
 
+use Illuminate\Support\Arr;
 use Gtd\Suda\Auth\Authority;
 use Gtd\Suda\Models\Operate;
 
-class OperateCan {
+class OperateCan
+{
     
     public static function superadmin(Operate $user): bool
     {
@@ -70,5 +72,20 @@ class OperateCan {
             Authority::general->name    => false,
             Authority::extension->name  => false,
         };
+    }
+
+    public static function getAuthoritesByLevel($level=''): array
+    {
+        $auths = Authority::cases();
+        $values = array_column($auths, 'name');
+
+        return match($level)
+        {
+            Authority::superadmin->name => $values,
+            Authority::operation->name  => array_flip(Arr::except(array_flip($values),['superadmin'])),
+            Authority::general->name    => array_flip(Arr::only(array_flip($values),['general'])),
+            Authority::extension->name  => [],
+        };
+        
     }
 }

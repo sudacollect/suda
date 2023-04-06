@@ -46,7 +46,7 @@ class Quickin extends Widget
         
         $available_data = app('suda_extension')->availableExtensions();
         $user = auth('operate')->user();
-        if(\Gtd\Suda\Auth\OperateCan::general($user)){
+        if(\Gtd\Suda\Auth\OperateCan::extension($user) || \Gtd\Suda\Auth\OperateCan::general($user)){
             $show_extensions = [];
             $permissions = $user->role->permissions;
             if(array_key_exists('exts',$permissions)){
