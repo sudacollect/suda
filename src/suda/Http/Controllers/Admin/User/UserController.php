@@ -156,7 +156,7 @@ class UserController extends DashboardController
         
         
         $url = 'user/list';
-        return $this->responseAjax('success','保存成功',$url);
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
     }
     
     protected function userValidator(array $data,&$error='')
@@ -250,7 +250,7 @@ class UserController extends DashboardController
             $rules['register'] = $request->register;
         }
         $this->saveSettingByKey('user_rule','user',$register,'serialize');
-        return $this->responseAjax('success','保存成功','self.refresh');
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
     }
     
     public function isPhone($string){

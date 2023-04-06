@@ -31,7 +31,7 @@ class SettingsTableSeeder extends Seeder
             ])->save();
         }
 
-        $setting = $this->findSetting('site_close');
+        $setting = $this->findSetting('site_status');
         if (!$setting->exists) {
             $setting->fill([
                 'values'        => '0',

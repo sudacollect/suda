@@ -267,7 +267,7 @@ class OperateController extends DashboardController
         
         
         $url = 'manage/operates';
-        return $this->responseAjax('success','保存成功','self.refresh');
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
     }
     
     protected function operateValidator(array $data,&$error='')

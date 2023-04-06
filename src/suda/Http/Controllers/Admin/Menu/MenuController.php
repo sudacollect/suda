@@ -97,7 +97,7 @@ class MenuController extends DashboardController
             Menu::updateCache($menuModel->id);
         }
         
-        return $this->responseAjax('success', '保存成功', 'menu');
+        return $this->responseAjax('success', __('suda_lang::press.msg.success'), 'menu');
         
     }
     
@@ -142,13 +142,13 @@ class MenuController extends DashboardController
         }
         
         if(!$id || $request_id!=$id || $request->id==1){
-            return $this->responseAjax('fail', '删除失败', 'menu');
+            return $this->responseAjax('fail', __('suda_lang::press.msg.fail'), 'menu');
         }else{
             $menu = Menu::where('id','=',$id)->first();
             Menu::where('id','=',$id)->delete();
             Menu::deleteCache($menu->name);
         }
-        return $this->responseAjax('success', '菜单已删除', 'menu');
+        return $this->responseAjax('success', __('suda_lang::press.msg.success'), 'menu');
         
     }
     
@@ -202,12 +202,12 @@ class MenuController extends DashboardController
 
         $params = [
             'class' => "\\Gtd\\Suda\\Database\\Seeds\\MenuItemsTableSeeder",
-            'force' => true,
+            '--force',
         ];
 
         Artisan::call($command,$params);
 
-        return $this->responseAjax('success', '数据已恢复', 'self.refresh');
+        return $this->responseAjax('success', __('suda_lang::press.msg.success'), 'self.refresh');
     }
     
     public function items(Request $request,$id){
@@ -357,7 +357,7 @@ class MenuController extends DashboardController
             Menu::updateCache($request->menu_id);
         }
         
-        return $this->responseAjax('success', '保存成功', 'menu/items/'.$menu_id);
+        return $this->responseAjax('success', __('suda_lang::press.msg.success'), 'menu/items/'.$menu_id);
         
     }
     
@@ -413,14 +413,14 @@ class MenuController extends DashboardController
         }
         
         if(!$id || $request_id!=$id || intval($request->id)<1){
-            return $this->responseAjax('fail', '删除失败', 'menu/items/'.$menu_id);
+            return $this->responseAjax('fail', __('suda_lang::press.msg.fail'), 'menu/items/'.$menu_id);
         }else{
             $item = MenuItem::where('id','=',$id)->first();
             MenuItem::where('id','=',$id)->delete();
             
             Menu::updateCache($item->menu_id);
         }
-        return $this->responseAjax('success', '菜单已删除', 'menu/items/'.$menu_id);
+        return $this->responseAjax('success', __('suda_lang::press.msg.success'), 'menu/items/'.$menu_id);
         
     }
 }

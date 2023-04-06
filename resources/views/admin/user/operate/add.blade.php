@@ -43,7 +43,7 @@
                   {{ __('suda_lang::press.username') }}
               </label>
       
-              <input type="text" name="username" class="form-control" id="inputName" placeholder="{{ __('suda_lang::auth.username_rule') }}" value="" autocomplete="false">
+              <input type="text" name="username" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.validation.username') }}" value="" autocomplete="false">
                 @if ($errors->has('username'))
                     <span class="help-block">
                         <strong>{{ $errors->first('username') }}</strong>

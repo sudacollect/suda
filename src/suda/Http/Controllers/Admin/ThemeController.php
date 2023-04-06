@@ -83,7 +83,7 @@ class ThemeController extends DashboardController
             $return = app('theme')->setTheme($request->app_name,$request->theme_name,true);
             if($return){
                 //更新成功
-                return $this->responseAjax('success','保存成功','theme');
+                return $this->responseAjax('success',__('suda_lang::press.msg.success'),'theme');
             }
         }
 

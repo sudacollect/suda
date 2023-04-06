@@ -32,7 +32,7 @@ class SettingComponent extends Component
         $keys = [
             'site_name',
             'site_domain',
-            'site_close',
+            'site_status',
             'share_image',
             'logo',
             'company_phone',
@@ -66,30 +66,27 @@ class SettingComponent extends Component
         $settingModel = new Setting;
         
         foreach($this->settings as $k=>$v){
-            if($v)
-            {
-                if($k=='site_name'){
-                    $site_name = $v;
-                }
-                $data = [
-                    'group'=>'site',
-                    'key'=>$k,
-                    'values'=>$v,
-                    'type'=>'text'
-                ];
-                
-                if($first = $settingModel->where(['key'=>$k])->first()){
-                    $settingModel->where(['key'=>$k])->update($data);
-                }else{
-                    $settingModel->insert($data);
-                }
+            if($k=='site_name'){
+                $site_name = $v;
+            }
+            $data = [
+                'group'     => 'site',
+                'key'       => $k,
+                'values'    => $v,
+                'type'      => 'text'
+            ];
+            
+            if($first = $settingModel->where(['key'=>$k,'group'=>'site'])->first()){
+                $settingModel->where(['key'=>$k,'group'=>'site'])->update($data);
+            }else{
+                $settingModel->insert($data);
             }
         }
         
         (new SettingService)->updateCache();
 
-        $this->error_msg = '保存成功';
-        $this->dispatchBrowserEvent('errorBox',['msg'=>'保存成功']);
+        $this->error_msg = __('suda_lang::press.msg.success');
+        $this->dispatchBrowserEvent('errorBox',['msg'=>__('suda_lang::press.msg.success')]);
     }
     
     public function render()

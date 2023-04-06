@@ -50,7 +50,7 @@ return [
     'homepage'      => '首页',
     'visit_homepage' => '访问首页',
     
-    'system_status' => '系统状态',
+    'site_status' => '系统状态',
     'domain'        => '域名地址',
     'icp_number'    => 'ICP备案号',
     
@@ -58,6 +58,19 @@ return [
     'company_name'  => '公司名称',
     'company_address'   => '公司地址',
     'company_telephone' => '公司电话',
+
+    'setting' => '设置',
+
+    'navi' => [
+        'layout' => '布局',
+        'color' => '配色',
+        'layout_left' => '左右布局',
+        'layout_bar' => '顶部通栏',
+        'color_white' => '白色',
+        'color_dark' => '暗色',
+        'color_blue' => '蓝色',
+        'color_brown' => '茶色',
+    ],
     
     'btn' => [
         'button'    => '按钮',
@@ -74,6 +87,11 @@ return [
         'cancel_select'=> '取消选择',
     ],
     
+    'msg' => [
+        'success' => '操作成功!',
+        'failed' => '操作失败!',
+        'error' => '操作错误!',
+    ],
     
     'input_placeholder'     => '请输入:column',
     'select_placeholder'    => '请选择:column',
@@ -134,12 +152,27 @@ return [
     'yes'=> '是',
     'no'=> '否',
 
-    'recover' => '恢复默认',
     'color'   => '颜色',
     'description'   => '描述',
     'for_example' => '例如',
 
     //#Menu
+    'menu_tips'     => '菜单在模板中的引用方式',
+
+    'user_list'     => '所有用户',
+    
+    'publish_date'  => '发布日期',
+    'sticked'       => '置顶',
+    'publish'       => '发布',
+    'published'     => '已发布',
+    'unpublished'   => '未发布',
+
+    'page'      => '页面',
+    'recycle'   => '恢复',
+
+    'date'      => '日期',
+    'time'      => '时间',
+
     'menu' => '菜单',
     'menu_name' => '菜单名称',
     
@@ -196,6 +229,21 @@ return [
         'tool_extend' => '应用管理',
         'tool_compass' => '组件',
     ],
+
+    'menu_recover' => [
+        'restore' => '恢复菜单',
+        'title' => '恢复初始化数据',
+        'tips_1' => '恢复默认菜单为初始化数据，操作将仅仅替换当前菜单组下所有菜单数据，并不会改变系统的调用规则。',
+        'tips_2' => '恢复操作不会影响其他菜单组数据。',
+    ],
+
+    'link_type' => '链接类型',
+    'link_url' => '链接',
+    'link_route' => '路由',
+    '_blank' => '新窗口',
+    'icon' => '图标',
+    'open_window' => '打开方式',
+    '_self' => '当前窗口',
     
     'error' => [
         
@@ -203,21 +251,11 @@ return [
         
     ],
 
-    'menu_tips'     => '菜单在模板中的引用方式',
-
-    'user_list'     => '所有用户',
+    'validation' => [
+        'slug' => '唯一, 字母数字',
+        'username' => '唯一, 字母数字下划线'
+    ],
     
-    'publish_date'  => '发布日期',
-    'sticked'       => '置顶',
-    'publish'       => '发布',
-    'published'     => '已发布',
-    'unpublished'   => '未发布',
-
-    'page'      => '页面',
-    'recycle'   => '恢复',
-
-    'date'      => '日期',
-    'time'      => '时间',
 
     //Dashboard
     'dash' => [
@@ -316,6 +354,7 @@ return [
         'confirm_batch' => '确认批量操作',
         'upload_label' => '拖动文件到这里上传',
         'upload_label_btn' => '点击选择文件上传',
+        'missing_user' => '缺少上传文件对应的用户',
     ],
 
     // SETTING

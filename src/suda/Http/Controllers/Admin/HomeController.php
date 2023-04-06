@@ -168,7 +168,7 @@ class HomeController extends DashboardController
             }
             
             //更新成功
-            return $this->responseAjax('success','保存成功','self.refresh');
+            return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
         }
         
         $url = 'setting/site';
@@ -248,7 +248,7 @@ class HomeController extends DashboardController
             }
             
             //更新成功
-            return $this->responseAjax('success','保存成功','self.refresh');
+            return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
         }
         
         return $this->responseAjax('fail',$response_msg,'self.refresh');
@@ -379,7 +379,7 @@ class HomeController extends DashboardController
         
         //更新成功
         $url = 'setting/dashboardinfo';
-        return $this->responseAjax('success','保存成功',$url);
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
         
     }
     
@@ -444,7 +444,7 @@ class HomeController extends DashboardController
 
         //更新成功
         $url = 'setting/browser';
-        return $this->responseAjax('success','保存成功',$url);
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
         
     }
     
@@ -479,7 +479,7 @@ class HomeController extends DashboardController
         $this->saveSettingByKey('seo','site',$data_value,'serialize');
 
         //更新成功
-        return $this->responseAjax('success','保存成功','self.refresh');
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
         
     }
     

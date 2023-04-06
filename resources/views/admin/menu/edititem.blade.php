@@ -35,7 +35,7 @@
                     {{ __('suda_lang::press.slug') }}
                 </label>
         
-                <input type="text" name="slug" class="form-control" id="inputSlug"  value="{{ $item->slug }}" placeholder="要求唯一,只能使用英文、数字">
+                <input type="text" name="slug" class="form-control" id="inputSlug"  value="{{ $item->slug }}" placeholder="{{ __('suda_lang::press.validation.slug') }}">
                 @if ($errors->has('slug'))
                     <span class="help-block">
                         <strong>{{ $errors->first('slug') }}</strong>
@@ -47,12 +47,12 @@
               <div class="mb-3{{ $errors->has('url_type') ? ' has-error' : '' }}">
           
                 <label for="url_type" >
-                    链接类型
+                    {{ __('suda_lang::press.link_type') }}
                 </label>
         
-                <select name="url_type" id="url_type" class="form-control" placeholder="请选择类型">
-                    <option value="1" @if(!empty($item->url)) selected @endif>链接URL</option>
-                    <option value="2" @if(!empty($item->route)) selected @endif>路由别名</option>
+                <select name="url_type" id="url_type" class="form-control" placeholder="{{ __('suda_lang::press.link_type') }}">
+                    <option value="1" @if(!empty($item->url)) selected @endif>{{ __('suda_lang::press.link_url') }}</option>
+                    <option value="2" @if(!empty($item->route)) selected @endif>{{ __('suda_lang::press.link_route') }}</option>
                 </select>
         
               </div>
@@ -75,7 +75,7 @@
                     }
                 @endphp
         
-                <input type="text" name="url" class="form-control" value="{{ $url }}" id="url" placeholder="链接地址">
+                <input type="text" name="url" class="form-control" value="{{ $url }}" id="url" placeholder="{{ __('suda_lang::press.link_url') }}">
                 @if ($errors->has('url'))
                     <span class="help-block">
                         <strong>{{ $errors->first('url') }}</strong>
@@ -87,12 +87,12 @@
               <div class="mb-3{{ $errors->has('target') ? ' has-error' : '' }}">
           
                 <label for="target" >
-                    是否新窗口打开
+                    {{ __('suda_lang::press.open_window') }}
                 </label>
         
-                <select name="target" id="target" class="form-control" placeholder="请选择打开方式">
-                    <option value="_self" @if($item->target=='_self') selected @endif>当前窗口</option>
-                    <option value="_blank" @if($item->target=='_blank') selected @endif>新窗口</option>
+                <select name="target" id="target" class="form-control" placeholder="{{ __('suda_lang::press.open_window') }}">
+                    <option value="_self" @if($item->target=='_self') selected @endif>{{ __('suda_lang::press._self') }}</option>
+                    <option value="_blank" @if($item->target=='_blank') selected @endif>{{ __('suda_lang::press._blank') }}</option>
                 </select>
         
               </div>
@@ -100,10 +100,10 @@
               <div class="mb-3{{ $errors->has('icon_class') ? ' has-error' : '' }}">
           
                 <label for="icon_class" >
-                    图标样式
+                    {{ __('suda_lang::press.icon') }}
                 </label>
         
-                <input type="text" name="icon_class" class="form-control" id="icon_class" value="{{ $item->icon_class }}" placeholder="图标样式,例如 ion-settings">
+                <input type="text" name="icon_class" class="form-control" id="icon_class" value="{{ $item->icon_class }}" placeholder="ion-settings">
                 @if ($errors->has('icon_class'))
                     <span class="help-block">
                         <strong>{{ $errors->first('icon_class') }}</strong>
@@ -115,7 +115,7 @@
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="1" id="enable" name="enable" @if($item->enable==1) checked @endif>
                 <label class="form-check-label" for="enable">
-                  是否启用
+                    {{ __('suda_lang::press.enable') }}
                 </label>
             </div>
 

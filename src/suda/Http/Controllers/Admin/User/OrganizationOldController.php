@@ -126,7 +126,7 @@ class OrganizationOldController extends DashboardController
         }
         
         $url = 'user/organization';
-        return $this->responseAjax('success','保存成功',$url);
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
         
         //return redirect(admin_url('user/organization'));
     }

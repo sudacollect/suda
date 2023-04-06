@@ -63,7 +63,7 @@ class StyleController extends DashboardController
         $this->saveSettingByKey('sidebar_style','dashboard',$post['sidebar_style']);
         
         //更新成功
-        return $this->responseAjax('success','保存成功','self.refresh');
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
     }
     
     //设置模板
@@ -89,7 +89,7 @@ class StyleController extends DashboardController
                 'permission' => serialize($new_permission),
             ]);
             
-            return $this->responseAjax('success','保存成功','self.refresh');
+            return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
         }
         
         
@@ -113,8 +113,8 @@ class StyleController extends DashboardController
                 'navbar_color'=>'white',
             ]);
         }
-        
-        $this->setData('modal_title','设置控制面板');
+
+        $this->setData('modal_title',__('suda_lang::press.setting'));
 
         return $this->display('home.dashboard_layout');
     }
@@ -143,7 +143,7 @@ class StyleController extends DashboardController
         ]);
 
         //更新成功
-        return $this->responseAjax('success','保存成功','self.refresh');
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
         
     }
     

@@ -161,7 +161,7 @@ class ImageService
             
             return $this->_file;
         }
-        $msg = '上传失败';
+        $msg = 'upload failed';
         return false;
     }
     
@@ -198,7 +198,7 @@ class ImageService
         
         if(!array_key_exists('user_type',$options) || !array_key_exists('user_id',$options)){
             
-            $msg = '缺少上传文件对应的用户信息';
+            $msg = __('suda_lang::press.medias.missing_user');
             return false;
             
         }
@@ -615,7 +615,7 @@ class ImageService
         
         if(!array_key_exists('user_type',$options) || !array_key_exists('user_id',$options)){
             
-            $msg = '缺少上传文件对应的用户信息';
+            $msg = __('suda_lang::press.medias.missing_user');
             return false;
             
         }

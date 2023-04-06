@@ -23,5 +23,4 @@ return [
     'logout'                => '退出登录',
     'superAdmin'            => '超级管理',
     'forgetPasswordRequest' => '忘记密码请联系管理员',
-    'username_rule'         => '英文数字下划线',
 ];

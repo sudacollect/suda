@@ -1,35 +1,35 @@
 <?php
 return [
-    'system_name'=> 'Suda',
-    'product'=> 'Product ',
+    'system_name' => 'Suda',
+    'product' => 'Product ',
     
-    'certificate'=> 'Certificate',
-    'certificated'=> 'certified',
-    'uncertificated'=> 'uncertified',
-    'logo'=> 'Logo',
-    'website_name'=> 'Site Name',
-    'sidebar_style'=> 'Sidebar style',
+    'certificate' => 'Certificate',
+    'certificated' => 'certified',
+    'uncertificated' => 'uncertified',
+    'logo' => 'Logo',
+    'website_name' => 'Site Name',
+    'sidebar_style' => 'Sidebar style',
     
-    'created_at'=> 'Created',
-    'updated_at'=> 'Updated',
-    'deleted_at'=> 'Deleted',
+    'created_at' => 'Created',
+    'updated_at' => 'Updated',
+    'deleted_at' => 'Deleted',
     
-    'name'=> 'Name',
-    'title'=> 'Title',
-    'operate'=> 'Operate',
-    'operation'=> 'Operation',
-    'add'=> 'Add',
-    'edit'=> 'Edit',
-    'save'=> 'Save',
-    'submit_save'=> 'Submit',
-    'preview'=> 'Preview',
-    'delete'=> 'Delete',
-    'filter'=> 'Filter',
-    'search'=> 'Search',
-    'link'=> 'Link',
-    'slug'=> 'Slug',
-    'sort'=> 'Sort',
-    'set_sort'=> 'Sort',
+    'name' => 'Name',
+    'title' => 'Title',
+    'operate' => 'Operate',
+    'operation' => 'Operation',
+    'add' => 'Add',
+    'edit' => 'Edit',
+    'save' => 'Save',
+    'submit_save' => 'Submit',
+    'preview' => 'Preview',
+    'delete' => 'Delete',
+    'filter' => 'Filter',
+    'search' => 'Search',
+    'link' => 'Link',
+    'slug' => 'Slug',
+    'sort' => 'Sort',
+    'set_sort' => 'Sort',
     'sort_asc' => 'Asc sort',
     'password' => 'Password',
     'avatar'      => 'Avatar',
@@ -40,39 +40,56 @@ return [
     
     'language' => 'language',
     'switch_language' => 'switch',
-    'dashboard'=> 'dashboard',
-    'welcome'=> 'welcome',
-    'homepage'=> 'home',
-    'visit_homepage'=> 'visit Home',
+    'dashboard' => 'dashboard',
+    'welcome' => 'welcome',
+    'homepage' => 'home',
+    'visit_homepage' => 'visit Home',
     
-    'system_status'=> 'System Status',
-    'domain'=> 'Domain',
-    'icp_number'=> 'ICP.NO',
+    'site_status' => 'Status',
+    'domain' => 'Domain',
+    'icp_number' => 'ICP.NO',
     
-    'company'=> 'Company',
-    'company_name'=> 'Company name',
-    'company_address'=> 'Company address',
-    'company_telephone'=> 'Company telephone',
-    
-    'btn'=>[
-        'button'=> 'Button',
-        'submit'=> 'Submit',
-        'save'=> 'Save',
-        'add'=> 'Add',
-        'edit'=> 'Edit',
-        'cancel'=> 'Cancel',
-        'delete'=> 'Delete',
-        'search'=> 'Search',
-        'update'=> 'Update',
-        'select'=> 'Select',
-        'select_all'=> 'Select All',
-        'cancel_select'=> 'Deselect',
+    'company' => 'Company',
+    'company_name' => 'Company name',
+    'company_address' => 'Company address',
+    'company_telephone' => 'Company telephone',
+    'setting' => 'Setting',
+
+    'navi' => [
+        'layout' => 'Layout',
+        'color' => 'Color',
+        'layout_left' => 'Left Sidebar',
+        'layout_bar' => 'Top Sidebar',
+        'color_white' => 'White',
+        'color_dark' => 'Dark',
+        'color_blue' => 'Blue',
+        'color_brown' => 'Brown',
+    ],
+
+    'btn' =>[
+        'button' => 'Button',
+        'submit' => 'Submit',
+        'save' => 'Save',
+        'add' => 'Add',
+        'edit' => 'Edit',
+        'cancel' => 'Cancel',
+        'delete' => 'Delete',
+        'search' => 'Search',
+        'update' => 'Update',
+        'select' => 'Select',
+        'select_all' => 'Select All',
+        'cancel_select' => 'Deselect',
     ],
     
+    'msg' => [
+        'success' => 'Success!',
+        'failed' => 'Failed!',
+        'error' => 'Error!',
+    ],
     
-    'input_placeholder'=> ':column',
-    'select_placeholder'=> ':column',
-    'validate_unique'=> ':column duplicated',
+    'input_placeholder' => ':column',
+    'select_placeholder' => ':column',
+    'validate_unique' => ':column duplicated',
     
 
     
@@ -85,31 +102,31 @@ return [
     'country'   => 'country',
     'year'      => 'year',
     
-    'upload'=> 'Upload',
+    'upload' => 'Upload',
     
-    'brands'=> 'brands',
-    'gender'=> 'gender',
+    'brands' => 'brands',
+    'gender' => 'gender',
     
-    'username'=> 'Username',
-    'organization'=> 'Organization',
-    'role'=> 'Role',
-    'role_list'=> 'Role List',
-    'role_name'=> 'Name',
-    'role_authority'=> 'authority',
+    'username' => 'Username',
+    'organization' => 'Organization',
+    'role' => 'Role',
+    'role_list' => 'Role List',
+    'role_name' => 'Name',
+    'role_authority' => 'authority',
 
-    'telephone'=> 'telephone',
-    'phone'=> 'phone',
-    'email'=> 'email',
+    'telephone' => 'telephone',
+    'phone' => 'phone',
+    'email' => 'email',
     
-    'organization_name'=> 'organization name',
+    'organization_name' => 'organization name',
     
-    'as_superadmin'=> 'Set as Superadmin',
-    'filter_missing'=> 'missing fileter params',
+    'as_superadmin' => 'Set as Superadmin',
+    'filter_missing' => 'missing fileter params',
     
-    'type_name'=> 'type name',
-    'taxonomy'=> 'taxonomy',
+    'type_name' => 'type name',
+    'taxonomy' => 'taxonomy',
     
-    '404'=> 'not found',
+    '404' => 'not found',
     
     
     
@@ -119,87 +136,23 @@ return [
     'status'    => 'Status',
     'notice'    => 'Notice',
     
-    'image_setting'=> 'Image Setting',
+    'image_setting' => 'Image Setting',
 
     
     
-    'download'=> 'download',
+    'download' => 'download',
     
-    'yes'=> 'Y',
-    'no'=> 'N',
+    'yes' => 'Y',
+    'no' => 'N',
 
-    'recover' => 'Recover',
     'color'   => 'Color',
     'description'   => 'Description',
     'for_example' => 'For example',
 
     //#Menu
-    'menu'=> 'menu',
-    'menu_name'=> 'name',
-    
-    'setting_menu'=> 'Setting',
-    'setting_menu_desc'=> 'Menu has menu group and item.',
-    'add_menu'=> 'Add Menu',
-    'edit_menu'=> 'Edit Menu',
-    
-    'add_menu_item'=> 'Add Item',
-    'edit_menu_item'=> 'Edit Item',
-    
-    'update_cache'=> 'Update Cache',
-    
-    'menu_item'=> 'Items',
-    'menu_items'=>[
-        
-        'dashboard'=> 'Dashboard',
-        'article'=> 'Article',
-        'article_list'=> 'Articles',
-        'article_new'=> 'Add Article',
-        'article_update'=> 'Edit',
-        'article_delete'=> 'Delete',
-        'category'=> 'Category',
-        'tag'=> 'Tags',
-        'page'=> 'Page',
-        'page_list'=> 'Pages',
-        'page_new'=> 'Add Page',
-        'page_update'=> 'Edit',
-        'page_delete'=> 'Delete',
-        'media'=> 'Media',
-        'media_list'=> 'Medias',
-        'media_new'=> 'Add',
-        'media_update'=> 'Edit',
-        'media_delete'=> 'Delete',
-        'user'=> 'User',
-        'user_list'=> 'Users',
-        'user_register_rule'=> 'Register rule',
-        
-        'appearance'=> 'Appearance',
-        'appearance_theme'=> 'Theme',
-        'appearance_widget'=> 'Widget',
-        'setting'=> 'Setting',
-        'setting_system'=> 'Setting',
-        'setting_dashboard'=> 'Theme',
-        'setting_operate'=> 'Operate',
-        'setting_operate_role'=> 'Role',
-        
-        'setting_operate_org'=> 'Organization',
-        
-        'tool'=> 'Tool',
-        'tool_menu'=> 'Menus',
-        'tool_style'=> 'Themes',
-        'tool_permission'=> 'Permissions',
-        'tool_extend'=> 'Extensions',
-        'tool_compass'=> 'Compass',
-    ],
-    
-    'error'=>[
-        
-        'miss_blade'=> 'missing blade file',
-        
-    ],
-    
     'menu_tips' => 'Blade template with menu ',
 
-    'user_list'=> 'Users',
+    'user_list' => 'Users',
 
     'publish_date'  => 'Publish Date',
     'sticked'       => 'Sticked',
@@ -213,12 +166,94 @@ return [
 
     'date'      => 'Date',
     'time'      => 'Time',
+    'menu' => 'menu',
+    'menu_name' => 'Menu Name',
+    
+    'setting_menu' => 'Setting',
+    'setting_menu_desc' => 'Menu has menu group and item.',
+    'add_menu' => 'Add Menu',
+    'edit_menu' => 'Edit Menu',
+    
+    'add_menu_item' => 'Add Item',
+    'edit_menu_item' => 'Edit Item',
+    
+    'update_cache' => 'Update Cache',
+    
+    'menu_item' => 'Items',
+    'menu_items' =>[
+        
+        'dashboard' => 'Dashboard',
+        'article' => 'Article',
+        'article_list' => 'Articles',
+        'article_new' => 'Add Article',
+        'article_update' => 'Edit',
+        'article_delete' => 'Delete',
+        'category' => 'Category',
+        'tag' => 'Tags',
+        'page' => 'Page',
+        'page_list' => 'Pages',
+        'page_new' => 'Add Page',
+        'page_update' => 'Edit',
+        'page_delete' => 'Delete',
+        'media' => 'Media',
+        'media_list' => 'Medias',
+        'media_new' => 'Add',
+        'media_update' => 'Edit',
+        'media_delete' => 'Delete',
+        'user' => 'User',
+        'user_list' => 'Users',
+        'user_register_rule' => 'Register rule',
+        
+        'appearance' => 'Appearance',
+        'appearance_theme' => 'Theme',
+        'appearance_widget' => 'Widget',
+        'setting' => 'Setting',
+        'setting_system' => 'Setting',
+        'setting_dashboard' => 'Theme',
+        'setting_operate' => 'Operate',
+        'setting_operate_role' => 'Role',
+        
+        'setting_operate_org' => 'Organization',
+        
+        'tool' => 'Tool',
+        'tool_menu' => 'Menus',
+        'tool_style' => 'Themes',
+        'tool_permission' => 'Permissions',
+        'tool_extend' => 'Extensions',
+        'tool_compass' => 'Compass',
+    ],
+    
+    'menu_recover' => [
+        'restore' => 'Restore',
+        'title' => 'Restore default Menu',
+        'tips_1' => 'Restore the default menu to the initialization data。',
+        'tips_2' => 'Restoring does not affect other menu group data.',
+    ],
+
+    'link_type' => 'Link',
+    'link_url' => 'Url',
+    'link_route' => 'Route',
+    '_blank' => '_blank',
+    'icon' => 'Icon',
+    'open_window' => 'Open in',
+    '_self' => '_self',
+
+    'error' =>[
+        
+        'miss_blade' => 'missing blade file',
+        
+    ],
+    
+    'validation' => [
+        'slug' => 'unique,letter,number',
+        'username' => 'unique,letter,number,underline'
+    ],
 
     // DASHBOARD
-    'dash'=>[
+    'dash' =>[
         'welcome'           => 'Welcome',
         'customize_setting' => 'Suda Admin Panel, support customize and extend widgets.',
-        'customize_btn_text'=> 'Setting',
+        'customize_btn_text' => 'Setting',
 
         'dev_tips'          => 'Learn about develop dashboard widgets.',
         'dev_link_text'     => 'Quick Start',
@@ -246,7 +281,7 @@ return [
     ],
 
 
-    'articles'=>[
+    'articles' =>[
 
         'title'         => 'Title',
         'content'       => 'Content',
@@ -262,7 +297,7 @@ return [
     ],
 
     // PAGES
-    'pages'=>[
+    'pages' =>[
 
         'title'         => 'Title',
         'content'       => 'Content',
@@ -277,16 +312,16 @@ return [
     ],
 
     // Category
-    'categories'=>[
+    'categories' =>[
         'category'      => 'Category',
         'select_cate'    => 'Select Category',
     ],
 
     // TAGS
-    'tags'=>[
+    'tags' =>[
         'name' => 'Name',
-        'tag'=> 'Tag',
-        'select_tag'=> 'Select Tag',
+        'tag' => 'Tag',
+        'select_tag' => 'Select Tag',
     ],
 
     // CATES
@@ -319,6 +354,7 @@ return [
         'confirm_batch' => 'Confirm to change',
         'upload_label' => 'Drag & Drop to upload',
         'upload_label_btn' => 'Select to upload',
+        'missing_user' => 'Missing user',
     ],
 
     // SETTING
@@ -328,55 +364,55 @@ return [
         'set_widget' => 'Widgets',
     ],
 
-    'basic_info'=> 'Basic',
-    'dashboard_info'=> 'Dashboard',
-    'front_info'=> 'Front',
-    'seo_info'=> 'SEO',
+    'basic_info' => 'Basic',
+    'dashboard_info' => 'Dashboard',
+    'front_info' => 'Front',
+    'seo_info' => 'SEO',
     
-    'dashboard_style'=> 'theme',
-    'seo_setting'=> 'SEO',
+    'dashboard_style' => 'theme',
+    'seo_setting' => 'SEO',
     
 
-    'settings'=>[
-        'login_path'=> 'Login RedirectTo',
-        'breadcrumb'=> 'Breadcrumb',
-        'userinfo'=> 'Userinfo',
+    'settings' =>[
+        'login_path' => 'Login RedirectTo',
+        'breadcrumb' => 'Breadcrumb',
+        'userinfo' => 'Userinfo',
 
-        'userinfo_position'=>[
-            'all'=> 'Show All',
-            'left_bottom'=> 'Left Bottom',
-            'top_right'=> 'Top Right',
+        'userinfo_position' =>[
+            'all' => 'Show All',
+            'left_bottom' => 'Left Bottom',
+            'top_right' => 'Top Right',
         ],
 
-        'modules'=> 'Modules',
+        'modules' => 'Modules',
 
-        'modules_list'=>[
-            'welcome'=> 'Welcome',
-            'quickin'=> 'QuickIn',
-            'custom'=> 'Customs',
+        'modules_list' =>[
+            'welcome' => 'Welcome',
+            'quickin' => 'QuickIn',
+            'custom' => 'Customs',
         ],
 
-        'login_style'=> 'Login Style',
+        'login_style' => 'Login Style',
 
-        'style_list'=>[
-            'default'=> 'Light',
-            'dark'=> 'Dark',
+        'style_list' =>[
+            'default' => 'Light',
+            'dark' => 'Dark',
         ],
 
-        'login_image'=> 'Login Image',
-        'custom_login_image'=> 'Customize Login Image',
+        'login_image' => 'Login Image',
+        'custom_login_image' => 'Customize Login Image',
 
-        'share_image'=> 'Share Image',
+        'share_image' => 'Share Image',
 
-        'front_default_page'=> 'Default Home',
-        'default_homepage'=> 'Default',
-        'static_homepage'=> 'Static Page',
-        'custom_homepage'=> 'Custom URL',
+        'front_default_page' => 'Default Home',
+        'default_homepage' => 'Default',
+        'static_homepage' => 'Static Page',
+        'custom_homepage' => 'Custom URL',
 
-        'seo_title'=> 'Title',
-        'keyword'=> 'Keyword',
-        'keywords'=> 'Keywords',
-        'description'=> 'Description',
+        'seo_title' => 'Title',
+        'keyword' => 'Keyword',
+        'keywords' => 'Keywords',
+        'description' => 'Description',
     ],
 
 

@@ -48,12 +48,9 @@ class SiteController extends BaseController
         
         $this->middleware(function (Request $request, $next) {
             
-            if(array_key_exists('site_close',$this->data['sdcore']['settings'])){
-                if($this->data['sdcore']['settings']['site_close']>0){
-                    return redirect(url('sdone/status/1001'));
-                }
+            if(!isset($this->data['sdcore']['settings']['site']['site_status']) || !$this->data['sdcore']['settings']['site']['site_status']){
+                return redirect(url('sdone/status/1001'));
             }
-            
             
             return $next($request);
         

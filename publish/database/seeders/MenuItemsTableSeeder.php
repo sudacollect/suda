@@ -460,22 +460,6 @@ class MenuItemsTableSeeder extends Seeder
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'suda_lang::press.menu_items.tool_menu',
-            'slug'    => 'tool_menu',
-            'url'     => '',
-            'route'   => 'sudaroute.admin.tool_menu',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'ion-menu',
-                'parent_id'  => $toolsMenuItem->id,
-                'order'      => 91,
-            ])->save();
-        }
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
             'title'   => 'suda_lang::press.menu_items.tool_extend',
             'slug'    => 'tool_extend',
             'url'     => '',
@@ -486,9 +470,27 @@ class MenuItemsTableSeeder extends Seeder
                 'target'     => '_self',
                 'icon_class' => 'ion-grid',
                 'parent_id'  => $toolsMenuItem->id,
-                'order'      => 94,
+                'order'      => 91,
             ])->save();
         }
+        
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'suda_lang::press.menu_items.tool_menu',
+            'slug'    => 'tool_menu',
+            'url'     => '',
+            'route'   => 'sudaroute.admin.tool_menu',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'ion-menu',
+                'parent_id'  => $toolsMenuItem->id,
+                'order'      => 92,
+            ])->save();
+        }
+
+        
         
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,

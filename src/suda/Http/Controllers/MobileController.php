@@ -44,7 +44,7 @@ class MobileController extends BaseController
         $this->getSettings();
         $this->middleware(function (Request $request, $next) {
             
-            if($this->data['sdcore']['settings']['site_close']>0){
+            if(!isset($this->data['sdcore']['settings']['site']['site_status']) || !$this->data['sdcore']['settings']['site']['site_status']){
                 return redirect(url('sdone/status/1001'));
             }
             

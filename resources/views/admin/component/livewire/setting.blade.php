@@ -92,16 +92,16 @@
                         <div class="mb-3">
                             
                             <label for="icp_number" class="col-sm-2 col-form-label text-right">
-                                {{ __('suda_lang::press.system_status') }}
+                                {{ __('suda_lang::press.site_status') }}
                             </label>
                             
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" wire:model="settings.site_close" id="site_close_0" value="0" >
-                                <label class="form-check-label" for="site_close">{{ __('suda_lang::press.open') }}</label>
+                                <input class="form-check-input" type="radio" wire:model="settings.site_status" id="site_status_1" value="1" >
+                                <label class="form-check-label" for="site_status">{{ __('suda_lang::press.open') }}</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" wire:model="settings.site_close" id="site_close_1" value="1" >
-                                <label class="form-check-label" for="site_close">{{ __('suda_lang::press.close') }}</label>
+                                <input class="form-check-input" type="radio" wire:model="settings.site_status" id="site_status_0" value="0" >
+                                <label class="form-check-label" for="site_status">{{ __('suda_lang::press.close') }}</label>
                             </div>
                         </div>
                         

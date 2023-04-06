@@ -23,5 +23,4 @@ return [
     'logout'                => 'Logout',
     'superAdmin'            => 'Superadmin',
     'forgetPasswordRequest' => 'Contact admin to reset password',
-    'username_rule'         => 'letters/numbers',
 ];

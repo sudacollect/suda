@@ -176,7 +176,7 @@ class RoleController extends DashboardController
         
         
         $url = 'user/roles';
-        return $this->responseAjax('success','保存成功',$url);
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
         
         // return redirect('user/roles');
     }
@@ -333,7 +333,7 @@ class RoleController extends DashboardController
         
         
         $url = 'user/roles';
-        return $this->responseAjax('success','保存成功',$url);
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
         
         // return redirect('user/roles');
     }

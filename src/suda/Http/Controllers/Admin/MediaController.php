@@ -526,7 +526,7 @@ class MediaController extends DashboardController
 
         $this->saveSettingByKey('media_setting','media',$save,'serialize');
 
-        return $this->responseAjax('success','保存成功','media');
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),'media');
 
     }
 }

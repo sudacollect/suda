@@ -226,7 +226,7 @@ class ProfileController extends DashboardController
                 $operateModel->where('id',$this->user->id)->update($update_data);
                 
                 $url = 'profile/password';
-                return $this->responseAjax('success','保存成功',$url);
+                return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
             }else{
                 $url = '';
                 return $this->responseAjax('fail','当前密码输入错误',$url);

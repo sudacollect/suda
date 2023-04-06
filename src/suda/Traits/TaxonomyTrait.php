@@ -199,7 +199,7 @@ trait TaxonomyTrait
                     'taxonomy'=>$request->taxonomy_name,
                 ]);
                 
-                return $this->responseAjax('success','保存成功','self.refresh');
+                return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
                 
             }else{
                 
@@ -234,7 +234,7 @@ trait TaxonomyTrait
                     ]);
                 }
                 
-                return $this->responseAjax('success','保存成功','self.refresh');
+                return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
                 
             }
         }
