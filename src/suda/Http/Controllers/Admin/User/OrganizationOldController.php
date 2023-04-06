@@ -31,7 +31,7 @@ class OrganizationOldController extends DashboardController
         $this->setMenu('setting','setting_operate_org');
         
         $this->middleware(function (Request $request, $next) {
-            $this->gate('role.setting_operate_org',app(Setting::class));
+            $this->gate('setting.setting_operate_org',app(Setting::class));
             
             return $next($request);
         });

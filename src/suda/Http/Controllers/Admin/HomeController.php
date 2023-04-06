@@ -118,7 +118,7 @@ class HomeController extends DashboardController
     public function settings(){
         
         //policy 判断
-        $this->gate('setting.view',app(Setting::class));
+        $this->gate('setting.setting_system',app(Setting::class));
         
         $this->title(__('suda_lang::press.basic_info'));
         
@@ -264,7 +264,7 @@ class HomeController extends DashboardController
             'dashboard_login_logo', 'loginbox', 'login_color'
         ];
         //policy 判断
-        $this->gate('setting.view',app(Setting::class));
+        $this->gate('setting.setting_system',app(Setting::class));
         
         $this->title(trans('suda_lang::press.dashboard_info'));
         
@@ -386,7 +386,7 @@ class HomeController extends DashboardController
     // 浏览设置
     public function setBrowser(){
         //policy 判断
-        $this->gate('setting.view',app(Setting::class));
+        $this->gate('setting.setting_system',app(Setting::class));
         
         $this->title('浏览设置');
         
@@ -452,7 +452,7 @@ class HomeController extends DashboardController
     public function setSeo()
     {
         $this->setMenu('setting','setting_system');
-        $this->gate('setting.view',app(Setting::class));
+        $this->gate('setting.setting_system',app(Setting::class));
         
         $this->title('SEO设置');
 

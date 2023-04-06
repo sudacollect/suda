@@ -36,7 +36,7 @@ class OperateController extends DashboardController
     //$view = ['deleted']
     public function index(Request $request,$view='')
     {
-        $this->gate('role.setting_operate',app(Setting::class));
+        $this->gate('setting.setting_operate',app(Setting::class));
         
         $this->title(__('suda_lang::press.menu_items.setting_operate'));
         $page_no = 0;
@@ -80,7 +80,7 @@ class OperateController extends DashboardController
         $this->title(__('suda_lang::press.btn.add'));
         $this->getRolesAndOrgs();
         
-        $this->gate('role.setting_operate',app(Setting::class));
+        $this->gate('setting.setting_operate',app(Setting::class));
         
         $this->setData('modal_title',__('suda_lang::press.btn.add'));
         $this->setData('modal_icon_class','ion-person');
@@ -97,7 +97,7 @@ class OperateController extends DashboardController
         $this->title(__('suda_lang::press.btn.edit'));
         $this->getRolesAndOrgs();
         
-        $this->gate('role.setting_operate',app(Setting::class));
+        $this->gate('setting.setting_operate',app(Setting::class));
         
         $id = intval($id);
         $operate = Operate::where('id','=',$id)->first();

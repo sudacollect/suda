@@ -22,7 +22,7 @@ class PageController extends DashboardController
     
     public function index(Request $request,$view='list',$sort='id')
     {
-        $this->gate('page.view',app(Page::class));
+        $this->gate('page.page_list',app(Page::class));
 
         $this->breadParent(__('suda_lang::press.menu_items.dashboard'),'/');
         $this->breadSet(__('suda_lang::press.menu_items.page'),'');
@@ -62,7 +62,7 @@ class PageController extends DashboardController
         $this->breadSet(__('suda_lang::press.menu_items.page'),'page/list');
         $this->breadSet(__('suda_lang::press.menu_items.page_new'),'');
 
-        $this->gate('page.create',app(Page::class));
+        $this->gate('page.page_new',app(Page::class));
                 
         $this->title(__('suda_lang::press.menu_items.page_new'));
         

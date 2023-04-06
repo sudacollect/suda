@@ -37,7 +37,7 @@ class ThemeController extends DashboardController
             exit('403');
         }
 
-        $this->gate('appearance.view',app(Setting::class));
+        $this->gate('appearance.appearance_theme',app(Setting::class));
         $this->title('模板管理');
         
         $this->setData('app_name',$app);

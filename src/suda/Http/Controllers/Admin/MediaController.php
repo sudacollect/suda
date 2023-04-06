@@ -53,7 +53,7 @@ class MediaController extends DashboardController
     public function getAll(Request $request,$view='list')
     {
 
-        $this->gate('media.view',app(Setting::class));
+        $this->gate('media',app(Setting::class));
         
         $this->title('媒体管理');
         

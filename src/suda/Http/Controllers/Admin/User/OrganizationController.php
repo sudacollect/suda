@@ -27,7 +27,7 @@ class OrganizationController extends DashboardController
         
         //增加自定义的权限控制
         $this->middleware(function (Request $request, $next) {
-            $this->gate('role.setting_operate_org',app(Operate::class));
+            $this->gate('setting.setting_operate_org',app(Operate::class));
             
             return $next($request);
         });

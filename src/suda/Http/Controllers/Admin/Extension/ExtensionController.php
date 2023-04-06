@@ -23,7 +23,7 @@ class ExtensionController extends DashboardController
     public function index(Request $request,$status='enabled')
     {
         
-        $this->gate('setting.update',app(\Gtd\Suda\Models\Setting::class));
+        $this->gate('tool.tool_extend',app(\Gtd\Suda\Models\Setting::class));
 
         $this->title(__('suda_lang::press.menu_items.tool_extend'));
         $page_no = 0;

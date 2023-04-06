@@ -28,7 +28,7 @@ class ArticleController extends DashboardController
     public function index(Request $request,$view='list',$sort='id')
     {
         
-        $this->gate('article.view',app(Article::class));
+        $this->gate('article.article_list',app(Article::class));
 
         $this->breadParent(__('suda_lang::press.menu_items.dashboard'),'/');
         $this->breadSet(__('suda_lang::press.menu_items.article'),'');
@@ -41,7 +41,7 @@ class ArticleController extends DashboardController
     
     public function create()
     {
-        $this->gate('article.create',app(Article::class));
+        $this->gate('article.article_new',app(Article::class));
                 
         $this->title(__('suda_lang::press.menu_items.article_new'));
 

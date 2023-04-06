@@ -32,7 +32,7 @@ class UserController extends DashboardController
     
     public function index(Request $request,$view='list')
     {
-        $this->gate('setting.view',app(Setting::class));
+        $this->gate('user.user_list',app(Setting::class));
         
         $this->title(__('suda_lang::press.menu_items.user'));
         
@@ -60,7 +60,7 @@ class UserController extends DashboardController
     {
         $this->title(__('suda_lang::press.btn.add'));
         
-        $this->gate('setting.view',app(Setting::class));
+        $this->gate('user.user_list',app(Setting::class));
         
         $this->setData('modal_title',__('suda_lang::press.btn.add'));
         $this->setData('modal_icon_class','ion-person-outline');
@@ -74,7 +74,7 @@ class UserController extends DashboardController
     {
         $this->title(__('suda_lang::press.btn.edit'));
         
-        $this->gate('setting.view',app(Setting::class));
+        $this->gate('user.user_list',app(Setting::class));
         
         $id = intval($id);
         $user = User::where('id','=',$id)->first();
@@ -226,7 +226,7 @@ class UserController extends DashboardController
     
     //注册规则
     public function ruleRegister(){
-        $this->gate('setting.view',app(Setting::class));
+        $this->gate('user.user_list',app(Setting::class));
         
         $this->title('用户注册设置');
         

@@ -25,7 +25,7 @@ class StyleController extends DashboardController
     
     public function dashboardStyle(){
         $this->title(__('suda_lang::press.dash.theme'));
-        $this->gate('role.setting_dashboard',app(Setting::class));
+        $this->gate('setting.setting_dashboard',app(Setting::class));
         
         
         $themes = app('theme')->availableThemes('admin');

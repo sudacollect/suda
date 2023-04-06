@@ -23,7 +23,7 @@ class MenuController extends DashboardController
     
     public function menus(){
         
-        $this->gate('setting.view',app(Setting::class));
+        $this->gate('tool.tool_menu',app(Setting::class));
         
         $this->title(__('suda_lang::press.setting_menu'));
         

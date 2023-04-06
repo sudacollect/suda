@@ -24,7 +24,7 @@ class WidgetController extends DashboardController
     public function index(Request $request,$app='site',$theme='')
     {
         $this->title('模板挂件');
-        $this->gate('appearance.update',app(Setting::class));   
+        $this->gate('appearance.appearance_widget',app(Setting::class));   
         $this->setMenu('appearance','appearance_widget');
 
         //判断app是否被允许

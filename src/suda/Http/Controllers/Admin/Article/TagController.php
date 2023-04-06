@@ -27,7 +27,7 @@ class TagController extends DashboardController
         $this->setMenu('article','article_tag');
         
         $this->middleware(function (Request $request, $next) {
-            $this->gate('article.update',app(Article::class));
+            $this->gate('article.article_tag',app(Article::class));
             
             return $next($request);
         });

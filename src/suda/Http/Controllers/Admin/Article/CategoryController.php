@@ -23,7 +23,7 @@ class CategoryController extends DashboardController
         
         //增加自定义的权限控制
         $this->middleware(function (Request $request, $next) {
-            $this->gate('article.update',app(Article::class));
+            $this->gate('article.article_category',app(Article::class));
             
             return $next($request);
         });

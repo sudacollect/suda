@@ -40,7 +40,7 @@ class RoleController extends DashboardController
         
         $this->middleware(function (Request $request, $next) {
             
-            $this->gate('role.setting_operate_role',app(Setting::class),$request->ajax());
+            $this->gate('setting.setting_operate_role',app(Setting::class),$request->ajax());
             
             return $next($request);
         });
