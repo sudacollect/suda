@@ -65,6 +65,8 @@ return [
         'search'=> 'Search',
         'update'=> 'Update',
         'select'=> 'Select',
+        'select_all'=> 'Select All',
+        'cancel_select'=> 'Deselect',
     ],
     
     

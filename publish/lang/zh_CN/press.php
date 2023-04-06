@@ -70,6 +70,8 @@ return [
         'search'    => '搜索',
         'update'    => '更新',
         'select'    => '选择',
+        'select_all'=> '全选',
+        'cancel_select'=> '取消选择',
     ],
     
     

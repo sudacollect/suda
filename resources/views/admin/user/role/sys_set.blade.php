@@ -24,8 +24,8 @@
                             {{ __('suda_lang::press.sys_permission') }}
                         </p>
                         
-                        <button class="btn btn-success btn-sm me-2" id="permission-select-all">选择所有</button>
-                        <button class="btn btn-light btn-sm" id="permission-deselect-all">取消全选</button>
+                        <button class="btn btn-success btn-sm me-2" id="permission-select-all">{{ __('suda_lang::press.btn.select_all') }}</button>
+                        <button class="btn btn-light btn-sm" id="permission-deselect-all">{{ __('suda_lang::press.btn.cancel_select') }}</button>
 
                         <div class="row role-permissions-group" >
                               @if(isset($menus) && count($menus)>0)
