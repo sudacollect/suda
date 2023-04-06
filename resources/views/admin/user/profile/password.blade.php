@@ -6,18 +6,18 @@
 <div class="container">
     <div class="row suda-row @if(\Gtd\Suda\Auth\OperateCan::extension($soperate)) suda-row-noside @endif">
         <div class="page-heading">
-            <h1 class="page-title">帐户信息</h1>
+            <h1 class="page-title">{{ __('suda_lang::auth.profile') }}</h1>
         </div>
         
         <div class="col-sm-6 suda_page_body">
             <ul class="nav nav-tabs card-tabs">
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ admin_url('profile') }}">基本资料</a>
+                  <a class="nav-link" href="{{ admin_url('profile') }}">{{ __('suda_lang::auth.profile') }}</a>
                 </li>
                 <!-- <li class="nav-item"><a class="nav-link" href="{{ url('profile/certify') }}">认证</a></li> -->
                 <!-- <li class="nav-item"><a class="nav-link" href="{{ admin_url('email') }}">修改邮箱</a></li> -->
                 <li class="nav-item">
-                  <a class="nav-link bg-white active" href="{{ admin_url('profile/password') }}">修改密码</a>
+                  <a class="nav-link bg-white active" href="{{ admin_url('profile/password') }}">{{ __('suda_lang::press.password') }}</a>
                 </li>
               </ul>
             <div class="card card-with-tab">
@@ -28,15 +28,14 @@
                         <input type="hidden" name="user_id" value="{{ $soperate->id }}">
                         
                         <div class="mb-3">
-                            <label for="inputName" class="col-form-label">当前用户</label>
                             
                             <input type="text" readonly class="form-control-plaintext" id="inputName" value="{{ $soperate->username }}">
 
                         </div>
                     
                         <div class="mb-3{{ $errors->has('old_password') ? ' has-error' : '' }}">
-                            <label for="inputName" class="col-form-label">当前密码</label>
-                            <input type="password" name="old_password" class="form-control" id="inputName" placeholder="请输入当前密码">
+                            <label for="inputName" class="col-form-label">{{ __('suda_lang::press.password') }}</label>
+                            <input type="password" name="old_password" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.password') }}">
                                 @if ($errors->has('old_password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('old_password') }}</strong>
@@ -45,8 +44,8 @@
                         </div>
                     
                         <div class="mb-3{{ $errors->has('new_password') ? ' has-error' : '' }}">
-                            <label for="inputName" class="col-form-label">新密码</label>
-                            <input type="password" name="new_password" class="form-control" id="inputName" placeholder="请输入当前密码">
+                            <label for="inputName" class="col-form-label">{{ __('suda_lang::press.new_password') }}</label>
+                            <input type="password" name="new_password" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.new_password') }}">
                                 @if ($errors->has('new_password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('new_password') }}</strong>
@@ -55,8 +54,8 @@
                         </div>
                     
                         <div class="mb-3{{ $errors->has('new_password_confirm') ? ' has-error' : '' }}">
-                            <label for="inputName" class="col-form-label">确认新密码</label>
-                            <input type="password" name="new_password_confirm" class="form-control" id="inputName" placeholder="请输入当前密码">
+                            <label for="inputName" class="col-form-label">{{ __('suda_lang::press.new_password_confirm') }}</label>
+                            <input type="password" name="new_password_confirm" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.new_password_confirm') }}">
                                 @if ($errors->has('new_password_confirm'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('new_password_confirm') }}</strong>

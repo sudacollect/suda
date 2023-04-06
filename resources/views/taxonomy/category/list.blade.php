@@ -21,11 +21,11 @@
                       <table class="table">
                           <thead class="bg-light">
                             <tr>
-                              <th width="20%">名称</th>
-                              <th width="10%">路径</th>
-                              <th width="15%">排序</th>
-                              <th width="20%">更新</th>
-                              <th>操作</th>
+                              <th width="20%">{{ __('suda_lang::press.name') }}</th>
+                              <th width="10%">{{ __('suda_lang::press.slug') }}</th>
+                              <th width="15%">{{ __('suda_lang::press.sort') }}</th>
+                              <th width="20%">{{ __('suda_lang::press.updated_at') }}</th>
+                              <th>{{ __('suda_lang::press.operation') }}</th>
                             </tr>
                           </thead>
                           <tbody>

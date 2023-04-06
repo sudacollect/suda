@@ -27,7 +27,7 @@ class ProfileController extends DashboardController
     
     public function showProfile(){
         
-        $this->title(__('suda_lang::auth.accountInfo'));
+        $this->title(__('suda_lang::auth.profile'));
 
         $this->setData('extendFile','view_suda::extension.layouts.default_noside');
 

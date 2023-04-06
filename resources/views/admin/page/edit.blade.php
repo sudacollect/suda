@@ -103,12 +103,12 @@
                             </label>
 
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" name="stick_top" placeholder="是" value="1" @if($page->stick_top=='1') checked @endif>
-                                <label class="form-check-label" for="stick_top">是</label>
+                                <input type="radio" class="form-check-input" name="stick_top" placeholder="{{ __('suda_lang::press.yes') }}" value="1" @if($page->stick_top=='1') checked @endif>
+                                <label class="form-check-label" for="stick_top">{{ __('suda_lang::press.yes') }}</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" name="stick_top" placeholder="否" value="0" @if($page->stick_top=='0') checked @endif>
-                                <label class="form-check-label" for="stick_top">否</label>
+                                <input type="radio" class="form-check-input" name="stick_top" placeholder="{{ __('suda_lang::press.no') }}" value="0" @if($page->stick_top=='0') checked @endif>
+                                <label class="form-check-label" for="stick_top">{{ __('suda_lang::press.no') }}</label>
                             </div>
 
                         </div>
@@ -120,12 +120,12 @@
                             </label>
 
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" name="disable" placeholder="是" value="0" @if($page->disable=='0') checked @endif>
-                                <label class="form-check-label" for="disable">是</label>
+                                <input type="radio" class="form-check-input" name="disable" placeholder="{{ __('suda_lang::press.yes') }}" value="0" @if($page->disable=='0') checked @endif>
+                                <label class="form-check-label" for="disable">{{ __('suda_lang::press.yes') }}</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" name="disable" placeholder="否" value="1" @if($page->disable=='1') checked @endif>
-                                <label class="form-check-label" for="disable">否</label>
+                                <input type="radio" class="form-check-input" name="disable" placeholder="{{ __('suda_lang::press.no') }}" value="1" @if($page->disable=='1') checked @endif>
+                                <label class="form-check-label" for="disable">{{ __('suda_lang::press.no') }}</label>
                             </div>
 
                         </div>

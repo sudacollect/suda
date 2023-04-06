@@ -34,7 +34,7 @@ class UserController extends DashboardController
     {
         $this->gate('setting.view',app(Setting::class));
         
-        $this->title('用户管理');
+        $this->title(__('suda_lang::press.menu_items.user'));
         
         $page_size = 20;
         $page_no = 0;

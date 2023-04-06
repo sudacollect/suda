@@ -44,7 +44,7 @@
                                 </label>
 
                                 &nbsp;&nbsp;
-                                <button href="{{ admin_url('page/modalbox/list/default') }}" class="pop-modal modalbox-select-page btn btn-light btn-sm">选择</button>
+                                <button href="{{ admin_url('page/modalbox/list/default') }}" class="pop-modal modalbox-select-page btn btn-light btn-sm">{{ __('suda_lang::press.btn.select') }}</button>
                                 <div class="modal-result-default" style="padding-left:30px;color:#08f;">
                                     @if(isset($page))
                                     <p>

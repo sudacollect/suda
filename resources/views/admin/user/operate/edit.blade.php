@@ -43,7 +43,7 @@
                 {{ __('suda_lang::press.username') }}
             </label>
             
-            <input type="text" name="username" class="form-control" id="inputName" placeholder="英文数字下划线" value="{{ $operate->username }}">
+            <input type="text" name="username" class="form-control" id="inputName" placeholder="{{ __('suda_lang::auth.username_rule') }}" value="{{ $operate->username }}">
                 @if ($errors->has('username'))
                     <span class="help-block">
                         <strong>{{ $errors->first('username') }}</strong>
@@ -58,7 +58,7 @@
                 {{ __('suda_lang::auth.password') }}
             </label>
             
-            <input type="password" name="password" class="form-control" id="inputName" placeholder="请输入密码">
+            <input type="password" name="password" class="form-control" id="inputName" placeholder="{{ __('suda_lang::auth.password') }}">
                 @if ($errors->has('password'))
                     <span class="help-block">
                         <strong>{{ $errors->first('password') }}</strong>
@@ -73,7 +73,7 @@
                 {{ __('suda_lang::press.telephone') }}
             </label>
             
-            <input type="text" name="phone" class="form-control" id="inputName" placeholder="请输入手机（选填）" value="{{ $operate->phone }}">
+            <input type="text" name="phone" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.telephone') }}" value="{{ $operate->phone }}">
                 @if ($errors->has('phone'))
                     <span class="help-block">
                         <strong>{{ $errors->first('phone') }}</strong>
@@ -88,7 +88,7 @@
                 {{ __('suda_lang::press.email') }}
             </label>
             
-            <input type="text" name="email" class="form-control" id="inputName" placeholder="请输入邮箱（选填）" value="{{ $operate->email }}">
+            <input type="text" name="email" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.email') }}" value="{{ $operate->email }}">
                 @if ($errors->has('email'))
                     <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
@@ -100,8 +100,8 @@
             @if($soperate->superadmin==1)
             <div class="mb-3">
                 <div class="form-check form-check-inline">
-                    <input type="radio" class="form-check-input" name="superadmin" placeholder="是" value="1" @if($operate->superadmin==1) checked @endif>
-                    <label class="form-check-label" for="superadmin">启用超级管理员</label>
+                    <input type="radio" class="form-check-input" name="superadmin" placeholder="{{ __('suda_lang::press.yes') }}" value="1" @if($operate->superadmin==1) checked @endif>
+                    <label class="form-check-label" for="superadmin">{{ __('suda_lang::press.as_superadmin') }}</label>
                 </div>
             </div>
             @else
@@ -111,7 +111,7 @@
 
             <div class="mb-3">
                 <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input" name="enable" placeholder="是" value="1" @if($operate->enable==1) checked @endif>
+                    <input type="checkbox" class="form-check-input" name="enable" placeholder="{{ __('suda_lang::press.yes') }}" value="1" @if($operate->enable==1) checked @endif>
                     <label class="form-check-label" for="enable">{{ __('suda_lang::press.enable') }}</label>
                 </div>
             </div>

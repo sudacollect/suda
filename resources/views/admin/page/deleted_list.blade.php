@@ -58,9 +58,9 @@
                                   </td>
                                   <td width="8%">
                                       @if($item->disable==1)
-                                      否
+                                      {{ __('suda_lang::press.no') }}
                                       @else
-                                      是
+                                      {{ __('suda_lang::press.yes') }}
                                       @endif
                                   </td>
                                   <td width="15%">

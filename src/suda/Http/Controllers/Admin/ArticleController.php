@@ -25,15 +25,15 @@ class ArticleController extends DashboardController
     protected $by_sort = 'id';
     
     
-    public function index(Request $request,$view='gallery',$sort='id')
+    public function index(Request $request,$view='list',$sort='id')
     {
         
         $this->gate('article.view',app(Article::class));
 
-        $this->breadParent('控制面板','/');
-        $this->breadSet('文章','');
+        $this->breadParent(__('suda_lang::press.menu_items.dashboard'),'/');
+        $this->breadSet(__('suda_lang::press.menu_items.article'),'');
 
-        $this->title('文章管理');
+        $this->title(__('suda_lang::press.menu_items.article'));
         $this->setMenu('article','article_list');
         
         return $this->getAll($request,$view,$sort);
@@ -43,11 +43,11 @@ class ArticleController extends DashboardController
     {
         $this->gate('article.create',app(Article::class));
                 
-        $this->title('增加文章');
+        $this->title(__('suda_lang::press.menu_items.article_new'));
 
-        $this->breadParent('控制面板','/');
-        $this->breadParent('文章','article/list');
-        $this->breadSet('增加文章','');
+        $this->breadParent(__('suda_lang::press.menu_items.dashboard'),'/');
+        $this->breadParent(__('suda_lang::press.menu_items.article'),'article/list');
+        $this->breadSet(__('suda_lang::press.menu_items.article_new'),'');
         
         // x-suda::select-category
         
@@ -101,10 +101,10 @@ class ArticleController extends DashboardController
         
         $this->setData('editor_height',500);
         
-        $this->title('编辑文章');
-        $this->breadParent('控制面板','/');
-        $this->breadParent('文章','article/list');
-        $this->breadSet('编辑文章','');
+        $this->title(__('suda_lang::press.menu_items.article_update'));
+        $this->breadParent(__('suda_lang::press.menu_items.dashboard'),'/');
+        $this->breadParent(__('suda_lang::press.menu_items.article'),'article/list');
+        $this->breadSet(__('suda_lang::press.menu_items.article_update'),'');
 
         $this->setMenu('article','article_list');
         return $this->display('article.edit');

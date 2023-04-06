@@ -83,7 +83,7 @@ class ArticleController extends SiteController{
             $this->setData('tags',$tags);
         }
         
-        $this->breadParent('文章','articles');
+        $this->breadParent(__('suda_lang::press.menu_items.article'),'articles');
 
         $cates = '';
         $comma = '';
@@ -107,9 +107,9 @@ class ArticleController extends SiteController{
     public function showAll(Request $request,$view='list')
     {
 
-        $this->breadParent('所有文章','');
+        $this->breadParent(__('suda_lang::press.menu_items.article'),'');
 
-        $this->title('所有文章');
+        $this->title(__('suda_lang::press.menu_items.article'));
         $page_no = 1;
         $page_size = 20;
         if($request->get('page')){
@@ -151,7 +151,7 @@ class ArticleController extends SiteController{
     public function showCategory(Request $request,$slug)
     {
 
-        $this->breadParent('所有文章','');
+        $this->breadParent(__('suda_lang::press.menu_items.article'),'');
 
         $articleObj = new Article;
 
@@ -198,7 +198,7 @@ class ArticleController extends SiteController{
     public function showTag(Request $request,$tag_name)
     {
 
-        $this->breadParent('所有文章','');
+        $this->breadParent(__('suda_lang::press.menu_items.article'),'');
 
         $articleObj = new Article;
 

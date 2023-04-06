@@ -559,7 +559,7 @@ jQuery(function(){
 
         const media_name = $(modalLayout).find('.suda-upload-modal').attr('media_name');
         let media_max = $(modalLayout).find('.suda-upload-modal').attr('media_max')||1;
-
+        const upload_label = $(modalLayout).find('.suda-upload-modal').children('#upload_label').html();
         const has_number = set_content.parents('.x-suda-upload-box').children('.x-suda-upload-box-div:has(".uploadbox-filled")').length
         media_max = media_max - has_number
 
@@ -570,8 +570,8 @@ jQuery(function(){
         $(modalLayout).find('.suda-upload-modal').zpupload({
             action:upload_url,
             removeUrl:remove_url,
-            label:'<h4>拖动文件到这里上传</h4><p>或</p><p><button class="btn btn-primary">点击选择文件上传</button></p>',
-            leave:'有文件正在上传，确定退出么?',
+            label:upload_label,
+            leave:'Files uploading，quit?',
             maxQueue:1,
             maxFiles:false,
             multiple:true,

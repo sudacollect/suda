@@ -9,16 +9,16 @@
             <h1 class="page-title">
                 <i class="ion-person"></i>
                 @if(isset($deleted))
-                已删除管理员
+                {{ __('suda_lang::press.recycle') }}
                 @else
-                管理员
+                {{ __('suda_lang::press.menu_items.setting_operate') }}
                 @endif
             </h1>
             @if(!isset($deleted))
             <a href="{{ admin_url('manage/operates/add') }}" class="pop-modal btn btn-primary btn-sm pull-left"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.btn.add') }}</a>
 
             @if(\Gtd\Suda\Auth\OperateCan::operation($soperate))
-            <a href="{{ admin_url('manage/operates/deleted') }}" class="btn btn-warning btn-sm ms-auto"><i class="ion-person-remove-outline text-muted"></i>&nbsp;已删除</a>
+            <a href="{{ admin_url('manage/operates/deleted') }}" class="btn btn-warning btn-sm ms-auto"><i class="ion-person-remove-outline text-muted"></i>&nbsp;{{ __('suda_lang::press.recycle') }}</a>
             @endif
 
             @endif
@@ -91,9 +91,9 @@
                               <td>{{ $operate->updated_at }}</td>
                               <td>
                                   @if($operate->enable==1)
-                                  是
+                                  {{ __('suda_lang::press.yes') }}
                                   @else
-                                  否
+                                  {{ __('suda_lang::press.no') }}
                                   @endif
                               </td>
                               <td>

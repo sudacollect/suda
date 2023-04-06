@@ -14,7 +14,7 @@
                 <div class="mb-3 row {{ $errors->has('images') ? ' has-error' : '' }}">
                     
                     <label for="images" class="col-sm-3 col-form-label text-right">
-                        图标
+                        {{ __('suda_lang::press.categories.icon') }}
                     </label>
                     <div class="col-sm-8">
                         @uploadBox('media',1,1)
@@ -25,10 +25,10 @@
                 <div class="mb-3 row {{ $errors->has('name') ? ' has-error' : '' }}">
                 
                     <label for="inputName" class="col-sm-3 col-form-label text-right">
-                        名称
+                        {{ __('suda_lang::press.categories.name') }}
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control" id="inputName" placeholder="名称">
+                        <input type="text" name="name" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.categories.name') }}">
                         @if ($errors->has('name'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -41,12 +41,12 @@
                 <div class="mb-3 row {{ $errors->has('slug') ? ' has-error' : '' }}">
                 
                     <label for="inputName" class="col-sm-3 col-form-label text-right">
-                        别名
+                        {{ __('suda_lang::press.categories.slug') }}
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" name="slug" class="form-control" id="inputName" placeholder="请填写别名">
+                        <input type="text" name="slug" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.categories.slug') }}">
                         <span class="help-block">
-                            例如 <strong>news</strong>
+                            {{ __('suda_lang::press.for_example') }} <strong>news</strong>
                         </span>
                     </div>
             
@@ -55,7 +55,7 @@
                 <div class="mb-3 row {{ $errors->has('color') ? ' has-error' : '' }}">
                 
                     <label for="color" class="col-sm-3 col-form-label text-right">
-                        颜色
+                        {{ __('suda_lang::press.color') }}
                     </label>
                     <div class="col-sm-8">
                         <div class="input-group">
@@ -71,10 +71,10 @@
                 <div class="mb-3 row {{ $errors->has('desc') ? ' has-error' : '' }}">
                 
                     <label for="desc" class="col-sm-3 col-form-label text-right">
-                        描述
+                        {{ __('suda_lang::press.description') }}
                     </label>
                     <div class="col-sm-8">
-                        <textarea name="desc" class="form-control" rows=4 placeholder="{{ $taxonomy_title }}描述"></textarea>
+                        <textarea name="desc" class="form-control" rows=4 placeholder="{{ __('suda_lang::press.description') }}"></textarea>
                     </div>
             
                 </div>
@@ -82,13 +82,13 @@
                 <div class="mb-3 row {{ $errors->has('parent') ? ' has-error' : '' }}">
                 
                     <label for="inputName" class="col-sm-3 col-form-label text-right">
-                        上级{{ $taxonomy_title }}
+                        {{ __('suda_lang::press.categories.parent') }}
                     </label>
                     <div class="col-sm-8">
                         <x-suda::select-category type="single" name="parent" :taxonomy="$taxonomy_name" :selected="[$parent_id]" :placeholder="$taxonomy_title" />
                         
                         <span class="help-block">
-                            默认不选设置为一级{{ $taxonomy_title }}
+                            {{ __('suda_lang::press.categories.first_level_without_parent') }} {{ $taxonomy_title }}
                         </span>
                     </div>
             
@@ -97,12 +97,12 @@
                 <div class="mb-3 row {{ $errors->has('sort') ? ' has-error' : '' }}">
                 
                     <label for="inputName" class="col-sm-3 col-form-label text-right">
-                        排序
+                        {{ __('suda_lang::press.sort') }}
                     </label>
                     <div class="col-sm-8">
-                        <input type="number" name="sort" class="form-control" id="inputName" placeholder="请填写排序">
+                        <input type="number" name="sort" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.sort') }}">
                         <span class="help-block">
-                            数字越小越靠前
+                            {{ __('suda_lang::press.sort_asc') }}
                         </span>
                     </div>
             
@@ -114,7 +114,7 @@
 </div>
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">取消</span></button>
+    {{-- <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">{{ __('suda_lang::press.btn.cancel') }}</span></button> --}}
     <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.submit_save') }}</button>
 </div>
 

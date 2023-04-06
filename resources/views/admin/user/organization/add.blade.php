@@ -35,7 +35,7 @@
                       
                         <div class="mb-3">
                             <div class="form-check form-check-inline">
-                                <input type="checkbox" class="form-check-input" name="disable" placeholder="是" value="0" checked>
+                                <input type="checkbox" class="form-check-input" name="disable" placeholder="{{ __('suda_lang::press.yes') }}" value="0" checked>
                                 <label class="form-check-label" for="disable">{{ __('suda_lang::press.enable') }}</label>
                             </div>
                         </div>

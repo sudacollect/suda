@@ -36,7 +36,7 @@
                     <td width="20%">
 
                         @if($item->stick_top==1)
-                        <span class="label label-info">置顶</span>
+                        <span class="label label-info">{{ __('suda_lang::press.sticked') }}</span>
                         
                         @endif
                         @if(!empty($item->redirect_url))
@@ -48,15 +48,15 @@
                     </td>
                     <td width="8%">
                         @if($item->disable==1)
-                        否
+                        {{ __('suda_lang::press.no') }}
                         @else
-                        是
+                        {{ __('suda_lang::press.yes') }}
                         @endif
                     </td>
                     <td width="10%">
                     <div class="inline-edit-block">
                         <span id="{{ $item->id }}" class="inedit" edit-id="{{ $item->id }}" edit-value="{{ $item->sort }}">{{ $item->sort }}</span>
-                        <a href="{{ admin_url('page/editsort/'.$item->id) }}" class="btn btn-sm inline-edit" title="设置排序"><i class="ion-create-outline" style="color:#999;"></i></a>
+                        <a href="{{ admin_url('page/editsort/'.$item->id) }}" class="btn btn-sm inline-edit" title="{{ __('suda_lang::press.set_sort') }}"><i class="ion-create-outline" style="color:#999;"></i></a>
                     </div>
                     </td>
                     <td width="15%">

@@ -8,7 +8,7 @@
     <ul role="menu" class="dropdown-menu" aria-labelledby="dropdownMenuUser">
         <li>
             <a class="dropdown-item" href="{{ admin_url('profile') }}">
-                {{ __('suda_lang::auth.accountInfo') }}
+                {{ __('suda_lang::auth.profile') }}
             </a>
         </li>
 

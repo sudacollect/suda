@@ -20,9 +20,10 @@ class OrganizationController extends DashboardController
     function __construct(){
         parent::__construct();
         
-        $this->title('部门管理');
+        $this->title(__('suda_lang::press.menu_items.setting_operate_org'));
         $this->setMenu('setting','setting_operate_org');
 
+        $this->taxonomy_title = __('suda_lang::press.organization');
         
         //增加自定义的权限控制
         $this->middleware(function (Request $request, $next) {

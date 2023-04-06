@@ -51,7 +51,12 @@
                                   </span>
                                   {{ $role->name }}
                               </td>
-                              <td>@if($role->disable==1)否@else是@endif</td>
+                              <td>
+                                @if($role->disable==1)
+                                {{ __('suda_lang::press.no') }}
+                                @else
+                                {{ __('suda_lang::press.yes') }}
+                                @endif</td>
                               <td>{{ $role->updated_at }}</td>
                               <td>
                                   
@@ -59,9 +64,9 @@
                                   <a href="{{ admin_url('user/roles/edit/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                                   @endif
                                   @if($role->authority=='extension')
-                                  <a href="{{ admin_url('user/roles/showexts/'.$role->id) }}" class="btn btn-light btn-xs" title="应用权限设置" data-toggle="tooltip" data-placement="top"><i class="ion-filter-circle"></i>&nbsp;应用权限</a>
+                                  <a href="{{ admin_url('user/roles/showexts/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.ext_permission') }}" data-toggle="tooltip" data-placement="top"><i class="ion-filter-circle"></i>&nbsp;{{ __('suda_lang::press.ext_permission') }}</a>
                                   @elseif(\Gtd\Suda\Auth\OperateCan::operation($soperate))
-                                  <a href="{{ admin_url('user/roles/showsys/'.$role->id) }}" class="btn btn-light btn-xs" title="系统权限" data-toggle="tooltip" data-placement="top"><i class="ion-list"></i>&nbsp;系统权限</a>
+                                  <a href="{{ admin_url('user/roles/showsys/'.$role->id) }}" class="btn btn-light btn-xs" title="{{ __('suda_lang::press.system_permission') }}" data-toggle="tooltip" data-placement="top"><i class="ion-list"></i>&nbsp;{{ __('suda_lang::press.system_permission') }}</a>
                                   @endif
                                   @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                                   <button href="{{ admin_url('user/roles/delete/'.$role->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $role->id }}" title="{{ __('suda_lang::press.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>

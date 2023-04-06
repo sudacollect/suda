@@ -9,10 +9,10 @@
         <div class="modal-title-tabs">
             <ul class="nav nav-tabs border-bottom-0">
                 <li class="nav-item" >
-                    <a href="javascript:void(0);" class="nav-link bg-white active" affect-id="media-box">媒体</a>
+                    <a href="javascript:void(0);" class="nav-link bg-white active" affect-id="media-box">{{ __('suda_lang::press.menu_items.media') }}</a>
                 </li>
                 <li class="nav-item" >
-                    <a href="javascript:void(0);" class="nav-link" affect-id="media-upload">上传</a>
+                    <a href="javascript:void(0);" class="nav-link" affect-id="media-upload">{{ __('suda_lang::press.upload') }}</a>
                 </li>
             </ul>
         </div>
@@ -33,13 +33,16 @@
         	</ol>
         	<ol class="filelist queue"></ol>
             </div>
+            <span id="upload_label" style="display:none">
+              <h4>{{ __('suda_lang::press.medias.upload_label') }}</h4><p>or</p><p><button class="btn btn-primary">{{ __('suda_lang::press.medias.upload_label_btn') }}</button></p>
+            </span>
         </div>
         
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal">关闭</button>
-        <button type="button" class="btn btn-primary" id="btn-save">确定</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('suda_lang::press.btn.cancel') }}</button>
+        <button type="button" class="btn btn-primary" id="btn-save">{{ __('suda_lang::press.btn.save') }}</button>
       </div>
       
     </div><!-- /.modal-content -->

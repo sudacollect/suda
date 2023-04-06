@@ -33,24 +33,24 @@
                         @if(array_key_exists($item['slug'],$available_ext_list))
 
                             @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
-                            <button class="btn btn-light btn-xs btn-uninstall" href="{{ admin_url('manage/extension/'.$item['slug'].'/uninstall') }}" title="卸载应用" data-id="{{ $item['slug'] }}"><i class="ion-trash-outline"></i>&nbsp;卸载</button>
+                            <button class="btn btn-light btn-xs btn-uninstall" href="{{ admin_url('manage/extension/'.$item['slug'].'/uninstall') }}" title="卸载应用" data-id="{{ $item['slug'] }}"><i class="ion-trash-outline"></i>&nbsp;{{ __('suda_lang::press.extensions.uninstall') }}</button>
 
-                            <button class="btn btn-light btn-xs btn-refresh" title="刷新应用" href="{{ admin_url('manage/extension/'.$item['slug'].'/refresh') }}" data-id="{{ $item['slug'] }}"><i class="ion-sync"></i>&nbsp;刷新</button>
+                            <button class="btn btn-light btn-xs btn-refresh" title="刷新应用" href="{{ admin_url('manage/extension/'.$item['slug'].'/refresh') }}" data-id="{{ $item['slug'] }}"><i class="ion-sync"></i>&nbsp;{{ __('suda_lang::press.extensions.refresh') }}</button>
                             @endif
 
                             @if(isset($item['default_page_url']))
-                            <a href="{{ admin_url($item['default_page_url']) }}" class="btn btn-light btn-xs" title="进入应用" ><i class="ion-home"></i></a>
+                            <a href="{{ admin_url($item['default_page_url']) }}" class="btn btn-light btn-xs" title="Home" ><i class="ion-home"></i></a>
                             @endif
                             
                             @if(isset($item['setting']['setting_page']))
-                            <a href="{{ admin_url('extension/'.$item['setting']['setting_page']) }}" class="btn btn-primary btn-xs" title="应用配置" ><i class="ion-settings-sharp"></i>&nbsp;配置</a>
+                            <a href="{{ admin_url('extension/'.$item['setting']['setting_page']) }}" class="btn btn-primary btn-xs" ><i class="ion-settings-sharp"></i></a>
                             @endif
                             
                             
 
                         @else
                             @if(\Gtd\Suda\Auth\OperateCan::operation($soperate))
-                            <button class="btn btn-success btn-sm btn-install" href="{{ admin_url('manage/extension/'.$item['slug'].'/install') }}" title="安装" data-id="{{ $item['slug'] }}"><i class="ion-flag"></i>&nbsp;安装</button>
+                            <button class="btn btn-success btn-sm btn-install" href="{{ admin_url('manage/extension/'.$item['slug'].'/install') }}" data-id="{{ $item['slug'] }}"><i class="ion-arrow-down-circle-outline me-1"></i>{{ __('suda_lang::press.extensions.install') }}</button>
                             @endif
                         @endif
                     </div>

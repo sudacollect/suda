@@ -72,7 +72,7 @@
 
                 <div class="form-check form-check-inline">
                     <input type="checkbox" value="1" name="crop" @if(isset($setting['crop']) && $setting['crop']==1) checked @endif>
-                    <label class="form-check-label" for="crop">是</label>
+                    <label class="form-check-label" for="crop">{{ __('suda_lang::press.yes') }}</label>
                 </div>
                 
                 <span class="help-block">
@@ -104,7 +104,7 @@
 </div>
 
     <div class="modal-footer">
-    <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">取消</span></button>
+    <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">{{ __('suda_lang::press.btn.cancel') }}</span></button>
     <button type="submit" class="btn btn-primary">{{ __('suda_lang::press.submit_save') }}</button>
 </div>
 

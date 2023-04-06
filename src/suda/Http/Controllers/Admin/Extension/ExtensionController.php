@@ -25,7 +25,7 @@ class ExtensionController extends DashboardController
         
         $this->gate('setting.update',app(\Gtd\Suda\Models\Setting::class));
 
-        $this->title('应用管理');
+        $this->title(__('suda_lang::press.menu_items.tool_extend'));
         $page_no = 0;
         $page_size = 20;
         if($request->get('page')){

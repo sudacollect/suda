@@ -368,7 +368,7 @@ trait TaxonomyTrait
     protected function getViews($type='list')
     {
 
-        $this->setData('taxonomy_title',property_exists($this,'taxonomy_title')?$this->taxonomy_title:'分类');
+        $this->setData('taxonomy_title',property_exists($this,'taxonomy_title')?$this->taxonomy_title:__('suda_lang::press.category'));
 
         $views = $this->viewConfig();
 

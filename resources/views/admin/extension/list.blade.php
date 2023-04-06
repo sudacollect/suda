@@ -29,12 +29,12 @@
             <div class="btn-groups ms-auto">
                 @if(\Gtd\Suda\Auth\OperateCan::operation($soperate))
                 <button type="button" href="{{ admin_url('manage/extension/updatecache') }}" class="btn-refresh-cache btn btn-sm btn-light">
-                    <i class="ion-sync"></i>&nbsp;更新缓存
+                    <i class="ion-sync"></i>&nbsp;{{ __('suda_lang::press.extensions.update_cache') }}
                 </button>
                 @endif
                 
                 <a href="{{ url('http://suda.gtd.xyz') }}" target="_blank" class="btn btn-light btn-sm">
-                    <i class="ion-bulb-outline"></i>&nbsp;更多应用
+                    <i class="ion-bulb-outline"></i>&nbsp;{{ __('suda_lang::press.extensions.market') }}
                 </a>
 
             </div>
@@ -44,8 +44,8 @@
         
         
         <div class="col-sm-12 suda_page_body">   
-            <a  class="btn btn-md @if($active=="enabled") btn-primary @else btn-light  @endif" href="{{ admin_url('manage/extension/enabled') }}">已安装</a>
-            <a  class="btn btn-md @if($active=="disabled") btn-secondary @else btn-light @endif" href="{{ admin_url('manage/extension/disabled') }}">未安装</a>
+            <a  class="btn btn-md @if($active=="enabled") btn-primary @else btn-light  @endif" href="{{ admin_url('manage/extension/enabled') }}">{{ __('suda_lang::press.extensions.installed') }}</a>
+            <a  class="btn btn-md @if($active=="disabled") btn-secondary @else btn-light @endif" href="{{ admin_url('manage/extension/disabled') }}">{{ __('suda_lang::press.extensions.available') }}</a>
             @include('view_path::extension.list_gallery')
         </div>
         
@@ -103,12 +103,12 @@ $(document).ready(function() {
     
     $('.suda-row-extension').find('.btn-install').suda_ajax({
         type:'POST',
-        title:'确认安装应用?',
+        title:"{{ __('suda_lang::press.extensions.ask_before_install') }}",
     });
 
     $('.suda-row-extension').find('.btn-uninstall').suda_ajax({
         type:'POST',
-        title:'确认卸载应用?',
+        title:"{{ __('suda_lang::press.extensions.ask_before_uninstall') }}",
     });
     
     $('.suda-row-extension').find('.btn-refresh').suda_ajax({
@@ -131,7 +131,7 @@ $(document).ready(function() {
                     order: slugs,
                     _token: '{{ csrf_token() }}'
                 }, function (data) {
-                    suda.alert('排序完成','primary');
+                    // suda.alert('排序完成','primary');
                     // suda.modal('菜单排序完成','info');
                 });
             },

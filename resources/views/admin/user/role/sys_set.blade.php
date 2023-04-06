@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="page-heading">
-        <h1 class="page-title"><i class="ion-people-outline"></i>&nbsp;设置系统权限</h1>
+        <h1 class="page-title"><i class="ion-people-outline"></i>&nbsp;{{ __('suda_lang::press.system_permission') }}</h1>
     </div>
     <div class="row suda-row">
 

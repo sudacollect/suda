@@ -15,7 +15,7 @@
                 <div class="btn-group" role="group" aria-label="First group">
 
                     <button type="button" href="{{ admin_url('style/dashboard.layout') }}" class="pop-modal btn btn-sm btn-light me-2">
-                        设置风格
+                        {{ __('suda_lang::press.appearance.set_style') }}
                     </button>
 
                     <button type="button" href="{{ admin_url('theme/updatecache/admin') }}" class="modal-action btn btn-sm btn-light">

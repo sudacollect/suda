@@ -6,8 +6,8 @@
 <div class="container">
     <div class="row suda-row">
         <div class="page-heading">
-            <h1 class="page-title"><i class="icon ion-pricetags"></i>&nbsp;媒体标签</h1>
-            <a href="{{ $buttons['create'] }}" class="pop-modal btn btn-primary btn-sm pull-left"><i class="ion-add-circle"></i>&nbsp;增加标签</a>
+            <h1 class="page-title"><i class="icon ion-pricetags"></i>&nbsp;{{ __('suda_lang::press.tags.tag') }}</h1>
+            <a href="{{ $buttons['create'] }}" class="pop-modal btn btn-primary btn-sm pull-left"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}</a>
         </div>
         <div class="col-12 suda_page_body">
 
@@ -20,11 +20,11 @@
                       <table class="table">
                           <thead class="bg-light">
                             <tr>
-                              <th width="20%">标签</th>
-                              <th width="10%">别名</th>
-                              <th width="15%">排序</th>
-                              <th width="20%">更新时间</th>
-                              <th>操作</th>
+                              <th width="20%">{{ __('suda_lang::press.tags.tag') }}</th>
+                              <th width="10%">{{ __('suda_lang::press.slug') }}</th>
+                              <th width="15%">{{ __('suda_lang::press.sort') }}</th>
+                              <th width="20%">{{ __('suda_lang::press.updated_at') }}</th>
+                              <th>{{ __('suda_lang::press.operation') }}</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -45,7 +45,7 @@
       
                                       <div class="inline-edit-block">
                                           <span id="{{ $tag->id }}" class="inedit" edit-id="{{ $tag->id }}" edit-value="{{ $tag->sort }}">{{ $tag->sort }}</span>
-                                          <a href="{{ admin_url('article/tag/editsort/'.$tag->id) }}" class="btn btn-sm inline-edit" title="设置排序"><i class="ion-create" style="color:#999;"></i></a>
+                                          <a href="{{ admin_url('article/tag/editsort/'.$tag->id) }}" class="btn btn-sm inline-edit" title="{{ __('suda_lang::press.set_sort') }}"><i class="ion-create" style="color:#999;"></i></a>
                                       </div>
       
                                   </td>

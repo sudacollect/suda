@@ -24,10 +24,10 @@ class PageController extends DashboardController
     {
         $this->gate('page.view',app(Page::class));
 
-        $this->breadParent('控制面板','/');
-        $this->breadSet('页面','');
+        $this->breadParent(__('suda_lang::press.menu_items.dashboard'),'/');
+        $this->breadSet(__('suda_lang::press.menu_items.page'),'');
 
-        $this->title('页面管理');
+        $this->title(__('suda_lang::press.menu_items.page'));
         $this->setMenu('page','page_list');
 
         return $this->getAll($request,$view,$sort);
@@ -58,13 +58,13 @@ class PageController extends DashboardController
     
     public function create()
     {
-        $this->breadParent('控制面板','/');
-        $this->breadParent('页面','page/list');
-        $this->breadSet('新建页面','');
+        $this->breadParent(__('suda_lang::press.menu_items.dashboard'),'/');
+        $this->breadSet(__('suda_lang::press.menu_items.page'),'page/list');
+        $this->breadSet(__('suda_lang::press.menu_items.page_new'),'');
 
         $this->gate('page.create',app(Page::class));
                 
-        $this->title('新建页面');
+        $this->title(__('suda_lang::press.menu_items.page_new'));
         
         $this->setMenu('page','page_new');
         return $this->display('page.add');
@@ -73,9 +73,9 @@ class PageController extends DashboardController
     public function update($id=0)
     {
         
-        $this->breadParent('控制面板','/');
-        $this->breadParent('页面','page/list');
-        $this->breadSet('编辑页面','');
+        $this->breadParent(__('suda_lang::press.menu_items.dashboard'),'/');
+        $this->breadSet(__('suda_lang::press.menu_items.page'),'page/list');
+        $this->breadSet(__('suda_lang::press.btn.edit'),'');
         
         $id = intval($id);
         

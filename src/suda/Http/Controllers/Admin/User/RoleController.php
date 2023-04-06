@@ -49,7 +49,7 @@ class RoleController extends DashboardController
     //$view = ['list','gallery']
     public function index(Request $request,$view='list')
     {
-        $this->title('权限角色');
+        $this->title(__('suda_lang::press.menu_items.setting_operate_role'));
         $page_no = 0;
         if($request->get('page')){
             $page_no = $request->get('page');
@@ -216,7 +216,7 @@ class RoleController extends DashboardController
             ],
             'role'   => [
                 'name'=>'role',
-                'display_name'=>'权限角色',
+                'display_name'=>__('suda_lang::press.menu_items.setting_operate_role'),
                 'policy'=>[
                     'setting_dashboard'  =>[
                         'name'=>'setting_dashboard',
@@ -224,15 +224,15 @@ class RoleController extends DashboardController
                     ],
                     'setting_operate'  =>[
                         'name'=>'setting_operate',
-                        'display_name'=>'管理员管理',
+                        'display_name'=>__('suda_lang::press.menu_items.setting_operate'),
                     ],
                     'setting_operate_role'  =>[
                         'name'=>'setting_operate_role',
-                        'display_name'=>'角色管理',
+                        'display_name'=>__('suda_lang::press.menu_items.setting_operate_role'),
                     ],
                     'setting_operate_org'  =>[
                         'name'=>'setting_operate_org',
-                        'display_name'=>'部门管理',
+                        'display_name'=>__('suda_lang::press.menu_items.setting_operate_org'),
                     ],
                 ]
             ],
@@ -315,7 +315,7 @@ class RoleController extends DashboardController
             return redirect(admin_url('error'));
         }
 
-        $this->title('设置系统权限');
+        $this->title(__('suda_lang::press.system_permission'));
         
         $id = intval($id);
         $role = Role::where('id','=',$id)->first();

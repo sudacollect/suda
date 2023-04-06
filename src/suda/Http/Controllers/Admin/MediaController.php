@@ -257,9 +257,8 @@ class MediaController extends DashboardController
     //批量打标签
     public function batchTag(Request $request)
     {
-        $this->title('设置标签');
         $this->setMenu('media');
-        $this->setData('modal_title','批量设置标签');
+        $this->setData('modal_title',__('suda_lang::press.tags.tag'));
         $this->setData('modal_icon_class','ion-image-outline');
         
         $mediaObj = new Media;

@@ -62,7 +62,7 @@
                                 <p><i class="ion-compass-outline me-2"></i><b class="me-2">{{ $theme_info['name'] }}</b>v{{ $theme_info['version'] }}</p>
                                 <p><i class="ion-information-circle-outline me-2"></i>{{ $theme_info['description'] }}</p>
                                 <p><i class="ion-at-outline me-2"></i><a target="_blank" href="{{ $theme_info['author_url'] }}">{{ $theme_info['author'] }}</a></p>
-                                <p><a href="{{ admin_url('widget/'.$app_name.'/'.$current_theme) }}" class="btn btn-light btn-sm">设置挂件</a></p>
+                                <p><a href="{{ admin_url('widget/'.$app_name.'/'.$current_theme) }}" class="btn btn-light btn-sm">{{ __('suda_lang::press.appearance.set_widget') }}</a></p>
                             </div>
                         </div>
                     </div>
@@ -95,9 +95,9 @@
                                         {{ $theme['name'] }}
                                     </div>
                                     <div class="mt-3 text-center text-dark">
-                                        <button type="submit" class="btn btn-light btn-sm">启用</button>
-                                        <a href="{{ admin_url('widget/'.$app_name.'/'.$kk) }}" class="btn btn-light btn-sm">设置挂件</a>
-                                        <a href="{{ url('/?theme_preview='.$kk) }}" target="_blank" class="btn btn-light btn-sm">预览</a>
+                                        <button type="submit" class="btn btn-light btn-sm">{{ __('suda_lang::press.enable') }}</button>
+                                        <a href="{{ admin_url('widget/'.$app_name.'/'.$kk) }}" class="btn btn-light btn-sm">{{ __('suda_lang::press.appearance.set_widget') }}</a>
+                                        <a href="{{ url('/?theme_preview='.$kk) }}" target="_blank" class="btn btn-light btn-sm">{{ __('suda_lang::press.preview') }}</a>
                                         <input type="hidden" name="theme_name" value="{{ $kk }}">
                                     </div>
                                 </div>

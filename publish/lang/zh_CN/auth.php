@@ -19,7 +19,7 @@ return [
     'login'                 => '登录',
     'register'              => '注册',
     'forgetPassword'        => '忘记密码',
-    'accountInfo'           => '帐户信息',
+    'profile'           => '帐户信息',
     'logout'                => '退出登录',
     'superAdmin'            => '超级管理',
     'forgetPasswordRequest' => '忘记密码请联系管理员',

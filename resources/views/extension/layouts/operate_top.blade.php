@@ -17,7 +17,7 @@
         </a>
 
         <a class="dropdown-item" href="{{ extadmin_url('profile') }}">
-            <i class="icon ion-person"></i>{{ __('suda_lang::auth.accountInfo') }}
+            <i class="icon ion-person"></i>{{ __('suda_lang::auth.profile') }}
         </a>
 
         <div class="dropdown-divider"></div>

@@ -24,7 +24,7 @@
       
       <div class="inline-edit-block">
           <span id="{{ $cate->id }}" class="inedit" edit-id="{{ $cate->id }}" edit-value="{{ $cate->sort }}">{{ $cate->sort }}</span>
-          <a href="{{ $buttons['sort'].'/'.$cate->id }}" class="btn btn-xs inline-edit" title="设置排序"><i class="ion-create" style="color:#999;"></i></a>
+          <a href="{{ $buttons['sort'].'/'.$cate->id }}" class="btn btn-xs inline-edit" title="{{ __('suda_lang::press.set_sort') }}"><i class="ion-create" style="color:#999;"></i></a>
       </div>
       
   </td>

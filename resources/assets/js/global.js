@@ -333,7 +333,7 @@ jQuery(function($) {
     zpup.onQueued = function (e, files) {
     	var html = '';
     	for (var i = 0; i < files.length; i++) {
-    		html += '<li data-index="' + files[i].index + '"><div class="file">' + files[i].name + '</div><span class="progress">Queued</span><span class="cancel">取消</span></li>';
+    		html += '<li data-index="' + files[i].index + '"><div class="file">' + files[i].name + '</div><span class="progress">Queued</span><span class="cancel">cancel</span></li>';
     	}
     	$(this).find(".filelist.queue").append(html);
     }

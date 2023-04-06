@@ -30,20 +30,20 @@
                     <div class="card-header bg-white">
 
                         @if(isset($tag))
-                        <span class="btn btn-sm btn-primary me-3 float-left list-tag-filter"><i class="ion-close"></i>&nbsp;标签：{{ $tag->term->name }}</span>
+                        <span class="btn btn-sm btn-primary me-3 float-left list-tag-filter"><i class="ion-close"></i>&nbsp;{{ __('suda_lang::press.tags.tag') }}：{{ $tag->term->name }}</span>
                         @endif
 
                         <div class="dropdown d-inline-flex">
                             <a class="btn btn-light btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              批量管理
+                                {{ __('suda_lang::press.medias.batch_manage') }}
                             </a>
                           
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a id="batch_retag" class="dropdown-item" href="{{ admin_url('media/batchtag') }}">批量标签</a></li>
+                                <li><a id="batch_retag" class="dropdown-item" href="{{ admin_url('media/batchtag') }}">{{ __('suda_lang::press.tags.tag') }}</a></li>
                                 {{-- <li><a id="batch_rebuild" class="dropdown-item" href="#">批量缩略图</a></li> --}}
-                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/showbatch') }}">批量显示</a></li>
-                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/hiddenbatch') }}">批量隐藏</a></li>
-                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/deletebatch') }}">批量删除</a></li>
+                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/showbatch') }}">{{ __('suda_lang::press.medias.batch_show') }}</a></li>
+                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/hiddenbatch') }}">{{ __('suda_lang::press.medias.batch_hide') }}</a></li>
+                                <li><a  class="batch-action dropdown-item" href="{{ admin_url('media/deletebatch') }}">{{ __('suda_lang::press.medias.batch_delete') }}</a></li>
                             </ul>
                         </div>
 
@@ -59,15 +59,15 @@
                             <thead class="table-light">
                                 <tr>
                                 <th width="20px"><input type="checkbox" id="select_all" value="1"></th>
-                                <th width="5%">#<i class="stitle"></i></th>
-                                <th width="60px">主图</th>
-                                <th width="20%">目录</th>
-                                <th width="20%">标签</th>
-                                <th width="10%">大小</th>
+                                {{-- <th width="5%">#<i class="stitle"></i></th> --}}
+                                <th width="60px">{{ __('suda_lang::press.medias.image') }}</th>
+                                <th width="20%">{{ __('suda_lang::press.medias.path') }}</th>
+                                <th width="20%">{{ __('suda_lang::press.tags.tag') }}</th>
+                                <th width="10%">{{ __('suda_lang::press.medias.size') }}</th>
                                 <!-- <th width="10%">用户类型</th> -->
-                                <th width="15%">上传时间</th>
+                                <th width="15%">{{ __('suda_lang::press.created_at') }}</th>
                                 <th>
-                                    操作
+                                    {{ __('suda_lang::press.operation') }}
                                 </th>
                                 </tr>
                             </thead>
@@ -76,7 +76,7 @@
                                 @foreach ($medias as $item)
                                 <tr>
                                 <td width="20px"><input type="checkbox" name="select[]" value="{{ $item->id }}"></td>
-                                <td width="5%">{{ $item->id }}</td>
+                                {{-- <td width="5%">{{ $item->id }}</td> --}}
                                 <td width="60px">
                                     <img src="{{ suda_image($item,['size'=>'medium','imageClass'=>'image_icon',"url"=>true],false) }}" class="image_icon" data-toggle="popover" data-image="true" >
                                 </td>
@@ -115,13 +115,13 @@
                                     @if($soperate->id==$item->operate_id || \Gtd\Suda\Auth\OperateCan::superadmin($soperate))
                                     <a href="{{ admin_url('media/update/'.$item->id) }}" class="pop-modal btn btn-light btn-xs tips" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top"><i class="ion-create"></i>&nbsp;{{ __('suda_lang::press.edit') }}</a>
                                     @if(strpos($item->type,'FILE')===false)
-                                    <a href="{{ admin_url('media/rebuild/'.$item->id) }}" class="pop-modal btn btn-light btn-xs tips" title="重新生成图片" data-toggle="tooltip" data-placement="top"><i class="ion-crop"></i>&nbsp;重置缩略图</a>
+                                    <a href="{{ admin_url('media/rebuild/'.$item->id) }}" class="pop-modal btn btn-light btn-xs tips" title="{{ __('suda_lang::press.medias.reset_thumb') }}" data-toggle="tooltip" data-placement="top"><i class="ion-crop"></i>&nbsp;{{ __('suda_lang::press.medias.reset_thumb') }}</a>
                                     @endif
                                     @endif
                                     
                                     
                                     @if($soperate->superadmin==1)
-                                    <button href="{{ admin_url('media/delete/'.$item->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $item->id }}" title="删除" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
+                                    <button href="{{ admin_url('media/delete/'.$item->id) }}" class="pop-modal-delete btn btn-light btn-xs" data_id="{{ $item->id }}" title="{{ __('suda_lang::press.btn.delete') }}" data-toggle="tooltip" data-placement="top"><i class="ion-trash"></i></button>
                                     @endif
                                 
                                 
@@ -267,7 +267,7 @@
                 data.append("_token", suda.data('csrfToken'));
                 data.append("medias", delete_medias);
 
-                var delete_statu = window.confirm('确认批量操作');
+                var delete_statu = window.confirm("{{ __('suda_lang::press.medias.confirm_batch') }}?");
                 if(delete_statu){
                     $.ajax({
                         url:href_url,

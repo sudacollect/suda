@@ -50,7 +50,7 @@
                                       </td>
                                   
                                       <td>
-                                        <button select-id="{{ $item->id }}" select-title="{{ $item->title }}" select-result="{{ $result_name }}" type="button" class="modal-select-page btn btn-light btn-sm" >选择</button>
+                                        <button select-id="{{ $item->id }}" select-title="{{ $item->title }}" select-result="{{ $result_name }}" type="button" class="modal-select-page btn btn-light btn-sm" >{{ __('suda_lang::press.btn.select') }}</button>
                                       </td>
                                     </tr>
                                     @endforeach

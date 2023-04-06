@@ -38,7 +38,7 @@ class OperateController extends DashboardController
     {
         $this->gate('role.setting_operate',app(Setting::class));
         
-        $this->title('用户管理');
+        $this->title(__('suda_lang::press.menu_items.setting_operate'));
         $page_no = 0;
         if($request->get('page')){
             $page_no = $request->get('page');
