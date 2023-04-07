@@ -131,13 +131,13 @@ $(document).ready(function() {
     
     $('.btn-restore').suda_ajax({
         type:'POST',
-        title:'确认恢复页面?',
+        title:'Confirmed?',
         confirm:true,
     });
 
     $('.btn-forcedelete').suda_ajax({
         type:'POST',
-        title:'确认删除页面?',
+        title:'Confirmed?',
         confirm:true,
     });
     

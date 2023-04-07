@@ -33,18 +33,19 @@
                         @if(array_key_exists($item['slug'],$available_ext_list))
 
                             @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
-                            <button class="btn btn-light btn-xs btn-uninstall" href="{{ admin_url('manage/extension/'.$item['slug'].'/uninstall') }}" title="卸载应用" data-id="{{ $item['slug'] }}"><i class="ion-trash-outline"></i>&nbsp;{{ __('suda_lang::press.extensions.uninstall') }}</button>
+                            <button class="btn btn-light btn-xs btn-uninstall" href="{{ admin_url('manage/extension/'.$item['slug'].'/uninstall') }}" title="卸载应用" data-id="{{ $item['slug'] }}"><i class="ion-trash-outline"></i></button>
 
                             <button class="btn btn-light btn-xs btn-refresh" title="刷新应用" href="{{ admin_url('manage/extension/'.$item['slug'].'/refresh') }}" data-id="{{ $item['slug'] }}"><i class="ion-sync"></i>&nbsp;{{ __('suda_lang::press.extensions.refresh') }}</button>
                             @endif
 
+                            @if(isset($item['setting']['setting_page']))
+                            <a href="{{ admin_url('extension/'.$item['setting']['setting_page']) }}" class="btn btn-light btn-xs" ><i class="ion-settings-sharp"></i></a>
+                            @endif
+                            
                             @if(isset($item['default_page_url']))
                             <a href="{{ admin_url($item['default_page_url']) }}" class="btn btn-light btn-xs" title="Home" ><i class="ion-home"></i></a>
                             @endif
                             
-                            @if(isset($item['setting']['setting_page']))
-                            <a href="{{ admin_url('extension/'.$item['setting']['setting_page']) }}" class="btn btn-primary btn-xs" ><i class="ion-settings-sharp"></i></a>
-                            @endif
                             
                             
 

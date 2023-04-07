@@ -35,7 +35,7 @@
 </head>
 <body class="suda-body">
     
-    <nav class="navbar navbar-expand-sm navbar-suda navbar-suda-noside fixed-top navbar-dark bg-primary @if (Auth::guard('operate')->guest()) navbar-nologin @endif">
+    <nav class="navbar navbar-expand-sm navbar-suda navbar-suda-noside fixed-top navbar-dark bg-dark @if (Auth::guard('operate')->guest()) navbar-nologin @endif">
             
         <a class="navbar-brand" href="#">
             {{ config('app.name', 'Suda') }}
@@ -69,7 +69,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('/home') }}" target="_blank" title="{{ __('suda_lang::press.visit_homepage') }}" class="nav-link"><i class="zlyicon ion-home"></i></a>
+                        <a href="{{ url('/home') }}" target="_blank" title="{{ __('suda_lang::press.visit_homepage') }}" class="nav-link"><i class="ion-home"></i></a>
                     </li>
                 
                 <!-- Authentication Links -->

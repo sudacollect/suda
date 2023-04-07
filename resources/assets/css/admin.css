@@ -863,37 +863,6 @@ code {
 
 /*控制面板*/
 .dashboard-item .welcomeback h1{font-size:2rem;margin:0;}
-.dashboard-item .welcomeback .welbox ul{
-    list-style:none;
-    font-size:1.4rem;
-    line-height:2.4rem;
-    margin:0;
-    padding:0;
-}
-.dashboard-item .welcomeback .welbox img{
-    width:100%;
-    border-radius:6px;
-}
-.dashboard-item .welcomeback .welbox img:hover{
-    opacity:0.9;
-}
-.welbox h3{font-size:1.6rem;font-weight:bold;color:#615169;margin-top:11px;}
-.welbox h3 .zlyicon{margin-right:5px;}
-.welbox ul li{
-    padding-left: 0px;
-    list-style: disc;
-    list-style-type: decimal-leading-zero;
-    list-style-position: inside;
-    color: #c8c8c8;
-}
-.welbox ul li a{
-    color: #516a80;
-    padding: 3px 0px;
-    display: inline-block;
-}
-.welbox ul li a:hover{
-    color:#08f;
-}
 
 .widget-start{
     position: relative;
@@ -1819,67 +1788,6 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.2);
     position: relative;
 }
-.alert::before{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 25px;
-    height: 100%;
-    padding-top: 5px;
-    text-align: center;
-    background:transparent;
-}
-.alert-success {
-    color: #fff;
-    background-color: #64ce83;
-    border-color:#68c51a;
-}
-.alert-success::before{
-    font-family: "zlyicon";
-    content: "\f140";
-    background: #30ab55;
-}
-.alert-info {
-    color: #fff;
-    background-color: #3ea2ff;
-    border-color:#418fd4;
-}
-.alert-info::before{
-    font-family: "zlyicon";
-    content: "\f15a";
-    background:#318bde;
-}
-.alert-warning {
-    color: #fff;
-    background-color: #ff7f48;
-    border-color:#e8703d;
-}
-.alert-warning::before{
-    font-family: "zlyicon";
-    content: "\f26c";
-    background:#d86738;
-}
-.alert-danger {
-    color: #fff;
-    background-color: #e74c3c;
-    border-color:#da3f2f;
-}
-.alert-danger::before{
-    font-family: "zlyicon";
-    content: "\f26c";
-    background:#c53d2f;
-}
-.alert-gtd {
-    color: #fff;
-    background-color: #0088ff;
-    border-color: #006aca;
-}
-.alert-gtd::before{
-    font-family: "zlyicon";
-    content: "\f174";
-    background:#1376d0;
-}
-
 /*theme*/
 .card-theme .screenshot img{
     max-width:100%;

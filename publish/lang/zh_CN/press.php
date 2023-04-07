@@ -361,10 +361,11 @@ return [
 
     'appearance' => [
         'set_style' => '样式',
-    ],
-
-    'theme' => [
-        'set_widget' => '设置挂件',
+        'set_widget' => 'Widgets',
+        'widget' => '挂件',
+        'widget_tips' => '拖动挂件到挂件区，即时启用',
+        'widget_how' => '如何使用?',
+        'widget_empty' => '本模板无可用挂件区域',
     ],
 
     'basic_info' => '系统',
@@ -433,6 +434,15 @@ return [
         'ask_before_uninstall'    => '确认卸载应用?',
     ],
 
+    'profile' => [
+        'updated'           => '资料已更新',
+        'need_password'     => '请填写密码',
+        'password_fail'     => '密码填写错误',
+        'need_new_password' => '请填写新密码',
+        'confirm_new_password' => '新密码两次填写不一致',
+        'password_min' => '密码长度不能少于6位',
+        'password_max' => '密码长度不能多于64位',
+    ],
 
     // ABOUT
     'about_suda'    => '关于速搭',

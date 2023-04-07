@@ -147,21 +147,6 @@ mix.js('resources/assets/js/app.vendor.js', 'publish/assets/js/app.vendor.js');
 // mix.styles(['./publish/theme/admin/simpleblue/design/style.css'],'./publish/theme/admin/simpleblue/design/style.min.css');
 // mix.styles(['./publish/theme/admin/colorbar/design/style.css'],'./publish/theme/admin/colorbar/design/style.min.css');
 
-/*
-|--------------------------------------------------------------------------
-| MediaManager
-|--------------------------------------------------------------------------
-|
-| description
-|
-*/
-
-// MediaManager
-// mix.js('resources/assets/js/mediamanager.js', './publish/assets/js/mediamanager.js');
-
-// mix.sass('./media-manager/resources/assets/sass/manager.scss', './publish/assets/mediamanager/style.css')
-//     .copyDirectory('./media-manager/resources/assets/dist', './publish/assets/mediamanager')
-
 
 /*
 |--------------------------------------------------------------------------

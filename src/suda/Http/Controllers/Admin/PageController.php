@@ -257,7 +257,6 @@ class PageController extends DashboardController
             
             }
             
-            //更新成功
             $redirect_url = $request->previous_url?$request->previous_url:$this->self_url;
             return $this->responseAjax('success',__('suda_lang::press.msg.success'),$redirect_url);
         }

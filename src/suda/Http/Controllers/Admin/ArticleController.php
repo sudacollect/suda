@@ -222,7 +222,6 @@ class ArticleController extends DashboardController
                 }
             }
             
-            //更新成功
             return $this->responseAjax('success',__('suda_lang::press.msg.success'),$this->self_url);
         }
         

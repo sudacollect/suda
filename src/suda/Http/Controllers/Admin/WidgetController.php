@@ -26,13 +26,7 @@ class WidgetController extends DashboardController
         $this->title('模板挂件');
         $this->gate('appearance.appearance_widget',app(Setting::class));   
         $this->setMenu('appearance','appearance_widget');
-
-        //判断app是否被允许
-        if($app=='admin' || !$this->availableApp($app))
-        {
-            return $this->dispatchError(404);
-        }
-
+        
         if(empty($theme)){
             $theme = app('theme')->getTheme($app);
         }
@@ -163,7 +157,7 @@ class WidgetController extends DashboardController
 
         }
 
-        //刷新单个区域缓存
+        // refresh widget
         app('theme')->updateWidgetCache($app,$theme,$widget_area);
     }
 
@@ -183,7 +177,7 @@ class WidgetController extends DashboardController
             $widget->delete();
         }
 
-        //刷新单个区域缓存
+        // refresh widget
         app('theme')->updateWidgetCache($app,$theme,$request->area);
         
     }
@@ -194,7 +188,7 @@ class WidgetController extends DashboardController
     // {
     //     app('theme')->updateWidgetCache();
     //     $url = 'widget';
-    //     return $this->responseAjax('success','缓存更新成功',$url);
+    //     return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
     // }
     
 }

@@ -99,7 +99,7 @@
                               <td>
                                 @if(isset($deleted))
                                     @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
-                                        <button href="{{ admin_url('manage/operates/restore/'.$operate->id) }}" action_id="{{ $operate->id }}" action_title="确认恢复用户?" class="x-suda-pop-action btn btn-warning btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top">恢复</button>
+                                        <button href="{{ admin_url('manage/operates/restore/'.$operate->id) }}" action_id="{{ $operate->id }}" action_title="Confirmed?" class="x-suda-pop-action btn btn-warning btn-xs" title="{{ __('suda_lang::press.edit') }}" data-toggle="tooltip" data-placement="top">恢复</button>
                                     @endif
 
                                     @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))

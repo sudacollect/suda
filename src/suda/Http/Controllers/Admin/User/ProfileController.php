@@ -137,7 +137,11 @@ class ProfileController extends DashboardController
         $user = Operate::where('id',$user_id)->with('avatar')->first();
         $this->uploadCroppie('operate',$request->avatar,$user);
         
-        return redirect(admin_url('profile'))->with('status', ['code'=>'success','msg'=>'资料已更新','delay'=>3000]);
+        return redirect(admin_url('profile'))->with('status', [
+            'code'  => 'success',
+            'msg'   => __('suda_lang::press.profile.updated'),
+            'delay' => 3000
+        ]);
 
     }
     
@@ -154,7 +158,7 @@ class ProfileController extends DashboardController
     
     //修改密码
     public function editPassword(){
-        $this->title(__('修改密码'));
+        $this->title(__('suda_lang::press.password'));
 
         $this->setData('extendFile','view_path::layouts.default');
         if(\Gtd\Suda\Auth\OperateCan::extension($this->user)){
@@ -177,21 +181,16 @@ class ProfileController extends DashboardController
     public function savePassword(Request $request,HasherContract $hasher){
         $this->hasher = $hasher;
         
-        // if($this->user->id==1){
-        //     $url = '';
-        //     return $this->responseAjax('fail','无法重置超级管理员账户',$url);
-        // }
-        
         if($request->old_password) {
             $roles = [
                 'new_password' => 'required|min:6|max:64',
                 'new_password_confirm' => 'required|min:6|max:64',
             ];
             $messages = [
-                'new_password.required'=>'请输入新密码',
-                'new_password_confirm.required'=>'请确认输入的新密码',
-                'min'=>'密码长度不能少于6位',
-                'max'=>'密码长度不能多于64位',
+                'new_password.required'         => __('suda_lang::press.profile.need_new_password'),
+                'new_password_confirm.required' => __('suda_lang::press.profile.confirm_new_password'),
+                'min'                           => __('suda_lang::press.profile.password_min'),
+                'max'                           => __('suda_lang::press.profile.password_max'),
             ];
             
             $response_msg = '';
@@ -199,15 +198,13 @@ class ProfileController extends DashboardController
             
         } else {
             $url = '';
-            return $this->responseAjax('fail','输入当前密码才能重置新密码',$url);
+            return $this->responseAjax('fail',__('suda_lang::press.profile.need_password'),$url);
         }
         
         if($request->new_password != $request->new_password_confirm){
             $url = '';
-            return $this->responseAjax('fail','新密码需输入一致',$url);
+            return $this->responseAjax('fail',__('suda_lang::press.profile.confirm_new_password'),$url);
         }
-        
-        //$2y$10$ULYyyNl.lRAdfFtEl6lfS.QXes5dIoVrnqxbTMdtMj0BL2fzEk7dK
         
         if(!$response_msg) {
             $operateModel = new Operate;
@@ -229,7 +226,7 @@ class ProfileController extends DashboardController
                 return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
             }else{
                 $url = '';
-                return $this->responseAjax('fail','当前密码输入错误',$url);
+                return $this->responseAjax('fail',__('suda_lang::press.profile.password_fail'),$url);
             }
             
         } else {

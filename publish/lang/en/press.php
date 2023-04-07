@@ -362,6 +362,10 @@ return [
     'appearance' => [
         'set_style' => 'Style',
         'set_widget' => 'Widgets',
+        'widget' => 'Widget',
+        'widget_tips' => 'Drag widget to widget-area',
+        'widget_how' => 'Help?',
+        'widget_empty' => 'widget areas not found',
     ],
 
     'basic_info' => 'Basic',
@@ -427,6 +431,16 @@ return [
         'board'        => 'Exts Board',
         'ask_before_install'    => 'Confirm to install?',
         'ask_before_uninstall'    => 'Confirm to uninstall?',
+    ],
+
+    'profile' => [
+        'updated'           => 'Profile updated!',
+        'need_password'     => 'Enter password',
+        'password_fail'     => 'Password is wrong',
+        'need_new_password' => 'Enter new password',
+        'confirm_new_password' => 'New password confirm failed',
+        'password_min' => 'Min length need more than 6',
+        'password_max' => 'Max length need less than 64',
     ],
 
     // ABOUT

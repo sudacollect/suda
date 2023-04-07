@@ -30,14 +30,20 @@
                     <a class="btn btn-dark btn-sm" href="{{ admin_url('articles/gallery') }}"><i class="ion-grid"></i></a>
                     <a class="btn btn-dark btn-sm" href="{{ admin_url('articles/list') }}"><i class="ion-reorder-four"></i></a>
                     
-                    <button class="btn btn-light btn-sm more-filter" data-element=".data-list">
+                    {{-- <button class="btn btn-light btn-sm more-filter" data-element=".data-list">
                         <i class="ion-search-circle-outline"></i>&nbsp;{{ __('suda_lang::press.search') }}
-                    </button>
-                    @endif
+                    </button> --}}
 
                     <a class="btn btn-sm @if(isset($article_only_deleted)) btn-warning @else  btn-warning @endif" href="{{ admin_url('articles/deleted') }}">
                         {{ __('suda_lang::press.recycle') }}
                     </a>
+                    @else
+                    <a class="btn btn-sm" href="{{ admin_url('articles') }}">
+                        <i class="ion-arrow-undo-circle-outline"></i>
+                    </a>
+                    @endif
+
+                    
 
                 </div>
 
@@ -94,7 +100,7 @@
 
         $('.btn-restore').suda_ajax({
             type:'POST',
-            title:'确认恢复?',
+            title:'Confirmed?',
             confirm:true,
         });
 

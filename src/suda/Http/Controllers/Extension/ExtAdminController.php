@@ -24,7 +24,7 @@ use Gtd\Suda\Models\Setting;
 
 use Gtd\Suda\Services\SettingService;
 
-class AdminController extends BaseController
+class ExtAdminController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
@@ -259,17 +259,5 @@ class AdminController extends BaseController
 
         return false;
 
-    }
-
-    //是否允许APP定义
-    public function availableApp($app)
-    {
-        $apps = config('sudaconf.apps',['site','admin']);
-
-        if(in_array($app,$apps)){
-            return true;
-        }
-
-        return false;
     }
 }

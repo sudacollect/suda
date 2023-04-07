@@ -71,7 +71,7 @@ class ExtensionController extends DashboardController
         
         app('suda_extension')->updateCache($msg);
         
-        return $this->responseAjax('info',$msg?$msg:'更新成功','self.refresh');
+        return $this->responseAjax('info',$msg?$msg:__('suda_lang::press.msg.success'),'self.refresh');
         
     }
     
@@ -86,11 +86,11 @@ class ExtensionController extends DashboardController
             $msg = '';
             $result = app('suda_extension')->updateExtensionCache($extension_slug,$msg);
             if($result){
-                return $this->responseAjax('info','应用已刷新','self.refresh');
+                return $this->responseAjax('info',__('suda_lang::press.msg.success'),'self.refresh');
             }
             
         }
-        return $this->responseAjax('fail',$msg?$msg:'应用刷新失败');
+        return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
     }
     
     public function getExtensionLogo(Filesystem $files, Request $request,$extension_name){
@@ -109,7 +109,7 @@ class ExtensionController extends DashboardController
         return $response;
     }
 
-    //install extension
+    // install extension
     public function toInstall(Request $request,$extension_slug)
     {
 
@@ -120,22 +120,22 @@ class ExtensionController extends DashboardController
 
         if($extension_slug!=$request->id)
         {
-            return $this->responseAjax('fail',$msg?$msg:'应用安装失败');
+            return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
         }
         
         $msg = '';
         $result = app('suda_extension')->enableExtension($extension_slug,false,$msg);
         
         if(!$result){
-            return $this->responseAjax('fail',$msg?$msg:'应用安装异常');
+            return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
         }
         
         $msg = '';
-        return $this->responseAjax('info',$msg?$msg:'应用安装成功','manage/extension');
+        return $this->responseAjax('info',$msg?$msg:__('suda_lang::press.msg.success'),'manage/extension');
         
     }
     
-    //uninstall extension
+    // uninstall extension
     public function toUninstall(Request $request,$extension_slug)
     {
 
@@ -146,22 +146,22 @@ class ExtensionController extends DashboardController
 
         if($extension_slug!=$request->id)
         {
-            return $this->responseAjax('fail',$msg?$msg:'应用卸载失败');
+            return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
         }
         
         $msg = '';
         $result = app('suda_extension')->disableExtension($extension_slug,$msg);
         
         if(!$result){
-            return $this->responseAjax('fail',$msg?$msg:'应用卸载异常');
+            return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
         }
         
         $msg = '';
-        return $this->responseAjax('info',$msg?$msg:'应用卸载成功','self.refresh');
+        return $this->responseAjax('info',$msg?$msg:__('suda_lang::press.msg.success'),'self.refresh');
         
     }
 
-
+    // extension quickin 
     public function setQuickin(Request $request,$extension_slug){
 
         
@@ -175,14 +175,13 @@ class ExtensionController extends DashboardController
             
             $result = app('suda_extension')->setQuickin($extension_slug,$status,$msg);
             if($result){
-                return $this->responseAjax('info','设置成功');
+                return $this->responseAjax('info',__('suda_lang::press.msg.success'),'self.refresh');
             }
-            return $this->responseAjax('fail',$msg?$msg:'设置失败');
+            return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
         }
     }
 
-
-    //应用排序
+    // extension sort
     public function resort(Request $request)
     {
         
@@ -190,9 +189,9 @@ class ExtensionController extends DashboardController
             $msg = '';
             $result = app('suda_extension')->resort($request->order,$msg);
             if($result){
-                return $this->responseAjax('info','设置成功');
+                return $this->responseAjax('info',__('suda_lang::press.msg.success'),'self.refresh');
             }
-            return $this->responseAjax('fail',$msg?$msg:'设置失败');
+            return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
         }
     }
     

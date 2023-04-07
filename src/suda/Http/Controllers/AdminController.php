@@ -267,16 +267,4 @@ class AdminController extends BaseController
         return false;
 
     }
-
-    //是否允许APP定义
-    public function availableApp($app)
-    {
-        $apps = config('sudaconf.apps',['site','admin']);
-
-        if(in_array($app,$apps)){
-            return true;
-        }
-
-        return false;
-    }
 }

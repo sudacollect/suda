@@ -1,7 +1,7 @@
 <?php
 namespace Gtd\Suda\Http\Controllers\Extension;
 
-use Gtd\Suda\Http\Controllers\Extension\AdminController;
+use Gtd\Suda\Http\Controllers\Extension\ExtAdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -15,7 +15,7 @@ use Redirect;
 use Gtd\Suda\Models\Role;
 use Gtd\Suda\Models\Organization;
 
-class DashboardController extends AdminController
+class DashboardController extends ExtAdminController
 {
     
     public $user;

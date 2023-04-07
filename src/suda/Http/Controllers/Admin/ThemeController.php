@@ -56,7 +56,6 @@ class ThemeController extends DashboardController
 
         //显示可切换的应用
         $apps = config('sudaconf.apps',['site','mobile','admin']);
-        
         $this->setData('apps',$apps);
         
         $this->setMenu('appearance','appearance_theme');
@@ -64,7 +63,7 @@ class ThemeController extends DashboardController
         return $this->display('theme.index');
     }
     
-    //设置模板
+    // set theme
     public function setTheme(Request $request){
         
         $roles = [];
@@ -79,10 +78,8 @@ class ThemeController extends DashboardController
         }
         
         if(!$response_msg){
-            //切换模板
             $return = app('theme')->setTheme($request->app_name,$request->theme_name,true);
             if($return){
-                //更新成功
                 return $this->responseAjax('success',__('suda_lang::press.msg.success'),'theme');
             }
         }
@@ -102,9 +99,10 @@ class ThemeController extends DashboardController
             $url = 'style/dashboard';
         }
 
-        return $this->responseAjax('success','缓存更新成功',$url);
+        return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
     }
     
+    // screenshot
     public function getScreenshot(Filesystem $files,Request $request,$app_path,$theme_path){
         
         $screenshot = theme_path($app_path.'/'.$theme_path.'/screenshot.png');

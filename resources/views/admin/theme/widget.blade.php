@@ -6,7 +6,6 @@
     .dd{padding:0 15px;}
     .dd-list{
         display:block;
-        width:100%;
     }
     .dd-list li{
         display:inline-block;
@@ -134,12 +133,12 @@
 <div class="container">
     <div class="page-heading">
         <h1 class="page-title">
-            <i class="ion-albums-outline"></i>&nbsp;挂件
-            <span class="badge bg-light text-dark">{{ $app_name.'/'.$theme_name }}</span>
+            <i class="ion-albums-outline"></i>&nbsp;{{ __('suda_lang::press.appearance.widget') }}
+            <span class="badge bg-light text-dark">{{ $app_name.'/theme-'.$theme_name }}</span>
             <span class="help-block">
-                拖动挂件到挂件区，即时启用
+                {{ __('suda_lang::press.appearance.widget_tips') }}
                 <a href="https://suda.gtd.xyz" style="color:#999;">
-                    <i class="ion-help-circle"></i> 如何使用?
+                    <i class="ion-help-circle"></i> {{ __('suda_lang::press.appearance.widget_how') }}
                 </a>
             </span>
         </h1>
@@ -177,8 +176,8 @@
                             </div>
 
                             <div class="card-footer">
-                                <button class="cancel-widget btn btn-light btn-sm">删除</button>
-                                <button class="save-widget btn btn-primary btn-sm">保存</button>
+                                <button class="cancel-widget btn btn-light btn-sm">{{ __('suda_lang::press.btn.delete') }}</button>
+                                <button class="save-widget btn btn-primary btn-sm">{{ __('suda_lang::press.btn.save') }}</button>
                             </div>
 
                         </div>
@@ -243,8 +242,8 @@
                                         {{ Sudacore::widget($_widget['controller'],['view'=>'config','content'=>$t_widget['contents']]) }}
                                     </div>
                                     <div class="card-footer" style="display:none;">
-                                        <button class="cancel-widget btn btn-light btn-sm">删除</button>
-                                        <button class="save-widget btn btn-primary btn-sm">保存</button>
+                                        <button class="cancel-widget btn btn-light btn-sm">{{ __('suda_lang::press.btn.delete') }}</button>
+                                        <button class="save-widget btn btn-primary btn-sm">{{ __('suda_lang::press.btn.save') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -274,7 +273,7 @@
                 
                 <div class="widget-area-empty">
                     <p style="color:#999;">
-                        本模板无可用挂件区域
+                        {{ __('suda_lang::press.appearance.widget_empty') }}
                     </p>
 
                 </div>
@@ -328,9 +327,12 @@
                     var moment = window.moment();
                     $(itemEl).attr('data-id',$(itemEl).attr('data-slug')+moment.format('x'));
                     
-                    $(itemEl).find('span.help-block').hide();
-                    $(itemEl).find('.ion-ellipsis-horizontal').removeClass('ion-ellipsis-horizontal')
-                        .addClass('ion-chevron-up icon-switch-content');
+                    if(evt.to.className != evt.from.className)
+                    {
+                        $(itemEl).find('span.help-block').hide();
+                        $(itemEl).find('.ion-ellipsis-horizontal').removeClass('ion-ellipsis-horizontal')
+                            .addClass('ion-chevron-up icon-switch-content');    
+                    }
                     
                     if($(itemEl).parent('.ul-area').children().length > 0)
                     {
@@ -406,13 +408,13 @@
             var widget_content = $(this).parents('li');
             var widget_id = $(this).parents('li').attr('data-id');
 
-            $(widget_content).remove();
-            removeWidget(widget_id);
+            
             if($(this).parents('.ul-area').children().length<1)
             {
                 $(widget_area).find('.widget-area-empty').attr('style','');
             }
-            
+            $(widget_content).remove();
+            removeWidget(widget_id);
         });
 
         $('.widget-area').on('click','button.save-widget',function(e){
@@ -456,11 +458,11 @@
                         var errors = xhr.responseJSON;
                         suda.modal(errors.response_msg,errors.response_type);
                     }else{
-                        suda.modal('请求异常，请稍后重试','warning');
+                        suda.modal('error!','warning');
                     }
                 }),
                 fail : (function() {
-                    suda.modal({error:'加载失败，请重试'},'warning');
+                    suda.modal({error:'failed!'},'warning');
                 })
             });
 
@@ -488,7 +490,7 @@
                 order: sorts_data,
                 _token: '{{ csrf_token() }}'
             }, function (data) {
-                suda.alert('完成排序');
+                // suda.alert('完成排序');
             });
         }
         

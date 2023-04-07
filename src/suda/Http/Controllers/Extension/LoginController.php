@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-use Gtd\Suda\Http\Controllers\Extension\AdminController;
+use Gtd\Suda\Http\Controllers\Extension\ExtAdminController;
 
 use Gtd\Suda\Models\Operate;
 use Gtd\Suda\Models\Media;
@@ -17,7 +17,7 @@ use Illuminate\Session\Store as SessionStore;
 
 use Session;
 
-class LoginController extends AdminController
+class LoginController extends ExtAdminController
 {
     use AuthenticatesUsers;
     

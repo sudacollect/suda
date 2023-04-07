@@ -57,12 +57,11 @@ class StyleController extends DashboardController
         $post = $request->all();
         unset($post['_token']);
         if(!array_key_exists('sidebar_style',$post)){
-            return $this->responseAjax('fail','数据异常，请刷新页面重试');
+            return $this->responseAjax('fail',__('suda_lang::press.msg.fail'));
         }
 
         $this->saveSettingByKey('sidebar_style','dashboard',$post['sidebar_style']);
         
-        //更新成功
         return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
     }
     
@@ -141,8 +140,7 @@ class StyleController extends DashboardController
         $this->user->update([
             'permission'=>serialize($new_permission),
         ]);
-
-        //更新成功
+        
         return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
         
     }

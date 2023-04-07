@@ -40,6 +40,8 @@ return [
     // ENABLE PRO STYLE FOR SIDEBAR
     // 'sidemenu_style' => 'pro',
     
+    'apps' => ['admin','site','mobile'],
+
     //DEFAULT WIDGET FOR DASHBOARD HOMEPAGE
     'widget'=>[
         'dashaboard'=>[
@@ -57,9 +59,9 @@ return [
     // WARNING: DO NOT CHANGE OR DELETE THIS.
     'controllers'=>[
         'namespace'=>[
-            'admin'=>'Admin',
-            'site'=>'Site',
-            'mobile'=>'Mobile',
+            'admin' => 'Admin',
+            'site'  => 'Site',
+            'mobile'=> 'Mobile',
         ]
     ],
     

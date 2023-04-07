@@ -172,11 +172,7 @@ class ThemeService
         
         self::setCurrentApp($app);
 
-        if( $app == 'admin' ){
-            if(empty($theme) || !$theme){
-                $theme = $this->getTheme($app);
-            }
-        }else{
+        if(empty($theme) || !$theme){
             $theme = $this->getTheme($app);
         }
         

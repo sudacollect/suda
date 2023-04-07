@@ -167,7 +167,6 @@ class HomeController extends DashboardController
                 }
             }
             
-            //更新成功
             return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
         }
         
@@ -247,7 +246,6 @@ class HomeController extends DashboardController
                 
             }
             
-            //更新成功
             return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
         }
         
@@ -377,7 +375,6 @@ class HomeController extends DashboardController
             $this->saveSettingByKey('dashboard_login_logo','dashboard',$dashboard_login_logo,'image');
         }
         
-        //更新成功
         $url = 'setting/dashboardinfo';
         return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
         
@@ -441,8 +438,6 @@ class HomeController extends DashboardController
         }
 
         $this->saveSettingByKey('default_page','site',$page_value,'serialize');
-
-        //更新成功
         $url = 'setting/browser';
         return $this->responseAjax('success',__('suda_lang::press.msg.success'),$url);
         
@@ -477,8 +472,6 @@ class HomeController extends DashboardController
         ];
 
         $this->saveSettingByKey('seo','site',$data_value,'serialize');
-
-        //更新成功
         return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');
         
     }
