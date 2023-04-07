@@ -109,7 +109,7 @@ return [
     'mobile_prefix'         => 'mobile',
 
     // AUTO_MOBILE = TRUE,URL WITH EXCEPT PREFIX WOULD NOT ADD MOBILE_PREFIX
-    'except_mobile_prefix'  => [],
+    'except_mobile'  => [],
     
     // LOCALE LANGUAGE
     'locale'                => 'zh_CN',

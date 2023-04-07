@@ -40,9 +40,19 @@ return [
     'avatar'      => '头像',
     'new_password'      => '新密码',
     'new_password_confirm'      => '确认新密码',
+    
+    'account'               => '帐户',
+    'login'                 => '登录',
+    'register'              => '注册',
+    'logout'                => '退出登录',
+    'dashboard_login'       => '登录后台',
+    'user_login'            => '用户登录',
+    'remember_login'        => '记住登录',
+    'forget_password'       => '忘记密码',
 
     'account_change_tips' => '邮箱和手机号是登录账号，请谨慎修改',
-    
+    'forgetPasswordRequest' => '忘记密码请联系管理员',
+
     'language'      => '语言',
     'switch_language' => '切换语言',
     'dashboard'     => '控制面板',
@@ -119,10 +129,10 @@ return [
     'role_list' => '角色列表',
     'role_name' => '角色名称',
     'role_authority' => '角色权限',
-
     'telephone' => '电话',
     'phone' => '电话',
     'email' => '邮箱',
+    'emailorphone'  => '邮箱/手机号',
     
     'organization_name' => '部门名称',
     
@@ -435,6 +445,7 @@ return [
     ],
 
     'profile' => [
+        'profile'           => '帐户信息',
         'updated'           => '资料已更新',
         'need_password'     => '请填写密码',
         'password_fail'     => '密码填写错误',

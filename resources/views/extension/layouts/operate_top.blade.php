@@ -17,12 +17,12 @@
         </a>
 
         <a class="dropdown-item" href="{{ extadmin_url('profile') }}">
-            <i class="icon ion-person"></i>{{ __('suda_lang::auth.profile') }}
+            <i class="icon ion-person"></i>{{ __('suda_lang::press.profile.profile') }}
         </a>
 
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="{{ extadmin_url('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-            <i class="icon ion-exit-outline"></i>{{ __('suda_lang::auth.logout') }}
+            <i class="icon ion-exit-outline"></i>{{ __('suda_lang::press.logout') }}
         </a>
         
         <form id="logout-form" action="{{ extadmin_url('logout') }}" method="POST" style="display: none;">

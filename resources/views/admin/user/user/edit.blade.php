@@ -44,7 +44,7 @@
             <div class="mb-3{{ $errors->has('password') ? ' has-error' : '' }}">
                 
                 <label for="password">
-                    {{ __('suda_lang::auth.password') }}
+                    {{ __('suda_lang::press.password') }}
                 </label>
                 
                 <input type="password" name="password" class="form-control" id="inputPassword" placeholder="请输入密码">

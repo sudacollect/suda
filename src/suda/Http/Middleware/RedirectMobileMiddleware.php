@@ -23,20 +23,20 @@ class RedirectMobileMiddleware
         //忽略移动端的自动判断
         //return $next($request);
 
-        $except_redirects = [
+        $excepts = [
             config_admin_path().'/*',
             'sdone/*',
             'api/*',
             'arrilot/*'
         ];
         
-        $config_excepts = config('sudaconf.except_mobile_prefix',[]);
-        $this->except = array_merge($except_redirects,$config_excepts);
+        $config_excepts = config('sudaconf.except_mobile',[]);
+        $this->excepts = array_merge($excepts,$config_excepts);
         
-        //判断当前链接是不是应该被except
-        $except_do = $this->isExceptConfig($request);
+        //check except
+        $is_except = $this->isExcept($request);
         
-        if(config('sudaconf.auto_mobile',false) && !$except_do){
+        if(config('sudaconf.auto_mobile',false) && !$is_except){
             $action = $request->route()->getAction();
             
             //GET 方式下进行路由判断，假定POST无法判断
@@ -81,9 +81,9 @@ class RedirectMobileMiddleware
         return $next($request);
     }
 
-    protected function isExceptConfig($request){
+    protected function isExcept($request){
 
-        foreach ($this->except as $except) {
+        foreach ($this->excepts as $except) {
                 
             if ($except !== '/') {
                 $except = trim($except, '/');

@@ -35,9 +35,19 @@ return [
     'avatar'      => 'Avatar',
     'new_password'      => 'New Password',
     'new_password_confirm'      => 'Confirm new Password',
+    
+    'account'               => 'Account',
+    'login'                 => 'Login',
+    'register'              => 'Register',
+    'logout'                => 'Logout',
+    'dashboard_login'       => 'Dashboard',
+    'user_login'            => 'User',
+    'remember_login'        => 'Remember',
+    'forget_password'       => 'Forget password',
 
     'account_change_tips' => 'Email and phone are login accounts, carefully!',
-    
+    'forgetPasswordRequest' => 'Contact admin to reset password',
+
     'language' => 'language',
     'switch_language' => 'switch',
     'dashboard' => 'dashboard',
@@ -114,9 +124,10 @@ return [
     'role_name' => 'Name',
     'role_authority' => 'authority',
 
-    'telephone' => 'telephone',
-    'phone' => 'phone',
-    'email' => 'email',
+    'telephone'     => 'telephone',
+    'phone'         => 'phone',
+    'email'         => 'email',
+    'emailorphone'  => 'Email/Phone',
     
     'organization_name' => 'organization name',
     
@@ -434,6 +445,7 @@ return [
     ],
 
     'profile' => [
+        'profile'           => 'Profile',
         'updated'           => 'Profile updated!',
         'need_password'     => 'Enter password',
         'password_fail'     => 'Password is wrong',

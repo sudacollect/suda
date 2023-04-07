@@ -6,7 +6,7 @@
 
 <div class="container container-fluid">
   <div class="page-heading">
-    <h1 class="page-title"><i class="ion-person"></i>&nbsp;{{ __('suda_lang::auth.profile') }}</h1>
+    <h1 class="page-title"><i class="ion-person"></i>&nbsp;{{ __('suda_lang::press.profile.profile') }}</h1>
   </div>
     
         
@@ -15,7 +15,7 @@
       
       <ul class="nav nav-tabs card-tabs">
         <li class="nav-item">
-          <a class="nav-link bg-white active" href="{{ admin_url('profile') }}">{{ __('suda_lang::auth.profile') }}</a>
+          <a class="nav-link bg-white active" href="{{ admin_url('profile') }}">{{ __('suda_lang::press.profile.profile') }}</a>
         </li>
         <!-- <li class="nav-item"><a class="nav-link" href="{{ url('profile/certify') }}">认证</a></li> -->
         <!-- <li class="nav-item"><a class="nav-link" href="{{ admin_url('email') }}">修改邮箱</a></li> -->
@@ -40,8 +40,8 @@
                   
                   
                   <div class="mb-3{{ $errors->has('username') ? ' has-error' : '' }}">
-                    <label for="inputEmail3" class="col-form-label">{{ __('suda_lang::auth.username') }}</label>
-                    <input type="text" name="username" class="form-control" value="{{ $soperate->username }}" id="inputName" placeholder="{{ __('suda_lang::auth.username') }}">
+                    <label for="inputEmail3" class="col-form-label">{{ __('suda_lang::press.username') }}</label>
+                    <input type="text" name="username" class="form-control" value="{{ $soperate->username }}" id="inputName" placeholder="{{ __('suda_lang::press.username') }}">
                       @if ($errors->has('username'))
                           <span class="help-block">
                               <strong>{{ $errors->first('username') }}</strong>
@@ -50,8 +50,8 @@
                   </div>
                   
                   <div class="mb-3{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <label for="inputEmail3" class="col-form-label">{{ __('suda_lang::auth.email') }}</label>
-                    <input type="text" name="email" class="form-control" value="{{ $soperate->email }}" id="inputName" placeholder="{{ __('suda_lang::auth.email') }}">
+                    <label for="inputEmail3" class="col-form-label">{{ __('suda_lang::press.email') }}</label>
+                    <input type="text" name="email" class="form-control" value="{{ $soperate->email }}" id="inputName" placeholder="{{ __('suda_lang::press.email') }}">
                         @if ($errors->has('email'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('email') }}</strong>
@@ -60,8 +60,8 @@
                   </div>
                   
                   <div class="mb-3{{ $errors->has('phone') ? ' has-error' : '' }}">
-                    <label for="inputEmail3" class="col-form-label">{{ __('suda_lang::auth.phone') }}</label>
-                    <input type="text" name="phone" class="form-control" value="{{ $soperate->phone }}" id="inputName" placeholder="{{ __('suda_lang::auth.phone') }}">
+                    <label for="inputEmail3" class="col-form-label">{{ __('suda_lang::press.phone') }}</label>
+                    <input type="text" name="phone" class="form-control" value="{{ $soperate->phone }}" id="inputName" placeholder="{{ __('suda_lang::press.phone') }}">
                         @if ($errors->has('phone'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('phone') }}</strong>

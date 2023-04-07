@@ -25,7 +25,7 @@ class LoginController extends ExtAdminController
     protected $username;
     
     public function showLoginForm(SessionStore $sessionStore,Request $request) {
-        $this->title(__('suda_lang::auth.UserLogin'));
+        $this->title(__('suda_lang::press.user_login'));
         $login_name = config('sudaconf.extension_loginname','email');
         
         if($request->has('redirectTo')){

@@ -74,8 +74,8 @@
                 
                 <!-- Authentication Links -->
                 @if (Auth::guard('operate')->guest())
-                    <li><a href="{{ url('/login') }}">{{ __('suda_lang::auth.login') }}</a></li>
-                    <li><a href="{{ url('/register') }}">{{ __('suda_lang::auth.register') }}</a></li>
+                    <li><a href="{{ url('/login') }}">{{ __('suda_lang::press.login') }}</a></li>
+                    <li><a href="{{ url('/register') }}">{{ __('suda_lang::press.register') }}</a></li>
                 @else
                     
                     

@@ -6,13 +6,13 @@
 <div class="container  container-fluid">
     
         <div class="page-heading">
-            <h1 class="page-title"><i class="ion-person"></i>&nbsp;{{ __('suda_lang::auth.profile') }}</h1>
+            <h1 class="page-title"><i class="ion-person"></i>&nbsp;{{ __('suda_lang::press.profile.profile') }}</h1>
         </div>
         
         <div class="col-sm-6 suda_page_body">
             <ul class="nav nav-tabs card-tabs">
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ admin_url('profile') }}">{{ __('suda_lang::auth.profile') }}</a>
+                  <a class="nav-link" href="{{ admin_url('profile') }}">{{ __('suda_lang::press.profile.profile') }}</a>
                 </li>
                 <!-- <li class="nav-item"><a class="nav-link" href="{{ url('profile/certify') }}">认证</a></li> -->
                 <!-- <li class="nav-item"><a class="nav-link" href="{{ admin_url('email') }}">修改邮箱</a></li> -->

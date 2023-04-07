@@ -31,7 +31,7 @@ class ProfileController extends DashboardController
     
     public function showProfile(){
         
-        $this->title(__('suda_lang::auth.profile'));
+        $this->title(__('suda_lang::press.profile.profile'));
 
         $this->setData('extendFile','view_path::layouts.default');
         if(\Gtd\Suda\Auth\OperateCan::extension($this->user)){

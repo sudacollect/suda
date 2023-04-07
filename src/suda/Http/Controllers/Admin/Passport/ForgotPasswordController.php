@@ -43,7 +43,7 @@ class ForgotPasswordController extends Controller
         }
         
         return Response::json([
-            'error' => trans('suda_lang::auth.forgetPasswordRequest')
+            'error' => trans('suda_lang::press.forgetPasswordRequest')
         ], 422);
         
         //return view('auth.passwords.email');

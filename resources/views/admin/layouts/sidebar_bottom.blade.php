@@ -8,7 +8,7 @@
     <ul role="menu" class="dropdown-menu" aria-labelledby="dropdownMenuUser">
         <li>
             <a class="dropdown-item" href="{{ admin_url('profile') }}">
-                {{ __('suda_lang::auth.profile') }}
+                {{ __('suda_lang::press.profile.profile') }}
             </a>
         </li>
 
@@ -21,7 +21,7 @@
         @endif
         <li>
             <a class="dropdown-item" href="{{ admin_url('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form-bottom').submit();">
-                {{ __('suda_lang::auth.logout') }}
+                {{ __('suda_lang::press.logout') }}
             </a>
             <form id="logout-form-bottom" action="{{ admin_url('logout') }}" method="POST" style="display: none;">
                 @csrf

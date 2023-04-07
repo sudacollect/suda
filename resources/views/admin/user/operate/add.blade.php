@@ -55,10 +55,10 @@
             <div class="mb-3{{ $errors->has('password') ? ' has-error' : '' }}">
         
               <label for="password" >
-                  {{ __('suda_lang::auth.password') }}
+                  {{ __('suda_lang::press.password') }}
               </label>
       
-              <input type="password" name="password" class="form-control" id="inputName" placeholder="{{ __('suda_lang::auth.password') }}" value="" autocomplete="new-password">
+              <input type="password" name="password" class="form-control" id="inputName" placeholder="{{ __('suda_lang::press.password') }}" value="" autocomplete="new-password">
                   @if ($errors->has('password'))
                       <span class="help-block">
                           <strong>{{ $errors->first('password') }}</strong>

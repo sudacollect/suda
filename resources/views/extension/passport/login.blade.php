@@ -28,7 +28,7 @@
                                         <div class="input-group-text"><i class="icon ion-person"></i></div>
                                         
 
-                                        <input id="email" type="text" class="form-control font-weight-bold {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="{{__('suda_lang::auth.emailorphone')}}">
+                                        <input id="email" type="text" class="form-control font-weight-bold {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="{{__('suda_lang::press.emailorphone')}}">
                                         @if ($errors->has('email'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('email') }}
@@ -42,7 +42,7 @@
                                     
                                     <div class="input-group ">
                                         <div class="input-group-text"><i class="icon ion-person"></i></div>
-                                        <input id="phone" type="text" class="form-control font-weight-bold {{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required autofocus placeholder="{{__('suda_lang::auth.phone')}}">
+                                        <input id="phone" type="text" class="form-control font-weight-bold {{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required autofocus placeholder="{{__('suda_lang::press.phone')}}">
                                         @if ($errors->has('phone'))
                                         <div class="invalid-feedback">
                                                 {{ $errors->first('phone') }}
@@ -59,7 +59,7 @@
                                         
                                         <div class="input-group-text"><i class="icon ion-person"></i></div>
                                         
-                                        <input id="username" type="text" class="form-control font-weight-bold {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus placeholder="{{__('suda_lang::auth.username')}}">
+                                        <input id="username" type="text" class="form-control font-weight-bold {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus placeholder="{{__('suda_lang::press.username')}}">
                                         @if ($errors->has('username'))
                                         <div class="invalid-feedback">
                                                 {{ $errors->first('username') }}
@@ -75,7 +75,7 @@
                                     
                                         <div class="input-group ">
                                             <div class="input-group-text"><i class="icon ion-key"></i></div>
-                                            <input id="password" type="password" class="form-control font-weight-bold {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="{{__('suda_lang::auth.password')}}">
+                                            <input id="password" type="password" class="form-control font-weight-bold {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="{{__('suda_lang::press.password')}}">
                                             @if ($errors->has('password'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('password') }}
@@ -92,7 +92,7 @@
                                     <div class="form-check text-right">
                                         <input class="form-check-input" type="checkbox" value="1" name="remember" id="remember">
                                         <label class="form-check-label" for="remember">
-                                            {{ __('suda_lang::auth.rememberLogin') }}
+                                            {{ __('suda_lang::press.remember_login') }}
                                         </label>
                                     </div>
                                     
@@ -101,13 +101,13 @@
                                 <div class="mb-3 d-flex flex-row justify-content-between">
                                     
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('suda_lang::auth.login') }}
+                                            {{ __('suda_lang::press.login') }}
                                         </button>
                                         <div>
                                     
                                         
                                             <a class="btn btn-link ajaxPassword" href="{{ extadmin_url('passport/password/reset') }}">
-                                                {{__('suda_lang::auth.forgetPassword')}}?
+                                                {{__('suda_lang::press.forget_password')}}?
                                             </a>
                                             
                                         

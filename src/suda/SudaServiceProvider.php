@@ -56,7 +56,7 @@ class SudaServiceProvider extends ServiceProvider
         
         $router->pushMiddlewareToGroup('web', ViewRenderMiddleware::class);
         $router->pushMiddlewareToGroup('web', CertificateMiddleware::class);
-        $router->pushMiddlewareToGroup('web', RedirectMobileMiddleware::class);
+        // $router->pushMiddlewareToGroup('web', RedirectMobileMiddleware::class);
         
         $router->aliasMiddleware('auth.superadmin', AuthSuperadminMiddleware::class);
 
