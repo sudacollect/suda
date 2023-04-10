@@ -65,7 +65,7 @@ trait Extension
             $path_dir = substr(strstr($path_dir,$ext_dir),strlen($ext_dir)+1);
         }
         
-        $path_dirs = explode('/',$path_dir);
+        $path_dirs = explode('/',strtolower($path_dir));
         
         if(count($path_dirs) < 1 || empty($path_dirs[0])){
             return false;
