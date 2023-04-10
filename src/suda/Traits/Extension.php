@@ -5,6 +5,7 @@ namespace Gtd\Suda\Traits;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use ReflectionClass;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 
 trait Extension
 {
@@ -39,20 +40,21 @@ trait Extension
         $whole_dir = dirname($reflector->getFileName());
 
         $path_dir = '';
-        // guess extension => vendor repository
-        $vendor_path = base_path('vendor');
-        $vendor_match = Str::startsWith($whole_dir, $vendor_path);
-        if($vendor_match)
-        {
-            $path_dir = Str::substr($whole_dir, strlen($vendor_path)+1);
-        }
-        
+
         // guess extension => custom repository
         $root_path = base_path();
         $root_match = Str::startsWith($whole_dir, $root_path);
         if($root_match)
         {
             $path_dir = Str::substr($whole_dir, strlen($root_path)+1);
+        }
+
+        // guess extension => vendor repository
+        $vendor_path = base_path('vendor');
+        $vendor_match = Str::startsWith($whole_dir, $vendor_path);
+        if($vendor_match)
+        {
+            $path_dir = Str::substr($whole_dir, strlen($vendor_path)+1);
         }
         
         // guess extension => app/extensions
@@ -64,10 +66,29 @@ trait Extension
         }
         
         $path_dirs = explode('/',$path_dir);
+        
         if(count($path_dirs) < 1 || empty($path_dirs[0])){
             return false;
         }
-        return strtolower($path_dirs[0]);
+
+        $extensions = app('suda_extension')->installedExtensions();
+        $ext_keys = array_keys($extensions);
+        
+        $filtered = Arr::where($path_dirs, function (string $value, int $key) use ($ext_keys) {
+            return in_array($value,$ext_keys);
+        });
+
+        if(count($filtered) < 1)
+        {
+            return false;
+        }
+
+        if(count($filtered) > 1)
+        {
+            exit('extension slug filtered: '.implode(',',$filtered));
+        }
+        
+        return strtolower(Arr::first($filtered));
     }
     
     //获取应用Slug
