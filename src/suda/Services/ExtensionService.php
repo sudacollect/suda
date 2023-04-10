@@ -657,20 +657,22 @@ class ExtensionService
     {
         
         // read from cache
-       $extensions = Cache::store($this->cache_store)->get('suda_cache_composer_extensions');
+        $extensions = Cache::store($this->cache_store)->get('suda_cache_composer_extensions');
           
-       if (!$extensions) {
+        if (!$extensions) {
            $extensions = $this->updateComposerCache();
-       }
-
-       $extensions = new Collection($extensions);
-       $available_exts = $this->installedExtensions();
+        }
+        if(count($extensions) > 0)
+        {
+            $extensions = new Collection($extensions);
+            $available_exts = $this->installedExtensions();
+            
+            $extensions = $extensions->filter(function ($item,$key) use ($available_exts) {
+                    return !array_key_exists($item['slug'], $available_exts);
+                })
+                ->toArray();
+        }
        
-       $extensions = $extensions->filter(function ($item,$key) use ($available_exts) {
-                return !array_key_exists($item['slug'], $available_exts);
-            })
-            ->toArray();
-        
         return $extensions;
         // return $extensions->whereIn('type-name',$keys)->toArray();
     }
@@ -742,11 +744,11 @@ class ExtensionService
             }
             
             // $extensions = $this->detectComposerInstalled($extensions);
-            
             $this->writeComposerCache($extensions->toArray());
             
-            return true;
+            return $extensions->toArray();
         }
+        return [];
 
     }
 
