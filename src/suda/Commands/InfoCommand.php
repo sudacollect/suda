@@ -61,9 +61,10 @@ class InfoCommand extends Command
     {
         $this->info('--------- INFO --------');
         
-        $sysinfo = \Gtd\Suda\Sudacore::sysInfo();
+        $name = \Gtd\Suda\Sudacore::NAME;
+        $version = \Gtd\Suda\Sudacore::VERSION;
 
-        $license_str = 'PRODUCT:'.$sysinfo['name'].' '.$sysinfo['version']."\r\n";
+        $license_str = 'PRODUCT:'.$name.' '.$version."\r\n";
 
         $this->info("\r\n".$license_str);
         $this->info('--------- INFO END --------');

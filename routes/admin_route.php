@@ -356,18 +356,21 @@ Route::group([
     Route::get('areadata/json', $controller_prefix.'Compass\DistrictController@areaJson')->name('district_data');
     
     // extensions
-    Route::get('manage/extension', $controller_prefix.'Extension\ExtensionController@index')->name('tool_extend');
-    Route::get('manage/extension/{status}', $controller_prefix.'Extension\ExtensionController@index')->name('tool_extend');
-    Route::get('manage/extension/{status}', $controller_prefix.'Extension\ExtensionController@index')->name('tool_extend_disabled');
-    Route::get('manage/extension/{extension_slug}/logo', $controller_prefix.'Extension\ExtensionController@getExtensionLogo')->name('tool_extend_logo');
+    Route::get('manage/extension', $controller_prefix.'Extension\ManageController@index')->name('tool_extend');
+    Route::get('manage/extension/{status}', $controller_prefix.'Extension\ManageController@index')->name('tool_extend');
+    Route::get('manage/extension/{status}', $controller_prefix.'Extension\ManageController@index')->name('tool_extend_disabled');
+    Route::get('manage/extension/{extension_slug}/logo', $controller_prefix.'Extension\ManageController@extLogo')->name('tool_extend_logo');
     
-    Route::post('manage/extension/{extension_slug}/install/', $controller_prefix.'Extension\ExtensionController@toInstall')->name('tool_extend_install');
-    Route::post('manage/extension/{extension_slug}/refresh/', $controller_prefix.'Extension\ExtensionController@flushExtension')->name('tool_extend_flush');
-    Route::post('manage/extension/{extension_slug}/uninstall/', $controller_prefix.'Extension\ExtensionController@toUninstall')->name('tool_extend_uninstall');
+    Route::post('manage/extension/{extension_slug}/install/', $controller_prefix.'Extension\ManageController@toInstall')->name('tool_extend_install');
+    Route::post('manage/extension/{extension_slug}/refresh/', $controller_prefix.'Extension\ManageController@flushExtension')->name('tool_extend_flush');
 
-    Route::post('manage/extension/updatecache', $controller_prefix.'Extension\ExtensionController@flushExtensions')->name('tool_extend_updatecache');
-    Route::post('manage/extension/{extension_slug}/setQuickin/', $controller_prefix.'Extension\ExtensionController@setQuickin')->name('tool_extend_setquickin');
-    Route::post('manage/extensionsort', $controller_prefix.'Extension\ExtensionController@resort')->name('tool_extend_resort');
+    // confirm to uninstall
+    Route::get('manage/extension/{extension_slug}/uninstall-confirm', $controller_prefix.'Extension\ManageController@uninstallConfirm')->name('tool_extend_uninstall_confirm');
+    Route::post('manage/extension/{extension_slug}/uninstall/', $controller_prefix.'Extension\ManageController@toUninstall')->name('tool_extend_uninstall');
+
+    Route::post('manage/extension/updatecache', $controller_prefix.'Extension\ManageController@flushExtensions')->name('tool_extend_updatecache');
+    Route::post('manage/extension/{extension_slug}/setQuickin/', $controller_prefix.'Extension\ManageController@setQuickin')->name('tool_extend_setquickin');
+    Route::post('manage/extensionsort', $controller_prefix.'Extension\ManageController@resort')->name('tool_extend_resort');
 
     // extensions dashboard
     Route::get('entry/extensions', $controller_prefix.'Extension\EntryController@showExtensions')->name('entry_extensions');

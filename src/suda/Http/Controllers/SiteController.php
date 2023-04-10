@@ -199,7 +199,7 @@ class SiteController extends BaseController
     
     
     
-    public function errors($msg='相关信息没找到',$code='404')
+    public function errors($msg='Page or data not found.',$code='404')
     {
         $this->title('错误信息');
         

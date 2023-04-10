@@ -21,7 +21,7 @@ Route::group([
     $apiNamespace    = "\\".config('sudaconf.controllers.namespace.api','Api');
     
     $admin_path = config('sudaconf.admin_path','admin');
-    $extension_admin_path = config('sudaconf.extension_admin_path','sudaapp');
+    $extension_admin_path = config('sudaconf.extension_admin_path','appcenter');
 
     
     include_once(suda_path('routes/admin_route.php'));

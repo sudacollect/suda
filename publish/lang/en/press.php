@@ -433,15 +433,22 @@ return [
 
     'extensions' => [
         'installed'     => 'Installed',
-        'install'     => 'Install',
+        'install'       => 'Install',
         'uninstall'     => 'Uninstall',
-        'refresh'         => 'Refresh',
+        'refresh'       => 'Refresh',
         'available'     => 'Available',
+        'package'       => 'Packages',
         'update_cache'  => 'Updadte Cache',
         'market'        => 'Exts Store',
-        'board'        => 'Exts Board',
+        'board'         => 'Exts Board',
         'ask_before_install'    => 'Confirm to install?',
         'ask_before_uninstall'    => 'Confirm to uninstall?',
+        'force_delete_table'    => 'Delete extension database tables?',
+        'force_delete_table_tips'    => 'If checked, will delete all extension database tables.',
+        'install_again'    => 'Extension has been installed.',
+        'install_ok'    => 'Extension installed!',
+        'not_installed'    => 'Extension not installed!',
+        'can_not_get_ext'    => 'Can not get Extension!',
     ],
 
     'profile' => [

@@ -8,10 +8,7 @@ use Illuminate\Filesystem\Filesystem;
 use Response;
 
 use Gtd\Suda\Http\Controllers\Extension\DashboardController;
-use Gtd\Suda\Models\Extension;
 use Gtd\Suda\Models\Page;
-
-use Gtd\Suda\Services\ExtensionService;
 
 class EntryController extends DashboardController
 {
@@ -23,27 +20,25 @@ class EntryController extends DashboardController
         $slug = $ext_slug;
         
         $this->title(ucfirst($slug));
-        $extension = (new ExtensionService)->getExtension($slug);
+        $extService = app('suda_extension')->use($slug);
+        $extension = $extService->extension;
         
         //强制进入应用的菜单模式
         $this->setData('single_extension_menu',true);
         
         $this->data['sdcore']['extension'] = arrayObject($extension);
 
-        $menus = Extension::getExtMenuBySlug($slug);
+        $menus = $extService->getMenu();
         $this->setData('extension_menus',$menus);
         
         $view = 'view_suda::extension.entry';
         return $this->display($view);
     }
 
-    public function getLogo(Filesystem $files, Request $request,$extension_name){
-        
-        $path = extension_path(ucfirst($extension_name) . '/' . 'icon.png');
-        
-        if (!$files->exists($path)) {
-            $path = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
-        }
+    public function getLogo(Filesystem $files, Request $request,$slug)
+    {
+        $extension = app('suda_extension')->use($slug)->extension;
+        $path = $extension['logo'];
         
         $file = $files->get($path);
         $type = $files->mimeType($path);
@@ -55,7 +50,7 @@ class EntryController extends DashboardController
 
     public function index(Request $request)
     {   
-        $this->title('运营中心');
+        $this->title('Extensions');
         
         return $this->display('view_suda::extension.index');
     }

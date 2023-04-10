@@ -4,6 +4,8 @@ namespace Gtd\Suda\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Log;
+use Illuminate\Support\Str;
+
 use Gtd\Suda\Models\Operate as OperateModel;
 
 class BasePolicy
@@ -33,15 +35,15 @@ class BasePolicy
         return $this->detectPermission();
     }
 
-    protected function detectPermission(){
-        
-        if($this->user->superadmin==1){
+    protected function detectPermission()
+    {
+        if($this->user->superadmin == 1){
             return true;
         }
-
+        
         $this->actions = $actions = explode('.',$this->name);
 
-        if(count($actions)<2){
+        if(count($actions) < 2){
             $actions[1] = 'view';
         }
         if(!array_key_exists('1',$actions)){
@@ -49,7 +51,7 @@ class BasePolicy
         }
         
         // detect extension
-        if(count($this->actions)>=2 && strpos($this->name,'extension#')!==false){
+        if(count($this->actions) >= 2 && strpos($this->name,'extension#') !== false){
 
             if(\Gtd\Suda\Auth\OperateCan::operation($this->user))
             {
@@ -57,6 +59,8 @@ class BasePolicy
             }
 
             $extension_tag = explode('#',$actions[0]);
+            
+            $extension_tag[1] = Str::snake($extension_tag[1], '-');
             if(isset($extension_tag[1]) && !empty($extension_tag[1]))
             {
                 $this->extension_slug = $extension_tag[1];

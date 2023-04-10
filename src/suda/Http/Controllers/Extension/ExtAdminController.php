@@ -39,12 +39,12 @@ class ExtAdminController extends BaseController
     protected $breadcrumbs=[];
     
     public function __construct() {
-        $this->admin_path = config('sudaconf.extension_admin_path','sudaapp');
+        $this->admin_path = config('sudaconf.extension_admin_path','appcenter');
         $this->getSettings();
         
         $this->middleware(function (Request $request, $next) {
             
-            $admin_path = config('sudaconf.extension_admin_path','sudaapp');
+            $admin_path = config('sudaconf.extension_admin_path','appcenter');
             
             if($request->route()->getPrefix() == 'zh_CN/'.$admin_path || $request->route()->getPrefix() == $admin_path){
                 app('config')->set('app.name', '速搭');
@@ -205,9 +205,6 @@ class ExtAdminController extends BaseController
 
         // 允许增加自定义菜单
         $custom_navi = $this->data('custom_navi',[]);
-        
-        $get_navi = config('suda_custom.navi',[]);
-        $custom_navi = array_merge($get_navi, $custom_navi);
         
         $this->setData('custom_navi',$custom_navi);
         

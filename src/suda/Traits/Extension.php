@@ -4,67 +4,67 @@ namespace Gtd\Suda\Traits;
 
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use ReflectionClass;
+use Illuminate\Support\Str;
 
 trait Extension
 {
-    
-    //刷新应用
-    public function refresh(){
-        
-        //
-        
-    }
-    
+    protected $extension_info;
     //获取应用信息
-    public function getInfo(){
-        
-        $info = $this->getExtensionFile('config.php');
-        
-        if(isset($info['setting']) && isset($info['setting']['default_page']))
+    public function getExtensionInfo()
+    {
+        if(!$this->extension_info)
         {
-            $info['default_page_url'] = 'extension/'.$info['slug'].'/'.$info['setting']['default_page'];
+            $this->extension_info = app('suda_extension')->use($this->getExtensionSlug())->extension;
         }
-        else
-        {
-            $info['default_page_url'] = 'entry/extension/'.$info['slug'];
-        }
-        return $info;
+        return $this->extension_info;
     }
     
-    //获取菜单
-    public function getExtensionMenu(){
-        
-        if($this->single_extension_menu){
-            
-            return $this->getExtensionFile('menu.php');
-            
-        }
-        
-    }
+    // NOTHING
+    public function getExtensionMenu(){}
     
     //获取应用目录文件
     protected function getExtensionFile($file=''){
         
-        $slug = $this->getExtensionSlug();
-        if(file_exists(extension_path(ucfirst($slug)).'/'.$file)){
-            return require extension_path(ucfirst($slug)).'/'.$file;
+        $ext = $this->getExtensionInfo();
+        if(file_exists($ext['path'].'/'.$file)){
+            return require_once $ext['path'].'/'.$file;
         }
         
         return false;;
         
     }
     
-    public function getExtensionPath(){
+    public function guessExtensionPath(){
         $reflector = new ReflectionClass(get_class($this));
         $whole_dir = dirname($reflector->getFileName());
 
-        $extension_dir = config('sudaconf.extension_dir','extensions');
-        $ucf_extension_dir = ucfirst($extension_dir);
+        $path_dir = '';
+        // guess extension => vendor repository
+        $vendor_path = base_path('vendor');
+        $vendor_match = Str::startsWith($whole_dir, $vendor_path);
+        if($vendor_match)
+        {
+            $path_dir = Str::substr($whole_dir, strlen($vendor_path)+1);
+        }
         
-        $path_dir = substr(strstr($whole_dir,'app/'.$ucf_extension_dir),strlen('app/'.$ucf_extension_dir)+1);
+        // guess extension => custom repository
+        $root_path = base_path();
+        $root_match = Str::startsWith($whole_dir, $root_path);
+        if($root_match)
+        {
+            $path_dir = Str::substr($whole_dir, strlen($root_path)+1);
+        }
+        
+        // guess extension => app/extensions
+        $ext_dir = 'app/'.ucfirst(config('sudaconf.extension_dir','extensions'));
+        $app_ext_match = Str::startsWith($path_dir, $ext_dir);
+        if($app_ext_match)
+        {
+            $path_dir = substr(strstr($path_dir,$ext_dir),strlen($ext_dir)+1);
+        }
+        
         $path_dirs = explode('/',$path_dir);
-
-        if(count($path_dirs)<1 || empty($path_dirs[0])){
+        if(count($path_dirs) < 1 || empty($path_dirs[0])){
             return false;
         }
         return strtolower($path_dirs[0]);
@@ -72,7 +72,7 @@ trait Extension
     
     //获取应用Slug
     public function getExtensionSlug(){
-        $path = $this->getExtensionPath();
+        $path = $this->guessExtensionPath();
         if(!$path){
             $this->redirect(403,'应用配置目录异常');
         }

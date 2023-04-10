@@ -133,7 +133,7 @@ class LoginController extends ExtAdminController
         if(url()->previous()){
             $redirectTo = '?redirectTo='.urlencode(url()->previous());
         }
-        return redirect('/'.config('sudaconf.extension_admin_path','sudaapp').'/passport/login'.$redirectTo);
+        return redirect('/'.config('sudaconf.extension_admin_path','appcenter').'/passport/login'.$redirectTo);
     }
     
     protected function guard() {

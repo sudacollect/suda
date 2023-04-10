@@ -1,6 +1,6 @@
 
 <div class="col-sm-8 offset-sm-2 suda_page_body mt-5">
-<h3 class="py-3 text-center">运营中心</h3>
+{{-- <h3 class="py-3 text-center">运营中心</h3> --}}
 
 @if(isset($exts) && count($exts) > 0)
 <div class="row px-3">

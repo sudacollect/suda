@@ -392,7 +392,7 @@ if (!function_exists('userAgentType')) {
         $httpAccept = strtolower(getValue('HTTP_ACCEPT', $_SERVER));
         $userAgent = strtolower(getValue('HTTP_USER_AGENT', $_SERVER));
         
-        if (strpos($userAgent, 'sudaapp') !== false) {
+        if (strpos($userAgent, 'appcenter') !== false) {
             return $type = 'app';
         }
         
@@ -570,7 +570,7 @@ if (!function_exists('admin_url')) {
             $admin_path = config('sudaconf.admin_path','admin');
             if(Auth::guard('operate')->user() && \Gtd\Suda\Auth\OperateCan::extension(Auth::guard('operate')->user()))
             {
-                $admin_path = config('sudaconf.extension_admin_path','sudaapp');
+                $admin_path = config('sudaconf.extension_admin_path','appcenter');
             }
             
         
@@ -600,7 +600,7 @@ if (!function_exists('extadmin_url')) {
         }
         
         if(!is_url($path)){
-            $admin_path = config('sudaconf.extension_admin_path','sudaapp');
+            $admin_path = config('sudaconf.extension_admin_path','appcenter');
         
             $path = $admin_path.'/'.$path;
             // if(config('app.locale') != 'en'){
@@ -749,9 +749,9 @@ function ext_extension_logo($extension_slug,$secure=null){
 }
 
 if (!function_exists('extension_menu')) {
-    function extension_menu($extension, $type = null, array $options = [])
+    function extension_menu($extension_slug, $type = null, array $options = [])
     {
-        return Gtd\Suda\Models\Extension::menuDisplay($extension, $type, $options);
+        return app('suda_extension')->use($extension_slug)->menuDisplay($type, $options);
     }
 }
 

@@ -14,7 +14,7 @@ class OperateExtensionMiddleware
         
         Auth::shouldUse('operate');
         
-        $extadmin_path = config('sudaconf.extension_admin_path','sudaapp');
+        $extadmin_path = config('sudaconf.extension_admin_path','appcenter');
         
         if(Auth::guard('operate')->check()){
             

@@ -49,7 +49,8 @@
         
         <div class="col-sm-12 suda_page_body">   
             <a  class="btn btn-md @if($active=="enabled") btn-primary @else btn-light  @endif" href="{{ admin_url('manage/extension/enabled') }}">{{ __('suda_lang::press.extensions.installed') }}</a>
-            <a  class="btn btn-md @if($active=="disabled") btn-secondary @else btn-light @endif" href="{{ admin_url('manage/extension/disabled') }}">{{ __('suda_lang::press.extensions.available') }}</a>
+            <a  class="btn btn-md @if($active=="available") btn-secondary @else btn-light @endif" href="{{ admin_url('manage/extension/available') }}">{{ __('suda_lang::press.extensions.available') }}</a>
+            <a  class="btn btn-md @if($active=="package") btn-secondary @else btn-light @endif" href="{{ admin_url('manage/extension/package') }}">{{ __('suda_lang::press.extensions.package') }}</a>
             @include('view_path::extension.list_gallery')
         </div>
         
@@ -74,36 +75,6 @@ $(document).ready(function() {
         confirm:false,
         on:'change',
     });
-
-    // $('.extension-popover').popover({
-    //     html:true,
-    //     title:function(){
-    //         var tr_row=$(this).parents('tr');
-    //         var title = $(this).html();
-    //         // var logo = $(tr_row).find('img.icon')[0].outerHTML;
-            
-    //         return title;
-    //     },
-    //     content:function(){
-    //         var tr_row=$(this).parents('tr');
-            
-    //         var title = $(this).html();
-    //         var description = $(tr_row).find('.description').text();
-            
-            
-    //         var content_html = "<div style='width:220px;'>";
-            
-    //         content_html += '<div style="display:inline-block;width:100%;padding:2px 5px;font-size:1.4rem;">'+description+'</div>';
-            
-            
-    //         content_html += '</div>';
-            
-    //         return content_html;
-            
-    //     },
-    //     trigger:'click',
-    //     placement:'right'
-    // });
     
     $('.suda-row-extension').find('.btn-install').suda_ajax({
         type:'POST',

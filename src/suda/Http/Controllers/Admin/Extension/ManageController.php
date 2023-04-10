@@ -9,11 +9,10 @@ use Response;
 use Illuminate\Support\Str;
 
 use Gtd\Suda\Http\Controllers\Admin\DashboardController;
-use Gtd\Suda\Models\Extension;
 use Gtd\Suda\Models\Page;
 
 
-class ExtensionController extends DashboardController
+class ManageController extends DashboardController
 {
     public $view_in_suda = true;
     
@@ -22,7 +21,6 @@ class ExtensionController extends DashboardController
     
     public function index(Request $request,$status='enabled')
     {
-        
         $this->gate('tool.tool_extend',app(\Gtd\Suda\Models\Setting::class));
 
         $this->title(__('suda_lang::press.menu_items.tool_extend'));
@@ -32,22 +30,13 @@ class ExtensionController extends DashboardController
             $page_no = $request->get('page');
         }
         
-        $data = app('suda_extension')->allExtensions();
-        
-        $available_data = app('suda_extension')->availableExtensions();
-        
-        $this->setData('ext_list',$data);
-        if($status=='disabled'){
-            $not_avaliables = array_diff_key($data,$available_data);
-            $this->setData('ext_list',$not_avaliables);
-            $this->setData('data_count',count($not_avaliables));
+        $func = 'get'.ucfirst($status).'data';
+        if(method_exists($this,$func))
+        {
+            $this->$func();
         }else{
-            $this->setData('ext_list',$available_data);
-            $this->setData('data_count',count($available_data));
+            return $this->redirect('404','extensions not found');
         }
-        
-        
-        $this->setData('available_ext_list',$available_data);
         
         $quickins = app('suda_extension')->getQuickins();
         $this->setData('quickins',$quickins);
@@ -56,6 +45,27 @@ class ExtensionController extends DashboardController
         
         $this->setMenu('tool','tool_extend');
         return $this->display('extension.list');
+    }
+
+    protected function getEnabledData()
+    {
+        $available_data = app('suda_extension')->installedExtensions();
+        $this->setData('ext_list',$available_data);
+        $this->setData('data_count',count($available_data));
+    }
+
+    protected function getAvailableData()
+    {
+        $data = app('suda_extension')->localExtensions();
+        $this->setData('ext_list',$data);
+        $this->setData('data_count',count($data));
+    }
+
+    protected function getPackageData()
+    {
+        $data = app('suda_extension')->composerExtensions();
+        $this->setData('ext_list',$data);
+        $this->setData('data_count',count($data));
     }
     
     
@@ -69,7 +79,8 @@ class ExtensionController extends DashboardController
         
         $msg = '';
         
-        app('suda_extension')->updateCache($msg);
+        app('suda_extension')->updateLocalCache($msg);
+        app('suda_extension')->updateComposerCache($msg);
         
         return $this->responseAjax('info',$msg?$msg:__('suda_lang::press.msg.success'),'self.refresh');
         
@@ -93,16 +104,12 @@ class ExtensionController extends DashboardController
         return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
     }
     
-    public function getExtensionLogo(Filesystem $files, Request $request,$extension_name){
+    public function extLogo(Filesystem $files, Request $request,$slug)
+    {
+        $extension = app('suda_extension')->use($slug)->extension;
         
-        $path = extension_path(ucfirst($extension_name) . '/' . 'icon.png');
-        
-        if (!$files->exists($path)) {
-            $path = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
-        }
-        
-        $file = $files->get($path);
-        $type = $files->mimeType($path);
+        $file = $files->get($extension['logo']);
+        $type = $files->mimeType($extension['logo']);
         
         $response = Response::make($file, 200);
         $response->header("Content-Type", $type);
@@ -110,7 +117,7 @@ class ExtensionController extends DashboardController
     }
 
     // install extension
-    public function toInstall(Request $request,$extension_slug)
+    public function toInstall(Request $request,$slug)
     {
 
         if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user))
@@ -118,13 +125,13 @@ class ExtensionController extends DashboardController
             return $this->responseAjax('fail',$msg?$msg:'无权限');
         }
 
-        if($extension_slug!=$request->id)
+        if($slug != $request->id)
         {
             return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
         }
         
         $msg = '';
-        $result = app('suda_extension')->enableExtension($extension_slug,false,$msg);
+        $result = app('suda_extension')->install($slug,false,$msg);
         
         if(!$result){
             return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
@@ -134,23 +141,40 @@ class ExtensionController extends DashboardController
         return $this->responseAjax('info',$msg?$msg:__('suda_lang::press.msg.success'),'manage/extension');
         
     }
+
+
+    // uninstall confirm
+    public function uninstallConfirm(Request $request,$extension_slug)
+    {
+        $extension = app('suda_extension')->use($extension_slug)->extension;
+        if(!$extension)
+        {
+            return $this->responseAjax('fail',__('suda_lang::press.msg.fail'));
+        }
+        $this->setData('item',$extension);
+
+        $this->setData('modal_title','Uninstall');
+        return $this->display('extension.uninstall');
+        
+    }
     
     // uninstall extension
     public function toUninstall(Request $request,$extension_slug)
     {
+        if($request->extension_slug != $extension_slug)
+        {
+            return $this->responseAjax('fail',__('suda_lang::press.msg.fail'));
+        }
 
         if(!\Gtd\Suda\Auth\OperateCan::superadmin($this->user))
         {
             return $this->responseAjax('fail',$msg?$msg:'无权限');
         }
 
-        if($extension_slug!=$request->id)
-        {
-            return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));
-        }
+        $drop_table = $request->drop_table;
         
         $msg = '';
-        $result = app('suda_extension')->disableExtension($extension_slug,$msg);
+        $result = app('suda_extension')->uninstall($extension_slug, $drop_table, $msg);
         
         if(!$result){
             return $this->responseAjax('fail',$msg?$msg:__('suda_lang::press.msg.fail'));

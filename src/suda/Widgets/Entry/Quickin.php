@@ -44,7 +44,7 @@ class Quickin extends Widget
     
     public function getExts(){
         
-        $available_data = app('suda_extension')->availableExtensions();
+        $available_data = app('suda_extension')->installedExtensions();
         $user = auth('operate')->user();
         if(\Gtd\Suda\Auth\OperateCan::extension($user) || \Gtd\Suda\Auth\OperateCan::general($user)){
             $show_extensions = [];

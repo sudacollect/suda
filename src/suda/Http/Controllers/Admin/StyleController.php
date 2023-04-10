@@ -153,7 +153,7 @@ class StyleController extends DashboardController
         if(in_array($style,['flat','icon'])){
             
             $user_id = $this->user->id;
-            Cache::store(config('sudaconf.admin_cache','file'))->forever('sidemenu#'.$user_id, ['style'=>$style]);
+            Cache::store(config('sudaconf.admin_cache','file'))->forever('suda_cache_sidebar_style_'.$user_id, ['style'=>$style]);
         }
         
     }

@@ -4,7 +4,7 @@ namespace Gtd\Suda\Traits;
 
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Gtd\Suda\Models\Role;
-
+use Illuminate\Support\Str;
 
 trait Permission
 {
@@ -61,14 +61,16 @@ trait Permission
             if(is_string($this->role->permissions)){
                 $permissions = unserialize($this->role->permissions);
             }
+
             if(!is_array($permissions) || count($permissions)<1){
                 return false;
             }
-
+            
             $extension_permission = false;
             if(strpos($actions[0],'extension#')!==false)
             {
                 $extension_tag = explode('#',$actions[0]);
+                $extension_tag[1] = Str::snake($extension_tag[1], '-');
                 if(isset($extension_tag[1]) && !empty($extension_tag[1]))
                 {
                     $extension_slug = $extension_tag[1];
@@ -99,7 +101,7 @@ trait Permission
                 if(array_key_exists($extension_slug,$permissions['exts'])){
                     //判断菜单组
                     if(array_key_exists($policy,$permissions['exts'][$extension_slug])){
-
+                        
                         //判断菜单
                         if(empty($method) || (!empty($method) && array_key_exists($method,(array)$permissions['exts'][$extension_slug][$policy]))){
 

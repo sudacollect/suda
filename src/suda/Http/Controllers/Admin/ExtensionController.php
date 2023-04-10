@@ -26,7 +26,6 @@ class ExtensionController extends DashboardController implements ExtensionContra
 {
     use Extension;
     
-    public $extension_info;
     public $auth_setting;
     public $auth_data = [];
     //设置当前view所在目录
@@ -37,7 +36,7 @@ class ExtensionController extends DashboardController implements ExtensionContra
     
     public function __construct(){
         
-        $this->extension_info = $this->getInfo();
+        $this->getExtensionInfo();
         $this->auth_setting = $this->getExtensionFile('auth_setting.php');
         
         if(!is_array($this->extension_info))
@@ -49,13 +48,9 @@ class ExtensionController extends DashboardController implements ExtensionContra
         {
             $this->extension_info['setting'] = [];
         }
-        
-        //#TODO 配置路由，可根据路由的名字进行权限识别,会更简单
-        
         parent::__construct();
 
-        
-
+        //#TODO 配置路由，可根据路由的名字进行权限识别,会更简单
         $this->middleware(function (Request $request, $next) {
 
             //$this->auth_setting
@@ -91,7 +86,6 @@ class ExtensionController extends DashboardController implements ExtensionContra
             return $next($request);
 
         });
-        
     }
 
 
@@ -109,14 +103,15 @@ class ExtensionController extends DashboardController implements ExtensionContra
     public function display($view)
     {
 
-        if(strpos($view,':')===false){
-            $view = 'view_extension::'.ucfirst($this->getExtensionSlug()).'/resources/views/admin/'.$view;
+        if(strpos($view,'::') === false)
+        {
+            $view = 'view_extension::'.ucfirst($this->extension_info['slug']).'/resources/views/admin/'.$view;
         }
         
-        View::addNamespace('extension', extension_path(ucfirst($this->getExtensionSlug()).'/resources/views/'));
+        View::addNamespace('extension', $this->extension_info['path'].'/resources/views/');
         
-        if($this->single_extension_menu){
-            
+        if($this->single_extension_menu)
+        {    
             $this->setData('single_extension_menu',true);
         }
         
@@ -127,7 +122,5 @@ class ExtensionController extends DashboardController implements ExtensionContra
         
         return parent::display($view);
     }
-    
-    
     
 }

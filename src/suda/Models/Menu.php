@@ -38,7 +38,7 @@ class Menu extends Model
     
     public static function deleteCache($menu_name){
         
-        SudaCache::init()->forget('menu.'.$menu_name,$menu->toArray());
+        SudaCache::init()->forget('suda_menu.'.$menu_name,$menu->toArray());
         
     }
     public static function updateCache($id){
@@ -48,12 +48,12 @@ class Menu extends Model
                 $q->orderBy('order');
             }])->first();
         
-        SudaCache::init()->forever('menu.'.$menu->name,$menu->toArray());
+        SudaCache::init()->forever('suda_menu.'.$menu->name,$menu->toArray());
     }
     
     public static function getMenuByName($menu_name,$update = false,$return_object=false){
         
-        if(!SudaCache::init()->get('menu.'.$menu_name) || $update || $return_object){
+        if(!SudaCache::init()->get('suda_menu.'.$menu_name) || $update || $return_object){
             
             $menu = static::where('name', '=', $menu_name)
                 ->with(['parent_items.children' => function ($q) {
@@ -64,10 +64,10 @@ class Menu extends Model
                 return $menu;
             }
             
-            SudaCache::init()->forever('menu.'.$menu_name,$menu->toArray());
+            SudaCache::init()->forever('suda_menu.'.$menu_name,$menu->toArray());
         }
         
-        return SudaCache::init()->get('menu.'.$menu_name);
+        return SudaCache::init()->get('suda_menu.'.$menu_name);
     }
 
     public static function getMenu($menu_name, $type = null, array $options = [])
@@ -95,7 +95,6 @@ class Menu extends Model
             $items = collect($items)->keyBy('slug')->toArray();
 
             //合并应用菜单
-            //$extension_menus = app('suda_extension')->getExtensionMenu();
             $extension_menus = [];
             
             $need_keys = ['title','slug','url','icon_class','target'];
@@ -179,7 +178,7 @@ class Menu extends Model
     
     public static function display($menu_name, $type = null, array $options = [])
     {
-
+        
         $data = self::getMenu($menu_name,$type,$options);
         if(!$data)
         {
@@ -204,7 +203,7 @@ class Menu extends Model
         $sidemenu = false;
         if(Auth::guard('operate')->user())
         {
-            $sidemenu = Cache::store(config('sudaconf.admin_cache','file'))->get('sidemenu#'.Auth::guard('operate')->user()->id);
+            $sidemenu = Cache::store(config('sudaconf.admin_cache','file'))->get('suda_cache_sidebar_style_'.Auth::guard('operate')->user()->id);
         }
         
         

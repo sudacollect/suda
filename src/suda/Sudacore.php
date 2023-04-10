@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\Schema;
 
 use Arrilot\Widgets\Facade as Widget;
 use Arrilot\Widgets\AsyncFacade as AsyncWidget;
+use Gtd\Suda\Services\ExtensionService;
 
 class Sudacore
 {
-    protected static $name = 'Suda';
-    protected static $version = '10.x';
-    protected static $author = 'SUDA';
-    protected static $email = 'dev@suda.run';
+    const NAME      = 'Suda';
+    const VERSION   = '10.x';
+    const AUTHOR    = 'Suda-dev';
+    const EMAIL     = 'dev@suda.run';
+
     private static $instance;
     private static $extend_admin_routes = [];
     private static $extend_web_routes = [];
@@ -103,42 +105,51 @@ class Sudacore
         $extend_path = $ucf_extension_dir;
         
         $files = new Filesystem;
-        if(Cache::store(config('sudaconf.admin_cache','file'))->has('cache_avaliable_extensions')){
-            $extensions = Cache::store(config('sudaconf.admin_cache','file'))->get('cache_avaliable_extensions');
-            
-            $extend_web_routes = [];
-            $extend_mobile_routes = [];
-            $extend_admin_routes = [];
-            $extend_api_routes = [];
-            
-            //$extend = ['name','slug','version','install_time','app_key']
-            foreach($extensions as $extend){
-                if($files->exists(app_path($extend_path.'/'.ucfirst($extend['slug']).'/routes/web.php'))){
-                    $extend_web_routes[] = app_path($extend_path.'/'.ucfirst($extend['slug']).'/routes/web.php');
-                }
-                
-                if($files->exists(app_path($extend_path.'/'.ucfirst($extend['slug']).'/routes/mobile.php'))){
-                    $extend_mobile_routes[] = app_path($extend_path.'/'.ucfirst($extend['slug']).'/routes/mobile.php');
-                }
-                
-                if($files->exists(app_path($extend_path.'/'.ucfirst($extend['slug']).'/routes/admin.php'))){
-                    $extend_admin_routes[] = app_path($extend_path.'/'.ucfirst($extend['slug']).'/routes/admin.php');
-                }
-                
-                if($files->exists(app_path($extend_path.'/'.ucfirst($extend['slug']).'/routes/api.php'))){
-                    $extend_api_routes[] = app_path($extend_path.'/'.ucfirst($extend['slug']).'/routes/api.php');
-                }
+        $extensions = (new ExtensionService)->installedExtensions();
+        
+        $extend_web_routes = [];
+        $extend_mobile_routes = [];
+        $extend_admin_routes = [];
+        $extend_api_routes = [];
+        
+        foreach($extensions as $item)
+        {
+            if(isset($item['install-path']))
+            {
+                $admin_routes = $item['install-path'].'/routes/admin.php';
+                $web_routes = $item['install-path'].'/routes/web.php';
+                $mobile_routes = $item['install-path'].'/routes/mobile.php';
+                $api_routes = $item['install-path'].'/routes/api.php';
+
+            }else{
+                $admin_routes = app_path($extend_path.'/'.ucfirst($item['slug']).'/routes/admin.php');
+                $web_routes = app_path($extend_path.'/'.ucfirst($item['slug']).'/routes/web.php');
+                $mobile_routes = app_path($extend_path.'/'.ucfirst($item['slug']).'/routes/mobile.php');
+                $api_routes = app_path($extend_path.'/'.ucfirst($item['slug']).'/routes/api.php');
             }
             
-            self::$extend_web_routes = $extend_web_routes;
-            self::$extend_mobile_routes = $extend_mobile_routes;
-            self::$extend_admin_routes = $extend_admin_routes;
-            self::$extend_api_routes = $extend_api_routes;
+
+            if($files->exists($admin_routes)){
+                $extend_admin_routes[] = $admin_routes;
+            }
+
+            if($files->exists($web_routes)){
+                $extend_web_routes[] = $web_routes;
+            }
             
-        }else{
-            //暂无安装应用
+            if($files->exists($mobile_routes)){
+                $extend_mobile_routes[] = $mobile_routes;
+            }
+            
+            if($files->exists($api_routes)){
+                $extend_api_routes[] = $api_routes;
+            }
         }
         
+        self::$extend_web_routes = $extend_web_routes;
+        self::$extend_mobile_routes = $extend_mobile_routes;
+        self::$extend_admin_routes = $extend_admin_routes;
+        self::$extend_api_routes = $extend_api_routes;
     }
     
     public static function adminHost()
@@ -233,22 +244,6 @@ class Sudacore
         }
         
         return $widget;
-    }
-    
-    public static function sysName(){
-        return self::$name;
-    }
-    public static function sysVersion(){
-        return self::$version;
-    }
-    
-    public static function sysInfo(){
-        return [
-            'name'      => self::$name,
-            'version'   => self::$version,
-            'author'    => self::$author,
-            'email'     => self::$email,
-        ];
     }
     
 }

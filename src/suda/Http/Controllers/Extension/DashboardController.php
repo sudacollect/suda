@@ -45,8 +45,9 @@ class DashboardController extends ExtAdminController
     }
     
     public function applicationInfo(){
-        $sysinfo = \Gtd\Suda\Sudacore::sysInfo();
-        $this->setData('application',['name'=>$sysinfo['name'],'version'=>$sysinfo['version']]);
+        $name = \Gtd\Suda\Sudacore::NAME;
+        $version = \Gtd\Suda\Sudacore::VERSION;
+        $this->setData('application',['name'=>$name,'version'=>$version]);
     }
     
     
@@ -137,7 +138,7 @@ class DashboardController extends ExtAdminController
         }
 
         $code = $code?$code:'404';
-        $msg = $msg?$msg:'相关信息没找到';
+        $msg = $msg?$msg:'Page or data not found.';
 
         $this->setData('code',$code);
         $this->setData('msg',$msg);
@@ -199,7 +200,7 @@ class DashboardController extends ExtAdminController
         
         $this->setData('soperate',$this->user);
         
-        $sidemenu = Cache::store(config('sudaconf.admin_cache','file'))->get('sidemenu#'.$this->user->id);
+        $sidemenu = Cache::store(config('sudaconf.admin_cache','file'))->get('suda_cache_sidebar_style_'.$this->user->id);
         
         if($sidemenu && array_key_exists('style',$sidemenu)){
             $sidemenu_style = $sidemenu['style'];

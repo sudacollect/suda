@@ -25,7 +25,6 @@ use Gtd\Suda\Models\Role;
 use Gtd\Suda\Models\Menu;
 use Gtd\Suda\Models\Media;
 use Gtd\Suda\Models\Setting;
-use Gtd\Suda\Models\Extension;
 
 use Gtd\Suda\Requests\RoleRequest;
 
@@ -417,7 +416,10 @@ class RoleController extends DashboardController
                     $menu_first_slug = Arr::first(array_keys((array)$menu_group) ,function($value,$key){
                         return $value!='_all_';
                     });
-                    $menus = Extension::getExtMenuBySlug($ext_slug);
+                    
+                    $extService = app('suda_extension')->use($ext_slug);
+                    $ext = $extService->extension;
+                    $menus = $extService->getMenu();
                     
                     $childs = [];
                     isset($menus[$menu_group_name]['children'])?$childs = $menus[$menu_group_name]['children']:'';
@@ -473,7 +475,7 @@ class RoleController extends DashboardController
 
 
         //获取应用
-        $available_exts = app('suda_extension')->availableExtensions();
+        $available_exts = app('suda_extension')->installedExtensions();
         
         $this->setData('exts_all',$available_exts);
         $this->setData('ext_count',count($available_exts));
@@ -497,8 +499,9 @@ class RoleController extends DashboardController
         }
 
         $this->setData('role',$role);
-
-        $ext = app('suda_extension')->getExtension($ext_slug);
+        
+        $extService = app('suda_extension')->use($ext_slug);
+        $ext = $extService->extension;
 
         if(!$ext){
             return $this->responseAjax('error','应用异常,请检查应用安装');
@@ -519,8 +522,8 @@ class RoleController extends DashboardController
         $this->setData('permission',$permission);
         $this->setData('auth_select_values',(array)$auth_select_values);
 
-        $menus = Extension::getExtMenuBySlug($ext_slug);
-        $auth_setting = Extension::getExtAuthBySlug($ext_slug);
+        $menus = $extService->getMenu();
+        $auth_setting = $extService->getAuth();
 
         if(count($menus)<1 && !$auth_setting){
             return $this->responseAjax('error','此应用无可设置项');

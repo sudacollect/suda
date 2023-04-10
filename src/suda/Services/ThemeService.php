@@ -19,8 +19,6 @@ use Arrilot\Widgets\AsyncFacade as AsyncWidget;
 
 use Gtd\Suda\Models\ThemeWidget;
 use Gtd\Suda\Models\Menu;
-use Gtd\Suda\Models\Extension;
-use Gtd\Suda\Services\ExtensionService;
 use Gtd\Suda\Traits\SettingTrait;
 
 class ThemeService
@@ -52,7 +50,7 @@ class ThemeService
         if (is_null($this->themeCache) || !isset($this->themeCache[$app]) || $force) { 
           
            //读取所有模板
-           $themes = Cache::store(config('sudaconf.admin_cache','file'))->get('theme_'.$app);
+           $themes = Cache::store(config('sudaconf.admin_cache','file'))->get('suda_theme_'.$app);
           
            if($themes && !$force){
                $this->themeCache[$app] = $themes;
@@ -110,7 +108,7 @@ class ThemeService
         if(count($themes)>0){
             $this->themeCache[$app] = $themes;
             // write cache
-            Cache::store(config('sudaconf.admin_cache','file'))->forever('theme_'.$app, $themes);
+            Cache::store(config('sudaconf.admin_cache','file'))->forever('suda_theme_'.$app, $themes);
         }
         
     }
@@ -254,7 +252,7 @@ class ThemeService
                 $menus = [];
                 if(property_exists($data['sdcore'],'extension'))
                 {
-                    $menus = Extension::getMenu($data['sdcore']->extension,'sidebar',['current_menu'=>isset($data['current_menu'])?$data['current_menu']:[]]);
+                    $menus = app('suda_extension')->use($data['sdcore']->extension->slug)->menu('sidebar',['current_menu'=>isset($data['current_menu'])?$data['current_menu']:[]]);
 
                     $in_extension = $data['sdcore']->extension;
                 }else{
@@ -318,22 +316,22 @@ class ThemeService
             {
                 array_unshift($menu_breadcrumbs,
                     [
-                        'slug'=>'extension',
-                        'title'=>$in_extension->name,
-                        'url'=>$in_extension->default_page_url,
-                        'icon'=>'<i class="ion-folder-open-outline"></i>&nbsp;',
-                        'route'=>'',
+                        'slug'  => 'extension',
+                        'title' => $in_extension->name,
+                        'url'   => $in_extension->default_page_url,
+                        'icon'  => '<i class="ion-folder-open-outline"></i>&nbsp;',
+                        'route' => '',
                     ]
                 );
             }
             
             array_unshift($menu_breadcrumbs,
                 [
-                    'slug'=>'dashboard',
-                    'title'=>'控制台',
-                    'url'=>'',
-                    'icon'=>'',
-                    'route'=>'',
+                    'slug'  => 'dashboard',
+                    'title' => '控制台',
+                    'url'   => '',
+                    'icon'  => '',
+                    'route' => '',
                 ]
             );
 
@@ -350,7 +348,7 @@ class ThemeService
             $data['sdcore']->sidemenus = $menus;
 
             //扩展应用的自定义导航
-            $extension_navi = (new ExtensionService)->getExtensionNavi(isset($data['soperate'])?$data['soperate']:false);
+            $extension_navi = app('suda_extension')->getNavis(isset($data['soperate'])?$data['soperate']:false);
             
             if(!isset($data['custom_navi']) || empty($data['custom_navi']))
             {
@@ -433,12 +431,7 @@ class ThemeService
             
             $data['navbar_style'] = $navbar_style;
         }
-
-        
-        
         return view($view)->with($data);
-            
-        
     }
     
 

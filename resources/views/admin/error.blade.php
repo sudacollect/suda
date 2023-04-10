@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row suda-row">
-        <div class="col-sm-6 offset-sm-3">
+        <div class="col-sm-6 offset-sm-3 mt-5">
             <div class="card">
                 <div class="card-header bg-white">
                     {{ $code }}

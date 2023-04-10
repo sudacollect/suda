@@ -49,8 +49,11 @@ class HomeController extends DashboardController
         // $license = Certificate::getLicense();
         // $this->setData('license',$license);
 
-        $sysinfo = \Gtd\Suda\Sudacore::sysInfo();
-        $this->setData('sysinfo',$sysinfo);
+        $name = \Gtd\Suda\Sudacore::NAME;
+        $version = \Gtd\Suda\Sudacore::VERSION;
+        
+
+        $this->setData('sysinfo',compact('name','version'));
 
         $this->setData('active_tab','certificate');
 

@@ -148,7 +148,7 @@ return [
     'extension_host' => '',
 
     // EXTENSION MANAGER LOGIN
-    'extension_admin_path' => 'sudaapp',
+    'extension_admin_path' => 'appcenter',
     'extension_login_name' => 'email',
 
 ];
