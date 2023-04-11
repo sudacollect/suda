@@ -387,7 +387,8 @@ trait TaxonomyTrait
         ];
     }
 
-    protected function getActions(){
+    protected function getActions()
+    {
 
         $buttons = $this->actionConfig();
 

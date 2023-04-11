@@ -166,7 +166,7 @@ class HomeController extends DashboardController
             foreach($post as $k=>$v){
                 if($v)
                 {
-                    $this->saveSettingByKey($k,'site',$v);   
+                    $this->saveSettingByKey($k,'site',$v);
                 }
             }
             

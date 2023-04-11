@@ -282,7 +282,7 @@ Route::group([
 
 
     // Organization
-    Route::get('user/organization', $controller_prefix.'User\OrganizationController@getList')->name('setting_operate_org');;
+    Route::get('user/organization', $controller_prefix.'User\OrganizationController@getList')->name('setting_operate_org');
     Route::get('user/organization/add/{pid?}', $controller_prefix.'User\OrganizationController@create');
     Route::get('user/organization/edit/{id}', $controller_prefix.'User\OrganizationController@update');
     Route::post('user/organization/save', $controller_prefix.'User\OrganizationController@save');
