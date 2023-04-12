@@ -46,7 +46,7 @@ trait SettingTrait
         return $values?$values:null;
     }
     // 获取配置
-    public function getSettingByKey( $key,$group = '', $default_value=null, $type='text', $media_data = true )
+    public function getSettingByKey( $key,$group = '', $default_value=null, $media_data = true )
     {
         if(is_array($key))
         {
