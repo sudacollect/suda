@@ -193,7 +193,7 @@ class ThemeService
         }
         
         $extension = $this->extension;
-        $namespace = 'theme_'.$app;
+        $theme_space_name = 'theme_'.$app;
         
         $view = str_replace('.', '/', $view);
         $view_source_path = str_replace('.', '/', $view_source);
@@ -206,8 +206,10 @@ class ThemeService
         View::share('sdcore',$data['sdcore']);
         View::share('theme',$theme);
         
-        //add namespace
-        View::addNamespace($namespace, $theme_path);
+        // add namespace
+        View::addNamespace($theme_space_name, $theme_path);
+
+        // set as theme path
         View::addNamespace('view_path', $theme_path);
         
         //define view_app
@@ -218,8 +220,10 @@ class ThemeService
         View::addNamespace('view_suda', suda_path('resources/views'));
         
         if($this->files->exists(resource_path('views/'.$app.'/'.$view_source_path.'.blade.'.$extension))){
-
+            
             $resource_path = resource_path('views/'.$app);
+
+            // set as laravel path
             View::addNamespace('view_path', $resource_path);
             
             if(View::exists($app.'.'.$view_source)){
@@ -232,13 +236,16 @@ class ThemeService
             $viewFinder = new FileviewFinder($this->files,[$theme_path]);
             View::setFinder($viewFinder);
             
-            //增加namespace
-            View::addNamespace($namespace, $theme_path);
+            View::addNamespace($theme_space_name, $theme_path);
+
+            // set as theme path
             View::addNamespace('view_path', $theme_path);
 
             return view($view_source)->with($data);
             
         }else{
+
+            // set as app path
             View::addNamespace('view_path', $view_app);
         }
 

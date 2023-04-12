@@ -24,7 +24,7 @@
 
                         <div class="mb-3{{ $errors->has('serialnumber') ? ' has-error' : '' }}">
                             
-                            <input id="serialnumber" type="text" class="form-control" name="serialnumber" value="" required autofocus placeholder="请输入授权码">
+                            <input id="serialnumber" type="text" class="form-control" name="serialnumber" value="" required autofocus placeholder="请填写授权码">
                                 
                                 @if ($errors->has('serialnumber'))
                                     <span class="help-block">

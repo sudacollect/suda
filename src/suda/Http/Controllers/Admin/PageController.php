@@ -129,7 +129,7 @@ class PageController extends DashboardController
                 'title' => 'required|min:2|max:64|unique:pages,title,'.$id,
             ];
             $messages = [
-                'title.required'=>'请输入名称',
+                'title.required'=>'请填写名称',
                 'title.unique'=>'标题重复',
             ];
             
@@ -139,7 +139,7 @@ class PageController extends DashboardController
                 'title' => 'required|min:2|max:64|unique:pages',
             ];
             $messages = [
-                'title.required'=>'请输入名称',
+                'title.required'=>'请填写名称',
                 'title.unique'=>'标题重复',
             ];
         }
@@ -167,7 +167,7 @@ class PageController extends DashboardController
                 $roles = [
                     'title' => 'unique:page'
                 ];
-                $messages = ['title.unique'=>'名称不能重复，请重新输入'];
+                $messages = ['title.unique'=>'名称不能重复，请重新填写'];
                 $ajax_result = $this->ajaxValidator($request->all(),$roles,$messages,$response_msg);
                 
             }else{

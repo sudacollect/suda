@@ -20,11 +20,11 @@ class SettingComponent extends Component
         // 'icp_number' => 'required|min:2|max:64',
     ];
     protected $messages = [
-        'settings.site_name.required'        => '请输入站点名称',
-        'settings.company_name.required'     => '请输入公司名称',
-        'settings.company_addr.required'     => '请输入格式地址',
-        'settings.company_phone.required'    => '请输入公司电话',
-        // 'icp_number.required'    => '请输入ICP备案号'
+        'settings.site_name.required'        => '请填写站点名称',
+        'settings.company_name.required'     => '请填写公司名称',
+        'settings.company_addr.required'     => '请填写格式地址',
+        'settings.company_phone.required'    => '请填写公司电话',
+        // 'icp_number.required'    => '请填写ICP备案号'
     ];
   
     public function mount()

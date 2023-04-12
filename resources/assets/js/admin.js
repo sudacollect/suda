@@ -1092,7 +1092,7 @@ jQuery(function(){
         var editHtml = "<input type='text' name='inedit' value='"+editValue+"'>";
         
         var editHtml = '<div class="input-group input-group-sm col-sm-12 inedit-active px-0">'+
-                      '<input type="text" class="form-control" name="inedit" placeholder="请输入数字" value="'+editValue+'">'+
+                      '<input type="text" class="form-control" name="inedit" placeholder="请填写数字" value="'+editValue+'">'+
                       '<div class="input-group-append">'+
                         '<button class="btn btn-primary btn-sm btn-save" type="button">保存</button>'+
                       '</div>'+

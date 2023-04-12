@@ -14,7 +14,7 @@
             <input type="hidden" name="view_type" value="{{ $view_type }}">
 
             <div class="mb-3{{ $errors->has('title') ? ' has-error' : '' }}" >
-                <input type="text" name="title" class="form-control" id="title" placeholder="请输入标题">
+                <input type="text" name="title" class="form-control" id="title" placeholder="请填写标题">
             </div>
 
             @php
@@ -52,7 +52,7 @@
             </div>
 
             <div class="mb-3{{ $errors->has('author') ? ' has-error' : '' }}" >
-                <input type="text" name="author" class="form-control " id="filter_search_author" placeholder="请输入发布者名称">
+                <input type="text" name="author" class="form-control " id="filter_search_author" placeholder="请填写发布者名称">
             </div>
 
             <div class="mb-3{{ $errors->has('updated_at') ? ' has-error' : '' }}" >

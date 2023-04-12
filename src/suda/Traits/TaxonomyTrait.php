@@ -119,9 +119,9 @@ trait TaxonomyTrait
                 ],
             ];
             $messages = [
-                'name.required'=>'请输入名称',
+                'name.required'=>'请填写名称',
                 'name.unique'=>'名称已存在',
-                'slug.required'=>'请输入别名',
+                'slug.required'=>'请填写别名',
                 'slug.unique'=>'别名已存在',
             ];
             
@@ -146,9 +146,9 @@ trait TaxonomyTrait
                 ],
             ];
             $messages = [
-                'name.required'=>'请输入名称',
+                'name.required'=>'请填写名称',
                 'name.unique'=>'名称已存在',
-                'slug.required'=>'请输入别名',
+                'slug.required'=>'请填写别名',
                 'slug.unique'=>'别名已存在',
             ];
         }

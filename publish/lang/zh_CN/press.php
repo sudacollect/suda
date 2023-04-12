@@ -103,7 +103,7 @@ return [
         'error' => '操作错误!',
     ],
     
-    'input_placeholder'     => '请输入:column',
+    'input_placeholder'     => '请填写:column',
     'select_placeholder'    => '请选择:column',
     'validate_unique'       => ':column存在重复',
     
@@ -302,7 +302,7 @@ return [
 
         'title'         => '标题',
         'content'       => '内容',
-        'content_tips'  => '请输入内容..',
+        'content_tips'  => '请填写内容..',
 
         'kv_image'      => '主图',
         'slug'          => '自定义路径',
@@ -318,7 +318,7 @@ return [
 
         'title' => '标题',
         'content' => '内容',
-        'content_tips' => '请输入内容',
+        'content_tips' => '请填写内容',
 
         'kv_image' => '标题图',
         'slug' => '自定义路径',

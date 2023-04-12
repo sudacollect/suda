@@ -143,7 +143,7 @@ class OrganizationOldController extends DashboardController
         }
         
         $messages = [
-            'required'=>'请输入部门名称',
+            'required'=>'请填写部门名称',
             'unique'=>'部门名称重复，请更换一个名字'
         ];
         $ajax_result = $this->ajaxValidator($data, $roles,$messages,$response_msg);

@@ -32,7 +32,7 @@
                     {{ __('suda_lang::press.email') }}
                 </label>
                 
-                <input type="text" name="email" class="form-control" id="inputEmail" placeholder="请输入邮箱（选填）" value="{{ $user->email }}">
+                <input type="text" name="email" class="form-control" id="inputEmail" placeholder="请填写邮箱（选填）" value="{{ $user->email }}">
                 @if ($errors->has('email'))
                     <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
@@ -47,7 +47,7 @@
                     {{ __('suda_lang::press.password') }}
                 </label>
                 
-                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="请输入密码">
+                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="请填写密码">
                 @if ($errors->has('password'))
                     <span class="help-block">
                         <strong>{{ $errors->first('password') }}</strong>

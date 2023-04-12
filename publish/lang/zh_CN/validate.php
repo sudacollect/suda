@@ -2,7 +2,7 @@
 
 return [
     
-    'input_placeholder'         => '请输入:attribute',
+    'input_placeholder'         => '请填写:attribute',
     'select_placeholder'        => '请选择:attribute',
     'validate_unique'           => ':attribute存在重复项',
     

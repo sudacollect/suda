@@ -115,9 +115,9 @@ trait TagTrait
                 ],
             ];
             $messages = [
-                'name.required'=>'请输入标签名称',
+                'name.required'=>'请填写标签名称',
                 'name.unique'=>'标签名称已存在',
-                'slug.required'=>'请输入标签别名',
+                'slug.required'=>'请填写标签别名',
                 'slug.unique'=>'标签别名已存在',
             ];
             
@@ -142,9 +142,9 @@ trait TagTrait
                 ],
             ];
             $messages = [
-                'name.required'=>'请输入标签名称',
+                'name.required'=>'请填写标签名称',
                 'name.unique'=>'标签名称已存在',
-                'slug.required'=>'请输入标签别名',
+                'slug.required'=>'请填写标签别名',
                 'slug.unique'=>'标签别名已存在',
             ];
         }

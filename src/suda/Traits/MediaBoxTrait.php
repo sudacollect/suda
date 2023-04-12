@@ -28,7 +28,8 @@ trait MediaBoxTrait
     public $ratio = false;
     public $hidden = '0';
     
-    public function mediaSetting($guard='',$media_type='',$only_user=false,$resize=true,$ratio=false){
+    public function mediaSetting($guard='',$media_type='',$only_user=false,$resize=true,$ratio=false)
+    {
 
         if(!empty($guard)){
             $this->guard=$guard;
@@ -48,7 +49,8 @@ trait MediaBoxTrait
         $this->ratio    = $ratio;
     }
 
-    protected function checkSetting(){
+    protected function checkSetting()
+    {
         
         $this->mediaSetting();
 

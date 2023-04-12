@@ -70,7 +70,7 @@
                                             {{ env('APP_URL') }}/
                                         </div>
                                     </div>
-                                    <input type="text" name="default_page_url" placeholder="请输入访问地址" class="form-control" @if(isset($settings['page_type']) && $settings['page_type']=='link_page') value="{{ $settings['page_value'] }}" @endif>
+                                    <input type="text" name="default_page_url" placeholder="请填写访问地址" class="form-control" @if(isset($settings['page_type']) && $settings['page_type']=='link_page') value="{{ $settings['page_value'] }}" @endif>
                                 </div>
 
                             </div>

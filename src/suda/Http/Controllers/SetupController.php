@@ -42,7 +42,7 @@ class SetupController extends SiteController{
         //$this->sendFailedResponse('serialnumber','提交错误');
         
         if(!$request->has('serialnumber')){
-            $this->sendFailedResponse('serialnumber','请输入授权码');
+            $this->sendFailedResponse('serialnumber','请填写授权码');
         }
         
         $msg = '';

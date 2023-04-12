@@ -32,7 +32,7 @@ class RoleRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'=>'请输入角色名称',
+            'name.required'=>'请填写角色名称',
             'name.unique'=>'角色名称已存在',
         ];
     }

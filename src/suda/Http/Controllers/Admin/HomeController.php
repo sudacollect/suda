@@ -147,11 +147,11 @@ class HomeController extends DashboardController
             // 'icp_number' => 'required|min:2|max:64',
         ];
         $messages = [
-            'site_name.required'        => '请输入站点名称',
-            'company_name.required'     => '请输入公司名称',
-            'company_addr.required'     => '请输入格式地址',
-            'company_phone.required'    => '请输入公司电话',
-            // 'icp_number.required'    => '请输入ICP备案号'
+            'site_name.required'        => '请填写站点名称',
+            'company_name.required'     => '请填写公司名称',
+            'company_addr.required'     => '请填写格式地址',
+            'company_phone.required'    => '请填写公司电话',
+            // 'icp_number.required'    => '请填写ICP备案号'
         ];
         $response_msg = '';
         $ajax_result = $this->ajaxValidator($request->all(),$rules,$messages,$response_msg);

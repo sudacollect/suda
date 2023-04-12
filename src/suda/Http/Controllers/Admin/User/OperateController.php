@@ -307,14 +307,14 @@ class OperateController extends DashboardController
         $messages = [
             'organization_id.required'  =>'请选择部门',
             'role_id.required'          =>'请选择角色',
-            'username.required'         =>'请输入用户名称',
+            'username.required'         =>'请填写用户名称',
             'username.unique'           =>'用户名称重复',
-            'email.required'            =>'请输入邮箱',
-            'email.unique'              =>'邮箱重复，请重新输入',
+            'email.required'            =>'请填写邮箱',
+            'email.unique'              =>'邮箱重复',
             'email.email'               =>'邮箱格式错误',
-            'phone.required'            =>'请输入手机号',
+            'phone.required'            =>'请填写手机号',
             'phone.unique'              =>'手机号必须唯一',
-            'password.required'         =>'请输入密码'
+            'password.required'         =>'请填写密码'
         ];
 
         if(array_key_exists('superadmin',$data) && $data['superadmin']==1){

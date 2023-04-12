@@ -90,9 +90,9 @@ class ProfileController extends DashboardController
         $messages = [
             'username.required'=>trans('suda_lang::press.input_placeholder',['column'=>trans('suda_lang::press.username')]),
             'name.unique'=>'用户名已经被占用',
-            'email.required'=>'请输入邮箱',
+            'email.required'=>'请填写邮箱',
             'email.unique'=>'邮箱已经被占用',
-            'phone.required'=>'请输入手机号',
+            'phone.required'=>'请填写手机号',
             'phone.unique'=>'手机号已经被占用'
         ];
         

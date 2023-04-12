@@ -178,12 +178,12 @@ class UserController extends DashboardController
         }
         
         $messages = [
-            'name.required'         =>'请输入用户名称',
+            'name.required'         =>'请填写用户名称',
             'name.unique'           =>'用户名称重复',
-            'email.required'            =>'请输入邮箱',
-            'email.unique'              =>'邮箱重复，请重新输入',
+            'email.required'            =>'请填写邮箱',
+            'email.unique'              =>'邮箱重复',
             'email.email'               =>'邮箱格式错误',
-            'password.required'         =>'请输入密码'
+            'password.required'         =>'请填写密码'
         ];
         
         $ajax_result = $this->ajaxValidator($data, $roles,$messages,$response_msg);
