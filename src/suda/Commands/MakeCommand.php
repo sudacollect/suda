@@ -97,19 +97,19 @@ class MakeCommand extends Command
         $this->info('-> create extension config');
         
         $replace = [
-            'name' => $ucf_extname,
-            'slug' => $extname,
-            'ucf_slug' => $ucf_extname,
-            'desc' => 'a test extension',
-            'date' => date('Y-m-d'),
-            'author' => env('APP_NAME'),
-            'email' => 'test@test.dev',
-            'website' => env('APP_URL'),
-            'ext_dir' => $ucf_extension_dir,
+            'name'      => $ucf_extname,
+            'slug'      => $extname,
+            'ucf_slug'  => $ucf_extname,
+            'desc'      => 'suda extension',
+            'date'      => date('Y-m-d'),
+            'author'    => env('APP_NAME'),
+            'email'     => 'test@test.dev',
+            'website'   => env('APP_URL'),
+            'ext_dir'   => $ucf_extension_dir,
             
-            'menu' => __('suda_lang::press.commands.menu'),
-            'index' => __('suda_lang::press.commands.index'),
-            'help' => __('suda_lang::press.commands.help'),
+            'menu'      => __('suda_lang::press.commands.menu'),
+            'index'     => __('suda_lang::press.commands.index'),
+            'help'      => __('suda_lang::press.commands.help'),
         ];
 
         
