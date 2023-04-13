@@ -90,7 +90,7 @@ class ExtCommand extends Command
             exit;
         }
 
-        $this->info('===========START=========');
+        $this->info('........................ START ........................');
         
         // $to_dir = 'database/migrations/'.$extension_dir.'/'.$ucf_extname;
 
@@ -101,6 +101,21 @@ class ExtCommand extends Command
         $dest_folder = public_path($extension_dir.'/'.$extname);
 
         //安装数据库
+
+        if ($this->argument('run')=='info') {
+            $ext = app('suda_extension')->use($extname);
+            if(!$ext->extension)
+            {
+                $this->info('extension not found');
+            }
+
+            $this->info('name: '.$ext->extension['name']);
+            $this->info('slug: '.$ext->extension['slug']);
+            $this->info('version: '.$ext->extension['version']);
+            $this->info('author: '.$ext->extension['author']);
+            $this->info('date: '.$ext->extension['date']);
+            $this->info('path: '.$ext->extension['path']);
+        }
         
         if ($this->argument('run')=='install') {
 
@@ -142,7 +157,7 @@ class ExtCommand extends Command
             $this->info('== update the assets');
 
 
-            $this->info('===========END=========');
+            $this->info('........................END........................');
             $this->info('Successfully installed '.$ucf_extname.' extension');
         }
         
@@ -178,7 +193,7 @@ class ExtCommand extends Command
             $filesystem->copyDirectory(app_path($ucf_extension_dir.'/'.$ucf_extname.'/publish/assets'),$dest_folder.'/assets');
             $this->info('== update the assets');
 
-            $this->info('===========END=========');
+            $this->info('........................END........................');
 
             $resets = 'app/'.$ucf_extension_dir.'/'.$ucf_extname;
             $this->info('Successfully flush '.$resets.'');
