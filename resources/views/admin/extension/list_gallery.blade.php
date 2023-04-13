@@ -1,7 +1,7 @@
 @if(count($ext_list)>0)
 <div class="row mt-3" @if($active=="enabled") id="app_sort_list" @endif>
 @foreach ($ext_list as $ext_slug=>$item)
-<div class="col-sm-3 mb-5">
+<div class="col-sm-3 mb-3">
     <div class="card">
         <div class="card-body">
             <div class="row">
