@@ -1,0 +1,14 @@
+<?php
+
+$controller_prefix = "\\App\\{{ ext_dir }}\\{{ ucf_slug }}\\Controllers\\";
+
+Route::group([
+    'as'         => 'miniapp.',
+    'prefix'     => 'miniapp',
+    'middleware' => 'auth:api', // need install suda extension miniapi to support this middleware
+], function ($router) use ($controller_prefix) {
+
+    Route::get('/westore/info', $controller_prefix.'Api\WestoreController@info');
+
+});
+

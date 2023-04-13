@@ -1,0 +1,47 @@
+<?php
+/*
+|----------------------------
+| Menu
+|----------------------------
+*/
+
+return [
+    
+    'menu'=>[
+        'single'    => true,
+        'title'     => '{{ menu }}',
+        'slug'      => 'menu',
+        'url'       => 'index',
+        'icon_class'=> 'ion-apps',
+        'icon_bg_color'=> '#000000',
+        'font_color'=> '#ff0000',
+        // 'group'     => 'menu',
+        'target'     => '_self',
+        'order'     => 0,
+        
+        'children' => [
+            [
+                'title'     => '{{ index }}',
+                'slug'      => 'index',
+                'url'       => 'index',
+                'icon_class'=> 'ion-home',
+                'target'     => '_self',
+                'order'     => 0,
+                
+            ],
+            [
+                'title'     => '{{ help }}',
+                'slug'      => 'help',
+                'url'       => 'help',
+                'icon_class'=> 'ion-home',
+                'target'     => '_self',
+                'order'     => 0,
+                
+            ],
+        ],
+        
+    ],
+    
+    // extend menu
+    
+];

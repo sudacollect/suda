@@ -1,0 +1,10 @@
+<?php
+
+// return [
+//     [
+//         'url'       => 'extension/{{ slug }}/index',
+//         'target'    => '_self',
+//         'icon'      => 'ion-layers',
+//         'name'      => '{{ name }}'
+//     ],
+// ];

@@ -1,0 +1,7 @@
+<?php
+
+$controller_prefix = "\\App\\{{ ext_dir }}\\{{ ucf_slug }}\\Controllers\\";
+
+// test
+Route::get('/home', $controller_prefix.'Site\HomeController@index');
+Route::get('/', $controller_prefix.'Site\HomeController@index');

@@ -130,6 +130,7 @@ class SudaServiceProvider extends ServiceProvider
         // $this->commands(\Gtd\Suda\Commands\LicenseCommand::class);
         $this->commands(\Gtd\Suda\Commands\InfoCommand::class);
         $this->commands(\Gtd\Suda\Commands\ExtCommand::class);
+        $this->commands(\Gtd\Suda\Commands\MakeCommand::class);
         $this->commands(\Gtd\Suda\Commands\AdminCommand::class);
     }
     

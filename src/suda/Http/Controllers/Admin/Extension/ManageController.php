@@ -149,6 +149,7 @@ class ManageController extends DashboardController
         $extension = app('suda_extension')->use($extension_slug)->extension;
         if(!$extension)
         {
+            $result = app('suda_extension')->uninstall($extension_slug, false, $msg);
             return $this->responseAjax('fail',__('suda_lang::press.msg.fail'));
         }
         $this->setData('item',$extension);

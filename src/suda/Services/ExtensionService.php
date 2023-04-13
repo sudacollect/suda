@@ -148,24 +148,27 @@ class ExtensionService
                 if($this->files->exists($ext_dir_path.'/config.php')){
                     $ext_config = require_once($ext_dir_path.'/config.php');
                     if($ext_config){
-                        
-                        if(isset($ext_config['setting']) && isset($ext_config['setting']['default_page']))
-                        {
-                            $ext_config['default_page_url'] = 'extension/'.$ext_config['slug'].'/'.$ext_config['setting']['default_page'];
-                        }
-                        else
-                        {
-                            $ext_config['default_page_url'] = 'entry/extension/'.$ext_config['slug'];
-                        }
 
-                        if($this->files->exists($ext_dir_path.'/icon.png'))
+                        if($ext_config = $this->checkConfig($ext_config))
                         {
-                            $ext_config['logo'] = $ext_dir_path.'/icon.png';
-                        }else{
-                            $ext_config['logo'] = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
-                        }
+                            if(isset($ext_config['setting']) && isset($ext_config['setting']['default_page']))
+                            {
+                                $ext_config['default_page_url'] = 'extension/'.$ext_config['slug'].'/'.$ext_config['setting']['default_page'];
+                            }
+                            else
+                            {
+                                $ext_config['default_page_url'] = 'entry/extension/'.$ext_config['slug'];
+                            }
 
-                        $extensions[$ext_config['slug']] = $ext_config;
+                            if($this->files->exists($ext_dir_path.'/icon.png'))
+                            {
+                                $ext_config['logo'] = $ext_dir_path.'/icon.png';
+                            }else{
+                                $ext_config['logo'] = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
+                            }
+
+                            $extensions[$ext_config['slug']] = $ext_config;
+                        }
                         
                     }
                 }else{
@@ -178,6 +181,29 @@ class ExtensionService
         $this->writeCache($extensions);
         
         return $extensions;
+    }
+
+    // check config format
+    protected function checkConfig(array $ext_config)
+    {
+        $static_keys = ['name','slug','website','author','email','description','version','date','setting'];
+        $config = Arr::where($ext_config, function(string|array $value, string $key) use ($static_keys){
+            if(in_array($key,$static_keys))
+            {
+                if($key == 'setting')
+                {
+                    return is_array($value);
+                }else{
+                    return is_string($value);
+                }
+            }
+        });
+        $contains = Arr::has($config, $static_keys);
+        if($contains)
+        {
+            return $config;
+        }
+        return false;
     }
 
     protected function writeCache(array $extensions){
@@ -360,7 +386,6 @@ class ExtensionService
             $this->addMenuCache($ext_slug, $ext['path']);
             $this->addNaviCache($ext_slug, $ext['path']);
             $this->runPublish($ext_slug, $ext['path']);
-
             $this->runMigrate($ext['path']);
             
             //#TODO 支持设置预定义数据
@@ -415,7 +440,6 @@ class ExtensionService
     //更新导航缓存
     public function addNaviCache($ext_slug, $ext_path)
     {
-        
         //菜单更新
         $ext_navi = [];
         
@@ -423,10 +447,39 @@ class ExtensionService
             $ext_navi = $this->files->requireOnce($ext_path.'/custom_navi.php');
         }
         
-        $navis = $this->getNavis();
-        $navis[$ext_slug] = $ext_navi;
+        if(is_array($ext_navi) && !empty($ext_navi))
+        {
+            $filtered = Arr::where($ext_navi, function (array|string $value, int|string $key) {
+                if(is_array($value) && count($value) > 1)
+                {
+                    $value = Arr::where($value, function (string $v, string $k) {
+                        if(in_array($k,['name','url','target','icon','blade_icon','children']) && !empty($v))
+                        {
+                            return $v;
+                        }
+                    });
+                    $contains = Arr::has($value, ['name','url','target']);
+                    return $contains;
+                }
+            });
 
-        Cache::store($this->cache_store)->forever('extension_navi',$navis);
+            // $filtered = Arr::map(array_values($filtered), function (array $value, int $key) {
+            //     $new_value = array_merge([
+            //         'name'  => '',
+            //         'url'   => '',
+            //         'target' => '_self',
+            //         'icon'  => 'ion-home',
+            //         'children' => [],
+            //     ], $value);
+            //     return $new_value;
+            // });
+
+            $filtered = array_values($filtered);
+
+            $navis = $this->getNavis();
+            $navis[$ext_slug] = $filtered;
+            Cache::store($this->cache_store)->forever('extension_navi',$navis);
+        }
         
     }
     
@@ -707,7 +760,7 @@ class ExtensionService
                     if($this->files->exists($packagePath.'/config.php'))
                     {
                         $ext_config = $this->files->requireOnce($packagePath.'/config.php');
-                        if(is_array($ext_config))
+                        if($ext_config = $this->checkConfig($ext_config))
                         {
                             if($this->files->exists($packagePath.'/icon.png'))
                             {

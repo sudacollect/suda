@@ -67,9 +67,10 @@
             @if (count($custom_navi) > 0)
             <ul class="nav navbar-nav navbar-custom-navi pl-3 align-self-start">
                 @foreach($custom_navi as $navi)
+                @if(isset($navi['name']) && $navi['name'])
                 <li class="nav-item">
                     <a class="nav-link @if(isset($current_navi) && $current_navi==$navi['name']) active @endif" href="{{ admin_url($navi['url']) }}" target="{{ $navi['target'] }}" title="{{ $navi['name'] }}">
-                        @if(isset($navi['blade_icon']))
+                        @if(isset($navi['blade_icon']) && $navi['blade_icon'])
                         @svg($navi['blade_icon'],['width'=>'16px'])
                         @else
                         @if(isset($navi['icon'])) <i class="{{ $navi['icon'] }}"></i>@endif
@@ -77,6 +78,7 @@
                         {{ $navi['name'] }}
                     </a>
                 </li>
+                @endif
                 @endforeach
             </ul>
             @endif

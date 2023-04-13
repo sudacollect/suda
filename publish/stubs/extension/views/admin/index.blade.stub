@@ -1,0 +1,50 @@
+@extends('view_path::layouts.default')
+
+
+
+@section('content')
+
+<div class="container">
+    <h1 class="page-title">Test</h1>
+    <div class="row suda-row">
+        
+        <div class="col-sm-6 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    
+                    Test-1
+                    
+                </div>
+                <div class="card-body">
+                
+                    <p>
+                        This is a test page.
+                    </p>
+                    
+                
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="col-sm-6 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    
+                    Test-2
+                    
+                </div>
+                <div class="card-body">
+                
+                    <p>
+                        This is a test page.
+                    </p>
+                
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+@endsection

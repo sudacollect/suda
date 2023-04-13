@@ -1,0 +1,34 @@
+<?php
+
+namespace App\{{ ext_dir }}\{{ ucf_slug }}\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\{{ ext_dir }}\{{ ucf_slug }}\Controllers\AdminController;
+
+class HomeController extends AdminController
+{    
+    public function index(Request $request,$param='')
+    {
+        
+        $this->title('Test');
+        
+        $this->gate('menu');
+        $this->setMenu('menu','index');
+
+        return $this->display('index');
+    }
+    
+    public function help(){
+        
+        $this->title('Help');
+        
+        $this->setMenu('menu.help');
+
+        return $this->display('help');
+    }
+    
+    
+}
+

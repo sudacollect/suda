@@ -94,6 +94,7 @@ return [
     'msg' => [
         'success' => 'Success!',
         'failed' => 'Failed!',
+        'fail' => 'Failed!',
         'error' => 'Error!',
     ],
     
@@ -479,5 +480,11 @@ return [
         'brief'     => 'build systems simply and quickly',
         'target'    => 'to help developers like me or small company to build private SaaS application',
         'vision'    => 'build application market base suda'
+    ],
+
+    'commands' => [
+        'menu' => 'Menu',
+        'index' => 'Index',
+        'help' => 'Help',
     ],
 ];

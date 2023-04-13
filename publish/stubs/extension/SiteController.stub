@@ -1,0 +1,20 @@
+<?php
+
+namespace App\{{ ext_dir }}\{{ ucf_slug }}\Controllers;
+
+use Illuminate\Http\Request;
+
+use Gtd\Suda\Http\Controllers\SiteController as SiteCtl;
+
+
+class SiteController extends SiteCtl
+{
+    public $extension_view = '{{ slug }}';
+    
+    public function index(Request $request)
+    {
+        $this->title('Example');
+        return $this->display('index');
+    }
+    
+}

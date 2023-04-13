@@ -30,7 +30,7 @@ class ExtCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'suda:ext {run} {extension}';
+    protected $signature = 'suda:extension {run} {extension}';
     /**
      * The console command description.
      *
@@ -82,16 +82,9 @@ class ExtCommand extends Command
         $extension_dir = config('sudaconf.extension_dir','extensions');
         $ucf_extension_dir = ucfirst($extension_dir);
 
-        $ucf_extname = $this->argument('extension');
+        $ucf_extname = ucfirst($this->argument('extension'));
         $extname = strtolower($ucf_extname);
 
-        // if ($this->option('list')) {
-        //
-        //     //列出所有安装的应用
-        //
-        //     $this->info('Successfully listed all extensions');
-        // }
-        
         if(!$filesystem->exists(app_path($ucf_extension_dir.'/'.$ucf_extname))){
             $this->info('extension '.$ucf_extname.' not exists');
             exit;
@@ -117,7 +110,7 @@ class ExtCommand extends Command
                 $file_list = $filesystem->files($from_path);
                 $sub_directories = $filesystem->directories($from_path);
 
-                $this->info('== Migrating the database tables into your application');
+                $this->info('== Migrating the database tables');
 
                 if($file_list){
                     
@@ -146,7 +139,7 @@ class ExtCommand extends Command
             
             //安装静态资源
             $filesystem->copyDirectory(app_path($ucf_extension_dir.'/'.$ucf_extname.'/publish/assets'),$dest_folder.'/assets');
-            $this->info('== update the assets into your application');
+            $this->info('== update the assets');
 
 
             $this->info('===========END=========');
@@ -161,7 +154,7 @@ class ExtCommand extends Command
                 $file_list = $filesystem->files($from_path);
                 $sub_directories = $filesystem->directories($from_path);
                 
-                $this->info('== Migrating the database tables into your application');
+                $this->info('== Migrating the database tables');
 
                 if($file_list){
                     
@@ -183,7 +176,7 @@ class ExtCommand extends Command
             
             //安装静态资源
             $filesystem->copyDirectory(app_path($ucf_extension_dir.'/'.$ucf_extname.'/publish/assets'),$dest_folder.'/assets');
-            $this->info('== update the assets into your application');
+            $this->info('== update the assets');
 
             $this->info('===========END=========');
 

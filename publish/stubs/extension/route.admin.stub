@@ -1,0 +1,13 @@
+<?php
+
+$controller_prefix = "\\App\\{{ ext_dir }}\\{{ ucf_slug }}\\Controllers\\Admin\\";
+
+Route::group([
+    'as'         => '{{ slug }}.',
+    'prefix'     => '{{ slug }}',
+], function ($router) use ($controller_prefix) {
+
+    Route::get('index/{param?}', $controller_prefix.'HomeController@index');
+    Route::get('help', $controller_prefix.'HomeController@help');
+    
+});

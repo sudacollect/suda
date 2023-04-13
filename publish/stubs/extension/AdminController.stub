@@ -1,0 +1,12 @@
+<?php
+
+namespace App\{{ ext_dir }}\{{ ucf_slug }}\Controllers;
+
+use Gtd\Suda\Http\Controllers\Admin\ExtensionController;
+
+class AdminController extends ExtensionController{
+    
+    public $single_extension_menu = true;
+    
+}
+

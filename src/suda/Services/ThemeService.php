@@ -361,12 +361,15 @@ class ThemeService
             {
                 $data['custom_navi'] = [];
             }
-
+            
             foreach($extension_navi as $navi)
             {
-                foreach($navi as $item)
+                if(is_array($navi))
                 {
-                    array_push($data['custom_navi'],$item);
+                    foreach($navi as $item)
+                    {
+                        array_push($data['custom_navi'],$item);
+                    }
                 }
                 
             }
