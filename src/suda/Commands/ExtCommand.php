@@ -85,30 +85,22 @@ class ExtCommand extends Command
         $ucf_extname = ucfirst($this->argument('extension'));
         $extname = strtolower($ucf_extname);
 
-        if(!$filesystem->exists(app_path($ucf_extension_dir.'/'.$ucf_extname))){
-            $this->info('extension '.$ucf_extname.' not exists');
-            exit;
+        $ext = app('suda_extension')->use($extname);
+        if(!$ext->extension)
+        {
+            $this->info('extension not found');
         }
 
         $this->info('........................ START ........................');
         
         // $to_dir = 'database/migrations/'.$extension_dir.'/'.$ucf_extname;
 
-        $from_path = app_path($ucf_extension_dir.'/'.$ucf_extname.'/publish/database/migrations');
-
-        $from_relative_path = 'app/'.$ucf_extension_dir.'/'.$ucf_extname.'/publish/database/migrations';
-
+        $migration_path = $ext->extension['path'].'/publish/database/migrations';
         $dest_folder = public_path($extension_dir.'/'.$extname);
 
         //安装数据库
 
         if ($this->argument('run')=='info') {
-            $ext = app('suda_extension')->use($extname);
-            if(!$ext->extension)
-            {
-                $this->info('extension not found');
-            }
-
             $this->info('name: '.$ext->extension['name']);
             $this->info('slug: '.$ext->extension['slug']);
             $this->info('version: '.$ext->extension['version']);
@@ -120,24 +112,24 @@ class ExtCommand extends Command
         if ($this->argument('run')=='install') {
 
            
-            if($filesystem->exists($from_path)){
+            if($filesystem->exists($migration_path)){
                 
-                $file_list = $filesystem->files($from_path);
-                $sub_directories = $filesystem->directories($from_path);
+                $file_list = $filesystem->files($migration_path);
+                $sub_directories = $filesystem->directories($migration_path);
 
-                $this->info('== Migrating the database tables');
+                $this->info('......Migrating the database tables');
 
                 if($file_list){
                     
-                    $this->info('== '.$from_relative_path);
-                    $this->call('migrate',['--path'=>$from_relative_path]);
+                    $this->info('......'.$migration_path);
+                    $this->call('migrate',['--path'=>$migration_path]);
                 }
                 if($sub_directories)
                 {
                     foreach($sub_directories as $sub_path)
                     {
-                        $this->info('== '.$from_relative_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
-                        $this->call('migrate',['--path'=>$from_relative_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
+                        $this->info('......'.$migration_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
+                        $this->call('migrate',['--path'=>$migration_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
                     }
                 }
             }
@@ -153,8 +145,8 @@ class ExtCommand extends Command
             }
             
             //安装静态资源
-            $filesystem->copyDirectory(app_path($ucf_extension_dir.'/'.$ucf_extname.'/publish/assets'),$dest_folder.'/assets');
-            $this->info('== update the assets');
+            $filesystem->copyDirectory($ext->extension['path'].'/publish/assets',$dest_folder.'/assets');
+            $this->info('......reset the assets');
 
 
             $this->info('........................END........................');
@@ -164,34 +156,34 @@ class ExtCommand extends Command
         if ($this->argument('run')=='flush') {
             
             
-            if($filesystem->exists($from_path)){
+            if($filesystem->exists($migration_path)){
                 
-                $file_list = $filesystem->files($from_path);
-                $sub_directories = $filesystem->directories($from_path);
+                $file_list = $filesystem->files($migration_path);
+                $sub_directories = $filesystem->directories($migration_path);
                 
-                $this->info('== Migrating the database tables');
+                $this->info('......Migrating the database tables');
 
                 if($file_list){
                     
                     
-                    $this->info('== '.$from_relative_path);
-                    $this->call('migrate',['--path'=>$from_relative_path]);
+                    $this->info('......'.$migration_path);
+                    $this->call('migrate',['--path'=>$migration_path]);
                 }
 
                 if($sub_directories)
                 {
                     foreach($sub_directories as $sub_path)
                     {
-                        $this->info('== '.$from_relative_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
-                        $this->call('migrate',['--path'=>$from_relative_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
+                        $this->info('......'.$migration_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
+                        $this->call('migrate',['--path'=>$migration_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
                     }
                 }
             }
             
             
             //安装静态资源
-            $filesystem->copyDirectory(app_path($ucf_extension_dir.'/'.$ucf_extname.'/publish/assets'),$dest_folder.'/assets');
-            $this->info('== update the assets');
+            $filesystem->copyDirectory($ext->extension['path'].'/publish/assets',$dest_folder.'/assets');
+            $this->info('......reset the assets');
 
             $this->info('........................END........................');
 
