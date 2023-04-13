@@ -525,9 +525,11 @@ class PageController extends DashboardController
 
     public function makeSearchFilter()
     {
-        //搜索条件
-        
-        $dates = Page::select(DB::raw('YEAR(updated_at) as year'),DB::raw('MONTH(updated_at) as month'))->where([])->groupBy(DB::raw('YEAR(updated_at)'))->groupBy(DB::raw('MONTH(updated_at)'))->get();
+        $dates = Page::select(DB::raw('YEAR(updated_at) as year'),DB::raw('MONTH(updated_at) as month'))
+            ->where([])
+            ->groupBy(DB::raw('YEAR(updated_at)'))
+            ->groupBy(DB::raw('MONTH(updated_at)'))->get();
+
         $this->setData('dates',$dates);
     }
     
