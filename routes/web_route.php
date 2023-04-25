@@ -11,8 +11,8 @@ Route::group([
     
     //suda keeped
     Route::group([
-        'as'         => 'sdone.',
-        'prefix'     => 'sdone',
+        'as'         => 'sudarun.',
+        'prefix'     => 'sudarun',
     ], function ($router) use ($controller_prefix) {
         
         // install license

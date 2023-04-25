@@ -102,7 +102,7 @@ jQuery(function($) {
     suda.modal = function(info,infoType,autoClose,rurl,btn){
         $.ajax({
             type    : 'GET', 
-            url     : '/sdone/error/ajax',
+            url     : '/sudarun/error/ajax',
             cache   : false,
             success : function(data){
                if(data){

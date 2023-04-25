@@ -17,7 +17,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         window.suda = window.suda || {};
-        suda.meta = { csrfToken: "{{csrf_token()}}",url:"{{url('/sdone/status/'.$status)}}" }
+        suda.meta = { csrfToken: "{{csrf_token()}}",url:"{{url('/sudarun/status/'.$status)}}" }
     </script>
     
     @stack('scripts-head')

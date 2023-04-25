@@ -25,7 +25,7 @@ class RedirectMobileMiddleware
 
         $excepts = [
             config_admin_path().'/*',
-            'sdone/*',
+            'sudarun/*',
             'api/*',
             'arrilot/*'
         ];

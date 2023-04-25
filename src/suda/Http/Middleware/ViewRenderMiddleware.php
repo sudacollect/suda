@@ -21,7 +21,7 @@ class ViewRenderMiddleware
     {
         $except_prefix = [
             config_admin_path().'/*',
-            'sdone/*',
+            'sudarun/*',
             'api/*',
             'arrilot/*'
         ];

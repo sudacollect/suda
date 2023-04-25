@@ -23,8 +23,8 @@ class CertificateMiddleware
 
         if($except_do && !Certificate::isLicensed($err)){
             
-            if($request->route()->uri()!='sdone/setup/license'){
-                return redirect()->to('sdone/setup/license')->with(['err'=>$err]);
+            if($request->route()->uri()!='sudarun/setup/license'){
+                return redirect()->to('sudarun/setup/license')->with(['err'=>$err]);
                 exit('Suda Licensed Failed.');
             }
         }

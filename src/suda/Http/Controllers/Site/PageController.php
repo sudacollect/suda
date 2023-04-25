@@ -47,7 +47,7 @@ class PageController extends SiteController{
         
         
         if(!$page || !$page_id){
-            return redirect('sdone/status/404');
+            return redirect('sudarun/status/404');
         }
 
         $hero_image = [];

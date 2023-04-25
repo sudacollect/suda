@@ -51,7 +51,7 @@ class ArticleController extends SiteController{
         
         
         if(!$article || !$page_id){
-            return redirect('sdone/status/404');
+            return redirect('sudarun/status/404');
         }
 
         $hero_image = [];

@@ -19,7 +19,7 @@
                     <p style="text-align:center;"><a href="{{ url('/') }}">返回首页</a></p>
                     
                     @else
-                    <form role="form" method="POST" action="{{ url('sdone/setup/license') }}">
+                    <form role="form" method="POST" action="{{ url('sudarun/setup/license') }}">
                         @csrf
 
                         <div class="mb-3{{ $errors->has('serialnumber') ? ' has-error' : '' }}">

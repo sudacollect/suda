@@ -52,7 +52,7 @@ class SetupController extends SiteController{
             $this->sendFailedResponse('serialnumber',$msg);
         }else{
             
-            return redirect()->to(url('sdone/setup/license'))->with(['success'=>'success']);
+            return redirect()->to(url('sudarun/setup/license'))->with(['success'=>'success']);
             
         }
         

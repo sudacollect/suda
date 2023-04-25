@@ -44,7 +44,7 @@ class HomeController extends SiteController{
                         
                         
                         if(!$page){
-                            return redirect('sdone/status/404');
+                            return redirect('sudarun/status/404');
                         }
         
                         $hero_image = [];
