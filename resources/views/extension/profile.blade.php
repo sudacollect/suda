@@ -98,43 +98,5 @@
 </div>
 
 
-<div id="modal-upload-avatar" class="modal fade modal-box" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-small" role="document" style="width:420px;">
-    <div class="modal-content">
-      
-      <div class="modal-header">
-        <h4 class="modal-title">
-          <i class="ion-image"></i>
-          {{ __('suda_lang::press.avatar') }}
-        </h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        
-      </div>
-      
-      <div class="modal-body">
-          <div class="upload-crop-container">
-
-                  <div id="upload-crop">
-                      
-                  </div>
-
-          </div>
-          
-      </div>
-      
-      <div class="modal-footer">
-          <button type="button" id="apply-crop" class="btn btn-primary btn-sm pull-right" >{{ __('suda_lang::press.btn.save') }}</button>
-          <button type="button" class="btn btn-light btn-sm pull-right" style="margin-right:15px;" data-bs-dismiss="modal" aria-label="Close">{{ __('suda_lang::press.btn.cancel') }}</button>
-      </div>
-      
-      
-      
-      
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-
 @endsection
 
