@@ -741,11 +741,12 @@ if (!function_exists('extension_asset')) {
 }
 
 function extension_logo($extension_slug,$secure=null){
-    return admin_url('manage/extension/'.$extension_slug.'/logo');
-}
-
-function ext_extension_logo($extension_slug,$secure=null){
-    return extadmin_url('entry/extension/'.$extension_slug.'/logo');
+    $extension_dir = strtolower(config('sudaconf.extension_dir','extensions'));
+    if(file_exists(public_path($extension_dir.DIRECTORY_SEPARATOR.$extension_slug.DIRECTORY_SEPARATOR.'icon.png')))
+    {
+        return url($extension_dir.DIRECTORY_SEPARATOR.$extension_slug.DIRECTORY_SEPARATOR.'icon.png');
+    }
+    return suda_asset('images/empty_extension_icon.png');
 }
 
 if (!function_exists('extension_menu')) {

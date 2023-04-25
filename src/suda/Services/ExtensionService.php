@@ -573,7 +573,12 @@ class ExtensionService
         if($filesystem->exists($ext_path.'/publish/assets')){
             $filesystem->deleteDirectory($dest_folder.'/assets');
             $filesystem->copyDirectory($ext_path.'/publish/assets',$dest_folder.'/assets');
-        }        
+        }
+        // copy logo
+        if($filesystem->exists($ext_path.'/icon.png')){
+            $filesystem->delete($dest_folder.'/icon.png');
+            $filesystem->copy($ext_path.'/icon.png',$dest_folder.'/icon.png');
+        }
     }
 
     protected function removePublish($ext_slug)

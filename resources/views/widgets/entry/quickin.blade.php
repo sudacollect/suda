@@ -20,7 +20,7 @@
                     }
                     @endphp
                     <a href="{{ extadmin_url('extension/'.$url) }}" title="{{ $item['name'] }}">
-                        <img src="{{ ext_extension_logo($item['slug']) }}" class="icon icon-extension">
+                        <img src="{{ extension_logo($item['slug']) }}" class="icon icon-extension">
                         <span>{{ $item['name'] }}</span>
                     </a>
                 </li>

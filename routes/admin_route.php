@@ -359,7 +359,7 @@ Route::group([
     Route::get('manage/extension', $controller_prefix.'Extension\ManageController@index')->name('tool_extend');
     Route::get('manage/extension/{status}', $controller_prefix.'Extension\ManageController@index')->name('tool_extend');
     Route::get('manage/extension/{status}', $controller_prefix.'Extension\ManageController@index')->name('tool_extend_disabled');
-    Route::get('manage/extension/{extension_slug}/logo', $controller_prefix.'Extension\ManageController@extLogo')->name('tool_extend_logo');
+    // Route::get('manage/extension/{extension_slug}/logo', $controller_prefix.'Extension\ManageController@extLogo')->name('tool_extend_logo');
     
     Route::post('manage/extension/{extension_slug}/install/', $controller_prefix.'Extension\ManageController@toInstall')->name('tool_extend_install');
     Route::post('manage/extension/{extension_slug}/refresh/', $controller_prefix.'Extension\ManageController@flushExtension')->name('tool_extend_flush');

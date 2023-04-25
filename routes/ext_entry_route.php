@@ -23,7 +23,7 @@ Route::group([
     Route::get('/', $controller_prefix.'EntryController@index');
     Route::get('entry/extensions', $controller_prefix.'EntryController@index');
     Route::get('entry/extension/{extension_slug}', $controller_prefix.'EntryController@detail');
-    Route::get('entry/extension/{extension_slug}/logo', $controller_prefix.'EntryController@getLogo');
+    // Route::get('entry/extension/{extension_slug}/logo', $controller_prefix.'EntryController@getLogo');
 
 
     // medias load modal

@@ -34,7 +34,7 @@ class SettingsTableSeeder extends Seeder
         $setting = $this->findSetting('site_status');
         if (!$setting->exists) {
             $setting->fill([
-                'values'        => '0',
+                'values'        => '1',
                 'type'         => 'text',
                 'order'        => 1,
                 'group'        => 'site',

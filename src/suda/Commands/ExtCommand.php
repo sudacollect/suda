@@ -145,8 +145,13 @@ class ExtCommand extends Command
             }
             
             //安装静态资源
-            $filesystem->copyDirectory($ext->extension['path'].'/publish/assets',$dest_folder.'/assets');
+            $filesystem->copyDirectory($ext->extension['path'].'/publish/assets', $dest_folder.'/assets');
             $this->info('......reset the assets');
+
+            // copy logo
+            if($filesystem->exists($ext->extension['path'].'/icon.png')){
+                $filesystem->copy($ext->extension['path'].'/icon.png', $dest_folder.'/icon.png');
+            }
 
 
             $this->info('........................END........................');
@@ -184,6 +189,11 @@ class ExtCommand extends Command
             //安装静态资源
             $filesystem->copyDirectory($ext->extension['path'].'/publish/assets',$dest_folder.'/assets');
             $this->info('......reset the assets');
+
+            // copy logo
+            if($filesystem->exists($ext->extension['path'].'/icon.png')){
+                $filesystem->copy($ext->extension['path'].'/icon.png',$dest_folder.'/icon.png');
+            }
 
             $this->info('........................END........................');
 
