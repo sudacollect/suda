@@ -48,9 +48,9 @@
         
         
         <div class="col-sm-12 suda_page_body">   
-            <a  class="btn btn-md @if($active=="enabled") btn-primary @else btn-light  @endif" href="{{ admin_url('manage/extension/enabled') }}">{{ __('suda_lang::press.extensions.installed') }}</a>
-            <a  class="btn btn-md @if($active=="available") btn-secondary @else btn-light @endif" href="{{ admin_url('manage/extension/available') }}">{{ __('suda_lang::press.extensions.available') }}</a>
-            <a  class="btn btn-md @if($active=="package") btn-secondary @else btn-light @endif" href="{{ admin_url('manage/extension/package') }}">{{ __('suda_lang::press.extensions.package') }}</a>
+            <a  class="btn btn-md @if($active=="enabled") btn-primary @else btn-light  @endif" href="{{ admin_url('manage/extensions/enabled') }}">{{ __('suda_lang::press.extensions.installed') }}</a>
+            <a  class="btn btn-md @if($active=="available") btn-secondary @else btn-light @endif" href="{{ admin_url('manage/extensions/available') }}">{{ __('suda_lang::press.extensions.available') }}</a>
+            <a  class="btn btn-md @if($active=="package") btn-secondary @else btn-light @endif" href="{{ admin_url('manage/extensions/package') }}">{{ __('suda_lang::press.extensions.package') }}</a>
             @include('view_path::extension.list_gallery')
         </div>
         

@@ -54,12 +54,10 @@ class ImageService
         18=>'COUNT'  
     ];
     
-    function __construct(){
-        
-        $this->type_data = Media::getTypes();
-        
+    function __construct()
+    {    
+        $this->type_data = Media::getTypes();   
         $this->filename();
-
     }
 
     public function filename($filename="img")
@@ -67,7 +65,8 @@ class ImageService
         $this->_filename = $filename;
     }
 
-    public function validateFile(array $data){
+    public function validateFile(array $data)
+    {
         
         $type_data = Media::getTypes();
         
@@ -88,18 +87,18 @@ class ImageService
         ];
         
         $messages = [
-            'required' => '请选择文件',
-            'file' => '请确认上传文件类型正确',
-            'mimes' => '不支持的文件类型',
-            'in'=>'上传类型错误',
-            'media_type.required'=>'需指定媒体类型',
+            'required'              => __('suda_lang::press.medias.messages.required'),
+            'file'                  => __('suda_lang::press.medias.messages.file'),
+            'mimes'                 => __('suda_lang::press.medias.messages.mimes'),
+            'in'                    => __('suda_lang::press.medias.messages.in'),
+            'media_type.required'   => __('suda_lang::press.medias.messages.media_type_required'),
         ];
         return Validator::make($data, $roles,$messages);
     }
     
     //校验上传的图片信息
-    public function validateImage(array $data){
-        
+    public function validateImage(array $data)
+    {    
         $type_data = Media::getTypes();
         
         $typelist = implode(',',$type_data['types']);
@@ -120,19 +119,20 @@ class ImageService
         ];
         
         $messages = [
-            'required' => '请正确选择上传文件',
-            // 'image' => '请选择图片文件',
+            'required'  => __('suda_lang::press.medias.messages.required'),
+            // 'image'      => '请选择图片文件',
             // 'dimensions' => '图片尺寸不能小于10像素',
-            'mimes' => '不支持的文件类型',
-            'in'=>'上传类型错误',
-            'media_type.required'=>'需指定媒体类型',
+            'mimes'     => __('suda_lang::press.medias.messages.mimes'),
+            'in'        => __('suda_lang::press.medias.messages.in'),
+            'media_type.required'   => __('suda_lang::press.medias.messages.media_type_required'),
         ];
         return Validator::make($data, $roles,$messages);
     }
     
-    //验证上传
-    public function validateUpload($request,&$msg=''){
-        //检查上传的图片,filename = 'img'
+    //validate upload files
+    public function validateUpload($request,&$msg='')
+    {
+        //check upload,filename = 'img'
         $validator = $this->validateImage($request->all());
         if($validator->fails()){
             $msg = $validator->errors();
@@ -150,10 +150,10 @@ class ImageService
                 $size = @getimagesize($this->_file);
                 list($sourceWidth, $sourceHeight, $sourceType) = $size;
             
-                $this->_file_data['source_width'] = $sourceWidth;
-                $this->_file_data['source_height'] = $sourceHeight;
-                $this->_file_data['source_type'] = $sourceType;
-                $this->_file_data['file_type'] = 'image';
+                $this->_file_data['source_width']   = $sourceWidth;
+                $this->_file_data['source_height']  = $sourceHeight;
+                $this->_file_data['source_type']    = $sourceType;
+                $this->_file_data['file_type']      = 'image';
             }
             
             $this->_file_data['size'] = $this->_file->getSize();
@@ -165,42 +165,39 @@ class ImageService
         return false;
     }
     
-    public function makeFile($file){
-        
+    public function makeFile($file)
+    {    
         $image = Image::make($file);
         return $image;
     }
     
-    public function makeFileFromBinary($data){
-        
+    public function makeFileFromBinary($data)
+    {    
         $image = Image::make(file_get_contents($data));
         return $image;
     }
     
-    public function setFile($file){
-        
-        $this->_file = $file;
-        
+    public function setFile($file)
+    {
+        $this->_file = $file;   
     }
     
-    public function setFileData($data){
-        
+    public function setFileData($data)
+    {    
         //process file data
         $this->_file_data = $data;
-        
     }
     
     
-    public function saveImage($options=[],&$msg){
+    public function saveImage($options=[],&$msg)
+    {
         //验证规则
         //$options = ['media_type','user_type','user_id','resize'=>true, 'crop'=>true,'ratio'=>1, 'quality'=>100, 'disk'=>'public']
         //生成对应目录文件名规则
         
-        if(!array_key_exists('user_type',$options) || !array_key_exists('user_id',$options)){
-            
+        if(!array_key_exists('user_type',$options) || !array_key_exists('user_id',$options)) {
             $msg = __('suda_lang::press.medias.missing_user');
             return false;
-            
         }
         
         //support folders
@@ -221,9 +218,9 @@ class ImageService
         }
         
         
-        $targetImage = $this->generateTargetName(storage_path('app/public/images'), $this->_file_data['extension'], TRUE);
+        $targetImage = $this->generateTargetName('', $this->_file_data['extension'], TRUE);
         $basename = pathinfo($targetImage, PATHINFO_BASENAME);
-        $subdir = stringBeginsWith(dirname($targetImage), storage_path('app/public/images'), FALSE, TRUE);
+        $subdir = stringBeginsWith(dirname($targetImage), '', FALSE, TRUE);
         
         $this->save_path = 'images/'.$type_path.$subdir;
 
@@ -251,12 +248,12 @@ class ImageService
             $setting = [
                 'size'=>[
                     'medium'=>[
-                        'width'=>config('sudaconf.image.size.medium',400),
-                        'height'=>config('sudaconf.image.size.medium',400),
+                        'width'=>config('sudaconf.media.size.medium',400),
+                        'height'=>config('sudaconf.media.size.medium',400),
                     ],
                     'small'=>[
-                        'width'=>config('sudaconf.image.size.small',200),
-                        'height'=>config('sudaconf.image.size.small',200),
+                        'width'=>config('sudaconf.media.size.small',200),
+                        'height'=>config('sudaconf.media.size.small',200),
                     ],
                 ],
             ];
@@ -363,15 +360,16 @@ class ImageService
 
         //没有指定disk时，设置为默认存储
         if(!$disk){
-            $disk = config('sudaconf.image.disk','public');
+            $disk = config('sudaconf.media.disk','public');
         }
 
         $this->save_disk = $disk;
         
         try {
-
+            
             //先存储，再进行后续动作
             $imagefile = Image::make($this->_file)->stream();
+            Storage::disk($this->save_disk)->makeDirectory(dirname($save_original_name));
             Storage::disk($this->save_disk)->put($save_original_name, $imagefile);
             
             // $image = Image::make($this->_file);
@@ -423,7 +421,8 @@ class ImageService
        }
     }
     
-    public function resizeImage($img_path,$disk,$saveWidth,$saveHeight,$quality){
+    public function resizeImage($img_path,$disk,$saveWidth,$saveHeight,$quality)
+    {
         //生成缩略图
         $resizeImage = Image::make($this->_file)->resize($saveWidth, $saveHeight)->stream();
         return Storage::disk($disk)->put($img_path, $resizeImage);
@@ -490,12 +489,12 @@ class ImageService
             $setting = [
                 'size'=>[
                     'medium'=>[
-                        'width'=>config('sudaconf.image.size.medium',400),
-                        'height'=>config('sudaconf.image.size.medium',400),
+                        'width'=>config('sudaconf.media.size.medium',400),
+                        'height'=>config('sudaconf.media.size.medium',400),
                     ],
                     'small'=>[
-                        'width'=>config('sudaconf.image.size.small',200),
-                        'height'=>config('sudaconf.image.size.small',200),
+                        'width'=>config('sudaconf.media.size.small',200),
+                        'height'=>config('sudaconf.media.size.small',200),
                     ],
                 ],
             ];
@@ -540,12 +539,19 @@ class ImageService
     }
     
     
-    public function generateTargetName($targetFolder, $extension = 'jpg', $chunk = FALSE) {
-       
+    public function generateTargetName($targetFolder, $extension = 'jpg', $chunk = FALSE)
+    {
        do {
           if ($chunk) {
              $name = Str::random(12);
-             $subdir = sprintf('%05d', mt_rand(0, 99999)).'/';
+             if(config('sudaconf.media.subdir_type','date') == 'random')
+             {
+                $subdir = sprintf('%05d', mt_rand(0, 99999)).'/';
+             }
+             if(config('sudaconf.media.subdir_type','date') == 'date')
+             {
+                $subdir = sprintf('%05d', date('ymd')).'/';
+             }
           } else {
              $name = Str::random(12);
              $subdir = '';
@@ -556,10 +562,9 @@ class ImageService
        return $path;
     }
     
-    public function getExtesionByMime($mime){
-        
+    public function getExtesionByMime($mime)
+    {
         switch($mime){
-            
             case 'image/png':
                 return 'png';
             break;
@@ -578,10 +583,8 @@ class ImageService
             
             case 'image/webp':
                 return 'webp';
-            break;
-            
+            break;   
         }
-        
     }
 
     //计算图片的长度宽度
@@ -608,7 +611,8 @@ class ImageService
 
     }
 
-    public function saveFile($options=[],&$msg){
+    public function saveFile($options=[],&$msg)
+    {
         //验证规则
         //$options = ['media_type','user_type','user_id','resize'=>true, 'crop'=>true,'ratio'=>1, 'quality'=>100, 'disk'=>'public']
         //生成对应目录文件名规则
@@ -637,10 +641,10 @@ class ImageService
             $media_type = ucfirst($media_type);
         }
         
-        
-        $targetFile = $this->generateTargetName(storage_path('app/public/files'), $this->_file_data['extension'], TRUE);
+        // storage_path('app/public/files')
+        $targetFile = $this->generateTargetName('', $this->_file_data['extension'], TRUE);
         $basename = pathinfo($targetFile, PATHINFO_BASENAME);
-        $subdir = stringBeginsWith(dirname($targetFile), storage_path('app/public/files'), FALSE, TRUE);
+        $subdir = stringBeginsWith(dirname($targetFile), '', FALSE, TRUE);
         
         $this->save_path = 'images/'.$type_path.$subdir;
 
@@ -652,7 +656,7 @@ class ImageService
         
         //没有指定disk时，设置为默认存储
         if(!$disk){
-            $disk = config('sudaconf.image.disk','public');
+            $disk = config('sudaconf.media.disk','public');
         }
         $this->save_disk = $save_disk;
 

@@ -108,8 +108,15 @@ class ManageController extends DashboardController
     {
         $extension = app('suda_extension')->use($slug)->extension;
         
-        $file = $files->get($extension['logo']);
-        $type = $files->mimeType($extension['logo']);
+        if($extension)
+        {
+            $file = $files->get($extension['logo']);
+            $type = $files->mimeType($extension['logo']);
+        }else{
+            $empty_icon = public_path('vendor/suda/assets/images/empty_extension_icon.png');
+            $file = $files->get($empty_icon);
+            $type = $files->mimeType($empty_icon);;
+        }
         
         $response = Response::make($file, 200);
         $response->header("Content-Type", $type);

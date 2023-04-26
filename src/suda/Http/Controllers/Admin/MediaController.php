@@ -480,12 +480,12 @@ class MediaController extends DashboardController
             $setting = [
                 'size'=>[
                     'medium'=>[
-                        'width'=>config('sudaconf.image.size.medium',400),
-                        'height'=>config('sudaconf.image.size.medium',400),
+                        'width'=>config('sudaconf.media.size.medium',400),
+                        'height'=>config('sudaconf.media.size.medium',400),
                     ],
                     'small'=>[
-                        'width'=>config('sudaconf.image.size.small',200),
-                        'height'=>config('sudaconf.image.size.small',200),
+                        'width'=>config('sudaconf.media.size.small',200),
+                        'height'=>config('sudaconf.media.size.small',200),
                     ],
                 ],
             ];
@@ -500,8 +500,8 @@ class MediaController extends DashboardController
     public function settingSave(Request $request)
     {
 
-        $medium = array_merge(['width'=>config('sudaconf.image.size.medium',400),'height'=>config('sudaconf.image.size.medium',400)],$request->medium);
-        $small = array_merge(['width'=>config('sudaconf.image.size.small',200),'height'=>config('sudaconf.image.size.small',200)],$request->small);
+        $medium = array_merge(['width'=>config('sudaconf.media.size.medium',400),'height'=>config('sudaconf.media.size.medium',400)],$request->medium);
+        $small = array_merge(['width'=>config('sudaconf.media.size.small',200),'height'=>config('sudaconf.media.size.small',200)],$request->small);
         
         $default_image = 0;
         if($request->images){

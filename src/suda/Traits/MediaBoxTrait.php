@@ -281,13 +281,13 @@ trait MediaBoxTrait
             }
             
             $save_data = [
-                'user_type'=>$this->guard,
-                'user_id'=>$this->user->id,
-                'media_type'=>$media_type,
-                'media_crop'=>$media_crop,
-                'resize'=>$this->resize, //生成缩略图
-                'ratio'=>$this->ratio, //是否缩放
-                'hidden'=>$this->hidden,//是否从选图中隐藏
+                'user_type'     => $this->guard,
+                'user_id'       => $this->user->id,
+                'media_type'    => $media_type,
+                'media_crop'    => $media_crop,
+                'resize'        => $this->resize, //生成缩略图
+                'ratio'         => $this->ratio, //是否缩放
+                'hidden'        => $this->hidden,//是否从选图中隐藏
             ];
             
             $msg = '';
@@ -326,7 +326,7 @@ trait MediaBoxTrait
         }
     }
 
-    // 暂时用不到
+    // #TODO 替换原有的上传
     public function toUpload(Request $request,$media_type="default")
     {
         $this->checkSetting();

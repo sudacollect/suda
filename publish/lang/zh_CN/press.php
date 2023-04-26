@@ -366,6 +366,13 @@ return [
         'upload_label' => '拖动文件到这里上传',
         'upload_label_btn' => '点击选择文件上传',
         'missing_user' => '缺少上传文件对应的用户',
+        'messages' => [
+            'required'  => '请选择文件',
+            'file'      => '请确认上传文件类型正确',
+            'mimes'     => '不支持的文件类型',
+            'in'        => '上传类型错误',
+            'media_type_required' => '需指定媒体类型',
+        ],
     ],
 
     // SETTING

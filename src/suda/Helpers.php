@@ -167,11 +167,12 @@ if (!function_exists('suda_image_process')) {
         $disk = $data->disk;
         if(!$disk)
         {
-            $disk = 'local';
+            $disk = 'public';//from 9.x update to this value.
         }
 
         $large_path = change_basename($path, 'p%s');
-        if(!file_exists(Storage::disk($disk)->path($large_path))){
+        $dd = Storage::disk($disk)->fileExists($large_path);
+        if(!Storage::disk($disk)->fileExists($large_path)){
             $large_path = $path;
         }
         
@@ -203,11 +204,10 @@ if (!function_exists('suda_image_process')) {
             $path = change_basename($path, 'i%s');//mini图
         }
         
-        if(!file_exists(Storage::disk($disk)->path($path))){
+
+        if(!Storage::disk($disk)->fileExists($path)){
             $path = $data->path;
         }
-        
-        
         
         if($cdn){
             $image_url = passet(Storage::disk($disk)->url($path));
@@ -218,7 +218,7 @@ if (!function_exists('suda_image_process')) {
         if($return_url){
             return $image_url;
         }
-        return '<img src="'.$image_url.'?'.time().'" title="'.$title.'" '.$image_large_url_str.' class="zpress-image image-'.$size.' '.$image_class.'">';
+        return '<img path="'.$path.'" src="'.$image_url.'?'.time().'" title="'.$title.'" '.$image_large_url_str.' class="zpress-image image-'.$size.' '.$image_class.'">';
     }
     
 }

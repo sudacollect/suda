@@ -78,12 +78,9 @@ return [
         'types_model'   => [
             // 'page'=>'Gtd\Suda\Models\Page',
             // 'article'=>'Gtd\Suda\Models\Article',
-        ]
-    ],
-
-    // IMAGE UPLOAD
-    'image' => [
+        ],
         'disk'  => 'public',
+        'subdir_type' => 'date',
         'size'=>[
             'small'     => 200,
             'medium'    => 400,

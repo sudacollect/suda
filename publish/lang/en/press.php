@@ -367,6 +367,13 @@ return [
         'upload_label' => 'Drag & Drop to upload',
         'upload_label_btn' => 'Select to upload',
         'missing_user' => 'Missing user',
+        'messages' => [
+            'required'  => 'Please select upload file',
+            'file'      => 'Please confirm file type',
+            'mimes'     => 'mime not support',
+            'in'        => 'Media type wrong',
+            'media_type_required' => 'Media type missing',
+        ],
     ],
 
     // SETTING

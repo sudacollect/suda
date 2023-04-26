@@ -79,6 +79,7 @@ class MediaService
         18=>'COUNT'  
     ];
     
+    // #TODO 替换原有的上传
     public function doUpload(request $request,$user,$options = null, $initialize = true, $error_messages = null){
         $this->response_content = [];
         $this->options = [
@@ -488,8 +489,8 @@ class MediaService
         $disk = array_get($options,'disk',''); //默认存储本地
         
         //只有本地存储时，检测是否有预先设置的存储方式
-        if(!$disk && config('sudaconf.image.disk')){
-            $disk = config('sudaconf.image.disk');
+        if(!$disk && config('sudaconf.media.disk')){
+            $disk = config('sudaconf.media.disk');
         }
 
         $this->save_disk = $disk;
@@ -552,12 +553,12 @@ class MediaService
             $setting = [
                 'size'=>[
                     'medium'=>[
-                        'width'=>config('sudaconf.image.size.medium',400),
-                        'height'=>config('sudaconf.image.size.medium',400),
+                        'width'=>config('sudaconf.media.size.medium',400),
+                        'height'=>config('sudaconf.media.size.medium',400),
                     ],
                     'small'=>[
-                        'width'=>config('sudaconf.image.size.small',200),
-                        'height'=>config('sudaconf.image.size.small',200),
+                        'width'=>config('sudaconf.media.size.small',200),
+                        'height'=>config('sudaconf.media.size.small',200),
                     ],
                 ],
             ];
@@ -709,7 +710,14 @@ class MediaService
        do {
           if ($chunk) {
              $name = Str::random(12);
-             $subdir = sprintf('%05d', mt_rand(0, 99999)).'/';
+             if(config('sudaconf.media.subdir_type','date') == 'random')
+             {
+                $subdir = sprintf('%05d', mt_rand(0, 99999)).'/';
+             }
+             if(config('sudaconf.media.subdir_type','date') == 'date')
+             {
+                $subdir = sprintf('%05d', date('ymd')).'/';
+             }
           } else {
              $name = Str::random(12);
              $subdir = '';
