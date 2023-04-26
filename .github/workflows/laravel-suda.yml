@@ -1,5 +1,5 @@
 # GitHub Action for Laravel with MySQL and Redis
-name: Testing Laravel with MySQL
+name: Testing Suda with MySQL
 on: [push, pull_request]
 jobs:
   laravel:
@@ -84,7 +84,18 @@ jobs:
         env:
           DB_PORT: ${{ job.services.mysql.ports['3306'] }}
           REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
-
+      - name: cache test
+        working-directory: ./blog
+        run: |
+          php artisan config:cache
+          php artisan route:cache
+          php artisan suda:reset assets
+          php artisan suda:reset themes
+          php artisan sudamake:extension storespace
+          php artisan suda:extension install storespace
+        env:
+          DB_PORT: ${{ job.services.mysql.ports['3306'] }}
+          REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
       - name: Finish Test
         working-directory: ./blog
         run: php artisan suda:info
