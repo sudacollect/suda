@@ -85,10 +85,13 @@ class ExtCommand extends Command
         $ucf_extname = ucfirst($this->argument('extension'));
         $extname = strtolower($ucf_extname);
 
+        app('suda_extension')->updateLocalCache();
+
         $ext = app('suda_extension')->use($extname);
-        if(!$ext->extension)
+        if(!$ext->extension || count($ext->extension) < 1 )
         {
             $this->info('extension not found');
+            return;
         }
 
         $this->info('........................ START ........................');
