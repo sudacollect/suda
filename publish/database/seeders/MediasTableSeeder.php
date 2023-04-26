@@ -17,6 +17,7 @@ class MediasTableSeeder extends Seeder
             $media->user_type  = 'operate';
             $media->type     = 'PNG';
             $media->size     = '115056';
+            $media->disk     = 'local';
             $media->path    = 'public/images/demo/journey.png';
 
             $media->save();
