@@ -58,7 +58,7 @@ Route::group([
 
         // setting
         Route::get('setting', 'settings')->name('setting_system');
-        Route::get('setting/site', 'settings')->name('setting_system');
+        Route::get('setting/site', 'settings')->name('setting_site');
         Route::post('setting/site', 'saveSettings');
         Route::get('setting/logo', 'logo');
         Route::post('setting/logo', 'saveLogo');
@@ -134,7 +134,7 @@ Route::group([
     Route::controller($controller_prefix.'Article\CategoryController')->group(function(){
         Route::get('article/categories', 'getList')->name('article_category');
         Route::get('article/category/add/{id?}', 'create')->name('article_category_add');
-        Route::get('article/category/update/{id}', 'update')->name('article_category_add');
+        Route::get('article/category/update/{id}', 'update')->name('article_category_update');
         Route::post('article/category/delete/{id}', 'delete')->name('article_category_delete');
         
         Route::post('article/category/save', 'save')->name('article_category_save');
@@ -183,9 +183,9 @@ Route::group([
 
     Route::controller($controller_prefix.'MediaController')->group(function(){
         // media
-        Route::get('media/hidden', 'getHiddens')->name('media_file');
-        Route::get('media/files', 'files')->name('media_file');
-        Route::get('media/images', 'images')->name('media_file');
+        Route::get('media/hidden', 'getHiddens')->name('media_hidden');
+        Route::get('media/files', 'files')->name('media_files');
+        Route::get('media/images', 'images')->name('media_images');
 
         Route::get('media/setting', 'setting')->name('media_setting');
         Route::post('media/setting/save', 'settingSave')->name('media_setting_save');
@@ -196,7 +196,7 @@ Route::group([
 
         // batch tag
         Route::get('media/batchtag', 'batchTag')->name('media_retag');
-        Route::post('media/batchtag/save', 'batchTagSave')->name('media_retag');
+        Route::post('media/batchtag/save', 'batchTagSave')->name('media_retag_save');
 
         Route::post('media/hiddenbatch', 'hiddenBatchMedia');
         Route::post('media/showbatch', 'showBatchMedia');
@@ -207,8 +207,8 @@ Route::group([
         Route::get('media/rebuild/{id}', 'rebuildMedia')->name('media_rebuild');
 
         Route::get('media', 'getAll')->name('media');
-        Route::get('media/gallery', 'getAll')->name('media');
-        Route::get('media/list', 'getAll')->name('media');
+        Route::get('media/gallery', 'getAll')->name('media_gallery');
+        Route::get('media/list', 'getAll')->name('media_list');
     });
 
     // medias load modal
