@@ -80,9 +80,15 @@ class MakeCommand extends Command
 
         $this->info('..........START..........');
 
+        if (!$filesystem->exists(app_path($ucf_extension_dir))) {
+            $filesystem->makeDirectory(app_path($ucf_extension_dir));
+        }
+        
         $ext_path = app_path($ucf_extension_dir.'/'.$ucf_extname);
 
         $this->info('-> create extension folders');
+        $this->info('-> '.$ext_path);
+        
         $filesystem->makeDirectory($ext_path);
         $filesystem->makeDirectory($ext_path.'/Controllers');
         $filesystem->makeDirectory($ext_path.'/Controllers/Admin');
