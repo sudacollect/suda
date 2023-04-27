@@ -53,10 +53,15 @@ trait MediaBoxTrait
     {
         
         $this->mediaSetting();
-
+        
         if(!$this->guard){
             exit('用户类型配置异常');
         }
+        if(!$this->media_guards)
+        {
+            $this->media_guards = [$this->guard];
+        }
+        
         $this->user = Auth::guard($this->guard)->user();
         
         if(!$this->user || !$this->guard){
