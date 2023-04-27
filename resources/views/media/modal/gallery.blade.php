@@ -20,6 +20,6 @@
 
 @else
 
-<x-suda::emptyBlock :empty="没有媒体文件" :card=false />
+<x-suda::empty-block empty="没有媒体文件" :card=false />
 
 @endif
