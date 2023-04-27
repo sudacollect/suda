@@ -4,7 +4,7 @@
 
     
     
-    @if($data instanceof \Illuminate\Database\Eloquent\Collection)
+    @if($data instanceof \Illuminate\Database\Eloquent\Collection || $data instanceof \Illuminate\Support\Collection)
 
         @if($data->count()>0)
 
@@ -18,7 +18,7 @@
                 }
             @endphp
 
-            @include('view_suda::media.upload_box_item',['show_remove'=>$k>0?1:0,'hidden_input_name'=>$hidden_input_name])
+            @include('view_suda::media.upload_box_item',['media'=>$media,'show_remove'=>$k>0?1:0,'hidden_input_name'=>$hidden_input_name])
 
             @endforeach
 
