@@ -46,7 +46,7 @@ code {
     border:none;
 }
 .icon-extension:hover, .icon-extension:active, .icon-extension:focus{
-    box-shadow:0px 1px 2px 0px rgba(0,0,0,0.05);
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,.15);
     border:none;
 }
 
@@ -516,7 +516,7 @@ code {
 .press-sidebar.in a{
     color:#aeb3bb;
     display:block;
-    padding: 10px 15px;
+    padding:8px 15px;
 }
 
 .press-sidebar .panel,
@@ -583,11 +583,6 @@ code {
 .press-sidebar.in .panel > .panel-heading.only-link::after{
     display:none;
 }
-.press-sidebar.in .panel > .panel-heading i.fa{
-    color:rgba(51,67,80,0.4);
-    margin-right:5px;
-}
-
 
 .press-sidebar.in h4{
     border-bottom:1px solid #e2e2e2;
@@ -613,22 +608,11 @@ code {
     content:"\f196";
     color:#999;
 }
-.press-sidebar .panel > .panel-heading i.fa{
-    color:#08f;
-    margin-right:0px;
-    font-size:1.5rem;
+
+.press-sidebar.in .panel > .panel-heading i{
+    margin-right:5px;
+    font-size:1.2rem;
 }
-
-.press-sidebar .panel:hover > .panel-heading i.fa,
-.press-sidebar .panel:hover > .panel-heading.collapsed i.fa{
-    color:#fff;
-}
-
-
-.press-sidebar.in .panel > .panel-heading i{margin-right:5px;}
-
-/* .press-sidebar.in .panel:hover > .panel-heading i.fa,
-.press-sidebar.in .panel:hover > .panel-heading i{color:rgba(51,67,80,0.4);} */
 
 .press-sidebar h4{
     border-bottom:1px solid #e2e2e2;
@@ -989,7 +973,7 @@ code {
     height: 100%;
 }
 .dashboard-item .app_quickin ul li a:hover,.dashboard-item .app_quickin ul li a:focus{
-    border:1px solid #eee;
+    border:none;
     border-radius:6px;
     box-shadow:0px 0px 5px rgba(200,200,200,0.4);
 }
@@ -2589,13 +2573,13 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     }
     
     .press-sidebar.in .sidebar-menu-item{
-        background:#16212f;
-    }
-    .press-sidebar.in .sidebar-menu-item.show{
         background:#1c2838;
     }
-    .sidebar-menu ul.menu li.active a{
+    .press-sidebar.in .sidebar-menu-item.show{
         background:#16212f;
+    }
+    .sidebar-menu ul.menu li.active a{
+        background:#1c2838;
         color:#fff;
     }
     .press-sidebar.in .sidebar-menu ul.menu li a:hover{
@@ -2795,11 +2779,6 @@ h4.modal-title{font-size:1.1rem;color:#333;}
         padding:10px 15px;
         color:#637282;
     }
-    .press-sidebar .panel > .panel-heading i.fa,
-    .press-sidebar-icon .panel > .panel-heading.in.collapsed i.fa{
-        color:rgba(51,67,80,0.4);
-    }
-    
     
     .press-sidebar .panel > .panel-heading,
     .press-sidebar .panel > .panel-heading.in.collapsed{

@@ -206,7 +206,7 @@ class MenuController extends DashboardController
         ];
 
         Artisan::call($command,$params);
-
+        Menu::updateCache(1);
         return $this->responseAjax('success', __('suda_lang::press.msg.success'), 'self.refresh');
     }
     

@@ -30,7 +30,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-speedometer',
+                'icon_class' => 'ion-speedometer-outline',
                 'parent_id'  => null,
                 'order'      => 1,
             ])->save();
@@ -56,7 +56,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$pageMenuItem->exists) {
             $pageMenuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-document-text',
+                'icon_class' => 'ion-document-text-outline',
                 'parent_id'  => null,
                 'order'      => 2,
             ])->save();
@@ -72,7 +72,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $pageMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -88,7 +88,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $pageMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -113,7 +113,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$articleMenuItem->exists) {
             $articleMenuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-newspaper',
+                'icon_class' => 'ion-newspaper-outline',
                 'parent_id'  => null,
                 'order'      => 4,
             ])->save();
@@ -129,7 +129,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $articleMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -145,7 +145,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $articleMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -161,7 +161,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $articleMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -178,7 +178,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $articleMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -203,7 +203,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-image',
+                'icon_class' => 'ion-image-outline',
                 'parent_id'  => null,
                 'order'      => 5,
             ])->save();
@@ -230,7 +230,7 @@ class MenuItemsTableSeeder extends Seeder
         // if (!$userMenuItem->exists) {
         //     $userMenuItem->fill([
         //         'target'     => '_self',
-        //         'icon_class' => 'ion-people',
+        //         'icon_class' => 'ion-people-outline',
         //         'parent_id'  => null,
         //         'order'      => 6,
         //     ])->save();
@@ -246,7 +246,7 @@ class MenuItemsTableSeeder extends Seeder
         // if (!$menuItem->exists) {
         //     $menuItem->fill([
         //         'target'     => '_self',
-        //         'icon_class' => 'ion-settings',
+        //         'icon_class' => 'ion-settings-outline',
         //         'parent_id'  => $userMenuItem->id,
         //         'order'      => 91,
         //     ])->save();
@@ -262,7 +262,7 @@ class MenuItemsTableSeeder extends Seeder
         // if (!$menuItem->exists) {
         //     $menuItem->fill([
         //         'target'     => '_self',
-        //         'icon_class' => 'ion-settings',
+        //         'icon_class' => 'ion-settings-outline',
         //         'parent_id'  => $userMenuItem->id,
         //         'order'      => 91,
         //     ])->save();
@@ -288,7 +288,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$appearanceMenuItem->exists) {
             $appearanceMenuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-color-palette',
+                'icon_class' => 'ion-color-palette-outline',
                 'parent_id'  => null,
                 'order'      => 7,
             ])->save();
@@ -304,7 +304,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $appearanceMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -320,7 +320,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $appearanceMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -346,7 +346,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$settingMenuItem->exists) {
             $settingMenuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => null,
                 'order'      => 8,
             ])->save();
@@ -362,7 +362,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $settingMenuItem->id,
                 'order'      => 1,
             ])->save();
@@ -378,7 +378,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $settingMenuItem->id,
                 'order'      => 1,
             ])->save();
@@ -394,7 +394,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $settingMenuItem->id,
                 'order'      => 1,
             ])->save();
@@ -410,7 +410,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $settingMenuItem->id,
                 'order'      => 1,
             ])->save();
@@ -426,7 +426,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-settings',
+                'icon_class' => 'ion-settings-outline',
                 'parent_id'  => $settingMenuItem->id,
                 'order'      => 1,
             ])->save();
@@ -452,7 +452,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$toolsMenuItem->exists) {
             $toolsMenuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-help-buoy',
+                'icon_class' => 'ion-help-buoy-outline',
                 'parent_id'  => null,
                 'order'      => 9,
             ])->save();
@@ -468,7 +468,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-grid',
+                'icon_class' => 'ion-grid-outline',
                 'parent_id'  => $toolsMenuItem->id,
                 'order'      => 91,
             ])->save();
@@ -484,7 +484,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-menu',
+                'icon_class' => 'ion-menu-outline',
                 'parent_id'  => $toolsMenuItem->id,
                 'order'      => 92,
             ])->save();
@@ -502,7 +502,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ion-grid',
+                'icon_class' => 'ion-grid-outline',
                 'parent_id'  => $toolsMenuItem->id,
                 'order'      => 95,
             ])->save();
