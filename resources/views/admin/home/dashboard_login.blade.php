@@ -32,8 +32,8 @@
                         
                         <div class="col-sm-4">
 
-                            @if(isset($settings['dashboard_logo']->media))
-                            @uploadBox('media@dashboard_logo',1,1,$settings['dashboard_logo']->media)
+                            @if(isset($settings['dashboard_logo']) && $settings['dashboard_logo'])
+                            @uploadBox(['media@dashboard_logo',1,1,$settings['dashboard_logo']])
                             @else
                             @uploadBox('media@dashboard_logo',1,1)
                             @endif

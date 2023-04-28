@@ -29,8 +29,8 @@
                         </label>
                         
                         <div class="col-sm-4">
-                            @if(isset($logos->logo))
-                            @uploadBox('media@logo',1,1,$logos->logo)
+                            @if(isset($logos->logo) && $logos->logo)
+                            @uploadBox(['media@logo',1,1,$logos->logo])
                             @else
                             @uploadBox('media@logo',1,1)
                             @endif

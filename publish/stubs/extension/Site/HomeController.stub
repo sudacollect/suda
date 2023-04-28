@@ -4,7 +4,7 @@ namespace App\{{ ext_dir }}\{{ ucf_slug }}\Controllers\Site;
 
 
 use Illuminate\Http\Request;
-use App\Extensions\Startup\Controllers\SiteController;
+use App\{{ ext_dir }}\{{ ucf_slug }}\Controllers\SiteController;
 
 
 use Log;

@@ -122,6 +122,8 @@ trait SettingTrait
                 ]);
             }
         }
+        
+        (new SettingService)->updateCache();
 
         return true;
     }

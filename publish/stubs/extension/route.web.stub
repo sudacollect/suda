@@ -2,6 +2,5 @@
 
 $controller_prefix = "\\App\\{{ ext_dir }}\\{{ ucf_slug }}\\Controllers\\";
 
-// test
-Route::get('/home', $controller_prefix.'Site\HomeController@index');
-Route::get('/', $controller_prefix.'Site\HomeController@index');
+// test, you should close this route after tested.
+Route::get('extension/{{ slug }}', $controller_prefix.'Site\HomeController@index');

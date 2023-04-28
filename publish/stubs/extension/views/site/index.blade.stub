@@ -1,0 +1,14 @@
+@extends('view_app::layouts.default')
+
+@section('content')
+<div class="col-lg-8 mx-auto px-3 py-md-5">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        This is a test page
+      </div>
+    </div>
+  </div>  
+</div>
+
+@endsection

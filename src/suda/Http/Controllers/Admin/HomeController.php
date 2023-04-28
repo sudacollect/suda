@@ -184,11 +184,7 @@ class HomeController extends DashboardController
 
         $logos_data = $this->getSettingByKey(['logo','favicon','share_image'],'site');
         
-        foreach($logos_data as $k=>$v){
-            if($v){
-                $logos_data[$k] = Mediatable::where('mediatable_type','Gtd\Suda\Models\Setting')->where(['position'=>$k,'media_id'=>$v])->with('media')->first();
-            }
-        }
+
         
         $this->setData('logos',(object)$logos_data);
         
@@ -201,36 +197,40 @@ class HomeController extends DashboardController
         $roles = [];
         $messages = [];
         
-        if($request->images){
+        // if($request->images){
             
-            if(!array_key_exists('images',$request->images)){
-                $roles['images'] = 'required';
-                $messages['images.required'] = '请上传Logo';
-            }
+        //     if(!array_key_exists('images',$request->images)){
+        //         $roles['images'] = 'required';
+        //         $messages['images.required'] = '请上传Logo';
+        //     }
             
-        }else{
-            $roles['images'] = 'required';
-            $messages['images.required'] = '请上传Logo';
-        }
+        // }else{
+        //     $roles['images'] = 'required';
+        //     $messages['images.required'] = '请上传Logo';
+        // }
+        
+        // $response_msg = '';
+        // $ajax_result = $this->ajaxValidator($request->all(),$roles,$messages,$response_msg);
         
         $response_msg = '';
-        $ajax_result = $this->ajaxValidator($request->all(),$roles,$messages,$response_msg);
-        
-        
         if(!$response_msg){
+            $logos = [];
+            if($request->images)
+            {
+                $logos = $request->images;       
+            }
             
-            $logos = $request->images;
             
             $logos = Arr::where($logos, function (int $value, string $key) {
                 return in_array($key,['favicon','logo','share_image']);
             });
-            
-            $data = [];
+            $logos = array_merge(['favicon'=>0,'logo'=>0,'share_image'=>0],$logos);
             
             foreach($logos as $k=>$v){
 
                 if(!$v){
                     $this->deleteSettingByKey($k,'site');
+                    Mediatable::where('mediatable_type','Gtd\Suda\Models\Setting')->whereIn('position',[$k])->delete();
                     continue;
                 }
 
@@ -246,7 +246,6 @@ class HomeController extends DashboardController
                 $mediatableModel->media_id = $v;
                 $mediatableModel->position = $k;
                 $mediatableModel->save();
-                
             }
             
             return $this->responseAjax('success',__('suda_lang::press.msg.success'),'self.refresh');

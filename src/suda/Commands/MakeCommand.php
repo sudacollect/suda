@@ -159,32 +159,36 @@ class MakeCommand extends Command
         $this->files->put(
             $ext_path.'/Controllers/AdminController.php', $controller_admin_stub
         );
-
-        $controller_site_stub = $this->populateStub($this->getStub('SiteController'), $replace);
+        $controller_stub = $this->populateStub($this->getStub('Admin/HomeController'), $replace);
         $this->files->put(
-            $ext_path.'/Controllers/SiteController.php', $controller_site_stub
+            $ext_path.'/Controllers/Admin/HomeController.php', $controller_stub
         );
 
-        $controller_site_stub = $this->populateStub($this->getStub('Admin/HomeController'), $replace);
+        $controller_stub = $this->populateStub($this->getStub('SiteController'), $replace);
         $this->files->put(
-            $ext_path.'/Controllers/Admin/HomeController.php', $controller_site_stub
+            $ext_path.'/Controllers/SiteController.php', $controller_stub
         );
 
-        $controller_site_stub = $this->populateStub($this->getStub('Site/HomeController'), $replace);
+        $controller_stub = $this->populateStub($this->getStub('Site/HomeController'), $replace);
         $this->files->put(
-            $ext_path.'/Controllers/Site/HomeController.php', $controller_site_stub
+            $ext_path.'/Controllers/Site/HomeController.php', $controller_stub
         );
 
         $this->info('-> create extension views');
 
-        $controller_site_stub = $this->populateStub($this->getStub('views/admin/index.blade'), $replace);
+        $view_stub = $this->populateStub($this->getStub('views/admin/index.blade'), $replace);
         $this->files->put(
-            $ext_path.'/resources/views/admin/index.blade.php', $controller_site_stub
+            $ext_path.'/resources/views/admin/index.blade.php', $view_stub
         );
 
-        $controller_site_stub = $this->populateStub($this->getStub('views/admin/help.blade'), $replace);
+        $view_stub = $this->populateStub($this->getStub('views/admin/help.blade'), $replace);
         $this->files->put(
-            $ext_path.'/resources/views/admin/help.blade.php', $controller_site_stub
+            $ext_path.'/resources/views/admin/help.blade.php', $view_stub
+        );
+
+        $view_stub = $this->populateStub($this->getStub('views/site/index.blade'), $replace);
+        $this->files->put(
+            $ext_path.'/resources/views/site/index.blade.php', $view_stub
         );
 
         $this->files->copy($this->stubPath().'/icon.png', $ext_path.'/icon.png');
