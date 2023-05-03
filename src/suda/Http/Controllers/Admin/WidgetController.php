@@ -171,6 +171,7 @@ class WidgetController extends DashboardController
         if(!isset($request->widget_id)){
             exit;
         }
+        
         $widget = ThemeWidget::where('app',$app)->where('theme',$theme)->where('widget_id',$request->widget_id)->first();
 
         if($widget){
@@ -178,7 +179,7 @@ class WidgetController extends DashboardController
         }
 
         // refresh widget
-        app('theme')->updateWidgetCache($app,$theme,$request->area);
+        app('theme')->updateWidgetCache($app,$theme,$request->widget_area);
         
     }
     

@@ -43,13 +43,22 @@
     
     <nav class="{{ $navbar_style }}">
         
-        <button type="button" class="navbar-take-toggle navbar-take-toggle-sm" href="{{ admin_url('style/sidemenu') }}" style="float:left">
+        @if(!config('sudaconf.sidebar_pro',false))
+        <button type="button" class="navbar-switch navbar-take-toggle navbar-take-toggle-sm d-none d-sm-block" href="{{ admin_url('style/sidemenu') }}" style="float:left">
             <span class="sr-only">Menu</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+        @endif
         
+        <button type="button" class="navbar-switch d-block d-sm-none" data-bs-toggle="collapse" data-bs-target="#navbarSwitchedContent" aria-controls="navbarSwitchedContent" aria-expanded="false" aria-label="Toggle sidebar menus">
+            <span class="sr-only">Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
         <a class="navbar-brand" href="{{ admin_url('/') }}">
             {{ config('app.name', 'Suda') }}
         </a>
@@ -59,10 +68,6 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            
-            {{-- @if(count($custom_navi) < 1 && (isset($sdcore->settings->dashboard->show_breadcrumb) && $sdcore->settings->dashboard->show_breadcrumb==1))
-            @include('view_path::layouts.menu_breadcrumb')
-            @endif --}}
 
             @if (count($custom_navi) > 0)
             <ul class="nav navbar-nav navbar-custom-navi pl-3 align-self-start">
@@ -88,7 +93,9 @@
             <ul class="nav navbar-nav navbar-operate">
                     
                     <li class="nav-item">
-                        <a href="{{ url('/home') }}" target="_blank" title="{{ __('suda_lang::press.visit_homepage') }}" class="nav-link"><i class="ion-home"></i></a>
+                        <a href="{{ url('/home') }}" target="_blank" title="{{ __('suda_lang::press.visit_homepage') }}" class="nav-link">
+                            <i class="ion-home"></i> <span class="d-inline d-sm-none">首页</span>
+                        </a>
                     </li>
                 
                     <!-- Authentication Links -->
@@ -97,11 +104,11 @@
                         <li class="nav-item"><a href="{{ url('/register') }}">{{ __('suda_lang::press.register') }}</a></li>
                     @else
                     
+                    <!-- support language -->
+                    {{-- @include('view_suda::admin.layouts.top_language') --}}
                     
                     @include('view_suda::admin.layouts.operate_top')
                     
-                    <!-- support language -->
-                    {{-- @include('view_suda::admin.layouts.top_language') --}}
                     
                     @endif
             </ul>
@@ -116,7 +123,7 @@
         
         @php
         $suda_flat_style = '';
-        if(config('sudaconf.sidemenu_style','')=='pro')
+        if(config('sudaconf.sidebar_pro',false))
         {
             $suda_flat_style = 'suda-flat-lg ';
             if($sdcore->sidemenus['has_children'])

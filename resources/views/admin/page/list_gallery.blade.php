@@ -11,18 +11,15 @@
 
     
     @if($data_list->count() > 0)
-    <div class="data-list row" id="waterfall-container">    
+    <div class="data-list row" id="waterfall-container">
     
         @foreach ($data_list as $k=>$item)
 
         <div class="waterfall-item col-sm-3">
             
             <div class="card mb-3">
-                @if($item->heroimage)
-                <img class="card-img-top" src="{{ suda_image(isset($item->heroimage->media)?$item->heroimage->media:'',['size'=>'medium','imageClass'=>'image_icon',"url"=>true],false) }}" alt="Card image cap">
-                @else
-                <img class="card-img-top" src="{{ suda_image(null,['size'=>'medium','imageClass'=>'image_icon',"url"=>true],false) }}" alt="Card image cap" >
-                @endif
+                <img class="card-img-top" src="{{ suda_image(isset($item->heroimage?->media)?$item->heroimage->media:null,['size'=>'medium','imageClass'=>'image_icon',"url"=>true],false) }}" alt="Card image cap">
+                
         
                 <div class="card-body">
                     <h5 class="card-title">

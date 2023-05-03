@@ -15,7 +15,9 @@ body{
     color:#292929;
     background:#fff;
 }
-
+.select2-container .select2-selection--single{
+    height:auto;
+}
 .color-brown{color:#906622;}
 .color-black{color:#000;}
 .color-gray{color:#999;}

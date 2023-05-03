@@ -11,6 +11,7 @@ namespace Gtd\Suda\Http\Controllers\Admin\Passport;
 
 use App;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -46,18 +47,23 @@ class LoginController extends AdminController
         $this->setData('login_name',$login_name);
 
         $login_view = 'login';
-        if(array_key_exists('dashboard',$this->settings)) {
-            if(array_key_exists('loginbox',$this->settings['dashboard'])) {
-                if(isset($this->settings['dashboard']['dashboard_login_logo_select'])){
-                    $dashboard_login_logo_select = $this->settings['dashboard']['dashboard_login_logo_select'];
-                    $this->setData('login_select',$dashboard_login_logo_select);
-                    $this->setData('loginbox',$this->settings['dashboard']['loginbox']);
-                    if($dashboard_login_logo_select == 'customize' && isset($this->settings['dashboard']['dashboard_login_logo'])){
-                        
-                        $login_pic = $this->settings['dashboard']['dashboard_login_logo'];
-                        $this->setData('login_pic',$login_pic);
 
-                    }
+        if(array_key_exists('dashboard',$this->settings)) {
+            
+            $login_style = 'light';
+            if(isset($this->settings['dashboard']['loginbox'])){
+                $login_style = $this->settings['dashboard']['loginbox'];
+            }
+            $this->setData('login_style',$login_style);
+
+            if(isset($this->settings['dashboard']['dashboard_login_logo_select'])){
+                $dashboard_login_logo_select = $this->settings['dashboard']['dashboard_login_logo_select'];
+                $this->setData('login_brand',$dashboard_login_logo_select);
+                if($dashboard_login_logo_select == 'customize' && isset($this->settings['dashboard']['dashboard_login_logo'])){
+                    
+                    $login_pic = $this->settings['dashboard']['dashboard_login_logo'];
+                    $this->setData('login_pic',$login_pic);
+
                 }
             }
         }

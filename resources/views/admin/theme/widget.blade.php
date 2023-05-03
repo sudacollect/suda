@@ -3,6 +3,10 @@
 @push('styles')
 
 <style>
+    @keyframes slideaway {
+        from { display: block; opacity:1; }
+        to { transform:translateY(-200px); opacity:0; }
+    }
     .dd{padding:0 15px;}
     .dd-list{
         display:block;
@@ -82,12 +86,20 @@
         display: inline-block;
         width: 100%;
     }
+    .widget-area {
+        overflow:hidden;
+        transition: all .3s ease-out;
+    }
+    .widget-area.hidden{
+        transition: all .3s ease-out;
+    }
+    .widget-area.hidden .dd-list{
+        display:none;
+    }
     .widget-area h3{
         margin: 0;
         padding: 0.375rem 1rem;
-        background: #f9f9f9;
         font-size: 1.1rem;
-        border-bottom:1px solid #eee;
     }
     .widget-area h3 span.icon{
         color:#777;
@@ -110,6 +122,8 @@
         width:32px;
         text-align:center;
         color: #909090;
+        -webkit-transition: all 0.2s;
+	    transition: all 0.2s;
     }
     .dd-list li i.icon-switch-content{
         position: absolute;
@@ -155,7 +169,7 @@
         @if(isset($widget_areas))
         <div class="col-sm-5" id="widgets-div">
             <div class="row">
-            <ul class="dd-list ul-widget col-sm-6">
+            <ul class="dd-list ul-widget col-sm-6 py-3">
                 
                 @if(count($widgets)>0)
 
@@ -189,7 +203,7 @@
                 @if($loop->iteration%5==0)
             </ul>
 
-            <ul class="dd-list ul-widget col-sm-6">
+            <ul class="dd-list ul-widget col-sm-6 py-3">
                 @endif
 
                 @endforeach
@@ -221,7 +235,7 @@
                     </h3>
 
                     @if(count($theme_widgets)>0 && isset($theme_widgets[$key]))
-                    <ul class="dd-list ul-area">
+                    <ul class="dd-list ul-area py-3">
                         @foreach($theme_widgets[$key] as $t_key=>$t_widget)
                         
                         @if(isset($widgets[$t_widget['widget_slug']]))
@@ -251,15 +265,17 @@
                         @endif
                         @endforeach
 
+                        <div class="d-flex justify-content-center flex-fill widget-area-empty" style="display:none !important;">
+                            拖动挂件到这里
+                        </div>
                     </ul>
-                    <div class="d-flex justify-content-center flex-fill widget-area-empty" style="display:none !important;">
-                        拖动挂件到这里
-                    </div>
+                    
                     @else
-                    <ul class="dd-list ul-area"></ul>
-                    <div class="d-flex justify-content-center flex-fill widget-area-empty">
-                        拖动挂件到这里
-                    </div>
+                    <ul class="dd-list ul-area py-3">
+                        <div class="d-flex justify-content-center flex-fill widget-area-empty">
+                            拖动挂件到这里
+                        </div>
+                    </ul>
                     @endif
 
                 </div>
@@ -373,8 +389,14 @@
         //收起缩放
         $('.widget-area-list').on('click','i.icon-switch',function(e){
             e.preventDefault();
-
-            $(this).parents('.widget-area').find('.dd-list').toggle();
+            var widgetarea = $(this).parents('.widget-area')[0];
+            if($(widgetarea).hasClass('hidden'))
+            {
+                $(widgetarea).removeClass('hidden');
+            }else{
+                $(widgetarea).addClass('hidden');
+            }
+            // $(this).parents('.widget-area').find('.dd-list').toggle('hidden');
             
             if($(this).hasClass('ion-chevron-down')){
                 $(this).addClass('ion-chevron-up');
@@ -407,14 +429,13 @@
             var widget_area = $(this).parents('.widget-area');
             var widget_content = $(this).parents('li');
             var widget_id = $(this).parents('li').attr('data-id');
-
+            $(widget_content).remove();
+            removeWidget(widget_id, $(widget_area).attr('data-area'));
             
             if($(this).parents('.ul-area').children().length<1)
             {
-                $(widget_area).find('.widget-area-empty').attr('style','');
+                $(widget_area).find('.widget-area-empty').removeAttr('style');
             }
-            $(widget_content).remove();
-            removeWidget(widget_id);
         });
 
         $('.widget-area').on('click','button.save-widget',function(e){
@@ -469,12 +490,13 @@
         });
 
 
-        var removeWidget = function(widget_id){
-
+        var removeWidget = function(widget_id, widget_area) {
+            
             $.post('{{ admin_url("widget/remove") }}', {
                 app: app_name,
                 theme: theme_name,
                 widget_id: widget_id,
+                widget_area: widget_area,
                 _token: '{{ csrf_token() }}'
             }, function (data) {
                 //suda.alert('已删除');

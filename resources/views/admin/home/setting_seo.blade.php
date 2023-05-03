@@ -26,7 +26,7 @@
                       <div class="row mb-3">
                        
                         
-                        <label for="title" class="col-sm-2 col-form-label text-end">
+                        <label for="title" class="col-sm-2 col-form-label ">
                             {{ __('suda_lang::press.settings.seo_title') }}
                         </label>
                         
@@ -39,7 +39,7 @@
                       <div class="row mb-3">
                        
                         
-                        <label for="keywords" class="col-sm-2 col-form-label text-end">
+                        <label for="keywords" class="col-sm-2 col-form-label ">
                             {{ __('suda_lang::press.settings.keywords') }}
                            </label>
                         
@@ -52,7 +52,7 @@
                       <div class="row mb-3">
                        
                         
-                        <label for="description" class="col-sm-2 col-form-label text-end">
+                        <label for="description" class="col-sm-2 col-form-label ">
                             {{ __('suda_lang::press.settings.description') }}
                            </label>
                         

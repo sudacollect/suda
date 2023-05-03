@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="col-lg-8 mx-auto pb-md-5 px-3">
+<div class="container-fluid pb-md-5">
 
     @if(isset($page_preview))
     <div class="toast-container position-fixed top-0 end-0 p-3">
@@ -32,7 +32,9 @@
             <div class="page-heading">
                 <h1>{{ $page->title }}</h1>
                 
-                <div class="meta-item created_at"><i class="ion-calendar"></i> {{ $page->created_at->format('Y-m-d') }}</div>
+                <div class="meta-item created_at">
+                    <i class="ion-calendar-outline"></i> {{ $page->created_at->format('Y-m-d') }}
+                </div>
                 
             </div>
             
@@ -51,13 +53,9 @@
     </div>
     <div class="col-sm-3">
         
-                <div class="widgets-content">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            {!! Theme::widget('sidebar') !!}
-                        </div>
-                    </div>
-                </div>
+        <div class="widgets-content">
+            {!! Theme::widget('sidebar') !!}
+        </div>
             
     </div>
     </div>

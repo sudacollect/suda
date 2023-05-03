@@ -464,7 +464,7 @@ class MenuItemsTableSeeder extends Seeder
             'title'   => 'suda_lang::press.menu_items.tool_extend',
             'slug'    => 'tool_extend',
             'url'     => '',
-            'route'   => 'sudaroute.admin.tool_extend',
+            'route'   => 'sudaroute.admin.tool_extend_status',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([

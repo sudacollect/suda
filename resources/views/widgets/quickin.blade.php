@@ -11,7 +11,7 @@
                 <div class="card-body app_quickin">
                     <div class="row px-3">
                     @foreach ($exts as $item)
-                    <ul class="col-2 list-group list-group-horizontal list-group-flush mb-3">
+                    <ul class="col-3 col-sm-3 col-md-2 list-group list-group-horizontal list-group-flush mb-3">
                       <li class="list-group-item">
                           <div class="quickin-content">
                             <div class="quickin">

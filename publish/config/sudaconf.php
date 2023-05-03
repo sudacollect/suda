@@ -38,7 +38,7 @@ return [
     'default_menu'      => 'suda',
 
     // ENABLE PRO STYLE FOR SIDEBAR
-    // 'sidemenu_style' => 'pro',
+    // 'sidebar_pro' => true,
     
     'apps' => ['admin','site','mobile'],
 
@@ -128,7 +128,6 @@ return [
         'site'  =>'default', //pc website
         'mobile'=>'default', //mobile website
     ],
-
 
     /*
     |--------------------------------------------------------------------------

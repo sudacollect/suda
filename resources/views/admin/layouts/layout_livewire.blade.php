@@ -24,7 +24,6 @@
     @endif
     
     @stack('styles')
-    
 
     <script>
         window.suda = window.suda || {};
@@ -34,8 +33,6 @@
     <script defer src="{{ suda_asset('js/alpinejs/app.js') }}"></script>
     <script defer src="{{ suda_asset('js/app-alpine.js') }}"></script>
 
-    
-        
     <!-- Scripts -->
     @stack('scripts-head')
 
@@ -46,16 +43,14 @@
     
     {{-- wrapping div --}}
     <div class="body-content" x-data="sudaBody">
-
         @if (Auth::guard('operate')->check())
             @if(!isset($without_sidebar))
             @include('view_path::layouts.livewire.sidebar')
             @endif
         @endif 
 
-        
         <nav class="{{ $navbar_style }}">
-            <button type="button" class="navbar-take-toggle navbar-take-toggle-sm" data-href="{{ admin_url('style/sidemenu') }}" @click="toggleSidebar($event)">
+            <button type="button" class="navbar-switch navbar-take-toggle navbar-take-toggle-sm @if(config('sudaconf.sidebar_pro',false)) d-block d-sm-none @endif" data-href="{{ admin_url('style/sidemenu') }}" @click="toggleSidebar($event)">
                 <span class="sr-only">Menu</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -72,10 +67,6 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 
-                {{-- @if(count($custom_navi) < 1 && (isset($sdcore->settings->dashboard->show_breadcrumb) && $sdcore->settings->dashboard->show_breadcrumb==1))
-                @include('view_path::layouts.menu_breadcrumb')
-                @endif --}}
-
                 @if (count($custom_navi) > 0)
                 <ul class="nav navbar-nav navbar-custom-navi pl-3 align-self-start">
                     @foreach($custom_navi as $navi)
@@ -119,14 +110,14 @@
             </div>
 
         </nav>
-        
+
         <div id="app" class="suda-app">
             
             @if (Auth::guard('operate')->check())
             
             @php
             $suda_flat_style = '';
-            if(config('sudaconf.sidemenu_style','')=='pro')
+            if(config('sudaconf.sidebar_pro',false))
             {
                 $suda_flat_style = 'suda-flat-lg ';
                 if($sdcore->sidemenus['has_children'])

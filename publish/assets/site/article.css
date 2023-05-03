@@ -36,20 +36,20 @@ background: #fff;
 cursor: pointer;
 }
 .article_page .main_box .swiper_box .swiper-slide .img_box {
-    width: 650px;
+    width: 450px;
     position: relative;
     overflow: hidden;
-    height:380px;
+    height:280px;
 }
 .article_page .main_box .swiper_box .swiper-slide .text_box {
-flex: 1;
-padding: 30px;
-font-size: 12px;
-position: relative;
-justify-content: center;
-display: flex;
-flex-direction: column;
-background: #fff;
+    flex: 1;
+    padding: 30px;
+    font-size: 12px;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
 }
 .article_page .main_box .swiper_box .swiper-slide .text_box .text_main {
     margin-bottom: 30px;
@@ -186,11 +186,11 @@ text-overflow: ellipsis;
 
     
     .article_page .main_box .swiper_box .swiper-slide .img_box{
-        width:420px;
+        width:50%;
         height:300px;
     }
     .article_page .main_box .swiper-pagination{
-        width:420px;
+        width:100%;
     }
 
     .article_page .main_box .swiper_box .swiper-slide .text_box .text_main .message_box{
@@ -206,7 +206,7 @@ text-overflow: ellipsis;
 
     
     .article_page .main_box .swiper_box .swiper-slide .img_box{
-        width:650px;
+        width:70%;
     }
     .article_page .main_box .swiper-pagination{
         width:60%;
@@ -241,9 +241,7 @@ text-overflow: ellipsis;
         font-size:1rem;
     }
 
-    .article_page .main_box .swiper_box .swiper-slide{
-        flex-direction: column;
-    }
+    
     .article_page .main_box .swiper-pagination{
         width:100%;
     }

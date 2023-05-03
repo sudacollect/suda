@@ -49,7 +49,7 @@
                     <li class="list-group-item" style="font-size:1rem;padding: .75rem .5rem;">
                         <a href="{{ admin_url('setting/site') }}">
                             <span class="badge text-secondary">
-                                <i class="ion-cog"></i>
+                                <i class="ion-cog-outline"></i>
                             </span>
                             {{ __('suda_lang::press.dash.system_setting') }}
                         </a>
@@ -58,7 +58,7 @@
                     <li class="list-group-item" style="font-size:1rem;padding: .75rem .5rem;">
                         <a href="{{ admin_url('page/list') }}">
                             <span class="badge text-secondary">
-                                <i class="ion-document"></i>
+                                <i class="ion-document-outline"></i>
                             </span>
                             {{ __('suda_lang::press.dash.pages') }}
                         </a>
@@ -67,7 +67,7 @@
                     <li class="list-group-item" style="font-size:1rem;padding: .75rem .5rem;">
                         <a href="{{ admin_url('articles') }}">
                             <span class="badge text-secondary">
-                                <i class="ion-folder"></i>
+                                <i class="ion-folder-outline"></i>
                             </span>
                             {{ __('suda_lang::press.dash.articles') }}
                         </a>
@@ -79,7 +79,7 @@
                     <li class="list-group-item" style="font-size:1rem;padding: .75rem .5rem;">
                         <a href="{{ admin_url('theme') }}">
                             <span class="badge text-secondary">
-                                <i class="ion-color-palette"></i>
+                                <i class="ion-color-palette-outline"></i>
                             </span>
                             {{ __('suda_lang::press.dash.themes') }}
                         </a>
@@ -88,7 +88,7 @@
                     <li class="list-group-item" style="font-size:1rem;padding: .75rem .5rem;">
                         <a href="{{ admin_url('user/roles') }}">
                             <span class="badge text-secondary">
-                                <i class="ion-people"></i>
+                                <i class="ion-people-outline"></i>
                             </span>
                             {{ __('suda_lang::press.dash.roles') }}
                         </a>
@@ -97,7 +97,7 @@
                     <li class="list-group-item" style="font-size:1rem;padding: .75rem .5rem;">
                         <a href="{{ admin_url('manage/extension') }}">
                             <span class="badge text-secondary">
-                                <i class="ion-cube"></i>
+                                <i class="ion-cube-outline"></i>
                             </span>
                             {{ __('suda_lang::press.dash.extensions') }}
                         </a>

@@ -45,7 +45,7 @@ return [
     'login'                 => '登录',
     'register'              => '注册',
     'logout'                => '退出登录',
-    'dashboard_login'       => '登录后台',
+    'dashboard_login'       => '登录',
     'user_login'            => '用户登录',
     'remember_login'        => '记住登录',
     'forget_password'       => '忘记密码',

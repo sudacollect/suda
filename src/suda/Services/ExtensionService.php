@@ -137,6 +137,9 @@ class ExtensionService
             $this->writeCache([]);
             return;
         }
+
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+        $ucf_extension_dir = ucfirst($extension_dir);
         
         $extensions = [];
         
@@ -165,6 +168,16 @@ class ExtensionService
                                 $ext_config['logo'] = $ext_dir_path.'/icon.png';
                             }else{
                                 $ext_config['logo'] = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
+                            }
+
+                            // copy extension logo
+                            if(!$this->files->exists(public_path($extension_dir))){
+                                $this->files->makeDirectory(public_path($extension_dir));
+                            }                    
+                            if($this->files->exists($ext_dir_path.'/icon.png')){
+                                $dest_folder = public_path($extension_dir).DIRECTORY_SEPARATOR.strtolower($ext_config['slug']);
+                                $this->files->delete($dest_folder.'/icon.png');
+                                $this->files->copy($ext_dir_path.'/icon.png',$dest_folder.'/icon.png');
                             }
 
                             $extensions[$ext_config['slug']] = $ext_config;
@@ -462,18 +475,7 @@ class ExtensionService
                     return $contains;
                 }
             });
-
-            // $filtered = Arr::map(array_values($filtered), function (array $value, int $key) {
-            //     $new_value = array_merge([
-            //         'name'  => '',
-            //         'url'   => '',
-            //         'target' => '_self',
-            //         'icon'  => 'ion-home',
-            //         'children' => [],
-            //     ], $value);
-            //     return $new_value;
-            // });
-
+            
             $filtered = array_values($filtered);
 
             $navis = $this->getNavis();
@@ -587,9 +589,9 @@ class ExtensionService
         $extension_dir = config('sudaconf.extension_dir','extensions');
         $ucf_extension_dir = ucfirst($extension_dir);
         
-        $dest_folder = public_path($extension_dir.'/'.strtolower($ext_slug));
-        if($filesystem->exists($dest_folder)){
-            $filesystem->deleteDirectory($dest_folder);
+        $dest_folder = public_path($extension_dir.DIRECTORY_SEPARATOR.strtolower($ext_slug));
+        if($filesystem->exists($dest_folder.DIRECTORY_SEPARATOR.'assets')){
+            $filesystem->deleteDirectory($dest_folder.DIRECTORY_SEPARATOR.'assets');
         }
     }
     
@@ -751,6 +753,9 @@ class ExtensionService
 
             $composerJsonConfs = [];
 
+            $extension_dir = config('sudaconf.extension_dir','extensions');
+            $ucf_extension_dir = ucfirst($extension_dir);
+
             foreach ($installed as $package) {
                 $name = Arr::get($package, 'name');
                 if (empty($name)) {
@@ -775,6 +780,16 @@ class ExtensionService
                             }
                             $package['config'] = $ext_config;
                             $composerJsonConfs[$packagePath] = $package;
+                        }
+
+                        // copy extension logo
+                        if(!$this->files->exists(public_path($extension_dir))){
+                            $this->files->makeDirectory(public_path($extension_dir));
+                        }                    
+                        if($this->files->exists($packagePath.'/icon.png')){
+                            $dest_folder = public_path($extension_dir).DIRECTORY_SEPARATOR.strtolower($ext_config['slug']);
+                            $this->files->delete($dest_folder.'/icon.png');
+                            $this->files->copy($packagePath.'/icon.png',$dest_folder.'/icon.png');
                         }
                     }
                     
@@ -842,5 +857,34 @@ class ExtensionService
             $this->saveSettingByKey('suda_composer_extensions','extension',$extensions,'serialize');
         }
         
+    }
+
+    // clear public/ cache
+    public function clearExtensionsCache(&$msg=''): bool
+    {
+        $composer_extensions = Cache::store($this->cache_store)->get('suda_cache_composer_extensions');
+        $local_extensions = Cache::store($this->cache_store)->get('suda_cache_extensions');
+        $extensions = array_merge($local_extensions,$composer_extensions);
+        $extensions = new Collection($extensions);
+        $slugs = $extensions->pluck('slug')->toArray();
+        
+        $extension_dir = config('sudaconf.extension_dir','extensions');
+
+        if($this->files->exists(public_path($extension_dir)))
+        {
+            $subs = $this->files->directories(public_path($extension_dir));
+            
+            $subs = Arr::map($subs, function($value){
+                return basename($value);
+            });
+            $need_remove_subs = array_diff($subs, $slugs);
+            foreach($need_remove_subs as $sub)
+            {
+                if($this->files->isDirectory(public_path($extension_dir).DIRECTORY_SEPARATOR.$sub)){
+                    $this->files->deleteDirectory(public_path($extension_dir).DIRECTORY_SEPARATOR.$sub);
+                }
+            }
+        }
+        return true;
     }
 }

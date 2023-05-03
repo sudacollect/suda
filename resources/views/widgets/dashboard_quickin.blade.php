@@ -10,7 +10,7 @@
 
     <div class="card border-0 bg-transparent shadow-none">
 
-        <div class="card-body app_quickin">
+        <div class="card-body dashboard_quickin app_quickin">
             <ul style="display:block;width:100%;">
                 <li>
                     @php

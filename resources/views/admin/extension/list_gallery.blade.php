@@ -6,7 +6,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-3">
-                    <img src="{{ admin_url('manage/extension/'.$item['slug'].'/logo') }}" class="w-100 icon-extension" alt="{{ $item['slug'] }}">
+                    <img src="{{ extension_logo($item['slug']) }}" class="w-100 icon-extension" alt="{{ $item['slug'] }}">
                     @if($active == 'enabled')
                         <div class="form-check form-switch p-0 d-flex justify-content-center mt-3">
                             <input type="checkbox" class="quickin-change form-check-input m-0" href="{{ admin_url('manage/extension/'.$item['slug'].'/setQuickin') }}" data-id="{{ $item['slug'] }}" @if(array_key_exists($item['slug'],$quickins)) data-content="checked" checked @else data-content="" @endif id="{{ $item['slug'] }}"  >

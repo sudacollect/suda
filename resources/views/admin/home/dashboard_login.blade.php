@@ -26,7 +26,7 @@
                       <div class="row mb-3">
                        
                         
-                        <label for="site_name" class="col-sm-2 col-form-label text-end">
+                        <label for="site_name" class="col-sm-2 col-form-label ">
                                Logo
                         </label>
                         
@@ -45,13 +45,13 @@
                     <div class="row mb-3">
                        
                         
-                        <label for="login_page" class="col-sm-2 col-form-label text-end">
+                        <label for="login_page" class="col-sm-2 col-form-label ">
                                {{ __('suda_lang::press.settings.login_path') }}
                         </label>
                         
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <div class="input-group-text">
+                                <div class="input-group-text bg-transparent">
                                     {{ config('sudaconf.admin_path') }}/
                                 </div>
                                 <input type="text" class="form-control" name="login_page" placeholder="example: index" value="@if(isset($settings['login_page'])){{ $settings['login_page'] }}@endif">
@@ -62,12 +62,12 @@
                     <div class="row mb-3">
                        
                         
-                        <label for="login_page" class="col-sm-2 col-form-label text-end">
+                        <label for="login_page" class="col-sm-2 col-form-label ">
                             {{ __('suda_lang::press.settings.breadcrumb') }}
                         </label>
                         
                         <div class="col-sm-4">
-                            <label for="login_page" class="col-form-label text-end">
+                            <label for="login_page" class="col-form-label ">
                                 &nbsp;
                             </label>
                             <div class="form-check form-check-inline">
@@ -86,59 +86,43 @@
                     <div class="row mb-3">
                     
                     
-                        <label for="app_quickin" class="col-sm-2 col-form-label text-end">
+                        <label for="app_quickin" class="col-sm-2 col-form-label ">
                             {{ __('suda_lang::press.settings.modules') }}
                         </label>
                         
-                        <div class="col-sm-4 check-buttons btn-group" data-toggle="buttons">
-                            
-                            <label class="btn btn-light @if(isset($settings['dashboard_apps']['welcome']) && $settings['dashboard_apps']['welcome']=='on') active @endif">
-                                <input type="checkbox" name="dashboard_apps[welcome]"  @if(isset($settings['dashboard_apps']['welcome']) && $settings['dashboard_apps']['welcome']=='on') checked @endif >&nbsp;{{ __('suda_lang::press.settings.modules_list.welcome') }}
-                            </label>
-                            <label class="btn btn-light @if(isset($settings['dashboard_apps']['quickin']) && $settings['dashboard_apps']['quickin']=='on') active @endif">
-                                <input type="checkbox" name="dashboard_apps[quickin]"  @if(isset($settings['dashboard_apps']['quickin']) && $settings['dashboard_apps']['quickin']=='on') checked @endif >&nbsp;{{ __('suda_lang::press.settings.modules_list.quickin') }}
-                            </label>
-                            <label class="btn btn-light @if(isset($settings['dashboard_apps']['custom']) && $settings['dashboard_apps']['custom']=='on') active @endif">
-                                <input type="checkbox" name="dashboard_apps[custom]"  @if(isset($settings['dashboard_apps']['custom']) && $settings['dashboard_apps']['custom']=='on') checked @endif >&nbsp;{{ __('suda_lang::press.settings.modules_list.custom') }}
-                            </label>
+                        <div class="col-sm-4">
+                            <input type="checkbox" class="btn-check" id="btn-check1" autocomplete="off" name="dashboard_apps[welcome]" @if(isset($settings['dashboard_apps']['welcome']) && $settings['dashboard_apps']['welcome']=='on') checked @endif">
+                            <label class="btn btn-outline-secondary" for="btn-check1">{{ __('suda_lang::press.settings.modules_list.welcome') }}</label>
+
+                            <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off" name="dashboard_apps[quickin]" @if(isset($settings['dashboard_apps']['quickin']) && $settings['dashboard_apps']['quickin']=='on') checked @endif">
+                            <label class="btn btn-outline-secondary" for="btn-check2">{{ __('suda_lang::press.settings.modules_list.quickin') }}</label>
+
+                            <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off" name="dashboard_apps[custom]" @if(isset($settings['dashboard_apps']['custom']) && $settings['dashboard_apps']['custom']=='on') checked @endif">
+                            <label class="btn btn-outline-secondary" for="btn-check3">{{ __('suda_lang::press.settings.modules_list.custom') }}</label>
+
                         </div>
                     </div>
 
 
-
-
                     <div class="row mb-3">
-                       
-                        
-                       <label for="loginbox" class="col-sm-2 col-form-label text-end">
+                        <label for="loginbox" class="col-sm-2 col-form-label ">
                             {{ __('suda_lang::press.settings.login_style') }}
-                          </label>
-                       
-                       <div class="col-sm-4">
-                           <select class="form-control" name="loginbox">
-                               <option value="light" @if(isset($settings['loginbox']) && $settings['loginbox']=='light') selected @endif>{{ __('suda_lang::press.settings.style_list.default') }}</option>
-                               <option value="dark" @if(isset($settings['loginbox']) && $settings['loginbox']=='dark') selected @endif>{{ __('suda_lang::press.settings.style_list.dark') }}</option>
-                           </select>
-                           {{-- <span class="help-block">选择图片风格时,可选择下面图片</span> --}}
-                       </div>
-                       
-                    </div>
-
-                    <div class="row mb-3">
-                       
-                        
-                        <label for="loginbox" class="col-sm-2 col-form-label text-end">&nbsp;</label>
+                        </label>
                     
                         <div class="col-sm-4">
-                            <input type="text" class="form-control color-pickr" name="login_color" placeholder="背景配色" @if(isset($settings['login_color'])) value="{{ $settings['login_color'] }}" @else value="#1c35a7" @endif>
+                            {{-- <div class="input-group">
+                                <span class="input-group-text">&nbsp;&nbsp;&nbsp;</span>
+                                <input type="text" class="form-control color-pickr" name="login_color" placeholder="背景配色" @if(isset($settings['login_color'])) value="{{ $settings['login_color'] }}" @else value="rgba(6,20,37,1)" @endif>
+                            </div> --}}
+                            <input type="radio" name="loginbox" value="light" class="btn-check" id="btn-check-light" autocomplete="off" @if(isset($settings['loginbox']) && $settings['loginbox']=='light') checked @endif>
+                            <label class="btn btn-outline-secondary" for="btn-check-light">明亮主题</label>
+                            <input type="radio" name="loginbox" value="dark" class="btn-check" id="btn-check-dark" autocomplete="off" @if(isset($settings['loginbox']) && $settings['loginbox']=='dark') checked @endif>
+                            <label class="btn btn-outline-secondary" for="btn-check-dark">暗色主题</label>
                         </div>
-                    
                     </div>
 
                     <div class="row mb-3">
-                       
-                        
-                        <label for="site_name" class="col-sm-2 col-form-label text-end">
+                        <label for="site_name" class="col-sm-2 col-form-label ">
                             {{ __('suda_lang::press.settings.login_image') }}
                         </label>
                         
@@ -180,7 +164,7 @@
                     <div class="row mb-3">
                        
                         
-                        <label for="site_name" class="col-sm-2 col-form-label text-end">
+                        <label for="site_name" class="col-sm-2 col-form-label ">
                             &nbsp;
                         </label>
                         
@@ -283,60 +267,55 @@
             remove_url: "{{ admin_url('medias/remove/image/') }}"
         });
 
-        var pickr = Pickr.create({
-            el: '.color-pickr',
-            theme: 'nano', // or 'monolith', or 'nano'
-            useAsButton: true,
-            default: $('input[name="login_color"]').val(),
-            swatches: [
-                'rgba(244, 67, 54, 1)',
-                'rgba(233, 30, 99, 1)',
-                'rgba(156, 39, 176, 1)',
-                'rgba(103, 58, 183, 1)',
-                'rgba(63, 81, 181, 1)',
-                'rgba(33, 150, 243, 1)',
-                'rgba(3, 169, 244, 1)',
-                'rgba(0, 188, 212, 1)',
-                'rgba(0, 150, 136, 1)',
-                'rgba(76, 175, 80, 1)',
-                'rgba(139, 195, 74, 1)',
-                'rgba(205, 220, 57, 1)',
-                'rgba(255, 235, 59, 1)',
-                'rgba(255, 193, 7, 1)'
-            ],
+        // var pickr = Pickr.create({
+        //     el: '.color-pickr',
+        //     theme: 'nano', // or 'monolith', or 'nano'
+        //     useAsButton: true,
+        //     default: $('input[name="login_color"]').val(),
+        //     swatches: [
+        //         'rgba(244, 67, 54, 1)',
+        //         'rgba(233, 30, 99, 1)',
+        //         'rgba(156, 39, 176, 1)',
+        //         'rgba(103, 58, 183, 1)',
+        //         'rgba(63, 81, 181, 1)',
+        //         'rgba(6,20,37,1)',
+        //         'rgba(0,0,0,1)',
+        //     ],
 
-            components: {
+        //     components: {
 
-                // Main components
-                preview: true,
-                opacity: false,
-                hue: true,
+        //         // Main components
+        //         preview: true,
+        //         opacity: false,
+        //         hue: true,
 
-                // Input / output Options
-                interaction: {
-                    hex: false,
-                    rgba: false,
-                    hsla: false,
-                    hsva: false,
-                    cmyk: false,
-                    input: false,
-                    clear: false,
-                    save: false
-                }
-            }
-        });
+        //         // Input / output Options
+        //         interaction: {
+        //             hex: false,
+        //             rgba: false,
+        //             hsla: false,
+        //             hsva: false,
+        //             cmyk: false,
+        //             input: false,
+        //             clear: false,
+        //             save: false
+        //         }
+        //     }
+        // });
 
-        pickr.on('save', (color, instance) => {
-            //
-        }).on('clear', instance => {
-            //
-        }).on('change', (color, instance) => {
-            pickr.applyColor();
-            // pickr.hide();
-            pickr.setColorRepresentation('HEX');
-            var right_color = $('input[name="login_color"]').val();
-            $('input[name="login_color"]').val(pickr.getColor().toHEXA().toString());
-        });
+        // pickr.on('save', (color, instance) => {
+        //     //
+        // }).on('clear', instance => {
+        //     //
+        // }).on('change', (color, instance) => {
+        //     pickr.applyColor();
+        //     // pickr.hide();
+        //     pickr.setColorRepresentation('RGBA');
+        //     var right_color = $('input[name="login_color"]').val();
+        //     $('input[name="login_color"]').val(pickr.getColor().toRGBA().toString(0));
+        //     $('input[name="login_color"]').prev('span').css('background-color',$('input[name="login_color"]').val());
+        // });
+        // $('input[name="login_color"]').prev('span').css('background-color',$('input[name="login_color"]').val());
 
         //选择登录图片
         $('.list-images-icon').on('click','.login-logo',function(e){

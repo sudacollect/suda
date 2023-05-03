@@ -379,7 +379,7 @@ class ThemeService
             $navbar_style = 'navbar navbar-expand-sm fixed-top navbar-suda ';
             //navbar-light bg-white 
 
-            if(config('sudaconf.sidemenu_style','')=='pro')
+            if(config('sudaconf.sidebar_pro',false))
             {
                 $navbar_style .= ' navbar-pro ';
 
@@ -450,7 +450,7 @@ class ThemeService
     {
         $theme_widgets = ThemeWidget::where('app',$app)->where('theme',$theme)->where('widget_area',$widget_area)->orderBy('order','asc')->get();
         $theme_widgets = $theme_widgets->toArray();
-
+        
         Cache::store(config('sudaconf.admin_cache','file'))->forever($app.'_theme_'.$theme.'_widget_'.$widget_area, $theme_widgets);
 
     }

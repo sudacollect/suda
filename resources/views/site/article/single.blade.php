@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="col-lg-8 mx-auto pb-md-5 px-3">
+<div class="container-fluid pb-md-5">
 
     @if(isset($page_preview))
     <div class="toast-container position-fixed top-0 end-0 p-3">
@@ -37,7 +37,7 @@
                 
                 <div class="meta-item created_at">
                     
-                    <i class="ion-today"></i> {{ $article->updated_at->format('Y-m-d') }}
+                    <i class="ion-today-outline"></i> {{ $article->updated_at->format('Y-m-d') }}
 
                     @foreach($cates as $cate)
                         @if($cate->taxonomy && $cate->taxonomy->term->name)
@@ -63,16 +63,16 @@
                 
                 @if(isset($tags) && $tags->count()>0)
                 
-                <ul class="tags-list">
-                    <li>标签:</li>
+                <div class="col">
+                    <h5>标签:</h5>
                     @foreach($tags as $tag)
                 
-                        <li><a href="{{ url('tag/'.$tag->name) }}" target="_blank" title="{{ $tag->name }}">{{ $tag->name }}</a></li>
+                    <span class="badge text-bg-light">
+                        <a href="{{ url('tag/'.$tag->name) }}" target="_blank" title="{{ $tag->name }}" class="text-dark">{{ $tag->name }}</a>
+                    </span>
                 
                     @endforeach
-                </ul>
-                
-                
+                </div>
                 @endif
                 
             </div>

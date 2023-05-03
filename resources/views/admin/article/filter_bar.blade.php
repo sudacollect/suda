@@ -15,7 +15,7 @@
     
     <div class="row">
         <div class="col">
-            <select name="search[category]"  placeholder="{{ __('suda_lang::press.category') }}" class="select-category form-select form-select-sm">
+            <select name="search[category]" placeholder="{{ __('suda_lang::press.category') }}" class="select-category form-select form-select-sm">
                 <option value="">- {{ __('suda_lang::press.category') }} -</option>
                 @if($categories)
                 

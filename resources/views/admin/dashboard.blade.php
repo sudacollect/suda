@@ -13,10 +13,8 @@
 
     @if(isset($sdcore->settings->dashboard) && isset($sdcore->settings->dashboard->dashboard_apps))
     <div class="row suda-row d-flex flex-row justify-content-start flex-wrap">
-        
-        {{-- {{ Sudacore::widget('dashaboard.start',['soperate'=>$soperate]) }} --}}
 
-        <div class="col-sm-9">
+        <div class="col-12 col-sm-8 col-md-9">
 
             <div class="row">
                 @if(isset($sdcore->settings->dashboard->dashboard_apps->quickin) && $sdcore->settings->dashboard->dashboard_apps->quickin=='on')
@@ -32,7 +30,7 @@
 
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-12 col-sm-4 col-md-3">
 
             <div class="row">
                 @if(isset($sdcore->settings->dashboard->dashboard_apps->welcome) && $sdcore->settings->dashboard->dashboard_apps->welcome=='on')
@@ -70,6 +68,7 @@
 .userinfo .avatar{
     max-width:100%;
     max-width:64px;
+    width:100%;
     margin:0 auto;
     display:block;
     border-radius:50%;

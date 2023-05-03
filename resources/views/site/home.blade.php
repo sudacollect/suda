@@ -2,12 +2,11 @@
 
 @section('content')
 
-<div class="col-lg-8 mx-auto px-3 py-md-5">
-    
-  
-    <main>
+<div class="container-fluid py-md-5">
+
+  <main>
       <h1>{{ __('suda_lang::demo.kv_title') }}</h1>
-      <p class="fs-5 col-md-8">
+      <p class="fs-5">
         {{ __('suda_lang::demo.kv_description') }}
       </p>
   
@@ -17,8 +16,8 @@
   
       <hr class="col-3 col-md-2 mb-5">
   
-      <div class="row g-5">
-        <div class="col-md-6">
+      <div class="row">
+        <div class="col-sm-6">
           <h2>{{ __('suda_lang::demo.start_project') }}</h2>
           <p>
             {{ __('suda_lang::demo.start_project_description') }}
@@ -29,8 +28,7 @@
             <li class="text-muted d-flex align-items-start mb-1">{{ __('suda_lang::demo.start_project_item3') }}</li>
           </ul>
         </div>
-  
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <h2>{{ __('suda_lang::demo.guides') }}</h2>
           
           <ul class="icon-list ps-0">
@@ -41,8 +39,9 @@
           </ul>
         </div>
       </div>
-    </main>
+      
+  </main>
     
-  </div>
+</div>
 
 @endsection

@@ -40,7 +40,7 @@
                             </span>
 
                             <p class="ext-logo @if(array_key_exists($item['slug'],$role->permissions['exts'])) checked @endif">
-                                <img src="{{ extension_logo($item['slug']) }}" class="icon icon-extension" style="border-radius:50%; @if($ext_count<9) max-width:120px; @else max-width:80px; @endif">
+                                <img src="{{ extension_logo($item['slug']) }}" class="icon icon-extension rounded-2" style="@if($ext_count<9) max-width:120px; @else max-width:80px; @endif">
                             </p>
                             <p class="ext-name">
                                 {{ $item['name'] }}

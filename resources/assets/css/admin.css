@@ -41,6 +41,10 @@ code {
     border-top:1px solid;
 }
 
+.select2-container .select2-selection--single{
+    height:auto;
+}
+
 .icon-extension {
     border-radius:8%;
     border:none;
@@ -158,7 +162,7 @@ code {
 }
 
 /*切换左侧菜单的按键*/
-.navbar-take-toggle{
+.navbar-switch{
     padding: 0.25rem 0.75rem;
     font-size: 1.125rem;
     line-height: 1;
@@ -166,7 +170,7 @@ code {
     border: 1px solid transparent;
     border-radius: 0.25rem;
 }
-.navbar-take-toggle .icon-bar{
+.navbar-switch .icon-bar{
     width: 14px;
     height: 1px;
     display: block;
@@ -175,18 +179,18 @@ code {
     margin: 3px 0px;
 }
 
-.navbar-take-toggle .icon-bar:nth-child(3){
+.navbar-switch .icon-bar:nth-child(3){
     width:10px;
 }
-.navbar-take-toggle:hover{
+.navbar-switch:hover{
     background:#ddefff;
 }
-.navbar-take-toggle:hover .icon-bar{
+.navbar-switch:hover .icon-bar{
     border-bottom: 2px solid #1370bf;
 }
 
-.navbar-dark .navbar-take-toggle .icon-bar,
-.navbar-dark .navbar-take-toggle:hover .icon-bar
+.navbar-dark .navbar-switch .icon-bar,
+.navbar-dark .navbar-switch:hover .icon-bar
 {
     border-color: hsla(0,0%,100%,.5);
     border-bottom: 2px solid hsla(0,0%,100%,.5);
@@ -210,9 +214,9 @@ code {
     background: linear-gradient(180deg, rgb(51 51 51 / 5%), rgb(134 134 134 / 3%));
 }
 
-.navbar .navbar-take-toggle i.fa{color:#fff;font-size:2rem;}
+.navbar .navbar-switch i.fa{color:#fff;font-size:2rem;}
 
-.navbar-take-toggle{margin-right:0;display:block;}
+.navbar-switch{margin-right:0;display:block;}
 
 .navbar-nav .certificate i{
     margin-right:5px;
@@ -2724,14 +2728,6 @@ h4.modal-title{font-size:1.1rem;color:#333;}
     }
     
     .navbar-suda .breadcrumb{display:none;}
-
-
-    /*切换左侧菜单的按键*/
-    
-    
-    .page-title{margin:0px;display:none;}
-    .page-heading{display:none;}
-    
     
     .suda-body{ background:#fff;min-width:100%; }
     .press-sidebar{
@@ -2739,9 +2735,9 @@ h4.modal-title{font-size:1.1rem;color:#333;}
         top:42px;
         height:100%;
         width:100%;
-        -webkit-transform: translateX(0%);
-        -ms-transform: translateX(0%);
-        transform: translateX(0%);
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%);
         
         -webkit-transition: all .2s ease-in-out;
         -o-transition: all .2s ease-in-out;
@@ -2756,6 +2752,15 @@ h4.modal-title{font-size:1.1rem;color:#333;}
         -webkit-transform: translateX(-100%);
         -ms-transform: translateX(-100%);
         transform: translateX(-100%);
+        
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+    .press-sidebar.show{
+        -webkit-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        transform: translateX(0%);
         
         -webkit-transition: all .2s ease-in-out;
         -o-transition: all .2s ease-in-out;

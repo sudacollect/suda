@@ -4,6 +4,7 @@
 namespace Gtd\Suda;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
 
@@ -72,6 +73,7 @@ class SudaServiceProvider extends ServiceProvider
         Livewire::component('category-component', CategoryComponent::class);
         Livewire::component('setting-component', SettingComponent::class);
         
+        Paginator::useBootstrap();
     }
 
     /**

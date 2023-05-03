@@ -4,7 +4,6 @@
         
         <thead class="bg-light">
             <tr>
-                <th width="5%">#<i class="stitle"></i></th>
                 <th width="60px">{{ __('suda_lang::press.articles.kv_image') }}</th>
                 <th width="20%">{{ __('suda_lang::press.articles.title') }}</th>
                 <th width="12%">{{ __('suda_lang::press.category') }}</th>
@@ -22,7 +21,6 @@
         @if($data_list)
         @foreach ($data_list as $item)
         <tr>
-            <td width="5%">{{ $item->id }}</td>
             <td width="60px">
                 @if($item->heroimage)
                 <img src="{{ suda_image(isset($item->heroimage->media)?$item->heroimage->media:'',['size'=>'medium','imageClass'=>'image_icon',"url"=>true],false) }}" class="image_icon" data-toggle="popover" data-image="true" >

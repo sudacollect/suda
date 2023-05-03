@@ -24,7 +24,7 @@
                       
                       <div class="row mb-3">
                         
-                        <label for="site_name" class="col-sm-2 col-form-label text-end">
+                        <label for="site_name" class="col-sm-2 col-form-label ">
                             Logo
                         </label>
                         
@@ -41,7 +41,7 @@
                       
                       <div class="row mb-3">
                         
-                        <label for="site_domain" class="col-sm-2 col-form-label text-end">Favicon</label>
+                        <label for="site_domain" class="col-sm-2 col-form-label ">Favicon</label>
                         
                         <div class="col-sm-4">
                             @if(isset($logos->favicon))
@@ -56,7 +56,7 @@
                       
                       <div class="row mb-3">
                         
-                        <label for="company_name" class="col-sm-2 col-form-label text-end">{{ __('suda_lang::press.settings.share_image') }}</label>
+                        <label for="company_name" class="col-sm-2 col-form-label ">{{ __('suda_lang::press.settings.share_image') }}</label>
                         
                         <div class="col-sm-4">
                             @if(isset($logos->share_image))

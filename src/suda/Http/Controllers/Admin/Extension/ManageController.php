@@ -30,7 +30,7 @@ class ManageController extends DashboardController
             $page_no = $request->get('page');
         }
         
-        $func = 'get'.ucfirst($status).'data';
+        $func = 'get'.ucfirst($status).'Data';
         if(method_exists($this,$func))
         {
             $this->$func();
@@ -81,6 +81,7 @@ class ManageController extends DashboardController
         
         app('suda_extension')->updateLocalCache($msg);
         app('suda_extension')->updateComposerCache($msg);
+        app('suda_extension')->clearExtensionsCache($msg);
         
         return $this->responseAjax('info',$msg?$msg:__('suda_lang::press.msg.success'),'self.refresh');
         

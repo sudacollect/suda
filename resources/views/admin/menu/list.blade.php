@@ -11,11 +11,9 @@
                 <i class="ion-list"></i>
                 {{ __('suda_lang::press.setting_menu') }}
             </h1>
-            <div class="btn-groups ms-auto">
-                <a href="{{ admin_url('menu/add') }}" class="pop-modal btn btn-light btn-sm text-nowrap">
-                    <i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add_menu') }}
-                </a>
-            </div>
+            <a href="{{ admin_url('menu/add') }}" class="pop-modal btn btn-primary btn-sm text-nowrap">
+                <i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add_menu') }}
+            </a>
         </div>
         <div class="help-block col-12">
             {{ __('suda_lang::press.setting_menu_desc') }}

@@ -7,7 +7,7 @@
     <div class="row suda-row">
         
         <div class="page-heading">
-        <h1 class="page-title"><i class="far fa-id-badge"></i>&nbsp;{{ __('suda_lang::press.list') }}</h1>
+        <h1 class="page-title">{{ __('suda_lang::press.list') }}</h1>
 
         @if(\Gtd\Suda\Auth\OperateCan::superadmin($soperate))
         <a href="{{ admin_url('user/roles/add') }}" class="btn btn-primary btn-sm"><i class="ion-add-circle"></i>&nbsp;{{ __('suda_lang::press.add') }}</a>

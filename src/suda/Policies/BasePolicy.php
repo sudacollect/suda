@@ -25,13 +25,10 @@ class BasePolicy
         if (count($arguments) < 2) {
             throw new \InvalidArgumentException('not enough arguments');
         }
-        
+
         $this->name = $name;
-        
         $this->user = $user = $arguments[0];
-        
         $this->model = $model = $arguments[1];
-        
         return $this->detectPermission();
     }
 

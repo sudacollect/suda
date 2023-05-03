@@ -83,7 +83,7 @@
         
                             <input type="text" name="redirect_url" class="form-control" id="redirect_url" placeholder="{{ __('suda_lang::press.pages.redirect_url') }}" value="{{ $page->redirect_url }}">
                             <span class="help-block">
-                                {{ __('suda_lang::press.pages.redirect_tip') }}
+                                {{ __('suda_lang::press.pages.redirect_tips') }}
                             </span>
 
                         </div>

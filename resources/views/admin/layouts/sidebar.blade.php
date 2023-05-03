@@ -3,7 +3,7 @@
     $sidebar_class = 'press-sidebar ';
     $sidebar_view = 'sidebar';
 
-    if(config('sudaconf.sidemenu_style','')=='pro')
+    if(config('sudaconf.sidebar_pro',false))
     {
         $sidebar_class .= 'press-sidebar-pro ';
         $sidebar_view = 'sidebar_pro';
@@ -23,10 +23,10 @@
 
 @endphp
 
-<div class="col-12 {{ $sidebar_class }}">
+<div class="col-12 {{ $sidebar_class }}" id="navbarSwitchedContent">
 
     <div class="sidebar-head">
-        <a class="sidebar-brand @if($sidemenu_style=='icon' || config('sudaconf.sidemenu_style','')=='pro') only @endif" 
+        <a class="sidebar-brand @if($sidemenu_style=='icon' || config('sudaconf.sidebar_pro',false)) only @endif" 
             @if(isset($sdcore->settings->dashboard->dashboard_logo) && !empty($sdcore->settings->dashboard->dashboard_logo))
              style="background:url({{ $sdcore->settings->dashboard->dashboard_logo }}) no-repeat center center;background-size:contain;"
             @endif

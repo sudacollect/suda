@@ -1,4 +1,4 @@
-<form class="form col-sm-4" id="quick-search" method="POST" action="{{ admin_url('page/search') }}">
+<form class="form" id="quick-search" method="POST" action="{{ admin_url('page/search') }}">
     @csrf
     <div class="row">
         <div class="col">

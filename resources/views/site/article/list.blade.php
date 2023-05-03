@@ -3,9 +3,9 @@
 @section('content')
 
 
-<div class="col-lg-8 mx-auto pb-md-5 px-3 article_page">
+<div class="container-fluid pb-md-5 article_page">
 
-    <div class="container navbar-expand-sm category-nav mb-3">
+    <div class="navbar-expand-sm category-nav mb-3">
 
         @if(isset($categories) && $categories->count()>0)
 
@@ -15,13 +15,16 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse-category">
             <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav nav-pills">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" id="menu-cate-0"  href="{{ url('articles') }}">全部</a>
+                </li>
                 
                 @foreach($categories as $cate)
 
                 @if($cate->children && $cate->children->count()>0)
-                <li class="nav-item dropdown">
-                    <a href="{{ url('category/'.$cate->term->slug) }}" class="nav-link dropdown-toggle @if(isset($category) && $category->id==$cate->id) active @endif" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                <li class="nav-item dropdown me-2">
+                    <a href="{{ url('category/'.$cate->term->slug) }}" class="nav-link dropdown-toggle @if(isset($category) && ($category->id==$cate->id || $cate->children->contains('id',$category->id))) bg-primary active @else bg-light @endif" data-bs-toggle="dropdown" role="button" aria-expanded="false">
                         {{ $cate->term->name }}
                     </a>
 
@@ -57,18 +60,18 @@
 
     </div>
 
-    <div class="container main_box">
+    <div class="main_box">
         @if(isset($sticks) && $sticks->count()>0)
         <div class="swiper_box">
-            <div class="swiper-container">
+            <div class="swiper-container position-relative">
                 <div class="swiper-wrapper">
                     
                     @foreach($sticks as $k=>$stick)
                     <div class="swiper-slide" data-href="{{ $stick->real_url }}">
 
-                            <div class="img_box" style="background:url('{{ suda_image(isset($stick->heroimage)?$stick->heroimage->media:'',['url'=>true,'size'=>'large']) }}') no-repeat center center;background-size:cover;">
-                                
-                            </div>
+                        
+                            <div class="img_box " style="background:url('{{ suda_image(isset($stick->heroimage)?$stick->heroimage->media:'',['url'=>true,'size'=>'large']) }}') no-repeat center center;background-size:cover;"></div>
+                            
                             <div class="text_box">
                                 <div class="text_main">
                                     <div class="label_box @if($k==0) color_4F69F8 @elseif($k==1) color_DA0F47 @else color_688000 @endif font_Text">
@@ -83,7 +86,7 @@
 
                                         @endif
                                     </div>
-                                    <div class="title_box font_Display">
+                                    <div class="title_box">
                                         {{ $stick->title }}
                                     </div>
                                     <div class="message_box font_Text">
@@ -92,6 +95,7 @@
                                 </div>
                                 <div class="time_box font_Text">{{ $stick->updated_at->format('Y-m-d') }}</div>
                             </div>
+                        
                         
                     </div>
                     @endforeach
@@ -132,7 +136,7 @@
 
                                     @endif
                             </div>
-                            <div class="title_box font_Display">{{ $item->title }}</div>
+                            <div class="title_box">{{ $item->title }}</div>
                             <div class="time_box font_Text">{{ $item->updated_at->format('Y-m-d') }}</div>
                         </div>
                         <div class="message_box font_Text">

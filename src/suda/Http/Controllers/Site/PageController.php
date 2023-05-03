@@ -155,7 +155,7 @@ class PageController extends SiteController{
             }
             
             
-            $data = $sModel->where('disable',0)->orderBy('id','desc')->orderBy('sort','desc')->with('heroimage')->paginate($page_size,['*'],'page',$page_no);
+            $data = $sModel->where('disable',0)->orderBy('stick_top','desc')->orderBy('id','desc')->orderBy('sort','desc')->with('heroimage')->paginate($page_size,['*'],'page',$page_no);
             
             $filter_arr['filter'] = 'true';
             $this->setData('filter_arr',$filter_arr);
@@ -173,7 +173,7 @@ class PageController extends SiteController{
         }else{
             $this->setData('filter_arr',[]);
             $objectModel->where([]);
-            $data = $objectModel->where('disable',0)->orderBy('id','desc')->orderBy('sort','desc')->with('heroimage')->paginate($page_size,['*'],'page',$page_no);
+            $data = $objectModel->where('disable',0)->orderBy('stick_top','desc')->orderBy('id','desc')->orderBy('sort','desc')->with('heroimage')->paginate($page_size,['*'],'page',$page_no);
         }
         
     }

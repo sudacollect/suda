@@ -25,7 +25,7 @@
                       <div class="row mb-3">
                        
                         
-                        <label for="default_page" class="col-sm-2 col-form-label text-end">
+                        <label for="default_page" class="col-sm-2 col-form-label ">
                             {{ __('suda_lang::press.settings.front_default_page') }}
                         </label>
                         
