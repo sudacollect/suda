@@ -173,9 +173,13 @@ class ExtensionService
                             // copy extension logo
                             if(!$this->files->exists(public_path($extension_dir))){
                                 $this->files->makeDirectory(public_path($extension_dir));
-                            }                    
+                            }
                             if($this->files->exists($ext_dir_path.'/icon.png')){
                                 $dest_folder = public_path($extension_dir).DIRECTORY_SEPARATOR.strtolower($ext_config['slug']);
+                                if(!$this->files->exists($dest_folder)){
+                                    $this->files->makeDirectory($dest_folder);
+                                }
+
                                 $this->files->delete($dest_folder.'/icon.png');
                                 $this->files->copy($ext_dir_path.'/icon.png',$dest_folder.'/icon.png');
                             }
@@ -788,6 +792,9 @@ class ExtensionService
                         }                    
                         if($this->files->exists($packagePath.'/icon.png')){
                             $dest_folder = public_path($extension_dir).DIRECTORY_SEPARATOR.strtolower($ext_config['slug']);
+                            if(!$this->files->exists($dest_folder)){
+                                $this->files->makeDirectory($dest_folder);
+                            }
                             $this->files->delete($dest_folder.'/icon.png');
                             $this->files->copy($packagePath.'/icon.png',$dest_folder.'/icon.png');
                         }
