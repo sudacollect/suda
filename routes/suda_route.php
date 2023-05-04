@@ -18,7 +18,7 @@ Route::group([
     $adminNamespace     = "\\".config('sudaconf.controllers.namespace.admin');
     $siteNamespace      = "\\".config('sudaconf.controllers.namespace.site');
     $mobileNamespace    = "\\".config('sudaconf.controllers.namespace.mobile');
-    $apiNamespace    = "\\".config('sudaconf.controllers.namespace.api','Api');
+    $apiNamespace       = "\\".config('sudaconf.controllers.namespace.api','Api');
     
     $admin_path = config('sudaconf.admin_path','admin');
     $extension_admin_path = config('sudaconf.extension_admin_path','appcenter');

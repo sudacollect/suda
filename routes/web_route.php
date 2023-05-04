@@ -29,7 +29,7 @@ Route::group([
         Route::get('/error/ajax', $controller_prefix.'Controller@errorAjax')->name('error.ajax');
 
         // public media url
-        Route::get('/media/view/{id}',$controller_prefix.'Media\MediasController@showMedia');
+        // Route::get('/media/view/{id}',$controller_prefix.'Media\MediasController@showMedia');
         
     });
     
