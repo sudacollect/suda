@@ -32,7 +32,7 @@
                             {{ __('suda_lang::press.pages.content') }}<i class="optional">*</i>
                         </label>
                         
-                        <x-suda::editor id="summernote" name="content" :height="$editor_height" :content="$page->content" />
+                        <x-suda::trix id="summernote" name="content" :content="$page->content" />
 
                         </div>
                         

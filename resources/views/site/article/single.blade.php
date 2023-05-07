@@ -4,22 +4,6 @@
 
 <div class="container-fluid pb-md-5">
 
-    @if(isset($page_preview))
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="liveToast" class="toast show text-bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-            <i class="ion-balloon me-1"></i>
-            <strong class="me-auto">预览模式</strong>
-            {{-- <small>11 mins ago</small> --}}
-            {{-- <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> --}}
-            </div>
-            <div class="toast-body">
-            当前为预览模式，有效期为1个小时
-            </div>
-        </div>
-    </div>
-    @endif
-
     <div class="row">
 
         <div class="col-sm-9">
@@ -35,15 +19,15 @@
 
                 <h1 class="my-4">{{ $article->title }}</h1>
                 
-                <div class="meta-item created_at">
-                    
-                    <i class="ion-today-outline"></i> {{ $article->updated_at->format('Y-m-d') }}
-
+                <div class="meta-item created_at d-flex justify-content-between">
+                    <span class="date"><i class="ion-today-outline me-2"></i>{{ $article->updated_at->format('Y-m-d') }}</span>
+                    <span class="cate">
                     @foreach($cates as $cate)
                         @if($cate->taxonomy && $cate->taxonomy->term->name)
-                            <a class="badge rounded-pill bg-primary text-white" style="font-size:1rem;" href="{{ url('/category/'.$cate->taxonomy->term->slug) }}"> {{ $cate->taxonomy->term->name }}</a>
+                            <a class="badge bg-secondary text-white" href="{{ url('/category/'.$cate->taxonomy->term->slug) }}"> {{ $cate->taxonomy->term->name }}</a>
                         @endif
                     @endforeach
+                    </span>
                 </div>
                 
                 
@@ -67,7 +51,7 @@
                     <h5>标签:</h5>
                     @foreach($tags as $tag)
                 
-                    <span class="badge text-bg-light">
+                    <span class="badge bg-light text-white">
                         <a href="{{ url('tag/'.$tag->name) }}" target="_blank" title="{{ $tag->name }}" class="text-dark">{{ $tag->name }}</a>
                     </span>
                 

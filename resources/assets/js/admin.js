@@ -107,7 +107,7 @@ jQuery(function(){
         $('.press-sidebar').find('.sidebar-menu-item[id!='+$(this).attr('id')+']').collapse('hide');
     })
     
-    $('[data-toggle="tooltip"]').tooltip();
+    // $('[data-toggle="tooltip"]').tooltip();
     
     $('img[data-toggle="popover"]').popover({
         html:true,

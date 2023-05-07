@@ -65,6 +65,7 @@ jQuery(function(){
                 disableDragAndDrop: false,
                 dialogsFade: true,
                 placeholder: $(elem).attr('placeholder'),
+                tooltip:false,
                 toolbar: [
                     // ['cleaner',['cleaner']],
                     ['style',['style']],

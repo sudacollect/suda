@@ -161,7 +161,7 @@ if (!function_exists('suda_image_process')) {
             }
             return '<img src="'.$image_url.'" title="'.$title.'" class="zpress-image image-'.$size.' '.$image_class.'">';
         }
-        
+        $data_type = $data->type;
         $path = $data->path;
         $name = $data->name;
         $disk = $data->disk;
@@ -218,7 +218,7 @@ if (!function_exists('suda_image_process')) {
         if($return_url){
             return $image_url;
         }
-        return '<img path="'.$path.'" src="'.$image_url.'?'.time().'" title="'.$title.'" '.$image_large_url_str.' class="zpress-image image-'.$size.' '.$image_class.'">';
+        return '<img path="'.$path.'" src="'.$image_url.'?'.time().'" title="'.$title.'" '.$image_large_url_str.' data-type="'.$data_type.'" class="zpress-image image-'.$size.' '.$image_class.'">';
     }
     
 }
@@ -255,6 +255,7 @@ if (!function_exists('suda_media_process')) {
         $path = $data->path;
         $name = $data->name;
         $type = $data->type;
+        $data_type = $data->type;
         $types = explode('|',$type);
         
         $file_icon = 'images/file.png';
@@ -297,7 +298,7 @@ if (!function_exists('suda_media_process')) {
         if($return_url){
             return $image_url;
         }
-        return '<img src="'.$image_url.'" file="file" title="'.$title.'" '.$file_path_url_str.' class="zpress-image image-'.$size.' '.$image_class.'">';
+        return '<img src="'.$image_url.'" file="file" title="'.$title.'" '.$file_path_url_str.' data-type="'.$data_type.'" class="zpress-image image-'.$size.' '.$image_class.'">';
     }
     
 }

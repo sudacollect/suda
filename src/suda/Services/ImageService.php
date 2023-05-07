@@ -658,7 +658,7 @@ class ImageService
         if(!$disk){
             $disk = config('sudaconf.media.disk','public');
         }
-        $this->save_disk = $save_disk;
+        $this->save_disk = $disk;
 
         try {
             //先存储，再进行后续动作

@@ -31,8 +31,6 @@
                             </li>
                         </ul>
                         
-                        
-                        
                     </div>
                     @else
                     <div class="card-body">

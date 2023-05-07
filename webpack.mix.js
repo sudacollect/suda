@@ -124,7 +124,7 @@ mix.js('resources/assets/js/alpinejs/app.js', 'publish/assets/js/alpinejs/app.js
 
 // front-site
 // mix.js('resources/assets/js/app_site.js', 'publish/assets/js/app_site.js');
-// mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
+mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
 
 
 // vendor js
