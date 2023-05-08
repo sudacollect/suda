@@ -201,11 +201,11 @@ class MenuController extends DashboardController
         $command = "db:seed";
 
         $params = [
-            'class' => "\\Gtd\\Suda\\Database\\Seeds\\MenuItemsTableSeeder",
+            '--class' => "\\Gtd\\Suda\\Database\\Seeds\\MenuItemsTableSeeder",
             '--force',
         ];
 
-        Artisan::call($command,$params);
+        Artisan::call($command, $params);
         Menu::updateCache(1);
         return $this->responseAjax('success', __('suda_lang::press.msg.success'), 'self.refresh');
     }

@@ -3,7 +3,11 @@
 @push('styles')
 <link rel="stylesheet" href="{{ suda_asset('css/dashlogin.css') }}">
 @if($login_style=='light')
+
+@php
 $logo_color = '#313131';
+@endphp
+
 @endif
 @if($login_style=='dark')
 @php
