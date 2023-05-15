@@ -185,7 +185,7 @@ class SiteController extends BaseController
             View::addNamespace('extension', extension_path(ucfirst($this->extension_view).'/resources/views/site'));
             
         }else{
-            if(strpos($view,'view_suda::')===false){
+            if(strpos($view,'::')===false){
                 $view = 'site/'.$view;
             }
         }
