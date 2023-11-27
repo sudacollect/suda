@@ -6,7 +6,7 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap/scss/bootstrap"; //5.2
+@import "~bootstrap/scss/bootstrap"; //5.3
 
 //ionicons
 @import "../vendors/ionicons/ionicons";
@@ -15,8 +15,8 @@
 // @import "@fortawesome/fontawesome-free/css/all";
 
 @import "~select2/dist/css/select2";
-// @import "~select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme";//b5 support
-@import "~select2-bootstrap-5-theme/src/include-all";
+@import "~select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme";//b5 support
+// @import "~select2-bootstrap-5-theme/src/include-all";
 
 @import "../vendors/jqueryfileupload/css/jquery.fileupload.css";
 

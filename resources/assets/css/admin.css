@@ -55,9 +55,18 @@ pre {
     border-top:1px solid;
 }
 
+/*select2 START*/
 .select2-container .select2-selection--single{
     height:auto;
 }
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice{
+    padding: 0.15em 0.65em;
+}
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice .select2-selection__choice__remove{
+    width:0.5rem;
+    height:0.5rem;
+}
+/*select2 END*/
 
 .icon-extension {
     border-radius:8%;
