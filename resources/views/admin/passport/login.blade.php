@@ -22,13 +22,14 @@ $logo_color = '#ffffff';
     .login-box .card-title{ color: #fff; }
     .login-box .input-group-text{
         background: {{ $bgcolor }};
-        border-color: {{ $bordercolor }};
+        border-color: {{ $bgcolor }};
         color: rgba(255,255,255,0.6);
     }
     .login-box input.form-control{
         background: {{ $bgcolor }};
         border-color: {{ $bgcolor }};
         color: #ffffff;
+        border-radius: 0;
     }
     .form-control:focus{
         box-shadow:none;
