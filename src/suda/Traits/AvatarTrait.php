@@ -53,9 +53,11 @@ trait AvatarTrait
                 //#1 移除旧头像的关系
                 $operate = $user;
                 
-                if($operate->avatar && $operate->avatar->media_id != $media_id){
-                    $operate->removeMediatable($operate->avatar->media_id,'avatar');
-                }
+                // if($operate->avatar && $operate->avatar->media_id != $media_id){
+                //     $operate->removeMediatable($operate->avatar->media_id,'avatar');
+                // }
+
+                $operate->removeMediatables('avatar');
 
                 //#2 保存新的头像关系
                 $operate->createMediatables($media_id,'avatar');

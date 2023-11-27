@@ -63,6 +63,14 @@ trait MediaTrait
         }
         return $this->mediatabled()->where('media_id', $media_id)->delete();
     }
+
+    public function removeMediatables($position='')
+    {
+        if($position){
+            return $this->mediatabled()->where('position',$position)->delete();
+        }
+        return $this->mediatabled()->delete();
+    }
     
     public function scopeWithMediatable($query,$media_id)
     {
