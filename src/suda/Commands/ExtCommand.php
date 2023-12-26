@@ -113,52 +113,16 @@ class ExtCommand extends Command
         }
         
         if ($this->argument('run')=='install') {
-
-           
-            if($filesystem->exists($migration_path)){
-                
-                $file_list = $filesystem->files($migration_path);
-                $sub_directories = $filesystem->directories($migration_path);
-
-                $this->info('......Migrating the database tables');
-
-                if($file_list){
-                    
-                    $this->info('......'.$migration_path);
-                    $this->call('migrate',['--path'=>$migration_path]);
-                }
-                if($sub_directories)
-                {
-                    foreach($sub_directories as $sub_path)
-                    {
-                        $this->info('......'.$migration_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME));
-                        $this->call('migrate',['--path'=>$migration_path.'/'.pathinfo($sub_path, PATHINFO_BASENAME)]);
-                    }
-                }
-            }
-
-            
-            //更新静态文件
-            if(!$filesystem->exists(public_path($extension_dir))){
-                $filesystem->makeDirectory(public_path($extension_dir));
-            }
-
-            if(!$filesystem->exists($dest_folder)){
-                $filesystem->makeDirectory($dest_folder);
-            }
-            
-            //安装静态资源
-            $filesystem->copyDirectory($ext->extension['path'].'/publish/assets', $dest_folder.'/assets');
-            $this->info('......reset the assets');
-
-            // copy logo
-            if($filesystem->exists($ext->extension['path'].'/icon.png')){
-                $filesystem->copy($ext->extension['path'].'/icon.png', $dest_folder.'/icon.png');
-            }
-
+            $msg = '';
+            $result = app('suda_extension')->install($extname,false,$msg);
 
             $this->info('........................END........................');
-            $this->info('Successfully installed '.$ucf_extname.' extension');
+            if(!$result)
+            {
+                $this->info($msg);
+            }else{
+                $this->info('Successfully installed '.$ucf_extname.' extension');
+            }
         }
         
         if ($this->argument('run')=='flush') {
