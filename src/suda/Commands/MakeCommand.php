@@ -121,17 +121,17 @@ class MakeCommand extends Command
         
         $config_stub = $this->populateStub($this->getStub('config'), $replace);
         $this->files->put(
-            $ext_path.'/config.php', $config_stub
+            $ext_path.'/config.yaml', $config_stub
         );
 
         $menu_stub = $this->populateStub($this->getStub('menu'), $replace);
         $this->files->put(
-            $ext_path.'/menu.php', $menu_stub
+            $ext_path.'/menu.yaml', $menu_stub
         );
 
         $custom_navi_stub = $this->populateStub($this->getStub('custom_navi'), $replace);
         $this->files->put(
-            $ext_path.'/custom_navi.php', $custom_navi_stub
+            $ext_path.'/custom_navi.yaml', $custom_navi_stub
         );
 
 

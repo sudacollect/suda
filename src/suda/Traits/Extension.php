@@ -24,18 +24,29 @@ trait Extension
     public function getExtensionMenu(){}
     
     //获取应用目录文件
-    protected function getExtensionFile($file=''){
+    protected function getExtensionFile($file='')
+    {
         
         $ext = $this->getExtensionInfo();
-        if(file_exists($ext['path'].'/'.$file)){
+        if(file_exists($ext['path'].'/'.$file)) {
             return require_once $ext['path'].'/'.$file;
         }
         
         return false;;
         
     }
+
+    protected function getExtensionYaml($file_name=''): array
+    {
+        $ext = $this->getExtensionInfo();
+        if(file_exists($ext['path'].'/'.$file_name.'.yaml')) {
+            return \Yaml::parseFile($ext['path'].'/'.$file_name.'.yaml');
+        }
+        return [];
+    }
     
-    public function guessExtensionPath(){
+    public function guessExtensionPath()
+    {
         $reflector = new ReflectionClass(get_class($this));
         $whole_dir = dirname($reflector->getFileName());
 
@@ -92,7 +103,8 @@ trait Extension
     }
     
     //获取应用Slug
-    public function getExtensionSlug(){
+    public function getExtensionSlug()
+    {
         $path = $this->guessExtensionPath();
         if(!$path){
             $this->redirect(403,'应用配置目录异常');

@@ -19,7 +19,8 @@
     "laravel/ui": "^4.0",
     "league/flysystem": "^3.12",
     "illuminate/support": "^10.0",
-    "livewire/livewire": "^2.12"
+    "livewire/livewire": "^2.12",
+    "symfony/yaml": "^6.0"
   },
   "suggest": {
     "league/flysystem-cached-adapter": "Required to use the Flysystem cache."
@@ -43,7 +44,8 @@
               "Sudacore": "Gtd\\Suda\\Facades\\Sudacore",
               "Theme": "Gtd\\Suda\\Facades\\Theme",
               "Widget": "Arrilot\\Widgets\\Facade",
-              "AsyncWidget": "Arrilot\\Widgets\\AsyncFacade"
+              "AsyncWidget": "Arrilot\\Widgets\\AsyncFacade",
+              "Yaml":  "Symfony\\Component\\Yaml\\Yaml"
           }
       }
   }

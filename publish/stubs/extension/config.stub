@@ -1,21 +1,12 @@
-<?php
-/**
- * extension config
- */
+name:   {{ name }}
+slug:   {{ slug }}
+description:    {{ desc }}
+version:    1.0
+date:   {{ date }}
+author: {{ author }}
+email:  {{ email }}
+website:    {{ website }}
 
-return [
-    'name'          => '{{ name }}',
-    'slug'          => '{{ slug }}',
-    'description'   => '{{ desc }}',
-    'version'       => '1.0',
-    'date'          => '{{ date }}',
-    'author'        => '{{ author }}',
-    'email'         => '{{ email }}',
-    'website'       => '{{ website }}',
-    
-    'setting'    => [
-        'default_page' => 'index',
-        'setting_page' => 'index',
-    ],
-];
-
+setting:
+- default_page: index
+- setting_page: index

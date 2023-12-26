@@ -34,11 +34,17 @@ class ExtensionController extends DashboardController implements ExtensionContra
     //应用设置独立的菜单
     public $single_extension_menu = true;
     
-    public function __construct(){
+    public function __construct()
+    {
         
         $this->getExtensionInfo();
-        $this->auth_setting = $this->getExtensionFile('auth_setting.php');
-        
+        if($auth_setting = $this->getExtensionYaml('auth_setting'))
+        {
+            $this->auth_setting = $auth_setting;
+        }else{
+            $this->auth_setting = $this->getExtensionFile('auth_setting.php');
+        }
+
         if(!is_array($this->extension_info))
         {
             exit('extension config wrong.');

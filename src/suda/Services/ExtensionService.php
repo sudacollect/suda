@@ -31,7 +31,8 @@ class ExtensionService
     protected $extension_cache = null;
     public $cache_store = '';
     
-    public function __construct(){
+    public function __construct()
+    {
         
         $this->files = new Filesystem;
         $this->cache_store = config('sudaconf.admin_cache','file');
@@ -64,11 +65,11 @@ class ExtensionService
     public function installedExtensions($reverse = false) {
         
         $extensions = [];
-        if(Cache::store($this->cache_store)->has('suda_cache_installed')){
+        if(Cache::store($this->cache_store)->has('suda_cache_installed')) {
             $extensions = Cache::store($this->cache_store)->get('suda_cache_installed');
         }else{
             $setting_exts = $this->getSettingByKey('suda_installed_extensions','extension');
-            if($setting_exts){
+            if($setting_exts) {
                 $extensions = $setting_exts;
                 Cache::store($this->cache_store)->forever('suda_cache_installed',$extensions);
             }
@@ -128,12 +129,12 @@ class ExtensionService
     public function updateLocalCache(&$msg='')
     {
         $extension_paths = [];
-        if(!$this->files->exists(extension_path())){
+        if(!$this->files->exists(extension_path())) {
             $this->files->makeDirectory(extension_path());
         }
         $extension_paths = $this->files->directories(extension_path());
         
-        if(empty($extension_paths)){
+        if(empty($extension_paths)) {
             $this->writeCache([]);
             return;
         }
@@ -143,54 +144,57 @@ class ExtensionService
         
         $extensions = [];
         
-        if(!empty($extension_paths)){
-            foreach($extension_paths as $ext_path){
+        if(!empty($extension_paths)) {
+            foreach($extension_paths as $ext_path) {
                 $ext_path = basename($ext_path);
                 $ext_dir_path = extension_path($ext_path);
 
-                if($this->files->exists($ext_dir_path.'/config.php')){
-                    $ext_config = require_once($ext_dir_path.'/config.php');
-                    if($ext_config){
-
-                        if($ext_config = $this->checkConfig($ext_config))
-                        {
-                            if(isset($ext_config['setting']) && isset($ext_config['setting']['default_page']))
-                            {
-                                $ext_config['default_page_url'] = 'extension/'.$ext_config['slug'].'/'.$ext_config['setting']['default_page'];
-                            }
-                            else
-                            {
-                                $ext_config['default_page_url'] = 'entry/extension/'.$ext_config['slug'];
-                            }
-
-                            if($this->files->exists($ext_dir_path.'/icon.png'))
-                            {
-                                $ext_config['logo'] = $ext_dir_path.'/icon.png';
-                            }else{
-                                $ext_config['logo'] = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
-                            }
-
-                            // copy extension logo
-                            if(!$this->files->exists(public_path($extension_dir))){
-                                $this->files->makeDirectory(public_path($extension_dir));
-                            }
-                            if($this->files->exists($ext_dir_path.'/icon.png')){
-                                $dest_folder = public_path($extension_dir).DIRECTORY_SEPARATOR.strtolower($ext_config['slug']);
-                                if(!$this->files->exists($dest_folder)){
-                                    $this->files->makeDirectory($dest_folder);
-                                }
-
-                                $this->files->delete($dest_folder.'/icon.png');
-                                $this->files->copy($ext_dir_path.'/icon.png',$dest_folder.'/icon.png');
-                            }
-
-                            $extensions[$ext_config['slug']] = $ext_config;
-                        }
-                        
-                    }
+                if($this->files->exists($ext_dir_path.'/config.yaml')) {
+                    $ext_config = \Yaml::parseFile($ext_dir_path.'/config.yaml');
+                }elseif($this->files->exists($ext_dir_path.'/config.php')) {
+                    $ext_config = $this->files->requireOnce($ext_dir_path.'/config.php');
                 }else{
                     $msg = $ext_path.' config error.';
                     return false;
+                }
+                
+                if($ext_config) {
+
+                    if($ext_config = $this->checkConfig($ext_config))
+                    {
+                        if(isset($ext_config['setting']) && isset($ext_config['setting']['default_page']))
+                        {
+                            $ext_config['default_page_url'] = 'extension/'.$ext_config['slug'].'/'.$ext_config['setting']['default_page'];
+                        }
+                        else
+                        {
+                            $ext_config['default_page_url'] = 'entry/extension/'.$ext_config['slug'];
+                        }
+
+                        if($this->files->exists($ext_dir_path.'/icon.png'))
+                        {
+                            $ext_config['logo'] = $ext_dir_path.'/icon.png';
+                        }else{
+                            $ext_config['logo'] = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
+                        }
+
+                        // copy extension logo
+                        if(!$this->files->exists(public_path($extension_dir))) {
+                            $this->files->makeDirectory(public_path($extension_dir));
+                        }
+                        if($this->files->exists($ext_dir_path.'/icon.png')) {
+                            $dest_folder = public_path($extension_dir).DIRECTORY_SEPARATOR.strtolower($ext_config['slug']);
+                            if(!$this->files->exists($dest_folder)) {
+                                $this->files->makeDirectory($dest_folder);
+                            }
+
+                            $this->files->delete($dest_folder.'/icon.png');
+                            $this->files->copy($ext_dir_path.'/icon.png',$dest_folder.'/icon.png');
+                        }
+
+                        $extensions[$ext_config['slug']] = $ext_config;
+                    }
+                    
                 }
             }
         }
@@ -204,7 +208,7 @@ class ExtensionService
     protected function checkConfig(array $ext_config)
     {
         $static_keys = ['name','slug','website','author','email','description','version','date','setting'];
-        $config = Arr::where($ext_config, function(string|array $value, string $key) use ($static_keys){
+        $config = Arr::where($ext_config, function(string|array $value, string $key) use ($static_keys) {
             if(in_array($key,$static_keys))
             {
                 if($key == 'setting')
@@ -223,19 +227,19 @@ class ExtensionService
         return false;
     }
 
-    protected function writeCache(array $extensions){
+    protected function writeCache(array $extensions) {
         
         //写配置文件
         Cache::store($this->cache_store)->forever('suda_cache_extensions', $extensions);
         
         //可用应用
         $setting_exts = $this->getSettingByKey('suda_extensions','extension');
-        if($setting_exts){
+        if($setting_exts) {
             $this->saveSettingByKey('suda_extensions','extension',$extensions,'serialize');
         }
     }
     
-    public function updateExtensionCache($ext_slug,&$msg=''){
+    public function updateExtensionCache($ext_slug,&$msg='') {
         
         return $this->install($ext_slug,true,$msg);
         
@@ -271,10 +275,10 @@ class ExtensionService
         $menus = [];
         $menus = $this->getMenu();
 
-        if(array_key_exists('suda',$menus)){
+        if(array_key_exists('suda',$menus)) {
             unset($menus['suda']);
         }
-        if(array_key_exists('suda',$menus)){
+        if(array_key_exists('suda',$menus)) {
             unset($menus['suda']);
         }
         
@@ -323,7 +327,7 @@ class ExtensionService
         //获取侧栏样式设置
         $sidemenu = Cache::store(config('sudaconf.admin_cache','file'))->get('suda_cache_sidebar_style_'.Auth::guard('operate')->user()->id);
         
-        if($sidemenu && array_key_exists('style',$sidemenu)){
+        if($sidemenu && array_key_exists('style',$sidemenu)) {
             $sidemenu_style = $sidemenu['style'];
         }else{
             //默认展开菜单
@@ -340,14 +344,17 @@ class ExtensionService
     }
 
     // after getExtension
-    public function getMenu()
+    public function getMenu(): array
     {
-        $menu_path='';
-        if($this->extension){
-            $menu_path = $this->extension['path'].'/menu.php';
-        }
-        if(file_exists($menu_path)){
-            return require_once $menu_path;
+        if($this->extension) {
+            if(file_exists($this->extension['path'].'/menu.yaml')) {
+                return \Yaml::parseFile($this->extension['path'].'/menu.yaml');
+            }elseif(file_exists($this->extension['path'].'/menu.php')) {
+                $menu_path = $this->extension['path'].'/menu.php';
+                $menu_arr = require($menu_path);
+
+                return $menu_arr;
+            }
         }
         return [];
     }
@@ -367,13 +374,19 @@ class ExtensionService
     public function getAuth()
     {
         $auth_path = '';
-        if($this->extension){
-            $auth_path = $this->extension['path'].'/auth_setting.php';
+        if($this->extension) {
+            $auth_path = $this->extension['path'].'/auth_setting.yaml';
+            if(file_exists($auth_path)) {
+                return \Yaml::parseFile($auth_path);
+            }else{
+                $auth_path = $this->extension['path'].'/auth_setting.php';
+                if(file_exists($auth_path)) {
+                    return $this->files->requireOnce($auth_path);
+                }
+            }
         }
-
-        if(file_exists($auth_path)){
-            return require_once $auth_path;
-        }
+        
+        
         return [];
     }
     
@@ -382,11 +395,11 @@ class ExtensionService
     {
         
         $ext = false;
-        if($ext = $this->getExtension($ext_slug)){
+        if($ext = $this->getExtension($ext_slug)) {
             
             $available_exts = $this->installedExtensions();
             
-            if(array_key_exists($ext_slug,$available_exts) && !$force){
+            if(array_key_exists($ext_slug,$available_exts) && !$force) {
                 $msg = __('suda_lang::press.extensions.install_again');
                 return true;
             }
@@ -436,20 +449,22 @@ class ExtensionService
     }   
 
     //更新菜单
-    public function addMenuCache($ext_slug, $ext_path){
+    public function addMenuCache($ext_slug, $ext_path) {
         
         //菜单更新
         $ext_menu = [];
-        if($this->files->exists($ext_path.'/menu.php')){
-            $ext_menu = require_once($ext_path.'/menu.php');
+        if($this->files->exists($ext_path.'/menu.yaml')) {
+            $ext_menu = \Yaml::parseFile($ext_path.'/menu.yaml');
+        }elseif($this->files->exists($ext_path.'/menu.php')) {
+            $ext_menu = require($ext_path.'/menu.php');
         }
         Cache::store($this->cache_store)->forever('suda_cache_ext.'.$ext_slug.'menu',$ext_menu);
         
     }
 
-    public function removeMenuCache($ext_slug){
+    public function removeMenuCache($ext_slug) {
         
-        if(Cache::store($this->cache_store)->has('suda_cache_ext.'.$ext_slug.'menu')){
+        if(Cache::store($this->cache_store)->has('suda_cache_ext.'.$ext_slug.'menu'))  {
             Cache::store($this->cache_store)->forget('suda_cache_ext.'.$ext_slug.'menu');
         }
     }
@@ -460,7 +475,9 @@ class ExtensionService
         //菜单更新
         $ext_navi = [];
         
-        if($this->files->exists($ext_path.'/custom_navi.php')){
+        if($this->files->exists($ext_path.'/custom_navi.yaml')) {
+            $ext_navi = \Yaml::parseFile($ext_path.'/custom_navi.yaml');
+        }elseif($this->files->exists($ext_path.'/custom_navi.php')) {
             $ext_navi = $this->files->requireOnce($ext_path.'/custom_navi.php');
         }
         
@@ -510,7 +527,7 @@ class ExtensionService
 
         $file_list = [];
         $sub_directories = [];
-        if($filesystem->exists($from_dir)){
+        if($filesystem->exists($from_dir)) {
             $file_list = $filesystem->files($from_dir);
             $sub_directories = $filesystem->directories($from_dir);
         }
@@ -539,7 +556,7 @@ class ExtensionService
 
         $file_list = [];
         $sub_directories = [];
-        if($filesystem->exists($from_dir)){
+        if($filesystem->exists($from_dir)) {
             $file_list = $filesystem->files($from_dir);
             $sub_directories = $filesystem->directories($from_dir);
         }
@@ -566,22 +583,22 @@ class ExtensionService
         $extension_dir = config('sudaconf.extension_dir','extensions');
         $ucf_extension_dir = ucfirst($extension_dir);
         
-        if(!$filesystem->exists(public_path($extension_dir))){
+        if(!$filesystem->exists(public_path($extension_dir))) {
             $filesystem->makeDirectory(public_path($extension_dir));
         }
         
         $dest_folder = public_path($extension_dir.'/'.strtolower($ext_slug));
-        if(!$filesystem->exists($dest_folder)){
+        if(!$filesystem->exists($dest_folder)) {
             $filesystem->makeDirectory($dest_folder);
         }
         
         // copy assets
-        if($filesystem->exists($ext_path.'/publish/assets')){
+        if($filesystem->exists($ext_path.'/publish/assets')) {
             $filesystem->deleteDirectory($dest_folder.'/assets');
             $filesystem->copyDirectory($ext_path.'/publish/assets',$dest_folder.'/assets');
         }
         // copy logo
-        if($filesystem->exists($ext_path.'/icon.png')){
+        if($filesystem->exists($ext_path.'/icon.png')) {
             $filesystem->delete($dest_folder.'/icon.png');
             $filesystem->copy($ext_path.'/icon.png',$dest_folder.'/icon.png');
         }
@@ -594,17 +611,17 @@ class ExtensionService
         $ucf_extension_dir = ucfirst($extension_dir);
         
         $dest_folder = public_path($extension_dir.DIRECTORY_SEPARATOR.strtolower($ext_slug));
-        if($filesystem->exists($dest_folder.DIRECTORY_SEPARATOR.'assets')){
+        if($filesystem->exists($dest_folder.DIRECTORY_SEPARATOR.'assets')) {
             $filesystem->deleteDirectory($dest_folder.DIRECTORY_SEPARATOR.'assets');
         }
     }
     
     //禁用应用
-    public function uninstall($ext_slug, $drop_table = false, &$msg=''){
+    public function uninstall($ext_slug, $drop_table = false, &$msg='') {
         $ext = false;
         $available_exts = $this->installedExtensions();
 
-        if(!array_key_exists($ext_slug,$available_exts)){
+        if(!array_key_exists($ext_slug,$available_exts)) {
             $msg = __('suda_lang::press.extensions.not_installed');
             return false;
         }
@@ -638,16 +655,16 @@ class ExtensionService
     {
         
         $quickins = [];
-        if(Cache::store($this->cache_store)->has('suda_dash_extensions')){
+        if(Cache::store($this->cache_store)->has('suda_dash_extensions')) {
             $quickins = Cache::store($this->cache_store)->get('suda_dash_extensions');
         }
         
-        if(in_array($ext_slug,$quickins) && $status==0){
+        if(in_array($ext_slug,$quickins) && $status==0) {
             $quickins = array_diff($quickins,[$ext_slug]);
             Cache::store($this->cache_store)->forever('suda_dash_extensions',$quickins);
             return true;
         }
-        if(!in_array($ext_slug,$quickins) && $status==1){
+        if(!in_array($ext_slug,$quickins) && $status==1) {
             array_push($quickins,$ext_slug);
             Cache::store($this->cache_store)->forever('suda_dash_extensions',$quickins);
             return true;
@@ -661,7 +678,7 @@ class ExtensionService
         
         $quickins = [];
 
-        if(Cache::store($this->cache_store)->has('suda_dash_extensions')){
+        if(Cache::store($this->cache_store)->has('suda_dash_extensions')) {
             $quickins = Cache::store($this->cache_store)->get('suda_dash_extensions');
         }
 
@@ -670,8 +687,8 @@ class ExtensionService
         $quickinss = [];
         if($quickins)
         {
-            foreach($quickins as $slug){
-                if(array_key_exists($slug,$extensions)){
+            foreach($quickins as $slug) {
+                if(array_key_exists($slug,$extensions)) {
                     $quickinss[$slug] = $extensions[$slug];
                 }
             }
@@ -742,7 +759,7 @@ class ExtensionService
     }
 
     // composer ext
-    public function updateComposerCache(&$msg=''){
+    public function updateComposerCache(&$msg='') {
         $vendor_path = base_path('vendor');
         if ($this->files->exists($vendor_path.'/composer/installed.json')) {
             $extensions = new Collection();
@@ -771,28 +788,30 @@ class ExtensionService
                         ? $vendor_path.'/composer/'.$package['install-path']
                         : $vendor_path.'/'.$name;
                     
-                    if($this->files->exists($packagePath.'/config.php'))
-                    {
-                        $ext_config = $this->files->requireOnce($packagePath.'/config.php');
-                        if($ext_config = $this->checkConfig($ext_config))
-                        {
-                            if($this->files->exists($packagePath.'/icon.png'))
-                            {
-                                $ext_config['logo'] = $packagePath.'/icon.png';
-                            }else{
-                                $ext_config['logo'] = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
-                            }
-                            $package['config'] = $ext_config;
-                            $composerJsonConfs[$packagePath] = $package;
-                        }
+                    $ext_config = [];
+                    if($this->files->exists($packagePath.'/config.yaml')) {
+                        $ext_config = \Yaml::parseFile($packagePath.'/config.yaml');
+                    }elseif($this->files->exists($packagePath.'/config.php')) {
+                        $ext_config = require_once($packagePath.'/config.php');
+                    }
 
-                        // copy extension logo
-                        if(!$this->files->exists(public_path($extension_dir))){
+                    if($ext_config = $this->checkConfig($ext_config)) {
+                        if($this->files->exists($packagePath.'/icon.png'))
+                        {
+                            $ext_config['logo'] = $packagePath.'/icon.png';
+                        }else{
+                            $ext_config['logo'] = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
+                        }
+                        $package['config'] = $ext_config;
+                        $composerJsonConfs[$packagePath] = $package;
+
+                        // update extension logo
+                        if(!$this->files->exists(public_path($extension_dir))) {
                             $this->files->makeDirectory(public_path($extension_dir));
                         }                    
-                        if($this->files->exists($packagePath.'/icon.png')){
+                        if($this->files->exists($packagePath.'/icon.png')) {
                             $dest_folder = public_path($extension_dir).DIRECTORY_SEPARATOR.strtolower($ext_config['slug']);
-                            if(!$this->files->exists($dest_folder)){
+                            if(!$this->files->exists($dest_folder)) {
                                 $this->files->makeDirectory($dest_folder);
                             }
                             $this->files->delete($dest_folder.'/icon.png');
@@ -860,7 +879,7 @@ class ExtensionService
         
         // setting
         $setting_exts = $this->getSettingByKey('suda_composer_extensions','extension');
-        if($setting_exts){
+        if($setting_exts) {
             $this->saveSettingByKey('suda_composer_extensions','extension',$extensions,'serialize');
         }
         
@@ -881,13 +900,13 @@ class ExtensionService
         {
             $subs = $this->files->directories(public_path($extension_dir));
             
-            $subs = Arr::map($subs, function($value){
+            $subs = Arr::map($subs, function($value) {
                 return basename($value);
             });
             $need_remove_subs = array_diff($subs, $slugs);
             foreach($need_remove_subs as $sub)
             {
-                if($this->files->isDirectory(public_path($extension_dir).DIRECTORY_SEPARATOR.$sub)){
+                if($this->files->isDirectory(public_path($extension_dir).DIRECTORY_SEPARATOR.$sub)) {
                     $this->files->deleteDirectory(public_path($extension_dir).DIRECTORY_SEPARATOR.$sub);
                 }
             }
