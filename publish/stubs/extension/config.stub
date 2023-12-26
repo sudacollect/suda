@@ -1,12 +1,12 @@
-name:   {{ name }}
-slug:   {{ slug }}
-description:    {{ desc }}
-version:    1.0
-date:   {{ date }}
+name: {{ name }}
+slug: {{ slug }}
+description: {{ desc }}
+version: 1.0
+date: {{ date }}
 author: {{ author }}
-email:  {{ email }}
-website:    {{ website }}
+email: {{ email }}
+website: {{ website }}
 
 setting:
-- default_page: index
-- setting_page: index
+  default_page: index
+  setting_page: index
