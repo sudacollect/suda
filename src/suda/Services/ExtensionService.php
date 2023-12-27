@@ -207,11 +207,8 @@ class ExtensionService
     // check config format
     protected function checkConfig(array $ext_config, string $source)
     {
-        print_r($ext_config);
-        echo $source;
-        
         $static_keys = ['name','slug','website','author','email','description','version','date','setting'];
-        $config = Arr::where($ext_config, function(string|array $value, string $key) use ($static_keys) {
+        $config = Arr::where($ext_config, function(string|array|null $value, string $key) use ($static_keys) {
             if(in_array($key,$static_keys))
             {
                 if($key == 'setting')

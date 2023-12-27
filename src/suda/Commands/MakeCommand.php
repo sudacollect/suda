@@ -108,9 +108,9 @@ class MakeCommand extends Command
             'ucf_slug'  => $ucf_extname,
             'desc'      => 'suda extension',
             'date'      => date('Y-m-d'),
-            'author'    => env('APP_NAME'),
+            'author'    => env('APP_NAME')??'suda',
             'email'     => 'test@test.dev',
-            'website'   => env('APP_URL'),
+            'website'   => env('APP_URL')??'https://suda.run',
             'ext_dir'   => $ucf_extension_dir,
             
             'menu'      => __('suda_lang::press.commands.menu'),
