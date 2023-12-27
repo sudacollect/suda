@@ -160,7 +160,7 @@ class ExtensionService
                 
                 if($ext_config) {
 
-                    if($ext_config = $this->checkConfig($ext_config))
+                    if($ext_config = $this->checkConfig($ext_config, 'local'))
                     {
                         if(isset($ext_config['setting']) && isset($ext_config['setting']['default_page']))
                         {
@@ -205,8 +205,11 @@ class ExtensionService
     }
 
     // check config format
-    protected function checkConfig(array $ext_config)
+    protected function checkConfig(array $ext_config, string $source)
     {
+        print_r($ext_config);
+        echo $source;
+        
         $static_keys = ['name','slug','website','author','email','description','version','date','setting'];
         $config = Arr::where($ext_config, function(string|array $value, string $key) use ($static_keys) {
             if(in_array($key,$static_keys))
@@ -795,7 +798,7 @@ class ExtensionService
                         $ext_config = require_once($packagePath.'/config.php');
                     }
 
-                    if($ext_config = $this->checkConfig($ext_config)) {
+                    if($ext_config = $this->checkConfig($ext_config, 'vendor')) {
                         if($this->files->exists($packagePath.'/icon.png'))
                         {
                             $ext_config['logo'] = $packagePath.'/icon.png';
