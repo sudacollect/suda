@@ -15,7 +15,7 @@ class HomeController extends AdminController
         $this->title('Test');
         
         $this->gate('menu');
-        $this->setMenu('menu','index');
+        $this->setMenu('custom_menu','index');
 
         return $this->display('index');
     }
@@ -24,7 +24,7 @@ class HomeController extends AdminController
         
         $this->title('Help');
         
-        $this->setMenu('menu.help');
+        $this->setMenu('custom_menu.help');
 
         return $this->display('help');
     }
