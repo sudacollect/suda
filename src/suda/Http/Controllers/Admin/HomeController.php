@@ -41,6 +41,19 @@ class HomeController extends DashboardController
         return $this->display('dashboard');
     }
 
+    public function sdIndex(Request $request)
+    {
+        $this->title(__('suda_lang::press.dashboard'));
+        $this->setMenu('dashboard');
+        
+        if(\Gtd\Suda\Auth\OperateCan::extension($this->user))
+        {
+            return redirect()->to(extadmin_url('entry/extensions'));
+        }
+        
+        return $this->display('sd_dashboard');
+    }
+
     // 查看授权信息
     public function certificateInfo()
     {

@@ -259,7 +259,9 @@ class ThemeService
                 $menus = [];
                 if(property_exists($data['sdcore'],'extension'))
                 {
-                    $menus = app('suda_extension')->use($data['sdcore']->extension->slug)->menu('sidebar',['current_menu'=>isset($data['current_menu'])?$data['current_menu']:[]]);
+                    $menus = app('suda_extension')
+                        ->use($data['sdcore']->extension->slug)
+                        ->menu('sidebar',['current_menu'=>isset($data['current_menu'])?$data['current_menu']:[]]);
 
                     $in_extension = $data['sdcore']->extension;
                 }else{
