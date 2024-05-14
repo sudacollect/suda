@@ -5,7 +5,7 @@
 
 namespace Gtd\Suda\Http\Controllers\Extension\User;
 
-use Illuminate\Contracts\Hashing\Hasher as HasherContract;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -165,8 +165,7 @@ class ProfileController extends DashboardController
     }
     
     //保存密码
-    public function savePassword(Request $request,HasherContract $hasher){
-        $this->hasher = $hasher;
+    public function savePassword(Request $request){
         
         if($request->old_password) {
             $roles = [
@@ -197,14 +196,14 @@ class ProfileController extends DashboardController
             $operateModel = new Operate;
             $password_link = config('sudaconf.password_link','zp');
 
-            $result = $this->hasher->check($request->old_password.$password_link.$this->user->salt, $this->user->password);
+            $result = Hash::check($request->old_password.$password_link.$this->user->salt, $this->user->password);
             
             if($result){
                 $password_link = config('sudaconf.password_link','zp');
 
                 $update_data = [];
                 $update_data['salt'] = Str::random(6);
-                $update_data['password'] = bcrypt($request->new_password.$password_link.$update_data['salt']);
+                $update_data['password'] = Hash::make($request->new_password.$password_link.$update_data['salt']);
                 $update_data['remember_token'] = Str::random(60);
                 
                 $operateModel->where('id',$this->user->id)->update($update_data);

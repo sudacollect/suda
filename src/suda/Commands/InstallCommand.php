@@ -19,7 +19,6 @@ use Gtd\Suda\SudaServiceProvider;
 use Gtd\Suda\Sudacore;
 
 use willvincent\Feeds\FeedsServiceProvider;
-use Gtd\Suda\Providers\SendCloudServiceProvider;
 
 class InstallCommand extends Command
 {

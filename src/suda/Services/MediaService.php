@@ -2,15 +2,20 @@
 namespace Gtd\Suda\Services;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Log;
-use Validator;
-use Intervention\Image\Constraint;
-use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Arr;
+
 use Response;
-use Storage;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\Decoders\DataUriImageDecoder;
+use Intervention\Image\Decoders\Base64ImageDecoder;
+use Intervention\Image\Decoders\FilePathImageDecoder;
 
 use Gtd\Suda\Models\Media;
 use Gtd\Suda\Models\Mediatable;
@@ -453,6 +458,9 @@ class MediaService
     
     public function saveImage($saveType='upload',$options=[])
     {
+
+        $imageManager = new ImageManager(new Driver());
+
         //验证规则
         //$options = ['resize'=>true, 'crop'=>true,'ratio'=>1, 'quality'=>100, 'disk'=>'public']
         //生成对应目录文件名规则
@@ -477,16 +485,16 @@ class MediaService
         
         //=============== start 优先级别最高的特殊设置 ================
         //ratio 按照比例存储，优先级最高，可放大可缩小
-        $ratio = array_get($options,'ratio',false);
+        $ratio = Arr::get($options,'ratio',false);
         $ratio = abs($ratio);
         
         //=============== end 优先级别最高的特殊设置 ================
         
-        $is_crop = array_get($options,'crop',false); //默认不剪切
-        $isResize = array_get($options,'resize',false); //默认不缩放
-        $quality = array_get($options,'quality',100); //默认质量100
+        $is_crop = Arr::get($options,'crop',false); //默认不剪切
+        $isResize = Arr::get($options,'resize',false); //默认不缩放
+        $quality = Arr::get($options,'quality',100); //默认质量100
         
-        $disk = array_get($options,'disk',''); //默认存储本地
+        $disk = Arr::get($options,'disk',''); //默认存储本地
         
         //只有本地存储时，检测是否有预先设置的存储方式
         if(!$disk && config('sudaconf.media.disk')){
@@ -508,12 +516,12 @@ class MediaService
             
             //先存储，再进行后续动作
             //文件存储
-            $imagefile = Image::make($this->_file)->stream();
+            $imagefile = $imageManager->read($this->_file)->encodeByMediaType();
             Storage::disk($this->save_disk)->put($saveImage, $imagefile);
             
             $this->resizeImage($saveDirPath,$basename,$this->save_disk,$sourceWidth,$sourceHeight,$ratio,$is_crop,$quality);
             
-            $type_id = array_get($options,'type_id',0);
+            $type_id = Arr::get($options,'type_id',0);
             
             
             $mediaModel = new Media;
@@ -541,6 +549,8 @@ class MediaService
         //宽高都有值，按照实际存储(resize可能会造成图片变形)
         // $medium_config = $this->options['image_versions']['medium'];
         // $thumbnail_config = $this->options['image_versions']['thumbnail'];
+
+        $imageManager = new ImageManager(new Driver());
         
         $saveImageMedium    = $saveDirPath.'/m'.$basename;
         $saveImageThumbmail     = $saveDirPath.'/s'.$basename;
@@ -630,10 +640,10 @@ class MediaService
             $this->cropImage($saveImageThumbmail,$disk,$small_width,$small_height,$x,$y);
 
         }else{
-            $resizeMediumImage = Image::make($this->_file)->resize($medium_width, $medium_height)->stream();
+            $resizeMediumImage = $imageManager->read($this->_file)->resize($medium_width, $medium_height)->encodeByMediaType();
             Storage::disk($diisk)->put($saveImageMedium, $resizeMediumImage);
             
-            $resizeThumbnailImage = Image::make($this->_file)->resize($small_width, $small_height)->stream();
+            $resizeThumbnailImage = $imageManager->read($this->_file)->resize($small_width, $small_height)->encodeByMediaType();
             Storage::disk($disk)->put($saveImageThumbmail, $resizeThumbnailImage);
         }
         
@@ -641,9 +651,12 @@ class MediaService
         return true;
     }
     
-    public function cropImage($savePath,$disk,$saveWidth,$saveHeight,$x=0,$y=0){
+    public function cropImage($savePath,$disk,$saveWidth,$saveHeight,$x=0,$y=0)
+    {
+
+        $imageManager = new ImageManager(new Driver());
         
-        $cropImage = Image::make($this->_file)->crop($saveWidth, $saveHeight,$x,$y)->stream();
+        $cropImage = $imageManager->read($this->_file)->crop($saveWidth, $saveHeight,$x,$y)->encodeByMediaType();
         Storage::disk($disk)->put($savePath, $cropImage);
         
     }

@@ -5,14 +5,19 @@
 
 namespace Gtd\Suda\Services;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Log;
-use Validator;
-use Intervention\Image\Constraint;
-use Intervention\Image\Facades\Image;
-use Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
+
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\Decoders\DataUriImageDecoder;
+use Intervention\Image\Decoders\Base64ImageDecoder;
+use Intervention\Image\Decoders\FilePathImageDecoder;
+
+
 
 use Gtd\Suda\Models\Media;
 use Gtd\Suda\Traits\SettingTrait;
@@ -20,6 +25,8 @@ use Gtd\Suda\Traits\SettingTrait;
 class ImageService
 {
     use SettingTrait;
+
+    public $imageManager;
     
     public $_file;
 
@@ -56,6 +63,7 @@ class ImageService
     
     function __construct()
     {    
+        $this->imageManager = new ImageManager(new Driver());
         $this->type_data = Media::getTypes();   
         $this->filename();
     }
@@ -167,13 +175,13 @@ class ImageService
     
     public function makeFile($file)
     {    
-        $image = Image::make($file);
+        $image = $this->imageManager->read($file, FilePathImageDecoder::class);
         return $image;
     }
     
     public function makeFileFromBinary($data)
     {    
-        $image = Image::make(file_get_contents($data));
+        $image = $this->imageManager->read(file_get_contents($data));
         return $image;
     }
     
@@ -201,7 +209,7 @@ class ImageService
         }
         
         //support folders
-        $media_type = array_get($options,'media_type','upload');
+        $media_type = Arr::get($options,'media_type','upload');
         if(strpos($media_type,'.')){
             $type_path = str_replace('.','/',$media_type);
             
@@ -236,8 +244,8 @@ class ImageService
         $sourceType     = $this->_file_data['source_type'];
         
         //宽高都有值，按照实际存储(resize可能会造成图片变形)
-        $save_width = array_get($options,'save_width',$sourceWidth);
-        $save_height = array_get($options,'save_height',$sourceHeight);
+        $save_width = Arr::get($options,'save_width',$sourceWidth);
+        $save_height = Arr::get($options,'save_height',$sourceHeight);
 
         //获取相应的值
         $media_setting = $this->getSettingByKey('media_setting','media');
@@ -260,7 +268,7 @@ class ImageService
         }
 
         $is_crop = false;
-        $media_crop = array_get($options,'media_crop',false);
+        $media_crop = Arr::get($options,'media_crop',false);
         
         if($media_crop || (isset($setting['crop']) && $setting['crop']==1)){
             $is_crop = true;
@@ -269,7 +277,7 @@ class ImageService
         //medium缩略图
         if($sourceWidth >= $sourceHeight){
 
-            $save_medium_width = array_get($options,'save_medium_width',$setting['size']['medium']['width']);
+            $save_medium_width = Arr::get($options,'save_medium_width',$setting['size']['medium']['width']);
             
             // if($save_medium_width>$sourceWidth){
             //     $save_medium_width = $sourceWidth;
@@ -279,12 +287,12 @@ class ImageService
 
             if($is_crop){
                 $crop_medium_width = $save_medium_width;
-                $crop_medium_height = array_get($options,'save_medium_height',$setting['size']['medium']['height']);
+                $crop_medium_height = Arr::get($options,'save_medium_height',$setting['size']['medium']['height']);
             }
 
         }else{
 
-            $save_medium_height = array_get($options,'save_medium_height',$setting['size']['medium']['height']);
+            $save_medium_height = Arr::get($options,'save_medium_height',$setting['size']['medium']['height']);
             if($save_medium_height>$sourceHeight){
                 $save_medium_height = $sourceHeight;
             }
@@ -292,7 +300,7 @@ class ImageService
 
             if($is_crop){
                 $crop_medium_height = $save_medium_height;
-                $crop_medium_width = array_get($options,'save_medium_width',$setting['size']['medium']['width']);
+                $crop_medium_width = Arr::get($options,'save_medium_width',$setting['size']['medium']['width']);
             }
 
         }
@@ -300,7 +308,7 @@ class ImageService
         //small缩略图
         if($sourceWidth >= $sourceHeight){
 
-            $save_small_width = array_get($options,'save_small_width',$setting['size']['small']['width']);
+            $save_small_width = Arr::get($options,'save_small_width',$setting['size']['small']['width']);
             // if($save_small_width>$sourceWidth){
             //     $save_small_width = $sourceWidth;
             // }
@@ -308,12 +316,12 @@ class ImageService
 
             if($is_crop){
                 $crop_small_width = $save_small_width;
-                $crop_small_height = array_get($options,'save_small_height',$setting['size']['small']['height']);
+                $crop_small_height = Arr::get($options,'save_small_height',$setting['size']['small']['height']);
             }
 
         }else{
 
-            $save_small_height = array_get($options,'save_small_height',$setting['size']['small']['height']);
+            $save_small_height = Arr::get($options,'save_small_height',$setting['size']['small']['height']);
             if($save_small_height>$sourceHeight){
                 $save_small_height = $sourceHeight;
             }
@@ -321,7 +329,7 @@ class ImageService
 
             if($is_crop){
                 $crop_small_height = $save_small_height;
-                $crop_small_width = array_get($options,'save_small_width',$setting['size']['small']['width']);
+                $crop_small_width = Arr::get($options,'save_small_width',$setting['size']['small']['width']);
             }
 
         }
@@ -344,7 +352,7 @@ class ImageService
         
         //=============== start 优先级别最高的特殊设置 ================
         //ratio 按照比例存储，优先级最高，可放大可缩小
-        $ratio = array_get($options,'ratio',false);
+        $ratio = Arr::get($options,'ratio',false);
         $ratio = abs($ratio);
         if($ratio && $ratio > 0){
             //按照比例进行缩放
@@ -353,10 +361,10 @@ class ImageService
         }
         //=============== end 优先级别最高的特殊设置 ================
         
-        // $is_crop = array_get($options,'crop',$is_crop); //默认不剪切
-        $isResize = array_get($options,'resize',false); //默认不缩放
-        $quality = array_get($options,'quality',100); //默认质量100
-        $disk = array_get($options,'disk',''); //默认存储本地
+        // $is_crop = Arr::get($options,'crop',$is_crop); //默认不剪切
+        $isResize = Arr::get($options,'resize',false); //默认不缩放
+        $quality = Arr::get($options,'quality',100); //默认质量100
+        $disk = Arr::get($options,'disk',''); //默认存储本地
 
         //没有指定disk时，设置为默认存储
         if(!$disk){
@@ -368,12 +376,10 @@ class ImageService
         try {
             
             //先存储，再进行后续动作
-            $imagefile = Image::make($this->_file)->stream();
+            $imagefile = $this->imageManager->read($this->_file)->encodeByMediaType();
             Storage::disk($this->save_disk)->makeDirectory(dirname($save_original_name));
             Storage::disk($this->save_disk)->put($save_original_name, $imagefile);
             
-            // $image = Image::make($this->_file);
-            // $image->save($save_original_name);
             
             if($is_crop){
                 //计算x,y,截取图的中间位置
@@ -403,13 +409,13 @@ class ImageService
             
             $mediaModel = new Media;
             $mediaModel->name = $basename;
-            $mediaModel->user_type = array_get($options,'user_type');
-            $mediaModel->user_id = array_get($options,'user_id');
+            $mediaModel->user_type = Arr::get($options,'user_type');
+            $mediaModel->user_id = Arr::get($options,'user_id');
             $mediaModel->size = $this->_file_data['size'];
             $mediaModel->disk = $this->save_disk;
             $mediaModel->path = $save_base_path;
             $mediaModel->crop = $is_crop;
-            $mediaModel->hidden = array_get($options,'hidden',0);
+            $mediaModel->hidden = Arr::get($options,'hidden',0);
             $mediaModel->type = array_key_exists($sourceType,$this->image_types)?$this->image_types[$sourceType]:$sourceType;
             
             $mediaModel->save();
@@ -424,15 +430,14 @@ class ImageService
     public function resizeImage($img_path,$disk,$saveWidth,$saveHeight,$quality)
     {
         //生成缩略图
-        $resizeImage = Image::make($this->_file)->resize($saveWidth, $saveHeight)->stream();
+        $resizeImage = $this->imageManager->read($this->_file)->resize($saveWidth, $saveHeight)->encodeByMediaType();
         return Storage::disk($disk)->put($img_path, $resizeImage);
     }
     
     public function cropImage($img_path,$disk,$saveWidth,$saveHeight,$x=0,$y=0)
     {
-        $crop_image = Image::make($this->_file)->fit($saveWidth,$saveHeight)->stream();
+        $crop_image = $this->imageManager->read($this->_file)->resizeDown($saveWidth,$saveHeight)->encodeByMediaType();
         Storage::disk($disk)->put($img_path, $crop_image);
-        // Image::make($this->_file)->fit($saveWidth,$saveHeight)->save(storage_path('app/public/'.$img_path));
     }
 
     //rebuild图片
@@ -461,7 +466,7 @@ class ImageService
         $file_name = basename($media_path);
         
         try {
-            $media_file = Image::make($dir_path.'/p'.$file_name);
+            $media_file = $this->imageManager->read($dir_path.'/p'.$file_name);
             
         } catch (\Exception $e) {
             $msg = $e->getMessage();
@@ -516,8 +521,8 @@ class ImageService
             $save_small_height = $setting['size']['small']['height'];
 
             
-            $media_file->fit($save_medium_width,$save_medium_height)->save($dir_path.'/m'.$file_name);
-            $media_file->fit($save_small_width,$save_small_height)->save($dir_path.'/s'.$file_name);
+            $media_file->resizeDown($save_medium_width,$save_medium_height)->save($dir_path.'/m'.$file_name);
+            $media_file->resizeDown($save_small_width,$save_small_height)->save($dir_path.'/s'.$file_name);
             
             
         }else{
@@ -625,7 +630,7 @@ class ImageService
         }
         
         //support folders
-        $media_type = array_get($options,'media_type','upload');
+        $media_type = Arr::get($options,'media_type','upload');
         if(strpos($media_type,'.')){
             $type_path = str_replace('.','/',$media_type);
             
@@ -652,7 +657,7 @@ class ImageService
         $saveFile       = $this->save_path.'/'.$basename;
         
         
-        $disk = array_get($options,'disk',''); //默认存储本地
+        $disk = Arr::get($options,'disk',''); //默认存储本地
         
         //没有指定disk时，设置为默认存储
         if(!$disk){
@@ -667,8 +672,8 @@ class ImageService
                 
             $mediaModel = new Media;
             $mediaModel->name = $basename;
-            $mediaModel->user_type = array_get($options,'user_type');
-            $mediaModel->user_id = array_get($options,'user_id');
+            $mediaModel->user_type = Arr::get($options,'user_type');
+            $mediaModel->user_id = Arr::get($options,'user_id');
             $mediaModel->size = $this->_file_data['size'];
             $mediaModel->disk = $this->save_disk;
             $mediaModel->path = $save_base_path;

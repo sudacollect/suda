@@ -9,9 +9,9 @@
  
 namespace Gtd\Suda\Commands;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Intervention\Image\ImageServiceProviderLaravel5;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Process\Process;
@@ -88,7 +88,7 @@ class AdminCommand extends Command
 
             $operateObj->username           = $username;
             $operateObj->email              = $email;
-            $operateObj->password           = bcrypt($password.$password_link.$salt);
+            $operateObj->password           = Hash::make($password.$password_link.$salt);
             $operateObj->superadmin         = 1;
             $operateObj->organization_id    = 0;
             $operateObj->is_company         = 0;

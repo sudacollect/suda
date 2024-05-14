@@ -3,6 +3,7 @@
 namespace Gtd\Suda\Http\Controllers\Admin\Passport;
 
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
@@ -53,7 +54,7 @@ class RegisterController extends Controller
             'username'      => $data['username'],
             'email'         => $data['email'],
             'phone'         => $data['phone'],
-            'password'      => bcrypt($data['password']),
+            'password'      => Hash::make($data['password']),
             'is_company'    => false,
         ]);
     }

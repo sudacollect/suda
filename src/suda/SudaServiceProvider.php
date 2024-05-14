@@ -8,7 +8,6 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
 
-use Intervention\Image\ImageServiceProvider;
 use Arrilot\Widgets\ServiceProvider as WidgetsProvider;
 use willvincent\Feeds\FeedsServiceProvider;
 use Cviebrock\EloquentSluggable\ServiceProvider as SluggableServiceProvider;
@@ -29,8 +28,6 @@ use Gtd\Suda\Providers\UploadImageServiceProvider;
 use Gtd\Suda\Providers\SudaEventServiceProvider;
 use Gtd\Suda\Providers\AuthServiceProvider;
 
-use Gtd\Suda\Providers\SendCloudServiceProvider;
-
 use Gtd\Suda\Sudacore;
 
 use Livewire;
@@ -45,7 +42,7 @@ class SudaServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router,\App\Http\Kernel $kernel)
+    public function boot(Router $router)
     {
 
         $extension_dir = config('sudaconf.extension_dir','extensions');
@@ -83,7 +80,6 @@ class SudaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(ImageServiceProvider::class);
         $this->app->register(WidgetsProvider::class);
         $this->app->register(FeedsServiceProvider::class);
         $this->app->register(SluggableServiceProvider::class);
@@ -99,8 +95,6 @@ class SudaServiceProvider extends ServiceProvider
         
         $this->app->register(SudaEventServiceProvider::class);
         
-        $this->app->register(SendCloudServiceProvider::class);
-        
         $app = $this->app;
         $app->bind('sudacore', function ($app) {
             return new Sudacore($app);
@@ -110,11 +104,6 @@ class SudaServiceProvider extends ServiceProvider
         
         $this->mergeConfigFrom(
             suda_path('/publish/config/sudaconf.php'), 'suda'
-        );
-
-        $this->mergeConfigFrom(
-            suda_path('publish/config/services.php'),
-            'services'
         );
         
         if ($this->app->runningInConsole()) {

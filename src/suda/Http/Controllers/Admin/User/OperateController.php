@@ -11,6 +11,7 @@
 
 namespace Gtd\Suda\Http\Controllers\Admin\User;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Log;
@@ -206,7 +207,7 @@ class OperateController extends DashboardController
 
                 if($request->password){
                     $update_data['salt'] = Str::random(6);
-                    $update_data['password'] = bcrypt($request->password.$password_link.$update_data['salt']);
+                    $update_data['password'] = Hash::make($request->password.$password_link.$update_data['salt']);
                     $update_data['remember_token'] = Str::random(60);
                 }
                 
@@ -241,7 +242,7 @@ class OperateController extends DashboardController
             $operateModel->roletable = "Gtd\\Suda\\Models\\Role";
             $operateModel->remember_token = Str::random(60);
             $operateModel->salt = Str::random(6);
-            $operateModel->password = bcrypt($request->password.$password_link.$operateModel->salt);
+            $operateModel->password = Hash::make($request->password.$password_link.$operateModel->salt);
             $operateModel->is_company = '0';
             $operateModel->enable = $enable;
             

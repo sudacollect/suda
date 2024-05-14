@@ -18,13 +18,16 @@ trait AvatarTrait
             
             $file = $imageHandler->makeFileFromBinary($data);
             $file->resize(400,400);
-            $imageHandler->setFile($file->stream());
+            $imageHandler->setFile($file);
             
             $file_data = [];
             
             $file_size = strlen(base64_decode($data)) - 22;
+
+            // $encoded = $file->encodeByExtension();
             
-            $file_data['extension']     = $imageHandler->getExtesionByMime($file->mime());
+            
+            $file_data['extension']     = $imageHandler->getExtesionByMime($file->encode()->mediaType());
             $file_data['size']          = $file_size;
             $file_data['source_width']  = $file->width();
             $file_data['source_height'] = $file->height();

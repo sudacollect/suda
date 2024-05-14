@@ -6,21 +6,20 @@
   "homepage": "https://github.com/sudacollect/suda.git",
   "license": "MIT",
   "require": {
-    "php": "^8.1",
-    "maennchen/zipstream-php": ">=2.2.1",
-    "intervention/image": "^2.5",
-    "intervention/imagecache": "^2.4",
-    "guzzlehttp/guzzle": "^7.2",
-    "arrilot/laravel-widgets": "^3.13",
-    "willvincent/feeds": "^2.3",
-    "cviebrock/eloquent-sluggable" : "^10.0",
+    "php": "^8.2",
+    "maennchen/zipstream-php": ">=3.1.0",
+    "intervention/image": "^3.6",
+    "guzzlehttp/guzzle": "^7.8",
+    "arrilot/laravel-widgets": "^3.14",
+    "willvincent/feeds": "^2.6",
+    "cviebrock/eloquent-sluggable" : "^11.0",
     "simplesoftwareio/simple-qrcode": "^4.2",
-    "mews/purifier": "^3.3",
+    "mews/purifier": "^3.4",
     "laravel/ui": "^4.0",
-    "league/flysystem": "^3.12",
-    "illuminate/support": "^10.0",
-    "livewire/livewire": "^2.12",
-    "symfony/yaml": "^6.0"
+    "league/flysystem": "^3.27",
+    "illuminate/support": "^11.0",
+    "livewire/livewire": "^3.4",
+    "symfony/yaml": "^7.0"
   },
   "suggest": {
     "league/flysystem-cached-adapter": "Required to use the Flysystem cache."

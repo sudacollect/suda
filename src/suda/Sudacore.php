@@ -16,7 +16,7 @@ use Gtd\Suda\Services\ExtensionService;
 class Sudacore
 {
     const NAME      = 'Suda';
-    const VERSION   = '10.x';
+    const VERSION   = '11.x';
     const AUTHOR    = 'Suda-dev';
     const EMAIL     = 'dev@suda.run';
 
