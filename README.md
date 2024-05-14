@@ -17,6 +17,7 @@ Versions
 
 |  Laravel   | Suda  | PHP  |
 |  ----  | ----  | ----  |
+| 11.x  | 11.x(dev) | 8.2+ |
 | 10.x  | 10.x(dev) | 8.1+ |
 | 9.x  | 9.x | 8.0.2+ |
 | 8.x  | 8.x | 8.0+ |
@@ -25,7 +26,7 @@ Versions
 
 ## Requirments
 
-  PHP >= 8.1+
+  PHP >= 8.2+
   
 
 ## Install
@@ -80,6 +81,14 @@ php artisan suda:install
 ],
 
 ```
+
+## Suda 11.x
+
+|  List   | Default  | Change  |
+|  ----  | ----  | ----  |
+| Default Login Path  | /admin | change config/sudaconf.php |
+| Login Account  | admin@suda.run |  |
+| Password  | suda#2021 |  |
 
 
 ## Suda 10.x
