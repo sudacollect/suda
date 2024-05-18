@@ -58,6 +58,7 @@ Route::group([
 
         // setting
         Route::get('setting', 'settings')->name('setting_system');
+        Route::post('setting', 'saveSettings');
         Route::get('setting/site', 'settings')->name('setting_site');
         Route::post('setting/site', 'saveSettings');
         Route::get('setting/logo', 'logo');

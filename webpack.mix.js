@@ -46,18 +46,20 @@ mix.options({
 */
 
 
-// mix.copyDirectory('./node_modules/formstone/dist','resources/assets/vendors/formstone');
+/**
+    mix.copyDirectory('./node_modules/formstone/dist','resources/assets/vendors/formstone');
 
-// mix.styles([
-//     './resources/assets/vendors/formstone/css/themes/light.css',
-//     './resources/assets/vendors/formstone/css/upload.css'
-// ],'resources/assets/vendors/formstone/css/formstone.css');
+    mix.styles([
+        './resources/assets/vendors/formstone/css/themes/light.css',
+        './resources/assets/vendors/formstone/css/upload.css'
+    ],'resources/assets/vendors/formstone/css/formstone.css');
 
 
-// mix.scripts([
-//     './resources/assets/vendors/formstone/js/core.js',
-//     './resources/assets/vendors/formstone/js/upload.js'
-// ],'resources/assets/vendors/formstone/js/formstone.js');
+    mix.scripts([
+        './resources/assets/vendors/formstone/js/core.js',
+        './resources/assets/vendors/formstone/js/upload.js'
+    ],'resources/assets/vendors/formstone/js/formstone.js');
+*/
 
 
 /*
@@ -70,12 +72,13 @@ mix.options({
 |
 */
 
-// mix.js([
-//     'resources/assets/vendors/jqueryfileupload/js/vendor/jquery.ui.widget.js',
-//     'resources/assets/vendors/jqueryfileupload/js/jquery.iframe-transport.js',
-//     'resources/assets/vendors/jqueryfileupload/js/jquery.fileupload.js'
-// ],'resources/assets/js/jquery.fileupload.js');
-
+/**
+    mix.js([
+        'resources/assets/vendors/jqueryfileupload/js/vendor/jquery.ui.widget.js',
+        'resources/assets/vendors/jqueryfileupload/js/jquery.iframe-transport.js',
+        'resources/assets/vendors/jqueryfileupload/js/jquery.fileupload.js'
+    ],'resources/assets/js/jquery.fileupload.js');
+*/
 
 
 /*
@@ -83,11 +86,10 @@ mix.options({
 | croppie
 |--------------------------------------------------------------------------
 |
-| description
+| mix.copyDirectory('./node_modules/croppie','publish/assets/js/croppie');
 |
 */
 
-// mix.copyDirectory('./node_modules/croppie','publish/assets/js/croppie');
 
 
 /*
@@ -96,10 +98,11 @@ mix.options({
 |--------------------------------------------------------------------------
 |
 | description
+| mix.copyDirectory('resources/assets/vendors/ionicons', 'publish/assets/fonts/vendor/ionicons');
 |
 */
 
-// mix.copyDirectory('resources/assets/vendors/ionicons', 'publish/assets/fonts/vendor/ionicons');
+
 
 mix.js('resources/assets/js/plugins/editor.js', 'publish/assets/js/plugins');
 mix.copy('resources/assets/js/plugins/summernote-ext-media.js', 'publish/assets/js/plugins');
@@ -114,15 +117,9 @@ mix.js('resources/assets/js/global.js', 'publish/assets/js');
 mix.js('resources/assets/js/app.js', 'publish/assets/js/app.js');
 mix.options({ processCssUrls: false }).sass('resources/assets/sass/app.scss', 'publish/assets/css');
 
-
-// 2023 引入alpinejs
-// mix.js('resources/assets/js/app-alpine.js', 'publish/assets/js/app-alpine.js');
-mix.js('resources/assets/js/alpinejs/app.js', 'publish/assets/js/alpinejs/app.js');
-
 // front-site
-// mix.js('resources/assets/js/app_site.js', 'publish/assets/js/app_site.js');
+mix.js('resources/assets/js/app_site.js', 'publish/assets/js/app_site.js');
 mix.options({ processCssUrls: false }).sass('resources/assets/sass/app_site.scss', 'publish/assets/css');
-
 
 // vendor js
 mix.js('resources/assets/js/app.vendor.js', 'publish/assets/js/app.vendor.js');

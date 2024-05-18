@@ -62,12 +62,12 @@ class ExtensionService
         return $this;
     }
 
-    public function installedExtensions($reverse = false) {
+    public function installedExtensions($cache = false) {
         
         $extensions = [];
         if(Cache::store($this->cache_store)->has('suda_cache_installed')) {
             $extensions = Cache::store($this->cache_store)->get('suda_cache_installed');
-        }else{
+        }elseif(!$cache){
             $setting_exts = $this->getSettingByKey('suda_installed_extensions','extension');
             if($setting_exts) {
                 $extensions = $setting_exts;
@@ -83,11 +83,11 @@ class ExtensionService
      * @param bool $reverse
      * @return array
      **/
-    public function availableRoleExtensions($reverse = false)
+    public function availableRoleExtensions()
     {
         
         $extensions = [];
-        $extensions = $this->installedExtensions($reverse);
+        $extensions = $this->installedExtensions();
 
         foreach($extensions as $k=>$extension)
         {

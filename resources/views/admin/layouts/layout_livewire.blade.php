@@ -30,27 +30,28 @@
         suda.meta = { csrfToken: "{{csrf_token()}}",url:"{{url('/')}}",adminPath:"{{ $sdcore->admin_path }}" };
     </script>
 
-    <script defer src="{{ suda_asset('js/alpinejs/app.js') }}"></script>
-    <script defer src="{{ suda_asset('js/app-alpine.js') }}"></script>
+    
+    
 
     <!-- Scripts -->
     @stack('scripts-head')
 
     @livewireStyles
+    {{-- <script defer src="{{ suda_asset('js/livewire.js') }}"></script> --}}
 
 </head>
 <body class="suda-body">
     
     {{-- wrapping div --}}
-    <div class="body-content" x-data="sudaBody">
+    <div class="body-content">
         @if (Auth::guard('operate')->check())
             @if(!isset($without_sidebar))
-            @include('view_path::layouts.livewire.sidebar')
+            @include('view_path::layouts.livewire.panel_sidebar')
             @endif
         @endif 
 
         <nav class="{{ $navbar_style }}">
-            <button type="button" class="navbar-switch navbar-take-toggle navbar-take-toggle-sm @if(config('sudaconf.sidebar_pro',false)) d-block d-sm-none @endif" data-href="{{ admin_url('style/sidemenu') }}" @click="toggleSidebar($event)">
+            <button type="button" class="navbar-switch navbar-take-toggle navbar-take-toggle-sm @if(config('sudaconf.sidebar_pro',false)) d-block d-sm-none @endif" data-href="{{ admin_url('style/sidemenu') }}">
                 <span class="sr-only">Menu</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -99,7 +100,7 @@
                     @else
                     
                     
-                    @include('view_suda::admin.layouts.livewire.operate_top')
+                    @include('view_suda::admin.layouts.livewire.panel_top')
                     
                     <!-- support language -->
                     {{-- @include('view_suda::admin.layouts.top_language') --}}
@@ -150,6 +151,16 @@
     
     </div>
     @stack('scripts')
+    
     @livewireScripts
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('menuStyle', {
+                name: '',
+            })
+        })
+    </script>
+
 </body>
 </html>

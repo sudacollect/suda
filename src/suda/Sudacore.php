@@ -105,7 +105,7 @@ class Sudacore
         $extend_path = $ucf_extension_dir;
         
         $files = new Filesystem;
-        $extensions = (new ExtensionService)->installedExtensions();
+        $extensions = (new ExtensionService)->installedExtensions(true);
         
         $extend_web_routes = [];
         $extend_mobile_routes = [];

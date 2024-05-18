@@ -1,5 +1,5 @@
 @if($hasChildren)
-    <div x-show="isShow({{ $iteration }})" x-collapse x-ref="menuChildren" :class="$store.menuStyle.name=='icon'?'':'show'" class="panel-body collapse sidebar-menu sidebar-menu-item sidebar-menu-{{ $item->slug }}" id="sidebar-menu-{{ $item->slug }}" aria-expanded="true">
+    <div x-show="isxShow({{ $iteration }})" x-collapse x-ref="menuChildren" :class="$store.menuStyle.name=='icon'?'':'show'" class="panel-body collapse sidebar-menu sidebar-menu-item sidebar-menu-{{ $item->slug }}" id="sidebar-menu-{{ $item->slug }}" >
         
         <ul class="list-unstyled menu">
                 

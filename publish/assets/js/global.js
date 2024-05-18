@@ -1,1 +1,318 @@
-!function(e){var t={};function a(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,a),o.l=!0,o.exports}a.m=e,a.c=t,a.d=function(e,t,n){a.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,t){if(1&t&&(e=a(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(a.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)a.d(n,o,function(t){return e[t]}.bind(null,o));return n},a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(t,"a",t),t},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},a.p="/",a(a.s=197)}({180:function(e,t){function a(e){return(a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}jQuery((function(e){window.suda=window.suda||{},suda.data=function(e,t,a){return null===t&&(t=e),e in suda.meta||null==t?(a&&null!=t&&(suda.meta[e]=t),suda.meta[e]):t},suda.addMeta=function(e,t){suda.meta[e]=t},suda.link=function(e){if(e.indexOf("//")>=0)return e;var t=suda.data("UrlFormat","/{Path}");return"/"==e.substr(0,1)&&(e=e.substr(1)),t.indexOf("?")>=0&&(e=e.replace("?","&")),t.replace("{Path}",e)},suda.disable=function(t,a){var n=e(t).attr("href");n&&e.data(t,"hrefBak",n),e(t).addClass(a||"InProgress").removeAttr("href").attr("disabled",!0)},suda.enable=function(t){e(t).attr("disabled",!1).removeClass("InProgress");var a=e.data(t,"hrefBak");a&&(e(t).attr("href",a),e.removeData(t,"hrefBak"))},suda.infobox=function(t){var a="";Array.isArray(t)?e.each(t,(function(e,t){a+=e+":"+t+"<br>"})):a=t,window.confirm(a)},suda.alert=function(t,a){var n="";Array.isArray(t)?e.each(t,(function(e,t){n+=e+":"+t+"<br>"})):n=t,null==a&&(a="dark");var o='<div class="suda-toast toast position-absolute top-0 start-50" data-bs-autohide="true" data-bs-delay="2500" style="z-index:9999;transform:translate(-50%,20%)" >';o+='<div class="toast-header text-'+a+'" style="background:#efefef;">',o+='<i class="ion-alert-circle"></i>&nbsp;',o+='<span class="me-auto">提示</span>',o+='<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',o+="</div>",o+='<div class="toast-body">'+n+"</div>",o+="</div>",e("body").find(".suda-toast").remove(),e("body").append(o),e("body").find(".suda-toast").toast("show")},suda.modal=function(t,n,o,r,i){e.ajax({type:"GET",url:"/sudarun/error/ajax",cache:!1,success:function(l){if(l){e("body").append(e(l));var d="";if(Array.isArray(t)?e.each(t,(function(e,t){d+=e+":"+t+"<br>"})):d="object"==a(t)?t.error:t,null!=n&&e(".errormodal").addClass("errormodal-"+n),e(".errormodal").find(".modal-body").append(d),null!=i&&e(".errormodal").find(".modal-footer").prepend(i),e(".errormodal").modal("show"),e(".errormodal").on("hidden.bs.modal",(function(t){e(".errormodal").remove()})),o&&o>0)var s=0,u=setInterval((function(){(s+=1)===o&&clearInterval(u),e(".errormodal").modal("hide")}),3e3);null!=r&&""!=r&&(window.location.href=r)}}})},e.fn.zpupload=function(a){var n={action:"",maxSize:52428800,label:"拖拽 或 点击上传",leave:"有图片正在上传，确定退出么",maxQueue:1,maxFiles:!1,multiple:!1,maxConcurrent:1,postData:{},delete:!0,onComplete:t.onFileComplete,onStart:t.onStart,onFileStart:t.onFileStart,onFileProgress:t.onFileProgress,onFileError:t.onFileError,onQueued:t.onQueued,postKey:"file"},o=e.extend({},n,a),r=e(this);t.options=o,r.upload({action:o.action,maxSize:o.maxSize,beforeSend:t.onBeforeSend,label:o.label,leave:o.leave,maxQueue:o.maxQueue,maxFiles:o.maxFiles,multiple:o.multiple,maxConcurrent:o.maxConcurrent,postData:o.postData,postKey:o.postKey}).on("start.upload",o.onStart).on("filestart.upload",o.onFileStart).on("fileprogress.upload",o.onFileProgress).on("filecomplete.upload",o.onComplete).on("fileerror.upload",o.onFileError).on("queued.upload",o.onQueued),r.find(".filelist.complete li").length==r.attr("media_max")&&r.find(".fs-upload-target").hide(),1==o.delete&&r.find(".filelist.complete li.data").find(".delete").on("click",(function(t){var a=e(this),n=o.removeUrl,r=a.attr("media_id"),i=a.attr("data_id");suda.disable(t),t.stopPropagation(),e.ajax({type:"POST",url:n,data:{UploadID:i,MediaID:r},dataType:"json",error:function(e){suda.modal(e)},success:function(e){null==e&&(e={});suda.modal(e);suda.enable(a),a.parent("li").fadeOut(500)}})}))},e.fn.zpuploadInit=function(a){var n={label:"上传图片",leave:"有图片正在上传，确定退出么?",maxQueue:1,delete:!1,postKey:"img",onComplete:t.zupload_complete},o=e.extend({},n,a),r=a.action,i=a.removeUrl,l={_token:suda.data("csrfToken")},d=e(this).attr("media_type");""!=d&&null!=d&&(l.media_type=d,r+="/"+d),o.action=r,o.removeUrl=i,o.postData=l,e(this).zpupload(o)};var t={options:{},zupload_complete:function(t,a,n){var o=e(this).attr("media_max")||1;if((n=e.parseJSON(n)).error)suda.modal(n.error);else{var r=e(this).find(".filelist.queue").find("li[data-index="+a.index+"]");$image_html=n.image,$image_html+="<input type='hidden' name='images["+n.media_id+"]' value='"+n.media_id+"'>",r.find(".file").html($image_html),r.find(".progress").remove(),r.find(".cancel").remove(),r.appendTo(e(this).find(".filelist.complete"));o=e(this).attr("media_max")||1;var i=e(this).find(".filelist.complete").find("li").length;i==o||i>o?e(this).find(".fs-upload-target").hide():e(this).find(".fs-upload-target").show()}},onCancel:function(t){var a=e(this).parents("li").data("index");e(this).find(".upload").upload("abort",parseInt(a,10))},onBeforeSend:function(e,t){return e.append("media_file","media_value"),e},onQueued:function(t,a){for(var n="",o=0;o<a.length;o++)n+='<li data-index="'+a[o].index+'"><div class="file">'+a[o].name+'</div><span class="progress">Queued</span><span class="cancel">cancel</span></li>';e(this).find(".filelist.queue").append(n)},onStart:function(t,a){e(this).find(".filelist.queue").find("li").find(".progress").text("Waiting")},onFileStart:function(t,a){e(this).find(".filelist.queue").find("li[data-index="+a.index+"]").find(".progress").text("0%")},onFileProgress:function(t,a,n){e(this).find(".filelist.queue").find("li[data-index="+a.index+"]").find(".progress").text(n+"%")},onFileComplete:function(t,a,n){if((n=e.parseJSON(n)).error)e(this).find(".filelist.queue").find("li[data-index="+a.index+"]").addClass("error").find(".progress").text(n.error);else{var o=e(this).find(".filelist.queue").find("li[data-index="+a.index+"]");o.find(".file").html(n.image),o.find(".progress").remove(),o.find(".cancel").remove(),o.appendTo(e(this).find(".filelist.complete"))}},onFileError:function(t,a,n){e(this).find(".filelist.queue").find("li[data-index="+a.index+"]").addClass("error").find(".progress").text("Error: "+n)}}}))},197:function(e,t,a){e.exports=a(180)}});
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!***************************************!*\
+  !*** ./resources/assets/js/global.js ***!
+  \***************************************/
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+jQuery(function ($) {
+  window.suda = window.suda || {};
+  suda.data = function (definition, defaultVal, set) {
+    if (defaultVal === null) {
+      defaultVal = definition;
+    }
+    if (!(definition in suda.meta) && defaultVal != undefined) {
+      return defaultVal;
+    }
+    if (set && defaultVal != undefined) {
+      suda.meta[definition] = defaultVal;
+    }
+    return suda.meta[definition];
+  };
+  suda.addMeta = function (key, value) {
+    suda.meta[key] = value;
+  };
+  suda.link = function (path) {
+    if (path.indexOf("//") >= 0) {
+      return path;
+    }
+    var urlFormat = suda.data("UrlFormat", "/{Path}");
+    if (path.substr(0, 1) == "/") {
+      path = path.substr(1);
+    }
+    if (urlFormat.indexOf("?") >= 0) {
+      path = path.replace("?", "&");
+    }
+    return urlFormat.replace("{Path}", path);
+  };
+  suda.disable = function (e, progressClass) {
+    var href = $(e).attr('href');
+    if (href) {
+      $.data(e, 'hrefBak', href);
+    }
+    $(e).addClass(progressClass ? progressClass : 'InProgress').removeAttr('href').attr('disabled', true);
+  };
+  suda.enable = function (e) {
+    $(e).attr('disabled', false).removeClass('InProgress');
+    var href = $.data(e, 'hrefBak');
+    if (href) {
+      $(e).attr('href', href);
+      $.removeData(e, 'hrefBak');
+    }
+  };
+  suda.infobox = function (info) {
+    var errors = '';
+    if (Array.isArray(info)) {
+      $.each(info, function (index, e) {
+        errors += index + ":" + e + '<br>';
+      });
+    } else {
+      errors = info;
+    }
+    window.confirm(errors);
+  };
+  suda.alert = function (info, infoType) {
+    var errors = '';
+    if (Array.isArray(info)) {
+      $.each(info, function (index, e) {
+        errors += index + ":" + e + '<br>';
+      });
+    } else {
+      errors = info;
+    }
+    if (infoType == undefined) {
+      infoType = 'dark';
+    }
+
+    // with bs-5 DO NOT NEED THIS
+    // var suda_flat_width = $('body').find('.suda-flat').width();
+    // var boxa_right = (suda_flat_width-180)/2;
+    // var boxa_top = $(window).scrollTop()+15;
+
+    var alerthtml = '<div class="suda-toast toast position-absolute top-0 start-50" data-bs-autohide="true" data-bs-delay="2500" style="z-index:9999;transform:translate(-50%,20%)" >';
+    alerthtml += '<div class="toast-header text-' + infoType + '" style="background:#efefef;">';
+    alerthtml += '<i class="ion-alert-circle"></i>&nbsp;';
+    alerthtml += '<span class="me-auto">提示</span>';
+    alerthtml += '<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>';
+    alerthtml += '</div>';
+    alerthtml += '<div class="toast-body">' + errors + '</div>';
+    alerthtml += '</div>';
+    $('body').find('.suda-toast').remove();
+    $('body').append(alerthtml);
+    $('body').find('.suda-toast').toast('show');
+  };
+  suda.modal = function (info, infoType, autoClose, rurl, btn) {
+    $.ajax({
+      type: 'GET',
+      url: '/sudarun/error/ajax',
+      cache: false,
+      success: function success(data) {
+        if (data) {
+          $('body').append($(data));
+          var errors = '';
+          if (Array.isArray(info)) {
+            $.each(info, function (index, e) {
+              errors += index + ":" + e + '<br>';
+            });
+          } else if (_typeof(info) == 'object') {
+            errors = info.error;
+          } else {
+            errors = info;
+          }
+          if (infoType != undefined) {
+            $('.errormodal').addClass('errormodal-' + infoType);
+          }
+          $('.errormodal').find('.modal-body').append(errors);
+
+          //if btn
+          if (btn != undefined) {
+            $('.errormodal').find('.modal-footer').prepend(btn);
+          }
+          $('.errormodal').modal('show');
+          $('.errormodal').on('hidden.bs.modal', function (e) {
+            $('.errormodal').remove();
+          });
+          if (autoClose && autoClose > 0) {
+            var timesRun = 0;
+            var interval = setInterval(function () {
+              timesRun += 1;
+              if (timesRun === autoClose) {
+                clearInterval(interval);
+              }
+              $('.errormodal').modal('hide');
+            }, 3000);
+          }
+          if (rurl != undefined && rurl != '') {
+            window.location.href = rurl;
+          }
+        }
+      }
+    });
+  };
+  $.fn.zpupload = function (options) {
+    var configs = {
+      action: '',
+      maxSize: 52428800,
+      label: '拖拽 或 点击上传',
+      leave: '有图片正在上传，确定退出么',
+      maxQueue: 1,
+      maxFiles: false,
+      multiple: false,
+      maxConcurrent: 1,
+      postData: {},
+      "delete": true,
+      onComplete: zpup.onFileComplete,
+      onStart: zpup.onStart,
+      onFileStart: zpup.onFileStart,
+      onFileProgress: zpup.onFileProgress,
+      onFileError: zpup.onFileError,
+      onQueued: zpup.onQueued,
+      postKey: 'file'
+    };
+    var settings = $.extend({}, configs, options);
+    var elem = this;
+    var $elem = $(elem);
+    zpup.options = settings;
+    $elem.upload({
+      action: settings.action,
+      maxSize: settings.maxSize,
+      beforeSend: zpup.onBeforeSend,
+      label: settings.label,
+      leave: settings.leave,
+      maxQueue: settings.maxQueue,
+      maxFiles: settings.maxFiles,
+      multiple: settings.multiple,
+      maxConcurrent: settings.maxConcurrent,
+      postData: settings.postData,
+      postKey: settings.postKey
+    }).on("start.upload", settings.onStart).on("filestart.upload", settings.onFileStart).on("fileprogress.upload", settings.onFileProgress).on("filecomplete.upload", settings.onComplete).on("fileerror.upload", settings.onFileError).on("queued.upload", settings.onQueued);
+    if ($elem.find(".filelist.complete li").length == $elem.attr('media_max')) {
+      $elem.find('.fs-upload-target').hide();
+    }
+    if (settings["delete"] == true) {
+      $elem.find(".filelist.complete li.data").find('.delete').on('click', function (e) {
+        var $media = $(this);
+        var href = settings.removeUrl;
+        var media_id = $media.attr('media_id');
+        var data_id = $media.attr('data_id');
+        suda.disable(e);
+        e.stopPropagation();
+        $.ajax({
+          type: "POST",
+          url: href,
+          data: {
+            UploadID: data_id,
+            MediaID: media_id
+          },
+          dataType: 'json',
+          error: function error(xhr) {
+            suda.modal(xhr);
+          },
+          success: function success(json) {
+            if (json == null) json = {};
+            var informed = suda.modal(json);
+            suda.enable($media);
+            $media.parent('li').fadeOut(500);
+          }
+        });
+      });
+    }
+  };
+
+  //更有效率的图片上传初始化
+  $.fn.zpuploadInit = function (options) {
+    var configs = {
+      label: '上传图片',
+      leave: '有图片正在上传，确定退出么?',
+      maxQueue: 1,
+      "delete": false,
+      postKey: 'img',
+      onComplete: zpup.zupload_complete
+    };
+    var settings = $.extend({}, configs, options);
+    var elem = this;
+    var upload_url = options.action;
+    var remove_url = options.removeUrl;
+    var post_data = {
+      _token: suda.data('csrfToken')
+    };
+    var media_type = $(elem).attr('media_type');
+    if (media_type != '' && media_type != undefined) {
+      post_data.media_type = media_type;
+      upload_url += "/" + media_type;
+    }
+    settings.action = upload_url;
+    settings.removeUrl = remove_url;
+    settings.postData = post_data;
+    $(elem).zpupload(settings);
+  };
+  var zpup = {};
+  zpup.options = {};
+  zpup.zupload_complete = function (e, file, response) {
+    var media_max = $(this).attr('media_max') || 1;
+    var media_box = this;
+    response = $.parseJSON(response);
+    if (response.error) {
+      suda.modal(response.error);
+    } else {
+      var $target = $(this).find(".filelist.queue").find("li[data-index=" + file.index + "]");
+
+      //insert page
+      $image_html = response.image;
+      $image_html += "<input type='hidden' name='images[" + response.media_id + "]' value='" + response.media_id + "'>";
+      $target.find(".file").html($image_html);
+      $target.find(".progress").remove();
+      $target.find(".cancel").remove();
+      $target.appendTo($(this).find(".filelist.complete"));
+      var media_max = $(this).attr('media_max') || 1;
+      var media_length = $(this).find(".filelist.complete").find('li').length;
+      if (media_length == media_max || media_length > media_max) {
+        $(this).find('.fs-upload-target').hide();
+      } else {
+        $(this).find('.fs-upload-target').show();
+      }
+    }
+  };
+  zpup.onCancel = function (e) {
+    var index = $(this).parents("li").data("index");
+    $(this).find(".upload").upload("abort", parseInt(index, 10));
+  };
+  zpup.onBeforeSend = function (formData, file) {
+    formData.append("media_file", "media_value");
+    return formData;
+
+    // var media_max = $(this).attr('media_max')||1;
+    //         var media_length = $(this).find(".filelist.complete").find('li').length;
+    //
+    //         if(media_length < media_max){
+    //             formData.append("media_file", "media_value");
+    //             return formData;
+    //         }else{
+    //             suda.modal({error:'上传数量超过允许的上传总量'});
+    //             return false;
+    //
+    //         }
+  };
+  zpup.onQueued = function (e, files) {
+    var html = '';
+    for (var i = 0; i < files.length; i++) {
+      html += '<li data-index="' + files[i].index + '"><div class="file">' + files[i].name + '</div><span class="progress">Queued</span><span class="cancel">cancel</span></li>';
+    }
+    $(this).find(".filelist.queue").append(html);
+  };
+  zpup.onStart = function (e, files) {
+    $(this).find(".filelist.queue").find("li").find(".progress").text("Waiting");
+  };
+  zpup.onFileStart = function (e, file) {
+    $(this).find(".filelist.queue").find("li[data-index=" + file.index + "]").find(".progress").text("0%");
+  };
+  zpup.onFileProgress = function (e, file, percent) {
+    $(this).find(".filelist.queue").find("li[data-index=" + file.index + "]").find(".progress").text(percent + "%");
+  };
+  zpup.onFileComplete = function (e, file, response) {
+    response = $.parseJSON(response);
+    if (response.error) {
+      $(this).find(".filelist.queue").find("li[data-index=" + file.index + "]").addClass("error").find(".progress").text(response.error);
+    } else {
+      var $target = $(this).find(".filelist.queue").find("li[data-index=" + file.index + "]");
+      $target.find(".file").html(response.image);
+      $target.find(".progress").remove();
+      $target.find(".cancel").remove();
+      $target.appendTo($(this).find(".filelist.complete"));
+    }
+  };
+  zpup.onFileError = function (e, file, response) {
+    $(this).find(".filelist.queue").find("li[data-index=" + file.index + "]").addClass("error").find(".progress").text("Error: " + response);
+  };
+});
+/******/ })()
+;

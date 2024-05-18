@@ -86,7 +86,7 @@ class SettingComponent extends Component
         (new SettingService)->updateCache();
 
         $this->error_msg = __('suda_lang::press.msg.success');
-        $this->dispatchBrowserEvent('errorBox',['msg'=>__('suda_lang::press.msg.success')]);
+        $this->dispatch('errorBox',['msg'=>__('suda_lang::press.msg.success')]);
     }
     
     public function render()

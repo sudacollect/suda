@@ -3,8 +3,8 @@ window.$ = window.jQuery = require('jquery');
 
 require('./bootstrap');
 
-
-window.Popper = require('@popperjs/core').default;
+const Popper = require('@popperjs/core').default;
+window.Popper = Popper;
 
 const bootstrap = require('bootstrap');
 window.bootstrap = bootstrap;

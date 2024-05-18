@@ -47,5 +47,10 @@
               "Yaml":  "Symfony\\Component\\Yaml\\Yaml"
           }
       }
+  },
+  "scripts": {
+    "post-update-cmd": [
+        "@php artisan vendor:publish --tag=livewire:assets --ansi --force"
+    ]
   }
 }

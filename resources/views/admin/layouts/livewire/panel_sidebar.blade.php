@@ -23,7 +23,7 @@
 
 @endphp
 
-<div id="navbarSwitchedContent" class="col-12 {{ $sidebar_class }}" x-ref="sidebar" x-init="$store.menuStyle.name='{{ $sidemenu_style }}'">
+<div id="navbarSwitchedContent" class="col-12 {{ $sidebar_class }}" x-init="$store.menuStyle.name='{{ $sidemenu_style }}'">
 
     <div class="sidebar-head">
         <a class="sidebar-brand @if($sidemenu_style=='icon' || config('sudaconf.sidebar_pro',false)) only @endif" 
@@ -44,9 +44,8 @@
             }else{
                 this.show_current_menu = iteration
             }
-            
         },
-        isShow(iteration) {
+        isxShow(iteration) {
             if(this.$store.menuStyle.name=='icon')
             {
                 return true

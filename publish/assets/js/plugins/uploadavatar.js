@@ -1,1 +1,55 @@
-!function(e){var t={};function r(n){if(t[n])return t[n].exports;var a=t[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,r),a.l=!0,a.exports}r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)r.d(n,a,function(t){return e[t]}.bind(null,a));return n},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="/",r(r.s=195)}({195:function(e,t,r){e.exports=r(196)},196:function(e,t){jQuery((function(){"use strict";var e=suda.link("/"+suda.data("adminPath")+"/profile/upload/avatar");$("#fileupload").fileupload({url:e,dataType:"json",formData:{_token:suda.data("csrfToken"),media_type:$("#fileupload").attr("media_type")},done:function(e,t){var r=t.jqXHR.responseJSON,n=$("#fileupload").parent(".fileinput-avatar");r.image?(n.find(".zpress-image").length>0&&n.find(".zpress-image").remove(),n.append(r.image)):suda.modal("上传失败,请重试")},progressall:function(e,t){var r=parseInt(t.loaded/t.total*100,10);$("#progress .progress-bar").css("width",r+"%")},fail:function(e,t){var r=t.jqXHR;if(413==r.status&&suda.modal("上传文件过大，请重新上传"),422==r.status||405==r.status){if(r.responseJSON)n=(n=r.responseJSON).response_msg?n.response_msg:"请求异常,请稍后重试";else var n="请求异常,请稍后重试";suda.modal(n)}else suda.modal("请求异常,请稍后重试")}}).prop("disabled",!$.support.fileInput).parent().addClass($.support.fileInput?void 0:"disabled")}))}});
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!*****************************************************!*\
+  !*** ./resources/assets/js/plugins/uploadavatar.js ***!
+  \*****************************************************/
+jQuery(function () {
+  'use strict';
+
+  // Change this to the location of your server-side upload handler:
+  var url = suda.link('/' + suda.data('adminPath') + '/profile/upload/avatar');
+  $('#fileupload').fileupload({
+    url: url,
+    dataType: 'json',
+    formData: {
+      _token: suda.data('csrfToken'),
+      'media_type': $('#fileupload').attr('media_type')
+    },
+    done: function done(e, data) {
+      var xhr = data.jqXHR;
+      var media = xhr.responseJSON;
+      var avatar = $('#fileupload').parent('.fileinput-avatar');
+      if (media.image) {
+        if (avatar.find('.zpress-image').length > 0) {
+          avatar.find('.zpress-image').remove();
+        }
+        avatar.append(media.image);
+      } else {
+        suda.modal('上传失败,请重试');
+      }
+    },
+    progressall: function progressall(e, data) {
+      var progress = parseInt(data.loaded / data.total * 100, 10);
+      $('#progress .progress-bar').css('width', progress + '%');
+    },
+    fail: function fail(e, data) {
+      var xhr = data.jqXHR;
+      if (xhr.status == 413) {
+        suda.modal('上传文件过大，请重新上传');
+      }
+      if (xhr.status == 422 || xhr.status == 405) {
+        if (xhr.responseJSON) {
+          var errors = xhr.responseJSON;
+          errors = errors.response_msg ? errors.response_msg : '请求异常,请稍后重试';
+        } else {
+          var errors = '请求异常,请稍后重试';
+        }
+        suda.modal(errors);
+      } else {
+        suda.modal('请求异常,请稍后重试');
+      }
+    }
+  }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
+});
+/******/ })()
+;

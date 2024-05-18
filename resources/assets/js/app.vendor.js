@@ -1,11 +1,6 @@
 
 require('./chart');
-
 require('./jquery.fileupload');
-
-const pickr = require('@simonwep/pickr');
-window.Pickr = pickr;
-
+const Pickr = require('@simonwep/pickr/dist/pickr.es5.min');
 const Sortable = require('sortablejs');
-window.Sortable = Sortable;
 

@@ -131,17 +131,13 @@ class HomeController extends DashboardController
     }
     
     // 站点设置项
-    public function settings(){
-        
+    public function settings()
+    {
         //policy 判断
         $this->gate('setting.setting_system',app(Setting::class));
-        
         $this->title(__('suda_lang::press.basic_info'));
-        
-        
-        
         $this->setMenu('setting','setting_system');
-        
+           
         return $this->display('home.settings');
     }
     
