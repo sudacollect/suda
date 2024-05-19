@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const TerserPlugin = require("terser-webpack-plugin");
 
 mix.options({
     postCss: [
@@ -10,16 +11,20 @@ mix.options({
     cssNano: {
         discardComments: {removeAll: true},
     },
-    terser: {
-        terserOptions: {
-            output: {
-                comments: false
-            },
-            format: {
-                comments: false,
-            }
-        },
-        extractComments: false,
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    output: {
+                        comments: false
+                    },
+                    format: {
+                        comments: false,
+                    }
+                },
+            }),
+        ],
     }
 });
 
