@@ -25,6 +25,8 @@ class ThemeService
 {
     use SettingTrait;
 
+    protected $files;
+    protected $apps;
     protected $extension = 'php';
     
     protected $themePaths = null;
@@ -36,7 +38,7 @@ class ThemeService
     public function __construct(){
         
         $this->files = new Filesystem;
-        $this->apps = config('sudaconf.apps',['site','admin','mobile']);
+        $this->apps = config('sudaconf.apps',['site','admin']);
 
     }
     

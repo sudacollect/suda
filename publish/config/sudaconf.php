@@ -40,7 +40,7 @@ return [
     // ENABLE PRO STYLE FOR SIDEBAR
     // 'sidebar_pro' => true,
     
-    'apps' => ['admin','site','mobile'],
+    'apps' => ['admin','site'],
 
     //DEFAULT WIDGET FOR DASHBOARD HOMEPAGE
     'widget'=>[
@@ -57,12 +57,9 @@ return [
     
     // CONTROLLER PATH.
     // WARNING: DO NOT CHANGE OR DELETE THIS.
-    'controllers'=>[
-        'namespace'=>[
-            'admin' => 'Admin',
-            'site'  => 'Site',
-            'mobile'=> 'Mobile',
-        ]
+    'namespace'=>[
+        'admin' => 'Admin',
+        'site'  => 'Site',
     ],
     
     //MEDIA MODELS
@@ -99,14 +96,6 @@ return [
 
     // FORCE HTTPS
     'force_secure'      => null,
-
-    # auto_mobile => false,
-
-    // AUTO_MOBILE = TRUE, AUTO ADD PREFIX TO URL ON PHONE BROWSER
-    'mobile_prefix'         => 'mobile',
-
-    // AUTO_MOBILE = TRUE,URL WITH EXCEPT PREFIX WOULD NOT ADD MOBILE_PREFIX
-    'except_mobile'  => [],
     
     // LOCALE LANGUAGE
     'locale'                => 'zh_CN',
@@ -125,8 +114,7 @@ return [
     */
     
     'theme'=>[
-        'site'  =>'default', //pc website
-        'mobile'=>'default', //mobile website
+        'site'  =>'default',
     ],
 
     /*

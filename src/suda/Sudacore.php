@@ -23,7 +23,6 @@ class Sudacore
     private static $instance;
     private static $extend_admin_routes = [];
     private static $extend_web_routes = [];
-    private static $extend_mobile_routes = [];
     private static $extend_api_routes = [];
     
     public static function getInstance()
@@ -68,20 +67,6 @@ class Sudacore
         
     }
     
-    public static function getExtendMobileRoutes(){
-        
-        if(count(self::$extend_mobile_routes)<1){
-            self::extendRoutes();
-        }
-        
-        foreach(self::$extend_mobile_routes as $route){
-    
-            require($route);
-    
-        }
-        
-    }
-    
     public static function getExtendApiRoutes(){
         
         if(count(self::$extend_api_routes)<1){
@@ -108,7 +93,6 @@ class Sudacore
         $extensions = (new ExtensionService)->installedExtensions(true);
         
         $extend_web_routes = [];
-        $extend_mobile_routes = [];
         $extend_admin_routes = [];
         $extend_api_routes = [];
         
@@ -118,13 +102,11 @@ class Sudacore
             {
                 $admin_routes = $item['install-path'].'/routes/admin.php';
                 $web_routes = $item['install-path'].'/routes/web.php';
-                $mobile_routes = $item['install-path'].'/routes/mobile.php';
                 $api_routes = $item['install-path'].'/routes/api.php';
 
             }else{
                 $admin_routes = app_path($extend_path.'/'.ucfirst($item['slug']).'/routes/admin.php');
                 $web_routes = app_path($extend_path.'/'.ucfirst($item['slug']).'/routes/web.php');
-                $mobile_routes = app_path($extend_path.'/'.ucfirst($item['slug']).'/routes/mobile.php');
                 $api_routes = app_path($extend_path.'/'.ucfirst($item['slug']).'/routes/api.php');
             }
             
@@ -137,17 +119,12 @@ class Sudacore
                 $extend_web_routes[] = $web_routes;
             }
             
-            if($files->exists($mobile_routes)){
-                $extend_mobile_routes[] = $mobile_routes;
-            }
-            
             if($files->exists($api_routes)){
                 $extend_api_routes[] = $api_routes;
             }
         }
         
         self::$extend_web_routes = $extend_web_routes;
-        self::$extend_mobile_routes = $extend_mobile_routes;
         self::$extend_admin_routes = $extend_admin_routes;
         self::$extend_api_routes = $extend_api_routes;
     }
@@ -167,12 +144,6 @@ class Sudacore
     public static function webHost()
     {
         return config('sudaconf.web_host',request()->getHost());
-        return request()->getHost();
-    }
-
-    public static function mobileHost()
-    {
-        return config('sudaconf.mobile_host',self::webHost());
         return request()->getHost();
     }
 

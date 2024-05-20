@@ -55,7 +55,7 @@ class ThemeController extends DashboardController
         }
 
         //显示可切换的应用
-        $apps = config('sudaconf.apps',['site','mobile','admin']);
+        $apps = config('sudaconf.apps',['site','admin']);
         $this->setData('apps',$apps);
         
         $this->setMenu('appearance','appearance_theme');

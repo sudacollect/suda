@@ -13,7 +13,6 @@ use willvincent\Feeds\FeedsServiceProvider;
 use Cviebrock\EloquentSluggable\ServiceProvider as SluggableServiceProvider;
 use SimpleSoftwareIO\QrCode\QrCodeServiceProvider;
 
-use Gtd\Suda\Http\Middleware\RedirectMobileMiddleware;
 use Gtd\Suda\Http\Middleware\ViewRenderMiddleware;
 use Gtd\Suda\Http\Middleware\OperateAdminMiddleware;
 use Gtd\Suda\Http\Middleware\OperateExtensionMiddleware;
@@ -54,7 +53,6 @@ class SudaServiceProvider extends ServiceProvider
         
         $router->pushMiddlewareToGroup('web', ViewRenderMiddleware::class);
         $router->pushMiddlewareToGroup('web', CertificateMiddleware::class);
-        // $router->pushMiddlewareToGroup('web', RedirectMobileMiddleware::class);
         
         $router->aliasMiddleware('auth.superadmin', AuthSuperadminMiddleware::class);
 

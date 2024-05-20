@@ -26,33 +26,7 @@ class ThemeServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        Blade::directive('mobilehead', function($theme_name) {
-            
-            //$theme_name = $this->getParameters($theme_name);
-            
-            $shared_data = View::shared('sdcore');
-            $theme_name = $shared_data->theme;
-            
-            if(config('app.debug')){
-                $style_files = [
-                    '/theme/mobile/'.$theme_name.'/design/style.css',
-                ];
-            }else{
-                $style_files = [
-                    '/theme/mobile/'.$theme_name.'/design/style.min.css',
-                ];
-            }
-            
-            
-            $string = '';
-            foreach($style_files as $style){
-                $string .= '<link rel="stylesheet" href="'.$style.'">';
-            }
-            
-            return $string;
-        });
-        
+    {   
         Blade::directive('sitehead', function($theme_name) {
             
             //$theme_name = $this->getParameters($theme_name);

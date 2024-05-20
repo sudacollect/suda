@@ -1,7 +1,7 @@
 <?php
 //site
 Route::group([
-    'as'         => 'site.',
+    'as'         => 'web.',
     'middleware' => 'web',
     'namespace' => $siteNamespace,
 ], function ($router) {
@@ -33,30 +33,28 @@ Route::group([
         
     });
     
-    $controller_prefix_site = $controller_prefix."Site\\";
+    $site_prefix = $controller_prefix."Site\\";
     
-    
-    
-    Route::get('/', $controller_prefix_site.'HomeController@index');
-    Route::get('/home', $controller_prefix_site.'HomeController@index');
-    Route::get('/index', $controller_prefix_site.'HomeController@index');
-    Route::get('/error', $controller_prefix_site.'HomeController@errors');
+    Route::get('/', $site_prefix.'HomeController@index');
+    Route::get('/home', $site_prefix.'HomeController@index');
+    Route::get('/index', $site_prefix.'HomeController@index');
+    Route::get('/error', $site_prefix.'HomeController@errors');
     
     
     // Page
-    Route::get('/pages', $controller_prefix_site.'PageController@showAll');
-    Route::get('/page/list', $controller_prefix_site.'PageController@showAll');
-    Route::get('/page/{id}/{preview_str?}', $controller_prefix_site.'PageController@index');
+    Route::get('/pages', $site_prefix.'PageController@showAll');
+    Route::get('/page/list', $site_prefix.'PageController@showAll');
+    Route::get('/page/{id}/{preview_str?}', $site_prefix.'PageController@index');
     
     // Articles
-    Route::get('/articles', $controller_prefix_site.'ArticleController@showAll');
-    Route::get('/article/{id}/{preview_str?}', $controller_prefix_site.'ArticleController@index');
+    Route::get('/articles', $site_prefix.'ArticleController@showAll');
+    Route::get('/article/{id}/{preview_str?}', $site_prefix.'ArticleController@index');
 
     // Category
-    Route::get('/category/{slug}', $controller_prefix_site.'ArticleController@showCategory');
+    Route::get('/category/{slug}', $site_prefix.'ArticleController@showCategory');
 
     // Tag
-    Route::get('/tag/{tag_name}', $controller_prefix_site.'ArticleController@showTag');
+    Route::get('/tag/{tag_name}', $site_prefix.'ArticleController@showTag');
 
     
     Sudacore::getExtendWebRoutes();
