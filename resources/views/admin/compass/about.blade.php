@@ -34,7 +34,7 @@
                 <div class="card">
                 
                     <div class="card-body store">
-                        <a href="{{ url('https://suda.gtd.xyz') }}" target="_blank" title="应用市场" style="display:block;width:100%">应用市场</a>
+                        <a href="{{ url('https://panel.cc') }}" target="_blank" title="应用市场" style="display:block;width:100%">应用市场</a>
                     </div>
                 </div>
         </div> --}}

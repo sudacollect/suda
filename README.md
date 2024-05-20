@@ -2,7 +2,7 @@
 Laravel Suda - build mutiple extensions, private SaaS.
 
 
-- [Official Website](https://suda.gtd.xyz)
+- [Official Website](https://panel.cc)
 - [Documents](https://docs.gtd.xyz)
 - [中文文档](https://docs.gtd.xyz)
 

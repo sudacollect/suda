@@ -44,7 +44,7 @@
                         <p>未授权禁止用于任何商业用途。</p>
                         
                         <p>
-                            通过 <a href="{{ url('https://suda.gtd.xyz') }}" title="GTD.SUDA" style="text-decoration:underline">Suda</a> 申请授权
+                            通过 <a href="{{ url('https://panel.cc') }}" title="GTD.SUDA" style="text-decoration:underline">Suda</a> 申请授权
                         </p>
                     
                         <p>

@@ -3,7 +3,7 @@
  * LoginController.php
  * description
  * date 2016-02-06 18:26:12
- * author suda <hello@suda.gtd.xyz>
+ * author suda <dev@gtd.xyz>
  * @copyright GTD. All Rights Reserved.
  */
 

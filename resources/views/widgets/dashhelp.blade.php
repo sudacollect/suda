@@ -9,7 +9,7 @@
             </div> --}}
              
             <div class="card-body p-0">
-                <a href="https://suda.gtd.xyz" target='_blank'>
+                <a href="https://panel.cc" target='_blank'>
                 <img style="width:100%;height:auto;" src="{{ suda_asset('images/dash_help.png') }}">
                 </a>
             </div>

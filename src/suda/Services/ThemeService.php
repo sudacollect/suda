@@ -3,7 +3,7 @@
  * ThemeService.php
  * 模板服务
  * date 2017-09-06 14:41:54
- * author suda <hello@suda.gtd.xyz>
+ * author suda <dev@gtd.xyz>
  * @copyright GTD. All Rights Reserved.
  */
  

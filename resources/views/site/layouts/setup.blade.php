@@ -58,7 +58,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nnavbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="{{ url('https://suda.gtd.xyz') }}" class="nav-link">
+                            <a href="{{ url('https://panel.cc') }}" class="nav-link">
                                 <i class="ion-home"></i>&nbsp;Suda
                             </a>
                         </li>

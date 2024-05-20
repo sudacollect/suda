@@ -10,7 +10,7 @@
              
             <div class="card-body">
                 <p>{{ __('suda_lang::press.dash.customize_setting') }}<a href="{{ admin_url('setting/dashboardinfo') }}" class="btn btn-primary btn-sm">{{ __('suda_lang::press.dash.customize_btn_text') }}</a></p>
-                <p>{{ __('suda_lang::press.dash.dev_tips') }}<a target="_blank" href="https://suda.gtd.xyz" class="btn btn-light btn-sm">{{ __('suda_lang::press.dash.dev_link_text') }}</a></p>
+                <p>{{ __('suda_lang::press.dash.dev_tips') }}<a target="_blank" href="https://panel.cc" class="btn btn-light btn-sm">{{ __('suda_lang::press.dash.dev_link_text') }}</a></p>
             </div>
              
          </div>

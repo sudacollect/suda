@@ -3,7 +3,7 @@
  * AdminCommand.php
  * description
  * date 2018-06-01 12:14:31
- * author suda <hello@suda.gtd.xyz>
+ * author suda <dev@gtd.xyz>
  * @copyright GTD. All Rights Reserved.
  */
  

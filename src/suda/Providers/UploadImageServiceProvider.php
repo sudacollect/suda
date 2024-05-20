@@ -3,7 +3,7 @@
  * UploadImageServiceProvider.php
  * description
  * date 2017-11-04 15:23:20
- * author suda <hello@suda.gtd.xyz>
+ * author suda <dev@gtd.xyz>
  * @copyright GTD. All Rights Reserved.
  */
  

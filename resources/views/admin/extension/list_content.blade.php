@@ -104,7 +104,7 @@
             <div class="col-sm-12  z-empty z-empty-content">
                 <div class="empty-icon"></div>
                 <p>
-                    <a target="_blank" href="{{ url('https://suda.gtd.xyz') }}">发现更多应用</a>
+                    <a target="_blank" href="{{ url('https://panel.cc') }}">发现更多应用</a>
                 </p>
     
             </div>

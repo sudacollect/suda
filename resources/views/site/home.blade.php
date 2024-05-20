@@ -11,7 +11,7 @@
       </p>
   
       <div class="mb-5">
-        <a href="https://suda.gtd.xyz" class="btn btn-outline-primary px-4">{{ __('suda_lang::demo.kv_btn') }}</a>
+        <a href="https://panel.cc" class="btn btn-outline-primary px-4">{{ __('suda_lang::demo.kv_btn') }}</a>
       </div>
   
       <hr class="col-3 col-md-2 mb-5">

@@ -151,7 +151,7 @@
             <span class="badge bg-light text-dark">{{ $app_name.'/theme-'.$theme_name }}</span>
             <span class="help-block">
                 {{ __('suda_lang::press.appearance.widget_tips') }}
-                <a href="https://suda.gtd.xyz" style="color:#999;">
+                <a href="https://panel.cc" style="color:#999;">
                     <i class="ion-help-circle"></i> {{ __('suda_lang::press.appearance.widget_how') }}
                 </a>
             </span>

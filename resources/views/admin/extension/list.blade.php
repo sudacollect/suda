@@ -37,7 +37,7 @@
                 </button>
                 @endif
                 
-                <a href="{{ url('http://suda.gtd.xyz') }}" target="_blank" class="btn btn-light btn-sm">
+                <a href="{{ url('https://panel.cc') }}" target="_blank" class="btn btn-light btn-sm">
                     <i class="ion-bag-handle-outline"></i>&nbsp;{{ __('suda_lang::press.extensions.market') }}
                 </a>
 

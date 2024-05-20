@@ -3,7 +3,7 @@
  * Log.php
  * description
  * date 2018-04-23 16:03:37
- * author suda <hello@suda.gtd.xyz>
+ * author suda <dev@gtd.xyz>
  * @copyright GTD. All Rights Reserved.
  */
  
