@@ -71,8 +71,8 @@ class InstallCommand extends Command
         $this->info('Publishing the Suda assets, database, and config files');
         
         //updatea assets
-        $tags = ['core_assets','seeds','core_demo'];
-        $theme_tag = ['core_themes'];
+        $tags = ['assets','seeds','demo'];
+        $theme_tag = ['themes'];
         
         //providers
         $this->call('vendor:publish', ['--provider' => SudaServiceProvider::class, '--tag' => $tags,'--force'=>true]);
@@ -118,6 +118,8 @@ class InstallCommand extends Command
         
         $this->info('Add storage symlink to your public folder');
         $this->call('storage:link');
+
+
         
         $this->info('Successfully installed Suda!');
     }

@@ -69,13 +69,13 @@ class ThemeService
     //更新模板信息缓存
     public function updateCache($app)
     {
-        $app_dir_path = theme_path($app);
-        if(!$this->files->exists($app_dir_path)){
+        $theme_dir = theme_path($app);
+        if(!$this->files->exists($theme_dir)){
             return;
         }
 
         // theme dir
-        $themes_path = $this->files->directories($app_dir_path);
+        $themes_path = $this->files->directories($theme_dir);
 
         if(empty($themes_path)){
             return;
@@ -93,7 +93,7 @@ class ThemeService
             if($this->files->exists($theme_path.'/theme.php')){
                 $theme = require_once($theme_path.'/theme.php');
                 if($theme && is_array($theme)){
-                    $theme[$theme_basename]['screenshot'] = 'theme/'.$app.'/'.$theme_basename.'/screenshot.png';
+                    $theme[$theme_basename]['screenshot'] = 'suda/theme/'.$app.'/'.$theme_basename.'/screenshot.png';
                     $themes[$theme_basename] = $theme[$theme_basename];
                 }
             }else{

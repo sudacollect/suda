@@ -38,7 +38,7 @@ if (!function_exists('suda_widget')) {
 if (!function_exists('suda_asset')) {
     function suda_asset($path, $secure = null)
     {
-        return asset(config('sudaconf.core_assets_path').'/'.$path, $secure?$secure:config('sudaconf.force_secure',null));
+        return asset('suda/assets/'.$path, $secure?$secure:config('sudaconf.force_secure',null));
     }
 }
 
@@ -103,7 +103,7 @@ if (! function_exists('suda_path')) {
 if (! function_exists('theme_path')) {
     function theme_path($path = '')
     {
-        return public_path('theme/'.$path);
+        return public_path('suda/theme/'.$path);
     }
 }
 

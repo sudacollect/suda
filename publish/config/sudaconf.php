@@ -100,10 +100,6 @@ return [
     // LOCALE LANGUAGE
     'locale'                => 'zh_CN',
 
-    // DEFAULT ASSETS PATH
-    'core_assets_path'      => '/vendor/suda/assets',
-
-
     /*
     |--------------------------------------------------------------------------
     | THEME

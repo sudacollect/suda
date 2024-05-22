@@ -237,7 +237,7 @@ return [
         'tool_menu' => '菜单设置',
         'tool_style' => '后台主题',
         'tool_permission' => '权限设置',
-        'tool_extend' => '应用管理',
+        'tool_extend' => '应用',
         'tool_compass' => '组件',
     ],
 
@@ -296,7 +296,7 @@ return [
 
     'passport' => [
         'dashboard' => '管理',
-        'extension' => '应用管理',
+        'extension' => '应用',
     ],
 
     'articles' => [

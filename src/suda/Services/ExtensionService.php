@@ -175,7 +175,7 @@ class ExtensionService
                         {
                             $ext_config['logo'] = $ext_dir_path.'/icon.png';
                         }else{
-                            $ext_config['logo'] = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
+                            $ext_config['logo'] = public_path('suda/assets/images/empty_extension_icon.png');
                         }
 
                         // copy extension logo
@@ -800,7 +800,7 @@ class ExtensionService
                         {
                             $ext_config['logo'] = $packagePath.'/icon.png';
                         }else{
-                            $ext_config['logo'] = public_path(config('sudaconf.core_assets_path').'/images/empty_extension_icon.png');
+                            $ext_config['logo'] = public_path('suda/assets/images/empty_extension_icon.png');
                         }
                         $package['config'] = $ext_config;
                         $composerJsonConfs[$packagePath] = $package;

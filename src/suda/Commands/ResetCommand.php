@@ -86,7 +86,7 @@ class ResetCommand extends Command
         
         if ($this->argument('reset')=='themes') {
             
-            $theme_tag = ['core_themes'];
+            $theme_tag = ['themes'];
             $this->call('vendor:publish', ['--provider' => SudaServiceProvider::class, '--tag' => $theme_tag,'--force'=>true]);
             
             $resets = 'public/theme';
@@ -96,7 +96,7 @@ class ResetCommand extends Command
             
             $this->info('Publishing the Suda assets');
             //更新静态资源数据表
-            $tags = ['core_assets'];
+            $tags = ['assets'];
             //注册类
             $this->call('vendor:publish', ['--provider' => SudaServiceProvider::class, '--tag' => $tags,'--force'=>true]);
             //注册配置文件

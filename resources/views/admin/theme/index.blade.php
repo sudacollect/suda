@@ -20,25 +20,8 @@
         
         
         <div class="col-sm-12 suda_page_body">
-            <ul class="nav nav-tabs card-tabs">
-                @if(isset($apps))
-                
-                @foreach($apps as $zapp)
 
-                @if($zapp!='admin')
-                <li class="nav-item">
-                    <a class="nav-link  @if($app_name==$zapp) bg-white active @endif " href="{{ admin_url('theme/'.$zapp) }}">{{ $zapp }}</a>
-                </li>
-                @endif
-                
-
-                @endforeach
-
-                @endif
-                
-            </ul>
-
-            <div class="card card-theme card-with-tab">
+            <div class="card card-theme">
                     
                 <div class="card-body">
                     

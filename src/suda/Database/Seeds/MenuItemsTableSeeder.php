@@ -368,6 +368,22 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 1,
             ])->save();
         }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'suda_lang::press.menu_items.tool_menu',
+            'slug'    => 'tool_menu',
+            'url'     => '',
+            'route'   => 'sudaroute.admin.tool_menu',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'ion-menu-outline',
+                'parent_id'  => $settingMenuItem->id,
+                'order'      => 1,
+            ])->save();
+        }
         
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
@@ -432,6 +448,31 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 1,
             ])->save();
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | extension
+        |--------------------------------------------------------------------------
+        |
+        | description
+        |
+        */
+        
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'suda_lang::press.menu_items.tool_extend',
+            'slug'    => 'tool_extend',
+            'url'     => '',
+            'route'   => 'sudaroute.admin.tool_extend_status',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'ion-grid-outline',
+                'parent_id'  => 0,
+                'order'      => 9,
+            ])->save();
+        }
         
         /*
         |--------------------------------------------------------------------------
@@ -448,48 +489,18 @@ class MenuItemsTableSeeder extends Seeder
             'title'   => 'suda_lang::press.menu_items.tool',
             'slug'    => 'tool',
             'url'     => '',
-            'route'   => 'sudaroute.admin.tool_menu',
+            'route'   => 'sudaroute.admin.tool_compass',
         ]);
         if (!$toolsMenuItem->exists) {
             $toolsMenuItem->fill([
                 'target'     => '_self',
                 'icon_class' => 'ion-help-buoy-outline',
                 'parent_id'  => null,
-                'order'      => 9,
+                'order'      => 99,
             ])->save();
         }
 
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'suda_lang::press.menu_items.tool_extend',
-            'slug'    => 'tool_extend',
-            'url'     => '',
-            'route'   => 'sudaroute.admin.tool_extend_status',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'ion-grid-outline',
-                'parent_id'  => $toolsMenuItem->id,
-                'order'      => 91,
-            ])->save();
-        }
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'suda_lang::press.menu_items.tool_menu',
-            'slug'    => 'tool_menu',
-            'url'     => '',
-            'route'   => 'sudaroute.admin.tool_menu',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'ion-menu-outline',
-                'parent_id'  => $toolsMenuItem->id,
-                'order'      => 92,
-            ])->save();
-        }
+        
 
         
         
@@ -508,7 +519,8 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 95,
             ])->save();
         }
+
         
-        
+
     }
 }

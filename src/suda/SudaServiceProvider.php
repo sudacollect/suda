@@ -135,13 +135,13 @@ class SudaServiceProvider extends ServiceProvider
             'area' => [
                 "{$publishPath}/config/suda_districts.php" => config_path('suda_districts.php'),
             ],
-            'core_themes' => [
-                "{$publishPath}/theme/" => public_path('theme'),
+            'themes' => [
+                "{$publishPath}/theme/" => storage_path('app/suda/theme'),
             ],
-            'core_assets' => [
-                "{$publishPath}/assets/" => public_path(config('sudaconf.core_assets_path','/vendor/suda/assets')),
+            'assets' => [
+                "{$publishPath}/assets/" => storage_path('app/suda/assets'),
             ],
-            'core_demo' => [
+            'demo' => [
                 "{$publishPath}/demo/" => storage_path('app/public/images/demo'),
             ],
             // 'seeds' => [

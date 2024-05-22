@@ -19,6 +19,6 @@ return [
 
     'guide_install'=>'安装速搭',
     'guide_config'=>'系统参数配置',
-    'guide_extension'=>'应用管理',
+    'guide_extension'=>'应用',
     'guide_theme'=>'风格模板',
 ];

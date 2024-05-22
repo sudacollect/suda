@@ -23,14 +23,14 @@ class MenuController extends DashboardController
     
     public function menus(){
         
-        $this->gate('tool.tool_menu',app(Setting::class));
+        $this->gate('setting.tool_menu',app(Setting::class));
         
         $this->title(__('suda_lang::press.setting_menu'));
         
         $menus = Menu::get();
         
         $this->setData('menus',$menus);
-        $this->setMenu('tool','tool_menu');
+        $this->setMenu('setting','tool_menu');
         return $this->display('menu.list');    
     }
     
@@ -60,7 +60,7 @@ class MenuController extends DashboardController
         
         
         
-        $this->setMenu('tool','tool_menu');
+        $this->setMenu('setting','tool_menu');
         return $this->display($view);
     }
     
@@ -187,7 +187,7 @@ class MenuController extends DashboardController
         $this->title(__('suda_lang::press.edit_menu'));
         $this->setData('modal_title',__('suda_lang::press.edit_menu'));
 
-        $this->setMenu('tool','tool_menu');
+        $this->setMenu('setting','tool_menu');
         return $this->display('menu.recovery');
     }
 
@@ -212,7 +212,7 @@ class MenuController extends DashboardController
     
     public function items(Request $request,$id){
         $this->title(__('suda_lang::press.menu_item'));
-        $this->setMenu('tool','tool_menu');
+        $this->setMenu('setting','tool_menu');
         
         $view = 'menu.items';
         if(intval($id)>0){
@@ -238,7 +238,7 @@ class MenuController extends DashboardController
     
     public function addItem(Request $request,$id=''){
         
-        $this->setMenu('tool','tool_menu');
+        $this->setMenu('setting','tool_menu');
         $this->title(__('suda_lang::press.add_menu_item'));
         
         $this->setData('modal_title',__('suda_lang::press.add_menu_item'));
@@ -263,7 +263,7 @@ class MenuController extends DashboardController
     
     public function editItem(Request $request,$id=''){
         
-        $this->setMenu('tool','tool_menu');
+        $this->setMenu('setting','tool_menu');
         $this->title(__('suda_lang::press.add_menu_item'));
         $this->setData('modal_title',__('suda_lang::press.add_menu_item'));
         // $this->setData('modal_icon_class','ion-add-circle');

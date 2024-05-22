@@ -21,7 +21,7 @@ class ManageController extends DashboardController
     
     public function index(Request $request,$status='enabled')
     {
-        $this->gate('tool.tool_extend',app(\Gtd\Suda\Models\Setting::class));
+        $this->gate('tool_extend',app(\Gtd\Suda\Models\Setting::class));
 
         $this->title(__('suda_lang::press.menu_items.tool_extend'));
         $page_no = 0;
@@ -43,7 +43,7 @@ class ManageController extends DashboardController
 
         $this->setData('active',$status);
         
-        $this->setMenu('tool','tool_extend');
+        $this->setMenu('tool_extend');
         return $this->display('extension.list');
     }
 
@@ -114,7 +114,7 @@ class ManageController extends DashboardController
             $file = $files->get($extension['logo']);
             $type = $files->mimeType($extension['logo']);
         }else{
-            $empty_icon = public_path('vendor/suda/assets/images/empty_extension_icon.png');
+            $empty_icon = public_path('suda/assets/images/empty_extension_icon.png');
             $file = $files->get($empty_icon);
             $type = $files->mimeType($empty_icon);;
         }

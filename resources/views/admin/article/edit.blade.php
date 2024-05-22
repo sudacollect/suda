@@ -81,22 +81,22 @@
 
                     <div class="mb-3{{ $errors->has('slug') ? ' has-error' : '' }}" >
                         <label for="slug" >
-                            {{ __('suda_lang::press.pages.slug') }}
+                            {{ __('suda_lang::press.articles.slug') }}
                         </label>
                         <input type="text" name="slug" class="form-control" id="slug" placeholder="{{ __('suda_lang::press.pages.slug') }}" value="{{ $item->slug }}">
                         <span class="help-block">
-                            {{ __('suda_lang::press.pages.slug_tips') }}
+                            {{ __('suda_lang::press.articles.slug_tips') }}
                         </span>
                     </div>
                     
                     <div class="mb-3{{ $errors->has('redirect_url') ? ' has-error' : '' }}" >
                         <label for="redirect_url" >
-                            {{ __('suda_lang::press.pages.redirect_url') }}
+                            {{ __('suda_lang::press.articles.redirect_url') }}
                         </label>
         
                         <input type="text" name="redirect_url" class="form-control" id="redirect_url" placeholder="{{ __('suda_lang::press.pages.redirect_url') }}" value="{{ $item->redirect_url }}">
                         <span class="help-block">
-                            {{ __('suda_lang::press.pages.redirect_tips') }}
+                            {{ __('suda_lang::press.articles.redirect_tips') }}
                         </span>
         
                     </div>
