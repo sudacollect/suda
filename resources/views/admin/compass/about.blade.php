@@ -23,7 +23,7 @@
                 <div class="card">
                 
                     <div class="card-body document">
-                        <a href="{{ url('https://docs.gtd.xyz') }}" target="_blank" title="文档" style="display:block;width:100%">使用说明</a>
+                        <a href="{{ url('https://docs.panel.cc') }}" target="_blank" title="文档" style="display:block;width:100%">使用说明</a>
                     </div>
                 </div>
         </div>

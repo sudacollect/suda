@@ -3,8 +3,8 @@ Laravel Suda - build mutiple extensions, private SaaS.
 
 
 - [Official Website](https://panel.cc)
-- [Documents](https://docs.gtd.xyz)
-- [中文文档](https://docs.gtd.xyz)
+- [Documents](https://docs.panel.cc)
+- [中文文档](https://docs.panel.cc)
 
 [![Latest Stable Version](http://poser.pugx.org/gtdxyz/suda/v)](https://packagist.org/packages/gtdxyz/suda) 
 [![Total Downloads](http://poser.pugx.org/gtdxyz/suda/downloads)](https://packagist.org/packages/gtdxyz/suda) 

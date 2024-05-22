@@ -32,10 +32,10 @@
           <h2>{{ __('suda_lang::demo.guides') }}</h2>
           
           <ul class="icon-list ps-0">
-            <li class="d-flex align-items-start mb-1"><a href="http://docs.gtd.xyz/install">{{ __('suda_lang::demo.guide_install') }}</a></li>
-            <li class="d-flex align-items-start mb-1"><a href="http://docs.gtd.xyz/basic/config/">{{ __('suda_lang::demo.guide_config') }}</a></li>
-            <li class="d-flex align-items-start mb-1"><a href="http://docs.gtd.xyz/basic/extensions/">{{ __('suda_lang::demo.guide_extension') }}</a></li>
-            <li class="d-flex align-items-start mb-1"><a href="http://docs.gtd.xyz/basic/theme/">{{ __('suda_lang::demo.guide_theme') }}</a></li>
+            <li class="d-flex align-items-start mb-1"><a href="http://docs.panel.cc/install">{{ __('suda_lang::demo.guide_install') }}</a></li>
+            <li class="d-flex align-items-start mb-1"><a href="http://docs.panel.cc/basic/config/">{{ __('suda_lang::demo.guide_config') }}</a></li>
+            <li class="d-flex align-items-start mb-1"><a href="http://docs.panel.cc/basic/extensions/">{{ __('suda_lang::demo.guide_extension') }}</a></li>
+            <li class="d-flex align-items-start mb-1"><a href="http://docs.panel.cc/basic/theme/">{{ __('suda_lang::demo.guide_theme') }}</a></li>
           </ul>
         </div>
       </div>
