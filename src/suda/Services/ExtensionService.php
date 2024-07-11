@@ -391,7 +391,7 @@ class ExtensionService
     }
     
     //启用应用
-    public function install($ext_slug,$force=false,&$msg)
+    public function install($ext_slug,$force=false,&$msg='')
     {
         
         $ext = false;
