@@ -65,6 +65,7 @@ trait AvatarTrait
                 //#2 保存新的头像关系
                 $operate->createMediatables($media_id,'avatar');
                 
+                return $media_id;
             }
         }
     }
