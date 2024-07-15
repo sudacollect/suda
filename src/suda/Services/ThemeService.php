@@ -27,7 +27,7 @@ class ThemeService
 
     protected $files;
     protected $apps;
-    protected $extension = 'php';
+    protected $fileExtension = 'php';
     
     protected $themePaths = null;
     protected $themeCache = [];
@@ -183,7 +183,6 @@ class ThemeService
         }
         
         $theme_path = theme_path($app.'/'.$theme.'/views');
-        
         if(!$this->files->exists(theme_path($app.'/'.$theme).'/theme.php')){
             if($app=='admin'){
                 $theme = 'default';
@@ -191,15 +190,14 @@ class ThemeService
             }else{
                 exit('Suda Error! '.$app.'/'.$theme.' Theme Not Found');
             }
-            
         }
         
-        $extension = $this->extension;
+        $fileExtension = $this->fileExtension;
         $theme_space_name = 'theme_'.$app;
         
         $view = str_replace('.', '/', $view);
         $view_source_path = str_replace('.', '/', $view_source);
-        $theme_view_path = $theme_path.'/'.$view_source_path.'.blade.'.$extension;
+        $theme_blade_path = $theme_path.'/'.$view_source_path.'.blade.'.$fileExtension;
         
         $data['sdcore']['theme'] = $theme;
         $data['sdcore']['admin_path'] = config('sudaconf.admin_path','admin');
@@ -209,30 +207,32 @@ class ThemeService
         View::share('theme',$theme);
         
         // add namespace
+        // #TODO remove this
         View::addNamespace($theme_space_name, $theme_path);
 
         // set as theme path
-        View::addNamespace('view_path', $theme_path);
+        $view_current_path = $theme_path;
+        
         
         //define view_app
-        $view_app = suda_path('resources/views/'.$app);
-        View::addNamespace('view_app', $view_app);
+        $view_app_path = suda_path('resources/views/'.$app);
+        View::addNamespace('view_app', $view_app_path);
 
         //弥补package定义的不足
         View::addNamespace('view_suda', suda_path('resources/views'));
         
-        if($this->files->exists(resource_path('views/'.$app.'/'.$view_source_path.'.blade.'.$extension))){
+        if($this->files->exists(resource_path('views/'.$app.'/'.$view_source_path.'.blade.'.$fileExtension))){
             
             $resource_path = resource_path('views/'.$app);
 
             // set as laravel path
-            View::addNamespace('view_path', $resource_path);
+            $view_current_path = $resource_path;
             
             if(View::exists($app.'.'.$view_source)){
                 return view($app.'.'.$view_source)->with($data);
             }
 
-        }elseif($this->files->exists($theme_view_path)){
+        }elseif($this->files->exists($theme_blade_path)){
             
             //重新定义finder
             $viewFinder = new FileviewFinder($this->files,[$theme_path]);
@@ -241,15 +241,16 @@ class ThemeService
             View::addNamespace($theme_space_name, $theme_path);
 
             // set as theme path
-            View::addNamespace('view_path', $theme_path);
+            $view_current_path = $theme_path;
 
             return view($view_source)->with($data);
             
         }else{
 
             // set as app path
-            View::addNamespace('view_path', $view_app);
+            $view_current_path = $view_app_path;
         }
+        View::addNamespace('view_path', $view_current_path);
 
         $in_extension = false;
         if($app == 'admin')

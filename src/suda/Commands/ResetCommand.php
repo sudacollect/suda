@@ -102,7 +102,7 @@ class ResetCommand extends Command
             //注册配置文件
             $this->call('vendor:publish', ['--provider' => SudaServiceProvider::class, '--tag' => 'config']);
             
-            $resets = 'public/vendor/suda';
+            $resets = 'public/suda';
         }
         
         
