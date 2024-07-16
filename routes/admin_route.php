@@ -337,6 +337,7 @@ Route::group([
         // recover default menu data
         Route::get('menu/recovery', 'recovery')->name('tool_menu_recovery');
         Route::post('menu/recovery/save', 'recoverySave')->name('tool_menu_recovery_save');
+        Route::post('menu/cache/update', 'menuCacheUpdate');
         
     });
     

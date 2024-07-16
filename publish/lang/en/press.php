@@ -236,6 +236,7 @@ return [
     ],
     
     'menu_recover' => [
+        'cache' => 'Update Cache',
         'restore' => 'Restore',
         'title' => 'Restore default Menu',
         'tips_1' => 'Restore the default menu to the initialization data。',

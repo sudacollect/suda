@@ -191,7 +191,7 @@ class MenuController extends DashboardController
         return $this->display('menu.recovery');
     }
 
-    //更新数据
+    // 更新数据
     public function recoverySave(Request $request)
     {
         
@@ -207,6 +207,13 @@ class MenuController extends DashboardController
 
         Artisan::call($command, $params);
         Menu::updateCache(1);
+        return $this->responseAjax('success', __('suda_lang::press.msg.success'), 'self.refresh');
+    }
+
+    // cache update
+    public function menuCacheUpdate(Request $request)
+    {
+        Menu::updateCache($request->id);
         return $this->responseAjax('success', __('suda_lang::press.msg.success'), 'self.refresh');
     }
     

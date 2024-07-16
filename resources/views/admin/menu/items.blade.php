@@ -31,6 +31,9 @@
             <div class="col-sm-8">
                 <div class="card">
                     <div class="card-header bg-white">
+                        <a href="{{ admin_url('menu/cache/update') }}" action_id="{{ $menu->id }}" action_title="Confirmed?" class="x-suda-pop-action btn btn-light btn-sm float-end ms-2" title="{{ __('suda_lang::press.menu_recover.cache') }}">
+                            {{ __('suda_lang::press.menu_recover.cache') }}
+                        </a>
                         {{ $menu->name }}
                         @if($menu->id==1)
                         <a href="{{ admin_url('menu/recovery') }}" class="pop-modal btn btn-light btn-sm float-end" title="{{ __('suda_lang::press.menu_recover.restore') }}">

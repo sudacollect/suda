@@ -11,8 +11,12 @@ namespace Gtd\Suda\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Symfony\Component\Console\Input\InputOption;
+use RuntimeException;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 use Gtd\Suda\Traits\Seedable;
 use Gtd\Suda\SudaServiceProvider;
@@ -94,10 +98,12 @@ class InstallCommand extends Command
         //更新自动加载
         $this->info('Dump the autoloaded and reload files');
         $composer = $this->findComposer();
-        $composer_arr = [$composer.' dump-autoload'];
-        $process = new Process($composer_arr);
-        $process->setTimeout(null); //Setting timeout to null to prevent installation from stopping at a certain point in time
-        $process->setWorkingDirectory(base_path())->run();
+        $composer_commands = [
+            $composer.' dump-autoload'
+        ];
+        
+        // run dump-autoload
+        Process::fromShellCommandline(implode(' && ', $composer_commands),null,[],null,null)->run();
         
         //加载路由器
         $this->info('Add Suda routes to routes/web.php');
@@ -123,4 +129,5 @@ class InstallCommand extends Command
         
         $this->info('Successfully installed Suda!');
     }
+
 }
