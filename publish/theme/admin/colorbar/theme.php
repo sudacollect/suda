@@ -4,7 +4,7 @@
  * 模板风格管理
  * date 2017-12-11 10:48:55
  * author suda <dev@gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * @copyright Suda. All Rights Reserved.
  */
 
 

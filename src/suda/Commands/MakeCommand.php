@@ -4,7 +4,7 @@
  * description
  * date 2018-06-01 12:14:31
  * author suda <dev@gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * @copyright Suda. All Rights Reserved.
  */
  
 namespace Gtd\Suda\Commands;

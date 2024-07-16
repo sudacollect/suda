@@ -4,7 +4,7 @@
  * 媒体资源方法
  * date 2018-12-12 15:44:59
  * author daocatt <dev@gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * @copyright Suda. All Rights Reserved.
  */
  
 

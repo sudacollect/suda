@@ -4,7 +4,7 @@
  * 模板服务
  * date 2017-09-06 14:41:54
  * author suda <dev@gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * @copyright Suda. All Rights Reserved.
  */
  
 namespace Gtd\Suda\Services;

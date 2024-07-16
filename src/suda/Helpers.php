@@ -4,7 +4,7 @@
 * 自定义函数表
 * date 2016-11-11 19:01:12
 * @author dev <dev@gtd.xyz>
-* @copyright GTD. All Rights Reserved.
+* @copyright Suda. All Rights Reserved.
 */
 
 use Illuminate\Support\Arr;

@@ -4,7 +4,7 @@
  * description
  * date 2017-11-06 10:23:31
  * author suda <dev@gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * @copyright Suda. All Rights Reserved.
  */
  
 

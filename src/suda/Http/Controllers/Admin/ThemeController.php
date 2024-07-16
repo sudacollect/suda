@@ -4,7 +4,7 @@
  * description
  * date 2017-11-06 12:22:45
  * author suda <dev@gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * @copyright Suda. All Rights Reserved.
  */
 
 namespace Gtd\Suda\Http\Controllers\Admin;

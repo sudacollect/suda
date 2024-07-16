@@ -4,7 +4,7 @@
  * description
  * date 2017-11-27 23:51:05
  * author suda <dev@gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * @copyright Suda. All Rights Reserved.
  */
 
 namespace Gtd\Suda\Providers;

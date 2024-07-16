@@ -4,7 +4,7 @@
  * 适用于后台的媒体资源管理
  * date 2017-11-01 09:59:37
  * author suda <dev@gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * @copyright Suda. All Rights Reserved.
  */
  
 

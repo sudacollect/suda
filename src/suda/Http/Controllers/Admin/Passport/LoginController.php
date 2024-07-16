@@ -4,7 +4,7 @@
  * description
  * date 2016-02-06 18:26:12
  * author suda <dev@gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * @copyright Suda. All Rights Reserved.
  */
 
 namespace Gtd\Suda\Http\Controllers\Admin\Passport;

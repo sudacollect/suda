@@ -4,7 +4,7 @@
  * description
  * date 2018-04-23 16:13:54
  * author suda <dev@gtd.xyz>
- * @copyright GTD. All Rights Reserved.
+ * @copyright Suda. All Rights Reserved.
  */
 
 namespace Gtd\Suda\Contracts;
