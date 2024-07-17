@@ -151,7 +151,7 @@ return [
     
     'close'     => '关闭',
     'open'      => '开启',
-    'enable'    => '是否启用',
+    'enable'    => '启用',
     'status'    => '状态',
     'notice'    => '提示',
     

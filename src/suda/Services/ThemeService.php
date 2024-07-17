@@ -195,9 +195,14 @@ class ThemeService
         $fileExtension = $this->fileExtension;
         $theme_space_name = 'theme_'.$app;
         
+        // example: view_suda::site/article/list
         $view = str_replace('.', '/', $view);
+        // example: article/list
         $view_source_path = str_replace('.', '/', $view_source);
-        $theme_blade_path = $theme_path.'/'.$view_source_path.'.blade.'.$fileExtension;
+        // example: article/list.blade.php
+        $view_source_file = $view_source_path.'.blade.'.$fileExtension;
+
+        $theme_abs_path = $theme_path.'/'.$view_source_file;
         
         $data['sdcore']['theme'] = $theme;
         $data['sdcore']['admin_path'] = config('sudaconf.admin_path','admin');
@@ -211,7 +216,7 @@ class ThemeService
         View::addNamespace($theme_space_name, $theme_path);
 
         // set as theme path
-        $view_current_path = $theme_path;
+        $to_view_path = $theme_path;
         
         
         //define view_app
@@ -221,18 +226,27 @@ class ThemeService
         //弥补package定义的不足
         View::addNamespace('view_suda', suda_path('resources/views'));
         
-        if($this->files->exists(resource_path('views/'.$app.'/'.$view_source_path.'.blade.'.$fileExtension))){
+        if($this->files->exists(resource_path('views/'.$app.'/'.$view_source_file))){
             
             $resource_path = resource_path('views/'.$app);
 
             // set as laravel path
-            $view_current_path = $resource_path;
+            $to_view_path = $resource_path;
             
             if(View::exists($app.'.'.$view_source)){
                 return view($app.'.'.$view_source)->with($data);
             }
 
-        }elseif($this->files->exists($theme_blade_path)){
+        }elseif($this->files->exists(extension_path('Suda/resources/views/'.$app.'/'.$view_source_file))){
+
+            $resource_path = extension_path('Suda/resources/views/'.$app);
+
+            // set as laravel path
+            $replace_view = 'view_extension::Suda.resources.views.'.$app.'.'.$view_source;
+            
+            return view($replace_view)->with($data);
+
+        }elseif($this->files->exists($theme_abs_path)){
             
             //重新定义finder
             $viewFinder = new FileviewFinder($this->files,[$theme_path]);
@@ -241,16 +255,17 @@ class ThemeService
             View::addNamespace($theme_space_name, $theme_path);
 
             // set as theme path
-            $view_current_path = $theme_path;
+            $to_view_path = $theme_path;
 
             return view($view_source)->with($data);
             
         }else{
 
             // set as app path
-            $view_current_path = $view_app_path;
+            $to_view_path = $view_app_path;
         }
-        View::addNamespace('view_path', $view_current_path);
+
+        View::addNamespace('view_path', $to_view_path);
 
         $in_extension = false;
         if($app == 'admin')
@@ -446,6 +461,7 @@ class ThemeService
             
             $data['navbar_style'] = $navbar_style;
         }
+        
         return view($view)->with($data);
     }
     
