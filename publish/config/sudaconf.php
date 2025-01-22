@@ -3,7 +3,7 @@
  * SUDACONF.PHP
  * DESCRIPTION
  * DATE 2017-10-27 13:21:09
- * AUTHOR SUDA <DEV@GTD.XYZ>
+ * AUTHOR SUDA <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
 

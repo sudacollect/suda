@@ -3,7 +3,7 @@
  * resetCommand.php
  * description
  * date 2018-06-01 12:14:31
- * author suda <dev@gtd.xyz>
+ * author suda <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
  

@@ -3,7 +3,7 @@
  * MetaServiceProvider.php
  * description
  * date 2017-11-27 23:51:05
- * author suda <dev@gtd.xyz>
+ * author suda <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
 

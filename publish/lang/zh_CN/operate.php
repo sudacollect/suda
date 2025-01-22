@@ -3,7 +3,7 @@
  * press.php
  * 中文语言包
  * date 2017-11-22 15:34:28
- * author suda <dev@gtd.xyz>
+ * author suda <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
 

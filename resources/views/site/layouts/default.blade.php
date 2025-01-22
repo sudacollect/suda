@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=0, initial-scale=1">
-    <meta name="author" content="Suda, dev@gtd.xyz">
+    <meta name="author" content="Suda, dev@panel.cc">
     
     <title>{{ metas($sdcore) }}</title>
     <meta name="keywords" itemprop="keywords" content="{{ $sdcore->keywords }}">

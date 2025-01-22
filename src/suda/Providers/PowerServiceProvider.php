@@ -3,7 +3,7 @@
  * PowerServiceProvider.php
  * description
  * date 2017-10-27 10:51:05
- * author suda <dev@gtd.xyz>
+ * author suda <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
 

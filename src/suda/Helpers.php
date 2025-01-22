@@ -3,7 +3,7 @@
 * helpers.php
 * 自定义函数表
 * date 2016-11-11 19:01:12
-* @author dev <dev@gtd.xyz>
+* @author dev <dev@panel.cc>
 * @copyright Suda. All Rights Reserved.
 */
 

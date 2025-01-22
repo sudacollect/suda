@@ -3,7 +3,7 @@
  * MediasController.php
  * 媒体资源方法
  * date 2018-12-12 15:44:59
- * author daocatt <dev@gtd.xyz>
+ * author daocatt <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
  

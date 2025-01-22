@@ -3,7 +3,7 @@
  * MediasController.php
  * 适用于后台的媒体资源管理
  * date 2017-11-01 09:59:37
- * author suda <dev@gtd.xyz>
+ * author suda <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
  

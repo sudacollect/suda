@@ -3,7 +3,7 @@
  * ThemeController.php
  * description
  * date 2017-11-06 12:22:45
- * author suda <dev@gtd.xyz>
+ * author suda <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
 

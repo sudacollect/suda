@@ -3,7 +3,7 @@
  * SiteController.php
  * description
  * date 2017-09-05 10:23:31
- * author suda <dev@gtd.xyz>
+ * author suda <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
 

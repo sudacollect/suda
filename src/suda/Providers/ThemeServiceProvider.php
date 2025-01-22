@@ -3,7 +3,7 @@
  * ThemeServiceProvider.php
  * description
  * date 2017-06-06 11:00:57
- * author suda <dev@gtd.xyz>
+ * author suda <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
  

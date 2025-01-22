@@ -3,7 +3,7 @@
  * Base.php
  * description
  * date 2018-04-23 16:13:54
- * author suda <dev@gtd.xyz>
+ * author suda <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
 

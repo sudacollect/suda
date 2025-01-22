@@ -3,7 +3,7 @@
  * LoginController.php
  * description
  * date 2016-02-06 18:26:12
- * author suda <dev@gtd.xyz>
+ * author suda <dev@panel.cc>
  * @copyright Suda. All Rights Reserved.
  */
 
