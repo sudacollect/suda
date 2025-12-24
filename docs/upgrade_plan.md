@@ -1,7 +1,9 @@
-# Suda11 升级至 Laravel 12 及技术栈升级计划
+# Suda11 升级至 Laravel 12 及技术栈升级计划（规划草案）
+
+> 说明：本文件用于记录未来主版本的升级设想，当前维护分支仍处于仅接受安全修复与 Bug 补丁的维护模式，不会在该分支上实际执行本文所述的 Laravel 12 及相关技术栈升级。
 
 ## 1. 核心框架升级 (Laravel 12)
-- **PHP 版本要求**: 确保环境支持 PHP 8.2+ (Laravel 12 可能要求更高)。
+- **PHP 版本要求**: 确保环境支持 PHP 8.2+，至少满足当前 Laravel 11 的要求。
 - **依赖更新**: 
     - 更新 `composer.json` 中的 `illuminate/*` 依赖至 `^12.0`。
     - 检查并更新第三方包（如 `intervention/image`, `livewire/livewire`）至兼容 Laravel 12 的版本。
@@ -20,7 +22,7 @@
 ## 3. 前端框架升级
 - **Vue 2 -> Vue 3**: 
     - Suda11 目前大量使用 Vue 2，建议逐步迁移至 Vue 3。
-    - 或者，考虑到已经引入了 Livewire 3，可以考虑将部分 Vue 组件替换为 Livewire 组件，减少前端复杂度。
+    - 鉴于当前技术栈已使用 Livewire 3，可以考虑将部分 Vue 组件替换为 Livewire 组件，减少前端复杂度。
 - **移除 jQuery**: 
     - 识别并替换依赖 jQuery 的插件（如 `select2`, `datepicker`）。
     - 转向原生 JS 或基于 Vue 3 / Alpine.js 的轻量级替代方案。
