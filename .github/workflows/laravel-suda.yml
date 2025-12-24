@@ -78,7 +78,7 @@ jobs:
         working-directory: ./blog
         run: |
           composer config repositories.suda path ../
-          composer require gtdxyz/suda:dev-main
+          composer require gtdxyz/suda:dev-11.x
         
       - name: suda install
         working-directory: ./blog

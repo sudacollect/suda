@@ -6,7 +6,7 @@ Suda11 是一个基于 Laravel 11 开发的多功能 Dashboard 应用框架。�
 ## 2. 技术栈分析
 
 ### 后端技术栈
-- **核心框架**: Laravel 11.x (计划升级至 12.x)
+- **核心框架**: Laravel 11.x（当前生产与维护版本，后续视官方支持策略评估升级至 12.x）
 - **PHP 版本**: ^8.2
 - **数据库**: 支持 MySQL/PostgreSQL 等 Laravel 原生支持的数据库
 - **关键组件**:
@@ -21,8 +21,8 @@ Suda11 是一个基于 Laravel 11 开发的多功能 Dashboard 应用框架。�
 - **构建工具**: Laravel Mix (Webpack) - **建议升级至 Vite**
 - **基础框架**: Bootstrap 5.3.3
 - **JavaScript 库**:
-    - jQuery 3.5.1 (历史遗留，建议逐步移除)
-    - Vue 2.6.12 (建议升级至 Vue 3 或全面转向 Livewire)
+    - jQuery 3.5.1（仅用于兼容历史模块，存在潜在安全风险，不再用于新功能开发，计划在后续版本中彻底移除）
+    - Vue 2.6.12（已于 2023-12-31 结束生命周期，存在安全与维护风险；维护分支需将其视为安全技术债，优先迁移至 Vue 3 或通过 Livewire 等方案移除对 Vue 2 的依赖）
     - Axios, Lodash, Moment.js
 - **图标库**: Ionicons 5, FontAwesome 5
 
