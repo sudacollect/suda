@@ -63,7 +63,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install laravel
-        run: composer create-project laravel/laravel blog
+        run: composer create-project laravel/laravel:^11.0 blog
 
       - name: Prepare the application
         working-directory: ./blog
@@ -76,7 +76,9 @@ jobs:
 
       - name: Composer require suda
         working-directory: ./blog
-        run: composer require gtdxyz/suda dev-main
+        run: |
+          composer config repositories.suda path ../
+          composer require gtdxyz/suda:dev-main
         
       - name: suda install
         working-directory: ./blog
